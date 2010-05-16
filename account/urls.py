@@ -7,6 +7,8 @@ urlpatterns = patterns('',
     ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
     ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
 
+    ('add_email/$', 'libravatar.account.views.add_email'),
+    ('confirm_email/$', 'libravatar.account.views.confirm_email'),
     ('new/$', 'libravatar.account.views.new'),
     ('profile/$', 'libravatar.account.views.profile'),
 )

@@ -6,3 +6,21 @@ last name:   {{ user.last_name }}
 full name:   {{ user.get_full_name }}
 email:       {{ user.email }}
 </pre>
+
+{% if confirmed_emails %}
+<p>You have the following confirmed email addresses:</p>
+<ul>
+    {% for email in confirmed_emails %}
+        <li>{{ email.email }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if unconfirmed_emails %}
+<p>You have the following unconfirmed email addresses:</p>
+<ul>
+    {% for email in unconfirmed_emails %}
+        <li>{{ email.email }} {# TODO: (expires in xx hours) #}</li>
+    {% endfor %}
+</ul>
+{% endif %}
