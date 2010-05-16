@@ -24,3 +24,11 @@ email:       {{ user.email }}
     {% endfor %}
 </ul>
 {% endif %}
+
+{% if photos %}
+<p>
+{% for photo in photos %}
+<img src="{{ photo }}" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}/>
+{% endfor %}
+</p>
+{% endif %}

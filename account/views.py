@@ -6,8 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 
-from libravatar.account.forms import AddEmailForm
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail
+from libravatar.account.forms import AddEmailForm, UploadPhotoForm
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
 from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL
 
 def new(request):
@@ -49,8 +49,9 @@ def profile(request):
     u = request.user
     confirmed = ConfirmedEmail.objects.filter(user=u)
     unconfirmed = UnconfirmedEmail.objects.filter(user=u)
+    photos = Photo.objects.filter(user=u)
     return render_to_response('account/profile.html',
-        { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed })
+        { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed, 'photos' : photos })
 
 @login_required
 def add_email(request):
@@ -63,3 +64,15 @@ def add_email(request):
         form = AddEmailForm()
 
     return render_to_response('account/add_email.html', { 'form': form })
+
+@login_required
+def upload_photo(request):
+    if request.method == 'POST':
+        form = UploadPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save(request.user, request.FILES['photo'])
+            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+    else:
+        form = UploadPhotoForm()
+
+    return render_to_response('account/upload_photo.html', { 'form': form })
