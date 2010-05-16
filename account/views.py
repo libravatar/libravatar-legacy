@@ -1,8 +1,10 @@
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import UserCreationForm
+from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL
 
 @login_required
 def profile(request):
@@ -10,39 +12,19 @@ def profile(request):
     return render_to_response('account/profile.html', { 'user': u })
 
 def new(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    password2 = request.POST['password2']
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save();
 
-    errors = False
-    if not username:
-        errors = True
-        username_error = 'Invalid username'
-    if not password:
-        errors = True
-        password_error = 'Invalid password'
-    if password != password2:
-        errors = True
-        password2_error = 'Passwords don\'t match'
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
+            if user is None:
+                return HttpResponseRedirect(LOGIN_URL)
 
-    if errors:
-        return render_to_response('account/new.html', {
-            'username' : username,
-            'password' : password,
-            'password2' : password2,
-            'username_error': username_error,
-            'password_error' : password_error,
-            'password2_error': password2_error,
-    })
+            login(request, user)
+            # Redirect to a success page.
+            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+    else:
+        form = UserCreationForm()
 
-    user = User.objects.create_user(username, '', password)
-    if user is None:
-        # TODO: Return an error message
-
-    user = authenticate(username=username, password=password)
-    if user is None:
-        # TODO: Return an 'invalid login' error message.
-
-    login(request, user)
-    # Redirect to a success page.
-        
+    return render_to_response('account/new.html', { 'form': form })

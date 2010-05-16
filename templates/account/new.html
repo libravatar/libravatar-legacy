@@ -1,13 +1,13 @@
 <h1>Create new account</h1>
 
-<form action="" method="post">
+<form action="/account/new/" method="post">
 
 {{ form.username.errors }}
-<p class="aligned wide"><label for="id_username">Username:</label>{{ form.username }}</p>
-{{ form.password.errors }}
-<p class="aligned wide"><label for="id_password">Password:</label>{{ form.password }}</p>
+<p class="aligned wide"><label for="id_username">{{ form.username.label_tag }}:</label>{{ form.username }}</p>
+{{ form.password1.errors }}
+<p class="aligned wide"><label for="id_password1">{{ form.password1.label_tag }}:</label>{{ form.password1 }}</p>
 {{ form.password2.errors }}
-<p class="aligned wide"><label for="id_password2">Confirm password:</label>{{ form.password2 }}</p>
+<p class="aligned wide"><label for="id_password2">{{ form.password2.label_tag }}:</label>{{ form.password2 }}</p>
 
 <p><input type="submit" value="Create account" /></p>
 </form>

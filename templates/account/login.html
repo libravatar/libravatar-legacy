@@ -1,6 +1,4 @@
-{# {% extends "base.html" %} #}
-
-{% block content %}
+<p>Don't have an account yet? <a href="/account/new">Sign up now!</a></p>
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
@@ -21,5 +19,3 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
-
-{% endblock %}

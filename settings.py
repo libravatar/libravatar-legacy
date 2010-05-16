@@ -69,7 +69,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/francois/devel/libravatar/libravatar/templates',
+    '/home/francois/code/libravatar/templates',
 )
 
 INSTALLED_APPS = (
@@ -83,3 +83,4 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL = '/account/login'
+LOGIN_REDIRECT_URL = '/account/profile'
