@@ -29,11 +29,11 @@ def new(request):
 
 def confirm_email(request):
     if not 'verification_key' in request.GET:
-        return HttpResponse('TODO: missing verification key')
+        return render_to_response('account/email_notconfirmed.html')
     try:
         unconfirmed = UnconfirmedEmail.objects.get(verification_key=request.GET['verification_key'])
     except UnconfirmedEmail.DoesNotExist:
-        return HttpResponse('TODO: NOT confirmed')
+        return render_to_response('account/email_notconfirmed.html')
     else:
         # TODO: check for a reasonable expiration time
         confirmed = ConfirmedEmail()
@@ -42,7 +42,7 @@ def confirm_email(request):
         confirmed.save()
 
         unconfirmed.delete()
-        return HttpResponse('TODO: confirmed')
+        return render_to_response('account/email_confirmed.html')
 
 @login_required
 def profile(request):
