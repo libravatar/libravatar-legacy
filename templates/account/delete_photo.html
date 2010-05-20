@@ -1,0 +1,5 @@
+<p>Are you sure you want to delete this photo?</p>
+
+<p><img src="{{ photo }}" /></p>
+
+<p><form action="/account/{{ photo.id }}/delete_photo/" method="post"><input type="submit" value="Delete"> <a href="/account/profile/">Cancel</a></p>

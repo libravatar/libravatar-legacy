@@ -11,7 +11,7 @@ email:       {{ user.email }}
 <p>You have the following confirmed email addresses:</p>
 <ul>
     {% for email in confirmed_emails %}
-        <li>{{ email.email }}</li>
+        <li><form action="/account/{{ email.id }}/remove_confirmed_email/" method="post">{{ email.email }} <input type="submit" value="Remove"></form></li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -20,15 +20,21 @@ email:       {{ user.email }}
 <p>You have the following unconfirmed email addresses:</p>
 <ul>
     {% for email in unconfirmed_emails %}
-        <li>{{ email.email }} {# TODO: (expires in xx hours) #}</li>
+        <li><form action="/account/{{ email.id }}/remove_unconfirmed_email/" method="post">{{ email.email }} <input type="submit" value="Remove"></form> {# TODO: (expires in xx hours) #}</li>
     {% endfor %}
 </ul>
 {% endif %}
 
 {% if photos %}
-<p>
+<p>Here are the pictures you have uploaded:</p>
+<ul>
 {% for photo in photos %}
-<img src="{{ photo }}" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}/>
+    <li><img src="{{ photo }}" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}> <a href="/account/{{ photo.id }}/delete_photo/">Delete</a></li>
 {% endfor %}
+</ul>
 </p>
+{% endif %}
+
+{% if not maxphotos %}
+<p><a href="/account/upload_photo/">Upload a new photo</a></p>
 {% endif %}

@@ -50,8 +50,10 @@ def profile(request):
     confirmed = ConfirmedEmail.objects.filter(user=u)
     unconfirmed = UnconfirmedEmail.objects.filter(user=u)
     photos = Photo.objects.filter(user=u)
+    maxphotos = False # TODO: enforce limit of 5 photos per user
     return render_to_response('account/profile.html',
-        { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed, 'photos' : photos })
+        { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
+          'photos' : photos, 'maxphotos' : maxphotos })
 
 @login_required
 def add_email(request):
@@ -66,6 +68,36 @@ def add_email(request):
     return render_to_response('account/add_email.html', { 'form': form })
 
 @login_required
+def remove_confirmed_email(request, email_id):
+    if request.method == 'POST':
+        try:
+            email = ConfirmedEmail.objects.get(id=email_id)
+        except ConfirmedEmail.DoesNotExist:
+            return render_to_response('account/email_invalid.html')
+        else:
+            if email.user.id == request.user.id:
+                email.delete()
+            else:
+                return render_to_response('account/email_notowner.html')
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+@login_required
+def remove_unconfirmed_email(request, email_id):
+    if request.method == 'POST':
+        try:
+            email = UnconfirmedEmail.objects.get(id=email_id)
+        except UnconfirmedEmail.DoesNotExist:
+            return render_to_response('account/email_invalid.html')
+        else:
+            if email.user.id == request.user.id:
+                email.delete()
+            else:
+                return render_to_response('account/email_notowner.html')
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+@login_required
 def upload_photo(request):
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
@@ -76,3 +108,18 @@ def upload_photo(request):
         form = UploadPhotoForm()
 
     return render_to_response('account/upload_photo.html', { 'form': form })
+
+@login_required
+def delete_photo(request, photo_id):
+    try:
+        photo = Photo.objects.get(id=photo_id)
+    except Photo.DoesNotExist:
+        return render_to_response('account/photo_invalid.html')
+    else:
+        if request.method == 'POST':
+            if photo.user.id != request.user.id:
+                return render_to_response('account/photo_notowner.html')
+            photo.delete()
+            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+        return render_to_response('account/delete_photo.html', { 'photo': photo })
