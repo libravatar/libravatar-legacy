@@ -125,6 +125,7 @@ def delete_photo(request, photo_id):
         if request.method == 'POST':
             if photo.user.id != request.user.id:
                 return render_to_response('account/photo_notowner.html')
+            ConfirmedEmail.objects.filter(photo=photo).update(photo=None)
             photo.delete()
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
