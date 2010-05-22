@@ -1,25 +1,30 @@
 <h1>Choose a photo for {{ email.email }}</h1>
 
 {% if photos %}
-<form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
 
 <p>Here are the pictures you have uploaded:</p>
 <ul>
 {% for photo in photos %}
-  <li><input type="radio" name="photo_id" value="{{ photo.id }}" id="photo{{photo.id}}"
-  {% ifequal email.photo.id photo.id %}checked="checked"{% endifequal %}>
-  <label for="photo{{photo.id}}"><img src="{{ photo }}" height="80" width="80"></label></li>
+  <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
+  <input type="hidden" name="photo_id" value="{{ photo.id }}">
+  <li><input type="image" name="photo{{ photo.id }}" src="{{ photo }}" height="80" width="80" border="0">
+  {% ifequal email.photo.id photo.id %}
+  (current)
+  {% endifequal %}</li>
+  </form>
 {% endfor %}
-  <li><input type="radio" name="photo_id" value="" id="photoNone"
-  {% if not email.photo %}checked="checked"{% endif %}><label for="photoNone">None</label></li>
+  <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
+  <li><input type="submit" name="photoNone" value="None">
+  {% ifequal email.photo.id photo.id %}
+  (current)
+  {% endifequal %}</li>
 </ul>
 </p>
 
-<p><input type="submit" value="Save"></form>
 {% else %}
 
 <p>You need to <a href="{% url libravatar.account.views.upload_photo %}">upload some photos</a> first!</p>
-<p>
-{% endif %}
 
-<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+
+{% endif %}
