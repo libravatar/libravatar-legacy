@@ -1,9 +1,9 @@
 <h1>Add a new email address</h1>
 
-<form action="/account/add_email/" method="post">
+<form action="{% url libravatar.account.views.add_email %}" method="post">
 
 {{ form.email.errors }}
 <p class="aligned wide"><label for="id_email">{{ form.email.label_tag }}:</label>{{ form.email }}</p>
 
-<p><input type="submit" value="Add" /></p>
-</form>
+<p><input type="submit" value="Add" /></form>
+<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>

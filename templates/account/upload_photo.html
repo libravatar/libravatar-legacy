@@ -1,9 +1,9 @@
 <h1>Upload a new photo</h1>
 
-<form enctype="multipart/form-data" action="/account/upload_photo/" method="post">
+<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">
 
 {{ form.photo.errors }}
 <p class="aligned wide"><label for="id_photo">{{ form.photo.label_tag }}:</label>{{ form.photo }}</p>
 
-<p><input type="submit" value="Upload" /></p>
-</form>
+<p><input type="submit" value="Upload" /></form>
+<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>

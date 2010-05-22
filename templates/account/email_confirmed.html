@@ -1,1 +1,5 @@
-<p>You email address was successfully confirmed!</p>
+<p>Your email address was successfully confirmed!</p>
+
+{% if not user.is_anonymous %}
+<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+{% endif %}

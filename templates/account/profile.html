@@ -1,17 +1,15 @@
 <h1>Hi {{ user.username }}!</h1>
 
-<pre>
-first name:  {{ user.first_name }}
-last name:   {{ user.last_name }}
-full name:   {{ user.get_full_name }}
-email:       {{ user.email }}
-</pre>
-
 {% if confirmed_emails %}
 <p>You have the following confirmed email addresses:</p>
 <ul>
     {% for email in confirmed_emails %}
-        <li><form action="/account/{{ email.id }}/remove_confirmed_email/" method="post">{{ email.email }} <input type="submit" value="Remove"></form></li>
+        <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">
+        <a href="{% url libravatar.account.views.assign_photo email.id %}">
+        <img src="{{ email.photo_url }}" height="80" width="80" border="0"></a>
+        {{ email.email }}
+        <br/><a href="{% url libravatar.account.views.assign_photo email.id %}">Change photo</a>
+        <input type="submit" value="Remove"></form></li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -20,21 +18,25 @@ email:       {{ user.email }}
 <p>You have the following unconfirmed email addresses:</p>
 <ul>
     {% for email in unconfirmed_emails %}
-        <li><form action="/account/{{ email.id }}/remove_unconfirmed_email/" method="post">{{ email.email }} <input type="submit" value="Remove"></form> {# TODO: (expires in xx hours) #}</li>
+        <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{{ email.email }}
+        <br/><input type="submit" value="Remove"></form>{# TODO: (expires in xx hours) #}</li>
     {% endfor %}
 </ul>
 {% endif %}
+
+<p><a href="{% url libravatar.account.views.add_email %}">Add a new email address</a></p>
 
 {% if photos %}
 <p>Here are the pictures you have uploaded:</p>
 <ul>
 {% for photo in photos %}
-    <li><img src="{{ photo }}" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}> <a href="/account/{{ photo.id }}/delete_photo/">Delete</a></li>
+    <li><img src="{{ photo }}" height="80" width="80" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}>
+    <a href="{% url libravatar.account.views.delete_photo photo.id %}">Delete</a></li>
 {% endfor %}
 </ul>
 </p>
 {% endif %}
 
 {% if not maxphotos %}
-<p><a href="/account/upload_photo/">Upload a new photo</a></p>
+<p><a href="{% url libravatar.account.views.upload_photo %}">Upload a new photo</a></p>
 {% endif %}

@@ -1,6 +1,6 @@
 <h1>Create new account</h1>
 
-<form action="/account/new/" method="post">
+<form action="{% url libravatar.account.views.new %}" method="post">
 
 {{ form.username.errors }}
 <p class="aligned wide"><label for="id_username">{{ form.username.label_tag }}:</label>{{ form.username }}</p>

@@ -2,4 +2,7 @@
 
 <p><img src="{{ photo }}" /></p>
 
-<p><form action="/account/{{ photo.id }}/delete_photo/" method="post"><input type="submit" value="Delete"> <a href="/account/profile/">Cancel</a></p>
+<p><form action="{% url libravatar.account.views.delete_photo photo.id %}" method="post">
+<input type="submit" value="Delete">
+<a href="{% url libravatar.account.views.profile %}">Cancel</a>
+</form></p>

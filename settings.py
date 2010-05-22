@@ -84,3 +84,5 @@ INSTALLED_APPS = (
 
 LOGIN_URL = '/account/login'
 LOGIN_REDIRECT_URL = '/account/profile'
+
+DEFAULT_PHOTO = 'nobody.png'

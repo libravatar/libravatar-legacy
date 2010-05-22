@@ -30,8 +30,14 @@ def new(request):
 def confirm_email(request):
     if not 'verification_key' in request.GET:
         return render_to_response('account/email_notconfirmed.html')
+
+    # be tolerant of extra crap added by mail clients
+    key = request.GET['verification_key'].replace(' ', '')
+    if len(key) != 64:
+        return render_to_response('account/email_notconfirmed.html')
+
     try:
-        unconfirmed = UnconfirmedEmail.objects.get(verification_key=request.GET['verification_key'])
+        unconfirmed = UnconfirmedEmail.objects.get(verification_key=key)
     except UnconfirmedEmail.DoesNotExist:
         return render_to_response('account/email_notconfirmed.html')
     else:
@@ -42,7 +48,7 @@ def confirm_email(request):
         confirmed.save()
 
         unconfirmed.delete()
-        return render_to_response('account/email_confirmed.html')
+        return render_to_response('account/email_confirmed.html', { 'user' : request.user })
 
 @login_required
 def profile(request):
@@ -123,3 +129,31 @@ def delete_photo(request, photo_id):
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
         return render_to_response('account/delete_photo.html', { 'photo': photo })
+
+@login_required
+def assign_photo(request, email_id):
+    try:
+        email = ConfirmedEmail.objects.get(id=email_id)
+    except ConfirmedEmail.DoesNotExist:
+        return render_to_response('account/email_invalid.html')
+
+    if email.user.id != request.user.id:
+        return render_to_response('account/email_notowner.html')
+
+    if request.method == 'POST':
+        photo = None
+        if 'photo_id' in request.POST and request.POST['photo_id']:
+            try:
+                photo = Photo.objects.get(id=request.POST['photo_id'])
+            except Photo.DoesNotExist:
+                return render_to_response('account/photo_invalid.html')
+
+        if photo and (photo.user.id != request.user.id):
+            return render_to_response('account/photo_notowner.html')
+
+        email.photo = photo
+        email.save()
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+    photos = Photo.objects.filter(user=request.user)
+    return render_to_response('account/assign_photo.html', { 'photos': photos, 'email': email })
