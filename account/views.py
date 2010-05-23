@@ -42,15 +42,15 @@ def confirm_email(request):
         unconfirmed = UnconfirmedEmail.objects.get(verification_key=key)
     except UnconfirmedEmail.DoesNotExist:
         return render_to_response('account/email_notconfirmed.html')
-    else:
-        # TODO: check for a reasonable expiration time
-        confirmed = ConfirmedEmail()
-        confirmed.user = unconfirmed.user
-        confirmed.email = unconfirmed.email
-        confirmed.save()
 
-        unconfirmed.delete()
-        return render_to_response('account/email_confirmed.html', { 'user' : request.user })
+    # TODO: check for a reasonable expiration time
+    confirmed = ConfirmedEmail()
+    confirmed.user = unconfirmed.user
+    confirmed.email = unconfirmed.email
+    confirmed.save()
+
+    unconfirmed.delete()
+    return render_to_response('account/email_confirmed.html', { 'user' : request.user })
 
 @login_required
 def profile(request):
@@ -82,11 +82,11 @@ def remove_confirmed_email(request, email_id):
             email = ConfirmedEmail.objects.get(id=email_id)
         except ConfirmedEmail.DoesNotExist:
             return render_to_response('account/email_invalid.html')
+
+        if email.user.id == request.user.id:
+            email.delete()
         else:
-            if email.user.id == request.user.id:
-                email.delete()
-            else:
-                return render_to_response('account/email_notowner.html')
+            return render_to_response('account/email_notowner.html')
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -97,11 +97,11 @@ def remove_unconfirmed_email(request, email_id):
             email = UnconfirmedEmail.objects.get(id=email_id)
         except UnconfirmedEmail.DoesNotExist:
             return render_to_response('account/email_invalid.html')
+
+        if email.user.id == request.user.id:
+            email.delete()
         else:
-            if email.user.id == request.user.id:
-                email.delete()
-            else:
-                return render_to_response('account/email_notowner.html')
+            return render_to_response('account/email_notowner.html')
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -127,14 +127,14 @@ def delete_photo(request, photo_id):
         photo = Photo.objects.get(id=photo_id)
     except Photo.DoesNotExist:
         return render_to_response('account/photo_invalid.html')
-    else:
-        if request.method == 'POST':
-            if photo.user.id != request.user.id:
-                return render_to_response('account/photo_notowner.html')
-            photo.delete()
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-        return render_to_response('account/delete_photo.html', { 'photo': photo })
+    if request.method == 'POST':
+        if photo.user.id != request.user.id:
+            return render_to_response('account/photo_notowner.html')
+        photo.delete()
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+    return render_to_response('account/delete_photo.html', { 'photo': photo })
 
 @login_required
 def assign_photo(request, email_id):
