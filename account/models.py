@@ -1,5 +1,5 @@
 from hashlib import md5, sha1, sha256
-from os import link, unlink
+from os import link, unlink, urandom
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -18,7 +18,17 @@ class Photo(models.Model):
     def pathname(self):
         return 'uploaded/' + self.filename + '.' + self.format
 
-    # TODO: create a method for having photos save themselves to disk (multiple sizes?)
+    def save(self, image, force_insert=False, force_update=False):
+        self.format = 'jpg' # TODO: add support for PNG files too
+        self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
+        super(Photo, self).save(force_insert, force_update)
+
+        # Write file to disk
+        dest_filename = MEDIA_ROOT + self.pathname()
+        destination = open(dest_filename, 'wb+')
+        for chunk in image.chunks():
+            destination.write(chunk)
+            destination.close()
 
     # TODO: add a delete method which deletes the file from disk and unsets photo from all confirmed emails using it
 
@@ -83,3 +93,10 @@ class UnconfirmedEmail(models.Model):
 
     def __unicode__(self):
         return self.email + ' (unconfirmed)'
+
+    def save(self, force_insert=False, force_update=False):
+        salted_username = urandom(1024) + str(self.user.username)
+        key = sha256(salted_username).hexdigest()
+        self.verification_key = key
+
+        super(UnconfirmedEmail, self).save(force_insert, force_update)
