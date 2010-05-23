@@ -125,7 +125,7 @@ def delete_photo(request, photo_id):
         if request.method == 'POST':
             if photo.user.id != request.user.id:
                 return render_to_response('account/photo_notowner.html')
-            ConfirmedEmail.objects.filter(photo=photo).update(photo=None)
+            ConfirmedEmail.objects.filter(photo=photo).update(photo=None) # TODO: needs to use set_photo()
             photo.delete()
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -152,8 +152,7 @@ def assign_photo(request, email_id):
         if photo and (photo.user.id != request.user.id):
             return render_to_response('account/photo_notowner.html')
 
-        email.photo = photo
-        email.save()
+        email.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user)
