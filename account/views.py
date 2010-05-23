@@ -6,6 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 
+from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
 from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL
@@ -161,4 +162,14 @@ def assign_photo(request, email_id):
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user)
-    return render_to_response('account/assign_photo.html', { 'photos': photos, 'email': email })
+    external_photos = []
+
+    identica = identica_photo(email.email)
+    if identica:
+        external_photos.append(identica)
+    gravatar = gravatar_photo(email.email)
+    if gravatar:
+        external_photos.append(gravatar)
+
+    return render_to_response('account/assign_photo.html', { 'photos': photos, 'email': email,
+        'external_photos' : external_photos })

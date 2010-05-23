@@ -1,5 +1,11 @@
 <h1>Choose a photo for {{ email.email }}</h1>
 
+{% if not photos %}{% if not external_photos %}
+<p>You need to <a href="{% url libravatar.account.views.upload_photo %}">upload some photos</a> first!</p>
+
+<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+{% endif %}{% endif %}
+
 {% if photos %}
 
 <p>Here are the pictures you have uploaded:</p>
@@ -21,10 +27,26 @@
 </ul>
 </p>
 
-{% else %}
+{% endif %}
 
-<p>You need to <a href="{% url libravatar.account.views.upload_photo %}">upload some photos</a> first!</p>
+{% if external_photos %}
 
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p>Import one of these externally hosted photos:</p>
+<ul>
+{% for external in external_photos %}
+  {# TODO: link to somewhere reasonable #}
+  <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
+  <input type="hidden" name="photo_id" value="">
+  <li><input type="image" name="photo{{ photo.id }}" src="{{ external.image_url }}"
+  width="{{ external.width }}" height="{{ external.height }}" border="0"><br/>
+  {% if external.service_url %}
+  <a href="{{ external.service_url }}">{{ external.service_name }}</a>
+  {% else %}
+  {{ external.service_name }}
+  {% endif %}
+  </form>
+{% endfor %}
+</ul>
+</p>
 
 {% endif %}
