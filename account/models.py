@@ -30,7 +30,17 @@ class Photo(models.Model):
             destination.write(chunk)
             destination.close()
 
-    # TODO: add a delete method which deletes the file from disk and unsets photo from all confirmed emails using it
+    def delete(self):
+        # Remove links to this photo
+        for email in ConfirmedEmail.objects.filter(photo=self):
+            email.set_photo(None)
+
+        try:
+            unlink(MEDIA_ROOT + self.pathname())
+        except OSError:
+            pass # TODO: do something
+
+        super(Photo, self).delete()
 
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User)
