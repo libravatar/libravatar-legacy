@@ -80,6 +80,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'libravatar.account',
+    'libravatar.tools',
 )
 
 LOGIN_URL = '/account/login'
