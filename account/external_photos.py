@@ -3,7 +3,6 @@ from hashlib import md5
 import xml.dom.minidom as minidom
 
 def identica_photo(email):
-    return False # currently disabled because it's too slow
     image_url = ''
     screen_name = ''
 
@@ -46,4 +45,3 @@ def gravatar_photo(email):
         return False
 
     return { 'image_url' : image_url, 'width' : 80, 'height' : 80, 'service_name' : 'Gravatar' }
-
