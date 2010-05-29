@@ -1,4 +1,29 @@
-<p>Your email address was successfully confirmed!</p>
+<p><b>Your email address was successfully confirmed!</b></p>
+
+{% if photos %}
+
+<p>Would you like to import some these externally hosted photos?</p>
+<form action="{% url libravatar.account.views.import_photo user.id %}" method="post">
+<input type="hidden" name="email_id" value="{{ email_id }}">
+<ul>
+{% for photo in photos %}
+  {# TODO: link to somewhere reasonable #}
+  <li><input type="checkbox" name="photo_{{photo.service_name}}" id="photo_{{photo.service_name}}" checked="checked">
+  <label for="photo_{{photo.service_name}}"><img src="{{ photo.image_url }}" width="{{ photo.width }}" height="{{ photo.height }}" border="0"></label>
+  <br/>
+  {% if photo.service_url %}
+  <a href="{{ photo.service_url }}">{{ photo.service_name }}</a>
+  {% else %}
+  {{ photo.service_name }}
+  {% endif %}
+  </li>
+{% endfor %}
+</ul>
+
+<p><input type="submit" value="Import"></p>
+</form>
+
+{% endif %}
 
 {% if not user.is_anonymous %}
 <p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>

@@ -1,10 +1,12 @@
 from hashlib import md5, sha1, sha256
 from os import link, unlink, urandom
+from urllib2 import urlopen
 
 from django.db import models
 from django.contrib.auth.models import User
 
 from libravatar.settings import MEDIA_URL, MEDIA_ROOT, DEFAULT_PHOTO
+from libravatar.account.external_photos import *
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
@@ -29,6 +31,35 @@ class Photo(models.Model):
         for chunk in image.chunks():
             destination.write(chunk)
             destination.close()
+
+    def import_image(self, service_name, email_address):
+        image_url = False
+
+        if 'Identica' == service_name:
+            identica = identica_photo(email_address)
+            if identica:
+                image_url = identica['image_url']
+        elif 'Gravatar' == service_name:
+            gravatar = gravatar_photo(email_address)
+            if gravatar:
+                image_url = gravatar['image_url']
+
+        if not image_url:
+            return False
+
+        self.format = 'jpg' # TODO: add support for PNG files too
+        self.filename = sha256(service_name + email_address).hexdigest()
+        super(Photo, self).save()
+
+        dest_filename = MEDIA_ROOT + self.pathname()
+        image = urlopen(image_url)
+
+        # Write file to disk
+        destination = open(dest_filename, 'wb+')
+        destination.write(image.read())
+        destination.close()
+
+        return True
 
     def delete(self):
         # Remove links to this photo

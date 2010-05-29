@@ -51,7 +51,56 @@ def confirm_email(request):
     confirmed.save()
 
     unconfirmed.delete()
-    return render_to_response('account/email_confirmed.html', { 'user' : request.user })
+
+    external_photos = []
+
+    identica = identica_photo(confirmed.email)
+    if identica:
+        external_photos.append(identica)
+    gravatar = gravatar_photo(confirmed.email)
+    if gravatar:
+        external_photos.append(gravatar)
+
+    return render_to_response('account/email_confirmed.html', {'user' : request.user,
+                              'email_id' : confirmed.id, 'photos' : external_photos})
+
+def import_photo(request, user_id):
+    if request.method == 'POST':
+        if not 'email_id' in request.POST:
+            return render_to_response('account/photos_notimported.html')
+
+        try:
+            user = User.objects.get(id=user_id)
+        except User.DoesNotExist:
+            return render_to_response('account/photos_notimported.html')
+        try:
+            email = ConfirmedEmail.objects.get(id=request.POST['email_id'])
+        except ConfirmedEmail.DoesNotExist:
+            return render_to_response('account/photos_notimported.html')
+
+        if user.id != email.user.id:
+            return render_to_response('account/photos_notimported.html')
+
+        photos_imported = False
+        if 'photo_Identica' in request.POST:
+            p = Photo()
+            p.user = user
+            if p.import_image('Identica', email.email):
+                photos_imported = True
+
+        if 'photo_Gravatar' in request.POST:
+            print 'gravatar'
+            p = Photo()
+            p.user = user
+            if p.import_image('Gravatar', email.email):
+                photos_imported = True
+
+        if photos_imported:
+            return render_to_response('account/photos_imported.html')
+        else:
+            return render_to_response('account/photos_notimported.html')
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @login_required
 def profile(request):
@@ -162,14 +211,4 @@ def assign_photo(request, email_id):
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user)
-    external_photos = []
-
-    identica = identica_photo(email.email)
-    if identica:
-        external_photos.append(identica)
-    gravatar = gravatar_photo(email.email)
-    if gravatar:
-        external_photos.append(gravatar)
-
-    return render_to_response('account/assign_photo.html', { 'photos': photos, 'email': email,
-        'external_photos' : external_photos })
+    return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email})

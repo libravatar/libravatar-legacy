@@ -27,10 +27,10 @@
 <p><a href="{% url libravatar.account.views.add_email %}">Add a new email address</a></p>
 
 {% if photos %}
-<p>Here are the pictures you have uploaded:</p>
+<p>Here are the photos you have uploaded/imported:</p>
 <ul>
 {% for photo in photos %}
-    <li><img src="{{ photo }}" height="80" width="80" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}>
+    <li><img src="{{ photo }}" height="80" width="80" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}><br>
     <a href="{% url libravatar.account.views.delete_photo photo.id %}">Delete</a></li>
 {% endfor %}
 </ul>

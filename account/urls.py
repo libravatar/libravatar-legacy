@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     ('profile/$', 'libravatar.account.views.profile'),
 
     (r'^(?P<email_id>\d+)/assign_photo/$', 'libravatar.account.views.assign_photo'),
+    (r'^(?P<user_id>\d+)/import_photo/$', 'libravatar.account.views.import_photo'),
     ('upload_photo/$', 'libravatar.account.views.upload_photo'),
     (r'^(?P<photo_id>\d+)/delete_photo/$', 'libravatar.account.views.delete_photo'),
 
