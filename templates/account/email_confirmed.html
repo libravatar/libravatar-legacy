@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Email confirmation{% endblock title %}
+
+{% block content %}
+
+<h1>Email confirmation</h1>
+
 <p><b>Your email address was successfully confirmed!</b></p>
 
 {% if photos %}
@@ -28,3 +35,5 @@
 {% if not user.is_anonymous %}
 <p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
 {% endif %}
+
+{% endblock content %}

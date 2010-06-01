@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Libravatar: Error!{% endblock title %}
+
+{% block content %}
+<h1 class="error">Error!</h1>
+
+<p>{% block errormessage %}Libravatar has encountered an error.{% endblock errormessage %}</p>
+{% endblock content %}
+
+{% block backlink %}
+
+{# TODO: make this work on every page even (if user is undefined?) #}
+{% if not user.is_anonymous %}
+<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+{% endif %}
+
+{% endblock backlink %}

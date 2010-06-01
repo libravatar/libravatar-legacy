@@ -1,4 +1,9 @@
-<h1>Create new account</h1>
+{% extends 'base.html' %}
+{% block title %}Libravatar: Create account{% endblock title %}
+
+{% block content %}
+
+<h1>Create a new account</h1>
 
 <form action="{% url libravatar.account.views.new %}" method="post">
 
@@ -11,3 +16,5 @@
 
 <p><input type="submit" value="Create account" /></p>
 </form>
+
+{% endblock content %}

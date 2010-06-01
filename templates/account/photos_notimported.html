@@ -1,5 +1,5 @@
-<p>Photo import failed.</p>
+{% extends 'error.html' %}
 
-{% if not user.is_anonymous %}
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
-{% endif %}
+{% block errormessage %}
+Photo import failed.
+{% endblock errormessage %}

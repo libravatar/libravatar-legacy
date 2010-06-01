@@ -1,1 +1,5 @@
-<p>Invalid or missing confirmation key.<br>Did you copy the whole link carefully?</p>
+{% extends 'error.html' %}
+
+{% block errormessage %}
+Invalid or missing confirmation key.<br>Did you copy the whole link carefully?
+{% endblock errormessage %}

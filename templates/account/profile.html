@@ -1,4 +1,9 @@
-<h1>Hi {{ user.username }}!</h1>
+{% extends 'base.html' %}
+{% block title %}Libravatar: {{user.username}}'s Profile{% endblock title %}
+
+{% block content %}
+
+<h1>{{user.username}}'s Profile</h1>
 
 {% if confirmed_emails %}
 <p>You have the following confirmed email addresses:</p>
@@ -40,3 +45,5 @@
 {% if not max_photos %}
 <p><a href="{% url libravatar.account.views.upload_photo %}">Upload a new photo</a></p>
 {% endif %}
+
+{% endblock content %}

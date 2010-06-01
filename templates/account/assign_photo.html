@@ -1,4 +1,9 @@
-<h1>Choose a photo for {{ email.email }}</h1>
+{% extends 'base.html' %}
+{% block title %}Libravatar: Choose a photo for {{email.email}} {% endblock title %}
+
+{% block content %}
+
+<h1>Choose a photo for {{email.email}}</h1>
 
 {% if not photos %}
 
@@ -28,3 +33,5 @@
 </p>
 
 {% endif %}
+
+{% endblock content %}

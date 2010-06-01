@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Login{% endblock title %}
+
+{% block content %}
+
+<h1>Login</h1>
+
 <p>Don't have an account yet? <a href="{% url libravatar.account.views.new %}">Sign up now!</a></p>
 
 {% if form.errors %}
@@ -20,3 +27,5 @@
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
+
+{% endblock content %}

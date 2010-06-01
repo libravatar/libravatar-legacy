@@ -1,0 +1,34 @@
+<html>
+<head>
+    <link rel="stylesheet" href="http://libravatar.org/libravatar.css" />
+    <title>{% block title %}Libravatar - Freeing the Web, one face at a time!{% endblock title %}</title>
+</head>
+<body>
+
+<div id="header">
+  <div id="site-branding">
+    {# TODO: use sitename setting #}
+    <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span><br>freeing the web one face at a time
+  </div>
+  <div id="account">
+    <a href="{% url libravatar.account.views.profile %}">Profile</a>
+    <a href="{% url django.contrib.auth.views.logout_then_login %}">Logout</a>
+    {# TODO: display login link instead if user is not logged in #}
+  </div>
+</div>
+
+<div id="outer">
+  <div id="content">
+    {% block content %}{% endblock content %}
+  </div>
+</div>
+
+<div id="footer">
+  {# TODO: use sitename setting #}
+  <b>Libravatar.org</b> is an avatar service running the <a href="http://www.libravatar.org">Libravatar</a>
+  software, version 0.1, available under the
+  <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>.
+</div>
+
+</body>
+</html>

@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Photo lookup{% endblock title %}
+
+{% block content %}
+
 <h1>Photo lookup</h1>
 
 <form action="{% url libravatar.tools.views.check %}" method="post">
@@ -19,3 +24,5 @@ SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 </ul>
 
 {% endif %}
+
+{% endblock content %}

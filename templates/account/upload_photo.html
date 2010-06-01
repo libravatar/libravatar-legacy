@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Upload photo{% endblock title %}
+
+{% block content %}
+
 <h1>Upload a new photo</h1>
 
 <form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">
@@ -7,3 +12,5 @@
 
 <p><input type="submit" value="Upload" /></form>
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+{% endblock content %}

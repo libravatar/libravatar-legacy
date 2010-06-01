@@ -1,5 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Photo import{% endblock title %}
+
+{% block content %}
+
+<h1>Photo import</h1>
+
 <p>Photo(s) successfully imported.</p>
 
 {% if not user.is_anonymous %}
 <p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
 {% endif %}
+
+{% endblock content %}

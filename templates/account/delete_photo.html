@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Delete photo{% endblock title %}
+
+{% block content %}
+
+<h1>Delete photo</h1>
+
 <p>Are you sure you want to delete this photo?</p>
 
 <p><img src="{{ photo }}" /></p>
@@ -6,3 +13,5 @@
 <input type="submit" value="Delete">
 <a href="{% url libravatar.account.views.profile %}">Cancel</a>
 </form></p>
+
+{% endblock content %}

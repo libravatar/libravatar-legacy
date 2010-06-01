@@ -1,3 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Add email address{% endblock title %}
+
+{% block content %}
+
 <h1>Add a new email address</h1>
 
 <form action="{% url libravatar.account.views.add_email %}" method="post">
@@ -7,3 +12,5 @@
 
 <p><input type="submit" value="Add" /></form>
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+{% endblock content %}
