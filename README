@@ -13,3 +13,33 @@ GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+Getting involved
+=================
+
+If you'd like to get involved in the development of Libravatar, here
+are a few useful pointers:
+
+  Project page:    https://www.launchpad.net/libravatar
+  Bug tracker:     https://bugs.launchpad.net/libravatar
+  Source code:     https://code.launchpad.net/libravatar
+
+  Mailing list:    http://groups.google.com/group/libravatar
+  Identica group:  http://identi.ca/group/libravatar
+  IRC channel:     #libravatar on chat.freenode.net
+  Email:           francois@libravatar.org
+
+Coding guidelines and other useful instructions can be found in HACKING.
+
+
+Learn more
+===========
+
+Once the project has launched, www.libravatar.org should link to everything
+you need, but for the meantime if you'd like to keep up with new developments,
+have a look at these:
+
+  Blog:       http://blog.libravatar.org
+  Identica:   http://identi.ca/libravatar
+  Twitter:    http://twitter.com/libravatar
