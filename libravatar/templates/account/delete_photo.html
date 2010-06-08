@@ -7,11 +7,13 @@
 
 <p>Are you sure you want to delete this photo?</p>
 
-<p><img src="{{ photo }}" /></p>
+<p><img src="{{ photo }}" alt=""></p>
 
-<p><form action="{% url libravatar.account.views.delete_photo photo.id %}" method="post">
-<input type="submit" value="Delete">
-<a href="{% url libravatar.account.views.profile %}">Cancel</a>
-</form></p>
+<form action="{% url libravatar.account.views.delete_photo photo.id %}" method="post">
+
+<p><input type="submit" value="Delete">
+<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
 
 {% endblock content %}

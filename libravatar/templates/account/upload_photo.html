@@ -8,9 +8,11 @@
 <form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">
 
 {{ form.photo.errors }}
-<p class="aligned wide"><label for="id_photo">{{ form.photo.label_tag }}:</label>{{ form.photo }}</p>
+<p class="aligned wide">{{ form.photo.label_tag }}: {{ form.photo }}</p>
 
-<p><input type="submit" value="Upload" /></form>
+<p><input type="submit" value="Upload" />
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
 
 {% endblock content %}

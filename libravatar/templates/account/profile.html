@@ -11,7 +11,7 @@
     {% for email in confirmed_emails %}
         <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">
         <a href="{% url libravatar.account.views.assign_photo email.id %}">
-        <img src="{{ email.photo_url }}" height="80" width="80" border="0"></a>
+        <img class="thumbnail" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
         <br/><a href="{% url libravatar.account.views.assign_photo email.id %}">Change photo</a>
         <input type="submit" value="Remove"></form></li>
@@ -35,11 +35,10 @@
 <p>Here are the photos you have uploaded/imported:</p>
 <ul>
 {% for photo in photos %}
-    <li><img src="{{ photo }}" height="80" width="80" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}><br>
+    <li><img class="thumbnail" src="{{ photo }}" alt="" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}><br>
     <a href="{% url libravatar.account.views.delete_photo photo.id %}">Delete</a></li>
 {% endfor %}
 </ul>
-</p>
 {% endif %}
 
 {% if not max_photos %}

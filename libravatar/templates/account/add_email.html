@@ -8,9 +8,11 @@
 <form action="{% url libravatar.account.views.add_email %}" method="post">
 
 {{ form.email.errors }}
-<p class="aligned wide"><label for="id_email">{{ form.email.label_tag }}:</label>{{ form.email }}</p>
+<p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
 
-<p><input type="submit" value="Add" /></form>
+<p><input type="submit" value="Add" />
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
 
 {% endblock content %}

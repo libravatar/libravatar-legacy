@@ -57,13 +57,17 @@ div#header div#account {
 div#content {
   background-color: #FFFFFF;
   padding: 8 16 16 16;
-  -moz-border-radius-bottomleft: 8;
-  -moz-border-radius-bottomright: 8;
-  -moz-border-radius-topleft: 8;
-  -moz-border-radius-topright: 8;
+  -moz-border-radius: 8px;
+  -webkit-border-radius:8px;
 }
 
 div#content a { 
   color: #7DB5A6;
   font-weight: bold;
+}
+
+input.thumbnail, img.thumbnail {
+  height: 80px;
+  width: 80px;
+  border: none;
 }

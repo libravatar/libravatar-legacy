@@ -7,8 +7,10 @@
 
 <form action="{% url libravatar.tools.views.check %}" method="post">
 
-<p><label for="id_email">{{ form.email.label_tag }}:</label>{{ form.email }}
-<input type="submit" value="Check"></form></p>
+<p>{{ form.email.label_tag }}:{{ form.email }}
+<input type="submit" value="Check"></p>
+
+</form>
 
 {% if data %}
 
@@ -18,9 +20,9 @@ SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 
 <p>This is what the libravatars look depending on the hashing algorithm you use:</p>
 <ul>
-  <li><img src="http://libravatar.org/avatar/{{ data.md5 }}"><br>MD5</li>
-  <li><img src="http://libravatar.org/avatar/{{ data.sha1 }}"><br>SHA1</li>
-  <li><img src="http://libravatar.org/avatar/{{ data.sha256 }}"><br>SHA256</li>
+  <li><img class="thumbnail" src="http://libravatar.org/avatar/{{ data.md5 }}" alt=""><br>MD5</li>
+  <li><img class="thumbnail" src="http://libravatar.org/avatar/{{ data.sha1 }}" alt=""><br>SHA1</li>
+  <li><img class="thumbnail" src="http://libravatar.org/avatar/{{ data.sha256 }}" alt=""><br>SHA256</li>
 </ul>
 
 {% endif %}
