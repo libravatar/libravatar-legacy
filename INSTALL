@@ -1,0 +1,62 @@
+External dependencies
+----------------------
+
+- Python >= 2.5
+- Django >= 1.1.2
+- Apache 2 with mod_rewrite
+
+On Debian unstable:
+
+  apt-get install python-django apache2-mpm-prefork
+
+
+Apache Configuration
+---------------------
+
+Start by adding this to your /etc/hosts:
+
+  127.0.0.1 libravatar.org
+
+Then drop something like this in /etc/apache2/sites-enabled/:
+
+<VirtualHost *:80>
+  ServerName libravatar.org
+
+  RewriteEngine on
+  RewriteCond  /home/francois/devel/libravatar%{REQUEST_FILENAME} !-f
+  RewriteRule  ^/avatar/([0-9a-fpnjpg.]+)$ http://www.gravatar.com/avatar/$1?r=g&d=http\%3A\%2F\%2Flibravatar.org\%2Fnobody.png  [last,redirect,noescape]
+        
+  DocumentRoot /home/francois/devel/libravatar/static
+  Alias /avatar /home/francois/devel/libravatar/avatar
+
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Directory /home/francois/devel/libravatar/avatar>
+    Options FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    allow from all
+  </Directory>
+</VirtualHost>
+
+
+Starting the Django server:
+----------------------------
+
+In your project directory (e.g. /home/francois/devel/libravatar/), create the
+initial database:
+
+  cd libravatar
+  python manage.py syncdb
+
+then run the Django server:
+
+  python manage.py runserver
+
+and finally browse to http://localhost:8000 to use the site.
+
+Note that you will need to adjust a few paths in libravatar/settings.py in the
+(highly likely) case that you're not using the same working directory as me.
