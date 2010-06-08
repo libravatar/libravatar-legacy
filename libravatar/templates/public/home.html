@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar{% endblock title %}
+
+{% block content %}
+
+<p>Sorry to disappoint you, but there's not much on the Libravatar homepage at the moment.</p>
+
+<p>You are most likely looking for one of these pages:</p>
+<ul>
+  <li><a href="{% url django.contrib.auth.views.login %}">Login</a> (or <a href="{% url django.contrib.auth.views.login %}">sign-up</a> for an account)</li>
+  <li><a href="{% url libravatar.account.views.profile %}">View your profile</a></li>
+  <li><a href="{% url libravatar.tools.views.check %}">Check your email address</a></li>
+</ul>
+
+<p>Did you know that Libravatar is released under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>? This means that as a user accessing the site remotely, you are entitled to receive the <a href=="https://code.launchpad.net/libravatar">complete source code</a> for the software. How cool is that!</p>
+
+{% endblock content %}
