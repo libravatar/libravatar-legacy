@@ -3,7 +3,6 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 
 from libravatar.account.models import UnconfirmedEmail, Photo
-from libravatar.settings import MEDIA_ROOT
 
 class AddEmailForm(forms.Form):
     email = forms.EmailField()

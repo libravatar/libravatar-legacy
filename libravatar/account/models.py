@@ -5,7 +5,7 @@ from urllib2 import urlopen
 from django.db import models
 from django.contrib.auth.models import User
 
-from libravatar.settings import MEDIA_URL, MEDIA_ROOT, DEFAULT_PHOTO
+from libravatar.settings import MEDIA_URL, AVATAR_URL, AVATAR_ROOT, DEFAULT_PHOTO
 from libravatar.account.external_photos import *
 
 class Photo(models.Model):
@@ -15,7 +15,7 @@ class Photo(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return MEDIA_URL + self.pathname()
+        return AVATAR_URL + self.pathname()
 
     def pathname(self):
         return 'uploaded/' + self.filename + '.' + self.format
@@ -26,7 +26,7 @@ class Photo(models.Model):
         super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
-        dest_filename = MEDIA_ROOT + self.pathname()
+        dest_filename = AVATAR_ROOT + self.pathname()
         destination = open(dest_filename, 'wb+')
         for chunk in image.chunks():
             destination.write(chunk)
@@ -51,7 +51,7 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
-        dest_filename = MEDIA_ROOT + self.pathname()
+        dest_filename = AVATAR_ROOT + self.pathname()
         image = urlopen(image_url)
 
         # Write file to disk
@@ -67,7 +67,7 @@ class Photo(models.Model):
             email.set_photo(None)
 
         try:
-            unlink(MEDIA_ROOT + self.pathname())
+            unlink(AVATAR_ROOT + self.pathname())
         except OSError:
             pass # TODO: do something
 
@@ -100,9 +100,9 @@ class ConfirmedEmail(models.Model):
 
         # TODO: also link the different sizes of images
         # TODO: use git-like hashed directories to avoid too many files in one directory
-        md5_filename =  MEDIA_ROOT + self.public_hash('md5')
-        sha1_filename =  MEDIA_ROOT + self.public_hash('sha1')
-        sha256_filename =  MEDIA_ROOT + self.public_hash('sha256')
+        md5_filename =  AVATAR_ROOT + self.public_hash('md5')
+        sha1_filename =  AVATAR_ROOT + self.public_hash('sha1')
+        sha256_filename =  AVATAR_ROOT + self.public_hash('sha256')
 
         if photo is None:
             try:
@@ -112,7 +112,7 @@ class ConfirmedEmail(models.Model):
             except OSError:
                 pass # TODO: do something
         else:
-            source_filename = MEDIA_ROOT + photo.pathname()
+            source_filename = AVATAR_ROOT + photo.pathname()
             try:
                 link(source_filename, md5_filename)
                 link(source_filename, sha1_filename)
