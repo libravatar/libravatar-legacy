@@ -1,0 +1,69 @@
+/* Main palette from http://www.colourlovers.com/palette/1198267/am_go_on */
+
+body {
+  background-color: #547885;
+  margin: 0;
+}
+
+div#header div#site-branding span#site-name { 
+  color: #FCDDA5;
+  font-size: 2em;
+  font-style: normal;
+  letter-spacing: 0.35em;
+}
+
+div#header div#site-branding {
+  color: #7DB5A6;
+  font-style: italic;
+}
+
+div#content h1 { 
+  color: #F9711F;
+}
+
+div#content h1.error { 
+  background-color: #FF0000;
+  color: #FFFFFF;
+}
+
+div#outer {
+  background-color: #BF9C82;
+  padding: 16;
+}
+
+div#header,
+div#footer {
+  color: #FCDDA5;
+}
+
+div#header a,
+div#footer a { 
+  color: #F9711F;
+  font-weight: bold;
+}
+
+div#header { 
+  padding: 8 8 16 8;
+}
+
+div#footer { 
+  padding: 16 8 8 8;
+}
+
+div#header div#account { 
+  text-align: right;
+}
+
+div#content {
+  background-color: #FFFFFF;
+  padding: 8 16 16 16;
+  -moz-border-radius-bottomleft: 8;
+  -moz-border-radius-bottomright: 8;
+  -moz-border-radius-topleft: 8;
+  -moz-border-radius-topright: 8;
+}
+
+div#content a { 
+  color: #7DB5A6;
+  font-weight: bold;
+}
