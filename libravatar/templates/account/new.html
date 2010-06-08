@@ -8,11 +8,11 @@
 <form action="{% url libravatar.account.views.new %}" method="post">
 
 {{ form.username.errors }}
-<p class="aligned wide"><label for="id_username">{{ form.username.label_tag }}:</label>{{ form.username }}</p>
+<p class="aligned wide">{{ form.username.label_tag }}: {{ form.username }}</p>
 {{ form.password1.errors }}
-<p class="aligned wide"><label for="id_password1">{{ form.password1.label_tag }}:</label>{{ form.password1 }}</p>
+<p class="aligned wide">{{ form.password1.label_tag }}: {{ form.password1 }}</p>
 {{ form.password2.errors }}
-<p class="aligned wide"><label for="id_password2">{{ form.password2.label_tag }}:</label>{{ form.password2 }}</p>
+<p class="aligned wide">{{ form.password2.label_tag }}: {{ form.password2 }}</p>
 
 <p><input type="submit" value="Create account" /></p>
 </form>
