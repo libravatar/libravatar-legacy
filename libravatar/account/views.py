@@ -9,7 +9,7 @@ from django.shortcuts import render_to_response
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
-from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL
+from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL
 
 MAX_NUM_PHOTOS = 5
 
@@ -111,7 +111,7 @@ def profile(request):
     max_photos = len(photos) >= MAX_NUM_PHOTOS
     return render_to_response('account/profile.html',
         { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
-          'photos' : photos, 'max_photos' : max_photos })
+          'photos' : photos, 'max_photos' : max_photos, 'MEDIA_URL' : MEDIA_URL })
 
 @login_required
 def add_email(request):

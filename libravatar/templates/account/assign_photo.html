@@ -13,15 +13,15 @@
 
 {% else %}
 
-<p>Here are the pictures you have uploaded:</p>
-<ul>
+<p>Here are the pictures you have uploaded, click on the one you wish to associate with this email address:</p>
+<ul class="horizontal-list avatar-list centered">
 {% for photo in photos %}
   <li>
   <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
   <input type="hidden" name="photo_id" value="{{ photo.id }}">
   <input type="image" name="photo{{ photo.id }}" src="{{ photo }}" class="thumbnail">
   {% ifequal email.photo.id photo.id %}
-  (current)
+  <br>(current)
   {% endifequal %}
   </form></li>
 {% endfor %}
@@ -29,10 +29,11 @@
   <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">
   <input type="submit" name="photoNone" value="None">
   {% ifequal email.photo.id photo.id %}
-  (current)
+  <br>(current)
   {% endifequal %}
   </form></li>
 </ul>
+
 
 {% endif %}
 
