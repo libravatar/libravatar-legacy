@@ -1,0 +1,98 @@
+Branding/homepage:
+- find a good logo (maybe something based on this:
+   http://commons.wikimedia.org/wiki/File:Peace_dove.svg ?)
+- make a collage of the user photos in the shape of libravatar logo
+   (the ones licensed under Creative Commons)
+- document the Libravatar API
+- come up with terms and conditions?
+- write a comparison table of Libravatar & Gravatar features
+
+Promotion (when we're ready):
+- create Freshmeat, Ohloh pages
+- announce on autonomo.us list
+- post presentation audio and slides on blog/slideshare?
+
+Apache config:
+- don't redirect non-md5 hashes to Gravatar
+- add support for the "redirect url" parameter from Gravatar API
+- add https support to remove "unsafe content" warnings (but don't
+   redirect to Gravatar for that one) and add to tools/check/
+- add reasonable caching headers to images
+- set the mimetype to image/jpeg unless it ends with .png
+- nginx version of the Apache config files
+
+Federation:
+- use TXT records in DNS like old deprecated SPF records
+- ability to specify both http and https servers in TXT record
+- write a PHP? library for doing the DNS lookup before using
+   libravatar.org
+- create a test avatars.catalyst.net.nz server with LDAP auth and a
+   Staff Directory image importer
+- create a test avatars.debian.net server with db.people.org auth
+
+Ties to other free network services:
+- adbard.net support
+- faif version of Google Analytics
+
+Storage:
+- use git-like directories (first two hash characters is dirname)
+- store every image with .jpg, .png and no extension (hardlinks)
+- write an S3 backend
+- write a file backend on a different server
+
+Gearman:
+- image optimisation/resizing/copying to happen via workers so that it
+   can be scaled easily as demand increases
+
+Content licensing:
+- have a checkbox for "this image is not pr0n"
+- have a checkbox for "this image is CC-BY-SA" and a "different
+   license" link (should we support "all rights reserved"?)
+- licenses can be specified by clients like the G/PG/X Gravatar
+   ratings and an image is hardlinked into all of the directories that
+   make sense for the license (e.g. CC-BY is also in CC-SA and CC-ND)
+
+Image resizing:
+- python-based image resizing code (for sizes 1-512px -- configurable)
+- dynamically generated images end up on disk after they are served
+- pre-generate common images sizes and store them on disk already
+
+Image optimisations:
+- run jpegoptim or optipng on images
+
+User sovereignty:
+- ability to completely delete one's account
+- "export my data" which uuencodes photos to XML along with email
+   addresses
+- "import my data" for moving between libravatar.org instances (email
+   addresses will need to be re-validated presumably)
+
+Admin:
+- control page to review all new images (to prevent porn?)
+
+Images:
+- add support in the Django app for uploading PNGs
+- image importer for Twitter and Launchpad (need to specify username)
+- URL image downloader/importer
+- provide a gallery of built-in images, like these ones:
+   http://www.isity.net/blog/?p=65
+
+Plugins/hooks:
+- rss feeds to see when a user (based on sha256 hash) changes photos
+- plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
+   Drupal, Django
+
+General Django app:
+- internationalization of the Django UI and localization to French
+   (then add the templates to Launchpad to be widly translated)
+- password reset feature via email
+- limit uploaded files to 1MB
+
+Secure image uploading:
+- upload image to temp dir and resize in Javascript
+- restrict serving that image to authenticated uploader
+- put the image into an "incoming" folder (/var/spool/libravatar?)
+- run optimisers/resizers as restricted UNIX user and then move image
+   to a different "ready" folder
+- finally the web server takes it from there and copies it to the
+   apache docroot where it's served from
