@@ -29,6 +29,8 @@ Federation:
 - create a test avatars.catalyst.net.nz server with LDAP auth and a
    Staff Directory image importer
 - create a test avatars.debian.net server with db.people.org auth
+- add the ability for private/public images for each email address
+   (i.e. internal images only displayed within company subnet)
 
 Ties to other free network services:
 - adbard.net support
@@ -71,6 +73,8 @@ Admin:
 - control page to review all new images (to prevent porn?)
 
 Images:
+- cropping of images (Javascript) when they get uploaded
+   (with automatic non-javascript fallback)
 - add support in the Django app for uploading PNGs
 - image importer for Twitter and Launchpad (need to specify username)
 - URL image downloader/importer
@@ -80,13 +84,14 @@ Images:
 Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
-   Drupal, Django
+   Drupal, Django, Thunderbird
 
 General Django app:
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
 - password reset feature via email
 - limit uploaded files to 1MB
+- create a template tag to pass-in global constants like MEDIA_URL
 
 Secure image uploading:
 - upload image to temp dir and resize in Javascript
