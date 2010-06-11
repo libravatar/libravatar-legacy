@@ -86,7 +86,8 @@ Images:
 Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
-   Drupal, Django, Thunderbird, Moodle, Koha
+   Drupal, Django, Moodle, Koha, Thunderbird
+   (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
 
 General Django app:
 - internationalization of the Django UI and localization to French
