@@ -26,6 +26,8 @@ Federation:
 - ability to specify both http and https servers in TXT record
 - write a PHP? library for doing the DNS lookup before using
    libravatar.org
+- add the domain to the URL so that libravatar.org can redirect to the
+   right federation server (e.g. /avatar/<hash>.jpg?domain=gmail.com)
 - create a test avatars.catalyst.net.nz server with LDAP auth and a
    Staff Directory image importer
 - create a test avatars.debian.net server with db.people.org auth
