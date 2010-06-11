@@ -34,7 +34,7 @@ Federation:
 
 Ties to other free network services:
 - adbard.net support
-- faif version of Google Analytics
+- faif version of Google Analytics (http://blog.taragana.com/index.php/archive/httpblogtaraganacomindexphparchivetop-10-web-log-analysis-software/)
 
 Storage:
 - use git-like directories (first two hash characters is dirname)
