@@ -29,7 +29,7 @@ Federation:
 - add the domain to the URL so that libravatar.org can redirect to the
    right federation server (e.g. /avatar/<hash>.jpg?domain=gmail.com)
 - create a test avatars.catalyst.net.nz server with LDAP auth and a
-   Staff Directory image importer
+   Staff Directory image importer (see http://docs.djangoproject.com/en/1.2/topics/auth/#authentication-backends)
 - create a test avatars.debian.net server with db.people.org auth
 - add the ability for private/public images for each email address
    (i.e. internal images only displayed within company subnet)
@@ -104,3 +104,6 @@ Secure image uploading:
    to a different "ready" folder
 - finally the web server takes it from there and copies it to the
    apache docroot where it's served from
+
+CLI admin interface:
+- using Commandant (https://launchpad.net/commandant)
