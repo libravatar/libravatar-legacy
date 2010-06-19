@@ -6,6 +6,10 @@ TEMPLATE_DEBUG = DEBUG
 import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
+SITE_NAME = 'libravatar.org'
+SITE_URL = 'http://libravatar.org'
+FROM_ADDRESS = 'accounts@libravatar.org'
+
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
 )
@@ -43,7 +47,7 @@ MEDIA_ROOT = '%s/' % PROJECT_ROOT
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://libravatar.org/'
+MEDIA_URL = '%s/' % SITE_URL
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -83,13 +87,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'libravatar.account',
+    'libravatar.public',
     'libravatar.tools',
 )
 
 LOGIN_URL = '/account/login'
 LOGIN_REDIRECT_URL = '/account/profile'
 
-AVATAR_URL = MEDIA_URL + 'avatar/'
-AVATAR_ROOT = MEDIA_ROOT + 'avatar/'
+AVATAR_URL = SITE_URL + '/avatar/'
+AVATAR_ROOT = PROJECT_ROOT + '/avatar/'
 
 DEFAULT_PHOTO = 'nobody.png'
+LIBRAVATAR_VERSION = '0.1'

@@ -1,13 +1,13 @@
+{% load config %}
 <html>
 <head>
-    <link rel="stylesheet" href="http://libravatar.org/libravatar.css" type="text/css">
+    <link rel="stylesheet" href="{% media_url %}libravatar.css" type="text/css">
     <title>{% block title %}Libravatar - Freeing the Web, one face at a time!{% endblock title %}</title>
 </head>
 <body>
 
 <div id="header">
   <div id="site-branding">
-    {# TODO: use sitename setting #}
     <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span><br>freeing the web one face at a time
   </div>
   <div id="account">
@@ -24,9 +24,8 @@
 </div>
 
 <div id="footer">
-  {# TODO: use sitename setting #}
-  <b>Libravatar.org</b> is an avatar service running the <a href="http://www.libravatar.org">Libravatar</a>
-  software, version 0.1, available under the
+  <b>{% site_name %}</b> is an avatar service running the <a href="http://www.libravatar.org">Libravatar</a>
+  software, version {% libravatar_version %}, available under the
   <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>.
 </div>
 
