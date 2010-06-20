@@ -3,6 +3,28 @@
 <head>
     <link rel="stylesheet" href="{% media_url %}/css/libravatar.css" type="text/css">
     <title>{% block title %}Libravatar - Freeing the Web, one face at a time!{% endblock title %}</title>
+    {% if needs_jquery %}<script src='{% media_url %}/js/jquery.min.js' type='text/javascript'></script>{% endif %}
+    {% if needs_jcrop %}<script src='{% media_url %}/js/jquery.Jcrop.min.js' type='text/javascript'></script>
+                        <link rel='stylesheet' src='{% media_url %}/css/jquery.Jcrop.css' type='text/css'/>
+<script type="text/javascript">
+//<![CDATA[
+$(document).ready(function(){
+    $('#cropbox').Jcrop({
+        onChange: changeCoords,
+        onSelect: changeCoords,
+        aspectRatio: 1
+    });
+});
+
+function changeCoords(c) {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+}
+//]]>
+</script>
+{% endif %}
 </head>
 <body>
 
