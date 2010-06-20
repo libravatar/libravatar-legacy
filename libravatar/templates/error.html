@@ -10,8 +10,7 @@
 
 {% block backlink %}
 
-{# TODO: make this work on every page even (if user is undefined?) #}
-{% if not user.is_anonymous %}
+{% if user.is_authenticated %}
 <p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
 {% endif %}
 

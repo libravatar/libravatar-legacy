@@ -48,6 +48,7 @@ div#header {
 
 div#footer { 
   padding: 16 8 8 8;
+  font-size: small;
 }
 
 div#header div#account { 
