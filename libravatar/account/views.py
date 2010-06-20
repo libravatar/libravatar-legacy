@@ -27,15 +27,15 @@ from django.template import RequestContext
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
-from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL, AVATAR_ROOT, DISABLE_SIGNUP
+from libravatar import settings
 
 import Image
 
 MAX_NUM_PHOTOS = 5
 
 def new(request):
-    if DISABLE_SIGNUP:
-        return HttpResponseRedirect(LOGIN_URL)
+    if settings.DISABLE_SIGNUP:
+        return HttpResponseRedirect(settings.LOGIN_URL)
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -43,10 +43,10 @@ def new(request):
 
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             if user is None:
-                return HttpResponseRedirect(LOGIN_URL)
+                return HttpResponseRedirect(settings.LOGIN_URL)
 
             login(request, user)
-            return HttpResponseRedirect(LOGIN_REDIRECT_URL)
+            return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
     else:
         form = UserCreationForm()
 
@@ -87,8 +87,8 @@ def confirm_email(request):
     if gravatar:
         external_photos.append(gravatar)
 
-    return render_to_response('account/email_confirmed.html', {'user' : request.user,
-                              'email_id' : confirmed.id, 'photos' : external_photos},
+    return render_to_response('account/email_confirmed.html',
+                              {'email_id' : confirmed.id, 'photos' : external_photos},
                               context_instance=RequestContext(request))
 
 def import_photo(request, user_id):
@@ -143,8 +143,8 @@ def profile(request):
     photos = Photo.objects.filter(user=u)
     max_photos = len(photos) >= MAX_NUM_PHOTOS
     return render_to_response('account/profile.html',
-        { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
-          'photos' : photos, 'max_photos' : max_photos, 'MEDIA_URL' : MEDIA_URL },
+        { 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
+          'photos' : photos, 'max_photos' : max_photos},
         context_instance=RequestContext(request))
 
 @login_required
@@ -221,7 +221,7 @@ def crop_photo(request, photo_id=None):
             y = int(request.POST['y'])
             w = int(request.POST['w'])
             h = int(request.POST['h'])
-            filename = AVATAR_ROOT+photo.pathname()
+            filename = settings.AVATAR_ROOT+photo.pathname()
             img = Image.open(filename,'r')
             #TODO: Check that w/h values make sense! >0
             #TODO: set defaults in template too

@@ -14,7 +14,7 @@
         <img class="thumbnail editable" style="float: left" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
         <br><a href="{% url libravatar.account.views.assign_photo email.id %}">Change photo</a>
-        <br><br><input type="image" src="{{MEDIA_URL}}/img/delete_button.png" value="Remove"></form></li>
+        <br><br><input type="image" src="{{ media_url }}img/delete_button.png" value="Remove"></form></li>
     {% endfor %}
 </ul>
 {% endif %}
@@ -24,7 +24,7 @@
 <ul class="vertical-list">
     {% for email in unconfirmed_emails %}
         <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{{ email.email }}
-        <input type="image" src="{{MEDIA_URL}}/img/delete_button.png" value="Remove"></form>{# TODO: (expires in xx hours) #}</li>
+        <input type="image" src="{{ media_url }}img/delete_button.png" value="Remove"></form>{# TODO: (expires in xx hours) #}</li>
     {% endfor %}
 </ul>
 {% endif %}
