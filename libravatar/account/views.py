@@ -26,7 +26,9 @@ from django.shortcuts import render_to_response
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
-from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL, DISABLE_SIGNUP
+from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL, AVATAR_ROOT, DISABLE_SIGNUP
+
+import Image
 
 MAX_NUM_PHOTOS = 5
 
@@ -184,11 +186,37 @@ def upload_photo(request):
         form = UploadPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(request.user, request.FILES['photo'])
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
     else:
         form = UploadPhotoForm()
 
     return render_to_response('account/upload_photo.html', { 'form': form })
+
+@login_required
+def crop_photo(request, photo_id=None):
+    if request.method == 'POST':
+        photo = Photo.objects.get(id=photo_id)
+        if photo.user.id != request.user.id:
+            return render_to_response('account/email_notowner.html')
+        else:
+            x = int(request.POST['x'])
+            y = int(request.POST['y'])
+            w = int(request.POST['w'])
+            h = int(request.POST['h'])
+            filename = AVATAR_ROOT+photo.pathname()
+            img = Image.open(filename,'r')
+            #TODO: Check that w/h values make sense! >0
+            #TODO: set defaults in template too
+            cropped = img.crop((x,y,x+w,y+h))
+            cropped.load()
+            if max(w,h) > 512:
+                cropped = cropped.resize((512,512))
+            cropped.save(filename)
+            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+    photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
+
+    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True})
+    
 
 @login_required
 def delete_photo(request, photo_id):

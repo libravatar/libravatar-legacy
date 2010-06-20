@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Upload photo{% endblock title %}
+
+{% block content %}
+
+<h1>Crop photo</h1>
+
+<form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">
+<p class="aligned wide"><img src='{{photo}}' id='cropbox' /></p>
+<input type='hidden' id='x' name='x'/>
+<input type='hidden' id='y' name='y'/>
+<input type='hidden' id='w' name='w'/>
+<input type='hidden' id='h' name='h'/>
+<p><input type="submit" value="Crop" />
+<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
+
+{% endblock content %}
