@@ -1,0 +1,5 @@
+{% extends 'error.html' %}
+
+{% block errormessage %}
+The resolver requires an email hash. You can use the <a href="{% url libravatar.tools.views.check %}">check tool</a> to generate one.
+{% endblock errormessage %}

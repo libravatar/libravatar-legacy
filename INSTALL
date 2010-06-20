@@ -11,7 +11,7 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork
+  apt-get install python-django apache2-mpm-prefork python-dns
   
   apt-get install python-ldap
 
