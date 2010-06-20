@@ -47,7 +47,7 @@ class Photo(models.Model):
         destination = open(dest_filename, 'wb+')
         for chunk in image.chunks():
             destination.write(chunk)
-            destination.close()
+        destination.close()
 
     def import_image(self, service_name, email_address):
         image_url = False
