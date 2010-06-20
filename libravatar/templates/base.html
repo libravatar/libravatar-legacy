@@ -33,8 +33,11 @@ function changeCoords(c) {
   </div>
   <div id="account">
     <a href="{% url libravatar.account.views.profile %}">Profile</a>
+    {% if user.is_authenticated %}
     <a href="{% url django.contrib.auth.views.logout %}">Logout</a>
-    {# TODO: display login link instead if user is not logged in #}
+    {% else %}
+    <a href="{% url django.contrib.auth.views.login %}">Login</a>
+    {% endif %}
   </div>
 </div>
 
