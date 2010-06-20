@@ -5,9 +5,15 @@ External dependencies
 - Django >= 1.1.2
 - Apache 2 with mod_rewrite
 
+(optional, if using LDAP authenticaion):
+
+- Python LDAP library
+
 On Debian unstable:
 
   apt-get install python-django apache2-mpm-prefork
+  
+  apt-get install python-ldap
 
 
 Apache Configuration
@@ -60,3 +66,22 @@ and finally browse to http://localhost:8000 to use the site.
 
 Note that you will need to adjust a few paths in libravatar/settings.py in the
 (highly likely) case that you're not using the same working directory as me.
+
+Authenticating with an external LDAP server:
+---------------------------------------------
+
+Download and install the Django LDAP authentication backend. This is a BSD-
+licensed module written by Peter Sagerson:
+
+http://packages.python.org/django-auth-ldap/
+
+The module can be checked out and installed as follows:
+
+   hg clone http://bitbucket.org/psagers/django-auth-ldap
+   sudo easy_install django-auth-ldap
+
+Then uncomment the LDAP backend line in AUTHENTICATION_BACKENDS in your
+settings.py and set your AUTH_LDAP_SERVER_URI and AUTH_LDAP_USER_DN_TEMPLATE
+settings to something appropriate. More complex setups are also well documented
+in the package documentation.
+

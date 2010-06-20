@@ -64,6 +64,12 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+AUTHENTICATION_BACKENDS = (
+    # Enable this to allow LDAP authentication. See INSTALL for more information.
+    # 'django_auth_ldap.backend.LDAPBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -99,3 +105,11 @@ AVATAR_ROOT = PROJECT_ROOT + '/avatar/'
 
 DEFAULT_PHOTO = 'nobody.png'
 LIBRAVATAR_VERSION = '0.1'
+
+# LDAP Authentication
+AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
+AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
+
+# Prevent sign-up, for instance on an intranet relying on external authentication
+# DISABLE_SIGNUP = True
+

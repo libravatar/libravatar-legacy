@@ -26,11 +26,13 @@ from django.shortcuts import render_to_response
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
-from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL
+from libravatar.settings import LOGIN_URL, LOGIN_REDIRECT_URL, MEDIA_URL, DISABLE_SIGNUP
 
 MAX_NUM_PHOTOS = 5
 
 def new(request):
+    if DISABLE_SIGNUP:
+        return HttpResponseRedirect(LOGIN_URL)
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
