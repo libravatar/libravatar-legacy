@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load config %}
 {% block title %}Libravatar: Photo lookup{% endblock title %}
 
 {% block content %}
@@ -21,9 +20,9 @@ SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 
 <p>This is what the avatars will look like depending on the hashing algorithm you use:</p>
 <ul class="horizontal-list avatar-list centered">
-  <li><a href="{% avatar_url %}{{ data.md5 }}"><img class="thumbnail" src="{% avatar_url %}{{ data.md5 }}" alt=""></a><br>MD5</li>
-  <li><a href="{% avatar_url %}{{ data.sha1 }}"><img class="thumbnail" src="{% avatar_url %}{{ data.sha1 }}" alt=""></a><br>SHA1</li>
-  <li><a href="{% avatar_url %}{{ data.sha256 }}"><img class="thumbnail" src="{% avatar_url %}{{ data.sha256 }}" alt=""></a><br>SHA256</li>
+  <li><a href="{{ avatar_url }}{{ data.md5 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}" alt=""></a><br>MD5</li>
+  <li><a href="{{ avatar_url }}{{ data.sha1 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}" alt=""></a><br>SHA1</li>
+  <li><a href="{{ avatar_url }}{{ data.sha256 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}" alt=""></a><br>SHA256</li>
 </ul>
 
 {% endif %}

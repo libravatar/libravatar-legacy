@@ -17,11 +17,13 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from libravatar import settings
 
 def home(request):
-    return render_to_response('public/home.html')
+    return render_to_response('public/home.html',
+                              context_instance=RequestContext(request))
 
 def lookup_avatar_server(domain):
     """
@@ -55,10 +57,12 @@ def lookup_avatar_server(domain):
 
 def resolve(request):
     if request.method == 'POST':
-        return render_to_response('public/resolve_nopost.html')
+        return render_to_response('public/resolve_nopost.html',
+                                  context_instance=RequestContext(request))
 
     if not 'email_hash' in request.GET:
-        return render_to_response('public/resolve_nohash.html')
+        return render_to_response('public/resolve_nohash.html',
+                                  context_instance=RequestContext(request))
 
     email_hash = request.GET['email_hash']
     avatar_server = settings.SITE_URL

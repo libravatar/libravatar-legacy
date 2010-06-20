@@ -85,6 +85,15 @@ TEMPLATE_DIRS = (
     '%s/libravatar/templates' % PROJECT_ROOT,
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.contrib.messages.context_processors.messages",
+    "libravatar.context_processors.basepage"
+)
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -110,6 +119,6 @@ LIBRAVATAR_VERSION = '0.1'
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
 
-# Prevent sign-up, for instance on an intranet relying on external authentication
-# DISABLE_SIGNUP = True
+# To prevent sign-up, for instance on an intranet relying on external authentication, set this to true:
+DISABLE_SIGNUP = False
 

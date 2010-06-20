@@ -22,6 +22,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
@@ -49,21 +50,25 @@ def new(request):
     else:
         form = UserCreationForm()
 
-    return render_to_response('account/new.html', { 'form': form })
+    return render_to_response('account/new.html', { 'form': form },
+                              context_instance=RequestContext(request))
 
 def confirm_email(request):
     if not 'verification_key' in request.GET:
-        return render_to_response('account/email_notconfirmed.html')
+        return render_to_response('account/email_notconfirmed.html',
+                                  context_instance=RequestContext(request))
 
     # be tolerant of extra crap added by mail clients
     key = request.GET['verification_key'].replace(' ', '')
     if len(key) != 64:
-        return render_to_response('account/email_notconfirmed.html')
+        return render_to_response('account/email_notconfirmed.html',
+                                  context_instance=RequestContext(request))
 
     try:
         unconfirmed = UnconfirmedEmail.objects.get(verification_key=key)
     except UnconfirmedEmail.DoesNotExist:
-        return render_to_response('account/email_notconfirmed.html')
+        return render_to_response('account/email_notconfirmed.html',
+                                  context_instance=RequestContext(request))
 
     # TODO: check for a reasonable expiration time
     confirmed = ConfirmedEmail()
@@ -83,24 +88,29 @@ def confirm_email(request):
         external_photos.append(gravatar)
 
     return render_to_response('account/email_confirmed.html', {'user' : request.user,
-                              'email_id' : confirmed.id, 'photos' : external_photos})
+                              'email_id' : confirmed.id, 'photos' : external_photos},
+                              context_instance=RequestContext(request))
 
 def import_photo(request, user_id):
     if request.method == 'POST':
         if not 'email_id' in request.POST:
-            return render_to_response('account/photos_notimported.html')
+            return render_to_response('account/photos_notimported.html',
+                                      context_instance=RequestContext(request))
 
         try:
             user = User.objects.get(id=user_id)
         except User.DoesNotExist:
-            return render_to_response('account/photos_notimported.html')
+            return render_to_response('account/photos_notimported.html',
+                                      context_instance=RequestContext(request))
         try:
             email = ConfirmedEmail.objects.get(id=request.POST['email_id'])
         except ConfirmedEmail.DoesNotExist:
-            return render_to_response('account/photos_notimported.html')
+            return render_to_response('account/photos_notimported.html',
+                                      context_instance=RequestContext(request))
 
         if user.id != email.user.id:
-            return render_to_response('account/photos_notimported.html')
+            return render_to_response('account/photos_notimported.html',
+                                      context_instance=RequestContext(request))
 
         photos_imported = False
         if 'photo_Identica' in request.POST:
@@ -117,9 +127,11 @@ def import_photo(request, user_id):
                 photos_imported = True
 
         if photos_imported:
-            return render_to_response('account/photos_imported.html')
+            return render_to_response('account/photos_imported.html',
+                                      context_instance=RequestContext(request))
         else:
-            return render_to_response('account/photos_notimported.html')
+            return render_to_response('account/photos_notimported.html',
+                                      context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -132,7 +144,8 @@ def profile(request):
     max_photos = len(photos) >= MAX_NUM_PHOTOS
     return render_to_response('account/profile.html',
         { 'user': u, 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
-          'photos' : photos, 'max_photos' : max_photos, 'MEDIA_URL' : MEDIA_URL })
+          'photos' : photos, 'max_photos' : max_photos, 'MEDIA_URL' : MEDIA_URL },
+        context_instance=RequestContext(request))
 
 @login_required
 def add_email(request):
@@ -144,7 +157,8 @@ def add_email(request):
     else:
         form = AddEmailForm()
 
-    return render_to_response('account/add_email.html', { 'form': form })
+    return render_to_response('account/add_email.html', { 'form': form },
+                              RequestContext(request))
 
 @login_required
 def remove_confirmed_email(request, email_id):
@@ -152,12 +166,14 @@ def remove_confirmed_email(request, email_id):
         try:
             email = ConfirmedEmail.objects.get(id=email_id)
         except ConfirmedEmail.DoesNotExist:
-            return render_to_response('account/email_invalid.html')
+            return render_to_response('account/email_invalid.html',
+                                      context_instance=RequestContext(request))
 
         if email.user.id == request.user.id:
             email.delete()
         else:
-            return render_to_response('account/email_notowner.html')
+            return render_to_response('account/email_notowner.html',
+                                      context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -167,12 +183,12 @@ def remove_unconfirmed_email(request, email_id):
         try:
             email = UnconfirmedEmail.objects.get(id=email_id)
         except UnconfirmedEmail.DoesNotExist:
-            return render_to_response('account/email_invalid.html')
+            return render_to_response('account/email_invalid.html', context_instance=RequestContext(request))
 
         if email.user.id == request.user.id:
             email.delete()
         else:
-            return render_to_response('account/email_notowner.html')
+            return render_to_response('account/email_notowner.html', context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -180,7 +196,7 @@ def remove_unconfirmed_email(request, email_id):
 def upload_photo(request):
     num_photos = Photo.objects.filter(user=request.user).count()
     if num_photos >= MAX_NUM_PHOTOS:
-        return render_to_response('account/max_photos.html')
+        return render_to_response('account/max_photos.html', context_instance=RequestContext(request))
 
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
@@ -190,14 +206,16 @@ def upload_photo(request):
     else:
         form = UploadPhotoForm()
 
-    return render_to_response('account/upload_photo.html', { 'form': form })
+    return render_to_response('account/upload_photo.html', { 'form': form },
+                              context_instance=RequestContext(request))
 
 @login_required
 def crop_photo(request, photo_id=None):
     if request.method == 'POST':
         photo = Photo.objects.get(id=photo_id)
         if photo.user.id != request.user.id:
-            return render_to_response('account/email_notowner.html')
+            return render_to_response('account/email_notowner.html',
+                                      context_instance=RequestContext(request))
         else:
             x = int(request.POST['x'])
             y = int(request.POST['y'])
@@ -215,7 +233,8 @@ def crop_photo(request, photo_id=None):
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
     photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
 
-    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True})
+    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True},
+                              context_instance=RequestContext(request))
     
 
 @login_required
@@ -223,25 +242,28 @@ def delete_photo(request, photo_id):
     try:
         photo = Photo.objects.get(id=photo_id)
     except Photo.DoesNotExist:
-        return render_to_response('account/photo_invalid.html')
+        return render_to_response('account/photo_invalid.html', context_instance=RequestContext(request))
 
     if request.method == 'POST':
         if photo.user.id != request.user.id:
-            return render_to_response('account/photo_notowner.html')
+            return render_to_response('account/photo_notowner.html', context_instance=RequestContext(request))
         photo.delete()
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/delete_photo.html', { 'photo': photo })
+    return render_to_response('account/delete_photo.html', { 'photo': photo },
+                              context_instance=RequestContext(request))
 
 @login_required
 def assign_photo(request, email_id):
     try:
         email = ConfirmedEmail.objects.get(id=email_id)
     except ConfirmedEmail.DoesNotExist:
-        return render_to_response('account/email_invalid.html')
+        return render_to_response('account/email_invalid.html',
+                                  context_instance=RequestContext(request))
 
     if email.user.id != request.user.id:
-        return render_to_response('account/email_notowner.html')
+        return render_to_response('account/email_notowner.html',
+                                  context_instance=RequestContext(request))
 
     if request.method == 'POST':
         photo = None
@@ -249,13 +271,16 @@ def assign_photo(request, email_id):
             try:
                 photo = Photo.objects.get(id=request.POST['photo_id'])
             except Photo.DoesNotExist:
-                return render_to_response('account/photo_invalid.html')
+                return render_to_response('account/photo_invalid.html',
+                                          context_instance=RequestContext(request))
 
         if photo and (photo.user.id != request.user.id):
-            return render_to_response('account/photo_notowner.html')
+            return render_to_response('account/photo_notowner.html',
+                                      context_instance=RequestContext(request))
 
         email.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user)
-    return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email})
+    return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
+                              context_instance=RequestContext(request))
