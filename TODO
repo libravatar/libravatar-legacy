@@ -13,12 +13,11 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- don't redirect non-md5 hashes to Gravatar
 - add support for the "redirect url" parameter from Gravatar API
 - add https support to remove "unsafe content" warnings (but don't
    redirect to Gravatar for that one) and add to tools/check/
 - add reasonable caching headers to images
-- set the mimetype to image/jpeg unless it ends with .png
+- find a way to set the mimetype to png when appropriate
 - nginx version of the Apache config files
 
 Federation:
@@ -40,7 +39,6 @@ Ties to other free network services:
 
 Storage:
 - use git-like directories (first two hash characters is dirname)
-- store every image with .jpg, .png and no extension (hardlinks)
 - write an S3 backend
 - write a file backend on a different server
 
@@ -94,7 +92,6 @@ General Django app:
    (then add the templates to Launchpad to be widly translated)
 - password reset feature via email
 - limit uploaded files to 1MB
-- create a template tag to pass-in global constants like MEDIA_URL
 
 Secure image uploading:
 - upload image to temp dir and resize in Javascript
