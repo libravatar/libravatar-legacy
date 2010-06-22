@@ -1,9 +1,12 @@
 External dependencies
 ----------------------
 
-- Python >= 2.5
-- Django >= 1.1.2
+- Python 2.5
+- Django 1.1.2
 - Apache 2 with mod_rewrite
+- Python DNS 2.3.4
+  (http://pydns.sourceforge.net/)
+- jQuery 1.4
 
 (optional, if using LDAP authenticaion):
 
@@ -11,7 +14,7 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork python-dns
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery
   
   apt-get install python-ldap
 
