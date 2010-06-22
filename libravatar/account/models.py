@@ -102,7 +102,7 @@ class ConfirmedEmail(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo
-        return MEDIA_URL + DEFAULT_PHOTO
+        return MEDIA_URL + 'img/' + DEFAULT_PHOTO
 
     def public_hash(self, algorithm):
         if 'md5' == algorithm:
