@@ -26,7 +26,7 @@ Start by adding this to your /etc/hosts:
 Then drop something like this in /etc/apache2/sites-enabled/:
 
 <VirtualHost *:80>
-  ServerName libravatar.org
+  ServerName static.libravatar.org
 
   RewriteEngine on
   RewriteCond  /home/francois/devel/libravatar%{REQUEST_FILENAME} !-f
