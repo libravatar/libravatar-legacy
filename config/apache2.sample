@@ -3,11 +3,26 @@
     ServerAdmin webmaster@localhost
     DocumentRoot /home/francois/devel/remote/libravatar/static
 
-    RewriteEngine on
-    RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_FILENAME} !-f
-    RewriteRule  ^/avatar/([0-9a-fpnjpg.]+)$ http://www.gravatar.com/avatar/$1?r=g&d=http\%3A\%2F\%2Fstatic.libravatar.org\%2Fimg\%2Fnobody.png  [last,redirect,noescape]
-
     Alias /avatar /home/francois/devel/remote/libravatar/avatar
+
+    RewriteEngine on
+
+    # Remove extensions from filenames
+    RewriteRule ^/avatar/([0-9a-f]{32})\..*$ /avatar/$1 [next]
+    RewriteRule ^/avatar/([0-9a-f]{40})\..*$ /avatar/$1 [next]
+    RewriteRule ^/avatar/([0-9a-f]{64})\..*$ /avatar/$1 [next]
+
+    # Delegate md5-hashed files that don't exist
+    RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_FILENAME} !-f
+    RewriteRule  ^/avatar/([0-9a-f]{32}(\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http\%3A\%2F\%2Fstatic.libravatar.org\%2Fimg\%2Fnobody.png  [last,redirect,noescape]
+
+    # Serve the file if it exists
+    RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_FILENAME} -f
+    RewriteRule ^/avatar/([0-9a-f]+)$ /avatar/$1 [passthrough]
+
+    # File not found (nobody icon)
+    RewriteRule ^/avatar/ %{DOCUMENT_ROOT}/img/nobody.png [last]
+
     <Directory />
         Options FollowSymLinks
         AllowOverride None
