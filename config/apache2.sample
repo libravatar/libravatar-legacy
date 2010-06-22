@@ -1,0 +1,27 @@
+<VirtualHost *:80>
+    ServerName static.libravatar.org
+    ServerAdmin webmaster@localhost
+    DocumentRoot /home/francois/devel/remote/libravatar/static
+
+    RewriteEngine on
+    RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_FILENAME} !-f
+    RewriteRule  ^/avatar/([0-9a-fpnjpg.]+)$ http://www.gravatar.com/avatar/$1?r=g&d=http\%3A\%2F\%2Fstatic.libravatar.org\%2Fimg\%2Fnobody.png  [last,redirect,noescape]
+
+    Alias /avatar /home/francois/devel/remote/libravatar/avatar
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory /home/francois/devel/remote/libravatar/avatar>
+        DefaultType image/jpeg
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Order allow,deny
+        allow from all
+    </Directory>
+
+    ErrorLog /var/log/apache2/error.log
+    LogLevel info
+    CustomLog /var/log/apache2/access.log combined
+
+</VirtualHost>
