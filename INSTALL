@@ -33,7 +33,7 @@ Then drop something like this in /etc/apache2/sites-enabled/:
 
   RewriteEngine on
   RewriteCond  /home/francois/devel/libravatar%{REQUEST_FILENAME} !-f
-  RewriteRule  ^/avatar/([0-9a-fpnjpg.]+)$ http://www.gravatar.com/avatar/$1?r=g&d=http\%3A\%2F\%2Flibravatar.org\%2Fnobody.png  [last,redirect,noescape]
+  RewriteRule  ^/avatar/([0-9a-fpnjpg.]+)$ http://www.gravatar.com/avatar/$1?r=g&d=http\%3A\%2F\%2Fstatic.libravatar.org\%2Fimg\%2Fnobody.png  [last,redirect,noescape]
         
   DocumentRoot /home/francois/devel/libravatar/static
   Alias /avatar /home/francois/devel/libravatar/avatar
