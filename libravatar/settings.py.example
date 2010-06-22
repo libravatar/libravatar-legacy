@@ -115,6 +115,7 @@ AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
 DEFAULT_PHOTO = 'nobody.png'
 LIBRAVATAR_VERSION = '0.1'
+TXT_VERSION = 'avatars1' # For DNS-based federation
 
 # LDAP Authentication
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
