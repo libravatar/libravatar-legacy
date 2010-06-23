@@ -30,6 +30,7 @@ urlpatterns = patterns('',
 
     ('new/$', 'libravatar.account.views.new'),
     ('profile/$', 'libravatar.account.views.profile'),
+    ('profile_success/$', 'libravatar.account.views.successfully_authenticated'),
 
     (r'^(?P<email_id>\d+)/assign_photo/$', 'libravatar.account.views.assign_photo'),
     (r'^(?P<user_id>\d+)/import_photo/$', 'libravatar.account.views.import_photo'),
