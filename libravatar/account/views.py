@@ -29,7 +29,7 @@ from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
 from libravatar import settings
-from libravatar.tools.image import crop,resize
+from libravatar.avatar.image import crop,resize
 
 import os
 from StringIO import StringIO
