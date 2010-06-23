@@ -11,8 +11,8 @@
   <li><a href="{% url django.contrib.auth.views.login %}">Login</a>{% if not disable_signup %} (or <a href="{% url libravatar.account.views.new %}">sign-up</a> for an account){% endif %}</li>
   {% else %}
   <li><a href="{% url libravatar.account.views.profile %}">View your profile</a></li>
-  <li><a href="{% url libravatar.tools.views.check %}">Check your email address</a></li>
   {% endif %}
+  <li><a href="{% url libravatar.tools.views.check %}">Check your email address</a></li>
 </ul>
 
 <p>Did you know that Libravatar is released under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>? This means that as a user accessing the site remotely, you are entitled to receive the <a href=="https://code.launchpad.net/libravatar">complete source code</a> for the software. How cool is that!</p>
