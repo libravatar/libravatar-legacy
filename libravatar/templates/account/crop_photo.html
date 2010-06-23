@@ -7,10 +7,10 @@
 
 <form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">
 <p class="aligned wide"><img src='{{photo}}' id='cropbox' /></p>
-<input type='hidden' id='x' name='x'/>
-<input type='hidden' id='y' name='y'/>
-<input type='hidden' id='w' name='w'/>
-<input type='hidden' id='h' name='h'/>
+<input type='hidden' id='x' name='x' value='0'/>
+<input type='hidden' id='y' name='y' value='0'/>
+<input type='hidden' id='w' name='w' value='0'/>
+<input type='hidden' id='h' name='h' value='0'/>
 <p><input type="submit" value="Crop" />
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
 
