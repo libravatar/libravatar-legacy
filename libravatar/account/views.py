@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -30,6 +31,8 @@ from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
 from libravatar import settings
 
 import Image
+import os
+from StringIO import StringIO
 
 MAX_NUM_PHOTOS = 5
 
@@ -136,6 +139,38 @@ def import_photo(request, user_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @login_required
+def successfully_authenticated(request):
+    if request.user.ldap_user:
+        try:
+            confirmed = ConfirmedEmail.objects.get(email=request.user.email)
+            return render_to_response('account/profile.html')
+        except ConfirmedEmail.DoesNotExist:
+            confirmed = ConfirmedEmail()
+            confirmed.user = request.user
+            confirmed.email = request.user.email
+            confirmed.save()
+
+            # remove unconfirmed email address if necessary
+            try:
+                unconfirmed = UnconfirmedEmail.objects.get(email=request.user.email)
+                unconfirmed.delete()
+            except UnconfirmedEmail.DoesNotExist:
+                pass
+
+            # add photo to database, bung LDAP photo into the expected file
+            photo_contents = request.user.ldap_user.attrs[settings.AUTH_LDAP_USER_PHOTO][0]
+            fp = StringIO(photo_contents) # file pointer to in-memory string buffer
+            image = File(fp)
+            p = Photo()
+            p.user = request.user
+            p.save(image)
+
+            # assign photo to the email address
+            confirmed.set_photo(p)
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+@login_required
 def profile(request):
     u = request.user
     confirmed = ConfirmedEmail.objects.filter(user=u)
@@ -221,7 +256,7 @@ def crop_photo(request, photo_id=None):
             y = int(request.POST['y'])
             w = int(request.POST['w'])
             h = int(request.POST['h'])
-            filename = settings.AVATAR_ROOT+photo.pathname()
+            filename = '%s%s' % (settings.AVATAR_ROOT, photo.pathname())
             img = Image.open(filename,'r')
             #TODO: Check that w/h values make sense! >0
             #TODO: set defaults in template too
