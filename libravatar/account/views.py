@@ -143,7 +143,6 @@ def successfully_authenticated(request):
     if request.user.ldap_user:
         try:
             confirmed = ConfirmedEmail.objects.get(email=request.user.email)
-            return render_to_response('account/profile.html')
         except ConfirmedEmail.DoesNotExist:
             confirmed = ConfirmedEmail()
             confirmed.user = request.user
