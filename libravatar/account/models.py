@@ -44,10 +44,9 @@ class Photo(models.Model):
 
         # Write file to disk
         dest_filename = AVATAR_ROOT + self.pathname()
-        destination = open(dest_filename, 'wb+')
-        for chunk in image.chunks():
-            destination.write(chunk)
-        destination.close()
+        with open(dest_filename, 'wb+') as destination:
+            for chunk in image.chunks():
+                destination.write(chunk)
 
     def import_image(self, service_name, email_address):
         image_url = False
