@@ -9,5 +9,6 @@ def basepage(request):
     context["libravatar_version"] = settings.LIBRAVATAR_VERSION
     context["avatar_url"] = settings.AVATAR_URL
     context["media_url"] = settings.MEDIA_URL
+    context["disable_signup"] = settings.DISABLE_SIGNUP
     return context
 
