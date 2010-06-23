@@ -141,30 +141,35 @@ def import_photo(request, user_id):
 @login_required
 def successfully_authenticated(request):
     if request.user.ldap_user:
-        # confirm the email address if necessary
         try:
-            unconfirmed = UnconfirmedEmail.objects.get(email=request.user.email)
-        except UnconfirmedEmail.DoesNotExist:
+            confirmed = ConfirmedEmail.objects.get(email=request.user.email)
             return render_to_response('account/profile.html')
+        except ConfirmedEmail.DoesNotExist:
+            confirmed = ConfirmedEmail()
+            confirmed.user = request.user
+            confirmed.email = request.user.email
+            confirmed.save()
 
-        confirmed = ConfirmedEmail()
-        confirmed.user = unconfirmed.user
-        confirmed.email = unconfirmed.email
-        confirmed.save()
-        unconfirmed.delete()
+            # remove unconfirmed email address if necessary
+            try:
+                unconfirmed = UnconfirmedEmail.objects.get(email=request.user.email)
+                unconfirmed.delete()
+            except UnconfirmedEmail.DoesNotExist:
+                pass
 
-        # add photo to database, bung LDAP photo into the expected file
-        photo_contents = u.ldap_user.attrs[AUTH_LDAP_USER_PHOTO][0]
-        fp = StringIO(photo_contents) # file pointer to in-memory string buffer
-        image = File(fp)
-        p = Photo()
-        p.user = request.user
-        p.save(image)
+            # add photo to database, bung LDAP photo into the expected file
+            photo_contents = request.user.ldap_user.attrs[settings.AUTH_LDAP_USER_PHOTO][0]
+            fp = StringIO(photo_contents) # file pointer to in-memory string buffer
+            image = File(fp)
+            p = Photo()
+            p.user = request.user
+            p.save(image)
 
-        # assign photo to the email address
-        confirmed.set_photo(p)
+            # assign photo to the email address
+            confirmed.set_photo(p)
+
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
-                
+
 @login_required
 def profile(request):
     u = request.user

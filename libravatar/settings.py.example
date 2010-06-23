@@ -108,7 +108,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL = '/account/login'
-LOGIN_REDIRECT_URL = '/account/profile'
+LOGIN_REDIRECT_URL = '/account/profile_success'
 
 AVATAR_URL = '%savatar/' % MEDIA_URL
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT

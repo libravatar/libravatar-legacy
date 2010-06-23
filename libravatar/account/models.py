@@ -45,8 +45,8 @@ class Photo(models.Model):
         # Write file to disk
         dest_filename = AVATAR_ROOT + self.pathname()
         with open(dest_filename, 'wb+') as destination:
-            for chunk in image.chunks():
-                destination.write(chunk)
+            # TODO: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
+            destination.write(image.read())
 
     def import_image(self, service_name, email_address):
         image_url = False
