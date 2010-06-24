@@ -7,11 +7,13 @@
                         <link rel='stylesheet' src='{{ media_url }}/css/jquery.Jcrop.css' type='text/css'/>
 <script type="text/javascript">
 //<![CDATA[
-$(document).ready(function(){
+$(window).ready(function(){
     $('#cropbox').Jcrop({
         onChange: changeCoords,
         onSelect: changeCoords,
-        aspectRatio: 1
+        aspectRatio: 1,
+        boxWidth: 800,
+        boxHeight: 600
     });
 });
 
