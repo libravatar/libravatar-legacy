@@ -2,7 +2,9 @@
 {% block title %}Libravatar: Upload photo{% endblock title %}
 
 {% block content %}
-
+<noscript>
+<meta http-equiv="refresh" content="0;url={% url libravatar.account.views.auto_crop photo.id %}"/>
+</noscript>
 <h1>Crop photo</h1>
 
 <form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">

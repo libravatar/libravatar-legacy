@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     ('upload_photo/$', 'libravatar.account.views.upload_photo'),
     ('crop_photo/$', 'libravatar.account.views.crop_photo'),
     (r'^(?P<photo_id>\d+)/crop_photo/?$', 'libravatar.account.views.crop_photo'),
+    (r'^(?P<photo_id>\d+)/auto_crop/?$', 'libravatar.account.views.auto_crop'),
     (r'^(?P<photo_id>\d+)/delete_photo/$', 'libravatar.account.views.delete_photo'),
 
     # Default page
