@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Upload photo{% endblock title %}
-
+{% block header %}<link rel='stylesheet' href='{{ media_url }}/css/jquery.Jcrop.css' type='text/css'/>{%endblock%}
 {% block content %}
 <noscript>
 <meta http-equiv="refresh" content="0;url={% url libravatar.account.views.auto_crop photo.id %}"/>
@@ -19,3 +19,25 @@
 </form>
 
 {% endblock content %}
+{% block footer %}<script src='{{ media_url }}/js/jquery.Jcrop.min.js' type='text/javascript'></script>
+<script type="text/javascript">
+//<![CDATA[
+$(window).ready(function(){
+    $('#cropbox').Jcrop({
+        onSelect: changeCoords,
+        aspectRatio: 1,
+        boxWidth: 800,
+        boxHeight: 600,
+        bgColor: '#000',
+        bgOpacity: .4
+    });
+});
+
+function changeCoords(c) {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+}
+//]]>
+</script>{% endblock %}
