@@ -120,6 +120,12 @@ TXT_VERSION = 'avatars1' # For DNS-based federation
 # LDAP Authentication
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
+AUTH_LDAP_USER_ATTR_MAP = {
+    'first_name':       'givenName',
+    'last_name':        'sn',
+    'email':            'mail',
+}
+AUTH_LDAP_USER_PHOTO = 'jpegPhoto'
 
 # To prevent sign-up, for instance on an intranet relying on external authentication, set this to true:
 DISABLE_SIGNUP = False

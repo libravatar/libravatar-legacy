@@ -5,7 +5,10 @@
 
 <h1>Login</h1>
 
+
+{% if not disable_signup %}
 <p>Don't have an account yet? <a href="{% url libravatar.account.views.new %}">Sign up now!</a></p>
+{% endif %}
 
 {% if form.errors %}
 <p>Your username and password didn't match. Please try again.</p>
