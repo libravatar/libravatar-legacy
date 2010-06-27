@@ -25,7 +25,7 @@
     RewriteCond %{HTTPS} off
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
     RewriteCond %1 !^(identicon|monsterid|wavatar|mm)$
-    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1
+    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1 [last,redirect,noescape]
 
     RewriteCond %{HTTPS} off
     RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
@@ -38,9 +38,11 @@
     RewriteRule ^/avatar/deadbeef\.? %{DOCUMENT_ROOT}/img/deadbeef.png [last]
 
     # File not found (with a "default" parameter)
+    RewriteMap url_decode int:unescape
+
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
     RewriteCond %1 !^(identicon|monsterid|wavatar|mm|404)$
-    RewriteRule ^/avatar/[0-9a-f]{32,} %1? [last,redirect]
+    RewriteRule ^/avatar/[0-9a-f]{32,} ${url_decode:%1}? [last,redirect]
 
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=404(?:&.*)?$
     RewriteRule ^/avatar/ - [last]
