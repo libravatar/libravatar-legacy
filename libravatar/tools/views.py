@@ -1,4 +1,5 @@
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
+#                     Jonathan Harker <jon@jon.geek.nz>
 #
 # This file is part of Libravatar
 # 
