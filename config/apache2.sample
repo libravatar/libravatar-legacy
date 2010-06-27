@@ -20,6 +20,9 @@
     RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_FILENAME} -f
     RewriteRule ^/avatar/([0-9a-f]+)$ /avatar/$1 [passthrough]
 
+    # Uploaded images
+    RewriteRule ^/avatar/uploaded/([0-9a-f]+\.(jpg|png))$ /avatar/uploaded/$1 [passthrough]
+
     # File not found (nobody icon)
     RewriteRule ^/avatar/ %{DOCUMENT_ROOT}/img/nobody.png [last]
 
