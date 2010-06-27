@@ -1,5 +1,6 @@
 <VirtualHost *:80>
     ServerName static.libravatar.org
+    ServerAlias www.libravatar.org
     ServerAdmin webmaster@localhost
     DocumentRoot /home/francois/devel/remote/libravatar/static
 
