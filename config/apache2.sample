@@ -24,7 +24,7 @@
     RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1
 
     RewriteCond %{HTTPS} off
-    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://static.libravatar.org/img/nobody.png  [last,redirect]
+    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
 
     # Uploaded images
     #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
