@@ -27,6 +27,7 @@
     RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://static.libravatar.org/img/nobody.png  [last,redirect]
 
     # Uploaded images
+    #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
     RewriteRule ^/avatar/uploaded/([0-9a-f]+\.(jpg|png))$ /avatar/uploaded/$1 [passthrough]
 
     # Easter egg
