@@ -8,27 +8,23 @@ Branding/homepage:
 - write a comparison table of Libravatar & Gravatar features
 
 Promotion (when we're ready):
-- create Freshmeat
+- create Freshmeat account
 - announce on autonomo.us list
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- add support for the "redirect url" parameter from Gravatar API
 - add https support to remove "unsafe content" warnings (but don't
    redirect to Gravatar for that one) and add to tools/check/
 - add reasonable caching headers to images
 - find a way to set the mimetype to png when appropriate
+   (using a mod_rewrite flag?)
 - nginx version of the Apache config files
 
 Federation:
-- use TXT records in DNS like old deprecated SPF records
 - ability to specify both http and https servers in TXT record
 - write a PHP? library for doing the DNS lookup before using
    libravatar.org
-- add the domain to the URL so that libravatar.org can redirect to the
-   right federation server (e.g. /avatar/<hash>.jpg?domain=gmail.com)
-- create a test avatars.catalyst.net.nz server with LDAP auth and a
-   Staff Directory image importer (see http://docs.djangoproject.com/en/1.2/topics/auth/#authentication-backends)
+- create a test avatars.catalyst.net.nz server 
 - create a test avatars.debian.net server with db.people.org auth
 - add the ability for private/public images for each email address
    (i.e. internal images only displayed within company subnet)
@@ -73,8 +69,7 @@ Admin:
 - control page to review all new images (to prevent porn?)
 
 Images:
-- cropping of images (Javascript) when they get uploaded
-   (with automatic non-javascript fallback)
+- sanity checks for uploaded images (to make sure it's a valid jpeg/png)
 - add support in the Django app for uploading PNGs
 - image importer for Twitter and Launchpad (need to specify username)
 - URL image downloader/importer
@@ -91,7 +86,6 @@ General Django app:
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
 - password reset feature via email
-- limit uploaded files to 1MB
 
 Secure image uploading:
 - upload image to temp dir and resize in Javascript
