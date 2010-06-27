@@ -19,4 +19,5 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     ('check/$', 'libravatar.tools.views.check'),
+    ('check_domain/$', 'libravatar.tools.views.check_domain'),
 )

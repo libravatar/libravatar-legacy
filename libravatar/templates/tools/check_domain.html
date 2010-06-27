@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Domain lookup{% endblock title %}
+
+{% block content %}
+
+<h1>Domain lookup</h1>
+
+<form action="{% url libravatar.tools.views.check_domain %}" method="post">
+
+<table>
+<tr>
+  <td>{{ form.domain.errors }}{{ form.domain.label_tag }}:</td>
+  <td>{{ form.domain }}</td>
+</tr>
+</table>
+
+<p><input type="submit" value="Check"></p>
+
+</form>
+
+{% if data %}
+
+<table>
+<tr>
+  <td>HTTP avatar server:</td>
+  <td><tt>{{data.avatar_server_http}}</tt>
+  {% if not data.avatar_server_http %}
+  (use <tt>libravatar.org</tt>)
+  {% endif %}
+  </td>
+</tr>
+<tr>
+  <td>HTTPS avatar server:</td>
+  <td><tt>{{data.avatar_server_https}}</tt>
+  {% if not data.avatar_server_https %}
+  (use <tt>libravatar.org</tt>)
+  {% endif %}
+  </td>
+</tr>
+</table>
+
+{% endif %}
+
+{% endblock content %}

@@ -19,3 +19,8 @@ from django import forms
 
 class CheckForm(forms.Form):
     email = forms.EmailField()
+    not_found = forms.CharField(required=False, label='Default URL')
+    domain = forms.CharField(required=False)
+
+class CheckDomainForm(forms.Form):
+    domain = forms.CharField()

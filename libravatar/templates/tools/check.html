@@ -7,8 +7,23 @@
 
 <form action="{% url libravatar.tools.views.check %}" method="post">
 
-<p>{{ form.email.label_tag }}:{{ form.email }}
-<input type="submit" value="Check"></p>
+<table>
+<tr>
+  <td>{{ form.email.errors }}{{ form.email.label_tag }}:</td>
+  <td>{{ form.email }}</td>
+</tr>
+<tr><td colspan="1"><i>Optional parameters</i></td></tr>
+<tr>
+  <td>{{ form.domain.errors }}{{ form.domain.label_tag }}:</td>
+  <td>{{ form.domain }}</td>
+</tr>
+<tr>
+  <td>{{ form.not_found.errors }}{{ form.not_found.label_tag }}:</td>
+  <td>{{ form.not_found }}</td>
+</tr>
+</table>
+
+<p><input type="submit" value="Check"></p>
 
 </form>
 
@@ -20,9 +35,9 @@ SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 
 <p>This is what the avatars will look like depending on the hashing algorithm you use:</p>
 <ul class="horizontal-list avatar-list centered">
-  <li><a href="{{ avatar_url }}{{ data.md5 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}" alt=""></a><br>MD5</li>
-  <li><a href="{{ avatar_url }}{{ data.sha1 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}" alt=""></a><br>SHA1</li>
-  <li><a href="{{ avatar_url }}{{ data.sha256 }}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}" alt=""></a><br>SHA256</li>
+  <li><a href="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}" alt=""></a><br>MD5</li>
+  <li><a href="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}" alt=""></a><br>SHA1</li>
+  <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt=""></a><br>SHA256</li>
 </ul>
 
 {% endif %}
