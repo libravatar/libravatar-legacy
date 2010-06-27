@@ -13,6 +13,10 @@
     # Remove extensions from filenames
     RewriteRule ^/avatar/([0-9a-f]{32,64})\..*$ /avatar/$1 [next]
 
+    # Queries which include a domain need to go to the Django resolver
+    RewriteCond %{QUERY_STRING} ^(?:.*&)?domain=([^&]+)(?:&.*)?$
+    RewriteRule ^/avatar/([0-9a-f]{32,64})\.? http://localhost:8000/resolve?email_hash=$1 [qsappend,redirect,last]
+
     # Serve the file if it exists
     RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_URI} -f
     RewriteRule ^/avatar/([0-9a-f]+)$ /avatar/$1 [passthrough]
