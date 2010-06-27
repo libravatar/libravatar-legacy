@@ -37,6 +37,7 @@ import os
 from StringIO import StringIO
 
 MAX_NUM_PHOTOS = 5
+MAX_PHOTO_SIZE = 2516582 # in bytes
 
 def new(request):
     if settings.DISABLE_SIGNUP:
@@ -236,7 +237,12 @@ def upload_photo(request):
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save(request.user, request.FILES['photo'])
+            photo_data = request.FILES['photo']
+            if photo_data.size > MAX_PHOTO_SIZE:
+                return render_to_response('account/photo_toobig.html', { 'max_size' : MAX_PHOTO_SIZE },
+                                          context_instance=RequestContext(request))
+
+            form.save(request.user, photo_data)
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
     else:
         form = UploadPhotoForm()

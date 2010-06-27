@@ -1,0 +1,6 @@
+{% extends 'error.html' %}
+
+{% block errormessage %}
+This image is too big, the maximum size is {{max_size}} bytes.</p>
+<p>Please <a href="{% url libravatar.account.views.upload_photo %}">upload</a> a smaller one.
+{% endblock errormessage %}
