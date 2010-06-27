@@ -1,4 +1,5 @@
 # Copyright (C) 2010  Brett Wilkins <bushido.katana@gmail.com>
+#                     Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 # 
@@ -18,28 +19,29 @@
 import Image
 
 def crop(image,x=0,y=0,w=0,h=0):
-    try:
-        img = Image.open(image)
-    except:
-        return
-    junk,junk,a,b=img.getbbox()
+    img = Image.open(image)
+    junk, junk, a, b = img.getbbox()
+
     if w == 0 and h == 0:
         w,h = a,b
         i = min(w,h)
         w,h = i,i
-    else:
-        if w < 0 or x+w > a or h < 0 or y+h > b:
-            raise ValueError("crop dimensions outside of original image bounding box")
-    cropped = img.crop((x,y,x+w,y+h)) 
+    elif w < 0 or x+w > a or h < 0 or y+h > b:
+        raise ValueError("crop dimensions outside of original image bounding box")
+
+    cropped = img.crop((x,y,x+w,y+h))
     cropped.load()
     cropped.save(image)
 
 def resize(image,w=512,h=None):
-    try:
-        img = Image.open(image)
-    except:
-        return
+    img = Image.open(image)
+
+    image_w, image_h = img.size
+    w = min(w, image_w)
+    h = min(h, image_h)
+
     if not h:
         h=w
-    img.resize((w,h))
-    img.save(image)
+
+    resized_img = img.resize((w, h))
+    resized_img.save(image)
