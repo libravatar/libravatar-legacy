@@ -28,7 +28,7 @@ def home(request):
     return render_to_response('public/home.html',
                               context_instance=RequestContext(request))
 
-def lookup_avatar_server(domain):
+def lookup_avatar_server(domain, https):
     """
     Extract the avatar server from a TXT record in the DNS zone
 
@@ -36,6 +36,9 @@ def lookup_avatar_server(domain):
 
        "v=avatars1 http://avatars.libravatar.org"
     """
+
+    if https:
+        return None # Not implemented
 
     import DNS
     DNS.DiscoverNameServers()
@@ -79,7 +82,7 @@ def resolve(request):
 
     # Check to see if we need to delegate to another avatar server
     if 'domain' in request.GET:
-        delegation_server = lookup_avatar_server(request.GET['domain'])
+        delegation_server = lookup_avatar_server(request.GET['domain'], False)
         if delegation_server:
             avatar_server = delegation_server
             # redirect first to 
