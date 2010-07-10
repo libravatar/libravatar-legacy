@@ -52,9 +52,9 @@ Content licensing:
    make sense for the license (e.g. CC-BY is also in CC-SA and CC-ND)
 
 Image resizing:
-- python-based image resizing code (for sizes 1-512px -- configurable)
-- dynamically generated images end up on disk after they are served
-- pre-generate common images sizes and store them on disk already
+- when writing a resized image, create hardlinks to all hashes by
+   looking up the inode number of the md5 using "ls -i" then finding
+   the sha1 and sha256 using "find -mount -inum xxxxx"
 
 Image optimisations:
 - run jpegoptim or optipng on images
