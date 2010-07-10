@@ -14,22 +14,35 @@
     # Remove extensions from filenames
     RewriteRule ^/avatar/([0-9a-f]{32,64})\..*$ /avatar/$1 [next]
 
+    # Pull the size out of the query string and into a subdirectory
+    RewriteCond %{QUERY_STRING} ^((?:.*&)?)s(?:ize)?=([0-9]+)((?:&.*)?)$
+    RewriteRule ^/avatar/([0-9a-f]{32,64})$ /avatar/%2/$1?%1%3 [next]
+
+    # Add a default size of 80 if it's missing
+    RewriteCond %{QUERY_STRING} !^((?:.*&)?)s(?:ize)?=([0-9]+)((?:&.*)?)$
+    RewriteRule ^/avatar/([0-9a-f]{32,64})$ /avatar/80/$1 [next]
+
     # Queries which include a domain need to go to the Django resolver
     RewriteCond %{QUERY_STRING} ^(?:.*&)?domain=([^&]+)(?:&.*)?$
-    RewriteRule ^/avatar/([0-9a-f]{32,64})$ http://localhost:8000/resolve?email_hash=$1 [qsappend,redirect,last]
+    RewriteRule ^/avatar/([0-9]+)/([0-9a-f]{32,64})$ http://localhost:8000/resolve?email_hash=$2&size=$1 [qsappend,redirect,last]
 
     # Serve the file if it exists
-    RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_URI} -f
-    RewriteRule ^/avatar/([0-9a-f]+)$ /avatar/$1 [passthrough]
+    RewriteCond  /home/francois/devel/remote/libravatar%{SCRIPT_FILENAME} -f
+    RewriteRule ^/avatar/([0-9]+)/([0-9a-f]+)$ /avatar/$1/$2 [passthrough]
+
+    # If the requested size is not available but another is, go to the Django resizer
+    RewriteCond %{SCRIPT_FILENAME} ^/avatar/([0-9]+)/([0-9a-f]{32,64})$
+    RewriteCond /home/francois/devel/remote/libravatar/avatar/%2 -f
+    RewriteRule ^/avatar/([0-9]+)/([0-9a-f]{32,64})$ http://localhost:8000/resize?email_hash=$2&size=$1 [redirect,last]
 
     # Delegate md5-hashed files that don't exist to Gravatar
     RewriteCond %{HTTPS} off
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
     RewriteCond %1 !^(identicon|monsterid|wavatar|mm)$
-    RewriteRule  ^/avatar/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1 [last,redirect,noescape]
+    RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=%1 [last,redirect,noescape]
 
     RewriteCond %{HTTPS} off
-    RewriteRule  ^/avatar/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
+    RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
 
     # Uploaded images
     #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
@@ -43,7 +56,7 @@
 
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
     RewriteCond %1 !^(identicon|monsterid|wavatar|mm|404)$
-    RewriteRule ^/avatar/[0-9a-f]{32,} ${url_decode:%1}? [last,redirect]
+    RewriteRule ^/avatar/ ${url_decode:%1}? [last,redirect]
 
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=404(?:&.*)?$
     RewriteRule ^/avatar/ - [last]

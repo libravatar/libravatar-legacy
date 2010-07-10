@@ -16,13 +16,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import urllib
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from libravatar import settings
+from libravatar.avatar import image
 
 def home(request):
     return render_to_response('public/home.html',
@@ -63,11 +65,11 @@ def lookup_avatar_server(domain, https):
 
 def resolve(request):
     if request.method == 'POST':
-        return render_to_response('public/resolve_nopost.html',
+        return render_to_response('public/nopost.html',
                                   context_instance=RequestContext(request))
 
     if not 'email_hash' in request.GET:
-        return render_to_response('public/resolve_nohash.html',
+        return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
 
     # Maintain the default redirection that was specified
@@ -90,3 +92,45 @@ def resolve(request):
 
     final_url = avatar_server + '/avatar/' + email_hash + not_found
     return HttpResponseRedirect(final_url)
+
+def avatar_exists(email_hash, size):
+    filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
+    return os.path.isfile(filename)
+
+def resize(request):
+    if request.method == 'POST':
+        return render_to_response('public/nopost.html',
+                                  context_instance=RequestContext(request))
+
+    if not 'email_hash' in request.GET:
+        return render_to_response('public/nohash.html',
+                                  context_instance=RequestContext(request))
+    email_hash = request.GET['email_hash']
+
+    size = settings.AVATAR_DEFAULT_SIZE
+    if 'size' in request.GET:
+        try:
+            size = int(request.GET['size'])
+        except ValueError:
+            return render_to_response('public/resize_notnumeric.html',
+                                      {'min_size' : settings.AVATAR_MIN_SIZE, 'max_size' : settings.AVATAR_MAX_SIZE},
+                                      context_instance=RequestContext(request))
+
+        size = max(size, settings.AVATAR_MIN_SIZE)
+        size = min(size, settings.AVATAR_MAX_SIZE)
+
+    if avatar_exists(email_hash, size):
+        return HttpResponseRedirect(settings.AVATAR_URL + email_hash + '?s=%s' % size)
+
+    # Add a note to the logs to keep track of frequently requested sizes
+    print '[RESIZE] %s px' % size
+
+    # Serve resized image
+    response = HttpResponse(mimetype='image/jpeg') # TODO: support png
+
+    resized_filename = image.resized_avatar(email_hash, size)
+    with open(resized_filename, 'rb') as resized_img:
+        response.write(resized_img.read())
+        resized_img.close()
+
+    return response

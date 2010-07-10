@@ -1,5 +1,5 @@
 {% extends 'error.html' %}
 
 {% block errormessage %}
-This resolver only works via HTTP GET.
+The size parameter must be an integer between {{ min_size }} and {{ max_size }}.
 {% endblock errormessage %}

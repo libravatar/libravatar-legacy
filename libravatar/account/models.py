@@ -17,14 +17,19 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from hashlib import md5, sha1, sha256
-from os import link, unlink, urandom
+from os import link, unlink, urandom, path
 from urllib2 import urlopen
 
 from django.db import models
 from django.contrib.auth.models import User
 
-from libravatar.settings import MEDIA_URL, AVATAR_URL, AVATAR_ROOT, DEFAULT_PHOTO
+from libravatar import settings
 from libravatar.account.external_photos import *
+from libravatar.avatar.image import resized_avatar
+
+def delete_if_exists(filename):
+    if path.isfile(filename):
+        unlink(filename)
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
@@ -33,7 +38,7 @@ class Photo(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return AVATAR_URL + self.pathname()
+        return settings.AVATAR_URL + self.pathname()
 
     def pathname(self):
         return 'uploaded/' + self.filename + '.' + self.format
@@ -44,7 +49,7 @@ class Photo(models.Model):
         super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
-        dest_filename = AVATAR_ROOT + self.pathname()
+        dest_filename = settings.AVATAR_ROOT + self.pathname()
         with open(dest_filename, 'wb+') as destination:
             # TODO: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
             destination.write(image.read())
@@ -68,7 +73,7 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
-        dest_filename = AVATAR_ROOT + self.pathname()
+        dest_filename = settings.AVATAR_ROOT + self.pathname()
         image = urlopen(image_url)
 
         # Write file to disk
@@ -84,7 +89,7 @@ class Photo(models.Model):
             email.set_photo(None)
 
         try:
-            unlink(AVATAR_ROOT + self.pathname())
+            unlink(settings.AVATAR_ROOT + self.pathname())
         except OSError:
             pass # TODO: do something
 
@@ -102,7 +107,7 @@ class ConfirmedEmail(models.Model):
     def photo_url(self):
         if self.photo:
             return self.photo
-        return MEDIA_URL + 'img/' + DEFAULT_PHOTO
+        return settings.MEDIA_URL + 'img/' + settings.DEFAULT_PHOTO
 
     def public_hash(self, algorithm):
         if 'md5' == algorithm:
@@ -115,27 +120,37 @@ class ConfirmedEmail(models.Model):
     def set_photo(self, photo):
         self.photo = photo
 
-        # TODO: also link the different sizes of images
         # TODO: use git-like hashed directories to avoid too many files in one directory
-        md5_filename =  AVATAR_ROOT + self.public_hash('md5')
-        sha1_filename =  AVATAR_ROOT + self.public_hash('sha1')
-        sha256_filename =  AVATAR_ROOT + self.public_hash('sha256')
+        md5_filename = settings.AVATAR_ROOT + self.public_hash('md5')
+        sha1_filename = settings.AVATAR_ROOT + self.public_hash('sha1')
+        sha256_filename = settings.AVATAR_ROOT + self.public_hash('sha256')
 
-        if photo is None:
-            try:
-                unlink(md5_filename)
-                unlink(sha1_filename)
-                unlink(sha256_filename)
-            except OSError:
-                pass # TODO: do something
-        else:
-            source_filename = AVATAR_ROOT + photo.pathname()
-            try:
-                link(source_filename, md5_filename)
-                link(source_filename, sha1_filename)
-                link(source_filename, sha256_filename)
-            except:
-                pass # TODO: do something
+        # Remove old image
+        unlink(md5_filename)
+        unlink(sha1_filename)
+        unlink(sha256_filename)
+
+        # Delete all resized images
+        for size in xrange(settings.AVATAR_MIN_SIZE, settings.AVATAR_MAX_SIZE):
+            size_dir = settings.AVATAR_ROOT + '/%s/' % size
+            delete_if_exists(size_dir + self.public_hash('md5'))
+            delete_if_exists(size_dir + self.public_hash('sha1'))
+            delete_if_exists(size_dir + self.public_hash('sha256'))
+
+        if photo is not None:
+            source_filename = settings.AVATAR_ROOT + photo.pathname()
+            link(source_filename, md5_filename)
+            link(source_filename, sha1_filename)
+            link(source_filename, sha256_filename)
+
+            # Generate resized images for common sizes
+            for size in settings.AVATAR_PREGENERATED_SIZES:
+                resized_filename = resized_avatar(self.public_hash('md5'), size)
+                
+                # TODO: these should go once it's automatically done in image.py
+                output_dir = settings.AVATAR_ROOT + '/%s/' % size
+                link(resized_filename, output_dir + self.public_hash('sha1'))
+                link(resized_filename, output_dir + self.public_hash('sha256'))
 
         self.save()
 

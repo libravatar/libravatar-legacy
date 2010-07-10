@@ -117,6 +117,11 @@ AVATAR_DEFAULT_SIZE = 80
 AVATAR_MIN_SIZE = 1
 AVATAR_MAX_SIZE = 512
 
+# StatusNet uses 48 and 96
+# Launchpad uses 16, 64 and 192
+# Mahara uses 20, 40 and 50
+AVATAR_PREGENERATED_SIZES = (16, 20, 40, 48, 50, 64, 80, 96, 192)
+
 DEFAULT_PHOTO = 'nobody.png'
 LIBRAVATAR_VERSION = '0.1'
 TXT_VERSION = 'avatars1' # For DNS-based federation
