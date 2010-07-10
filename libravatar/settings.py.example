@@ -113,6 +113,10 @@ LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for au
 AVATAR_URL = '%savatar/' % MEDIA_URL
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
+AVATAR_DEFAULT_SIZE = 80
+AVATAR_MIN_SIZE = 1
+AVATAR_MAX_SIZE = 512
+
 DEFAULT_PHOTO = 'nobody.png'
 LIBRAVATAR_VERSION = '0.1'
 TXT_VERSION = 'avatars1' # For DNS-based federation

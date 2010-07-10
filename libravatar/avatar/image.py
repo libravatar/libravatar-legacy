@@ -33,7 +33,7 @@ def crop(image,x=0,y=0,w=0,h=0):
     cropped.load()
     cropped.save(image)
 
-def resize(image,w=512,h=None):
+def resize(image,w,h=None):
     img = Image.open(image)
 
     image_w, image_h = img.size

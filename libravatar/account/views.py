@@ -31,7 +31,7 @@ from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
 from libravatar import settings
-from libravatar.avatar.image import crop,resize
+from libravatar.avatar.image import crop, resize
 
 import os
 from StringIO import StringIO
@@ -264,7 +264,7 @@ def crop_photo(request, photo_id=None):
         h = int(request.POST['h'])
         filename = '%s%s' % (settings.AVATAR_ROOT, photo.pathname())
         crop(filename,x,y,w,h)
-        resize(filename)
+        resize(filename, settings.AVATAR_MAX_SIZE)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
@@ -280,7 +280,7 @@ def auto_crop(request, photo_id=None):
 
     filename = '%s%s' % (settings.AVATAR_ROOT, photo.pathname())
     crop(filename)
-    resize(filename)
+    resize(filename, settings.AVATAR_MAX_SIZE)
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @login_required
