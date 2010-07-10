@@ -21,7 +21,8 @@ Apache config:
 - nginx version of the Apache config files
 
 Federation:
-- ability to specify both http and https servers in TXT record
+- ability to specify both http and https servers in SRV records
+   https://secure.wikimedia.org/wikipedia/en/wiki/SRV_record
 - write a PHP? library for doing the DNS lookup before using
    libravatar.org
 - create a test avatars.catalyst.net.nz server 
