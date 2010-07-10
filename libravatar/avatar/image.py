@@ -18,8 +18,8 @@
 
 import Image
 
-def crop(image,x=0,y=0,w=0,h=0):
-    img = Image.open(image)
+def crop(filename, x=0, y=0, w=0, h=0):
+    img = Image.open(filename)
     junk, junk, a, b = img.getbbox()
 
     if w == 0 and h == 0:
@@ -27,21 +27,20 @@ def crop(image,x=0,y=0,w=0,h=0):
         i = min(w,h)
         w,h = i,i
     elif w < 0 or x+w > a or h < 0 or y+h > b:
-        raise ValueError("crop dimensions outside of original image bounding box")
+        raise ValueError('crop dimensions outside of original image bounding box')
 
-    cropped = img.crop((x,y,x+w,y+h))
+    cropped = img.crop((x, y, x+w, y+h))
     cropped.load()
-    cropped.save(image)
+    cropped.save(filename)
 
-def resize(image,w,h=None):
-    img = Image.open(image)
+def resize(filename, w, output_filename=None):
+    img = Image.open(filename)
 
-    image_w, image_h = img.size
-    w = min(w, image_w)
-    h = min(h, image_h)
+    img_w, img_h = img.size
+    w = min(w, img_w)
 
-    if not h:
-        h=w
+    if not output_filename:
+        output_filename = filename
 
-    resized_img = img.resize((w, h))
-    resized_img.save(image)
+    resized_img = img.resize((w, w))
+    resized_img.save(output_filename)
