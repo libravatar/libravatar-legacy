@@ -1,3 +1,4 @@
+# -*-mode: apache;-*-
 <VirtualHost *:80>
     ServerName static.libravatar.org
     ServerAlias www.libravatar.org
@@ -15,7 +16,7 @@
 
     # Queries which include a domain need to go to the Django resolver
     RewriteCond %{QUERY_STRING} ^(?:.*&)?domain=([^&]+)(?:&.*)?$
-    RewriteRule ^/avatar/([0-9a-f]{32,64})\.? http://localhost:8000/resolve?email_hash=$1 [qsappend,redirect,last]
+    RewriteRule ^/avatar/([0-9a-f]{32,64})$ http://localhost:8000/resolve?email_hash=$1 [qsappend,redirect,last]
 
     # Serve the file if it exists
     RewriteCond  /home/francois/devel/remote/libravatar%{REQUEST_URI} -f
@@ -25,10 +26,10 @@
     RewriteCond %{HTTPS} off
     RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
     RewriteCond %1 !^(identicon|monsterid|wavatar|mm)$
-    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1 [last,redirect,noescape]
+    RewriteRule  ^/avatar/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=%1 [last,redirect,noescape]
 
     RewriteCond %{HTTPS} off
-    RewriteRule  ^/avatar/([0-9a-f]{32}(?:\..*)?)$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
+    RewriteRule  ^/avatar/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$1.jpg?r=g&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
 
     # Uploaded images
     #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
