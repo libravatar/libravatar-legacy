@@ -27,6 +27,10 @@
 </tr>
 </table>
 
+{% if not disable_signup %}
+<p>Forgot your password? <a href="{% url libravatar.account.views.password_reset %}">Reset it by email</a>.</p>
+{% endif %}
+
 <input type="submit" value="login" />
 <input type="hidden" name="next" value="{{ next }}" />
 </form>

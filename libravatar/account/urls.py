@@ -31,6 +31,8 @@ urlpatterns = patterns('',
     (r'^(?P<email_id>\d+)/remove_unconfirmed_email/$', 'libravatar.account.views.remove_unconfirmed_email'),
 
     ('new/$', 'libravatar.account.views.new'),
+    ('password_reset/$', 'libravatar.account.views.password_reset'),
+    ('password_reset_confirm/$', 'libravatar.account.views.password_reset_confirm'),
     ('profile/$', 'libravatar.account.views.profile'),
     ('profile_success/$', 'libravatar.account.views.successfully_authenticated'),
 

@@ -22,14 +22,15 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
+from django.contrib.auth.tokens import default_token_generator
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from libravatar.account.external_photos import *
-from libravatar.account.forms import AddEmailForm, UploadPhotoForm
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo
+from libravatar.account.forms import AddEmailForm, PasswordResetForm, UploadPhotoForm
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
 from libravatar import settings
 from libravatar.avatar.image import crop, auto_resize
 
@@ -329,4 +330,71 @@ def assign_photo(request, email_id):
 
     photos = Photo.objects.filter(user=request.user)
     return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
+                              context_instance=RequestContext(request))
+
+def password_reset(request):
+    if settings.DISABLE_SIGNUP:
+        return HttpResponseRedirect(settings.LOGIN_URL)
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            form.save();
+            return render_to_response('account/password_reset_submitted.html',
+                                      {'form': form, 'support_email' : settings.SUPPORT_EMAIL},
+                                      context_instance=RequestContext(request))
+    else:
+        form = PasswordResetForm()
+
+    return render_to_response('account/password_reset.html', { 'form': form },
+                              context_instance=RequestContext(request))
+
+def password_reset_confirm(request):
+    if settings.DISABLE_SIGNUP:
+        return HttpResponseRedirect(settings.LOGIN_URL)
+
+    verification_key = None
+    email_address = None
+
+    if request.GET['verification_key']:
+        verification_key = request.GET['verification_key']
+
+    if request.GET['email_address']:
+        email_address = request.GET['email_address']
+
+    # Note: all validation errors return the same error message to
+    # avoid leaking information as to the existence or not of
+    # particular email addresses on the system
+
+    if not verification_key or not email_address:
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
+
+    if len(verification_key) < 64 or len(verification_key) > 64 or len(email_address) < 3:
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
+
+    try:
+        email = ConfirmedEmail.objects.get(email=email_address)
+    except ConfirmedEmail.DoesNotExist:
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
+
+    user = email.user
+    expected_key = password_reset_key(user)
+
+    if verification_key != expected_key:
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
+
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            return render_to_response('account/password_change_done.html',
+                                      context_instance=RequestContext(request))
+    else:
+        form = SetPasswordForm(user)
+
+    return render_to_response('account/password_change.html', {'form' : form,
+                              'verification_key' : verification_key, 'email_address' : email_address},
                               context_instance=RequestContext(request))

@@ -31,6 +31,9 @@ def delete_if_exists(filename):
     if path.isfile(filename):
         unlink(filename)
 
+def password_reset_key(user):
+    return sha256(user.username + user.password).hexdigest()
+
 class Photo(models.Model):
     user = models.ForeignKey(User)
     filename = models.CharField(max_length=64) # sha256 hash is 64 characters
