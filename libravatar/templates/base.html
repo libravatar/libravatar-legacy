@@ -11,8 +11,8 @@
     <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span><br>freeing the web one face at a time
   </div>
   <div id="account">
-    <a href="{% url libravatar.account.views.profile %}">Profile</a>
     {% if user.is_authenticated %}
+    <a href="{% url libravatar.account.views.profile %}">Profile</a>
     <a href="{% url django.contrib.auth.views.logout %}">Logout</a>
     {% else %}
     <a href="{% url django.contrib.auth.views.login %}">Login</a>
