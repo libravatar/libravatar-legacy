@@ -62,7 +62,8 @@
     RewriteRule ^/avatar/ - [last]
 
     # File not found
-    RewriteRule ^/avatar/ %{DOCUMENT_ROOT}/img/nobody.png [last]
+    RewriteRule ^/avatar/([0-9]+)/ %{DOCUMENT_ROOT}/img/nobody/$1.png [last]
+    RewriteRule ^/avatar/ %{DOCUMENT_ROOT}/img/nobody/80.png [last]
 
     <Directory />
         Options FollowSymLinks
