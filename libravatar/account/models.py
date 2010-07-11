@@ -91,11 +91,7 @@ class Photo(models.Model):
         for email in ConfirmedEmail.objects.filter(photo=self):
             email.set_photo(None)
 
-        try:
-            unlink(settings.AVATAR_ROOT + self.pathname())
-        except OSError:
-            pass # TODO: do something
-
+        delete_if_exists(settings.AVATAR_ROOT + self.pathname())
         super(Photo, self).delete()
 
 class ConfirmedEmail(models.Model):
@@ -129,9 +125,9 @@ class ConfirmedEmail(models.Model):
         sha256_filename = settings.AVATAR_ROOT + self.public_hash('sha256')
 
         # Remove old image
-        unlink(md5_filename)
-        unlink(sha1_filename)
-        unlink(sha256_filename)
+        delete_if_exists(md5_filename)
+        delete_if_exists(sha1_filename)
+        delete_if_exists(sha256_filename)
 
         # Delete all resized images
         for size in xrange(settings.AVATAR_MIN_SIZE, settings.AVATAR_MAX_SIZE):
