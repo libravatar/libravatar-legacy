@@ -86,7 +86,6 @@ Plugins/hooks:
 General Django app:
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
-- password reset feature via email
 
 Secure image uploading:
 - upload image to temp dir and resize in Javascript
