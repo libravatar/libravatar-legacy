@@ -5,7 +5,7 @@
 
 <h1>Upload a new photo</h1>
 
-<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">
+<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">{% csrf_token %}
 
 {{ form.photo.errors }}
 <p class="aligned wide">{{ form.photo.label_tag }}: {{ form.photo }}</p>

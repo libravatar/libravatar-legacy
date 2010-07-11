@@ -5,7 +5,7 @@
 
 <h1>Add a new email address</h1>
 
-<form action="{% url libravatar.account.views.add_email %}" method="post">
+<form action="{% url libravatar.account.views.add_email %}" method="post">{% csrf_token %}
 
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>

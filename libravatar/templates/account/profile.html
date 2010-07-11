@@ -9,7 +9,7 @@
 <p>You have the following confirmed email addresses:</p>
 <ul class="horizontal-list avatar-list">
     {% for email in confirmed_emails %}
-        <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">
+        <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">{% csrf_token %}
         <a href="{% url libravatar.account.views.assign_photo email.id %}">
         <img class="thumbnail editable" style="float: left" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
@@ -23,7 +23,7 @@
 <p>You have the following unconfirmed email addresses:</p>
 <ul class="vertical-list">
     {% for email in unconfirmed_emails %}
-        <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{{ email.email }}
+        <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{% csrf_token %}{{ email.email }}
         <input type="image" src="{{ media_url }}img/delete_button.png" value="Remove"></form>{# TODO: (expires in xx hours) #}</li>
     {% endfor %}
 </ul>

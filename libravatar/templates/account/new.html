@@ -5,7 +5,7 @@
 
 <h1>Create a new account</h1>
 
-<form action="{% url libravatar.account.views.new %}" method="post">
+<form action="{% url libravatar.account.views.new %}" method="post">{% csrf_token %}
 
 {{ form.username.errors }}
 <p class="aligned wide">{{ form.username.label_tag }}: {{ form.username }}</p>

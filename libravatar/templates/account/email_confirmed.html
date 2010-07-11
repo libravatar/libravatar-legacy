@@ -10,7 +10,7 @@
 {% if photos %}
 
 <p>Would you like to import some these externally hosted photos?</p>
-<form action="{% url libravatar.account.views.import_photo user.id %}" method="post">
+<form action="{% url libravatar.account.views.import_photo user.id %}" method="post">{% csrf_token %}
 <input type="hidden" name="email_id" value="{{ email_id }}">
 <ul>
 {% for photo in photos %}

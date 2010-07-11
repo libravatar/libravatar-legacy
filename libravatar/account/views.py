@@ -27,6 +27,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.views.decorators.csrf import csrf_protect
 
 from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, PasswordResetForm, UploadPhotoForm
@@ -40,6 +41,7 @@ from StringIO import StringIO
 MAX_NUM_PHOTOS = 5
 MAX_PHOTO_SIZE = 2516582 # in bytes
 
+@csrf_protect
 def new(request):
     if settings.DISABLE_SIGNUP:
         return HttpResponseRedirect(settings.LOGIN_URL)
@@ -60,6 +62,7 @@ def new(request):
     return render_to_response('account/new.html', { 'form': form },
                               context_instance=RequestContext(request))
 
+@csrf_protect
 def confirm_email(request):
     if not 'verification_key' in request.GET:
         return render_to_response('account/email_notconfirmed.html',
@@ -98,6 +101,7 @@ def confirm_email(request):
                               {'email_id' : confirmed.id, 'photos' : external_photos},
                               context_instance=RequestContext(request))
 
+@csrf_protect
 def import_photo(request, user_id):
     if request.method == 'POST':
         if not 'email_id' in request.POST:
@@ -172,6 +176,7 @@ def successfully_authenticated(request):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@csrf_protect
 @login_required
 def profile(request):
     u = request.user
@@ -184,6 +189,7 @@ def profile(request):
           'photos' : photos, 'max_photos' : max_photos},
         context_instance=RequestContext(request))
 
+@csrf_protect
 @login_required
 def add_email(request):
     if request.method == 'POST':
@@ -197,6 +203,7 @@ def add_email(request):
     return render_to_response('account/add_email.html', { 'form': form },
                               RequestContext(request))
 
+@csrf_protect
 @login_required
 def remove_confirmed_email(request, email_id):
     if request.method == 'POST':
@@ -214,6 +221,7 @@ def remove_confirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@csrf_protect
 @login_required
 def remove_unconfirmed_email(request, email_id):
     if request.method == 'POST':
@@ -229,6 +237,7 @@ def remove_unconfirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@csrf_protect
 @login_required
 def upload_photo(request):
     num_photos = Photo.objects.filter(user=request.user).count()
@@ -251,6 +260,7 @@ def upload_photo(request):
     return render_to_response('account/upload_photo.html', { 'form': form },
                               context_instance=RequestContext(request))
 
+@csrf_protect
 @login_required
 def crop_photo(request, photo_id=None):
     if request.method == 'POST':
@@ -273,6 +283,7 @@ def crop_photo(request, photo_id=None):
     return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True},
                               context_instance=RequestContext(request))
 
+@login_required
 def auto_crop(request, photo_id=None):
     photo = Photo.objects.get(id=photo_id)
     if photo.user.id != request.user.id:
@@ -284,6 +295,7 @@ def auto_crop(request, photo_id=None):
     auto_resize(filename)
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@csrf_protect
 @login_required
 def delete_photo(request, photo_id):
     try:
@@ -300,6 +312,7 @@ def delete_photo(request, photo_id):
     return render_to_response('account/delete_photo.html', { 'photo': photo },
                               context_instance=RequestContext(request))
 
+@csrf_protect
 @login_required
 def assign_photo(request, email_id):
     try:
@@ -332,6 +345,7 @@ def assign_photo(request, email_id):
     return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
                               context_instance=RequestContext(request))
 
+@csrf_protect
 def password_reset(request):
     if settings.DISABLE_SIGNUP:
         return HttpResponseRedirect(settings.LOGIN_URL)
@@ -348,6 +362,7 @@ def password_reset(request):
     return render_to_response('account/password_reset.html', { 'form': form },
                               context_instance=RequestContext(request))
 
+@csrf_protect
 def password_reset_confirm(request):
     if settings.DISABLE_SIGNUP:
         return HttpResponseRedirect(settings.LOGIN_URL)
