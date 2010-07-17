@@ -21,9 +21,13 @@ div#content h1 {
   color: #F9711F;
 }
 
-div#content h1.error { 
+div#content h1.error, ul.errorlist li { 
   background-color: #FF0000;
   color: #FFFFFF;
+  font-weight: bold;
+  padding: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius:8px;
 }
 
 div#outer {
@@ -90,7 +94,7 @@ ul.horizontal-list li {
   margin: 0 15px 15px 0;
 }
 
-ul.vertical-list li {
+ul.vertical-list li, ul.errorlist li {
   list-style-type: none;
 }
 
