@@ -53,6 +53,8 @@ Otherwise, please accept our apologies and ignore this message.
 
 class UploadPhotoForm(forms.Form):
     photo = forms.ImageField()
+    not_porn = forms.BooleanField(required=True)
+    can_distribute = forms.BooleanField(required=True)
 
     def save(self, user, image):
         # Link this file to the user's profile

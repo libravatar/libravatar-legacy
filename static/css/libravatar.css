@@ -102,3 +102,10 @@ ul.centered li {
   text-align: center;
   vertical-align: middle;
 }
+
+ul.conditions {
+  -moz-padding-start: 0;
+  -webkit-padding-start: 0;
+  list-style-type: none;
+  margin: 0;
+}

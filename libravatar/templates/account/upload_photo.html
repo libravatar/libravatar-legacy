@@ -10,6 +10,11 @@
 {{ form.photo.errors }}
 <p class="aligned wide">{{ form.photo.label_tag }}: {{ form.photo }}</p>
 
+<ul class="conditions">
+  <li>{{form.not_porn.errors}}{{form.not_porn}} suitable for all ages (i.e. no offensive content)</li>
+  <li>{{form.can_distribute.errors}}{{form.can_distribute}} can be freely copied</li>
+</ul>
+
 <p><input type="submit" value="Upload" />
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
 
