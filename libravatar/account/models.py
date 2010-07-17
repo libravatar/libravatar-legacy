@@ -43,6 +43,9 @@ class Photo(models.Model):
     def __unicode__(self):
         return settings.AVATAR_URL + self.pathname()
 
+    def upload_datetime(self):
+        return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
+
     def pathname(self):
         return 'uploaded/' + self.filename + '.' + self.format
 

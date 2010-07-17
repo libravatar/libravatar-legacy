@@ -35,7 +35,7 @@
 <p>Here are the photos you have uploaded/imported:</p>
 <ul class="horizontal-list avatar-list centered">
 {% for photo in photos %}
-    <li><img class="thumbnail" src="{{ photo }}" alt="" {# TODO: alt="Uploaded on xxx-xx-xx xx:xx:xx" #}><br>
+    <li><img class="thumbnail" src="{{ photo }}" title="Uploaded on {{photo.upload_datetime}}"><br>
     <a href="{% url libravatar.account.views.delete_photo photo.id %}">Delete</a></li>
 {% endfor %}
 </ul>
