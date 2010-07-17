@@ -44,7 +44,6 @@ Gearman:
    can be scaled easily as demand increases
 
 Content licensing:
-- have a checkbox for "this image is not pr0n"
 - have a checkbox for "this image is CC-BY-SA" and a "different
    license" link (should we support "all rights reserved"?)
 - licenses can be specified by clients like the G/PG/X Gravatar
