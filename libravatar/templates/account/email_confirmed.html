@@ -12,11 +12,10 @@
 <p>Would you like to import some these externally hosted photos?</p>
 <form action="{% url libravatar.account.views.import_photo user.id %}" method="post">{% csrf_token %}
 <input type="hidden" name="email_id" value="{{ email_id }}">
-<ul>
+<ul class="horizontal-list imported-list centered">
 {% for photo in photos %}
-  {# TODO: link to somewhere reasonable #}
   <li><input type="checkbox" name="photo_{{photo.service_name}}" id="photo_{{photo.service_name}}" checked="checked">
-  <label for="photo_{{photo.service_name}}"><img src="{{ photo.image_url }}" width="{{ photo.width }}" height="{{ photo.height }}" border="0"></label>
+  <br/><label for="photo_{{photo.service_name}}"><img src="{{ photo.thumbnail_url }}" class="thumbnail" alt="{{photo.service_name}} image"></label>
   <br/>
   {% if photo.service_url %}
   <a href="{{ photo.service_url }}">{{ photo.service_name }}</a>
