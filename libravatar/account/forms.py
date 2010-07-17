@@ -33,6 +33,14 @@ class AddEmailForm(forms.Form):
         unconfirmed.user = user
         unconfirmed.save()
 
+        # Check whether or not the email is already confirmed by someone
+        try:
+            ConfirmedEmail.objects.get(email=self.cleaned_data['email'])
+        except ConfirmedEmail.DoesNotExist:
+            pass # All good, we'll send the email
+        else:
+            return False # No email will be sent
+
         link = settings.SITE_URL + reverse('libravatar.account.views.confirm_email') + '?verification_key=' + unconfirmed.verification_key
 
         email_subject = 'Confirm your email address on %s' % settings.SITE_NAME
@@ -50,6 +58,7 @@ Otherwise, please accept our apologies and ignore this message.
 """ % {'verification_link' : link, 'site_name' : settings.SITE_NAME }
 
         send_mail(email_subject, email_body, settings.FROM_ADDRESS, [unconfirmed.email])
+        return True
 
 class UploadPhotoForm(forms.Form):
     photo = forms.ImageField()
