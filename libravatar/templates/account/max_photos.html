@@ -1,5 +1,5 @@
 {% extends 'error.html' %}
 
 {% block errormessage %}
-You've got too many photos in your account.<br>You need to delete some before you can upload a new one.
+You've got too many photos in <a href="{% url libravatar.account.views.profile %}">your account</a>.<br>You need to <b>delete</b> some before you can upload a new one.
 {% endblock errormessage %}
