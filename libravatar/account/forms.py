@@ -63,7 +63,7 @@ class UploadPhotoForm(forms.Form):
         p.save(image)
 
 class PasswordResetForm(forms.Form):
-    email = forms.EmailField()
+    email = forms.EmailField(label="Email address")
 
     def save(self):
         if not self.cleaned_data['email']:
