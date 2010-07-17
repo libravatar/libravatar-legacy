@@ -48,17 +48,22 @@ def identica_photo(email):
         image_url = image_url.replace('-48-', '-96-')
 
     if image_url and screen_name:
-        return { 'image_url' : image_url, 'width' : 96, 'height' : 96,
-                 'service_url' : 'http://identi.ca/' + screen_name, 'service_name' : 'Identica' }
+        return {'thumbnail_url' : image_url, 'image_url' : image_url, 'width' : 96, 'height' : 96,
+                'service_url' : 'http://identi.ca/' + screen_name, 'service_name' : 'Identica'}
 
     return False
 
 def gravatar_photo(email):
-    image_url = 'http://www.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
+    thumbnail_url = 'http://www.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
+    image_url = 'http://www.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=512&d=404'
+
+    # Will redirect to the public profile URL if it exists
+    service_url = 'http://www.gravatar.com/' + md5(email.lower()).hexdigest()
 
     try:
         fh = urlopen(image_url)
     except HTTPError:
         return False
 
-    return { 'image_url' : image_url, 'width' : 80, 'height' : 80, 'service_name' : 'Gravatar' }
+    return {'thumbnail_url' : thumbnail_url, 'image_url' : image_url, 'width' : 80, 'height' : 80,
+            'service_url' : service_url, 'service_name' : 'Gravatar'}
