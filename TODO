@@ -29,6 +29,7 @@ Federation:
 - create a test avatars.debian.net server with db.people.org auth
 - add the ability for private/public images for each email address
    (i.e. internal images only displayed within company subnet)
+- create a pool of servers to serve libravatar.org (cdn-like)
 
 Ties to other free network services:
 - adbard.net support
@@ -81,6 +82,7 @@ Plugins/hooks:
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
    Drupal, Django, Moodle, Koha, Thunderbird
    (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
+- greasemonkey script to convert gravatar URLs to libravatar.org
 
 General Django app:
 - internationalization of the Django UI and localization to French
