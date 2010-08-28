@@ -50,6 +50,8 @@ Content licensing:
 - licenses can be specified by clients like the G/PG/X Gravatar
    ratings and an image is hardlinked into all of the directories that
    make sense for the license (e.g. CC-BY is also in CC-SA and CC-ND)
+- or perhaps licensing should be embedded into the files as EXIF comments
+   (http://q-funk.blogspot.com/2010/08/batch-editing-exif-data-to-add.html)
 
 Image resizing:
 - when writing a resized image, create hardlinks to all hashes by
