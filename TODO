@@ -30,6 +30,7 @@ Federation:
 - add the ability for private/public images for each email address
    (i.e. internal images only displayed within company subnet)
 - create a pool of servers to serve libravatar.org (cdn-like)
+   maybe using MirrorBrain (http://mirrorbrain.org/)
 
 Ties to other free network services:
 - adbard.net support
