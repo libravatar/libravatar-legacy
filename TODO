@@ -87,6 +87,7 @@ Plugins/hooks:
    (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
    and pfaces (https://projects.pekdon.net/projects/pfaces)
 - greasemonkey script to convert gravatar URLs to libravatar.org
+- gnus (http://julien.danjou.info/blog/index.html#Gnus_and_Gravatar_support)
 
 General Django app:
 - internationalization of the Django UI and localization to French
