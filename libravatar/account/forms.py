@@ -16,6 +16,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from hashlib import sha256
+import urllib
 
 from django import forms
 from django.core.mail import send_mail
@@ -87,7 +88,7 @@ class PasswordResetForm(forms.Form):
         key = password_reset_key(email.user)
 
         link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')
-        link += '?verification_key=%s&email_address=%s' % (key, email_address)
+        link += '?verification_key=%s&email_address=%s' % (key, urllib.quote_plus(email_address))
 
         email_subject = 'Password reset for %s' % settings.SITE_NAME
         email_body = """Someone, probably you, requested a password reset for your
