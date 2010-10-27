@@ -370,10 +370,10 @@ def password_reset_confirm(request):
     verification_key = None
     email_address = None
 
-    if request.GET['verification_key']:
+    if 'verification_key' in request.GET and request.GET['verification_key']:
         verification_key = request.GET['verification_key']
 
-    if request.GET['email_address']:
+    if 'email_address' in request.GET and request.GET['email_address']:
         email_address = request.GET['email_address']
 
     # Note: all validation errors return the same error message to
