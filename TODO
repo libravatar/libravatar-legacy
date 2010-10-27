@@ -13,8 +13,9 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- add https support to remove "unsafe content" warnings (but don't
-   redirect to Gravatar for that one) and add to tools/check/
+- add https redirect to https://secure.gravatar.com
+- add https support to remove "unsafe content" warnings
+   and add to tools/check/
 - add reasonable caching headers to images
 - find a way to set the mimetype to png when appropriate
    (using a mod_rewrite flag?)
