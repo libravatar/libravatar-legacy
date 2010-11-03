@@ -7,6 +7,10 @@
 
     Alias /avatar /home/francois/devel/remote/libravatar/avatar
 
+    # For secure SSL-based servers
+    #SSLEngine on
+    #SSLCertificateFile    /etc/apache2/ssl/secure.libravatar.org.pem
+
     RewriteEngine on
     #RewriteLogLevel 9
     #RewriteLog /tmp/rewrite.log
@@ -43,6 +47,14 @@
 
     RewriteCond %{HTTPS} off
     RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ http://www.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=http://%{SERVER_NAME}/img/nobody.png  [last,redirect]
+
+    RewriteCond %{HTTPS} on
+    RewriteCond %{QUERY_STRING} ^(?:.*&)?d(?:efault)?=([^&]+)(?:&.*)?$
+    RewriteCond %1 !^(identicon|monsterid|wavatar|mm)$
+    RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ https://secure.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=%1 [last,redirect,noescape]
+
+    RewriteCond %{HTTPS} on
+    RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ https://secure.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=https://%{SERVER_NAME}/img/nobody.png  [last,redirect]
 
     # Uploaded images
     #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
