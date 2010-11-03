@@ -12,6 +12,7 @@
     #SSLCertificateFile    /etc/apache2/ssl/secure.libravatar.org.pem
 
     RewriteEngine on
+    # For developers wanting to debug the rewrite rules
     #RewriteLogLevel 9
     #RewriteLog /tmp/rewrite.log
 
@@ -57,7 +58,7 @@
     RewriteRule  ^/avatar/([0-9]+)/([0-9a-f]{32})$ https://secure.gravatar.com/avatar/$2.jpg?r=g&s=$1&d=https://%{SERVER_NAME}/img/nobody.png  [last,redirect]
 
     # Uploaded images
-    #RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
+    # TODO: RewriteCond %{HTTP_REFERER} ^http://www.libravatar.org/
     RewriteRule ^/avatar/uploaded/([0-9a-f]+\.(jpg|png))$ /avatar/uploaded/$1 [passthrough]
 
     # Easter egg
