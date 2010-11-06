@@ -274,8 +274,8 @@ def crop_photo(request, photo_id=None):
         w = int(request.POST['w'])
         h = int(request.POST['h'])
         filename = '%s%s' % (settings.AVATAR_ROOT, photo.pathname())
-        crop(filename, photo.format, x, y, w, h)
-        auto_resize(filename, photo.format)
+        crop(filename, x, y, w, h)
+        auto_resize(filename)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
@@ -291,8 +291,8 @@ def auto_crop(request, photo_id=None):
                                  context_instance=RequestContext(request))
 
     filename = '%s%s' % (settings.AVATAR_ROOT, photo.pathname())
-    crop(filename, photo.format)
-    auto_resize(filename, photo.format)
+    crop(filename)
+    auto_resize(filename)
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @csrf_protect

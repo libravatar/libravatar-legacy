@@ -189,7 +189,7 @@ class ConfirmedEmail(models.Model):
 
             # Generate resized images for common sizes
             for size in settings.AVATAR_PREGENERATED_SIZES:
-                resized_filename = resized_avatar(self.public_hash('md5'), photo.format, size)
+                (resized_filename, format) = resized_avatar(self.public_hash('md5'), size)
                 
                 # TODO: these should go once it's automatically done in image.py
                 output_dir = settings.AVATAR_ROOT + '/%s/' % size
