@@ -17,11 +17,10 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from hashlib import md5, sha1, sha256
+import mimetypes
 from os import link, unlink, urandom, path
-from os.path import basename
 import string
 from urllib2 import urlopen
-from urlparse import urlparse
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -39,43 +38,43 @@ def delete_if_exists(filename):
 def password_reset_key(user):
     return sha256(user.username + user.password).hexdigest()
 
-def filename_format(pathname):
-    path = splitext(pathname)
-    if not path[1]:
-        print "WARN: cannot identify the remote image type: path=%s" % pathname
-        return DEFAULT_IMAGE_FORMAT
-
-    ext = string.lower(path[1])
-    if '.jpeg' == ext or '.jpg' == ext:
+def mimetype_format(mime_type):
+    if 'image/jpeg' == mime_type:
         return 'jpg'
-    elif 'png' == ext:
+    elif 'image/png' == mime_type:
         return 'png'
-
-    print "WARN: cannot identify the remote image type: extension=%s" % ext
-    return DEFAULT_IMAGE_FORMAT
+    return None
 
 def uploaded_image_format(image):
     '''
     Take an UploadedFile and guess its type (png or jpg)
     '''
-    if 'image/png' == image.content_type:
-        return 'png'
-    elif 'image/jpeg' == image.content_type:
-        return 'jpg'
-    else:
-        return filename_format(image.name)
+    # Check the mimetype sent by the browser
+    format = mimetype_format(image.content_type)
+    if format:
+        return format
+
+    # Fallback on the filename of the uploaded file
+    (mime_type, encoding) = mimetypes.guess_type(image.name)
+    format = mimetype_format(mime_type)
+    if format:
+        return format
+
+    print "WARN: cannot identify the remote image type: path=%s" % pathname
+    return DEFAULT_IMAGE_FORMAT
 
 def remote_image_format(image_url):
     '''
     Take an URL and extract the last part of it (without the
     query_string) and hope that it contains a file extension.
     '''
-    p = urlparse(image_url)
-    if not p:
-        print "WARN: cannot identify the remote image type: url=%s" % image_url
-        return DEFAULT_IMAGE_FORMAT
+    (mime_type, encoding) = mimetypes.guess_type(image_url)
+    format = mimetype_format(mime_type)
+    if format:
+        return format
 
-    return filename_format(p.path)
+    print "WARN: cannot identify the remote image type: url=%s" % image_url
+    return DEFAULT_IMAGE_FORMAT
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
