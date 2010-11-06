@@ -26,6 +26,15 @@ from django.template import RequestContext
 from libravatar import settings
 from libravatar.avatar import image
 
+def mimetype_format(file_extension):
+    if 'jpg' == file_extension:
+        return 'image/jpeg'
+    elif 'png' == file_extension:
+        return 'image/png'
+    else:
+        print "ERROR: invalid file format: %s" % file_extension
+        return 'image/png'
+
 def home(request):
     return render_to_response('public/home.html',
                               context_instance=RequestContext(request))
@@ -125,10 +134,12 @@ def resize(request):
     # Add a note to the logs to keep track of frequently requested sizes
     print '[RESIZE] %s px' % size
 
-    # Serve resized image
-    response = HttpResponse(mimetype='image/jpeg') # TODO: support png
+    format = 'jpg' # TODO: figure out the type of image by running 'file' over the file on disk?
 
-    resized_filename = image.resized_avatar(email_hash, size)
+    # Serve resized image
+    response = HttpResponse(mimetype=mimetype_format(format))
+
+    resized_filename = image.resized_avatar(email_hash, format, size)
     with open(resized_filename, 'rb') as resized_img:
         response.write(resized_img.read())
         resized_img.close()

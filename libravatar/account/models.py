@@ -18,7 +18,10 @@
 
 from hashlib import md5, sha1, sha256
 from os import link, unlink, urandom, path
+from os.path import basename
+import string
 from urllib2 import urlopen
+from urlparse import urlparse
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -27,12 +30,52 @@ from libravatar import settings
 from libravatar.account.external_photos import *
 from libravatar.avatar.image import resized_avatar
 
+DEFAULT_IMAGE_FORMAT = 'jpg'
+
 def delete_if_exists(filename):
     if path.isfile(filename):
         unlink(filename)
 
 def password_reset_key(user):
     return sha256(user.username + user.password).hexdigest()
+
+def filename_format(pathname):
+    path = splitext(pathname)
+    if not path[1]:
+        print "WARN: cannot identify the remote image type: path=%s" % pathname
+        return DEFAULT_IMAGE_FORMAT
+
+    ext = string.lower(path[1])
+    if '.jpeg' == ext or '.jpg' == ext:
+        return 'jpg'
+    elif 'png' == ext:
+        return 'png'
+
+    print "WARN: cannot identify the remote image type: extension=%s" % ext
+    return DEFAULT_IMAGE_FORMAT
+
+def uploaded_image_format(image):
+    '''
+    Take an UploadedFile and guess its type (png or jpg)
+    '''
+    if 'image/png' == image.content_type:
+        return 'png'
+    elif 'image/jpeg' == image.content_type:
+        return 'jpg'
+    else:
+        return filename_format(image.name)
+
+def remote_image_format(image_url):
+    '''
+    Take an URL and extract the last part of it (without the
+    query_string) and hope that it contains a file extension.
+    '''
+    p = urlparse(image_url)
+    if not p:
+        print "WARN: cannot identify the remote image type: url=%s" % image_url
+        return DEFAULT_IMAGE_FORMAT
+
+    return filename_format(p.path)
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
@@ -50,7 +93,7 @@ class Photo(models.Model):
         return 'uploaded/' + self.filename + '.' + self.format
 
     def save(self, image, force_insert=False, force_update=False):
-        self.format = 'jpg' # TODO: add support for PNG files too
+        self.format = uploaded_image_format(image)
         self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
         super(Photo, self).save(force_insert, force_update)
 
@@ -75,7 +118,7 @@ class Photo(models.Model):
         if not image_url:
             return False
 
-        self.format = 'jpg' # TODO: add support for PNG files too
+        self.format = remote_image_format(image_url)
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
@@ -147,7 +190,7 @@ class ConfirmedEmail(models.Model):
 
             # Generate resized images for common sizes
             for size in settings.AVATAR_PREGENERATED_SIZES:
-                resized_filename = resized_avatar(self.public_hash('md5'), size)
+                resized_filename = resized_avatar(self.public_hash('md5'), photo.format, size)
                 
                 # TODO: these should go once it's automatically done in image.py
                 output_dir = settings.AVATAR_ROOT + '/%s/' % size
