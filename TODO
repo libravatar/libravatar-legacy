@@ -14,8 +14,6 @@ Promotion (when we're ready):
 
 Apache config:
 - add reasonable caching headers to images
-- find a way to set the mimetype to png when appropriate
-   (using a mod_rewrite flag?)
 - nginx version of the Apache config files
 
 Federation:
@@ -72,7 +70,6 @@ Admin:
 
 Images:
 - sanity checks for uploaded images (to make sure it's a valid jpeg/png)
-- add support in the Django app for uploading PNGs
 - image importer for Twitter and Launchpad (need to specify username)
 - URL image downloader/importer
 - provide a gallery of built-in images, like these ones:
