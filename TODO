@@ -13,8 +13,9 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
+- serve application using mod_wsgi
 - add reasonable caching headers to images
-- nginx version of the Apache config files
+- split apps between secure (account) and www (public and tools)
 
 Federation:
 - ability to specify both http and https servers in SRV records
@@ -89,8 +90,9 @@ General Django app:
    (then add the templates to Launchpad to be widly translated)
 
 Secure image uploading:
-- upload image to temp dir and resize in Javascript
-- restrict serving that image to authenticated uploader
+- upload image to temp dir
+- crop/resize and move somewhere else (delete old non-cropped images on cron)
+- restrict serving both images to authenticated uploader
 - put the image into an "incoming" folder (/var/spool/libravatar?)
 - run optimisers/resizers as restricted UNIX user and then move image
    to a different "ready" folder
