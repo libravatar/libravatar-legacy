@@ -26,9 +26,9 @@ Apache Configuration
 
 Start by adding this to your /etc/hosts:
 
-  127.0.0.1 static.libravatar.org www.libravatar.org
+  127.0.0.1 www.libravatar.org secure.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
-Then copy config/apache2.sample to /etc/apache2/sites-enabled/ and restart
+Then copy config/*.conf to /etc/apache2/sites-enabled/ and restart
 Apache using "/etc/init.d/apache2 restart".
 
 

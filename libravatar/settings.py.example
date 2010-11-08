@@ -7,7 +7,7 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'libravatar.org'
-SITE_URL = 'http://libravatar.org'
+SITE_URL = 'http://www.libravatar.org'
 FROM_ADDRESS = 'accounts@libravatar.org'
 SUPPORT_EMAIL = 'support@libravatar.org'
 
@@ -45,11 +45,10 @@ USE_I18N = True
 # Example: "/home/libravatar/static/"
 MEDIA_ROOT = '%s/static/' % PROJECT_ROOT
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# URL that handles the static files served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
-# This will also be where libravatar images are stored.
-# Examples: "http://static.libravatar.org/", "http://avatars.mycompany.com/"
-MEDIA_URL = 'http://static.libravatar.org/'
+# Examples: "http://www.libravatar.org/", "http://static.mycompany.com/"
+MEDIA_URL = 'http://www.libravatar.org/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -111,11 +110,14 @@ INSTALLED_APPS = (
 LOGIN_URL = '/account/login'
 LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for authenticating ldap users
 
-AVATAR_URL = '%savatar/' % MEDIA_URL
+# Path where avatars are stored
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
+# URL where avatars are served
+AVATAR_URL = 'http://cdn.libravatar.org/avatar/'
 # Enable this if you can serve your avatars over https
-SECURE_AVATAR_URL = 'https://secure.libravatar.org/avatar/'
+SECURE_AVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
+#SECURE_AVATAR_URL = None
 
 AVATAR_DEFAULT_SIZE = 80
 AVATAR_MIN_SIZE = 1
