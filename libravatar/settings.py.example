@@ -9,6 +9,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 SITE_NAME = 'libravatar.org'
 SITE_URL = 'http://libravatar.org'
 FROM_ADDRESS = 'accounts@libravatar.org'
+SUPPORT_EMAIL = 'support@libravatar.org'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -113,6 +114,9 @@ LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for au
 AVATAR_URL = '%savatar/' % MEDIA_URL
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
+# Enable this if you can serve your avatars over https
+SECURE_AVATAR_URL = 'https://secure.libravatar.org/avatar/'
+
 AVATAR_DEFAULT_SIZE = 80
 AVATAR_MIN_SIZE = 1
 AVATAR_MAX_SIZE = 512
@@ -138,4 +142,3 @@ AUTH_LDAP_USER_PHOTO = 'jpegPhoto'
 
 # To prevent sign-up, for instance on an intranet relying on external authentication, set this to true:
 DISABLE_SIGNUP = False
-
