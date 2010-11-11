@@ -83,13 +83,13 @@ class Photo(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return settings.AVATAR_URL + self.pathname()
+        return settings.UPLOADED_FILES_URL + self.pathname()
 
     def upload_datetime(self):
         return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
 
     def pathname(self):
-        return 'uploaded/' + self.filename + '.' + self.format
+        return self.filename + '.' + self.format
 
     def save(self, image, force_insert=False, force_update=False):
         self.format = uploaded_image_format(image)
@@ -97,7 +97,7 @@ class Photo(models.Model):
         super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
-        dest_filename = settings.AVATAR_ROOT + self.pathname()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.pathname()
         with open(dest_filename, 'wb+') as destination:
             # TODO: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
             destination.write(image.read())
@@ -121,7 +121,7 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
-        dest_filename = settings.AVATAR_ROOT + self.pathname()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.pathname()
         image = urlopen(image_url)
 
         # Write file to disk
@@ -136,7 +136,7 @@ class Photo(models.Model):
         for email in ConfirmedEmail.objects.filter(photo=self):
             email.set_photo(None)
 
-        delete_if_exists(settings.AVATAR_ROOT + self.pathname())
+        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.pathname())
         super(Photo, self).delete()
 
 class ConfirmedEmail(models.Model):
@@ -182,7 +182,7 @@ class ConfirmedEmail(models.Model):
             delete_if_exists(size_dir + self.public_hash('sha256'))
 
         if photo is not None:
-            source_filename = settings.AVATAR_ROOT + photo.pathname()
+            source_filename = settings.UPLOADED_FILES_ROOT + photo.pathname()
             link(source_filename, md5_filename)
             link(source_filename, sha1_filename)
             link(source_filename, sha256_filename)
