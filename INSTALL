@@ -16,9 +16,21 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2
   
   apt-get install python-ldap
+
+
+Create your database
+---------------------
+
+Create a database user:
+
+  sudo -u postgres createuser djangouser
+
+Create a database:
+
+  sudo -u postgres createdb -O djangouser libravatar
 
 
 Apache Configuration
@@ -28,27 +40,26 @@ Start by adding this to your /etc/hosts:
 
   127.0.0.1 www.libravatar.org secure.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
+Enable mod_rewrite and mod_wsgi:
+
+  a2enmod rewrite
+  a2enmod wsgi
+
+Create an uploaded/ directory that's writable by the www-data user:
+
+  mkdir /home/francois/devel/remote/libravatar/uploaded
+  sudo chgrp www-data /home/francois/devel/remote/libravatar/uploaded
+  sudo chmod g+w /home/francois/devel/remote/libravatar/uploaded
+
+Similarly, an avatar/ directory that's writable by the www-data user:
+
+  mkdir /home/francois/devel/remote/libravatar/avatar
+  sudo chgrp www-data /home/francois/devel/remote/libravatar/avatar
+  sudo chmod g+w /home/francois/devel/remote/libravatar/avatar
+
 Then copy config/*.conf to /etc/apache2/sites-enabled/ and restart
 Apache using "/etc/init.d/apache2 restart".
 
-
-Starting the Django server:
-----------------------------
-
-In your project directory (e.g. /home/francois/devel/libravatar/), create the
-initial database:
-
-  cd libravatar
-  python manage.py syncdb
-
-then run the Django server:
-
-  python manage.py runserver
-
-and finally browse to http://localhost:8000 to use the site.
-
-Note that you will need to adjust a few paths in libravatar/settings.py in the
-(highly likely) case that you're not using the same working directory as me.
 
 Authenticating with an external LDAP server:
 ---------------------------------------------
