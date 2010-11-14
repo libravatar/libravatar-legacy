@@ -1,0 +1,44 @@
+Source: libravatar
+Section: web
+Priority: extra
+Maintainer: Francois Marier <francois@debian.org>
+Build-Depends: debhelper (>=8), python-support
+Standards-Version: 3.9.1
+Homepage: http://www.libravatar.org
+Vcs-bzr: http://bazaar.launchpad.net/~libravatar/libravatar/trunk
+Vcs-browser: http://codebrowse.launchpad.net/~libravatar/libravatar/trunk/changes
+
+Package: libravatar
+Architecture: all
+Depends: ${misc:Depends}, libravatar-www (=${source:Version}), libravatar-cdn (=${source:Version}), libravatar-seccdn (=${source:Version})
+Description: avatar image hosting - full install
+ This is a virtual package to install all of the components necessary to 
+ run a full Libravatar server on a single host.
+
+Package: libravatar-www
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python2.6, debconf
+XB-Python-Version: ${python:Versions}
+Description: avatar image hosting - main web application
+ Main Libravatar application for uploading images and associating
+ them with email addresses.
+
+Package: libravatar-cdn
+Architecture: all
+Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Description: avatar image hosting - mirror node 
+ Package for running a mirror of the Libravatar avatar images and
+ join the content delivery network.
+
+Package: libravatar-seccdn
+Architecture: all
+Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Description: avatar image hosting - https mirror node 
+ Package for running a mirror of the Libravatar avatar images and
+ join the content delivery network over https.
+
+Package: libravatar-common
+Architecture: all
+Depends: ${misc:Depends}, debconf
+Description: avatar image hosting - common files
+ Files needed by all of the different libravatar packages.

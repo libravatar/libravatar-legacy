@@ -1,0 +1,5 @@
+You will need to acquire the right SSL certificate files and
+manually place them here:
+
+  /etc/libravatar/seccdn.crt
+  /etc/libravatar/seccdn.pem

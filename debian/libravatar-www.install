@@ -1,0 +1,5 @@
+libravatar usr/share/libravatar
+static/css usr/share/libravatar/static
+static/js usr/share/libravatar/static
+config/www.apache2.conf etc/libravatar
+config/django.wsgi etc/libravatar

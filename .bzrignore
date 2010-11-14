@@ -1,4 +1,13 @@
 /avatar
+/debian/files
+/debian/libravatar
+/debian/libravatar-cdn
+/debian/libravatar-common
+/debian/libravatar-seccdn
+/debian/libravatar-www
+/debian/*.debhelper
+/debian/*.debhelper.log
+/debian/*.substvars
 /libravatar/libravatar.db
 /libravatar/settings.py
 /static/img/nobody/*.png

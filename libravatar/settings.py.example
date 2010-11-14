@@ -17,23 +17,27 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'postgresql_psycopg2'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'libravatar'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'djangouser'             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        "NAME": 'libravatar',                      # Or path to database file if using sqlite3.
+        "USER": 'djangouser',                      # Not used with sqlite3.
+        "PASSWORD": '',                  # Not used with sqlite3.
+        "HOST": '',                      # Set to empty string for localhost. Not used with sqlite3.
+        "PORT": '',
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Pacific/Auckland'
+TIME_ZONE = 'Etc/UTC'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-nz'
+LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -48,7 +52,7 @@ MEDIA_ROOT = '%s/static/' % PROJECT_ROOT
 # URL that handles the static files served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://www.libravatar.org/", "http://static.mycompany.com/"
-MEDIA_URL = 'http://www.libravatar.org/'
+MEDIA_URL = SITE_URL
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -112,7 +116,7 @@ LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for au
 
 # Path and URL for images uploaded by users
 UPLOADED_FILES_ROOT = '%s/uploaded/' % PROJECT_ROOT
-UPLOADED_FILES_URL = '%suploaded/' % MEDIA_URL
+UPLOADED_FILES_URL = '%s/uploaded/' % MEDIA_URL
 
 # Path where avatars are stored
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT

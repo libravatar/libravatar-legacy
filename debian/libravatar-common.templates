@@ -1,0 +1,24 @@
+Template: libravatar-common/wwwservername
+Type: string
+Default: www.libravatar.org
+Description: URL of the main service:
+ Please enter the URL of the main Libravatar service (without the "http://" part).
+
+Template: libravatar-common/cdnservername
+Type: string
+Default: cdn.libravatar.org
+Description: URL of the CDN server:
+ Please enter the URL of the content delivery network (without the "http://" part).
+
+Template: libravatar-common/seccdnservername
+Type: string
+Default: seccdn.libravatar.org
+Description: URL of the secure CDN server:
+ Please enter the URL of the https-based content delivery network (without the
+ "https://" part). This value is optional and can be left blank.
+
+Template: libravatar-common/webmasteremail
+Type: string
+Default: webmaster@libravatar.org
+Description: Webmaster email:
+ Please enter the email of the webmaster.

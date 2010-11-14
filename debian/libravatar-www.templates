@@ -1,0 +1,58 @@
+Template: libravatar-www/db_host
+Type: string
+Default:
+Description: Database host:
+ Database host to be used to connect to the site database.
+ You can leave this blank to connect via UNIX sockets
+
+Template: libravatar-www/db_port
+Type: string
+Default:
+Description: Database port:
+ Database port to be used to connect to the site database.
+ You can leave this blank for the default
+
+Template: libravatar-www/db_user
+Type: string
+Default: djangouser
+Description: Database username:
+ Username to use to connect to the site database.
+
+Template: libravatar-www/db_pass
+Type: string
+Default:
+Description: Database password:
+ Password to use to connect to the database.  By default, the database will be called
+ mahara-org-mahara, and will be accessed as the database user
+ mahara-org.
+
+Template: libravatar-www/db_name
+Type: string
+Default: libravatar
+Description: Database name:
+ Name of the database to use. By default, the database will be called
+ libravatar, and will be accessed as the database user
+ djangouser.
+
+Template: libravatar-www/sitename
+Type: string
+Default: Libravatar.org
+Description: Website name:
+ Please enter the name (not the URL) of this website.
+
+Template: libravatar-www/fromemail
+Type: string
+Default: accounts@libravatar.org
+Description: From address:
+ Address which emails to users will appear to come from.
+
+Template: libravatar-www/supportemail
+Type: string
+Default: support@libravatar.org
+Description: Support address:
+ Support account where users can send questions or support requests.
+
+Template: libravatar-www/secretkey
+Type: string
+Description: Django secret key:
+ Enter a long string of up to 50 random characters.

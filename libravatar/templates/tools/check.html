@@ -39,9 +39,9 @@ SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
   <li><a href="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}" alt=""></a><br>SHA1</li>
   <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt=""></a><br>SHA256</li>
   {% if secure_avatar_url %}
-  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt=""></a><br>MD5&nbsp;<img src="{{media_url}}img/https_lock.png" alt="https"></li>
-  <li><a href="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}" alt=""></a><br>SHA1&nbsp;<img src="{{media_url}}img/https_lock.png" alt="https"></li>
-  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt=""></a><br>SHA256&nbsp;<img src="{{media_url}}img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt=""></a><br>MD5&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}" alt=""></a><br>SHA1&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt=""></a><br>SHA256&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
   {% endif %}
 </ul>
 

@@ -1,0 +1,2 @@
+#!/bin/sh
+django-admin cleanup --settings=libravatar.settings --pythonpath=/usr/share/libravatar
