@@ -13,15 +13,15 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- serve application using mod_wsgi
 - add reasonable caching headers to images
+- support dynamic resizing of images delivered over https
 - split apps between secure (account) and www (public and tools)
 
 Federation:
 - ability to specify both http and https servers in SRV records
    https://secure.wikimedia.org/wikipedia/en/wiki/SRV_record
-- write a PHP? library for doing the DNS lookup before using
-   libravatar.org
+- write a Perl library for doing the DNS lookup before using
+   libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
 - create a test avatars.catalyst.net.nz server 
 - create a test avatars.debian.net server with db.people.org auth
 - add the ability for private/public images for each email address
@@ -67,6 +67,7 @@ User sovereignty:
    addresses will need to be re-validated presumably)
 
 Admin:
+- capture IP addresses on account creation and add_email
 - control page to review all new images (to prevent porn?)
 
 Images:
