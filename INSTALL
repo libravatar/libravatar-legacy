@@ -40,25 +40,29 @@ Start by adding this to your /etc/hosts:
 
   127.0.0.1 www.libravatar.org secure.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
-Enable mod_rewrite and mod_wsgi:
+Enable mod_alias, mod_rewrite and mod_wsgi:
 
+  a2enmod alias
   a2enmod rewrite
   a2enmod wsgi
 
 Create an uploaded/ directory that's writable by the www-data user:
 
-  mkdir /home/francois/devel/remote/libravatar/uploaded
-  sudo chgrp www-data /home/francois/devel/remote/libravatar/uploaded
-  sudo chmod g+w /home/francois/devel/remote/libravatar/uploaded
+  mkdir /var/lib/libravatar/uploaded
+  sudo chgrp www-data /var/lib/libravatar/uploaded
+  sudo chmod g+w /var/lib/libravatar/uploaded
 
 Similarly, an avatar/ directory that's writable by the www-data user:
 
-  mkdir /home/francois/devel/remote/libravatar/avatar
-  sudo chgrp www-data /home/francois/devel/remote/libravatar/avatar
-  sudo chmod g+w /home/francois/devel/remote/libravatar/avatar
+  mkdir /var/lib/libravatar/avatar
+  sudo chgrp www-data /var/lib/libravatar/avatar
+  sudo chmod g+w /var/lib/libravatar/avatar
 
-Then copy config/*.conf to /etc/apache2/sites-enabled/ and restart
-Apache using "/etc/init.d/apache2 restart".
+Then copy config/*.conf to /etc/apache2/sites-enabled/, adjust the
+path to the cdn-common include file and restart Apache using:
+
+  apache2ctl configtest
+  apache2ctl restart
 
 
 Authenticating with an external LDAP server:

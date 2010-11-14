@@ -45,7 +45,7 @@ case "$1" in
             sed -i -e "s/${MARKER}/${RET}/g" ${APACHE_CONFIG}.working
         done
 
-        mv ${APACHE_CONFIG}.working ${APACHE_CONFIG}
+        mv ${APACHE_CONFIG}.working /etc/libravatar/cdn-common.include
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
