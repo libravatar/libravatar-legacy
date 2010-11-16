@@ -1,4 +1,5 @@
 Branding/homepage:
+- add an abuse form for reporting inappropriate content to abuse@
 - find a good logo (maybe something based on this:
    http://commons.wikimedia.org/wiki/File:Peace_dove.svg or a butterfly ?)
 - make a collage of the user photos in the shape of libravatar logo
@@ -13,7 +14,7 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- add reasonable caching headers to images
+- enforce referer of www.libravatar.org on /uploaded/*
 - support dynamic resizing of images delivered over https
 - split apps between secure (account) and www (public and tools)
 
@@ -68,7 +69,8 @@ User sovereignty:
 
 Admin:
 - capture IP addresses on account creation and add_email
-- control page to review all new images (to prevent porn?)
+- control page to lookup images/profiles based on a hash
+- ability to disable a profile (which deletes all email -> photo associations)
 
 Images:
 - sanity checks for uploaded images (to make sure it's a valid jpeg/png)
