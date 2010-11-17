@@ -27,6 +27,7 @@ def basepage(request):
     context["avatar_url"] = settings.AVATAR_URL
     context["secure_avatar_url"] = settings.SECURE_AVATAR_URL
     context["media_url"] = settings.MEDIA_URL
+    context["site_url"] = settings.SITE_URL
     context["disable_signup"] = settings.DISABLE_SIGNUP
     return context
 
