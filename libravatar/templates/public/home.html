@@ -8,13 +8,26 @@
 <p>You are most likely looking for one of these pages:</p>
 <ul>
   {% if not user.is_authenticated %}
-  <li><a href="{% url django.contrib.auth.views.login %}">Login</a>{% if not disable_signup %} (or <a href="{% url libravatar.account.views.new %}">sign-up</a> for an account){% endif %}</li>
+  <li><a href="{% url django.contrib.auth.views.login %}">Login</a>{% if not disable_signup %} (or <a href="{% url libravatar.account.views.new %}">sign-up</a> for a free account){% endif %}</li>
   {% else %}
   <li><a href="{% url libravatar.account.views.profile %}">View your profile</a></li>
   {% endif %}
   <li>Do a lookup on an <a href="{% url libravatar.tools.views.check %}">email address</a> or a <a href="{% url libravatar.tools.views.check_domain %}">domain name</a></li>
+  </ul>
+
+<p>or wanting to do one of these things:</p>
+<ul>
+  <li>File bugs on <a href="https://bugs.launchpad.net/libravatar">Launchpad</a></li>
+  <li>Follow us on <a href="http://identi.ca/libravatar">Identica</a>!</li>
 </ul>
 
-<p>Did you know that Libravatar is released under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>? This means that as a user accessing the site remotely, you are entitled to receive the <a href="https://code.launchpad.net/libravatar">complete source code</a> for the software. How cool is that!</p>
+<p>Did you know that Libravatar is released under the <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License</a>? This means that as a user accessing the site remotely, you are entitled to receive the <a href="https://code.launchpad.net/libravatar">complete source code</a> for the software.</p>
+
+<p>Also big thanks to our sponsors without whom none of this would be possible!</p>
+
+<div id="sponsors">
+  <a href="http://www.braawi.com"><img src="{{media_url}}/img/braawi_logo.png" border="0" width="140" height="140"></a>
+  <a href="http://www.branchable.com"><img src="{{media_url}}/img/branchable.png" border="0" width="150" height="175"></a>
+</div>
 
 {% endblock content %}

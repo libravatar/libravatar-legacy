@@ -12,9 +12,21 @@ div#header div#site-branding span#site-name {
   letter-spacing: 0.35em;
 }
 
+div#header div#site-branding span#not-yet-ready { 
+  color: #F9711F;
+  font-style: bold;
+  font-size: 1.5em;
+}
+
+div#header div#logo {
+  float: left;
+  margin: 0 1em 0 0;
+}
+
 div#header div#site-branding {
   color: #7DB5A6;
   font-style: italic;
+  float: left;
 }
 
 div#content h1 { 
@@ -46,7 +58,8 @@ div#footer a {
   font-weight: bold;
 }
 
-div#header { 
+div#header {
+  height: 54;
   padding: 8 8 16 8;
 }
 
@@ -114,4 +127,12 @@ ul.conditions {
   -webkit-padding-start: 0;
   list-style-type: none;
   margin: 0;
+}
+
+div#sponsors {
+  text-align: center;
+}
+
+div#sponsors img {
+  padding: 1em;
 }

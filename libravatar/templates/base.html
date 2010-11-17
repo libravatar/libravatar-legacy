@@ -7,8 +7,14 @@
 <body>
 
 <div id="header">
+  <div>
+  <div id="logo">
+    <img src="{{media_url}}/img/nobody/60.jpg" height="60" width="60" alt="">
+  </div>
   <div id="site-branding">
-    <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span><br>freeing the web one face at a time
+    <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span>
+    <span id="not-yet-ready">alpha</span><br>freeing the web one face at a time
+  </div>
   </div>
   <div id="account">
     {% if user.is_authenticated %}
