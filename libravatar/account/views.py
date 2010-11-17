@@ -80,6 +80,7 @@ def confirm_email(request):
     # TODO: check for a reasonable expiration time
     confirmed = ConfirmedEmail()
     confirmed.user = unconfirmed.user
+    confirmed.ip_address = request.META['REMOTE_ADDR']
     confirmed.email = unconfirmed.email
     confirmed.save()
 
@@ -120,17 +121,19 @@ def import_photo(request, user_id):
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
+
         photos_imported = False
         if 'photo_Identica' in request.POST:
             p = Photo()
             p.user = user
+            p.ip_address = request.META['REMOTE_ADDR']
             if p.import_image('Identica', email.email):
                 photos_imported = True
 
         if 'photo_Gravatar' in request.POST:
-            print 'gravatar'
             p = Photo()
             p.user = user
+            p.ip_address = request.META['REMOTE_ADDR']
             if p.import_image('Gravatar', email.email):
                 photos_imported = True
 
@@ -249,7 +252,7 @@ def upload_photo(request):
                 return render_to_response('account/photo_toobig.html', { 'max_size' : settings.MAX_PHOTO_SIZE },
                                           context_instance=RequestContext(request))
 
-            form.save(request.user, photo_data)
+            form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
     else:
         form = UploadPhotoForm()

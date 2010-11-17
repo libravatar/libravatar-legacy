@@ -68,7 +68,6 @@ User sovereignty:
    addresses will need to be re-validated presumably)
 
 Admin:
-- capture IP addresses on account creation and add_email
 - control page to lookup images/profiles based on a hash
 - ability to disable a profile (which deletes all email -> photo associations)
 

@@ -30,6 +30,7 @@ from libravatar.account.external_photos import *
 from libravatar.avatar.image import resized_avatar
 
 DEFAULT_IMAGE_FORMAT = 'jpg'
+MAX_LENGTH_IPV6 = 45 # http://stackoverflow.com/questions/166132
 
 def delete_if_exists(filename):
     if path.isfile(filename):
@@ -78,6 +79,7 @@ def remote_image_format(image_url):
 
 class Photo(models.Model):
     user = models.ForeignKey(User)
+    ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     filename = models.CharField(max_length=64) # sha256 hash is 64 characters
     format = models.CharField(max_length=3) # png or jpg
     add_date = models.DateTimeField(auto_now_add=True)
@@ -141,6 +143,7 @@ class Photo(models.Model):
 
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User)
+    ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     email = models.EmailField(unique=True)
     photo = models.ForeignKey(Photo, blank=True, null=True)
     add_date = models.DateTimeField(auto_now_add=True)

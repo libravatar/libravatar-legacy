@@ -66,10 +66,11 @@ class UploadPhotoForm(forms.Form):
     not_porn = forms.BooleanField(required=True, label='suitable for all ages (i.e. no offensive content)')
     can_distribute = forms.BooleanField(required=True, label='can be freely copied')
 
-    def save(self, user, image):
+    def save(self, user, ip_address, image):
         # Link this file to the user's profile
         p = Photo()
         p.user = user
+        p.ip_address = ip_address
         p.save(image)
 
 class PasswordResetForm(forms.Form):
