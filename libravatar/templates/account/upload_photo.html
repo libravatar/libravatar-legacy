@@ -8,7 +8,7 @@
 <form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">{% csrf_token %}
 
 {{ form.photo.errors }}
-<p class="aligned wide">{{ form.photo.label_tag }}: {{ form.photo }}</p>
+<p class="aligned wide">{{ form.photo.label_tag }}: {{ form.photo }}<br>Maximum file size of {{max_file_size|filesizeformat}}.</p>
 
 <ul class="conditions">
   <li>{{form.not_porn.errors}}{{form.not_porn}} <label for="id_not_porn">{{form.not_porn.label}}</label></li>

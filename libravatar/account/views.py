@@ -38,9 +38,6 @@ from libravatar.avatar.image import crop, auto_resize
 import os
 from StringIO import StringIO
 
-MAX_NUM_PHOTOS = 5
-MAX_PHOTO_SIZE = 2516582 # in bytes
-
 @csrf_protect
 def new(request):
     if settings.DISABLE_SIGNUP:
@@ -183,7 +180,7 @@ def profile(request):
     confirmed = ConfirmedEmail.objects.filter(user=u)
     unconfirmed = UnconfirmedEmail.objects.filter(user=u)
     photos = Photo.objects.filter(user=u)
-    max_photos = len(photos) >= MAX_NUM_PHOTOS
+    max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
     return render_to_response('account/profile.html',
         { 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
           'photos' : photos, 'max_photos' : max_photos},
@@ -241,15 +238,15 @@ def remove_unconfirmed_email(request, email_id):
 @login_required
 def upload_photo(request):
     num_photos = Photo.objects.filter(user=request.user).count()
-    if num_photos >= MAX_NUM_PHOTOS:
+    if num_photos >= settings.MAX_NUM_PHOTOS:
         return render_to_response('account/max_photos.html', context_instance=RequestContext(request))
 
     if request.method == 'POST':
         form = UploadPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             photo_data = request.FILES['photo']
-            if photo_data.size > MAX_PHOTO_SIZE:
-                return render_to_response('account/photo_toobig.html', { 'max_size' : MAX_PHOTO_SIZE },
+            if photo_data.size > settings.MAX_PHOTO_SIZE:
+                return render_to_response('account/photo_toobig.html', { 'max_size' : settings.MAX_PHOTO_SIZE },
                                           context_instance=RequestContext(request))
 
             form.save(request.user, photo_data)
@@ -257,7 +254,7 @@ def upload_photo(request):
     else:
         form = UploadPhotoForm()
 
-    return render_to_response('account/upload_photo.html', { 'form': form },
+    return render_to_response('account/upload_photo.html', {'form': form, 'max_file_size' : settings.MAX_PHOTO_SIZE},
                               context_instance=RequestContext(request))
 
 @csrf_protect
