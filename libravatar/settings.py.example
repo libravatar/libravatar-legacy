@@ -141,7 +141,7 @@ MAX_NUM_PHOTOS = 4
 # Maximum file size for each photo
 MAX_PHOTO_SIZE = 1048576 # in bytes
 
-DEFAULT_PHOTO = 'nobody.png'
+DEFAULT_PHOTO = 'nobody.jpg'
 LIBRAVATAR_VERSION = '0.1'
 TXT_VERSION = 'avatars1' # For DNS-based federation
 
