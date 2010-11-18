@@ -22,14 +22,14 @@ Default useful variables for the base page template.
 """
 def basepage(request):
     context = {}
-    context["site_name"] = settings.SITE_NAME
-    context["libravatar_version"] = settings.LIBRAVATAR_VERSION
-    context["avatar_url"] = settings.AVATAR_URL
-    context["secure_avatar_url"] = settings.SECURE_AVATAR_URL
-    context["media_url"] = settings.MEDIA_URL
-    context["site_url"] = settings.SITE_URL
-    context["disable_signup"] = settings.DISABLE_SIGNUP
-    context["analytics_propertyid"] = settings.ANALYTICS_PROPERTYID
+    context['analytics_propertyid'] = settings.ANALYTICS_PROPERTYID
+    context['avatar_url'] = settings.AVATAR_URL
+    context['disable_signup'] = settings.DISABLE_SIGNUP
+    context['libravatar_version'] = settings.LIBRAVATAR_VERSION
+    context['media_url'] = settings.MEDIA_URL
+    context['secure_avatar_url'] = settings.SECURE_AVATAR_URL
+    context['site_name'] = settings.SITE_NAME
+    context['site_url'] = settings.SITE_URL
     context['support_email'] = settings.SUPPORT_EMAIL
     return context
 
