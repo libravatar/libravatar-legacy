@@ -143,6 +143,10 @@ DEFAULT_PHOTO = 'nobody.jpg'
 LIBRAVATAR_VERSION = '0.1'
 TXT_VERSION = 'avatars1' # For DNS-based federation
 
+# If you want to enable non-free tracking of users
+# TODO: switch to a FaiF service
+ANALYTICS_PROPERTYID = ''
+
 # LDAP Authentication
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"

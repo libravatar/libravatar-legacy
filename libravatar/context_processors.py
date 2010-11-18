@@ -29,5 +29,6 @@ def basepage(request):
     context["media_url"] = settings.MEDIA_URL
     context["site_url"] = settings.SITE_URL
     context["disable_signup"] = settings.DISABLE_SIGNUP
+    context["analytics_propertyid"] = settings.ANALYTICS_PROPERTYID
     return context
 
