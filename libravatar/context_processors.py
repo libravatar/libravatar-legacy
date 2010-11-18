@@ -30,5 +30,6 @@ def basepage(request):
     context["site_url"] = settings.SITE_URL
     context["disable_signup"] = settings.DISABLE_SIGNUP
     context["analytics_propertyid"] = settings.ANALYTICS_PROPERTYID
+    context['support_email'] = settings.SUPPORT_EMAIL
     return context
 
