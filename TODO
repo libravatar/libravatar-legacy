@@ -39,7 +39,8 @@ Storage:
 - write an S3 backend
 - write a file backend on a different server
 
-Gearman:
+Queuing:
+- maybe use celeryproject.org (Django decorator)
 - image optimisation/resizing/copying to happen via workers so that it
    can be scaled easily as demand increases
 
@@ -77,6 +78,8 @@ Images:
 - URL image downloader/importer
 - provide a gallery of built-in images, like these ones:
    http://www.isity.net/blog/?p=65
+- implement unique wavatar-like images so that people without a photo
+   don't all look the same
 
 Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
@@ -86,6 +89,7 @@ Plugins/hooks:
    and pfaces (https://projects.pekdon.net/projects/pfaces)
 - greasemonkey script to convert gravatar URLs to libravatar.org
 - gnus (http://julien.danjou.info/blog/index.html#Gnus_and_Gravatar_support)
+- use Facebook / Twitter API to change profile pictures there too
 
 General Django app:
 - internationalization of the Django UI and localization to French
@@ -103,3 +107,6 @@ Secure image uploading:
 
 CLI admin interface:
 - using Commandant (https://launchpad.net/commandant)
+
+Sysadmin stuff:
+- use Puppet for all server config
