@@ -85,7 +85,7 @@ Images:
 Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
-   Drupal, Django, Moodle, Koha, ikiwiki, Thunderbird
+   Drupal, Django, Moodle, Koha, ikiwiki, wikkid, Thunderbird
    (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
    and pfaces (https://projects.pekdon.net/projects/pfaces)
 - greasemonkey script to convert gravatar URLs to libravatar.org
