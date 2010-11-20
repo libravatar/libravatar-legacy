@@ -74,6 +74,7 @@ Admin:
 
 Images:
 - sanity checks for uploaded images (to make sure it's a valid jpeg/png)
+- image importer from gpg key servers for embedded photos
 - image importer for Twitter and Launchpad (need to specify username)
 - URL image downloader/importer
 - provide a gallery of built-in images, like these ones:
