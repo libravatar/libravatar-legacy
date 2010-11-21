@@ -1,3 +1,9 @@
+libravatar (20101121.1) unstable; urgency=low
+
+  * Small fixes to the redirections to Gravatar
+
+ -- Francois Marier <francois@debian.org>  Sun, 21 Nov 2010 15:23:16 +1300
+
 libravatar (20101118.1) unstable; urgency=low
 
   * Initial version
