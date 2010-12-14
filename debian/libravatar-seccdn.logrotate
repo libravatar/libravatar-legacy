@@ -1,0 +1,15 @@
+/var/log/libravatar/access-seccdn.log {
+     create 644 www-data www-data
+     rotate 12
+     weekly
+     compress
+     missingok
+}
+
+/var/log/libravatar/error-seccdn.log {
+     create 644 www-data www-data
+     rotate 12
+     weekly
+     compress
+     missingok
+}
