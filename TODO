@@ -25,7 +25,9 @@ Federation:
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
 - create a test avatars.catalyst.net.nz server 
-- create a test avatars.debian.net server with db.people.org auth
+- create a test mugshots.debian.net server with db.people.org auth
+   http://liw.iki.fi/liw/log/2006-11.html#20061127b
+   http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
 - add the ability for private/public images for each email address
    (i.e. internal images only displayed within company subnet)
 - create a pool of servers to serve libravatar.org (cdn-like)
