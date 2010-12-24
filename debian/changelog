@@ -1,3 +1,9 @@
+libravatar (20101224.1) unstable; urgency=low
+
+  * Add Adbard to the homepage
+
+ -- Francois Marier <francois@debian.org>  Fri, 24 Dec 2010 14:21:08 +1300
+
 libravatar (20101214.1) unstable; urgency=low
 
   * Logrotate the Apache log files
