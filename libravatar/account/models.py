@@ -61,7 +61,7 @@ def uploaded_image_format(image):
     if format:
         return format
 
-    print "WARN: cannot identify the remote image type: path=%s" % pathname
+    print "WARN: cannot identify the remote image type: path=%s" % image.name
     return DEFAULT_IMAGE_FORMAT
 
 def remote_image_format(image_url):
@@ -85,12 +85,12 @@ class Photo(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return settings.UPLOADED_FILES_URL + self.pathname()
+        return settings.UPLOADED_FILES_URL + self.filename()
 
     def upload_datetime(self):
         return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
 
-    def pathname(self):
+    def filename(self):
         return self.filename + '.' + self.format
 
     def save(self, image, force_insert=False, force_update=False):
@@ -99,9 +99,9 @@ class Photo(models.Model):
         super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
-        dest_filename = settings.UPLOADED_FILES_ROOT + self.pathname()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.filename()
         with open(dest_filename, 'wb+') as destination:
-            # TODO: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
+            # FIXME: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
             destination.write(image.read())
 
     def import_image(self, service_name, email_address):
@@ -123,7 +123,7 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
-        dest_filename = settings.UPLOADED_FILES_ROOT + self.pathname()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.filename()
         image = urlopen(image_url)
 
         # Write file to disk
@@ -138,7 +138,7 @@ class Photo(models.Model):
         for email in ConfirmedEmail.objects.filter(photo=self):
             email.set_photo(None)
 
-        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.pathname())
+        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.filename())
         super(Photo, self).delete()
 
 class ConfirmedEmail(models.Model):
@@ -185,7 +185,7 @@ class ConfirmedEmail(models.Model):
             delete_if_exists(size_dir + self.public_hash('sha256'))
 
         if photo is not None:
-            source_filename = settings.UPLOADED_FILES_ROOT + photo.pathname()
+            source_filename = settings.UPLOADED_FILES_ROOT + photo.filename()
             link(source_filename, md5_filename)
             link(source_filename, sha1_filename)
             link(source_filename, sha256_filename)

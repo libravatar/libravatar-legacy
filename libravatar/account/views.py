@@ -171,7 +171,7 @@ def successfully_authenticated(request):
             p = Photo()
             p.user = request.user
             p.save(image)
-            ppath = '%s%s' % (settings.UPLOADED_FILES_ROOT, p.pathname())
+            ppath = '%s%s' % (settings.UPLOADED_FILES_ROOT, p.filename())
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -273,7 +273,7 @@ def crop_photo(request, photo_id=None):
         y = int(request.POST['y'])
         w = int(request.POST['w'])
         h = int(request.POST['h'])
-        filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.pathname())
+        filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.filename())
         crop(filename, x, y, w, h)
         auto_resize(filename)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -290,7 +290,7 @@ def auto_crop(request, photo_id=None):
        return render_to_response('account/email_notowner.html',
                                  context_instance=RequestContext(request))
 
-    filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.pathname())
+    filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.filename())
     crop(filename)
     auto_resize(filename)
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
