@@ -1,3 +1,9 @@
+libravatar (20101228.1) unstable; urgency=low
+
+  * Rename uploaded files after they're cropped
+
+ -- Francois Marier <francois@debian.org>  Tue, 28 Dec 2010 14:13:54 +1300
+
 libravatar (20101224.1) unstable; urgency=low
 
   * Add Adbard to the homepage
