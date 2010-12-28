@@ -27,7 +27,4 @@ urlpatterns = patterns('',
     (r'^$', 'libravatar.public.views.home'),
     (r'^resize/', 'libravatar.public.views.resize'),
     (r'^resolve/', 'libravatar.public.views.resolve'),
-
-    (r'^admin/', include(admin.site.urls)),
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
