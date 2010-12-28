@@ -36,15 +36,11 @@ class AddEmailForm(forms.Form):
 
         # Check whether or not a confirmation email has been sent by this user already
         if UnconfirmedEmail.objects.filter(user=user, email=self.cleaned_data['email']).exists():
-            return False # No email will be sent
+            return False
 
         # Check whether or not the email is already confirmed by someone
-        try:
-            ConfirmedEmail.objects.get(email=self.cleaned_data['email'])
-        except ConfirmedEmail.DoesNotExist:
-            pass # All good, we'll send the email
-        else:
-            return False # No email will be sent
+        if ConfirmedEmail.objects.filter(email=self.cleaned_data['email']).exists():
+            return False
 
         unconfirmed = UnconfirmedEmail()
         unconfirmed.email = self.cleaned_data['email']
