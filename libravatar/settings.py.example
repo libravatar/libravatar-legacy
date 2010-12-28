@@ -138,6 +138,9 @@ AVATAR_MAX_SIZE = 512
 # Mahara uses 20, 40 and 50
 AVATAR_PREGENERATED_SIZES = [80]
 
+# The maximum number of unconfirmed email addresses per profile
+MAX_NUM_UNCONFIRMED_EMAILS = 10
+
 # The maximum number of photos per profile
 MAX_NUM_PHOTOS = 4
 # Maximum file size for each photo

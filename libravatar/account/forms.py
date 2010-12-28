@@ -29,10 +29,14 @@ class AddEmailForm(forms.Form):
     email = forms.EmailField()
 
     def save(self, user):
-        unconfirmed = UnconfirmedEmail()
-        unconfirmed.email = self.cleaned_data['email']
-        unconfirmed.user = user
-        unconfirmed.save()
+        # Enforce the maximum number of unconfirmed emails a user can have
+        num_unconfirmed = UnconfirmedEmail.objects.filter(user=user).count()
+        if num_unconfirmed >= settings.MAX_NUM_UNCONFIRMED_EMAILS:
+            return False
+
+        # Check whether or not a confirmation email has been sent by this user already
+        if UnconfirmedEmail.objects.filter(user=user, email=self.cleaned_data['email']).exists():
+            return False # No email will be sent
 
         # Check whether or not the email is already confirmed by someone
         try:
@@ -41,6 +45,11 @@ class AddEmailForm(forms.Form):
             pass # All good, we'll send the email
         else:
             return False # No email will be sent
+
+        unconfirmed = UnconfirmedEmail()
+        unconfirmed.email = self.cleaned_data['email']
+        unconfirmed.user = user
+        unconfirmed.save()
 
         link = settings.SITE_URL + reverse('libravatar.account.views.confirm_email') + '?verification_key=' + unconfirmed.verification_key
 

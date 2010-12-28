@@ -199,7 +199,10 @@ def add_email(request):
     if request.method == 'POST':
         form = AddEmailForm(request.POST)
         if form.is_valid():
-            form.save(request.user);
+            if not form.save(request.user):
+                return render_to_response('account/email_notadded.html',
+                                          {'max_emails' : settings.MAX_NUM_UNCONFIRMED_EMAILS},
+                                          context_instance=RequestContext(request))
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
     else:
         form = AddEmailForm()
