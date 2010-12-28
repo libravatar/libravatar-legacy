@@ -120,9 +120,11 @@ def import_photo(request, user_id):
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
-
+        photos_to_import = False # are there photos to import at all?
         photos_imported = False
+
         if 'photo_Identica' in request.POST:
+            photos_to_import = True
             p = Photo()
             p.user = user
             p.ip_address = request.META['REMOTE_ADDR']
@@ -130,6 +132,7 @@ def import_photo(request, user_id):
                 photos_imported = True
 
         if 'photo_Gravatar' in request.POST:
+            photos_to_import = True
             p = Photo()
             p.user = user
             p.ip_address = request.META['REMOTE_ADDR']
@@ -139,7 +142,7 @@ def import_photo(request, user_id):
         if photos_imported:
             return render_to_response('account/photos_imported.html',
                                       context_instance=RequestContext(request))
-        else:
+        elif photos_to_import:
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
