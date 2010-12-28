@@ -1,3 +1,12 @@
+libravatar (20101228.3) unstable; urgency=low
+
+  * Fix various small errors
+  * Add a per account limit for unconfirmed email addresses
+  * Provide a missing image instead of 404 in /user/
+  * Sort photos and email addresses
+
+ -- Francois Marier <francois@debian.org>  Tue, 28 Dec 2010 22:44:20 +1300
+
 libravatar (20101228.2) unstable; urgency=low
 
   * Fix bug with pre-generated sizes
