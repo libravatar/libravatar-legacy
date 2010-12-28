@@ -99,6 +99,7 @@ Plugins/hooks:
 - use Facebook / Twitter API to change profile pictures there too
 
 General Django app:
+- set the keyboard focus on the default field of each form
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
 
