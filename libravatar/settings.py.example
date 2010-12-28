@@ -116,6 +116,10 @@ LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for au
 UPLOADED_FILES_ROOT = '%s/uploaded/' % PROJECT_ROOT
 UPLOADED_FILES_URL = '%s/uploaded/' % MEDIA_URL
 
+# Path and URL for images uploaded by users and ready to be served
+USER_FILES_ROOT = '%s/user/' % PROJECT_ROOT
+USER_FILES_URL = '%s/user/' % MEDIA_URL
+
 # Path where avatars are stored
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
