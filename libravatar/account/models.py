@@ -1,5 +1,6 @@
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
+#                     Brett Wilkins <bushido.katana@gmail.com>
 #
 # This file is part of Libravatar
 # 
@@ -17,6 +18,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from hashlib import md5, sha1, sha256
+import Image
 import mimetypes
 from os import link, unlink, urandom, path
 import string
@@ -27,7 +29,7 @@ from django.contrib.auth.models import User
 
 from libravatar import settings
 from libravatar.account.external_photos import *
-from libravatar.avatar.image import resized_avatar
+from libravatar.public.views import resized_avatar
 
 DEFAULT_IMAGE_FORMAT = 'jpg'
 MAX_LENGTH_IPV6 = 45 # http://stackoverflow.com/questions/166132
@@ -85,12 +87,15 @@ class Photo(models.Model):
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
-        return settings.UPLOADED_FILES_URL + self.filename()
+        return settings.USER_FILES_URL + self.full_filename()
+
+    def uploaded_pathname(self):
+        return settings.UPLOADED_FILES_URL + self.full_filename()
 
     def upload_datetime(self):
         return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
 
-    def filename(self):
+    def full_filename(self):
         return self.filename + '.' + self.format
 
     def save(self, image, force_insert=False, force_update=False):
@@ -99,7 +104,7 @@ class Photo(models.Model):
         super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
-        dest_filename = settings.UPLOADED_FILES_ROOT + self.filename()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
         with open(dest_filename, 'wb+') as destination:
             # FIXME: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
             destination.write(image.read())
@@ -123,7 +128,7 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
         super(Photo, self).save()
 
-        dest_filename = settings.UPLOADED_FILES_ROOT + self.filename()
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
         image = urlopen(image_url)
 
         # Write file to disk
@@ -138,8 +143,32 @@ class Photo(models.Model):
         for email in ConfirmedEmail.objects.filter(photo=self):
             email.set_photo(None)
 
-        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.filename())
+        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
+        delete_if_exists(settings.USER_FILES_ROOT + self.full_filename())
         super(Photo, self).delete()
+
+    def crop(self, x=0, y=0, w=0, h=0):
+        img = Image.open(settings.UPLOADED_FILES_ROOT + self.full_filename())
+        junk, junk, a, b = img.getbbox()
+
+        if w == 0 and h == 0:
+            w,h = a,b
+            i = min(w,h)
+            w,h = i,i
+        elif w < 0 or x+w > a or h < 0 or y+h > b:
+            raise ValueError('crop dimensions outside of original image bounding box')
+
+        cropped = img.crop((x, y, x+w, y+h))
+        cropped.load()
+
+        # Resize the image only if it's larger than the specified max width.
+        cropped_w, cropped_h = cropped.size
+        max_w=settings.AVATAR_MAX_SIZE
+        if cropped_w > max_w or cropped_h > max_w:
+            cropped = cropped.resize((max_w, max_w))
+
+        cropped.save(settings.USER_FILES_ROOT + self.full_filename(), img.format)
+        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
 
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User)
@@ -185,7 +214,7 @@ class ConfirmedEmail(models.Model):
             delete_if_exists(size_dir + self.public_hash('sha256'))
 
         if photo is not None:
-            source_filename = settings.UPLOADED_FILES_ROOT + photo.filename()
+            source_filename = settings.USER_FILES_ROOT + photo.full_filename()
             link(source_filename, md5_filename)
             link(source_filename, sha1_filename)
             link(source_filename, sha256_filename)

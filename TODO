@@ -15,7 +15,7 @@ Promotion (when we're ready):
 - post presentation audio and slides on blog/slideshare?
 
 Apache config:
-- enforce referer of www.libravatar.org on /uploaded/*
+- enforce referer of www.libravatar.org on /uploaded/* and /user/*
 - support dynamic resizing of images delivered over https
 - split apps between secure (account) and www (public and tools)
 

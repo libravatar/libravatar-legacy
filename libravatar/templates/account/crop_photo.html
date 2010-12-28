@@ -8,7 +8,7 @@
 <h1>Crop photo</h1>
 
 <form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
-<p class="aligned wide"><img src='{{photo}}' id='cropbox' /></p>
+<p class="aligned wide"><img src='{{photo.uploaded_pathname}}' id='cropbox' /></p>
 <input type='hidden' id='x' name='x' value='0'/>
 <input type='hidden' id='y' name='y' value='0'/>
 <input type='hidden' id='w' name='w' value='0'/>

@@ -30,6 +30,7 @@ set_config () {
 SETTINGS_PY=/usr/share/libravatar/libravatar/settings.py
 AVATAR_ROOT=/var/lib/libravatar/avatar
 UPLOADED_FILES_ROOT=/var/lib/libravatar/uploaded
+USER_FILES_ROOT=/var/lib/libravatar/user
 APACHE_CONFIG=/etc/libravatar/www.apache2.conf
 
 case "$1" in
@@ -83,9 +84,13 @@ case "$1" in
 
         set_config AVATAR_ROOT "'${AVATAR_ROOT}/'" ${SETTINGS_PY}
         set_config UPLOADED_FILES_ROOT "'${UPLOADED_FILES_ROOT}/'" ${SETTINGS_PY}
+        set_config USER_FILES_ROOT "'${USER_FILES_ROOT}/'" ${SETTINGS_PY}
 
         mkdir -p ${UPLOADED_FILES_ROOT}
         chown -R www-data:www-data ${UPLOADED_FILES_ROOT}
+
+        mkdir -p ${USER_FILES_ROOT}
+        chown -R www-data:www-data ${USER_FILES_ROOT}
 
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working

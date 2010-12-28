@@ -33,7 +33,6 @@ from libravatar.account.external_photos import *
 from libravatar.account.forms import AddEmailForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
 from libravatar import settings
-from libravatar.avatar.image import crop, auto_resize
 
 import os
 from StringIO import StringIO
@@ -171,7 +170,6 @@ def successfully_authenticated(request):
             p = Photo()
             p.user = request.user
             p.save(image)
-            ppath = '%s%s' % (settings.UPLOADED_FILES_ROOT, p.filename())
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -273,9 +271,7 @@ def crop_photo(request, photo_id=None):
         y = int(request.POST['y'])
         w = int(request.POST['w'])
         h = int(request.POST['h'])
-        filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.filename())
-        crop(filename, x, y, w, h)
-        auto_resize(filename)
+        photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
@@ -290,9 +286,7 @@ def auto_crop(request, photo_id=None):
        return render_to_response('account/email_notowner.html',
                                  context_instance=RequestContext(request))
 
-    filename = '%s%s' % (settings.UPLOADED_FILES_ROOT, photo.filename())
-    crop(filename)
-    auto_resize(filename)
+    photo.crop()
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @csrf_protect

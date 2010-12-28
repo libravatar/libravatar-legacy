@@ -1,5 +1,6 @@
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
+#                     Brett Wilkins <bushido.katana@gmail.com>
 #
 # This file is part of Libravatar
 # 
@@ -17,6 +18,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import Image
 import urllib
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -24,7 +26,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 
 from libravatar import settings
-from libravatar.avatar import image
 
 def mimetype_format(pil_format):
     if 'JPEG' == pil_format:
@@ -106,6 +107,24 @@ def avatar_exists(email_hash, size):
     filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
     return os.path.isfile(filename)
 
+def resized_avatar(email_hash, size):
+    original_filename = settings.AVATAR_ROOT + email_hash
+
+    output_dir = settings.AVATAR_ROOT + '/%s' % size
+    if not os.path.isdir(output_dir):
+        os.mkdir(output_dir)
+    resized_filename = '%s/%s' % (output_dir, email_hash)
+
+    # Save resized image to disk
+    original_img = Image.open(original_filename)
+    resized_img = original_img.resize((size, size))
+    resized_img.save(resized_filename, original_img.format)
+
+    # TODO: use find -inum on the original inode to find other hashes
+    # then hardlink the resized image to the other hashes
+
+    return (resized_filename, original_img.format)
+
 def resize(request):
     if request.method == 'POST':
         return render_to_response('public/nopost.html',
@@ -134,7 +153,7 @@ def resize(request):
     # Add a note to the logs to keep track of frequently requested sizes
     print '[RESIZE] %s px' % size
 
-    (resized_filename, format) = image.resized_avatar(email_hash, size)
+    (resized_filename, format) = resized_avatar(email_hash, size)
 
     # Serve resized image
     response = HttpResponse(mimetype=mimetype_format(format))

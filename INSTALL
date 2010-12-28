@@ -65,6 +65,17 @@ path to the cdn-common include file and restart Apache using:
   apache2ctl restart
 
 
+Cron job
+---------
+
+You should have a daily cron job which does the following:
+
+- delete old sessions
+- delete old uploaded (i.e. non-cropped) files
+
+Have a look in debian/libravatar-www.cron.daily for an example.
+
+
 Authenticating with an external LDAP server:
 ---------------------------------------------
 
