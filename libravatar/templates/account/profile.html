@@ -29,7 +29,9 @@
 </ul>
 {% endif %}
 
+{% if not max_emails %}
 <p><a href="{% url libravatar.account.views.add_email %}">Add a new email address</a></p>
+{% endif %}
 
 {% if photos %}
 <p>Here are the photos you have uploaded/imported:</p>

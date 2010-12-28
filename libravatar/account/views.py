@@ -178,10 +178,11 @@ def successfully_authenticated(request):
 @login_required
 def profile(request):
     u = request.user
-    confirmed = ConfirmedEmail.objects.filter(user=u)
-    unconfirmed = UnconfirmedEmail.objects.filter(user=u)
-    photos = Photo.objects.filter(user=u)
+    confirmed = ConfirmedEmail.objects.filter(user=u).order_by('email')
+    unconfirmed = UnconfirmedEmail.objects.filter(user=u).order_by('email')
+    photos = Photo.objects.filter(user=u).order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
+    max_emails = len(unconfirmed) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
 
     # force evaluation of the QuerySet objects
     list(confirmed)
@@ -189,9 +190,9 @@ def profile(request):
     list(photos)
 
     return render_to_response('account/profile.html',
-        { 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
-          'photos' : photos, 'max_photos' : max_photos},
-        context_instance=RequestContext(request))
+                              {'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
+                               'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
+                              context_instance=RequestContext(request))
 
 @csrf_protect
 @login_required
