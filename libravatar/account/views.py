@@ -170,7 +170,7 @@ def successfully_authenticated(request):
             p = Photo()
             p.user = request.user
             p.save(image)
-            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
+            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[p.id]))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -216,16 +216,12 @@ def add_email(request):
 def remove_confirmed_email(request, email_id):
     if request.method == 'POST':
         try:
-            email = ConfirmedEmail.objects.get(id=email_id)
+            email = ConfirmedEmail.objects.get(id=email_id, user=request.user)
         except ConfirmedEmail.DoesNotExist:
             return render_to_response('account/email_invalid.html',
                                       context_instance=RequestContext(request))
 
-        if email.user_id == request.user.id:
-            email.delete()
-        else:
-            return render_to_response('account/email_notowner.html',
-                                      context_instance=RequestContext(request))
+        email.delete()
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -234,14 +230,11 @@ def remove_confirmed_email(request, email_id):
 def remove_unconfirmed_email(request, email_id):
     if request.method == 'POST':
         try:
-            email = UnconfirmedEmail.objects.get(id=email_id)
+            email = UnconfirmedEmail.objects.get(id=email_id, user=request.user)
         except UnconfirmedEmail.DoesNotExist:
             return render_to_response('account/email_invalid.html', context_instance=RequestContext(request))
 
-        if email.user_id == request.user.id:
-            email.delete()
-        else:
-            return render_to_response('account/email_notowner.html', context_instance=RequestContext(request))
+        email.delete()
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -260,8 +253,8 @@ def upload_photo(request):
                 return render_to_response('account/photo_toobig.html', { 'max_size' : settings.MAX_PHOTO_SIZE },
                                           context_instance=RequestContext(request))
 
-            form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
-            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo'))
+            photo = form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
+            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[photo.id]))
     else:
         form = UploadPhotoForm()
 
@@ -270,13 +263,14 @@ def upload_photo(request):
 
 @csrf_protect
 @login_required
-def crop_photo(request, photo_id=None):
-    if request.method == 'POST':
-        photo = Photo.objects.get(id=photo_id)
-        if photo.user_id != request.user.id:
-            return render_to_response('account/email_notowner.html',
-                                      context_instance=RequestContext(request))
+def crop_photo(request, photo_id):
+    try:
+        photo = Photo.objects.get(id=photo_id, user=request.user)
+    except Photo.DoesNotExist:
+        return render_to_response('account/photo_invalid.html',
+                                  context_instance=RequestContext(request))
 
+    if request.method == 'POST':
         x = int(request.POST['x'])
         y = int(request.POST['y'])
         w = int(request.POST['w'])
@@ -284,17 +278,16 @@ def crop_photo(request, photo_id=None):
         photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    photo = Photo.objects.filter(user=request.user).order_by('id').reverse()[0]
-
     return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True},
                               context_instance=RequestContext(request))
 
 @login_required
-def auto_crop(request, photo_id=None):
-    photo = Photo.objects.get(id=photo_id)
-    if photo.user_id != request.user.id:
-       return render_to_response('account/email_notowner.html',
-                                 context_instance=RequestContext(request))
+def auto_crop(request, photo_id):
+    try:
+        photo = Photo.objects.get(id=photo_id, user=request.user)
+    except Photo.DoesNotExist:
+        return render_to_response('account/photo_invalid.html',
+                                  context_instance=RequestContext(request))
 
     photo.crop()
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -303,13 +296,11 @@ def auto_crop(request, photo_id=None):
 @login_required
 def delete_photo(request, photo_id):
     try:
-        photo = Photo.objects.get(id=photo_id)
+        photo = Photo.objects.get(id=photo_id, user=request.user)
     except Photo.DoesNotExist:
         return render_to_response('account/photo_invalid.html', context_instance=RequestContext(request))
 
     if request.method == 'POST':
-        if photo.user_id != request.user.id:
-            return render_to_response('account/photo_notowner.html', context_instance=RequestContext(request))
         photo.delete()
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -320,27 +311,19 @@ def delete_photo(request, photo_id):
 @login_required
 def assign_photo(request, email_id):
     try:
-        email = ConfirmedEmail.objects.get(id=email_id)
+        email = ConfirmedEmail.objects.get(id=email_id, user=request.user)
     except ConfirmedEmail.DoesNotExist:
         return render_to_response('account/email_invalid.html',
-                                  context_instance=RequestContext(request))
-
-    if email.user_id != request.user.id:
-        return render_to_response('account/email_notowner.html',
                                   context_instance=RequestContext(request))
 
     if request.method == 'POST':
         photo = None
         if 'photo_id' in request.POST and request.POST['photo_id']:
             try:
-                photo = Photo.objects.get(id=request.POST['photo_id'])
+                photo = Photo.objects.get(id=request.POST['photo_id'], user=request.user)
             except Photo.DoesNotExist:
                 return render_to_response('account/photo_invalid.html',
                                           context_instance=RequestContext(request))
-
-        if photo and (photo.user_id != request.user.id):
-            return render_to_response('account/photo_notowner.html',
-                                      context_instance=RequestContext(request))
 
         email.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))

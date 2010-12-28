@@ -77,6 +77,7 @@ class UploadPhotoForm(forms.Form):
         p.user = user
         p.ip_address = ip_address
         p.save(image)
+        return p
 
 class PasswordResetForm(forms.Form):
     email = forms.EmailField(label="Email address")
