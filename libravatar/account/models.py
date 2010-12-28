@@ -158,6 +158,12 @@ class Photo(models.Model):
         super(Photo, self).delete()
 
     def crop(self, x=0, y=0, w=0, h=0):
+        if path.isfile(settings.USER_FILES_ROOT + self.full_filename()):
+            return # already done, skip
+
+        if not path.isfile(settings.UPLOADED_FILES_ROOT + self.full_filename()):
+            return # source image doesn't exist, can't crop it
+
         img = Image.open(settings.UPLOADED_FILES_ROOT + self.full_filename())
         junk, junk, a, b = img.getbbox()
 
