@@ -1,7 +1,5 @@
 Branding/homepage:
 - add an abuse form for reporting inappropriate content to abuse@
-- find a good logo (maybe something based on this:
-   http://commons.wikimedia.org/wiki/File:Peace_dove.svg or a butterfly ?)
 - make a collage of the user photos in the shape of libravatar logo
    (the ones licensed under Creative Commons)
 - document the Libravatar API
@@ -9,10 +7,10 @@ Branding/homepage:
 - write a comparison table of Libravatar & Gravatar features
 
 Promotion (when we're ready):
-- create Freshmeat account
 - announce on autonomo.us list
 - add to http://wiki.debian.org/FreedomBox/LeavingTheCloud
-- post presentation audio and slides on blog/slideshare?
+- post presentation audio and slides on blog/slideshare? (after LCA)
+- create Freshmeat account (once there's a first release)
 
 Apache config:
 - enforce referer of www.libravatar.org on /uploaded/* and /user/*
@@ -22,6 +20,9 @@ Apache config:
 Federation:
 - ability to specify both http and https servers in SRV records
    https://secure.wikimedia.org/wikipedia/en/wiki/SRV_record
+- when adding an email address, check if the domain is controlled
+   by another avatar server elsewhere
+- add a restriction on the domain name for new email addresses
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
 - create a test avatars.catalyst.net.nz server 
@@ -35,7 +36,7 @@ Federation:
 
 Ties to other free network services:
 - adbard.net support
-- faif version of Google Analytics (http://blog.taragana.com/index.php/archive/httpblogtaraganacomindexphparchivetop-10-web-log-analysis-software/)
+- faif version of Google Analytics (http://blog.taragana.com/index.php/archive/httpblogtaraganacomindexphparchivetop-10-web-log-analysis-software/) like Piwik
 
 Storage:
 - use git-like directories (first two hash characters is dirname)
@@ -43,7 +44,7 @@ Storage:
 - write a file backend on a different server
 
 Queuing:
-- maybe use celeryproject.org (Django decorator)
+- maybe use celeryproject.org (Django decorator) or Gearman
 - image optimisation/resizing/copying to happen via workers so that it
    can be scaled easily as demand increases
 
@@ -55,6 +56,7 @@ Content licensing:
    make sense for the license (e.g. CC-BY is also in CC-SA and CC-ND)
 - or perhaps licensing should be embedded into the files as EXIF comments
    (http://q-funk.blogspot.com/2010/08/batch-editing-exif-data-to-add.html)
+- or another idea is to have /avatar/HASH.json include metadata
 
 Image resizing:
 - when writing a resized image, create hardlinks to all hashes by
@@ -72,6 +74,7 @@ User sovereignty:
    addresses will need to be re-validated presumably)
 
 Admin:
+- CLI admin interface using Commandant (https://launchpad.net/commandant)
 - control page to lookup images/profiles based on a hash
 - ability to disable a profile (which deletes all email -> photo associations)
 
@@ -108,9 +111,6 @@ Secure image uploading:
    to a different "ready" folder
 - finally the web server takes it from there and copies it to the
    apache docroot where it's served from
-
-CLI admin interface:
-- using Commandant (https://launchpad.net/commandant)
 
 Sysadmin stuff:
 - use Puppet for all server config
