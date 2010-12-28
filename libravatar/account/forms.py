@@ -85,7 +85,7 @@ class PasswordResetForm(forms.Form):
         except ConfirmedEmail.DoesNotExist:
             return False
 
-        email_address = email.email
+        email_address = self.cleaned_data['email']
         key = password_reset_key(email.user)
 
         link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')

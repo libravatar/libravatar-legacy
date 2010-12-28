@@ -116,7 +116,7 @@ def import_photo(request, user_id):
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
-        if user.id != email.user.id:
+        if int(user_id) != email.user_id:
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
@@ -211,7 +211,7 @@ def remove_confirmed_email(request, email_id):
             return render_to_response('account/email_invalid.html',
                                       context_instance=RequestContext(request))
 
-        if email.user.id == request.user.id:
+        if email.user_id == request.user.id:
             email.delete()
         else:
             return render_to_response('account/email_notowner.html',
@@ -228,7 +228,7 @@ def remove_unconfirmed_email(request, email_id):
         except UnconfirmedEmail.DoesNotExist:
             return render_to_response('account/email_invalid.html', context_instance=RequestContext(request))
 
-        if email.user.id == request.user.id:
+        if email.user_id == request.user.id:
             email.delete()
         else:
             return render_to_response('account/email_notowner.html', context_instance=RequestContext(request))
@@ -263,7 +263,7 @@ def upload_photo(request):
 def crop_photo(request, photo_id=None):
     if request.method == 'POST':
         photo = Photo.objects.get(id=photo_id)
-        if photo.user.id != request.user.id:
+        if photo.user_id != request.user.id:
             return render_to_response('account/email_notowner.html',
                                       context_instance=RequestContext(request))
 
@@ -282,7 +282,7 @@ def crop_photo(request, photo_id=None):
 @login_required
 def auto_crop(request, photo_id=None):
     photo = Photo.objects.get(id=photo_id)
-    if photo.user.id != request.user.id:
+    if photo.user_id != request.user.id:
        return render_to_response('account/email_notowner.html',
                                  context_instance=RequestContext(request))
 
@@ -298,7 +298,7 @@ def delete_photo(request, photo_id):
         return render_to_response('account/photo_invalid.html', context_instance=RequestContext(request))
 
     if request.method == 'POST':
-        if photo.user.id != request.user.id:
+        if photo.user_id != request.user.id:
             return render_to_response('account/photo_notowner.html', context_instance=RequestContext(request))
         photo.delete()
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -315,7 +315,7 @@ def assign_photo(request, email_id):
         return render_to_response('account/email_invalid.html',
                                   context_instance=RequestContext(request))
 
-    if email.user.id != request.user.id:
+    if email.user_id != request.user.id:
         return render_to_response('account/email_notowner.html',
                                   context_instance=RequestContext(request))
 
@@ -328,7 +328,7 @@ def assign_photo(request, email_id):
                 return render_to_response('account/photo_invalid.html',
                                           context_instance=RequestContext(request))
 
-        if photo and (photo.user.id != request.user.id):
+        if photo and (photo.user_id != request.user.id):
             return render_to_response('account/photo_notowner.html',
                                       context_instance=RequestContext(request))
 
