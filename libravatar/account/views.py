@@ -182,6 +182,12 @@ def profile(request):
     unconfirmed = UnconfirmedEmail.objects.filter(user=u)
     photos = Photo.objects.filter(user=u)
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
+
+    # force evaluation of the QuerySet objects
+    list(confirmed)
+    list(unconfirmed)
+    list(photos)
+
     return render_to_response('account/profile.html',
         { 'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
           'photos' : photos, 'max_photos' : max_photos},
@@ -336,6 +342,7 @@ def assign_photo(request, email_id):
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user)
+    list(photos) # force evaluation of the QuerySet
     return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
                               context_instance=RequestContext(request))
 
