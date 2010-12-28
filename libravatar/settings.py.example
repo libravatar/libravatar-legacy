@@ -136,7 +136,7 @@ AVATAR_MAX_SIZE = 512
 # StatusNet uses 48 and 96
 # Launchpad uses 16, 64 and 192
 # Mahara uses 20, 40 and 50
-AVATAR_PREGENERATED_SIZES = (80)
+AVATAR_PREGENERATED_SIZES = [80]
 
 # The maximum number of photos per profile
 MAX_NUM_PHOTOS = 4
