@@ -328,7 +328,7 @@ def assign_photo(request, email_id):
         email.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    photos = Photo.objects.filter(user=request.user)
+    photos = Photo.objects.filter(user=request.user).order_by('add_date')
     list(photos) # force evaluation of the QuerySet
     return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
                               context_instance=RequestContext(request))
