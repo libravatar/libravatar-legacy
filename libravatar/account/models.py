@@ -229,8 +229,12 @@ class ConfirmedEmail(models.Model):
             delete_if_exists(size_dir + self.public_hash('sha1'))
             delete_if_exists(size_dir + self.public_hash('sha256'))
 
-        if photo is not None:
+        if photo:
             source_filename = settings.USER_FILES_ROOT + photo.full_filename()
+            if not path.isfile(source_filename):
+                # cropped photo doesn't exist, don't change anything
+                return
+
             link(source_filename, md5_filename)
             link(source_filename, sha1_filename)
             link(source_filename, sha256_filename)
