@@ -111,12 +111,15 @@ class Photo(models.Model):
 
     def import_image(self, service_name, email_address):
         image_url = False
+        needs_cropping = True
 
         if 'Identica' == service_name:
+            needs_cropping = False
             identica = identica_photo(email_address)
             if identica:
                 image_url = identica['image_url']
         elif 'Gravatar' == service_name:
+            needs_cropping = False
             gravatar = gravatar_photo(email_address)
             if gravatar:
                 image_url = gravatar['image_url']
@@ -129,12 +132,19 @@ class Photo(models.Model):
         super(Photo, self).save()
 
         dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
+        if not needs_cropping:
+            # Output directly into the "cropped" directory
+            dest_filename = settings.USER_FILES_ROOT + self.full_filename()
+
         image = urlopen(image_url)
 
         # Write file to disk
         destination = open(dest_filename, 'wb+')
         destination.write(image.read())
         destination.close()
+
+        if needs_cropping:
+            self.crop()
 
         return True
 
