@@ -28,6 +28,18 @@ from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, p
 class AddEmailForm(forms.Form):
     email = forms.EmailField()
 
+    def clean_email(self):
+        """
+        Enforce domain restriction
+        """
+        data = self.cleaned_data['email']
+        domain = settings.REQUIRED_DOMAIN
+
+        if domain and "@%s" % domain not in data:
+            raise forms.ValidationError("Valid email addresses end with @%s" % domain)
+
+        return data
+
     def save(self, user):
         # Enforce the maximum number of unconfirmed emails a user can have
         num_unconfirmed = UnconfirmedEmail.objects.filter(user=user).count()

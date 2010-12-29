@@ -165,3 +165,6 @@ AUTH_LDAP_USER_PHOTO = 'jpegPhoto'
 
 # To prevent sign-up, for instance on an intranet relying on external authentication, set this to true:
 DISABLE_SIGNUP = False
+
+# To restrict email addresses to a given domain, enter it here
+REQUIRED_DOMAIN = ''
