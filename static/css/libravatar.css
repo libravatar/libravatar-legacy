@@ -33,7 +33,7 @@ div#content h1 {
   color: #F9711F;
 }
 
-div#content h1.error, ul.errorlist li { 
+div#content h1.error, ul.errorlist li, p.error { 
   background-color: #FF0000;
   color: #FFFFFF;
   font-weight: bold;
