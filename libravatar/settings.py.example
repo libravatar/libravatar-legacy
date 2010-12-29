@@ -148,7 +148,6 @@ MAX_PHOTO_SIZE = 1048576 # in bytes
 
 DEFAULT_PHOTO = 'nobody.jpg'
 LIBRAVATAR_VERSION = '0.1'
-TXT_VERSION = 'avatars1' # For DNS-based federation
 
 # If you want to enable non-free tracking of users
 # TODO: switch to a FaiF service

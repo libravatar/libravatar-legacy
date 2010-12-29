@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import DNS
 import os
 import Image
 import urllib
@@ -42,34 +43,44 @@ def home(request):
 
 def lookup_avatar_server(domain, https):
     """
-    Extract the avatar server from a TXT record in the DNS zone
+    Extract the avatar server from an SRV record in the DNS zone
 
-    The TXT record should look like this:
+    The SRV records should look like this:
 
-       "v=avatars1 http://avatars.libravatar.org"
+       _avatars._tcp.example.com.     IN SRV 0 0 80  avatars.example.com
+       _avatars-sec._tcp.example.com. IN SRV 0 0 443 avatars.example.com
     """
 
+    service_name = None
     if https:
-        return None # Not implemented
+        service_name = "_avatars-sec._tcp.%s" % domain
+    else:
+        service_name = "_avatars._tcp.%s" % domain
 
-    import DNS
     DNS.DiscoverNameServers()
-
-    dns_request = DNS.Request(name=domain, qtype='TXT').req()
+    try:
+        dns_request = DNS.Request(name=service_name, qtype='SRV').req()
+    except DNS.DNSError as message:
+        print "DNS Error: %s" % message
+        return None
 
     if dns_request.header['status'] != 'NOERROR':
+        print "DNS Error: status=%s" % dns_request.header['status']
         return None
 
     for answer in dns_request.answers:
         if (not 'data' in answer) or (not answer['data']):
             continue
 
-        txt_version = 'v=' + settings.TXT_VERSION
-        data = answer['data'][0]
-        if data.startswith(txt_version):
-            i = len(txt_version) + 1
-            if len(data) > i:
-                return data[i:] # hostname
+        # TODO: implement priority and weight
+        priority = int(answer['data'][0])
+        weight = int(answer['data'][1])
+        port = int(answer['data'][2])
+        target = answer['data'][3]
+        if (https and port != 443) or (not https and port != 80):
+             "%s:%s" % (target, port)
+        else:
+            return target
 
     return None
 
