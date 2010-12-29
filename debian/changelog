@@ -1,3 +1,12 @@
+libravatar (20101229.1) unstable; urgency=low
+
+  * Working SRV record resolver
+  * Email domain restriction (disabled by default)
+  * Red error box for login errors
+  * Add dependency on python-dns
+
+ -- Francois Marier <francois@debian.org>  Wed, 29 Dec 2010 23:08:57 +1300
+
 libravatar (20101228.3) unstable; urgency=low
 
   * Fix various small errors
