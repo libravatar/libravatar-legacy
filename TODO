@@ -25,6 +25,7 @@ Federation:
 - add a restriction on the domain name for new email addresses
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
+- document the protocol and register on http://www.dns-sd.org/ServiceTypes.html
 - create a test avatars.catalyst.net.nz server 
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
