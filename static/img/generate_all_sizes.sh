@@ -20,4 +20,11 @@ EXTENSION=$2
 
 for s in {1..512} ; do
         convert $ORIG_IMAGE -resize ${s}x${s} ${s}.$EXTENSION
+
+        # Make sure all files are losslessly optimized
+        if [ "$EXTENSION" = "png" ] ; then
+                optipng -q ${s}.$EXTENSION
+        elif [ "$EXTENSION" = "jpg" ] ; then
+                jpegoptim -q -p --strip-all ${s}.$EXTENSION
+        fi
 done
