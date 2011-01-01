@@ -106,6 +106,7 @@ case "$1" in
         a2enmod alias > /dev/null 2>&1
         a2enmod expires > /dev/null 2>&1
         a2enmod wsgi > /dev/null 2>&1
+        a2enmod rewrite > /dev/null 2>&1
 
         # We a2ensite the site the first time the config is installed, but not after
         ENABLE_SITE=""
