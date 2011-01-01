@@ -14,7 +14,7 @@ div#header div#site-branding span#site-name {
 
 div#header div#site-branding span#not-yet-ready { 
   color: #F9711F;
-  font-style: bold;
+  font-weight: bold;
   font-size: 1.5em;
 }
 
@@ -44,7 +44,7 @@ div#content h1.error, ul.errorlist li, p.error {
 
 div#outer {
   background-color: #BF9C82;
-  padding: 16;
+  padding: 16px;
 }
 
 div#header,
@@ -59,12 +59,12 @@ div#footer a {
 }
 
 div#header {
-  height: 54;
-  padding: 8 8 16 8;
+  height: 54px;
+  padding: 8px 8px 16px 8px;
 }
 
 div#footer { 
-  padding: 16 8 8 8;
+  padding: 16px 8px 8px 8px;
   font-size: small;
 }
 
@@ -74,7 +74,7 @@ div#header div#account {
 
 div#content {
   background-color: #FFFFFF;
-  padding: 8 16 16 16;
+  padding: 8px 16px 16px 16px;
   -moz-border-radius: 8px;
   -webkit-border-radius:8px;
 }
