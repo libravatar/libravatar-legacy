@@ -1,8 +1,10 @@
+static/*.txt usr/share/libravatar/static
 static/img/*.gif usr/share/libravatar/static/img
 static/img/*.png usr/share/libravatar/static/img
 static/img/*.jpg usr/share/libravatar/static/img
 static/img/*.html usr/share/libravatar/static/img
 static/img/*.ico usr/share/libravatar/static/img
+static/img/*.txt usr/share/libravatar/static/img
 static/img/mm usr/share/libravatar/static/img
 static/img/nobody usr/share/libravatar/static/img
 config/cdn-common.apache2.conf etc/libravatar
