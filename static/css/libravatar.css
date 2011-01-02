@@ -5,39 +5,39 @@ body {
   margin: 0;
 }
 
-div#header div#site-branding span#site-name { 
+#site-name {
   color: #FCDDA5;
   font-size: 2em;
   font-style: normal;
   letter-spacing: 0.35em;
 }
 
-div#header div#site-branding span#not-yet-ready { 
+#not-yet-ready {
   color: #F9711F;
   font-weight: bold;
   font-size: 1.5em;
 }
 
-div#header div#logo {
+#logo {
   float: left;
   margin: 0 1em 0 0;
 }
 
-div#logo img {
+#logo img {
   border: 0;
 }
 
-div#header div#site-branding {
+#site-branding {
   color: #7DB5A6;
   font-style: italic;
   float: left;
 }
 
-div#content h1 { 
+h1 {
   color: #F9711F;
 }
 
-div#content h1.error, ul.errorlist li, p.error { 
+.error, .errorlist li {
   background-color: #FF0000;
   color: #FFFFFF;
   font-weight: bold;
@@ -46,98 +46,94 @@ div#content h1.error, ul.errorlist li, p.error {
   -webkit-border-radius:8px;
 }
 
-div#outer {
+#outer {
   background-color: #BF9C82;
   padding: 16px;
 }
 
-div#header,
-div#footer {
+#header, #footer {
   color: #FCDDA5;
 }
 
-div#header a,
-div#footer a { 
+a {
   color: #F9711F;
   font-weight: bold;
 }
 
-div#header {
+#header {
   height: 54px;
   padding: 8px 8px 16px 8px;
 }
 
-div#footer { 
+#footer {
   padding: 16px 8px 8px 8px;
   font-size: small;
 }
 
-div#header div#account { 
+#account {
   text-align: right;
 }
 
-div#content {
+#content {
   background-color: #FFFFFF;
   padding: 8px 16px 16px 16px;
   -moz-border-radius: 8px;
   -webkit-border-radius:8px;
 }
 
-div#content a { 
+#content a {
   color: #7DB5A6;
-  font-weight: bold;
 }
 
-input.thumbnail, img.thumbnail {
+.thumbnail {
   height: 80px;
   width: 80px;
   border: none;
 }
 
-ul.avatar-list { 
+.avatar-list {
   padding: 0;
   margin: 0 0 0 1.5em;
   height: 105px;
 }
 
-ul.avatar-list li img.editable {
+.avatar-list .editable {
   margin: 0 8px 0 0;
 }
 
-ul.horizontal-list li {
-  display: inline;
+li {
   list-style-type: none;
+}
+
+.horizontal-list li {
+  display: inline;
   float: left;
   margin: 0 15px 15px 0;
 }
 
-ul.vertical-list li, ul.errorlist li {
-  list-style-type: none;
-}
-
-ul.centered li { 
+.centered li {
   text-align: center;
   vertical-align: middle;
 }
 
-ul.imported-list { 
+.imported-list {
   padding: 0;
   margin: 0 0 0 1.5em;
   height: 125px;
 }
 
-ul.conditions {
+.conditions {
   -moz-padding-start: 0;
   -webkit-padding-start: 0;
   list-style-type: none;
   margin: 0;
 }
 
-div#sponsors {
+#sponsors {
   text-align: center;
 }
 
-div#sponsors img {
+#sponsors img {
   border: 0;
   padding: 1em;
 }
