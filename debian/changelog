@@ -9,8 +9,10 @@ libravatar (20110102.1) unstable; urgency=low
   * Add robots.txt for all sites
   * Prevent apache from serving /css/ and /js/
   * Return a 404 on www.libravatar/avatar/
+  * Add trailing slashes in login URLs to avoid unnecessary redirects
+  * Explicitly set Cache-Control to public/private
 
- -- Francois Marier <francois@debian.org>  Sun, 02 Jan 2011 17:43:13 +1300
+ -- Francois Marier <francois@debian.org>  Sun, 02 Jan 2011 20:39:10 +1300
 
 libravatar (20101231.1) unstable; urgency=low
 
