@@ -3,7 +3,11 @@ External dependencies
 
 - Python 2.6
 - Django 1.2
-- Apache 2 with mod_alias and mod_rewrite
+- Apache 2 with:
+  - mod_alias
+  - mod_expires
+  - mod_headers
+  - mod_rewrite
 - Python DNS 2.3.4
   (http://pydns.sourceforge.net/)
 - jQuery 1.4
