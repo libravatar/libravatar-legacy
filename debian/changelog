@@ -1,3 +1,17 @@
+libravatar (20110102.1) unstable; urgency=low
+
+  * Fixes for HTML and CSS validation errors
+  * Minified and precompressed CSS/Javascript
+  * Optimized sponsor logos with proper ALT text
+  * Switch to efficient CSS selectors
+  * Move all static files to {cdn,seccdn}.libravatar.org
+  * Move settings.py to /etc/libravatar
+  * Add robots.txt for all sites
+  * Prevent apache from serving /css/ and /js/
+  * Return a 404 on www.libravatar/avatar/
+
+ -- Francois Marier <francois@debian.org>  Sun, 02 Jan 2011 17:43:13 +1300
+
 libravatar (20101231.1) unstable; urgency=low
 
   * Add support for the d=mm paramater
