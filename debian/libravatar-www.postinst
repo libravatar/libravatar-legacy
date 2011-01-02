@@ -54,14 +54,14 @@ case "$1" in
         set_dbconfig PASSWORD "'${RET}'" ${SETTINGS_PY}
 
         db_get libravatar-common/cdnservername
-        set_config AVATAR_URL "'http://${RET}/avatar/'" ${SETTINGS_PY}
+        set_config MEDIA_URL "'http://${RET}'" ${SETTINGS_PY}
 
         db_get libravatar-common/seccdnservername
         VALUE=${RET}
         if [ "z${VALUE}" = "z" ] ; then
-            set_config SECURE_AVATAR_URL "''" ${SETTINGS_PY}
+            set_config SECURE_MEDIA_URL "''" ${SETTINGS_PY}
         else
-            set_config SECURE_AVATAR_URL "'https://${VALUE}/avatar/'" ${SETTINGS_PY}
+            set_config SECURE_MEDIA_URL "'https://${VALUE}'" ${SETTINGS_PY}
         fi
 
         db_get libravatar-common/wwwservername

@@ -49,10 +49,11 @@ USE_I18N = True
 # Example: "/home/libravatar/static/"
 MEDIA_ROOT = '%s/static/' % PROJECT_ROOT
 
-# URL that handles the static files served from MEDIA_ROOT. Make sure to use a
-# trailing slash.
-# Examples: "http://www.libravatar.org/", "http://static.mycompany.com/"
-MEDIA_URL = SITE_URL
+# URL that handles the static files served from MEDIA_ROOT
+MEDIA_URL = 'http://cdn.libravatar.org'
+# Enable this if you can serve your avatars over https
+SECURE_MEDIA_URL = 'https://seccdn.libravatar.org'
+#SECURE_MEDIA_URL = None
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -114,20 +115,20 @@ LOGIN_REDIRECT_URL = '/account/profile' # Set to /account/profile_success for au
 
 # Path and URL for images uploaded by users
 UPLOADED_FILES_ROOT = '%s/uploaded/' % PROJECT_ROOT
-UPLOADED_FILES_URL = '%s/uploaded/' % MEDIA_URL
+UPLOADED_FILES_URL = '%s/uploaded/' % SITE_URL
 
 # Path and URL for images uploaded by users and ready to be served
 USER_FILES_ROOT = '%s/user/' % PROJECT_ROOT
-USER_FILES_URL = '%s/user/' % MEDIA_URL
+USER_FILES_URL = '%s/user/' % SITE_URL
 
 # Path where avatars are stored
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 
 # URL where avatars are served
-AVATAR_URL = 'http://cdn.libravatar.org/avatar/'
-# Enable this if you can serve your avatars over https
-SECURE_AVATAR_URL = 'https://seccdn.libravatar.org/avatar/'
-#SECURE_AVATAR_URL = None
+AVATAR_URL = '%s/avatar/' % MEDIA_URL
+SECURE_AVATAR_URL = None
+if SECURE_MEDIA_URL:
+    SECURE_AVATAR_URL = '%s/avatar/' % SECURE_MEDIA_URL
 
 AVATAR_DEFAULT_SIZE = 80
 AVATAR_MIN_SIZE = 1
