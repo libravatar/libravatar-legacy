@@ -44,17 +44,22 @@ Start by adding this to your /etc/hosts:
 
   127.0.0.1 www.libravatar.org secure.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
-Enable mod_alias, mod_rewrite and mod_wsgi:
+Enable mod_alias, mod_expires, mod_headers, mod_rewrite and mod_wsgi:
 
   a2enmod alias
+  a2enmod expires
+  a2enmod headers
   a2enmod rewrite
   a2enmod wsgi
 
-Create an uploaded/ directory that's writable by the www-data user:
+Create a uploaded/ and user/ directories that are writable by the www-data user:
 
   mkdir /var/lib/libravatar/uploaded
+  mkdir /var/lib/libravatar/user
   sudo chgrp www-data /var/lib/libravatar/uploaded
+  sudo chgrp www-data /var/lib/libravatar/user
   sudo chmod g+w /var/lib/libravatar/uploaded
+  sudo chmod g+w /var/lib/libravatar/user
 
 Similarly, an avatar/ directory that's writable by the www-data user:
 
