@@ -6,12 +6,3 @@
 
 %:
 	dh  $@
-
-override_dh_install:
-	dh_install
-
-	# Minify and compress javascript and css files
-	find $(CURDIR)/debian/ -type f -name "*.css" -execdir yui-compressor -o {} {} \;
-	find $(CURDIR)/debian/ -type f -name "*.js"  -execdir yui-compressor -o {} {} \;
-	find $(CURDIR)/debian/ -type f -name "*.css" -execdir gzip {} \;
-	find $(CURDIR)/debian/ -type f -name "*.js"  -execdir gzip {} \;

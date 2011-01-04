@@ -1,6 +1,8 @@
 static/*.txt usr/share/libravatar/static
 static/*.html usr/share/libravatar/static
-static/css usr/share/libravatar/static
+static/css/*.html usr/share/libravatar/static/css
+static/css/*.css.css usr/share/libravatar/static/css
+static/css/*.css.gz usr/share/libravatar/static/css
 static/img/*.gif usr/share/libravatar/static/img
 static/img/*.png usr/share/libravatar/static/img
 static/img/*.jpg usr/share/libravatar/static/img
@@ -8,5 +10,7 @@ static/img/*.html usr/share/libravatar/static/img
 static/img/*.ico usr/share/libravatar/static/img
 static/img/mm usr/share/libravatar/static/img
 static/img/nobody usr/share/libravatar/static/img
-static/js usr/share/libravatar/static
+static/js/*.html usr/share/libravatar/static/js
+static/js/*.js.js usr/share/libravatar/static/js
+static/js/*.js.gz usr/share/libravatar/static/js
 config/cdn-common.apache2.conf etc/libravatar
