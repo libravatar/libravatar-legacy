@@ -13,6 +13,8 @@ External dependencies
 - jQuery 1.4
 - Python Imaging Library
   (http://www.pythonware.com/library/)
+- YUI Compressor, for minifying CSS/JS files
+  (http://developer.yahoo.com/yui/compressor/)
 
 (optional, if using LDAP authenticaion):
 
@@ -20,7 +22,7 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor
   
   apt-get install python-ldap
 
