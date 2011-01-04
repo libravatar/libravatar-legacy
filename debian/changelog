@@ -1,3 +1,9 @@
+libravatar (20110104.1) unstable; urgency=low
+
+  * Provide uncompressed css and js files too
+
+ -- Francois Marier <francois@debian.org>  Tue, 04 Jan 2011 22:28:16 +1300
+
 libravatar (20110102.1) unstable; urgency=low
 
   * Fixes for HTML and CSS validation errors
