@@ -79,12 +79,18 @@ def remote_image_format(image_url):
     print "WARN: cannot identify the remote image type: url=%s" % image_url
     return DEFAULT_IMAGE_FORMAT
 
+class PhotoManager(models.Manager):
+    def delete_user_photos(self, user):
+        for photo in self.filter(user=user):
+            photo.delete() # deletes the photo on disk as well
+
 class Photo(models.Model):
     user = models.ForeignKey(User)
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     filename = models.CharField(max_length=64) # sha256 hash is 64 characters
     format = models.CharField(max_length=3) # png or jpg
     add_date = models.DateTimeField(auto_now_add=True)
+    objects = PhotoManager()
 
     def __unicode__(self):
         return settings.USER_FILES_URL + self.full_filename()

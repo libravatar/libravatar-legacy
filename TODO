@@ -68,7 +68,6 @@ Image optimisations:
 - run jpegoptim or optipng on images
 
 User sovereignty:
-- ability to completely delete one's account
 - "export my data" which uuencodes photos to XML along with email
    addresses
 - "import my data" for moving between libravatar.org instances (email

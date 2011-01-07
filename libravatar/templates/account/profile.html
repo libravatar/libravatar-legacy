@@ -47,6 +47,10 @@
 <p><a href="{% url libravatar.account.views.upload_photo %}">Upload a new photo</a></p>
 {% endif %}
 
+<h2>Account settings</h2>
+
 <p><a href="{% url django.contrib.auth.views.password_change %}">Change your password</a></p>
+
+<p><a href="{% url libravatar.account.views.delete %}">Permanently delete your account</a></p>
 
 {% endblock content %}

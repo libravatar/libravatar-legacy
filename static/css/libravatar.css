@@ -37,6 +37,11 @@ h1 {
   color: #F9711F;
 }
 
+h2 {
+  color: #F9711F;
+  font-weight: normal;
+}
+
 .error, .errorlist li {
   background-color: #FF0000;
   color: #FFFFFF;

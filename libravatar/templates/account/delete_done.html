@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Account Deleted{% endblock title %}
+
+{% block content %}
+
+<h1>Account deleted</h1>
+
+<p>Your account has been permanently and completely deleted.</p>
+
+<p>Note that it may take a few days for your photos to disappear from all mirrors and a few weeks for your photos to disappear from web caches.</p>
+
+<p><a href="{% url libravatar.public.views.home %}">Back to the homepage</a></p>
+
+{% endblock content %}

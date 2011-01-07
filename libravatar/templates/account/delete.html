@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar: Delete your account{% endblock title %}
+
+{% block content %}
+
+<h1>Delete your account</h1>
+
+<p>Are you sure you want to <strong>permanently delete</strong> your Libravatar account?</p>
+
+<p><strong>There is no way to undo this operation.</strong></p>
+
+<form action="{% url libravatar.account.views.delete %}" method="post">{% csrf_token %}
+
+<p><input type="submit" value="Yes, delete all of my stuff">
+<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
+
+{% endblock content %}

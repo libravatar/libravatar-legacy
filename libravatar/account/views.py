@@ -19,7 +19,7 @@
 
 from django.core.files import File
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
@@ -404,3 +404,14 @@ def password_reset_confirm(request):
     return render_to_response('account/password_change.html', {'form' : form,
                               'verification_key' : verification_key, 'email_address' : email_address},
                               context_instance=RequestContext(request))
+
+@csrf_protect
+@login_required
+def delete(request):
+    if request.method == 'POST':
+        Photo.objects.delete_user_photos(request.user)
+        request.user.delete() # cascading through unconfirmed and confirmed emails
+        logout(request)
+        return render_to_response('account/delete_done.html', context_instance=RequestContext(request))
+
+    return render_to_response('account/delete.html', context_instance=RequestContext(request))
