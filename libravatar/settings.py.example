@@ -154,6 +154,9 @@ LIBRAVATAR_VERSION = '0.1'
 # TODO: switch to a FaiF service
 ANALYTICS_PROPERTYID = ''
 
+# TODO: force logged in users to use https
+#SESSION_COOKIE_SECURE = True
+
 # LDAP Authentication
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
