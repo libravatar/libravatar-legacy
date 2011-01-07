@@ -30,7 +30,7 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 
 from libravatar.account.external_photos import *
-from libravatar.account.forms import AddEmailForm, PasswordResetForm, UploadPhotoForm
+from libravatar.account.forms import AddEmailForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
 from libravatar import settings
 
@@ -409,9 +409,14 @@ def password_reset_confirm(request):
 @login_required
 def delete(request):
     if request.method == 'POST':
-        Photo.objects.delete_user_photos(request.user)
-        request.user.delete() # cascading through unconfirmed and confirmed emails
-        logout(request)
-        return render_to_response('account/delete_done.html', context_instance=RequestContext(request))
+        form = DeleteAccountForm(request.user, request.POST)
+        if form.is_valid():
+            Photo.objects.delete_user_photos(request.user)
+            request.user.delete() # cascading through unconfirmed and confirmed emails
+            logout(request)
+            return render_to_response('account/delete_done.html', context_instance=RequestContext(request))
+    else:
+        form = DeleteAccountForm(request.user)
 
-    return render_to_response('account/delete.html', context_instance=RequestContext(request))
+    return render_to_response('account/delete.html', {'form' : form},
+                              context_instance=RequestContext(request))

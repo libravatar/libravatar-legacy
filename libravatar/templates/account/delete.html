@@ -5,11 +5,16 @@
 
 <h1>Delete your account</h1>
 
-<p>Are you sure you want to <strong>permanently delete</strong> your Libravatar account?</p>
-
 <p><strong>There is no way to undo this operation.</strong></p>
 
+<p>Please confirm your identity by entering your current password.</p>
+
 <form action="{% url libravatar.account.views.delete %}" method="post">{% csrf_token %}
+
+{{ form.password.errors }}
+<p class="aligned wide">{{ form.password.label_tag }}: {{ form.password }}</p>
+
+<p>Are you sure you want to <strong>permanently delete</strong> your Libravatar account?</p>
 
 <p><input type="submit" value="Yes, delete all of my stuff">
 <a href="{% url libravatar.account.views.profile %}">Cancel</a></p>

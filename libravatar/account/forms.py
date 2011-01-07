@@ -124,3 +124,18 @@ Otherwise, please accept our apologies and ignore this message.
         send_mail(email_subject, email_body, settings.FROM_ADDRESS, [email_address])
 
         return True
+
+class DeleteAccountForm(forms.Form):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(DeleteAccountForm, self).__init__(*args, **kwargs)
+
+    def clean_password(self):
+        data = self.cleaned_data['password']
+
+        if not self.user.check_password(data):
+            raise forms.ValidationError('Invalid password')
+
+        return data
