@@ -187,7 +187,7 @@ class Photo(models.Model):
         cropped_w, cropped_h = cropped.size
         max_w=settings.AVATAR_MAX_SIZE
         if cropped_w > max_w or cropped_h > max_w:
-            cropped = cropped.resize((max_w, max_w))
+            cropped = cropped.resize((max_w, max_w), Image.ANTIALIAS)
 
         cropped.save(settings.USER_FILES_ROOT + self.full_filename(), img.format)
         delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
