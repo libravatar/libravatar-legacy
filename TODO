@@ -115,3 +115,5 @@ Secure image uploading:
 
 Sysadmin stuff:
 - use Puppet for all server config
+- monitor server with Nagios
+- monitor gearman queues (http://labs.consol.de/nagios/mod-gearman/)
