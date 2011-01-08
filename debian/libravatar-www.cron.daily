@@ -2,4 +2,4 @@
 django-admin cleanup --settings=libravatar.settings --pythonpath=/usr/share/libravatar
 
 # Delete files that were uploaded more than a day ago
-find /var/lib/libravatar/uploaded -ctime +1 -delete
+find /var/lib/libravatar/uploaded -type f -ctime +1 -delete
