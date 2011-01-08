@@ -189,7 +189,7 @@ class Photo(models.Model):
         if cropped_w > max_w or cropped_h > max_w:
             cropped = cropped.resize((max_w, max_w), Image.ANTIALIAS)
 
-        cropped.save(settings.USER_FILES_ROOT + self.full_filename(), img.format)
+        cropped.save(settings.USER_FILES_ROOT + self.full_filename(), img.format, quality=settings.JPEG_QUALITY)
         delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
 
 class ConfirmedEmail(models.Model):

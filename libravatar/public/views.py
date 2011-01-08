@@ -129,7 +129,7 @@ def resized_avatar(email_hash, size):
     # Save resized image to disk
     original_img = Image.open(original_filename)
     resized_img = original_img.resize((size, size), Image.ANTIALIAS)
-    resized_img.save(resized_filename, original_img.format)
+    resized_img.save(resized_filename, original_img.format, quality=settings.JPEG_QUALITY)
 
     # TODO: use find -inum on the original inode to find other hashes
     # then hardlink the resized image to the other hashes
