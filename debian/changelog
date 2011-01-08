@@ -1,3 +1,12 @@
+libravatar (20110108.1) unstable; urgency=low
+
+  * Add ability to delete your own account
+  * Session-only cookies
+  * Better quality filter for image resizing
+  * Fix removal of /uploaded directory by the cronjob 
+
+ -- Francois Marier <francois@debian.org>  Sat, 08 Jan 2011 20:30:40 +1300
+
 libravatar (20110104.1) unstable; urgency=low
 
   * Provide uncompressed css and js files too
