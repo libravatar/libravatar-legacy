@@ -22,7 +22,7 @@
   <div id="account">
     {% if user.is_authenticated %}
     <a href="{% url libravatar.account.views.profile %}">Profile</a>
-    <a href="{% url django.contrib.auth.views.logout %}">Logout</a>
+    &nbsp;<a href="{% url django.contrib.auth.views.logout %}">Logout</a>
     {% else %}
     <a href="{% url django.contrib.auth.views.login %}">Login</a>
     {% endif %}

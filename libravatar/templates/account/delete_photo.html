@@ -12,7 +12,7 @@
 <form action="{% url libravatar.account.views.delete_photo photo.id %}" method="post">{% csrf_token %}
 
 <p><input type="submit" value="Delete">
-<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+&nbsp;<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
 
 </form>
 
