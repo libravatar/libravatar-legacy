@@ -142,3 +142,7 @@ li {
   border: 0;
   padding: 1em;
 }
+
+.avatar-chooser {
+  float: left;
+}

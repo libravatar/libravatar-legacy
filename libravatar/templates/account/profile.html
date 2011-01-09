@@ -11,7 +11,7 @@
     {% for email in confirmed_emails %}
         <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">{% csrf_token %}
         <a href="{% url libravatar.account.views.assign_photo email.id %}">
-        <img class="thumbnail editable" style="float: left" src="{{ email.photo_url }}" alt=""></a>
+        <img class="thumbnail editable avatar-chooser" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
         <br><a href="{% url libravatar.account.views.assign_photo email.id %}">Change photo</a>
         <br><br><input type="image" src="{{ media_url }}/img/delete_button.png" value="Remove"></form></li>
