@@ -18,15 +18,13 @@ Apache config:
 - split apps between secure (account) and www (public and tools)
 
 Federation:
-- ability to specify both http and https servers in SRV records
-   https://secure.wikimedia.org/wikipedia/en/wiki/SRV_record
+- create a test avatars.catalyst.net.nz server 
 - when adding an email address, check if the domain is controlled
    by another avatar server elsewhere
-- add a restriction on the domain name for new email addresses
+- add OpenID support (python-django-auth-openid)
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
 - document the protocol and register on http://www.dns-sd.org/ServiceTypes.html
-- create a test avatars.catalyst.net.nz server 
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
    http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
