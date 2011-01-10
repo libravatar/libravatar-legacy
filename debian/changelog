@@ -1,3 +1,11 @@
+libravatar (20110110.1) unstable; urgency=low
+
+  * Move crop/resize/optimise to a gearman job
+  * Remove all spaces between HTML tags in templates
+  * Remove some inline CSS
+
+ -- Francois Marier <francois@debian.org>  Mon, 10 Jan 2011 22:59:19 +1300
+
 libravatar (20110108.1) unstable; urgency=low
 
   * Add ability to delete your own account
