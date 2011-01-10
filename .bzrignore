@@ -10,5 +10,6 @@
 /debian/*.substvars
 /libravatar/libravatar.db
 /libravatar/settings.py
+/ready
 /uploaded
 /user

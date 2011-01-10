@@ -15,6 +15,9 @@ External dependencies
   (http://www.pythonware.com/library/)
 - YUI Compressor, for minifying CSS/JS files
   (http://developer.yahoo.com/yui/compressor/)
+- Gearman (http://www.gearman.org)
+- Python bindings for libgearman
+  (http://www.launchpad.net/gearman-interface)
 
 (optional, if using LDAP authenticaion):
 
@@ -22,7 +25,7 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman
   
   apt-get install python-ldap
 
@@ -74,6 +77,24 @@ path to the cdn-common include file and restart Apache using:
 
   apache2ctl configtest
   apache2ctl restart
+
+
+Gearman jobs
+-------------
+
+Two gearman jobs must be running to fully take care of photo cropping and
+resizing. Here are the two Gearman functions:
+
+  cropresize: must run under a user that has read access to /uploaded and
+              write access to /ready
+  ready2user: must run under a user with read access to /ready and write
+              access to /uploaded and /user
+
+There are python scripts under libravatar/ for both functions and workers
+can be setup like this:
+
+  gearman -w -f cropresize libravatar/cropresize.py
+  gearman -w -f ready2user libravatar/ready2user.py
 
 
 Cron job

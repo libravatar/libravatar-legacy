@@ -29,6 +29,7 @@ set_config () {
 
 SETTINGS_PY=/etc/libravatar/settings.py
 AVATAR_ROOT=/var/lib/libravatar/avatar
+READY_FILES_ROOT=/var/lib/libravatar/ready
 UPLOADED_FILES_ROOT=/var/lib/libravatar/uploaded
 USER_FILES_ROOT=/var/lib/libravatar/user
 APACHE_CONFIG=/etc/libravatar/www.apache2.conf
@@ -83,14 +84,22 @@ case "$1" in
         set_config ANALYTICS_PROPERTYID "'${RET}'" ${SETTINGS_PY}
 
         set_config AVATAR_ROOT "'${AVATAR_ROOT}/'" ${SETTINGS_PY}
+        set_config READY_FILES_ROOT "'${READY_FILES_ROOT}/'" ${SETTINGS_PY}
         set_config UPLOADED_FILES_ROOT "'${UPLOADED_FILES_ROOT}/'" ${SETTINGS_PY}
         set_config USER_FILES_ROOT "'${USER_FILES_ROOT}/'" ${SETTINGS_PY}
+
+        # Create a restricted user to crop/resize images with
+        adduser --system --disabled-login --shell /bin/bash --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
+
+        mkdir -p ${READY_FILES_ROOT}
+        chown -R libravatar-img ${READY_FILES_ROOT}
+        chmod o-rwx ${READY_FILES_ROOT}
 
         mkdir -p ${UPLOADED_FILES_ROOT}
         chown -R www-data:www-data ${UPLOADED_FILES_ROOT}
 
         mkdir -p ${USER_FILES_ROOT}
-        chown -R www-data:www-data ${USER_FILES_ROOT}
+        chown -R root:root ${USER_FILES_ROOT}
 
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working

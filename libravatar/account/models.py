@@ -18,8 +18,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from gearman import libgearman
 from hashlib import md5, sha1, sha256
-import Image
+import json
 import mimetypes
 from os import link, unlink, urandom, path
 import string
@@ -118,15 +119,12 @@ class Photo(models.Model):
 
     def import_image(self, service_name, email_address):
         image_url = False
-        needs_cropping = True
 
         if 'Identica' == service_name:
-            needs_cropping = False
             identica = identica_photo(email_address)
             if identica:
                 image_url = identica['image_url']
         elif 'Gravatar' == service_name:
-            needs_cropping = False
             gravatar = gravatar_photo(email_address)
             if gravatar:
                 image_url = gravatar['image_url']
@@ -139,19 +137,13 @@ class Photo(models.Model):
         super(Photo, self).save()
 
         dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
-        if not needs_cropping:
-            # Output directly into the "cropped" directory
-            dest_filename = settings.USER_FILES_ROOT + self.full_filename()
-
         image = urlopen(image_url)
 
         # Write file to disk
         destination = open(dest_filename, 'wb+')
         destination.write(image.read())
         destination.close()
-
-        if needs_cropping:
-            self.crop()
+        self.crop()
 
         return True
 
@@ -171,27 +163,13 @@ class Photo(models.Model):
         if not path.isfile(settings.UPLOADED_FILES_ROOT + self.full_filename()):
             return # source image doesn't exist, can't crop it
 
-        img = Image.open(settings.UPLOADED_FILES_ROOT + self.full_filename())
-        junk, junk, a, b = img.getbbox()
+        gm_client = libgearman.Client()
+        for server in settings.GEARMAN_SERVERS:
+            gm_client.add_server(server)
 
-        if w == 0 and h == 0:
-            w,h = a,b
-            i = min(w,h)
-            w,h = i,i
-        elif w < 0 or x+w > a or h < 0 or y+h > b:
-            raise ValueError('crop dimensions outside of original image bounding box')
-
-        cropped = img.crop((x, y, x+w, y+h))
-        cropped.load()
-
-        # Resize the image only if it's larger than the specified max width.
-        cropped_w, cropped_h = cropped.size
-        max_w=settings.AVATAR_MAX_SIZE
-        if cropped_w > max_w or cropped_h > max_w:
-            cropped = cropped.resize((max_w, max_w), Image.ANTIALIAS)
-
-        cropped.save(settings.USER_FILES_ROOT + self.full_filename(), img.format, quality=settings.JPEG_QUALITY)
-        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
+        workload = {'filename' : self.full_filename(),
+                    'x' : x, 'y' : y, 'w' : w, 'h' : h}
+        gm_client.do_background('cropresize', json.dumps(workload))
 
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User)
