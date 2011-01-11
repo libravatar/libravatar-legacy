@@ -25,7 +25,7 @@ External dependencies
 
 On Debian unstable:
 
-  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng
   
   apt-get install python-ldap
 
