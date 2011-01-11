@@ -8,7 +8,7 @@
 
 <form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
 
-<table>
+<table summary="">
 <tr>
   <td>{{ form.email.errors }}{{ form.email.label_tag }}:</td>
   <td>{{ form.email }}</td>

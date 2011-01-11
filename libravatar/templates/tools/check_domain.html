@@ -8,7 +8,7 @@
 
 <form action="{% url libravatar.tools.views.check_domain %}" method="post" name="lookup">
 
-<table>
+<table summary="">
 <tr>
   <td>{{ form.domain.errors }}{{ form.domain.label_tag }}:</td>
   <td>{{ form.domain }}</td>
