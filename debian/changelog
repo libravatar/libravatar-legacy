@@ -1,10 +1,11 @@
-libravatar (20110110.1) unstable; urgency=low
+libravatar (20110111.1) unstable; urgency=low
 
   * Move crop/resize/optimise to a gearman job
+  * Make /user non-writable by Apache and add deletephoto gearman worker
   * Remove all spaces between HTML tags in templates
   * Remove some inline CSS
 
- -- Francois Marier <francois@debian.org>  Mon, 10 Jan 2011 22:59:19 +1300
+ -- Francois Marier <francois@debian.org>  Tue, 11 Jan 2011 17:22:06 +1300
 
 libravatar (20110108.1) unstable; urgency=low
 
