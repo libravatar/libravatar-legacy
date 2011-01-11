@@ -1,3 +1,11 @@
+libravatar (20110111.2) unstable; urgency=low
+
+  * Add missing dependencies
+  * Fix permissions on the /var/run/libravatar directory
+  * Fix the status command for the gearman workers
+
+ -- Francois Marier <francois@debian.org>  Tue, 11 Jan 2011 18:22:26 +1300
+
 libravatar (20110111.1) unstable; urgency=low
 
   * Move crop/resize/optimise to a gearman job
