@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Photo lookup{% endblock title %}
 
+{% block body-onload %}document.forms.lookup.email.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>Photo lookup</h1>
 
-<form action="{% url libravatar.tools.views.check %}" method="post">
+<form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
 
 <table>
 <tr>

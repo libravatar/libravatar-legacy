@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Add email address{% endblock title %}
 
+{% block body-onload %}document.forms.addemail.email.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>Add a new email address</h1>
 
-<form action="{% url libravatar.account.views.add_email %}" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post">{% csrf_token %}
 
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>

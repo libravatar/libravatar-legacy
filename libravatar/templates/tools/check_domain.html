@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Domain lookup{% endblock title %}
 
+{% block body-onload %}document.forms.lookup.domain.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>Domain lookup</h1>
 
-<form action="{% url libravatar.tools.views.check_domain %}" method="post">
+<form action="{% url libravatar.tools.views.check_domain %}" method="post" name="lookup">
 
 <table>
 <tr>

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Create account{% endblock title %}
 
+{% block body-onload %}document.forms.new.username.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>Create a new account</h1>
 
-<form action="{% url libravatar.account.views.new %}" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.new %}" method="post" name="new">{% csrf_token %}
 
 {{ form.username.errors }}
 <p class="aligned wide">{{ form.username.label_tag }}: {{ form.username }}</p>
@@ -14,7 +15,9 @@
 {{ form.password2.errors }}
 <p class="aligned wide">{{ form.password2.label_tag }}: {{ form.password2 }}</p>
 
-<p><input type="submit" value="Create account" /></p>
+<p><input type="submit" value="Create account">
+&nbsp;<a href="{% url libravatar.public.views.home %}">Cancel</a></p>
+
 </form>
 
 {% endblock content %}

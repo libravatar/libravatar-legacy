@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}Libravatar: Delete your account{% endblock title %}
 
+{% block body-onload %}document.forms.delete.password.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>Delete your account</h1>
@@ -9,7 +10,7 @@
 
 <p>Please confirm your identity by entering your current password.</p>
 
-<form action="{% url libravatar.account.views.delete %}" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.delete %}" method="post" name="delete">{% csrf_token %}
 
 {{ form.password.errors }}
 <p class="aligned wide">{{ form.password.label_tag }}: {{ form.password }}</p>
