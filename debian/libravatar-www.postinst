@@ -92,14 +92,14 @@ case "$1" in
         adduser --system --disabled-login --shell /bin/bash --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
 
         mkdir -p ${READY_FILES_ROOT}
-        chown -R libravatar-img ${READY_FILES_ROOT}
+        chown -R libravatar-img:root ${READY_FILES_ROOT}
         chmod o-rwx ${READY_FILES_ROOT}
 
         mkdir -p ${UPLOADED_FILES_ROOT}
         chown -R www-data:www-data ${UPLOADED_FILES_ROOT}
 
         mkdir -p ${USER_FILES_ROOT}
-        chown -R www-data:www-data ${USER_FILES_ROOT}
+        chown -R root:root ${USER_FILES_ROOT}
 
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working

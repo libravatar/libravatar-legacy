@@ -152,8 +152,14 @@ class Photo(models.Model):
         for email in ConfirmedEmail.objects.filter(photo=self):
             email.set_photo(None)
 
-        delete_if_exists(settings.UPLOADED_FILES_ROOT + self.full_filename())
-        delete_if_exists(settings.USER_FILES_ROOT + self.full_filename())
+        # Queue a job for the photo deletion gearman worker
+        gm_client = libgearman.Client()
+        for server in settings.GEARMAN_SERVERS:
+            gm_client.add_server(server)
+
+        workload = {'filename' : self.full_filename()}
+        gm_client.do_background('deletephoto', json.dumps(workload))
+
         super(Photo, self).delete()
 
     def crop(self, x=0, y=0, w=0, h=0):
@@ -163,6 +169,7 @@ class Photo(models.Model):
         if not path.isfile(settings.UPLOADED_FILES_ROOT + self.full_filename()):
             return # source image doesn't exist, can't crop it
 
+        # Queue a job for the cropping/resizing gearman worker
         gm_client = libgearman.Client()
         for server in settings.GEARMAN_SERVERS:
             gm_client.add_server(server)
