@@ -8,5 +8,5 @@
 	dh  $@
 
 override_dh_installinit:
-	dh_installinit --name=libravatar-ready2user
-	dh_installinit --name=libravatar-cropresize
+	dh_installinit --name=ready2user
+	dh_installinit --name=cropresize

@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          libravatar-cropresize
+# Provides:          cropresize
 # Required-Start:    $network $local_fs $remote_fs gearman-job-server
 # Required-Stop:     $remote_fs
 # Default-Start:     2 3 4 5
@@ -14,11 +14,12 @@
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
 DESC="Libravatar cropresize worker"
-NAME=libravatar-cropresize
-USERNAME=libravatar-img
+NAME=cropresize
+RUNAS=libravatar-img
+PIDDIR=/var/run/libravatar
+PIDFILE=$PIDDIR/$NAME.pid
 DAEMON=/usr/bin/gearman
-DAEMON_ARGS="-w -f cropresize /usr/share/libravatar/libravatar/cropresize.py"
-PIDFILE=/var/run/$NAME.pid
+DAEMON_ARGS="-w -i $PIDFILE -f cropresize /usr/share/libravatar/libravatar/cropresize.py"
 SCRIPTNAME=/etc/init.d/$NAME
 
 # Exit if the package is not installed
@@ -39,18 +40,20 @@ SCRIPTNAME=/etc/init.d/$NAME
 #
 do_start()
 {
+	if ! test -d ${PIDDIR}
+	then
+		mkdir ${PIDDIR}
+		chown ${RUNAS} ${PIDDIR}
+	fi
 	# Return
 	#   0 if daemon has been started
 	#   1 if daemon was already running
 	#   2 if daemon could not be started
-	start-stop-daemon --start --quiet --pidfile $PIDFILE -c $USERNAME --exec $DAEMON --test > /dev/null \
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --chuid $RUNAS --background --exec $DAEMON --test > /dev/null \
 		|| return 1
-	start-stop-daemon --start --quiet --pidfile $PIDFILE -c $USERNAME --exec $DAEMON -- \
+	start-stop-daemon --start --quiet --pidfile $PIDFILE --chuid $RUNAS --background --exec $DAEMON -- \
 		$DAEMON_ARGS \
 		|| return 2
-	# Add code here, if necessary, that waits for the process to be ready
-	# to handle requests from services started subsequently which depend
-	# on this one.  As a last resort, sleep for some time.
 }
 
 #
@@ -63,18 +66,9 @@ do_stop()
 	#   1 if daemon was already stopped
 	#   2 if daemon could not be stopped
 	#   other if a failure occurred
-	start-stop-daemon --stop --quiet --retry=TERM/30/KILL/5 --pidfile $PIDFILE --name $NAME
+	start-stop-daemon --stop --quiet --retry=TERM/10/KILL/5 --pidfile $PIDFILE
 	RETVAL="$?"
 	[ "$RETVAL" = 2 ] && return 2
-	# Wait for children to finish too if this is a daemon that forks
-	# and if the daemon is only ever run from this initscript.
-	# If the above conditions are not satisfied then add some other code
-	# that waits for the process to drop all resources that could be
-	# needed by services started subsequently.  A last resort is to
-	# sleep for some time.
-	start-stop-daemon --stop --quiet --oknodo --retry=0/30/KILL/5 --exec $DAEMON
-	[ "$?" = 2 ] && return 2
-	# Many daemons don't delete their pidfiles when they exit.
 	rm -f $PIDFILE
 	return "$RETVAL"
 }
