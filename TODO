@@ -42,11 +42,6 @@ Storage:
 - write an S3 backend
 - write a file backend on a different server
 
-Queuing:
-- maybe use celeryproject.org (Django decorator) or Gearman
-- image optimisation/resizing/copying to happen via workers so that it
-   can be scaled easily as demand increases
-
 Content licensing:
 - have a checkbox for "this image is CC-BY-SA" and a "different
    license" link (should we support "all rights reserved"?)
@@ -62,9 +57,6 @@ Image resizing:
    looking up the inode number of the md5 using "ls -i" then finding
    the sha1 and sha256 using "find -mount -inum xxxxx"
 
-Image optimisations:
-- run jpegoptim or optipng on images
-
 User sovereignty:
 - "export my data" which uuencodes photos to XML along with email
    addresses
@@ -77,7 +69,6 @@ Admin:
 - ability to disable a profile (which deletes all email -> photo associations)
 
 Images:
-- sanity checks for uploaded images (to make sure it's a valid jpeg/png)
 - image importer from gpg key servers for embedded photos
 - image importer for Twitter and Launchpad (need to specify username)
 - URL image downloader/importer
@@ -100,16 +91,6 @@ General Django app:
 - set the keyboard focus on the default field of each form
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
-
-Secure image uploading:
-- upload image to temp dir
-- crop/resize and move somewhere else (delete old non-cropped images on cron)
-- restrict serving both images to authenticated uploader
-- put the image into an "incoming" folder (/var/spool/libravatar?)
-- run optimisers/resizers as restricted UNIX user and then move image
-   to a different "ready" folder
-- finally the web server takes it from there and copies it to the
-   apache docroot where it's served from
 
 Sysadmin stuff:
 - use Puppet for all server config
