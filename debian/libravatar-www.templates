@@ -55,7 +55,7 @@ Description: Support address:
 Template: libravatar-www/secretkey
 Type: string
 Description: Django secret key:
- Enter a long string of up to 50 random characters.
+ Enter a long alphanumeric string of up to 50 random characters.
 
 Template: libravatar-www/analyticspropertyid
 Type: string
