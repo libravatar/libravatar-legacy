@@ -39,10 +39,7 @@ SCRIPTNAME=/etc/init.d/$NAME
 #
 do_start()
 {
-        if ! test -d ${PIDDIR}
-        then
-                mkdir ${PIDDIR}
-        fi
+	mkdir -p ${PIDDIR}
 	# Return
 	#   0 if daemon has been started
 	#   1 if daemon was already running
