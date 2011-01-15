@@ -1,3 +1,13 @@
+libravatar (20110115.1) unstable; urgency=low
+
+  * Add focus to first field in all forms
+  * Set libravatar-img's shell to /bin/false
+  * Add README.Debian
+  * Cleanup of settings.py and .pyc files
+  * Allow single quotes and spaces in config values (-www's postinst)
+
+ -- Francois Marier <francois@debian.org>  Sat, 15 Jan 2011 17:18:45 +1300
+
 libravatar (20110111.2) unstable; urgency=low
 
   * Add missing dependencies
