@@ -9,6 +9,8 @@ Type: string
 Default: cdn.libravatar.org
 Description: URL of the CDN server:
  Please enter the URL of the content delivery network (without the "http://" part).
+ .
+ This has to be on a DIFFERENT (sub)domain from the URL of the main service.
 
 Template: libravatar-common/seccdnservername
 Type: string
