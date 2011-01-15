@@ -1,0 +1,21 @@
+libravatar-www for Debian
+--------------------------
+
+Once you have installed this package, you need to create a database user
+and a database for it.
+
+For example, on Postgres, you'd do something like:
+
+  sudo -u postgres createuser --no-superuser --no-createdb --no-createrole --pwprompt djangouser
+  sudo -u postgres createdb -O djangouser -E utf8 libravatar
+
+Then you will need to initialise the database:
+
+  cd /usr/share/libravatar/libravatar
+  python manage.py syncdb
+
+and finally, restart Apache:
+
+  sudo apache2ctl restart
+
+ -- Francois Marier <francois@debian.org>  Sat, 15 Jan 2011 15:58:32 +1300
