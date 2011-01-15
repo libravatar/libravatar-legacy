@@ -22,6 +22,7 @@ case "$1" in
         a2dissite libravatar-www > /dev/null 2>&1 || true
         rm -f /etc/apache2/sites-available/libravatar-www
         rm -f /usr/share/libravatar/libravatar/settings.py
+        find /usr/share/libravatar -type f -name "*.pyc" -delete
     ;;
 
     upgrade)

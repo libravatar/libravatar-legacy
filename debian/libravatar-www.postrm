@@ -24,7 +24,6 @@ set -e
 case "$1" in
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
         deluser libravatar-img || true
-        find /usr/share/libravatar -type f -name "*.pyc" -delete
     ;;
 
     purge)
