@@ -17,7 +17,7 @@ Description: avatar image hosting - full install
 
 Package: libravatar-www
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python2.6, debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng
+Depends: ${misc:Depends}, ${python:Depends}, libravatar-common, apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python2.6, debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng
 XB-Python-Version: ${python:Versions}
 Description: avatar image hosting - main web application
  Main Libravatar application for uploading images and associating
@@ -41,4 +41,4 @@ Package: libravatar-common
 Architecture: all
 Depends: ${misc:Depends}, debconf
 Description: avatar image hosting - common files
- Files needed by both CDN Libravatar packages.
+ Files needed by the main Libravatar website and both CDN packages.
