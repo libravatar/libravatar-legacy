@@ -19,10 +19,6 @@ set -e
 
 . /usr/share/debconf/confmodule
 
-set_config () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1$value/; print; }' $1 $2 $3;
-}
-
 APACHE_CONFIG=/etc/libravatar/seccdn.apache2.conf
 
 case "$1" in

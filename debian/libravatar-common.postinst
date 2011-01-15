@@ -19,10 +19,6 @@ set -e
 
 . /usr/share/debconf/confmodule
 
-set_config () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1$value/; print; }' $1 $2 $3;
-}
-
 LOG_ROOT=/var/log/libravatar
 AVATAR_ROOT=/var/lib/libravatar/avatar
 APACHE_CONFIG=/etc/libravatar/cdn-common.apache2.conf
