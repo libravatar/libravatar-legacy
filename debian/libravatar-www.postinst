@@ -20,11 +20,11 @@ set -e
 . /usr/share/debconf/confmodule
 
 set_dbconfig () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*("$field"\s*:\s*).*/$1"$value",/; print; }' $1 $2 $3;
+    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*("$field"\s*:\s*).*/$1"$value",/; print; }' "$1" "$2" "$3";
 }
 
 set_config () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1"$value"/; print; }' $1 $2 $3;
+    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1"$value"/; print; }' "$1" "$2" "$3";
 }
 
 SETTINGS_PY=/etc/libravatar/settings.py
