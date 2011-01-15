@@ -20,11 +20,11 @@ set -e
 . /usr/share/debconf/confmodule
 
 set_dbconfig () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*("$field"\s*:\s*).*/$1$value,/; print; }' $1 $2 $3;
+    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*("$field"\s*:\s*).*/$1"$value",/; print; }' $1 $2 $3;
 }
 
 set_config () {
-    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1$value/; print; }' $1 $2 $3;
+    perl -i -e '$field=shift;$value=shift if (scalar(@ARGV)>1);$value||="";while (<>) { s/^\s*($field\s*=\s*).*/$1"$value"/; print; }' $1 $2 $3;
 }
 
 SETTINGS_PY=/etc/libravatar/settings.py
@@ -40,53 +40,53 @@ case "$1" in
 
         # Add config entries to $SETTINGS_PY based on answers to debconf questions
         db_get libravatar-www/db_host
-        set_dbconfig HOST "'${RET}'" ${SETTINGS_PY}
+        set_dbconfig HOST "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/db_port
-        set_dbconfig PORT "'${RET}'" ${SETTINGS_PY}
+        set_dbconfig PORT "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/db_name
-        set_dbconfig NAME "'${RET}'" ${SETTINGS_PY}
+        set_dbconfig NAME "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/db_user
-        set_dbconfig USER "'${RET}'" ${SETTINGS_PY}
+        set_dbconfig USER "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/db_pass
-        set_dbconfig PASSWORD "'${RET}'" ${SETTINGS_PY}
+        set_dbconfig PASSWORD "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-common/cdnservername
-        set_config MEDIA_URL "'http://${RET}'" ${SETTINGS_PY}
+        set_config MEDIA_URL "http://${RET}" ${SETTINGS_PY}
 
         db_get libravatar-common/seccdnservername
         VALUE=${RET}
         if [ "z${VALUE}" = "z" ] ; then
-            set_config SECURE_MEDIA_URL "''" ${SETTINGS_PY}
+            set_config SECURE_MEDIA_URL "" ${SETTINGS_PY}
         else
-            set_config SECURE_MEDIA_URL "'https://${VALUE}'" ${SETTINGS_PY}
+            set_config SECURE_MEDIA_URL "https://${VALUE}" ${SETTINGS_PY}
         fi
 
         db_get libravatar-common/wwwservername
-        set_config SITE_URL "'http://${RET}'" ${SETTINGS_PY}
+        set_config SITE_URL "http://${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/sitename
-        set_config SITE_NAME "'${RET}'" ${SETTINGS_PY}
+        set_config SITE_NAME "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/fromemail
-        set_config FROM_ADDRESS "'${RET}'" ${SETTINGS_PY}
+        set_config FROM_ADDRESS "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/supportemail
-        set_config SUPPORT_EMAIL "'${RET}'" ${SETTINGS_PY}
+        set_config SUPPORT_EMAIL "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/secretkey
-        set_config SECRET_KEY "'${RET}'" ${SETTINGS_PY}
+        set_config SECRET_KEY "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/analyticspropertyid
-        set_config ANALYTICS_PROPERTYID "'${RET}'" ${SETTINGS_PY}
+        set_config ANALYTICS_PROPERTYID "${RET}" ${SETTINGS_PY}
 
-        set_config AVATAR_ROOT "'${AVATAR_ROOT}/'" ${SETTINGS_PY}
-        set_config READY_FILES_ROOT "'${READY_FILES_ROOT}/'" ${SETTINGS_PY}
-        set_config UPLOADED_FILES_ROOT "'${UPLOADED_FILES_ROOT}/'" ${SETTINGS_PY}
-        set_config USER_FILES_ROOT "'${USER_FILES_ROOT}/'" ${SETTINGS_PY}
+        set_config AVATAR_ROOT "${AVATAR_ROOT}/" ${SETTINGS_PY}
+        set_config READY_FILES_ROOT "${READY_FILES_ROOT}/" ${SETTINGS_PY}
+        set_config UPLOADED_FILES_ROOT "${UPLOADED_FILES_ROOT}/" ${SETTINGS_PY}
+        set_config USER_FILES_ROOT "${USER_FILES_ROOT}/" ${SETTINGS_PY}
 
         # Create a restricted user to crop/resize images with
         adduser --system --disabled-login --shell /bin/false --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
