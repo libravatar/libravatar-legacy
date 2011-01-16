@@ -38,9 +38,10 @@ def check(request):
             data['sha1'] = sha1(email.strip().lower()).hexdigest()
             data['sha256'] = sha256(email.strip().lower()).hexdigest()
 
-            data['query_string'] = ''
-            if len(form.cleaned_data['domain']) > 0:
-                data['query_string'] = '?domain=' + form.cleaned_data['domain']
+            domain = email.split('@')[-1]
+            data['query_string'] = '?domain=' + domain
+            print domain
+
             if len(form.cleaned_data['not_found']) > 0:
                 if len(data['query_string']) > 0:
                     data['query_string'] += '&'
@@ -48,6 +49,14 @@ def check(request):
                     data['query_string'] = '?'
                 
                 data['query_string'] += 'd=' + form.cleaned_data['not_found']
+
+            if form.cleaned_data['size']:
+                if len(data['query_string']) > 0:
+                    data['query_string'] += '&'
+                else:
+                    data['query_string'] = '?'
+
+                data['query_string'] += 's=%s' % form.cleaned_data['size']
     else:
         form = CheckForm()
 

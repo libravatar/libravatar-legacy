@@ -15,8 +15,8 @@
 </tr>
 <tr><td colspan="1"><i>Optional parameters</i></td></tr>
 <tr>
-  <td>{{ form.domain.errors }}{{ form.domain.label_tag }}:</td>
-  <td>{{ form.domain }}</td>
+  <td>{{ form.size.errors }}{{ form.size.label_tag }}:</td>
+  <td>{{ form.size }}</td>
 </tr>
 <tr>
   <td>{{ form.not_found.errors }}{{ form.not_found.label_tag }}:</td>
@@ -34,7 +34,7 @@
 SHA1 hash: <tt>{{ data.sha1 }}</tt><br>
 SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 
-<p>This is what the avatars will look like depending on the hashing algorithm you use:</p>
+<p>This is what the avatars will look like depending on the hash and protocol you use:</p>
 <ul class="horizontal-list avatar-list centered">
   <li><a href="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}" alt=""></a><br>MD5</li>
   <li><a href="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}" alt=""></a><br>SHA1</li>

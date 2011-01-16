@@ -95,11 +95,25 @@ def resolve(request):
                                   context_instance=RequestContext(request))
 
     # Maintain the default redirection that was specified
-    not_found = ''
+    query_string = ''
     if 'd' in request.GET:
-        not_found = '?d=%s' % urllib.quote(request.GET['d'])
+        query_string = '?d=%s' % urllib.quote(request.GET['d'])
     elif 'default' in request.GET:
-        not_found = '?d=%s' % urllib.quote(request.GET['default'])
+        query_string = '?d=%s' % urllib.quote(request.GET['default'])
+
+    # Maintain the size that was specified
+    if 's' in request.GET:
+        if len(query_string) > 0:
+            query_string += '&'
+        else:
+            query_string = '?'
+        query_string += 's=%s' % urllib.quote(request.GET['s'])
+    elif 'size' in request.GET:
+        if len(query_string) > 0:
+            query_string += '&'
+        else:
+            query_string = '?'
+        query_string += 's=%s' % urllib.quote(request.GET['size'])
 
     email_hash = request.GET['email_hash']
     avatar_url = settings.AVATAR_URL
@@ -115,7 +129,7 @@ def resolve(request):
             else:
                 avatar_url = "http://%s/avatar/" % delegation_server
 
-    final_url = avatar_url + email_hash + not_found
+    final_url = avatar_url + email_hash + query_string
     return HttpResponseRedirect(final_url)
 
 def avatar_exists(email_hash, size):
