@@ -102,17 +102,20 @@ def resolve(request):
         not_found = '?d=%s' % urllib.quote(request.GET['default'])
 
     email_hash = request.GET['email_hash']
-    avatar_server = settings.SITE_URL
+    avatar_url = settings.AVATAR_URL
+    if request.is_secure():
+        avatar_url = settings.SECURE_AVATAR_URL
 
     # Check to see if we need to delegate to another avatar server
     if 'domain' in request.GET:
-        delegation_server = lookup_avatar_server(request.GET['domain'], False)
+        delegation_server = lookup_avatar_server(request.GET['domain'], request.is_secure())
         if delegation_server:
-            avatar_server = delegation_server
-            # redirect first to 
-            not_found = '?d=' + urllib.quote(settings.AVATAR_URL + email_hash + not_found)
+            if request.is_secure():
+                avatar_url = "https://%s/avatar/" % delegation_server
+            else:
+                avatar_url = "http://%s/avatar/" % delegation_server
 
-    final_url = avatar_server + '/avatar/' + email_hash + not_found
+    final_url = avatar_url + email_hash + not_found
     return HttpResponseRedirect(final_url)
 
 def avatar_exists(email_hash, size):
