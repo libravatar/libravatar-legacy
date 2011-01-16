@@ -89,7 +89,7 @@ case "$1" in
         set_config USER_FILES_ROOT "${USER_FILES_ROOT}/" ${SETTINGS_PY}
 
         # Create a restricted user to crop/resize images with
-        adduser --system --disabled-login --shell /bin/false --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
+        adduser --system --quiet --disabled-login --shell /bin/false --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
 
         mkdir -p ${READY_FILES_ROOT}
         chown -R libravatar-img:root ${READY_FILES_ROOT}
