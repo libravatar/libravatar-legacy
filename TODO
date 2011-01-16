@@ -85,6 +85,7 @@ Plugins/hooks:
    (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
    and pfaces (https://projects.pekdon.net/projects/pfaces)
 - greasemonkey script to convert gravatar URLs to libravatar.org
+  (look at http://userscripts.org/scripts/show/2166)
 - gnus (http://julien.danjou.info/blog/index.html#Gnus_and_Gravatar_support)
 - use Facebook / Twitter API to change profile pictures there too
 
