@@ -18,7 +18,6 @@ Apache config:
 - split apps between secure (account) and www (public and tools)
 
 Federation:
-- create a test avatars.catalyst.net.nz server 
 - when adding an email address, check if the domain is controlled
    by another avatar server elsewhere
 - add OpenID support (python-django-auth-openid)
@@ -51,6 +50,12 @@ Content licensing:
 - or perhaps licensing should be embedded into the files as EXIF comments
    (http://q-funk.blogspot.com/2010/08/batch-editing-exif-data-to-add.html)
 - or another idea is to have /avatar/HASH.json include metadata
+
+Gearman jobs:
+- photo-email association (set_photo)
+- dynamic resizer
+- photo importers
+- make gearman jobs persist inside the Postgres DB
 
 Image resizing:
 - when writing a resized image, create hardlinks to all hashes by
