@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import DNS
 from hashlib import md5, sha1, sha256
 
 from django.core.urlresolvers import reverse
@@ -63,6 +64,34 @@ def check(request):
     return render_to_response('tools/check.html', {'form': form, 'data' : data},
                               context_instance=RequestContext(request))
 
+def lookup_ip_address(hostname, ipv6):
+    """
+    Try to get IPv4 or IPv6 addresses for the given hostname
+    """
+
+    DNS.DiscoverNameServers()
+    try:
+        if ipv6:
+            dns_request = DNS.Request(name=hostname, qtype=DNS.Type.AAAA).req()
+        else:
+            dns_request = DNS.Request(name=hostname, qtype=DNS.Type.A).req()
+    except DNS.DNSError as message:
+        print "DNS Error: %s" % message
+        return None
+
+    if dns_request.header['status'] != 'NOERROR':
+        print "DNS Error: status=%s" % dns_request.header['status']
+        return None
+
+    for answer in dns_request.answers:
+        if (not 'data' in answer) or (not answer['data']):
+            continue
+
+        # TODO: fix the display (binary?) of IPv6 addresses
+        return answer['data']
+
+    return None
+
 def check_domain(request):
     data = None
     if (request.POST):
@@ -71,7 +100,11 @@ def check_domain(request):
             data = {}
             domain = form.cleaned_data['domain']
             data['avatar_server_http'] = lookup_avatar_server(domain, False)
+            if data['avatar_server_http']:
+                data['avatar_server_http_ipv4'] = lookup_ip_address(data['avatar_server_http'], False)
             data['avatar_server_https'] = lookup_avatar_server(domain, True)
+            if data['avatar_server_https']:
+                data['avatar_server_https_ipv4'] = lookup_ip_address(data['avatar_server_https'], False)
     else:
         form = CheckDomainForm()
 

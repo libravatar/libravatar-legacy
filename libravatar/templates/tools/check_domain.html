@@ -28,6 +28,11 @@
   {% if not data.avatar_server_http %}
   (use <tt>http://www.libravatar.org</tt>)
   {% endif %}
+  {% if data.avatar_server_http_ipv4 %}
+  <br>{{ data.avatar_server_http_ipv4 }}
+  {% else %}
+  <br><strong>Warning: no A record for this hostname</strong>
+  {% endif %}
   </td>
 </tr>
 <tr>
