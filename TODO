@@ -13,9 +13,12 @@ Promotion (when we're ready):
 - create Freshmeat account (once there's a first release)
 
 Apache config:
-- enforce referer of www.libravatar.org on /uploaded/* and /user/*
 - support dynamic resizing of images delivered over https
 - split apps between secure (account) and www (public and tools)
+- prevent POST requests to www from other sites using ABE rule
+- enforce referer of www.libravatar.org on /user/* using ABE rule
+  (http://noscript.net/abe/web-authors.html)
+- only allow display of /uploaded/* on the crop page using ABE rule
 
 Federation:
 - when adding an email address, check if the domain is controlled
