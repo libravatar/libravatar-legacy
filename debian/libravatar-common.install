@@ -1,3 +1,4 @@
+static/*.abe usr/share/libravatar/static
 static/*.txt usr/share/libravatar/static
 static/*.html usr/share/libravatar/static
 static/css/*.html usr/share/libravatar/static/css
