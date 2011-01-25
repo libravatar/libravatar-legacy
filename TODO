@@ -22,7 +22,7 @@ Apache config:
 
 Federation:
 - when adding an email address, check if the domain is controlled
-   by another avatar server elsewhere
+   by another avatar server elsewhere and issue a warning
 - add OpenID support (python-django-auth-openid)
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
@@ -98,6 +98,7 @@ Plugins/hooks:
 General Django app:
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
+- add support for client certificates to authenticate
 
 Sysadmin stuff:
 - use Puppet for all server config
