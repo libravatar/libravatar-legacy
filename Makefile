@@ -1,17 +1,26 @@
-all: build
+CSS := $(shell find static/css -type f -name "*.css" )
+JS := $(shell find static/js -type f -name "*.js" )
 
-build:
-	# Minify and compress javascript and css files
-	find static/css -type f -name "[^.]*.css" -execdir yui-compressor -o {}.css {} \;
-	find static/js -type f -name "[^.]*.js"  -execdir yui-compressor -o {}.js {} \;
-	cd static/css && for f in *.css.css ; do gzip -c $$f > `basename $$f .css`.gz ; done
-	cd static/js && for f in *.js.js ; do gzip -c $$f > `basename $$f .js`.gz ; done
+MIN_CSS = ${CSS:=.css} 
+MIN_JS = ${JS:=.js}
+COMPRESSED_CSS = ${CSS:=.gz}
+COMPRESSED_JS = ${JS:=.gz}
+CLEANUP = 
+
+all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS)
+
+%.css: %
+	yui-compressor -o $@ $<
+%.js: %
+	yui-compressor -o $@ $<
+
+%.gz: %.css
+	gzip --best < $< > $@
+%.gz: %.js
+	gzip --best < $< > $@
 
 clean:
-	find static/css -name "*.css.css" -delete
-	find static/js -name "*.js.js" -delete
-	find static/css -name "*.css.gz" -delete
-	find static/js -name "*.js.gz" -delete
+	rm -f $(COMPRESSED_CSS) $(COMPRESSED_JS) $(MIN_CSS) $(MIN_JS)
 	find -name "*.pyc" -delete
 	( [ -h libravatar/settings.py ] && rm -f libravatar/settings.py ) || true
 
