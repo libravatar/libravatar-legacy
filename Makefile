@@ -1,5 +1,5 @@
-CSS := $(shell find static/css -type f -name "*.css" )
-JS := $(shell find static/js -type f -name "*.js" )
+CSS := $(shell find static/css -type f -name "*.css" -a -not -name "*.css.css")
+JS := $(shell find static/js -type f -name "*.js" -a -not -name "*.js.js")
 
 MIN_CSS = ${CSS:=.css} 
 MIN_JS = ${JS:=.js}
