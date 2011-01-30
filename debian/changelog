@@ -1,3 +1,13 @@
+libravatar (20110130.1) unstable; urgency=low
+
+  * Turn HSTS on in seccdn
+  * Add empty rules.abe for the CDNs
+  * Display right URLs in the check_domain tool
+  * CSS3 borders in the main stylesheet
+  * Deny all paths by default
+
+ -- Francois Marier <francois@debian.org>  Sun, 30 Jan 2011 15:39:10 +1000
+
 libravatar (20110116.1) unstable; urgency=low
 
   * Working delegation in check tool, extracting the domain from email
