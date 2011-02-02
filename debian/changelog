@@ -1,3 +1,9 @@
+libravatar (20110202.1) unstable; urgency=low
+
+  * Redirect to Gravatar for non-implemented default values (bug #710395)
+
+ -- Francois Marier <francois@debian.org>  Wed, 02 Feb 2011 21:58:45 +1300
+
 libravatar (20110130.1) unstable; urgency=low
 
   * Turn HSTS on in seccdn
