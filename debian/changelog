@@ -1,3 +1,9 @@
+libravatar (20110206.2) unstable; urgency=low
+
+  * Small improvements to the documentation
+
+ -- Francois Marier <francois@debian.org>  Sun, 06 Feb 2011 22:27:03 +1300
+
 libravatar (20110206.1) unstable; urgency=low
 
   * Improved homepage with API and installation documentation
