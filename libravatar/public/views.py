@@ -42,6 +42,18 @@ def home(request):
     return render_to_response('public/home.html',
                               context_instance=RequestContext(request))
 
+def api(request):
+    return render_to_response('public/api.html',
+                              context_instance=RequestContext(request))
+
+def libraries(request):
+    return render_to_response('public/libraries.html',
+                              context_instance=RequestContext(request))
+
+def run_your_own(request):
+    return render_to_response('public/run_your_own.html',
+                              context_instance=RequestContext(request))
+
 def lookup_avatar_server(domain, https):
     """
     Extract the avatar server from an SRV record in the DNS zone

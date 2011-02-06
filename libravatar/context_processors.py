@@ -25,6 +25,7 @@ def basepage(request):
     context = {}
     context['analytics_propertyid'] = settings.ANALYTICS_PROPERTYID
     context['avatar_url'] = settings.AVATAR_URL
+    context['dev_email'] = settings.DEV_EMAIL
     context['disable_signup'] = settings.DISABLE_SIGNUP
     context['libravatar_version'] = settings.LIBRAVATAR_VERSION
     context['media_url'] = settings.MEDIA_URL

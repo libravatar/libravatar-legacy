@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar{% endblock title %}
+
+{% block content %}
+
+<p>Libravatar was designed so that domain owners can choose to host themselves the profile pictures for their domain. For example, an organisation may want to have control over the pictures use for their employees.</p>
+
+<h2>System requirements</h2>
+
+<p>You can find the latest system requirements in the <a href="http://bazaar.launchpad.net/~libravatar/libravatar/trunk/view/head:/INSTALL">installation instructions</a> that come with the software, but Libravatar has been confirmed to work on <a href="http://www.debian.org/releases/squeeze/">Debian 6</a> (squeeze).</p>
+
+<h2>Getting the code</h2>
+
+<p>We are not currently doing regular releases of the code, but you can easily get the latest copy from our <a href="https://code.launchpad.net/libravatar">Bazaar repository</a>:</p>
+
+<blockquote><code>bzr branch lp:libravatar</code></blockquote>
+
+<h2>Installation</h2>
+
+<p>Once you've got a copy of the code, follow the instructions in the <a href="http://bazaar.launchpad.net/~libravatar/libravatar/trunk/view/head:/INSTALL">INSTALL</a> file.</p>
+
+<h2>Configuration</h2>
+
+<p>A number of options can be customised in the libravatar/settings.py file. If there's anything that's unclear in there, please <a href="https://bugs.launchpad.net/libravatar/+filebug">file a bug</a> against the project so that we know how to improve the documentation.</p>
+
+<h2>DNS setup</h2>
+
+<p>Once your instance is running on a publicly-accessible server (<tt>avatars.example.com</tt> in this example), add the following records to your DNS zone file:</p>
+
+<pre>_avatars._tcp.example.com.     IN SRV 0 0 80  avatars.example.com
+_avatars-sec._tcp.example.com. IN SRV 0 0 443 avatars.example.com</pre>
+
+<p>Once you have these records, have a look at the <a href="{% url libravatar.tools.views.check %}">domain check tool</a> to make sure everything is working.</p>
+
+{% endblock content %}

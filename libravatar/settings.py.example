@@ -10,6 +10,7 @@ SITE_NAME = 'libravatar.org'
 SITE_URL = 'http://www.libravatar.org'
 FROM_ADDRESS = 'accounts@libravatar.org'
 SUPPORT_EMAIL = 'support@libravatar.org'
+DEV_EMAIL = 'dev@libravatar.org'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),

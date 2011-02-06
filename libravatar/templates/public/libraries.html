@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Libravatar{% endblock title %}
+
+{% block content %}
+
+<h2>Libraries and Plug-ins</h2>
+
+<p>Libraries and plugins are currently not available and so your best option at the moment is to use our <a href="{% url libravatar.public.views.api %}">simple API</a>. Don't worry though, it's really not that much work!</p>
+
+<h2>Contribute!</h2>
+
+<p>Interested in writing a plugin for your favourite framework/CMS or a library for your favourite language? Please <a href="mailto:{{ dev_email }}">get in touch</a>, we would be more than happy to link to them from this page!</p>
+
+{% endblock content %}
