@@ -1,3 +1,9 @@
+libravatar (20110206.1) unstable; urgency=low
+
+  * Improved homepage with API and installation documentation
+
+ -- Francois Marier <francois@debian.org>  Sun, 06 Feb 2011 18:26:05 +1300
+
 libravatar (20110202.1) unstable; urgency=low
 
   * Redirect to Gravatar for non-implemented default values (bug #710395)
