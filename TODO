@@ -2,7 +2,6 @@ Branding/homepage:
 - add an abuse form for reporting inappropriate content to abuse@
 - make a collage of the user photos in the shape of libravatar logo
    (the ones licensed under Creative Commons)
-- document the Libravatar API
 - come up with terms and conditions?
 - write a comparison table of Libravatar & Gravatar features
 
@@ -26,7 +25,6 @@ Federation:
 - add OpenID support (python-django-auth-openid)
 - write a Perl library for doing the DNS lookup before using
    libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
-- document the protocol and register on http://www.dns-sd.org/ServiceTypes.html
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
    http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
