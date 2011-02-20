@@ -26,7 +26,7 @@ Federation:
    by another avatar server elsewhere and issue a warning
 - add OpenID support (python-django-auth-openid)
 - write a Perl library for doing the DNS lookup before using
-   libravatar.org (http://search.cpan.org/dist/Template-Plugin-Gravatar/)
+   libravatar.org (http://search.cpan.org/~mschwern/Gravatar-URL/)
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
    http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
