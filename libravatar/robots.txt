@@ -1,1 +1,2 @@
-# Nothing yet
+User-agent: *
+Disallow: /account/
