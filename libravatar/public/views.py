@@ -91,7 +91,7 @@ def lookup_avatar_server(domain, https):
         port = int(answer['data'][2])
         target = answer['data'][3]
         if (https and port != 443) or (not https and port != 80):
-             "%s:%s" % (target, port)
+            return "%s:%s" % (target, port)
         else:
             return target
 
