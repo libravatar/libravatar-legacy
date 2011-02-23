@@ -24,5 +24,8 @@ clean:
 	find -name "*.pyc" -delete
 	( [ -h libravatar/settings.py ] && rm -f libravatar/settings.py ) || true
 
+test:
+	DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pychecker {} \;
+
 package:
 	dpkg-buildpackage -us -uc
