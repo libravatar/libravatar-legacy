@@ -61,7 +61,7 @@ def gravatar_photo(email):
     service_url = 'http://www.gravatar.com/' + md5(email.lower()).hexdigest()
 
     try:
-        fh = urlopen(image_url)
+        urlopen(image_url)
     except HTTPError:
         return False
 

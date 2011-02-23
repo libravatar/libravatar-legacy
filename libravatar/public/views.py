@@ -86,8 +86,8 @@ def lookup_avatar_server(domain, https):
             continue
 
         # TODO: implement priority and weight
-        priority = int(answer['data'][0])
-        weight = int(answer['data'][1])
+        #priority = int(answer['data'][0])
+        #weight = int(answer['data'][1])
         port = int(answer['data'][2])
         target = answer['data'][3]
         if (https and port != 443) or (not https and port != 80):
@@ -194,10 +194,10 @@ def resize(request):
     # Add a note to the logs to keep track of frequently requested sizes
     print '[RESIZE] %s px' % size
 
-    (resized_filename, format) = resized_avatar(email_hash, size)
+    (resized_filename, file_format) = resized_avatar(email_hash, size)
 
     # Serve resized image
-    response = HttpResponse(mimetype=mimetype_format(format))
+    response = HttpResponse(mimetype=mimetype_format(file_format))
     with open(resized_filename, 'rb') as resized_img:
         response.write(resized_img.read())
         resized_img.close()

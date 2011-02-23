@@ -72,7 +72,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
     # Need to reopen the image after verify()
     img = Image.open(source)
-    junk, junk, a, b = img.getbbox()
+    unused, unused, a, b = img.getbbox()
 
     if w == 0 and h == 0:
         w,h = a,b
