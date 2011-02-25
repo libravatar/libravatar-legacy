@@ -1,3 +1,11 @@
+libravatar (20110225.1) unstable; urgency=low
+
+  * Remove CA file from seccdn Apache config
+  * Fixes for a bunch of pychecker warnings
+  * Disable indexing of /account/ in robots.txt
+
+ -- Francois Marier <francois@debian.org>  Fri, 25 Feb 2011 20:37:37 +1300
+
 libravatar (20110222.1) unstable; urgency=low
 
   * Improve SSL Apache config for StartSSL cert
