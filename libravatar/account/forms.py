@@ -82,6 +82,7 @@ class UploadPhotoForm(forms.Form):
     not_porn = forms.BooleanField(required=True, label='suitable for all ages (i.e. no offensive content)')
     can_distribute = forms.BooleanField(required=True, label='can be freely copied')
 
+    # pylint: disable=R0201
     def save(self, user, ip_address, image):
         # Link this file to the user's profile
         p = Photo()

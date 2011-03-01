@@ -19,8 +19,6 @@
 import DNS
 from hashlib import md5, sha1, sha256
 
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 

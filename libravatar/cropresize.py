@@ -22,7 +22,7 @@ import json
 import os
 import sys
 
-import settings
+import settings # pylint: disable=W0403
 
 def create_broken_image(broken, dest):
     if os.path.isfile(dest):
@@ -75,9 +75,9 @@ def crop(filename, x=0, y=0, w=0, h=0):
     unused, unused, a, b = img.getbbox()
 
     if w == 0 and h == 0:
-        w,h = a,b
-        i = min(w,h)
-        w,h = i,i
+        w, h = a, b
+        i = min(w, h)
+        w, h = i, i
     elif w < 0 or x+w > a or h < 0 or y+h > b:
         raise ValueError('crop dimensions outside of original image bounding box')
 
@@ -86,7 +86,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
     # Resize the image only if it's larger than the specified max width.
     cropped_w, cropped_h = cropped.size
-    max_w=settings.AVATAR_MAX_SIZE
+    max_w = settings.AVATAR_MAX_SIZE
     if cropped_w > max_w or cropped_h > max_w:
         cropped = cropped.resize((max_w, max_w), Image.ANTIALIAS)
 

@@ -20,7 +20,7 @@ import json
 import os
 import sys
 
-import settings
+import settings # pylint: disable=W0403
 
 def main(argv=None):
     if argv is None:

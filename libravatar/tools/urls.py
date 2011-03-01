@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+# pylint: disable=W0401,W0614
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',

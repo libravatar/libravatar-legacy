@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from django.core.management import execute_manager
 try:
+    # pylint: disable=W0403,F0401
     import settings # Assumed to be in the same directory.
 except ImportError:
     import sys

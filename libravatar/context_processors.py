@@ -16,12 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import settings
+from libravatar import settings
 
-"""
-Default useful variables for the base page template.
-"""
+# Default useful variables for the base page template.
 def basepage(request):
+    # pylint: disable=W0613
     context = {}
     context['analytics_propertyid'] = settings.ANALYTICS_PROPERTYID
     context['avatar_url'] = settings.AVATAR_URL

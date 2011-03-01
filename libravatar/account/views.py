@@ -24,18 +24,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
-from django.contrib.auth.tokens import default_token_generator
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 
-from libravatar.account.external_photos import *
+from libravatar.account.external_photos import identica_photo, gravatar_photo
 from libravatar.account.forms import AddEmailForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
 from libravatar import settings
 
-import os
 from StringIO import StringIO
 
 @csrf_protect
@@ -45,7 +43,7 @@ def new(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save();
+            form.save()
 
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
             if user is None:
@@ -344,7 +342,7 @@ def password_reset(request):
     if request.method == 'POST':
         form = PasswordResetForm(request.POST)
         if form.is_valid():
-            form.save();
+            form.save()
             return render_to_response('account/password_reset_submitted.html',
                                       {'form': form, 'support_email' : settings.SUPPORT_EMAIL},
                                       context_instance=RequestContext(request))

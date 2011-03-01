@@ -23,14 +23,13 @@ from hashlib import md5, sha1, sha256
 import json
 import mimetypes
 from os import link, unlink, urandom, path
-import string
 from urllib2 import urlopen
 
 from django.db import models
 from django.contrib.auth.models import User
 
 from libravatar import settings
-from libravatar.account.external_photos import *
+from libravatar.account.external_photos import identica_photo, gravatar_photo
 from libravatar.public.views import resized_avatar
 
 DEFAULT_IMAGE_FORMAT = 'jpg'
@@ -55,15 +54,15 @@ def uploaded_image_format(image):
     Take an UploadedFile and guess its type (png or jpg)
     '''
     # Check the mimetype sent by the browser
-    format = mimetype_format(image.content_type)
-    if format:
-        return format
+    image_format = mimetype_format(image.content_type)
+    if image_format:
+        return image_format
 
     # Fallback on the filename of the uploaded file
-    (mime_type, encoding) = mimetypes.guess_type(image.name)
-    format = mimetype_format(mime_type)
-    if format:
-        return format
+    (mime_type, unused) = mimetypes.guess_type(image.name)
+    image_format = mimetype_format(mime_type)
+    if image_format:
+        return image_format
 
     print "WARN: cannot identify the remote image type: path=%s" % image.name
     return DEFAULT_IMAGE_FORMAT
@@ -73,10 +72,10 @@ def remote_image_format(image_url):
     Take an URL and extract the last part of it (without the
     query_string) and hope that it contains a file extension.
     '''
-    (mime_type, encoding) = mimetypes.guess_type(image_url)
-    format = mimetype_format(mime_type)
-    if format:
-        return format
+    (mime_type, unused) = mimetypes.guess_type(image_url)
+    image_format = mimetype_format(mime_type)
+    if image_format:
+        return image_format
 
     print "WARN: cannot identify the remote image type: url=%s" % image_url
     return DEFAULT_IMAGE_FORMAT
