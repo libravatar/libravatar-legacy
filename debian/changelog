@@ -1,3 +1,11 @@
+libravatar (20110312.1) unstable; urgency=low
+
+  * Get rid of Google Analytics
+  * Add a note regarding SRV records in the API docs
+  * Link to the Libravatar::URL perl module
+
+ -- Francois Marier <francois@debian.org>  Sat, 12 Mar 2011 23:33:54 +1300
+
 libravatar (20110225.1) unstable; urgency=low
 
   * Remove CA file from seccdn Apache config
