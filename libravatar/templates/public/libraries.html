@@ -5,7 +5,17 @@
 
 <h2>Libraries and Plug-ins</h2>
 
-<p>Libraries and plugins are currently not available and so your best option at the moment is to use our <a href="{% url libravatar.public.views.api %}">simple API</a>. Don't worry though, it's really not that much work!</p>
+<p>If a library or plugin is not availble for your language or application, your best option at the moment is to use our <a href="{% url libravatar.public.views.api %}">simple API</a>. Don't worry though, it's really not that much work!</p>
+
+<h3>Perl</h3>
+
+<p>The <a href="http://search.cpan.org/dist/Gravatar-URL/lib/Libravatar/URL.pm">Libravatar::URL</a> module is part of the <a href="http://search.cpan.org/dist/Gravatar-URL/">Gravatar::URL</a> package (<tt>libgravatar-url-perl</tt> in <a href="http://packages.debian.org/search?keywords=libgravatar-url-perl">Debian</a> and <a href="https://launchpad.net/ubuntu/+source/libgravatar-url-perl">Ubuntu</a>) since version 1.03.</p>
+
+<blockquote><pre>
+use Libravatar::URL;
+my $avatar_url = libravatar_url(email => 'person@example.org');
+print '&lt;img src="' . $avatar_url . '"&gt;';
+</pre></blockquote>
 
 <h2>Contribute!</h2>
 
