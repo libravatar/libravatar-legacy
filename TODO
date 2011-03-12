@@ -35,11 +35,6 @@ Federation:
 - create a pool of servers to serve libravatar.org (cdn-like)
    maybe using MirrorBrain (http://mirrorbrain.org/)
 
-Ties to other free network services:
-- adbard.net support
-- faif version of Google Analytics (http://blog.taragana.com/index.php/archive/httpblogtaraganacomindexphparchivetop-10-web-log-analysis-software/) like Piwik or
-  Open Web Analytics (http://www.openwebanalytics.com/)
-
 Storage:
 - use git-like directories (first two hash characters is dirname)
 - write an S3 backend

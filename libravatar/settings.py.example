@@ -159,10 +159,6 @@ LIBRAVATAR_VERSION = '0.1'
 
 GEARMAN_SERVERS = ['localhost']
 
-# If you want to enable non-free tracking of users
-# TODO: switch to a FaiF service
-ANALYTICS_PROPERTYID = ''
-
 # Session settings
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # TODO: SESSION_COOKIE_SECURE = True
