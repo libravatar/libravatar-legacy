@@ -96,6 +96,8 @@ hash = hashlib.md5(email.lower()).hexdigest()</pre></blockquote>
 
 <p>We also provide a <a href="{% url libravatar.tools.views.check_domain %}">domain check tool</a> to help in your testing.</p>
 
+<p>Note for advanced users: Libravatar clients only consider at servers listed in the highest SRV priority. They do however honour relative weights.</p>
+
 <h2>HTTPS support</h2>
 
 <p>If your application is delivered over a secure (HTTPS) connection, you may want to use our HTTPS image servers to avoid triggering browser warnings about mixed HTTP/HTTPS content.</p>
