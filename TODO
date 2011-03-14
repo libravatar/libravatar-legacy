@@ -24,9 +24,8 @@ Apache config:
 Federation:
 - when adding an email address, check if the domain is controlled
    by another avatar server elsewhere and issue a warning
-- add OpenID support (python-django-auth-openid)
-- write a Perl library for doing the DNS lookup before using
-   libravatar.org (http://search.cpan.org/~mschwern/Gravatar-URL/)
+- add OpenID support (python-django-auth-openid) as an alternative
+   to adding an email address (http://paulisageek.com/openidavatar/)
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
    http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
@@ -85,7 +84,7 @@ Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
    Drupal (http://drupal.org/node/1045064), Django (https://code.google.com/p/django-gravatar/),
-   Moodle, Koha, ikiwiki, wikkid, Thunderbird
+   Moodle, Koha, ikiwiki (http://ikiwiki.info/todo/avatar/), wikkid, Thunderbird
    (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
    and pfaces (https://projects.pekdon.net/projects/pfaces)
    GMail (https://chrome.google.com/extensions/detail/empehcjbkdjpjckbllcgekbkngdolcln?hl=en)
@@ -93,6 +92,7 @@ Plugins/hooks:
 - use Facebook / Twitter API to change profile pictures there too
 
 General Django app:
+- add OpenID support instead of creating an account
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
 - add support for client certificates to authenticate
