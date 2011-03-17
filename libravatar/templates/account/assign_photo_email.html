@@ -17,7 +17,7 @@
 <ul class="horizontal-list avatar-list centered">
 {% for photo in photos %}
   <li>
-  <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">{% csrf_token %}
+  <form action="{% url libravatar.account.views.assign_photo_email email.id %}" method="post">{% csrf_token %}
   <input type="hidden" name="photo_id" value="{{ photo.id }}">
   <input type="image" name="photo{{ photo.id }}" src="{{ photo }}" class="thumbnail">
   {% ifequal email.photo.id photo.id %}
@@ -26,7 +26,7 @@
   </form></li>
 {% endfor %}
   <li>
-  <form action="{% url libravatar.account.views.assign_photo email.id %}" method="post">{% csrf_token %}
+  <form action="{% url libravatar.account.views.assign_photo_email email.id %}" method="post">{% csrf_token %}
   <input type="submit" name="photoNone" value="None">
   {% ifequal email.photo.id photo.id %}
   <br>(current)

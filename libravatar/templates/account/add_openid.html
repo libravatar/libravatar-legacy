@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Add a new OpenID - Libravatar{% endblock title %}
+
+{% block body-onload %}document.forms.addopenid.openid.focus(){% endblock body-onload %}
+{% block content %}
+
+<h1>Add a new OpenID</h1>
+
+<form action="{% url libravatar.account.views.add_openid %}" name="addopenid" method="post">{% csrf_token %}
+
+{{form.openid.errors}}
+<p class="aligned wide">{{form.openid.label_tag}}: {{form.openid}}</p>
+
+<p><input type="submit" value="Add" />
+&nbsp;<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
+
+{% endblock content %}

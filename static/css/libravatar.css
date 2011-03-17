@@ -156,3 +156,9 @@ ul li {
   -moz-border-radius: 8px;
   border-radius: 8px;
 }
+
+#id_openid {
+    background : #FFFFFF url("../img/openid_logo.png") no-repeat scroll 0pt 50%;
+    padding : 4px 18px;
+    width: 400px;
+}

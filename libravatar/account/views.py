@@ -30,8 +30,8 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 
 from libravatar.account.external_photos import identica_photo, gravatar_photo
-from libravatar.account.forms import AddEmailForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
+from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, LinkedOpenId, Photo, password_reset_key
 from libravatar import settings
 
 from StringIO import StringIO
@@ -182,6 +182,7 @@ def profile(request):
     u = request.user
     confirmed = ConfirmedEmail.objects.filter(user=u).order_by('email')
     unconfirmed = UnconfirmedEmail.objects.filter(user=u).order_by('email')
+    openids = LinkedOpenId.objects.filter(user=u).order_by('openid')
     photos = Photo.objects.filter(user=u).order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
     max_emails = len(unconfirmed) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
@@ -189,12 +190,43 @@ def profile(request):
     # force evaluation of the QuerySet objects
     list(confirmed)
     list(unconfirmed)
+    list(openids)
     list(photos)
 
     return render_to_response('account/profile.html',
-                              {'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed,
+                              {'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed, 'openids' : openids,
                                'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
                               context_instance=RequestContext(request))
+
+@csrf_protect
+@login_required
+def add_openid(request):
+    if request.method == 'POST':
+        form = AddOpenIdForm(request.POST)
+        if form.is_valid():
+            if not form.save(request.user, request.META['REMOTE_ADDR']):
+                return render_to_response('account/openid_notadded.html',
+                                          context_instance=RequestContext(request))
+            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+    else:
+        form = AddOpenIdForm()
+
+    return render_to_response('account/add_openid.html', {'form': form},
+                              RequestContext(request))
+
+@csrf_protect
+@login_required
+def remove_openid(request, openid_id):
+    if request.method == 'POST':
+        try:
+            openid = LinkedOpenId.objects.get(id=openid_id, user=request.user)
+        except LinkedOpenId.DoesNotExist:
+            return render_to_response('account/openid_invalid.html',
+                                      context_instance=RequestContext(request))
+
+        openid.delete()
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @csrf_protect
 @login_required
@@ -309,15 +341,7 @@ def delete_photo(request, photo_id):
     return render_to_response('account/delete_photo.html', { 'photo': photo },
                               context_instance=RequestContext(request))
 
-@csrf_protect
-@login_required
-def assign_photo(request, email_id):
-    try:
-        email = ConfirmedEmail.objects.get(id=email_id, user=request.user)
-    except ConfirmedEmail.DoesNotExist:
-        return render_to_response('account/email_invalid.html',
-                                  context_instance=RequestContext(request))
-
+def assign_photo(request, identifier_type, identifier):
     if request.method == 'POST':
         photo = None
         if 'photo_id' in request.POST and request.POST['photo_id']:
@@ -327,13 +351,35 @@ def assign_photo(request, email_id):
                 return render_to_response('account/photo_invalid.html',
                                           context_instance=RequestContext(request))
 
-        email.set_photo(photo)
+        identifier.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = Photo.objects.filter(user=request.user).order_by('add_date')
     list(photos) # force evaluation of the QuerySet
-    return render_to_response('account/assign_photo.html', {'photos': photos, 'email': email},
+    return render_to_response('account/assign_photo_%s.html' % identifier_type, {'photos': photos, identifier_type: identifier},
                               context_instance=RequestContext(request))
+
+@csrf_protect
+@login_required
+def assign_photo_email(request, email_id):
+    try:
+        email = ConfirmedEmail.objects.get(id=email_id, user=request.user)
+    except ConfirmedEmail.DoesNotExist:
+        return render_to_response('account/email_invalid.html',
+                                  context_instance=RequestContext(request))
+
+    return assign_photo(request, 'email', email)
+
+@csrf_protect
+@login_required
+def assign_photo_openid(request, openid_id):
+    try:
+        openid = LinkedOpenId.objects.get(id=openid_id, user=request.user)
+    except LinkedOpenId.DoesNotExist:
+        return render_to_response('account/openid_invalid.html',
+                                  context_instance=RequestContext(request))
+
+    return assign_photo(request, 'openid', openid)
 
 @csrf_protect
 def password_reset(request):

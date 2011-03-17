@@ -8,10 +8,15 @@
 
 <form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
 
+{{form.non_field_errors}}
 <table summary="">
 <tr>
   <td>{{ form.email.errors }}{{ form.email.label_tag }}:</td>
   <td>{{ form.email }}</td>
+</tr>
+<tr>
+  <td>{{form.openid.errors}}{{form.openid.label_tag}}:</td>
+  <td>{{form.openid}}</td>
 </tr>
 <tr><td colspan="1"><i>Optional parameters</i></td></tr>
 <tr>

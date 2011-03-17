@@ -33,13 +33,21 @@ def check(request):
             data = {}
 
             email = form.cleaned_data['email']
-            data['md5'] = md5(email.strip().lower()).hexdigest()
-            data['sha1'] = sha1(email.strip().lower()).hexdigest()
-            data['sha256'] = sha256(email.strip().lower()).hexdigest()
+            openid = form.cleaned_data['openid']
 
-            domain = email.split('@')[-1]
+            if email:
+                data['md5'] = md5(email.strip().lower()).hexdigest()
+                data['sha1'] = sha1(email.strip().lower()).hexdigest()
+                data['sha256'] = sha256(email.strip().lower()).hexdigest()
+                domain = email.split('@')[-1]
+            else:
+                # TODO: lowercase the hostname component of the URL
+                data['md5'] = md5(openid.strip()).hexdigest()
+                data['sha1'] = sha1(openid.strip()).hexdigest()
+                data['sha256'] = sha256(openid.strip()).hexdigest()
+                domain = '' # TODO: extract domain to enable federation
+
             data['query_string'] = '?domain=' + domain
-            print domain
 
             if len(form.cleaned_data['not_found']) > 0:
                 if len(data['query_string']) > 0:

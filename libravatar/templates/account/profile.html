@@ -5,18 +5,27 @@
 
 <h1>{{user.username}}'s Profile</h1>
 
-{% if confirmed_emails %}
-<p>You have the following confirmed email addresses:</p>
+{% if confirmed_emails or openids %}
+<p>You have the following confirmed email addresses and OpenIDs:</p>
 <ul class="horizontal-list avatar-list">
     {% for email in confirmed_emails %}
         <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">{% csrf_token %}
-        <a href="{% url libravatar.account.views.assign_photo email.id %}">
+        <a href="{% url libravatar.account.views.assign_photo_email email.id %}">
         <img class="thumbnail editable avatar-chooser" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
-        <br><a href="{% url libravatar.account.views.assign_photo email.id %}">Change photo</a>
+        <br><a href="{% url libravatar.account.views.assign_photo_email email.id %}">Change photo</a>
         <br><br><input type="image" src="{{ media_url }}/img/delete_button.png" value="Remove"></form></li>
     {% endfor %}
+    {% for openid in openids %}
+        <li><form action="{% url libravatar.account.views.remove_openid openid.id %}" method="post">{% csrf_token %}
+        <a href="{% url libravatar.account.views.assign_photo_openid openid.id %}">
+        <img class="thumbnail editable avatar-chooser" src="{{openid.photo_url}}" alt=""></a>
+        {{openid.openid}}
+        <br><a href="{% url libravatar.account.views.assign_photo_openid openid.id %}">Change photo</a>
+        <br><br><input type="image" src="{{media_url}}/img/delete_button.png" value="Remove"></form></li>
+    {% endfor %}
 </ul>
+<div style="clear:both"></div>
 {% endif %}
 
 {% if unconfirmed_emails %}
@@ -32,6 +41,8 @@
 {% if not max_emails %}
 <p><a href="{% url libravatar.account.views.add_email %}">Add a new email address</a></p>
 {% endif %}
+
+<p><a href="{% url libravatar.account.views.add_openid %}">Add a new OpenID</a></p>
 
 {% if photos %}
 <p>Here are the photos you have uploaded/imported:</p>

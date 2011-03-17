@@ -17,10 +17,21 @@
 
 from django import forms
 
+from libravatar.account.forms import MIN_LENGTH_URL, MAX_LENGTH_URL
+
 class CheckForm(forms.Form):
-    email = forms.EmailField()
+    email = forms.EmailField(required=False)
+    openid = forms.URLField(required=False, verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, label='OpenID')
     size = forms.DecimalField(required=False, min_value=1, max_value=512, decimal_places=0, initial=80)
     not_found = forms.CharField(required=False, label='Default URL')
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        if not cleaned_data.get('email') and not cleaned_data.get('openid'):
+            raise forms.ValidationError('You must provide a valid email or OpenID')
+        if cleaned_data.get('email') and cleaned_data.get('openid'):
+            raise forms.ValidationError('You cannot provide both an email and an OpenID. Choose one!')
+        return cleaned_data
 
 class CheckDomainForm(forms.Form):
     domain = forms.CharField()

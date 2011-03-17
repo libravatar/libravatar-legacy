@@ -22,7 +22,9 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 
 from libravatar import settings
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Photo, password_reset_key
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, LinkedOpenId, Photo, password_reset_key, MAX_LENGTH_URL
+
+MIN_LENGTH_URL = 5 # completely arbitrary guess
 
 class AddEmailForm(forms.Form):
     email = forms.EmailField()
@@ -75,6 +77,34 @@ Otherwise, please accept our apologies and ignore this message.
 """ % {'verification_link' : link, 'site_name' : settings.SITE_NAME }
 
         send_mail(email_subject, email_body, settings.FROM_ADDRESS, [unconfirmed.email])
+        return True
+
+class AddOpenIdForm(forms.Form):
+    openid = forms.URLField(verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://', label='OpenID')
+
+    def clean_openid(self):
+        """
+        Enforce domain restriction
+        """
+        data = self.cleaned_data['openid']
+        domain = settings.REQUIRED_DOMAIN
+
+        # TODO: extract the domain part of the OpenID and verify it's the right one
+        #if domain and "@%s" % domain not in data:
+        #    raise forms.ValidationError("Valid OpenID URLs are on this domain: %s" % domain)
+
+        return data
+
+    def save(self, user, ip_address):
+        # Check whether or not the openid is already confirmed by someone
+        if LinkedOpenId.objects.filter(openid=self.cleaned_data['openid']).exists():
+            return False
+
+        linked = LinkedOpenId()
+        linked.openid = self.cleaned_data['openid']
+        linked.user = user
+        linked.ip_address = ip_address
+        linked.save()
         return True
 
 class UploadPhotoForm(forms.Form):
