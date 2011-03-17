@@ -140,15 +140,6 @@ class Photo(models.Model):
     def __unicode__(self):
         return settings.USER_FILES_URL + self.full_filename()
 
-    def uploaded_pathname(self):
-        return settings.UPLOADED_FILES_URL + self.full_filename()
-
-    def upload_datetime(self):
-        return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
-
-    def full_filename(self):
-        return self.filename + '.' + self.format
-
     def save(self, image, force_insert=False, force_update=False):
         self.format = uploaded_image_format(image)
         self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
@@ -159,6 +150,32 @@ class Photo(models.Model):
         with open(dest_filename, 'wb+') as destination:
             # FIXME: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
             destination.write(image.read())
+
+    def delete(self):
+        # Remove links to this photo
+        for email in self.emails.all():
+            email.set_photo(None)
+        for openid in self.openids.all():
+            openid.set_photo(None)
+
+        # Queue a job for the photo deletion gearman worker
+        gm_client = libgearman.Client()
+        for server in settings.GEARMAN_SERVERS:
+            gm_client.add_server(server)
+
+        workload = {'filename' : self.full_filename()}
+        gm_client.do_background('deletephoto', json.dumps(workload))
+
+        super(Photo, self).delete()
+
+    def uploaded_pathname(self):
+        return settings.UPLOADED_FILES_URL + self.full_filename()
+
+    def upload_datetime(self):
+        return self.add_date.strftime('%Y-%m-%d %H:%M:%S')
+
+    def full_filename(self):
+        return self.filename + '.' + self.format
 
     def import_image(self, service_name, email_address):
         image_url = False
@@ -190,23 +207,6 @@ class Photo(models.Model):
 
         return True
 
-    def delete(self):
-        # Remove links to this photo
-        for email in self.emails.all():
-            email.set_photo(None)
-        for openid in self.openids.all():
-            openid.set_photo(None)
-
-        # Queue a job for the photo deletion gearman worker
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
-        workload = {'filename' : self.full_filename()}
-        gm_client.do_background('deletephoto', json.dumps(workload))
-
-        super(Photo, self).delete()
-
     def crop(self, x=0, y=0, w=0, h=0):
         if path.isfile(settings.USER_FILES_ROOT + self.full_filename()):
             return # already done, skip
@@ -233,6 +233,10 @@ class ConfirmedEmail(models.Model):
     def __unicode__(self):
         return self.email
 
+    def delete(self):
+        self.set_photo(None)
+        super(ConfirmedEmail, self).delete()
+
     def photo_url(self):
         if self.photo:
             return self.photo
@@ -250,10 +254,6 @@ class ConfirmedEmail(models.Model):
         self.photo = photo
         change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
         self.save()
-
-    def delete(self):
-        self.set_photo(None)
-        super(ConfirmedEmail, self).delete()
 
 class UnconfirmedEmail(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_emails')
@@ -281,6 +281,10 @@ class LinkedOpenId(models.Model):
     def __unicode__(self):
         return self.openid
 
+    def delete(self):
+        self.set_photo(None)
+        super(LinkedOpenId, self).delete()
+
     def photo_url(self):
         if self.photo:
             return self.photo
@@ -299,7 +303,3 @@ class LinkedOpenId(models.Model):
         self.photo = photo
         change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
         self.save()
-
-    def delete(self):
-        self.set_photo(None)
-        super(LinkedOpenId, self).delete()
