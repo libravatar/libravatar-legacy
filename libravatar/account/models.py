@@ -18,6 +18,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import datetime
 from gearman import libgearman
 from hashlib import md5, sha1, sha256
 import json
@@ -134,7 +135,7 @@ class Photo(models.Model):
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     filename = models.CharField(max_length=64) # sha256 hash is 64 characters
     format = models.CharField(max_length=3) # png or jpg
-    add_date = models.DateTimeField(auto_now_add=True)
+    add_date = models.DateTimeField(default=datetime.datetime.utcnow)
     objects = PhotoManager()
 
     def __unicode__(self):
@@ -228,7 +229,7 @@ class ConfirmedEmail(models.Model):
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     email = models.EmailField(unique=True)
     photo = models.ForeignKey(Photo, related_name='emails', blank=True, null=True)
-    add_date = models.DateTimeField(auto_now_add=True)
+    add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
     def __unicode__(self):
         return self.email
@@ -259,7 +260,7 @@ class UnconfirmedEmail(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_emails')
     email = models.EmailField()
     verification_key = models.CharField(max_length=64)
-    add_date = models.DateTimeField(auto_now_add=True)
+    add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
     def __unicode__(self):
         return self.email + ' (unconfirmed)'
@@ -276,7 +277,7 @@ class LinkedOpenId(models.Model):
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
     photo = models.ForeignKey(Photo, related_name='openids', blank=True, null=True)
-    add_date = models.DateTimeField(auto_now_add=True)
+    add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
     def __unicode__(self):
         return self.openid
