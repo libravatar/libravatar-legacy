@@ -31,10 +31,10 @@ class AddEmailForm(forms.Form):
 
     def clean_email(self):
         """
-        Enforce domain restriction
+        Enforce domain restriction and lowercase email
         """
-        data = self.cleaned_data['email']
-        domain = settings.REQUIRED_DOMAIN
+        data = self.cleaned_data['email'].lower()
+        domain = settings.REQUIRED_DOMAIN.lower()
 
         if domain and "@%s" % domain not in data:
             raise forms.ValidationError("Valid email addresses end with @%s" % domain)
