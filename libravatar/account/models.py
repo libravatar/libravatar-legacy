@@ -81,7 +81,7 @@ def remote_image_format(image_url):
     print "WARN: cannot identify the remote image type: url=%s" % image_url
     return DEFAULT_IMAGE_FORMAT
 
-def change_photo(identifier, photo, md5_hash, sha1_hash, sha256_hash):
+def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
     '''
     Change the photo that the given hashes point to by deleting/creating hard links.
     '''
@@ -248,7 +248,7 @@ class ConfirmedEmail(models.Model):
 
     def set_photo(self, photo):
         self.photo = photo
-        change_photo(self, photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
+        change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
         self.save()
 
     def delete(self):
@@ -297,7 +297,7 @@ class LinkedOpenId(models.Model):
 
     def set_photo(self, photo):
         self.photo = photo
-        change_photo(self, photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
+        change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
         self.save()
 
     def delete(self):
