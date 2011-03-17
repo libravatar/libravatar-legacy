@@ -86,10 +86,10 @@ class AddOpenIdForm(forms.Form):
         """
         Enforce domain restriction
         """
-        data = self.cleaned_data['openid']
-        domain = settings.REQUIRED_DOMAIN
+        data = self.cleaned_data['openid'] # TODO: lowercase the hostname part
+        #domain = settings.REQUIRED_DOMAIN.lower()
 
-        # TODO: extract the domain part of the OpenID and verify it's the right one
+        # TODO: extract the hostname part of the OpenID and verify it's in the right domain
         #if domain and "@%s" % domain not in data:
         #    raise forms.ValidationError("Valid OpenID URLs are on this domain: %s" % domain)
 
