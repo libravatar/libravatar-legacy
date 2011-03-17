@@ -130,7 +130,7 @@ class PhotoManager(models.Manager):
             photo.delete() # deletes the photo on disk as well
 
 class Photo(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='photos')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     filename = models.CharField(max_length=64) # sha256 hash is 64 characters
     format = models.CharField(max_length=3) # png or jpg
@@ -192,9 +192,9 @@ class Photo(models.Model):
 
     def delete(self):
         # Remove links to this photo
-        for email in ConfirmedEmail.objects.filter(photo=self):
+        for email in self.emails.all():
             email.set_photo(None)
-        for openid in LinkedOpenId.objects.filter(photo=self):
+        for openid in self.openids.all():
             openid.set_photo(None)
 
         # Queue a job for the photo deletion gearman worker
@@ -224,10 +224,10 @@ class Photo(models.Model):
         gm_client.do_background('cropresize', json.dumps(workload))
 
 class ConfirmedEmail(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='confirmed_emails')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     email = models.EmailField(unique=True)
-    photo = models.ForeignKey(Photo, blank=True, null=True)
+    photo = models.ForeignKey(Photo, related_name='emails', blank=True, null=True)
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):
@@ -256,7 +256,7 @@ class ConfirmedEmail(models.Model):
         super(ConfirmedEmail, self).delete()
 
 class UnconfirmedEmail(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='unconfirmed_emails')
     email = models.EmailField()
     verification_key = models.CharField(max_length=64)
     add_date = models.DateTimeField(auto_now_add=True)
@@ -272,10 +272,10 @@ class UnconfirmedEmail(models.Model):
         super(UnconfirmedEmail, self).save(force_insert, force_update)
 
 class LinkedOpenId(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='openids')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
-    photo = models.ForeignKey(Photo, blank=True, null=True)
+    photo = models.ForeignKey(Photo, related_name='openids', blank=True, null=True)
     add_date = models.DateTimeField(auto_now_add=True)
 
     def __unicode__(self):

@@ -180,10 +180,10 @@ def successfully_authenticated(request):
 @login_required
 def profile(request):
     u = request.user
-    confirmed = ConfirmedEmail.objects.filter(user=u).order_by('email')
-    unconfirmed = UnconfirmedEmail.objects.filter(user=u).order_by('email')
-    openids = LinkedOpenId.objects.filter(user=u).order_by('openid')
-    photos = Photo.objects.filter(user=u).order_by('add_date')
+    confirmed = u.confirmed_emails.order_by('email')
+    unconfirmed = u.unconfirmed_emails.order_by('email')
+    openids = u.openids.order_by('openid')
+    photos = u.photos.order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
     max_emails = len(unconfirmed) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
 
@@ -275,7 +275,7 @@ def remove_unconfirmed_email(request, email_id):
 @csrf_protect
 @login_required
 def upload_photo(request):
-    num_photos = Photo.objects.filter(user=request.user).count()
+    num_photos = request.user.photos.count()
     if num_photos >= settings.MAX_NUM_PHOTOS:
         return render_to_response('account/max_photos.html', context_instance=RequestContext(request))
 
@@ -354,7 +354,7 @@ def assign_photo(request, identifier_type, identifier):
         identifier.set_photo(photo)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    photos = Photo.objects.filter(user=request.user).order_by('add_date')
+    photos = request.user.photos.order_by('add_date')
     list(photos) # force evaluation of the QuerySet
     return render_to_response('account/assign_photo_%s.html' % identifier_type, {'photos': photos, identifier_type: identifier},
                               context_instance=RequestContext(request))

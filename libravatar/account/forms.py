@@ -43,7 +43,7 @@ class AddEmailForm(forms.Form):
 
     def save(self, user):
         # Enforce the maximum number of unconfirmed emails a user can have
-        num_unconfirmed = UnconfirmedEmail.objects.filter(user=user).count()
+        num_unconfirmed = user.unconfirmed_emails.count()
         if num_unconfirmed >= settings.MAX_NUM_UNCONFIRMED_EMAILS:
             return False
 
