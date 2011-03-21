@@ -17,14 +17,46 @@
 # 
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
+#
+# This file incorporates work covered by the following copyright and  
+# permission notice:
+#
+#     Copyright (c) 2009, Simon Willison
+#     All rights reserved.
+#
+#     Redistribution and use in source and binary forms, with or without
+#     modification, are permitted provided that the following conditions are met:
+#
+#     * Redistributions of source code must retain the above copyright notice, this
+#       list of conditions and the following disclaimer.
+#
+#     * Redistributions in binary form must reproduce the above copyright notice,
+#       this list of conditions and the following disclaimer in the documentation
+#       and/or other materials provided with the distribution.
+#
+#     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+#     AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+#     IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+#     DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE
+#     FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+#     DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+#     SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+#     CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+#     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+#     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import datetime
 from gearman import libgearman
 from hashlib import md5, sha1, sha256
 import json
 import mimetypes
+from openid.store import nonce as oidnonce
+from openid.store.interface import OpenIDStore
+from openid.association import Association as OIDAssociation
 from os import link, unlink, urandom, path
+import time, base64
 from urllib2 import urlopen
+from urlparse import urlsplit, urlunsplit
 
 from django.db import models
 from django.contrib.auth.models import User
@@ -272,8 +304,16 @@ class UnconfirmedEmail(models.Model):
 
         super(UnconfirmedEmail, self).save(force_insert, force_update)
 
-class LinkedOpenId(models.Model):
-    user = models.ForeignKey(User, related_name='openids')
+class UnconfirmedOpenId(models.Model):
+    user = models.ForeignKey(User, related_name='unconfirmed_openids')
+    openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
+    add_date = models.DateTimeField(default=datetime.datetime.utcnow)
+
+    def __unicode__(self):
+        return self.openid + ' (unconfirmed)'
+
+class ConfirmedOpenId(models.Model):
+    user = models.ForeignKey(User, related_name='confirmed_openids')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
     photo = models.ForeignKey(Photo, related_name='openids', blank=True, null=True)
@@ -284,7 +324,7 @@ class LinkedOpenId(models.Model):
 
     def delete(self):
         self.set_photo(None)
-        super(LinkedOpenId, self).delete()
+        super(ConfirmedOpenId, self).delete()
 
     def photo_url(self):
         if self.photo:
@@ -292,15 +332,124 @@ class LinkedOpenId(models.Model):
         return settings.MEDIA_URL + '/img/' + settings.DEFAULT_PHOTO
 
     def public_hash(self, algorithm):
-        # TODO: lowercase the domain part of the OpenID
+        url = urlsplit(self.openid)
+        lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
+
         if 'md5' == algorithm:
-            return md5(self.openid).hexdigest()
+            return md5(lowercase_value).hexdigest()
         elif 'sha1' == algorithm:
-            return sha1(self.openid).hexdigest()
+            return sha1(lowercase_value).hexdigest()
         else:
-            return sha256(self.openid).hexdigest()
+            return sha256(lowercase_value).hexdigest()
 
     def set_photo(self, photo):
         self.photo = photo
         change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
         self.save()
+
+# Classes related to the OpenID Store (from https://github.com/simonw/django-openid)
+
+class OpenIDNonce(models.Model):
+    server_url = models.CharField(max_length=255)
+    timestamp = models.IntegerField()
+    salt = models.CharField(max_length=40)
+    
+    def __unicode__(self):
+        return u"OpenIDNonce: %s for %s" % (self.salt, self.server_url)
+
+class OpenIDAssociation(models.Model):
+    server_url = models.TextField(max_length=2047)
+    handle = models.CharField(max_length=255)
+    secret = models.TextField(max_length=255) # Stored base64 encoded
+    issued = models.IntegerField()
+    lifetime = models.IntegerField()
+    assoc_type = models.TextField(max_length=64)
+    
+    def __unicode__(self):
+        return u"OpenIDAssociation: %s, %s" % (self.server_url, self.handle)
+
+class DjangoOpenIDStore(OpenIDStore):
+    """
+    The Python openid library needs an OpenIDStore subclass to persist data 
+    related to OpenID authentications. This one uses our Django models.
+    """
+    
+    def storeAssociation(self, server_url, association):
+        assoc = OpenIDAssociation(
+            server_url = server_url,
+            handle = association.handle,
+            secret = base64.encodestring(association.secret),
+            issued = association.issued,
+            lifetime = association.issued,
+            assoc_type = association.assoc_type
+        )
+        assoc.save()
+    
+    def getAssociation(self, server_url, handle=None):
+        assocs = []
+        if handle is not None:
+            assocs = OpenIDAssociation.objects.filter(
+                server_url = server_url, handle = handle
+            )
+        else:
+            assocs = OpenIDAssociation.objects.filter(
+                server_url = server_url
+            )
+        if not assocs:
+            return None
+        associations = []
+        for assoc in assocs:
+            association = OIDAssociation(
+                assoc.handle, base64.decodestring(assoc.secret), assoc.issued,
+                assoc.lifetime, assoc.assoc_type
+            )
+            if association.getExpiresIn() == 0:
+                self.removeAssociation(server_url, assoc.handle)
+            else:
+                associations.append((association.issued, association))
+        if not associations:
+            return None
+        return associations[-1][1]
+    
+    def removeAssociation(self, server_url, handle):
+        assocs = list(OpenIDAssociation.objects.filter(
+            server_url = server_url, handle = handle
+        ))
+        assocs_exist = len(assocs) > 0
+        for assoc in assocs:
+            assoc.delete()
+        return assocs_exist
+    
+    def useNonce(self, server_url, timestamp, salt):
+        # Has nonce expired?
+        if abs(timestamp - time.time()) > oidnonce.SKEW:
+            return False
+        try:
+            nonce = OpenIDNonce.objects.get(
+                server_url__exact = server_url,
+                timestamp__exact = timestamp,
+                salt__exact = salt
+            )
+        except OpenIDNonce.DoesNotExist:
+            nonce = OpenIDNonce.objects.create(
+                server_url = server_url,
+                timestamp = timestamp,
+                salt = salt
+            )
+            return True
+        nonce.delete()
+        return False
+    
+    def cleanupNonces(self):
+        OpenIDNonce.objects.filter(
+            timestamp__lt = (int(time.time()) - oidnonce.SKEW)
+        ).delete()
+    
+    def cleanupAssociations(self):
+        OpenIDAssociation.objects.extra(
+            where=['issued + lifetimeint < (%s)' % time.time()]
+        ).delete()
+    
+    def getAuthKey(self):
+        # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY
+        return md5(settings.SECRET_KEY).hexdigest()[:self.AUTH_KEY_LEN]

@@ -18,14 +18,16 @@ External dependencies
 - Gearman (http://www.gearman.org)
 - Python bindings for libgearman
   (http://www.launchpad.net/gearman-interface)
+- Python OpenID
+  (https://github.com/openid/python-openid)
 
 (optional, if using LDAP authenticaion):
 
 - Python LDAP library
 
-On Debian unstable:
+On Debian unstable or squeeze:
 
-  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng
+  apt-get install python-django apache2-mpm-prefork python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid
   
   apt-get install python-ldap
 
@@ -40,6 +42,11 @@ Create a database user:
 Create a database:
 
   sudo -u postgres createdb -O djangouser libravatar
+
+Create the required tables:
+
+  cd /usr/share/libravatar/libravatar
+  python manage.py syncdb
 
 
 Apache Configuration

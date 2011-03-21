@@ -1,0 +1,8 @@
+{% extends 'error.html' %}
+
+{% block errormessage %}
+Could not discover an OpenID from the URL you provided:
+<blockquote>
+{{message}}
+</blockquote>
+{% endblock errormessage %}

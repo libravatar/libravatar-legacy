@@ -16,13 +16,14 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import urllib
+from urlparse import urlsplit, urlunsplit
 
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 
 from libravatar import settings
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, LinkedOpenId, Photo, password_reset_key, MAX_LENGTH_URL
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, Photo, password_reset_key, MAX_LENGTH_URL
 
 MIN_LENGTH_URL = 5 # completely arbitrary guess
 
@@ -86,26 +87,33 @@ class AddOpenIdForm(forms.Form):
         """
         Enforce domain restriction
         """
-        data = self.cleaned_data['openid'] # TODO: lowercase the hostname part
-        #domain = settings.REQUIRED_DOMAIN.lower()
 
-        # TODO: extract the hostname part of the OpenID and verify it's in the right domain
-        #if domain and "@%s" % domain not in data:
-        #    raise forms.ValidationError("Valid OpenID URLs are on this domain: %s" % domain)
+        # Lowercase the hostname part of the URL
+        url = urlsplit(self.cleaned_data['openid'])
+        data = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
+
+        domain = settings.REQUIRED_DOMAIN.lower()
+
+        if domain and "%s/" % domain not in data: # FIXME: improve this check, it's not all that great
+            raise forms.ValidationError("Valid OpenID URLs are on this domain: %s" % domain)
 
         return data
 
-    def save(self, user, ip_address):
+    def save(self, user):
         # Check whether or not the openid is already confirmed by someone
-        if LinkedOpenId.objects.filter(openid=self.cleaned_data['openid']).exists():
+        if ConfirmedOpenId.objects.filter(openid=self.cleaned_data['openid']).exists():
             return False
 
-        linked = LinkedOpenId()
-        linked.openid = self.cleaned_data['openid']
-        linked.user = user
-        linked.ip_address = ip_address
-        linked.save()
-        return True
+        unconfirmed = UnconfirmedOpenId()
+        unconfirmed.openid = self.cleaned_data['openid']
+        unconfirmed.user = user
+        try:
+            unconfirmed.save()
+        except:
+            # probably a duplicate URL (e.g. http://localhost and http://localhost/)
+            return False
+
+        return unconfirmed.id
 
 class UploadPhotoForm(forms.Form):
     photo = forms.ImageField()

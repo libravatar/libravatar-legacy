@@ -18,6 +18,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from openid.consumer import consumer
+from StringIO import StringIO
+
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -31,10 +34,8 @@ from django.views.decorators.csrf import csrf_protect
 
 from libravatar.account.external_photos import identica_photo, gravatar_photo
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, LinkedOpenId, Photo, password_reset_key
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
-
-from StringIO import StringIO
 
 @csrf_protect
 def new(request):
@@ -180,21 +181,24 @@ def successfully_authenticated(request):
 @login_required
 def profile(request):
     u = request.user
-    confirmed = u.confirmed_emails.order_by('email')
-    unconfirmed = u.unconfirmed_emails.order_by('email')
-    openids = u.openids.order_by('openid')
+    confirmed_emails = u.confirmed_emails.order_by('email')
+    unconfirmed_emails = u.unconfirmed_emails.order_by('email')
+    confirmed_openids = u.confirmed_openids.order_by('openid')
+    unconfirmed_openids = u.unconfirmed_openids.order_by('openid')
     photos = u.photos.order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
-    max_emails = len(unconfirmed) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
+    max_emails = len(unconfirmed_emails) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
 
     # force evaluation of the QuerySet objects
-    list(confirmed)
-    list(unconfirmed)
-    list(openids)
+    list(confirmed_emails)
+    list(unconfirmed_emails)
+    list(confirmed_openids)
+    list(unconfirmed_openids)
     list(photos)
 
     return render_to_response('account/profile.html',
-                              {'confirmed_emails' : confirmed, 'unconfirmed_emails': unconfirmed, 'openids' : openids,
+                              {'confirmed_emails' : confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
+                               'confirmed_openids' : confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
                                'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
                               context_instance=RequestContext(request))
 
@@ -204,23 +208,97 @@ def add_openid(request):
     if request.method == 'POST':
         form = AddOpenIdForm(request.POST)
         if form.is_valid():
-            if not form.save(request.user, request.META['REMOTE_ADDR']):
+            openid_id = form.save(request.user)
+            if not openid_id:
                 return render_to_response('account/openid_notadded.html',
                                           context_instance=RequestContext(request))
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+            user_url = form.cleaned_data['openid']
+            session = {'id': request.session.session_key}
+            openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
+
+            try:
+                auth_request = openid_consumer.begin(user_url)
+            except consumer.DiscoveryFailure, exception:
+                return render_to_response('account/openid_discoveryfailure.html', {'message': exception},
+                                          context_instance=RequestContext(request))
+
+            if auth_request is None:
+                return render_to_response('account/openid_discoveryfailure', {'message': '(unknown error)'},
+                                          context_instance=RequestContext(request))
+
+            realm = settings.SITE_URL
+            return_url = realm + reverse('libravatar.account.views.confirm_openid', args=[openid_id])
+
+            return HttpResponseRedirect(auth_request.redirectURL(realm, return_url))
     else:
         form = AddOpenIdForm()
 
     return render_to_response('account/add_openid.html', {'form': form},
                               RequestContext(request))
 
+# CSRF check not needed (OpenID return URL)
+@login_required
+def confirm_openid(request, openid_id):
+
+    session = {'id': request.session.session_key}
+    current_url = settings.SITE_URL + request.path
+    openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
+
+    if request.method == 'POST':
+        info = openid_consumer.complete(request.POST, current_url)
+    else:
+        info = openid_consumer.complete(request.GET, current_url)
+
+    if info.status == consumer.FAILURE:
+        return render_to_response('account/openid_confirmationfailed.html', {'message': info.message},
+                                  context_instance=RequestContext(request))
+    elif info.status == consumer.CANCEL:
+        return render_to_response('account/openid_confirmationfailed.html', {'message': '(cancelled by user)'},
+                                  context_instance=RequestContext(request))
+    elif info.status != consumer.SUCCESS:
+        return render_to_response('account/openid_confirmationfailed.html', {'message': '(unknown verification error)'},
+                                  context_instance=RequestContext(request))
+
+    try:
+        unconfirmed = UnconfirmedOpenId.objects.get(id=openid_id)
+    except UnconfirmedOpenId.DoesNotExist:
+        return render_to_response('account/openid_confirmationfailed.html',
+                                  {'message': 'ID %s not found in the database.' % openid_id},
+                                  context_instance=RequestContext(request))
+
+    # TODO: check for a reasonable expiration time
+    confirmed = ConfirmedOpenId()
+    confirmed.user = unconfirmed.user
+    confirmed.ip_address = request.META['REMOTE_ADDR']
+    confirmed.openid = unconfirmed.openid
+    confirmed.save()
+
+    unconfirmed.delete()
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
 @csrf_protect
 @login_required
-def remove_openid(request, openid_id):
+def remove_confirmed_openid(request, openid_id):
     if request.method == 'POST':
         try:
-            openid = LinkedOpenId.objects.get(id=openid_id, user=request.user)
-        except LinkedOpenId.DoesNotExist:
+            openid = ConfirmedOpenId.objects.get(id=openid_id, user=request.user)
+        except ConfirmedOpenId.DoesNotExist:
+            return render_to_response('account/openid_invalid.html',
+                                      context_instance=RequestContext(request))
+
+        openid.delete()
+
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+@csrf_protect
+@login_required
+def remove_unconfirmed_openid(request, openid_id):
+    if request.method == 'POST':
+        try:
+            openid = UnconfirmedOpenId.objects.get(id=openid_id, user=request.user)
+        except UnconfirmedOpenId.DoesNotExist:
             return render_to_response('account/openid_invalid.html',
                                       context_instance=RequestContext(request))
 
@@ -374,8 +452,8 @@ def assign_photo_email(request, email_id):
 @login_required
 def assign_photo_openid(request, openid_id):
     try:
-        openid = LinkedOpenId.objects.get(id=openid_id, user=request.user)
-    except LinkedOpenId.DoesNotExist:
+        openid = ConfirmedOpenId.objects.get(id=openid_id, user=request.user)
+    except ConfirmedOpenId.DoesNotExist:
         return render_to_response('account/openid_invalid.html',
                                   context_instance=RequestContext(request))
 

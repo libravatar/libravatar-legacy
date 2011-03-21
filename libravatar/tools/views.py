@@ -18,6 +18,7 @@
 
 import DNS
 from hashlib import md5, sha1, sha256
+from urlparse import urlsplit, urlunsplit
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -36,17 +37,16 @@ def check(request):
             openid = form.cleaned_data['openid']
 
             if email:
-                data['md5'] = md5(email.strip().lower()).hexdigest()
-                data['sha1'] = sha1(email.strip().lower()).hexdigest()
-                data['sha256'] = sha256(email.strip().lower()).hexdigest()
+                lowercase_value = email.strip().lower()
                 domain = email.split('@')[-1]
             else:
-                # TODO: lowercase the hostname component of the URL
-                data['md5'] = md5(openid.strip()).hexdigest()
-                data['sha1'] = sha1(openid.strip()).hexdigest()
-                data['sha256'] = sha256(openid.strip()).hexdigest()
-                domain = '' # TODO: extract domain to enable federation
+                url = urlsplit(openid.strip())
+                lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
+                domain = '' # TODO: implement domain-based federation for OpenID
 
+            data['md5'] = md5(lowercase_value).hexdigest()
+            data['sha1'] = sha1(lowercase_value).hexdigest()
+            data['sha256'] = sha256(lowercase_value).hexdigest()
             data['query_string'] = '?domain=' + domain
 
             if len(form.cleaned_data['not_found']) > 0:

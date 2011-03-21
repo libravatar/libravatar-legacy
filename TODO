@@ -24,8 +24,6 @@ Apache config:
 Federation:
 - when adding an email address, check if the domain is controlled
    by another avatar server elsewhere and issue a warning
-- add OpenID support (python-django-auth-openid) as an alternative
-   to adding an email address (http://paulisageek.com/openidavatar/)
 - create a test mugshots.debian.net server with db.people.org auth
    http://liw.iki.fi/liw/log/2006-11.html#20061127b
    http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html
@@ -70,6 +68,7 @@ Admin:
 - CLI admin interface using Commandant (https://launchpad.net/commandant)
 - control page to lookup images/profiles based on a hash
 - ability to disable a profile (which deletes all email -> photo associations)
+- delete old expired unconfirmed emails/OpenIDs on cron (django-admin cleanup)
 
 Images:
 - automatic OpenID URL image importer for http://claimedavatar.net
@@ -96,7 +95,7 @@ Plugins/hooks:
 - use Facebook / Twitter API to change profile pictures there too
 
 General Django app:
-- add OpenID support instead of creating an account
+- add OpenID (python-django-auth-openid) support instead of creating an account
 - internationalization of the Django UI and localization to French
    (then add the templates to Launchpad to be widly translated)
 - add support for client certificates to authenticate

@@ -3,6 +3,7 @@
 {% block errormessage %}
 This OpenID could not be added. Possible reasons:
 <ul>
-<li>another account has linked this OpenID</li>
+  <li>it is already in your list of unconfirmed OpenIDs (try removing it first)</li>
+  <li>another account has linked this OpenID</li>
 </ul>
 {% endblock errormessage %}
