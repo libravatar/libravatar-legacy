@@ -110,6 +110,30 @@ hash = hashlib.md5(email.lower()).hexdigest()</pre></blockquote>
 
 <blockquote><code>_avatars-sec._tcp.example.com</code></blockquote>
 
+<h2>OpenID support</h2>
+
+<p>In addition to email addresses, Libravatar allows users to associate photos to their OpenIDs.</p>
+
+<p>The same 5 steps apply:</p>
+
+<ol>
+<li>Take a user's OpenID URL as entered by them.</li>
+<li>Convert the <b>first two parts</b> of the URL to lowercase. e.g. HTTP://EXAMPLE.COM/id/Bob => http://example.com/id/Bob</li>
+<li>Compute the hash (using the MD5, SHA1 or SHA256 hash algorithms).</li>
+<li>Turn the image into a URL by prefixing it with the Libravatar base URL.</li>
+<li>Put the image into an <tt>img</tt> tag on your page.</li>
+</ol>
+
+<p>Therefore, if you don't have an email address for some of your users but you do have OpenID URLs, here is sample Python code to produce a hash for them:</p>
+
+<blockquote><pre>import hashlib
+from urlparse import urlsplit, urlunsplit
+openid = 'http://example.com/id/john'
+url = urlsplit(openid)
+lowercase_url = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))
+hash = hashlib.md5(lowercase_url).hexdigest()</pre></blockquote>
+
+
 <h2>Testing tool</h2>
 
 <p>We provide a <a href="{% url libravatar.tools.views.check %}">check tool</a> to help developers test their implementations and compare their results.</p>
