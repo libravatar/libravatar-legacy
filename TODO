@@ -72,8 +72,11 @@ Admin:
 - ability to disable a profile (which deletes all email -> photo associations)
 
 Images:
+- automatic OpenID URL image importer for http://claimedavatar.net
+   and http://paulisageek.com/openidavatar
 - image importer from gpg key servers for embedded photos
 - image importer for Twitter and Launchpad (need to specify username)
+- Pavatar.com importer (need to specify homepage URL)
 - URL image downloader/importer
 - provide a gallery of built-in images, like these ones:
    http://www.isity.net/blog/?p=65
