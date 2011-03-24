@@ -1,3 +1,13 @@
+libravatar (20110324.1) unstable; urgency=low
+
+  * Support assignment of photos to OpenIDs
+  * Lowercase email addresses as they are added
+  * Document SRV weights and priorities, subdomains and OpenID support
+  * Convert Branchable logo to PNG
+  * Fixes django-lint warnings
+
+ -- Francois Marier <francois@debian.org>  Thu, 24 Mar 2011 21:41:42 +1300
+
 libravatar (20110312.1) unstable; urgency=low
 
   * Get rid of Google Analytics
