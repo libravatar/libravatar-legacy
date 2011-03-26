@@ -1,3 +1,11 @@
+libravatar (20110326.1) unstable; urgency=low
+
+  * Add new ADMIN_EMAIL option to receive site errors
+  * Replace FROM_ADDRESS with SERVER_EMAIL
+  * Move photo associations to a gearman worker
+
+ -- Francois Marier <francois@debian.org>  Sat, 26 Mar 2011 18:19:32 +1300
+
 libravatar (20110324.1) unstable; urgency=low
 
   * Support assignment of photos to OpenIDs
