@@ -72,7 +72,7 @@ case "$1" in
         set_config SITE_NAME "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/fromemail
-        set_config FROM_ADDRESS "${RET}" ${SETTINGS_PY}
+        set_config SERVER_EMAIL "${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/supportemail
         set_config SUPPORT_EMAIL "${RET}" ${SETTINGS_PY}

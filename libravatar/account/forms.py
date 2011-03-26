@@ -77,7 +77,7 @@ Otherwise, please accept our apologies and ignore this message.
 - The %(site_name)s accounts team
 """ % {'verification_link' : link, 'site_name' : settings.SITE_NAME }
 
-        send_mail(email_subject, email_body, settings.FROM_ADDRESS, [unconfirmed.email])
+        send_mail(email_subject, email_body, settings.SERVER_EMAIL, [unconfirmed.email])
         return True
 
 class AddOpenIdForm(forms.Form):
@@ -160,7 +160,7 @@ Otherwise, please accept our apologies and ignore this message.
 - The %(site_name)s accounts team
 """ % {'reset_link' : link, 'site_name' : settings.SITE_NAME }
 
-        send_mail(email_subject, email_body, settings.FROM_ADDRESS, [email_address])
+        send_mail(email_subject, email_body, settings.SERVER_EMAIL, [email_address])
 
         return True
 
