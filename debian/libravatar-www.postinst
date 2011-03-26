@@ -77,6 +77,9 @@ case "$1" in
         db_get libravatar-www/supportemail
         set_config SUPPORT_EMAIL "${RET}" ${SETTINGS_PY}
 
+        db_get libravatar-www/adminemail
+        set_config ADMIN_EMAIL "${RET}" ${SETTINGS_PY}
+
         db_get libravatar-www/secretkey
         set_config SECRET_KEY "${RET}" ${SETTINGS_PY}
 

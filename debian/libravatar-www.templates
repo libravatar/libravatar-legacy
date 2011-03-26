@@ -52,6 +52,13 @@ Default: support@libravatar.org
 Description: Support address:
  Support account where users can send questions or support requests.
 
+Template: libravatar-www/adminemail
+Type: string
+Default: admin@libravatar.org
+Description: Administrator address:
+ Administrator account where site errors will be sent. This may include sensitive
+ information.
+
 Template: libravatar-www/secretkey
 Type: string
 Description: Django secret key:

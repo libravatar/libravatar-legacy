@@ -11,9 +11,10 @@ SITE_URL = 'http://www.libravatar.org'
 SERVER_EMAIL = 'accounts@libravatar.org'
 SUPPORT_EMAIL = 'support@libravatar.org'
 DEV_EMAIL = 'dev@libravatar.org'
+ADMIN_EMAIL = 'admin@libravatar.org'
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Site Administrator', ADMIN_EMAIL),
 )
 
 MANAGERS = ADMINS
