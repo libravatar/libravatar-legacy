@@ -102,6 +102,7 @@ case "$1" in
         /etc/init.d/cropresize restart
         /etc/init.d/deletephoto restart
         /etc/init.d/ready2user restart
+        /etc/init.d/changephoto restart
 
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working

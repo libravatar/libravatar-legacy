@@ -11,3 +11,4 @@ override_dh_installinit:
 	dh_installinit --name=deletephoto
 	dh_installinit --name=ready2user
 	dh_installinit --name=cropresize
+	dh_installinit --name=changephoto

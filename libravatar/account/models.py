@@ -53,7 +53,7 @@ import mimetypes
 from openid.store import nonce as oidnonce
 from openid.store.interface import OpenIDStore
 from openid.association import Association as OIDAssociation
-from os import link, unlink, urandom, path
+from os import urandom, path
 import time, base64
 from urllib2 import urlopen
 from urlparse import urlsplit, urlunsplit
@@ -63,15 +63,10 @@ from django.contrib.auth.models import User
 
 from libravatar import settings
 from libravatar.account.external_photos import identica_photo, gravatar_photo
-from libravatar.public.views import resized_avatar
 
 DEFAULT_IMAGE_FORMAT = 'jpg'
 MAX_LENGTH_IPV6 = 45 # http://stackoverflow.com/questions/166132
 MAX_LENGTH_URL = 2048 # http://stackoverflow.com/questions/754547
-
-def delete_if_exists(filename):
-    if path.isfile(filename):
-        unlink(filename)
 
 def password_reset_key(user):
     return sha256(user.username + user.password).hexdigest()
@@ -118,44 +113,13 @@ def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
     '''
     Change the photo that the given hashes point to by deleting/creating hard links.
     '''
-    # TODO: use git-like hashed directories to avoid too many files in one directory
-    md5_filename = settings.AVATAR_ROOT + md5_hash
-    sha1_filename = settings.AVATAR_ROOT + sha1_hash
-    sha256_filename = settings.AVATAR_ROOT + sha256_hash
+    gm_client = libgearman.Client()
+    for server in settings.GEARMAN_SERVERS:
+        gm_client.add_server(server)
 
-    # Remove old image
-    delete_if_exists(md5_filename)
-    delete_if_exists(sha1_filename)
-    delete_if_exists(sha256_filename)
-
-    # Delete all resized images
-    for size in xrange(settings.AVATAR_MIN_SIZE, settings.AVATAR_MAX_SIZE):
-        size_dir = settings.AVATAR_ROOT + '/%s/' % size
-
-        delete_if_exists(size_dir + md5_hash)
-        delete_if_exists(size_dir + sha1_hash)
-        delete_if_exists(size_dir + sha256_hash)
-
-    if not photo:
-        return
-
-    source_filename = settings.USER_FILES_ROOT + photo.full_filename()
-    if not path.isfile(source_filename):
-        # cropped photo doesn't exist, don't change anything
-        return
-
-    link(source_filename, md5_filename)
-    link(source_filename, sha1_filename)
-    link(source_filename, sha256_filename)
-
-    # Generate resized images for common sizes
-    for size in settings.AVATAR_PREGENERATED_SIZES:
-        (resized_filename, unused) = resized_avatar(md5_hash, size)
-
-        # TODO: these should go once it's automatically done in image.py
-        output_dir = settings.AVATAR_ROOT + '/%s/' % size
-        link(resized_filename, output_dir + sha1_hash)
-        link(resized_filename, output_dir + sha256_hash)
+    workload = {'photo': photo, 'md5_hash': md5_hash,
+                'sha1_hash': sha1_hash, 'sha256_hash': sha256_hash}
+    gm_client.do_background('changephoto', json.dumps(workload))
 
 class PhotoManager(models.Manager):
     def delete_user_photos(self, user):
