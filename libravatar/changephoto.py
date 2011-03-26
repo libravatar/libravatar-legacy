@@ -34,7 +34,7 @@ def main(argv=None):
     gearman_workload = sys.stdin.read()
     params = json.loads(gearman_workload)
 
-    photo = params['photo']
+    photo_filename = params['photo_filename']
     md5_hash = params['md5_hash']
     sha1_hash = params['sha1_hash']
     sha256_hash = params['sha256_hash']
@@ -57,10 +57,10 @@ def main(argv=None):
         delete_if_exists(size_dir + sha1_hash)
         delete_if_exists(size_dir + sha256_hash)
 
-    if not photo:
+    if not photo_filename:
         return 0
 
-    source_filename = settings.USER_FILES_ROOT + photo.full_filename()
+    source_filename = settings.USER_FILES_ROOT + photo_filename
     if not path.isfile(source_filename):
         # cropped photo doesn't exist, don't change anything
         return 0

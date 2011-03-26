@@ -113,11 +113,15 @@ def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
     '''
     Change the photo that the given hashes point to by deleting/creating hard links.
     '''
+    photo_filename = None
+    if photo:
+        photo_filename = photo.full_filename()
+
     gm_client = libgearman.Client()
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    workload = {'photo': photo, 'md5_hash': md5_hash,
+    workload = {'photo_filename': photo_filename, 'md5_hash': md5_hash,
                 'sha1_hash': sha1_hash, 'sha256_hash': sha256_hash}
     gm_client.do_background('changephoto', json.dumps(workload))
 
