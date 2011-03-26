@@ -17,6 +17,12 @@ my $avatar_url = libravatar_url(email => 'person@example.org');
 print '&lt;img src="' . $avatar_url . '"&gt;';
 </pre></blockquote>
 
+<p>As of version 1.04, you can also use OpenID URLs instead of email addresses:</p>
+
+<blockquote><pre>
+my $avatar_url = libravatar_url(openid => 'https://example.com/id/person');
+</pre></blockquote>
+
 <h2>Contribute!</h2>
 
 <p>Interested in writing a plugin for your favourite framework/CMS or a library for your favourite language? Please <a href="mailto:{{ dev_email }}">get in touch</a>, we would be more than happy to link to them from this page!</p>
