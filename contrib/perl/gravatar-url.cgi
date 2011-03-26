@@ -43,3 +43,11 @@ print 'Federated HTTPS images:<br>';
 print '<img src="' . $avatar_url . '">';
 print '<img src="' . $missing_avatar . '">';
 print "<br><br>\n";
+
+my $avatar_url = libravatar_url(openid => 'https://launchpad.net/~fmarier');
+my $missing_avatar = libravatar_url(openid => 'https://launchpad.net/~notfmarier');
+
+print 'Regular HTTP images (OpenID):<br>';
+print '<img src="' . $avatar_url . '">';
+print '<img src="' . $missing_avatar . '">';
+print "<br><br>\n";
