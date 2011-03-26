@@ -101,12 +101,6 @@ case "$1" in
         mkdir -p ${USER_FILES_ROOT}
         chown -R root:root ${USER_FILES_ROOT}
 
-        # Start gearman workers
-        /etc/init.d/cropresize restart
-        /etc/init.d/deletephoto restart
-        /etc/init.d/ready2user restart
-        /etc/init.d/changephoto restart
-
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working
 
