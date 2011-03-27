@@ -19,8 +19,10 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import DNS
-import os
+from gearman import libgearman
 import Image
+import json
+import os
 import urllib
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -149,22 +151,16 @@ def avatar_exists(email_hash, size):
     return os.path.isfile(filename)
 
 def resized_avatar(email_hash, size):
-    original_filename = settings.AVATAR_ROOT + email_hash
+    gm_client = libgearman.Client()
+    for server in settings.GEARMAN_SERVERS:
+        gm_client.add_server(server)
 
-    output_dir = settings.AVATAR_ROOT + '/%s' % size
-    if not os.path.isdir(output_dir):
-        os.mkdir(output_dir)
-    resized_filename = '%s/%s' % (output_dir, email_hash)
+    workload = {'email_hash': email_hash, 'size': size}
+    gm_client.do('resizeavatar', json.dumps(workload))
 
-    # Save resized image to disk
-    original_img = Image.open(original_filename)
-    resized_img = original_img.resize((size, size), Image.ANTIALIAS)
-    resized_img.save(resized_filename, original_img.format, quality=settings.JPEG_QUALITY)
-
-    # TODO: use find -inum on the original inode to find other hashes
-    # then hardlink the resized image to the other hashes
-
-    return (resized_filename, original_img.format)
+    resized_filename = '%s/%s/%s' % (settings.AVATAR_ROOT, size, email_hash)
+    resized_img = Image.open(resized_filename)
+    return (resized_filename, resized_img.format)
 
 def resize(request):
     if request.method == 'POST':

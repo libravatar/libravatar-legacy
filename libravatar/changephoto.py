@@ -21,7 +21,7 @@ from os import link, unlink, path
 import sys
 
 import settings # pylint: disable=W0403
-from public.views import resized_avatar # pylint: disable=W0403
+from resizeavatar import resize_image # pylint: disable=W0403
 
 def delete_if_exists(filename):
     if path.isfile(filename):
@@ -71,9 +71,8 @@ def main(argv=None):
 
     # Generate resized images for common sizes
     for size in settings.AVATAR_PREGENERATED_SIZES:
-        (resized_filename, unused) = resized_avatar(md5_hash, size)
+        resized_filename = resize_image(md5_hash, size)
 
-        # TODO: these should go once it's automatically done in image.py
         output_dir = settings.AVATAR_ROOT + '/%s/' % size
         link(resized_filename, output_dir + sha1_hash)
         link(resized_filename, output_dir + sha256_hash)

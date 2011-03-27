@@ -94,19 +94,21 @@ path to the cdn-common include file and restart Apache using:
 Gearman jobs
 -------------
 
-Two gearman jobs must be running to fully take care of photo cropping and
-resizing. Here are the two Gearman functions:
+A few Gearman jobs must be running to fully take care of photo management:
 
   cropresize: must run under a user that has read access to /uploaded and
               write access to /ready
   ready2user: must run under a user with read access to /ready and write
               access to /uploaded and /user
 
-There are python scripts under libravatar/ for both functions and workers
-can be setup like this:
+  changephoto: must run as root
+  deletephoto: must run as root
+  resizeavatar: must run as root
 
-  gearman -w -f cropresize libravatar/cropresize.py
-  gearman -w -f ready2user libravatar/ready2user.py
+There are python scripts under libravatar/ for all of these functions and
+workers can be setup like this:
+
+  gearman -w -f FUNCTION_NAME libravatar/FUNCTION_NAME.py
 
 
 Cron job

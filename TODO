@@ -48,7 +48,6 @@ Content licensing:
 - or another idea is to have /avatar/HASH.json include metadata
 
 Gearman jobs:
-- dynamic resizer
 - photo importers
 - make gearman jobs persist inside the Postgres DB
 
