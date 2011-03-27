@@ -42,7 +42,7 @@ def check(request):
             else:
                 url = urlsplit(openid.strip())
                 lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
-                domain = url.netloc
+                domain = url.netloc # pylint: disable=E1103
 
             data['md5'] = md5(lowercase_value).hexdigest()
             data['sha1'] = sha1(lowercase_value).hexdigest()
