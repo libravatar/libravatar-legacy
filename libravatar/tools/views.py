@@ -1,5 +1,5 @@
-# Copyright (C) 2010  Francois Marier <francois@libravatar.org>
-#                     Jonathan Harker <jon@jon.geek.nz>
+# Copyright (C) 2010, 2011  Francois Marier <francois@libravatar.org>
+#               2010  Jonathan Harker <jon@jon.geek.nz>
 #
 # This file is part of Libravatar
 # 
@@ -42,7 +42,7 @@ def check(request):
             else:
                 url = urlsplit(openid.strip())
                 lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
-                domain = '' # TODO: implement domain-based federation for OpenID
+                domain = url.netloc
 
             data['md5'] = md5(lowercase_value).hexdigest()
             data['sha1'] = sha1(lowercase_value).hexdigest()
