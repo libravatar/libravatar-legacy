@@ -165,7 +165,7 @@ Otherwise, please accept our apologies and ignore this message.
         return True
 
 class DeleteAccountForm(forms.Form):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput(render_value=False))
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
