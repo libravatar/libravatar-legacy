@@ -1,3 +1,13 @@
+libravatar (20110328.1) unstable; urgency=low
+
+  * Move the dynamic avatar resizing to a blocking gearman job
+  * Validate parameters in all gearman workers
+  * Account deletion: forget password when it's wrong
+  * Enable DNS-based federation for OpenID URLs in tools/check
+  * Document OpenID support in Libravatar::URL
+
+ -- Francois Marier <francois@debian.org>  Mon, 28 Mar 2011 19:00:13 +1300
+
 libravatar (20110326.1) unstable; urgency=low
 
   * Add new ADMIN_EMAIL option to receive site errors
