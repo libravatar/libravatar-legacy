@@ -25,6 +25,7 @@ clean:
 	( [ -h libravatar/settings.py ] && rm -f libravatar/settings.py ) || true
 
 test:
+	( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
 	DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
 
 package:
