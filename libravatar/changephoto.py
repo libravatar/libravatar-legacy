@@ -17,15 +17,12 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
-from os import link, unlink, path
+from os import link, path
 import sys
 
 import settings # pylint: disable=W0403
 from resizeavatar import resize_image # pylint: disable=W0403
-
-def delete_if_exists(filename):
-    if path.isfile(filename):
-        unlink(filename)
+from utils import delete_if_exists, is_hex # pylint: disable=W0403
 
 def main(argv=None):
     if argv is None:
@@ -34,10 +31,23 @@ def main(argv=None):
     gearman_workload = sys.stdin.read()
     params = json.loads(gearman_workload)
 
-    photo_filename = params['photo_filename']
+    photo_hash = params['photo_hash']
+    photo_format = params['photo_format']
     md5_hash = params['md5_hash']
     sha1_hash = params['sha1_hash']
     sha256_hash = params['sha256_hash']
+
+    # Validate inputs
+    if photo_hash and not is_hex(photo_hash):
+        return 1
+    if photo_format and photo_format != 'jpg' and photo_format != 'png':
+        return 1
+    if md5_hash and not is_hex(md5_hash):
+        return 1
+    if sha1_hash and not is_hex(sha1_hash):
+        return 1
+    if sha256_hash and not is_hex(sha256_hash):
+        return 1
 
     # TODO: use git-like hashed directories to avoid too many files in one directory
     md5_filename = settings.AVATAR_ROOT + md5_hash
@@ -57,10 +67,10 @@ def main(argv=None):
         delete_if_exists(size_dir + sha1_hash)
         delete_if_exists(size_dir + sha256_hash)
 
-    if not photo_filename:
+    if not photo_hash:
         return 0
 
-    source_filename = settings.USER_FILES_ROOT + photo_filename
+    source_filename = settings.USER_FILES_ROOT + photo_hash + '.' + photo_format
     if not path.isfile(source_filename):
         # cropped photo doesn't exist, don't change anything
         return 0

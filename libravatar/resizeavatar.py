@@ -22,6 +22,7 @@ import os
 import sys
 
 import settings # pylint: disable=W0403
+from utils import is_hex # pylint: disable=W0403
 
 def resize_image(email_hash, size):
     original_filename = settings.AVATAR_ROOT + email_hash
@@ -46,7 +47,11 @@ def main(argv=None):
     params = json.loads(gearman_workload)
 
     email_hash = params['email_hash']
-    size = params['size']
+    size = int(params['size'])
+
+    # Validate inputs
+    if not is_hex(email_hash):
+        return 1
 
     resize_image(email_hash, size)
 

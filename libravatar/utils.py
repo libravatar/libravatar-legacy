@@ -16,33 +16,11 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import json
-import sys
+from os import unlink, path
 
-import settings # pylint: disable=W0403
-from utils import delete_if_exists, is_hex # pylint: disable=W0403
+def delete_if_exists(filename):
+    if path.isfile(filename):
+        unlink(filename)
 
-def main(argv=None):
-    if argv is None:
-        argv = sys.argv
-
-    gearman_workload = sys.stdin.read()
-    params = json.loads(gearman_workload)
-
-    file_hash = params['file_hash']
-    file_format = params['format']
-
-    # Validate inputs
-    if not is_hex(file_hash):
-        return 1
-    if file_format != 'jpg' and file_format != 'png':
-        return 1
-
-    filename = "%s.%s" % (file_hash, file_format)
-    delete_if_exists(settings.UPLOADED_FILES_ROOT + filename)
-    delete_if_exists(settings.USER_FILES_ROOT + filename)
-
-    return 0
-
-if __name__ == "__main__":
-    sys.exit(main())
+def is_hex(s):
+    return set(s).issubset('0123456789abcdefABCDEF')

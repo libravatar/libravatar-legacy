@@ -113,16 +113,18 @@ def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
     '''
     Change the photo that the given hashes point to by deleting/creating hard links.
     '''
-    photo_filename = None
+    photo_hash = None
+    photo_format = None
     if photo:
-        photo_filename = photo.full_filename()
+        photo_hash = photo.filename
+        photo_format = photo.format
 
     gm_client = libgearman.Client()
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    workload = {'photo_filename': photo_filename, 'md5_hash': md5_hash,
-                'sha1_hash': sha1_hash, 'sha256_hash': sha256_hash}
+    workload = {'photo_hash': photo_hash, 'photo_format': photo_format,
+                'md5_hash': md5_hash, 'sha1_hash': sha1_hash, 'sha256_hash': sha256_hash}
     gm_client.do_background('changephoto', json.dumps(workload))
 
 class PhotoManager(models.Manager):
@@ -164,7 +166,7 @@ class Photo(models.Model):
         for server in settings.GEARMAN_SERVERS:
             gm_client.add_server(server)
 
-        workload = {'filename' : self.full_filename()}
+        workload = {'file_hash': self.filename, 'format': self.format}
         gm_client.do_background('deletephoto', json.dumps(workload))
 
         super(Photo, self).delete()
@@ -220,7 +222,7 @@ class Photo(models.Model):
         for server in settings.GEARMAN_SERVERS:
             gm_client.add_server(server)
 
-        workload = {'filename' : self.full_filename(),
+        workload = {'file_hash': self.filename, 'format': self.format,
                     'x' : x, 'y' : y, 'w' : w, 'h' : h}
         gm_client.do_background('cropresize', json.dumps(workload))
 

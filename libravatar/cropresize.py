@@ -23,10 +23,10 @@ import os
 import sys
 
 import settings # pylint: disable=W0403
+from utils import delete_if_exists, is_hex # pylint: disable=W0403
 
 def create_broken_image(broken, dest):
-    if os.path.isfile(dest):
-        os.unlink(dest)
+    delete_if_exists(dest)
 
     os.symlink(broken, dest)
 
@@ -115,7 +115,21 @@ def main(argv=None):
     gearman_workload = sys.stdin.read()
     params = json.loads(gearman_workload)
 
-    return_code = crop(params['filename'], params['x'], params['y'], params['w'], params['h'])
+    file_hash = params['file_hash']
+    file_format = params['format']
+    x = int(params['x'])
+    y = int(params['y'])
+    w = int(params['w'])
+    h = int(params['h'])
+
+    # Validate inputs
+    if not is_hex(file_hash):
+        return 1
+    if file_format != 'jpg' and file_format != 'png':
+        return 1
+
+    filename = "%s.%s" % (file_hash, file_format)
+    return_code = crop(filename, x, y, w, h)
     if return_code != 0:
         return return_code
 
@@ -123,7 +137,7 @@ def main(argv=None):
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    params = {'filename' : params['filename']}
+    params = {'file_hash' : file_hash, 'format': file_format}
     gm_client.do_background('ready2user', json.dumps(params))
 
     return 0
