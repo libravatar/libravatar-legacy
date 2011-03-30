@@ -84,8 +84,7 @@ Plugins/hooks:
 - rss feeds to see when a user (based on sha256 hash) changes photos
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
    Drupal (http://drupal.org/node/1045064), Django (https://code.google.com/p/django-gravatar/),
-   Moodle, Koha, ikiwiki (http://ikiwiki.info/todo/avatar/), wikkid, Thunderbird
-   (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
+   Moodle, Koha, wikkid, Thunderbird (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
    and pfaces (https://projects.pekdon.net/projects/pfaces)
    GMail (https://chrome.google.com/extensions/detail/empehcjbkdjpjckbllcgekbkngdolcln?hl=en)
    GroupServer/OnlineGroups.net (http://groupserver.org/)
