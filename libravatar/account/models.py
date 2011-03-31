@@ -48,12 +48,12 @@
 import datetime
 from gearman import libgearman
 from hashlib import md5, sha1, sha256
+import Image
 import json
-import mimetypes
 from openid.store import nonce as oidnonce
 from openid.store.interface import OpenIDStore
 from openid.association import Association as OIDAssociation
-from os import urandom, path
+from os import urandom, path, rename
 import time, base64
 from urllib2 import urlopen
 from urlparse import urlsplit, urlunsplit
@@ -71,42 +71,12 @@ MAX_LENGTH_URL = 2048 # http://stackoverflow.com/questions/754547
 def password_reset_key(user):
     return sha256(user.username + user.password).hexdigest()
 
-def mimetype_format(mime_type):
-    if 'image/jpeg' == mime_type:
+def file_format(image_type):
+    if 'JPEG' == image_type:
         return 'jpg'
-    elif 'image/png' == mime_type:
+    elif 'PNG' == image_type:
         return 'png'
-    return None
 
-def uploaded_image_format(image):
-    '''
-    Take an UploadedFile and guess its type (png or jpg)
-    '''
-    # Check the mimetype sent by the browser
-    image_format = mimetype_format(image.content_type)
-    if image_format:
-        return image_format
-
-    # Fallback on the filename of the uploaded file
-    (mime_type, unused) = mimetypes.guess_type(image.name)
-    image_format = mimetype_format(mime_type)
-    if image_format:
-        return image_format
-
-    print "WARN: cannot identify the remote image type: path=%s" % image.name
-    return DEFAULT_IMAGE_FORMAT
-
-def remote_image_format(image_url):
-    '''
-    Take an URL and extract the last part of it (without the
-    query_string) and hope that it contains a file extension.
-    '''
-    (mime_type, unused) = mimetypes.guess_type(image_url)
-    image_format = mimetype_format(mime_type)
-    if image_format:
-        return image_format
-
-    print "WARN: cannot identify the remote image type: url=%s" % image_url
     return DEFAULT_IMAGE_FORMAT
 
 def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
@@ -144,15 +114,22 @@ class Photo(models.Model):
         return settings.USER_FILES_URL + self.full_filename()
 
     def save(self, image, force_insert=False, force_update=False):
-        self.format = uploaded_image_format(image)
         self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
-        super(Photo, self).save(force_insert, force_update)
 
         # Write file to disk
+        tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
+        destination = open(tmp_filename, 'wb+')
+        destination.write(image.read())
+        destination.close()
+
+        # Use PIL to read the file format
+        img = Image.open(tmp_filename)
+        self.format = file_format(img.format)
+        super(Photo, self).save(force_insert, force_update)
+
         dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
-        with open(dest_filename, 'wb+') as destination:
-            # FIXME: HACK: temporarily disabling chunks for now - need to be able to write from a non-filesystem file object or find some other way to handle writing to file from a buffer in memory.
-            destination.write(image.read())
+        rename(tmp_filename, dest_filename)
+        return True
 
     def delete(self):
         # Remove links to this photo
@@ -195,17 +172,23 @@ class Photo(models.Model):
         if not image_url:
             return False
 
-        self.format = remote_image_format(image_url)
         self.filename = sha256(service_name + email_address).hexdigest()
-        super(Photo, self).save()
 
-        dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
+        tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
         image = urlopen(image_url)
 
         # Write file to disk
-        destination = open(dest_filename, 'wb+')
+        destination = open(tmp_filename, 'wb+')
         destination.write(image.read())
         destination.close()
+
+        # Use PIL to read the file format
+        img = Image.open(tmp_filename)
+        self.format = file_format(img.format)
+        super(Photo, self).save()
+
+        dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
+        rename(tmp_filename, dest_filename)
         self.crop()
 
         return True
