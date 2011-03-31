@@ -1,3 +1,14 @@
+libravatar (20110401.1) unstable; urgency=low
+
+  * Disable photo import when confirming email but not logged in
+  * Use PIL to find the format of upload/imported images
+  * Simplify the 500 error template as much as possible
+  * No error message when a domain lookup fails with NXDOMAIN
+  * Use a smaller nobody image in /account/
+  * Set DEFAULT_EMAIL_FROM and turn SEND_BROKEN_LINK_EMAILS on
+
+ -- Francois Marier <francois@debian.org>  Fri, 01 Apr 2011 00:28:12 +1300
+
 libravatar (20110328.1) unstable; urgency=low
 
   * Move the dynamic avatar resizing to a blocking gearman job
