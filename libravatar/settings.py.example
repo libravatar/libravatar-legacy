@@ -2,6 +2,7 @@
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+SEND_BROKEN_LINK_EMAILS = True
 
 import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
@@ -12,6 +13,8 @@ SERVER_EMAIL = 'accounts@libravatar.org'
 SUPPORT_EMAIL = 'support@libravatar.org'
 DEV_EMAIL = 'dev@libravatar.org'
 ADMIN_EMAIL = 'admin@libravatar.org'
+
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 ADMINS = (
     ('Site Administrator', ADMIN_EMAIL),
