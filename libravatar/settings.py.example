@@ -158,7 +158,7 @@ MAX_PHOTO_SIZE = 1048576 # in bytes
 # Quality can be from 1 to 95
 JPEG_QUALITY = 75
 
-DEFAULT_PHOTO = 'nobody.jpg'
+DEFAULT_PHOTO = 'nobody/80.jpg'
 LIBRAVATAR_VERSION = '0.1'
 
 GEARMAN_SERVERS = ['localhost']
