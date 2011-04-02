@@ -18,6 +18,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from openid import oidutil
 from openid.consumer import consumer
 from StringIO import StringIO
 
@@ -203,6 +204,11 @@ def profile(request):
                                'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
                               context_instance=RequestContext(request))
 
+def openid_logging(message, level=0):
+    # Normal messages are not that important
+    if (level > 0):
+        print message
+
 @csrf_protect
 @login_required
 def add_openid(request):
@@ -216,6 +222,8 @@ def add_openid(request):
 
             user_url = form.cleaned_data['openid']
             session = {'id': request.session.session_key}
+
+            oidutil.log = openid_logging
             openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
 
             try:
@@ -244,6 +252,8 @@ def confirm_openid(request, openid_id):
 
     session = {'id': request.session.session_key}
     current_url = settings.SITE_URL + request.path
+
+    oidutil.log = openid_logging
     openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
 
     if request.method == 'POST':
