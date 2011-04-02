@@ -430,7 +430,7 @@ def delete_photo(request, photo_id):
     return render_to_response('account/delete_photo.html', { 'photo': photo },
                               context_instance=RequestContext(request))
 
-def assign_photo(request, identifier_type, identifier):
+def _assign_photo(request, identifier_type, identifier):
     if request.method == 'POST':
         photo = None
         if 'photo_id' in request.POST and request.POST['photo_id']:
@@ -457,7 +457,7 @@ def assign_photo_email(request, email_id):
         return render_to_response('account/email_invalid.html',
                                   context_instance=RequestContext(request))
 
-    return assign_photo(request, 'email', email)
+    return _assign_photo(request, 'email', email)
 
 @csrf_protect
 @login_required
@@ -468,7 +468,7 @@ def assign_photo_openid(request, openid_id):
         return render_to_response('account/openid_invalid.html',
                                   context_instance=RequestContext(request))
 
-    return assign_photo(request, 'openid', openid)
+    return _assign_photo(request, 'openid', openid)
 
 @csrf_protect
 def password_reset(request):

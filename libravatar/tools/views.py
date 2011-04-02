@@ -39,13 +39,13 @@ def check(request):
             if email:
                 lowercase_value = email.strip().lower()
                 domain = email.split('@')[-1]
+                data['md5'] = md5(lowercase_value).hexdigest()
+                data['sha1'] = sha1(lowercase_value).hexdigest()
             else:
                 url = urlsplit(openid.strip())
                 lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
                 domain = url.netloc # pylint: disable=E1103
 
-            data['md5'] = md5(lowercase_value).hexdigest()
-            data['sha1'] = sha1(lowercase_value).hexdigest()
             data['sha256'] = sha256(lowercase_value).hexdigest()
             data['query_string'] = '?domain=' + domain
 

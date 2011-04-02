@@ -119,7 +119,7 @@ hash = hashlib.md5(email.lower()).hexdigest()</pre></blockquote>
 <ol>
 <li>Take a user's OpenID URL as entered by them.</li>
 <li>Convert the <b>first two parts</b> of the URL to lowercase. e.g. HTTP://EXAMPLE.COM/id/Bob => http://example.com/id/Bob</li>
-<li>Compute the hash (using the MD5, SHA1 or SHA256 hash algorithms).</li>
+<li>Compute the hash (using the <b>SHA256 hash algorithm only</b>).</li>
 <li>Turn the image into a URL by prefixing it with the Libravatar base URL.</li>
 <li>Put the image into an <tt>img</tt> tag on your page.</li>
 </ol>
@@ -131,7 +131,7 @@ from urlparse import urlsplit, urlunsplit
 openid = 'http://example.com/id/john'
 url = urlsplit(openid)
 lowercase_url = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))
-hash = hashlib.md5(lowercase_url).hexdigest()</pre></blockquote>
+hash = hashlib.sha256(lowercase_url).hexdigest()</pre></blockquote>
 
 
 <h2>Testing tool</h2>

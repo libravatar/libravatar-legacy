@@ -284,20 +284,14 @@ class ConfirmedOpenId(models.Model):
             return self.photo
         return settings.MEDIA_URL + '/img/' + settings.DEFAULT_PHOTO
 
-    def public_hash(self, algorithm):
+    def public_hash(self):
         url = urlsplit(self.openid)
         lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
-
-        if 'md5' == algorithm:
-            return md5(lowercase_value).hexdigest()
-        elif 'sha1' == algorithm:
-            return sha1(lowercase_value).hexdigest()
-        else:
-            return sha256(lowercase_value).hexdigest()
+        return sha256(lowercase_value).hexdigest()
 
     def set_photo(self, photo):
         self.photo = photo
-        change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
+        change_photo(photo, md5_hash=None, sha1_hash=None, sha256_hash=self.public_hash())
         self.save()
 
 # Classes related to the OpenID Store (from https://github.com/simonw/django-openid)

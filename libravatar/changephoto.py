@@ -26,6 +26,38 @@ from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W040
 
 logger = create_logger('changephoto')
 
+def link_image(source_filename, destination_hash, size=None):
+    if size:
+        destination_filename = settings.AVATAR_ROOT + '%s/%s' % (size, destination_hash)
+    else:
+        destination_filename = settings.AVATAR_ROOT + destination_hash
+
+    try:
+        link(source_filename, destination_filename)
+    except OSError:
+        logger.error("Unable to link '%s' to %s" % (source_filename, destination_filename))
+
+def create_links(source_filename, md5_hash, sha1_hash, sha256_hash):
+    if not path.isfile(source_filename):
+        logger.warn("the cropped photo '%s' does not exist" % source_filename)
+        return 0
+
+    if md5_hash:
+        link_image(source_filename, md5_hash)
+    if sha1_hash:
+        link_image(source_filename, sha1_hash)
+    link_image(source_filename, sha256_hash)
+
+    # Generate resized images for common sizes
+    for size in settings.AVATAR_PREGENERATED_SIZES:
+        resized_filename = resize_image(sha256_hash, size)
+        if md5_hash:
+            link_image(resized_filename, md5_hash, size)
+        if sha1_hash:
+            link_image(resized_filename, sha1_hash, size)
+
+    return 0
+
 def main(argv=None):
     if argv is None:
         argv = sys.argv
@@ -52,49 +84,32 @@ def main(argv=None):
     if sha1_hash and not is_hex(sha1_hash):
         logger.error('sha1_hash is not a hexadecimal value')
         return 1
-    if sha256_hash and not is_hex(sha256_hash):
+    if not is_hex(sha256_hash): # mandatory
         logger.error('sha256_hash is not a hexadecimal value')
         return 1
 
-    # TODO: use git-like hashed directories to avoid too many files in one directory
-    md5_filename = settings.AVATAR_ROOT + md5_hash
-    sha1_filename = settings.AVATAR_ROOT + sha1_hash
-    sha256_filename = settings.AVATAR_ROOT + sha256_hash
-
     # Remove old image
-    delete_if_exists(md5_filename)
-    delete_if_exists(sha1_filename)
-    delete_if_exists(sha256_filename)
+    if md5_hash:
+        delete_if_exists(settings.AVATAR_ROOT + md5_hash)
+    if sha1_hash:
+        delete_if_exists(settings.AVATAR_ROOT + sha1_hash)
+    delete_if_exists(settings.AVATAR_ROOT + sha256_hash)
 
     # Delete all resized images
     for size in xrange(settings.AVATAR_MIN_SIZE, settings.AVATAR_MAX_SIZE):
-        size_dir = settings.AVATAR_ROOT + '/%s/' % size
+        size_dir = settings.AVATAR_ROOT + '%s/' % size
 
-        delete_if_exists(size_dir + md5_hash)
-        delete_if_exists(size_dir + sha1_hash)
+        if md5_hash:
+            delete_if_exists(size_dir + md5_hash)
+        if sha1_hash:
+            delete_if_exists(size_dir + sha1_hash)
         delete_if_exists(size_dir + sha256_hash)
 
     if not photo_hash:
         return 0
 
     source_filename = settings.USER_FILES_ROOT + photo_hash + '.' + photo_format
-    if not path.isfile(source_filename):
-        logger.warn("the cropped photo '%s' does not exist" % source_filename)
-        return 0
-
-    link(source_filename, md5_filename)
-    link(source_filename, sha1_filename)
-    link(source_filename, sha256_filename)
-
-    # Generate resized images for common sizes
-    for size in settings.AVATAR_PREGENERATED_SIZES:
-        resized_filename = resize_image(md5_hash, size)
-
-        output_dir = settings.AVATAR_ROOT + '/%s/' % size
-        link(resized_filename, output_dir + sha1_hash)
-        link(resized_filename, output_dir + sha256_hash)
-
-    return 0
+    return create_links(source_filename, md5_hash, sha1_hash, sha256_hash)
 
 if __name__ == "__main__":
     sys.exit(main())

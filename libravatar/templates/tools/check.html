@@ -35,18 +35,31 @@
 
 {% if data %}
 
-<p>MD5 hash: <tt>{{ data.md5 }}</tt> (compatible with Gravatar)<br>
+<p>
+{% if data.md5 %}
+MD5 hash: <tt>{{ data.md5 }}</tt> (compatible with Gravatar)<br>
+{% endif %}
+{% if data.sha1 %}
 SHA1 hash: <tt>{{ data.sha1 }}</tt><br>
+{% endif %}
 SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
 
 <p>This is what the avatars will look like depending on the hash and protocol you use:</p>
 <ul class="horizontal-list avatar-list centered">
+  {% if data.md5 %}
   <li><a href="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}" alt=""></a><br>MD5</li>
+  {% endif %}
+  {% if data.sha1 %}
   <li><a href="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha1 }}{{data.query_string}}" alt=""></a><br>SHA1</li>
+  {% endif %}
   <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt=""></a><br>SHA256</li>
   {% if secure_avatar_url %}
+  {% if data.md5 %}
   <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt=""></a><br>MD5&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  {% endif %}
+  {% if data.sha1 %}
   <li><a href="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha1}}{{data.query_string}}" alt=""></a><br>SHA1&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  {% endif %}
   <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt=""></a><br>SHA256&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
   {% endif %}
 </ul>
