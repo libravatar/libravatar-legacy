@@ -22,7 +22,9 @@ import sys
 
 import settings # pylint: disable=W0403
 from resizeavatar import resize_image # pylint: disable=W0403
-from utils import delete_if_exists, is_hex # pylint: disable=W0403
+from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+
+logger = create_logger('changephoto')
 
 def main(argv=None):
     if argv is None:
@@ -39,14 +41,19 @@ def main(argv=None):
 
     # Validate inputs
     if photo_hash and not is_hex(photo_hash):
+        logger.error('photo_hash is not a hexadecimal value')
         return 1
     if photo_format and photo_format != 'jpg' and photo_format != 'png':
+        logger.error('photo_format is not recognized')
         return 1
     if md5_hash and not is_hex(md5_hash):
+        logger.error('md5_hash is not a hexadecimal value')
         return 1
     if sha1_hash and not is_hex(sha1_hash):
+        logger.error('sha1_hash is not a hexadecimal value')
         return 1
     if sha256_hash and not is_hex(sha256_hash):
+        logger.error('sha256_hash is not a hexadecimal value')
         return 1
 
     # TODO: use git-like hashed directories to avoid too many files in one directory
@@ -72,7 +79,7 @@ def main(argv=None):
 
     source_filename = settings.USER_FILES_ROOT + photo_hash + '.' + photo_format
     if not path.isfile(source_filename):
-        # cropped photo doesn't exist, don't change anything
+        logger.warn("the cropped photo '%s' does not exist" % source_filename)
         return 0
 
     link(source_filename, md5_filename)

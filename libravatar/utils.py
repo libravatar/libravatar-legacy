@@ -16,7 +16,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 from os import unlink, path
+
+import settings # pylint: disable=W0403
+
+# functions common to all gearman workers
 
 def delete_if_exists(filename):
     if path.isfile(filename):
@@ -24,3 +29,17 @@ def delete_if_exists(filename):
 
 def is_hex(s):
     return set(s).issubset('0123456789abcdefABCDEF')
+
+def create_logger(worker_name):
+    log_filename = settings.GEARMAN_WORKER_LOGFILE
+    log_level = logging.INFO
+
+    logger = logging.getLogger(worker_name)
+    logger.setLevel(log_level)
+    handler = logging.FileHandler(log_filename)
+    handler.setLevel(log_level)
+    formatter = logging.Formatter("%(asctime)s: %(name)s [%(levelname)s] %(message)s")
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+
+    return logger

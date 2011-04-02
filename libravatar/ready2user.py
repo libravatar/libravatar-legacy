@@ -22,7 +22,9 @@ import shutil
 import sys
 
 import settings # pylint: disable=W0403
-from utils import delete_if_exists, is_hex # pylint: disable=W0403
+from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+
+logger = create_logger('ready2user')
 
 def main(argv=None):
     if argv is None:
@@ -36,8 +38,10 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
+        logger.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png':
+        logger.error('file_format is not recognized')
         return 1
 
     filename = "%s.%s" % (file_hash, file_format)
@@ -46,18 +50,18 @@ def main(argv=None):
 
     # Sanity checks
     if os.path.isfile(dest):
-        print 'Destination already exists'
+        logger.warn('Destination already exists')
         return 0
 
     if not os.path.isfile(source):
-        print 'Source file not found'
+        logger.error('Source file not found')
         return 1
 
     # Remove from /ready and move to /user
     try:
         shutil.move(source, dest)
     except:
-        print 'Cannot move file'
+        logger.error('Cannot move file')
         return 2
 
     # All done, we can delete the original file as uploaded by the user

@@ -20,7 +20,9 @@ import json
 import sys
 
 import settings # pylint: disable=W0403
-from utils import delete_if_exists, is_hex # pylint: disable=W0403
+from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+
+logger = create_logger('deletephoto')
 
 def main(argv=None):
     if argv is None:
@@ -34,8 +36,10 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
+        logger.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png':
+        logger.error('file_format is not recognized')
         return 1
 
     filename = "%s.%s" % (file_hash, file_format)

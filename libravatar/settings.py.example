@@ -162,6 +162,7 @@ DEFAULT_PHOTO = 'nobody/80.jpg'
 LIBRAVATAR_VERSION = '0.1'
 
 GEARMAN_SERVERS = ['localhost']
+GEARMAN_WORKER_LOGFILE = '/var/log/libravatar/workers.log'
 
 # Session settings
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True

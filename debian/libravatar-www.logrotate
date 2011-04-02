@@ -13,3 +13,11 @@
      compress
      missingok
 }
+
+/var/log/libravatar/workers.log {
+     create 644 libravatar-img root
+     rotate 12
+     weekly
+     compress
+     missingok
+}

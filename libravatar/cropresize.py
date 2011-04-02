@@ -23,7 +23,9 @@ import os
 import sys
 
 import settings # pylint: disable=W0403
-from utils import delete_if_exists, is_hex # pylint: disable=W0403
+from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+
+logger = create_logger('cropresize')
 
 def create_broken_image(broken, dest):
     delete_if_exists(dest)
@@ -42,11 +44,11 @@ def crop(filename, x=0, y=0, w=0, h=0):
     dest = settings.READY_FILES_ROOT + filename
 
     if os.path.isfile(dest):
-        print "Already done"
+        logger.info('Already done')
         return 0 # already done, skip
 
     if not os.path.isfile(source):
-        print "Source image missing"
+        logger.error('Source image missing')
         return 1 # source image doesn't exist, can't crop it
 
     broken_file = settings.MEDIA_ROOT + 'img/broken'
@@ -56,18 +58,18 @@ def crop(filename, x=0, y=0, w=0, h=0):
         img = Image.open(source)
     except:
         create_broken_image(broken_file + '.png', dest)
-        print "Cannot open image"
+        logger.error('Cannot open image')
         return 2
     ext = pil_format_to_ext(img.format)
     if not ext:
         create_broken_image(broken_file + ext, dest)
-        print "Invalid extension"
+        logger.error('Invalid extension')
         return 3
     try:
         img.verify()
     except:
         create_broken_image(broken_file + ext, dest)
-        print "Image failed verification"
+        logger.error('Image failed verification')
         return 2
 
     # Need to reopen the image after verify()
@@ -95,15 +97,15 @@ def crop(filename, x=0, y=0, w=0, h=0):
     if 'JPEG' == img.format:
         if os.system("jpegoptim -q -p --strip-all %s" % dest) != 0:
             create_broken_image(broken_file + ext, dest)
-            print "optimisation failed"
+            logger.error('JPEG optimisation failed')
             return 4
     elif 'PNG' == img.format:
         if os.system("optipng -q -o9 -preserve %s" % dest) != 0:
             create_broken_image(broken_file + ext, dest)
-            print "optimisation failed"
+            logger.error('PNG optimisation failed')
             return 4
     else:
-        print "Unexpected error"
+        logger.error('Unexpected error while cropping')
         return 5
 
     return 0
@@ -124,8 +126,10 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
+        logger.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png':
+        logger.error('file_format is not recognized')
         return 1
 
     filename = "%s.%s" % (file_hash, file_format)

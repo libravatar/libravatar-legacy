@@ -22,7 +22,9 @@ import os
 import sys
 
 import settings # pylint: disable=W0403
-from utils import is_hex # pylint: disable=W0403
+from utils import create_logger, is_hex # pylint: disable=W0403
+
+logger = create_logger('resizeavatar')
 
 def resize_image(email_hash, size):
     original_filename = settings.AVATAR_ROOT + email_hash
@@ -51,6 +53,7 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(email_hash):
+        logger.error('email_hash is not a hexadecimal value')
         return 1
 
     resize_image(email_hash, size)
