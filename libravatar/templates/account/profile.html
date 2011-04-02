@@ -29,7 +29,7 @@
 {% endif %}
 
 {% if unconfirmed_emails or unconfirmed_openids %}
-<p>You have the following unconfirmed email addresses:</p>
+<p>You have the following unconfirmed email addresses and OpenIDs:</p>
 <ul class="vertical-list">
     {% for email in unconfirmed_emails %}
         <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{% csrf_token %}{{ email.email }}
