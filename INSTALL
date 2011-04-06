@@ -104,6 +104,7 @@ A few Gearman jobs must be running to fully take care of photo management:
   changephoto: must run as root
   deletephoto: must run as root
   resizeavatar: must run as root
+  exportaccount: must run as root
 
 There are python scripts under libravatar/ for all of these functions and
 workers can be setup like this:

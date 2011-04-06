@@ -32,6 +32,7 @@ AVATAR_ROOT=/var/lib/libravatar/avatar
 READY_FILES_ROOT=/var/lib/libravatar/ready
 UPLOADED_FILES_ROOT=/var/lib/libravatar/uploaded
 USER_FILES_ROOT=/var/lib/libravatar/user
+EXPORT_FILES_ROOT=/var/lib/libravatar/export
 APACHE_CONFIG=/etc/libravatar/www.apache2.conf
 
 case "$1" in
@@ -87,6 +88,7 @@ case "$1" in
         set_config READY_FILES_ROOT "${READY_FILES_ROOT}/" ${SETTINGS_PY}
         set_config UPLOADED_FILES_ROOT "${UPLOADED_FILES_ROOT}/" ${SETTINGS_PY}
         set_config USER_FILES_ROOT "${USER_FILES_ROOT}/" ${SETTINGS_PY}
+        set_config EXPORT_FILES_ROOT "${EXPORT_FILES_ROOT}/" ${SETTINGS_PY}
 
         # Create a restricted user to crop/resize images with
         adduser --system --quiet --disabled-login --shell /bin/false --no-create-home --home ${READY_FILES_ROOT} --gecos 'Libravatar Image Processor,,,' libravatar-img || true
@@ -100,6 +102,9 @@ case "$1" in
 
         mkdir -p ${USER_FILES_ROOT}
         chown -R root:root ${USER_FILES_ROOT}
+
+        mkdir -p ${EXPORT_FILES_ROOT}
+        chown -R root:root ${EXPORT_FILES_ROOT}
 
         touch /var/log/libravatar/workers.log
         chown libravatar-img /var/log/libravatar/workers.log

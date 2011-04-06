@@ -129,6 +129,10 @@ READY_FILES_ROOT = '%s/ready/' % PROJECT_ROOT
 USER_FILES_ROOT = '%s/user/' % PROJECT_ROOT
 USER_FILES_URL = '%s/user/' % SITE_URL
 
+# Path and URL for user exports ready to be served
+EXPORT_FILES_ROOT = '%s/export/' % PROJECT_ROOT
+EXPORT_FILES_URL = '%s/export/' % SITE_URL
+
 # Path where avatars are stored
 AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
 

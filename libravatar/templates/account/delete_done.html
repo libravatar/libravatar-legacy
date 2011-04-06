@@ -5,9 +5,15 @@
 
 <h1>Account deleted</h1>
 
-<p>Your account has been permanently and completely deleted.</p>
+<p>Your account has been permanently and completely deleted. It may <b>take a few days</b> for your photos to disappear from all mirrors and a few weeks for your photos to disappear from web caches.</p>
 
-<p>Note that it may take a few days for your photos to disappear from all mirrors and a few weeks for your photos to disappear from web caches.</p>
+<p>In case you want to take your data with you, it's currenlty being exported and will be <b>ready in a few moments</b>:</p>
+
+<ul>
+  <li><a href="{{download_url}}">{{user.username}}.xml.gz</a></li>
+</ul>
+
+<p><i>This export will be deleted in a few hours.</i></p>
 
 <p><a href="{% url libravatar.public.views.home %}">Back to the homepage</a></p>
 
