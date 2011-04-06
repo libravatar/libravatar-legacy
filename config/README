@@ -4,9 +4,6 @@ www.libravatar.org:
 - hosts the main Django applications (TODO: public ones only)
 - hosts the static files served directly by Apache
 
-secure.libravatar.org:
-- TODO: hosts the logged-in Django applications only
-
 cdn.libravatar.org:
 - hosts the avatars over http
 - serves the /static/img/ directory (for the nobody icon)
@@ -15,7 +12,7 @@ seccdn.libravatar.org:
 - hosts the avatars over https
 - serves the /static/img/ directory (for the nobody icon)
 
-It should be possible to host these on 4 different servers.
+It should be possible to host these on 3 different servers.
 
 
 Content-delivery network
