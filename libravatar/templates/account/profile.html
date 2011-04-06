@@ -5,7 +5,7 @@
 
 <h1>{{user.username}}'s Profile</h1>
 
-{% if confirmed_emails or openids %}
+{% if confirmed_emails or confirmed_openids %}
 <p>You have the following confirmed email addresses and OpenIDs:</p>
 <ul class="horizontal-list avatar-list">
     {% for email in confirmed_emails %}

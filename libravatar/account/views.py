@@ -546,7 +546,7 @@ def delete(request):
         form = DeleteAccountForm(request.user, request.POST)
         if form.is_valid():
             Photo.objects.delete_user_photos(request.user)
-            request.user.delete() # cascading through unconfirmed and confirmed emails
+            request.user.delete() # cascading through unconfirmed and confirmed emails/openids
             logout(request)
             return render_to_response('account/delete_done.html', context_instance=RequestContext(request))
     else:
