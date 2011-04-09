@@ -562,14 +562,29 @@ def delete(request):
 
 def _perform_export(user, do_delete):
     file_hash = sha256(user.username + user.password).hexdigest()
-    download_url = settings.EXPORT_FILES_URL + file_hash + '.xml'
+
+    emails = []
+    for email in user.confirmed_emails.all():
+        emails.append(email.email)
+
+    openids = []
+    for openid in user.confirmed_openids.all():
+        openids.append(openid.openid)
+
+    photos = []
+    for photo in user.photos.all():
+        photo_details = (photo.filename, photo.format)
+        photos.append(photo_details)
 
     gm_client = libgearman.Client()
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    workload = {'do_delete': do_delete, 'file_hash': file_hash}
+    workload = {'do_delete': do_delete, 'file_hash': file_hash,
+                'emails': emails, 'openids': openids, 'photos': photos}
     gm_client.do_background('exportaccount', json.dumps(workload))
+
+    download_url = settings.EXPORT_FILES_URL + file_hash + '.xml'
     return download_url
 
 @csrf_protect
