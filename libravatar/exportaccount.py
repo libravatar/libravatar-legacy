@@ -27,6 +27,40 @@ from utils import create_logger, is_hex # pylint: disable=W0403
 
 logger = create_logger('exportaccount')
 
+SCHEMA_ROOT = 'http://www.libravatar.org/schemas/export/0.1'
+SCHEMA_XSD = '%s/export.xsd' % SCHEMA_ROOT
+
+def xml_header():
+    return '''<?xml version="1.0" encoding="UTF-8"?>
+<user xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="%s %s"
+      xmlns="%s">\n''' % (SCHEMA_ROOT, SCHEMA_XSD, SCHEMA_ROOT)
+
+def xml_footer():
+    return '</user>\n'
+
+def xml_account(username):
+    return '  <account username="%s" site="%s"/>\n' % (saxutils.escape(username), settings.SITE_URL)
+
+def xml_list(list_type, list_elements):
+    s = '  <%ss>\n' % list_type
+    for element in list_elements:
+        s += '    <%s>%s</%s>\n' % (list_type, saxutils.escape(element), list_type)
+    s += '  </%ss>\n' % list_type
+    return s
+
+def xml_photos(photos):
+    s = '  <photos>\n'
+    for photo in photos:
+        (photo_filename, photo_format) = photo
+        encoded_photo = encode_photo(photo_filename, photo_format)
+        if encoded_photo:
+            s += '''    <photo encoding="base64" format="%s">
+%s
+    </photo>\n''' % (photo_format, encoded_photo)
+    s += '  </photos>\n'
+    return s
+
 def encode_photo(photo_filename, photo_format):
     filename = settings.USER_FILES_ROOT + photo_filename + '.' + photo_format
     if not os.path.isfile(filename):
@@ -52,6 +86,7 @@ def main(argv=None):
 
     do_delete = params['do_delete']
     file_hash = params['file_hash']
+    username = params['username']
     emails = params['emails']
     openids = params['openids']
     photos = params['photos']
@@ -71,28 +106,12 @@ def main(argv=None):
 
     dest_filename = settings.EXPORT_FILES_ROOT + file_hash + '.xml'
     destination = open(dest_filename, 'w')
-    destination.write('<?xml version="1.0"?>\n')
-    destination.write('<user>\n')
-
-    destination.write('  <emails>\n')
-    for email in emails:
-        destination.write('    <email>%s</email>\n' % saxutils.escape(email))
-    destination.write('  </emails>\n')
-
-    destination.write('  <openids>\n')
-    for openid in openids:
-        destination.write('    <openid>%s</openid>\n' % saxutils.escape(openid))
-    destination.write('  </openids>\n')
-
-    destination.write('  <photos>\n')
-    for photo in photos:
-        (photo_filename, photo_format) = photo
-        encoded_photo = encode_photo(photo_filename, photo_format)
-        if encoded_photo:
-            destination.write('    <photo encoding="base64">%s</photo>\n' % encoded_photo)
-    destination.write('  </photos>\n')
-
-    destination.write('</user>\n')
+    destination.write(xml_header())
+    destination.write(xml_account(username))
+    destination.write(xml_list('email', emails))
+    destination.write(xml_list('openid', openids))
+    destination.write(xml_photos(photos))
+    destination.write(xml_footer())
     destination.close()
 
     # TODO: gzip the result

@@ -580,7 +580,7 @@ def _perform_export(user, do_delete):
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    workload = {'do_delete': do_delete, 'file_hash': file_hash,
+    workload = {'do_delete': do_delete, 'file_hash': file_hash, 'username': user.username,
                 'emails': emails, 'openids': openids, 'photos': photos}
     gm_client.do_background('exportaccount', json.dumps(workload))
 
