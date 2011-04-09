@@ -20,6 +20,7 @@ Apache config:
 - enforce referer of www.libravatar.org on /user/* using ABE rule
   (http://noscript.net/abe/web-authors.html)
 - only allow display of /uploaded/* on the crop page using ABE rule
+- support SPDY protocol for seccdn.libravatar.org
 
 Federation:
 - when adding an email address, check if the domain is controlled
