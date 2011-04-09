@@ -17,6 +17,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import base64
+import gzip
 import json
 import os
 import sys
@@ -104,8 +105,8 @@ def main(argv=None):
             logger.error("photo_format '%s' is not recognized" % photo_format)
             return 1
 
-    dest_filename = settings.EXPORT_FILES_ROOT + file_hash + '.xml'
-    destination = open(dest_filename, 'w')
+    dest_filename = settings.EXPORT_FILES_ROOT + file_hash + '.xml.gz'
+    destination = gzip.open(dest_filename, 'w')
     destination.write(xml_header())
     destination.write(xml_account(username))
     destination.write(xml_list('email', emails))
@@ -113,8 +114,6 @@ def main(argv=None):
     destination.write(xml_photos(photos))
     destination.write(xml_footer())
     destination.close()
-
-    # TODO: gzip the result
 
     if do_delete:
         # TODO: kick off a photo deletion worker

@@ -584,7 +584,7 @@ def _perform_export(user, do_delete):
                 'emails': emails, 'openids': openids, 'photos': photos}
     gm_client.do_background('exportaccount', json.dumps(workload))
 
-    download_url = settings.EXPORT_FILES_URL + file_hash + '.xml'
+    download_url = settings.EXPORT_FILES_URL + file_hash + '.xml.gz'
     return download_url
 
 @csrf_protect
