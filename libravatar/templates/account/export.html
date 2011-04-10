@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Export your Libravatar data{% endblock title %}
+
+{% block content %}
+
+<h1>Export your data</h1>
+
+<p>Libravatar will now export all of your personal data to a compressed XML file.</p>
+
+<form action="{% url libravatar.account.views.export %}" method="post" name="export">{% csrf_token %}
+
+<p><input type="submit" value="Export">
+&nbsp;<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+
+</form>
+
+{% endblock content %}

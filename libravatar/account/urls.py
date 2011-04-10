@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     (r'^(?P<openid_id>\d+)/remove_unconfirmed_openid/$', 'libravatar.account.views.remove_unconfirmed_openid'),
 
     ('delete/$', 'libravatar.account.views.delete'),
+    ('export/$', 'libravatar.account.views.export'),
     ('new/$', 'libravatar.account.views.new'),
     ('password_reset/$', 'libravatar.account.views.password_reset'),
     ('password_reset_confirm/$', 'libravatar.account.views.password_reset_confirm'),

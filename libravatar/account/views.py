@@ -18,6 +18,9 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from gearman import libgearman
+from hashlib import sha256
+import json
 from openid import oidutil
 from openid.consumer import consumer
 from StringIO import StringIO
@@ -545,12 +548,53 @@ def delete(request):
     if request.method == 'POST':
         form = DeleteAccountForm(request.user, request.POST)
         if form.is_valid():
+            username = request.user.username
+            download_url = _perform_export(request.user, True)
             Photo.objects.delete_user_photos(request.user)
             request.user.delete() # cascading through unconfirmed and confirmed emails/openids
             logout(request)
-            return render_to_response('account/delete_done.html', context_instance=RequestContext(request))
+            return render_to_response('account/delete_done.html',
+                                      {'download_url': download_url, 'username': username},
+                                      context_instance=RequestContext(request))
     else:
         form = DeleteAccountForm(request.user)
 
     return render_to_response('account/delete.html', {'form' : form},
                               context_instance=RequestContext(request))
+
+def _perform_export(user, do_delete):
+    file_hash = sha256(user.username + user.password).hexdigest()
+
+    emails = []
+    for email in user.confirmed_emails.all():
+        emails.append(email.email)
+
+    openids = []
+    for openid in user.confirmed_openids.all():
+        openids.append(openid.openid)
+
+    photos = []
+    for photo in user.photos.all():
+        photo_details = (photo.filename, photo.format)
+        photos.append(photo_details)
+
+    gm_client = libgearman.Client()
+    for server in settings.GEARMAN_SERVERS:
+        gm_client.add_server(server)
+
+    workload = {'do_delete': do_delete, 'file_hash': file_hash, 'username': user.username,
+                'emails': emails, 'openids': openids, 'photos': photos}
+    gm_client.do_background('exportaccount', json.dumps(workload))
+
+    download_url = settings.EXPORT_FILES_URL + file_hash + '.xml.gz'
+    return download_url
+
+@csrf_protect
+@login_required
+def export(request):
+    if request.method == 'POST':
+        download_url = _perform_export(request.user, False)
+        return render_to_response('account/export_done.html', {'delete': delete, 'download_url': download_url},
+                                  context_instance=RequestContext(request))
+
+    return render_to_response('account/export.html', context_instance=RequestContext(request))
