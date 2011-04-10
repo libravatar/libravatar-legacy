@@ -80,9 +80,10 @@ as well as ready/ and user/ directories which are not writable by www-data:
   mkdir /var/lib/libravatar/ready
   mkdir /var/lib/libravatar/user
 
-Similarly, an avatar/ directory that is only writable by root:
+Similarly, avatar/ and export directories that are only writable by root:
 
   mkdir /var/lib/libravatar/avatar
+  mkdir /var/lib/libravatar/export
 
 Then copy config/*.conf to /etc/apache2/sites-enabled/, adjust the
 path to the cdn-common include file and restart Apache using:
