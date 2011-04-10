@@ -100,7 +100,7 @@ def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
 class PhotoManager(models.Manager):
     def delete_user_photos(self, user):
         for photo in self.filter(user=user):
-            photo.delete() # deletes the photo on disk as well
+            photo.delete(delete_file_on_disk=False)
 
 class Photo(models.Model):
     user = models.ForeignKey(User, related_name='photos')
@@ -131,20 +131,21 @@ class Photo(models.Model):
         rename(tmp_filename, dest_filename)
         return True
 
-    def delete(self):
+    def delete(self, delete_file_on_disk=True):
         # Remove links to this photo
         for email in self.emails.all():
             email.set_photo(None)
         for openid in self.openids.all():
             openid.set_photo(None)
 
-        # Queue a job for the photo deletion gearman worker
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
+        if delete_file_on_disk:
+            # Queue a job for the photo deletion gearman worker
+            gm_client = libgearman.Client()
+            for server in settings.GEARMAN_SERVERS:
+                gm_client.add_server(server)
 
-        workload = {'file_hash': self.filename, 'format': self.format}
-        gm_client.do_background('deletephoto', json.dumps(workload))
+            workload = {'file_hash': self.filename, 'format': self.format}
+            gm_client.do_background('deletephoto', json.dumps(workload))
 
         super(Photo, self).delete()
 

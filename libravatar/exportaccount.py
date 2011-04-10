@@ -17,6 +17,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import base64
+from gearman import libgearman
 import gzip
 import json
 import os
@@ -117,9 +118,15 @@ def main(argv=None):
     destination.write(xml_footer())
     destination.close()
 
-    if do_delete:
-        # TODO: kick off a photo deletion worker
-        pass
+    if do_delete: # Delete files on disk
+        gm_client = libgearman.Client()
+        for server in settings.GEARMAN_SERVERS:
+            gm_client.add_server(server)
+
+        for photo in photos:
+            (photo_filename, photo_format) = photo
+            workload = {'file_hash': photo_filename, 'format': photo_format}
+            gm_client.do_background('deletephoto', json.dumps(workload))
 
     return 0
 

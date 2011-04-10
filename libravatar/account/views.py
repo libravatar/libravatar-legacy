@@ -548,11 +548,13 @@ def delete(request):
     if request.method == 'POST':
         form = DeleteAccountForm(request.user, request.POST)
         if form.is_valid():
+            username = request.user.username
             download_url = _perform_export(request.user, True)
             Photo.objects.delete_user_photos(request.user)
             request.user.delete() # cascading through unconfirmed and confirmed emails
             logout(request)
-            return render_to_response('account/delete_done.html', {'download_url': download_url},
+            return render_to_response('account/delete_done.html',
+                                      {'download_url': download_url, 'username': username},
                                       context_instance=RequestContext(request))
     else:
         form = DeleteAccountForm(request.user)
