@@ -59,7 +59,7 @@ Apache Configuration
 
 Start by adding this to your /etc/hosts:
 
-  127.0.0.1 www.libravatar.org secure.libravatar.org cdn.libravatar.org seccdn.libravatar.org
+  127.0.0.1 www.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
 Enable mod_alias, mod_expires, mod_headers, mod_rewrite and mod_wsgi:
 
@@ -69,20 +69,20 @@ Enable mod_alias, mod_expires, mod_headers, mod_rewrite and mod_wsgi:
   a2enmod rewrite
   a2enmod wsgi
 
-Create a uploaded/ and user/ directories that are writable by the www-data user:
+Create an uploaded/ directory that is writable by the www-data user:
 
   mkdir /var/lib/libravatar/uploaded
-  mkdir /var/lib/libravatar/user
   sudo chgrp www-data /var/lib/libravatar/uploaded
-  sudo chgrp www-data /var/lib/libravatar/user
   sudo chmod g+w /var/lib/libravatar/uploaded
-  sudo chmod g+w /var/lib/libravatar/user
 
-Similarly, an avatar/ directory that's writable by the www-data user:
+as well as ready/ and user/ directories which are not writable by www-data:
+
+  mkdir /var/lib/libravatar/ready
+  mkdir /var/lib/libravatar/user
+
+Similarly, an avatar/ directory that is only writable by root:
 
   mkdir /var/lib/libravatar/avatar
-  sudo chgrp www-data /var/lib/libravatar/avatar
-  sudo chmod g+w /var/lib/libravatar/avatar
 
 Then copy config/*.conf to /etc/apache2/sites-enabled/, adjust the
 path to the cdn-common include file and restart Apache using:
