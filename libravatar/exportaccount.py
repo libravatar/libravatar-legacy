@@ -41,7 +41,9 @@ def xml_footer():
     return '</user>\n'
 
 def xml_account(username):
-    return '  <account username="%s" site="%s"/>\n' % (saxutils.escape(username), settings.SITE_URL)
+    escaped_username = saxutils.quoteattr(username)
+    escaped_site_url = saxutils.quoteattr(settings.SITE_URL)
+    return '  <account username=%s site=%s/>\n' % (escaped_username, escaped_site_url)
 
 def xml_list(list_type, list_elements):
     s = '  <%ss>\n' % list_type
@@ -56,9 +58,9 @@ def xml_photos(photos):
         (photo_filename, photo_format) = photo
         encoded_photo = encode_photo(photo_filename, photo_format)
         if encoded_photo:
-            s += '''    <photo encoding="base64" format="%s">
+            s += '''    <photo encoding="base64" format=%s>
 %s
-    </photo>\n''' % (photo_format, encoded_photo)
+    </photo>\n''' % (saxutils.quoteattr(photo_format), encoded_photo)
     s += '  </photos>\n'
     return s
 
