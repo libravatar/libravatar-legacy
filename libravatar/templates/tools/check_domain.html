@@ -25,20 +25,33 @@
 <tr>
   <td>HTTP avatar server:</td>
   <td><tt>{{data.avatar_server_http}}</tt>
-  {% if not data.avatar_server_http %}
-  (use <tt>http://cdn.libravatar.org</tt>)
-  {% endif %}
-  {% if data.avatar_server_http_ipv4 %}
+  {% if data.avatar_server_http %}
+    {% if data.avatar_server_http_ipv4 %}
   <br>{{ data.avatar_server_http_ipv4 }}
-  {% else %}
+    {% else %}
   <br><strong>Warning: no A record for this hostname</strong>
+    {% endif %}
+    {% if data.avatar_server_http_ipv6 %}
+  <br>{{ data.avatar_server_http_ipv6 }}
+    {% endif %}
+  {% else %}
+  (use <tt>http://cdn.libravatar.org</tt>)
   {% endif %}
   </td>
 </tr>
 <tr>
   <td>HTTPS avatar server:</td>
   <td><tt>{{data.avatar_server_https}}</tt>
-  {% if not data.avatar_server_https %}
+  {% if data.avatar_server_https %}
+    {% if data.avatar_server_https_ipv4 %}
+  <br>{{ data.avatar_server_https_ipv4 }}
+    {% else %}
+  <br><strong>Warning: no A record for this hostname</strong>
+    {% endif %}
+    {% if data.avatar_server_https_ipv6 %}
+  <br>{{ data.avatar_server_https_ipv6 }}
+    {% endif %}
+  {% else %}
   (use <tt>https://seccdn.libravatar.org</tt>)
   {% endif %}
   </td>

@@ -18,6 +18,7 @@
 
 import DNS
 from hashlib import md5, sha1, sha256
+from socket import inet_ntop, AF_INET6
 from urlparse import urlsplit, urlunsplit
 
 from django.shortcuts import render_to_response
@@ -92,9 +93,13 @@ def lookup_ip_address(hostname, ipv6):
     for answer in dns_request.answers:
         if (not 'data' in answer) or (not answer['data']):
             continue
+        if (ipv6 and answer['typename'] != 'AAAA') or (not ipv6 and answer['typename'] != 'A'):
+            continue # skip CNAME records
 
-        # TODO: fix the display (binary?) of IPv6 addresses
-        return answer['data']
+        if ipv6:
+            return inet_ntop(AF_INET6, answer['data'])
+        else:
+            return answer['data']
 
     return None
 
@@ -108,9 +113,11 @@ def check_domain(request):
             data['avatar_server_http'] = lookup_avatar_server(domain, False)
             if data['avatar_server_http']:
                 data['avatar_server_http_ipv4'] = lookup_ip_address(data['avatar_server_http'], False)
+                data['avatar_server_http_ipv6'] = lookup_ip_address(data['avatar_server_http'], True)
             data['avatar_server_https'] = lookup_avatar_server(domain, True)
             if data['avatar_server_https']:
                 data['avatar_server_https_ipv4'] = lookup_ip_address(data['avatar_server_https'], False)
+                data['avatar_server_https_ipv6'] = lookup_ip_address(data['avatar_server_https'], True)
     else:
         form = CheckDomainForm()
 
