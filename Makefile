@@ -24,9 +24,14 @@ clean:
 	find -name "*.pyc" -delete
 	( [ -h libravatar/settings.py ] && rm -f libravatar/settings.py ) || true
 
-test:
+lint:
 	( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
 	DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
+
+unittests:
+	python libravatar/manage.py test public tools
+
+test: lint unittests
 
 package:
 	dpkg-buildpackage -us -uc
