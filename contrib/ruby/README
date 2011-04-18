@@ -1,0 +1,16 @@
+The recommended Ruby gem is:
+
+  https://github.com/gugod/libravatar
+
+
+Testing
+--------
+
+Clone the module under ~/devel/remote/gravatar_url:
+
+  cd ~/devel/remote/
+  git clone git://github.com/gugod/libravatar.git libravatar-gem
+
+Then put the test CGI under /var/www and create these symlinks:
+
+  ln -s ~/devel/remote/libravatar-gem/lib/libravatar.rb /var/www/
