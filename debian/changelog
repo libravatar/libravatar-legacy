@@ -1,3 +1,13 @@
+libravatar (20110418.1) unstable; urgency=low
+
+  * Add Ruby gem to Libraries page
+  * Display IPv6 address in check tool
+  * Remove Twitter link
+  * Update mailing list link (onlinegroups.net)
+  * Optimize 404 rewrite rules redirecting to Gravatar
+
+ -- Francois Marier <francois@debian.org>  Mon, 18 Apr 2011 20:35:03 +1200
+
 libravatar (20110410.1) unstable; urgency=low
 
   * User account exports
