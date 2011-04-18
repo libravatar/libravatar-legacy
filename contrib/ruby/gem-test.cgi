@@ -20,6 +20,14 @@ print '<img src="', avatar_url, '">'
 print '<img src="', missing_avatar, '">'
 print "<br><br>\n"
 
+avatar_url = Libravatar.new(:email => "fmarier@gmail.com", :https => true)
+missing_avatar = Libravatar.new(:email => "fmarier+1@gmail.com", :https => true)
+
+print 'Regular HTTPS images:<br>'
+print '<img src="', avatar_url, '">'
+print '<img src="', missing_avatar, '">'
+print "<br><br>\n"
+
 avatar_url = Libravatar.new(:openid => 'https://launchpad.net/~fmarier')
 missing_avatar = Libravatar.new(:openid => 'https://launchpad.net/~notfmarier')
 
