@@ -23,6 +23,18 @@ print '&lt;img src="' . $avatar_url . '"&gt;';
 my $avatar_url = libravatar_url(openid => 'https://example.com/id/person');
 </pre></blockquote>
 
+<h3>Ruby</h3>
+
+<p>Kang-min Liu has created a <a href="http://rubygems.org/gems/libravatar">Libravatar Ruby gem</a>.</p>
+
+<blockquote><pre>
+require 'libravatar'
+avatar_url = Libravatar.new(:email => 'person@example.org')
+print '&lt;img src="', avatar_url, '"&gt;'
+</pre></blockquote>
+
+<p>You can also use <tt>:openid => 'https://example.com/id/person'</tt> instead of providing an email address.</p>
+
 <h2>Contribute!</h2>
 
 <p>Interested in writing a plugin for your favourite framework/CMS or a library for your favourite language? Please <a href="mailto:{{ dev_email }}">get in touch</a>, we would be more than happy to link to them from this page!</p>
