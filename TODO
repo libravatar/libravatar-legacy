@@ -58,8 +58,6 @@ Image resizing:
    the sha1 and sha256 using "find -mount -inum xxxxx"
 
 User sovereignty:
-- "export my data" which uuencodes photos to XML along with email
-   addresses
 - "import my data" for moving between libravatar.org instances (email
    addresses will need to be re-validated presumably)
 
