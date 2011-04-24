@@ -47,7 +47,7 @@
 
 import datetime
 from gearman import libgearman
-from hashlib import md5, sha1, sha256
+from hashlib import md5, sha256
 import Image
 import json
 from openid.store import nonce as oidnonce
@@ -79,7 +79,7 @@ def file_format(image_type):
 
     return DEFAULT_IMAGE_FORMAT
 
-def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
+def change_photo(photo, md5_hash, sha256_hash):
     '''
     Change the photo that the given hashes point to by deleting/creating hard links.
     '''
@@ -94,7 +94,7 @@ def change_photo(photo, md5_hash, sha1_hash, sha256_hash):
         gm_client.add_server(server)
 
     workload = {'photo_hash': photo_hash, 'photo_format': photo_format,
-                'md5_hash': md5_hash, 'sha1_hash': sha1_hash, 'sha256_hash': sha256_hash}
+                'md5_hash': md5_hash, 'sha256_hash': sha256_hash}
     gm_client.do_background('changephoto', json.dumps(workload))
 
 class PhotoManager(models.Manager):
@@ -232,14 +232,12 @@ class ConfirmedEmail(models.Model):
     def public_hash(self, algorithm):
         if 'md5' == algorithm:
             return md5(self.email.lower()).hexdigest()
-        elif 'sha1' == algorithm:
-            return sha1(self.email.lower()).hexdigest()
         else:
             return sha256(self.email.lower()).hexdigest()
 
     def set_photo(self, photo):
         self.photo = photo
-        change_photo(photo, self.public_hash('md5'), self.public_hash('sha1'), self.public_hash('sha256'))
+        change_photo(photo, self.public_hash('md5'), self.public_hash('sha256'))
         self.save()
 
 class UnconfirmedEmail(models.Model):
@@ -292,7 +290,7 @@ class ConfirmedOpenId(models.Model):
 
     def set_photo(self, photo):
         self.photo = photo
-        change_photo(photo, md5_hash=None, sha1_hash=None, sha256_hash=self.public_hash())
+        change_photo(photo, md5_hash=None, sha256_hash=self.public_hash())
         self.save()
 
 # Classes related to the OpenID Store (from https://github.com/simonw/django-openid)

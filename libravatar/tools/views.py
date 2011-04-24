@@ -17,7 +17,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import DNS
-from hashlib import md5, sha1, sha256
+from hashlib import md5, sha256
 from socket import inet_ntop, AF_INET6
 from urlparse import urlsplit, urlunsplit
 
@@ -41,7 +41,6 @@ def check(request):
                 lowercase_value = email.strip().lower()
                 domain = email.split('@')[-1]
                 data['md5'] = md5(lowercase_value).hexdigest()
-                data['sha1'] = sha1(lowercase_value).hexdigest()
             else:
                 url = urlsplit(openid.strip())
                 lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
