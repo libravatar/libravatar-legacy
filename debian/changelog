@@ -1,3 +1,9 @@
+libravatar (20110424.1) unstable; urgency=low
+
+  * Move documentation to the wiki.
+
+ -- Francois Marier <francois@debian.org>  Sun, 24 Apr 2011 17:09:34 +1200
+
 libravatar (20110418.1) unstable; urgency=low
 
   * Add Ruby gem to Libraries page
