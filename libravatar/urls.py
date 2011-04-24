@@ -23,9 +23,6 @@ urlpatterns = patterns('',
     (r'^tools/', include('libravatar.tools.urls')),
 
     (r'^$', 'libravatar.public.views.home'),
-    (r'^api$', 'libravatar.public.views.api'),
-    (r'^libraries$', 'libravatar.public.views.libraries'),
     (r'^resize/', 'libravatar.public.views.resize'),
     (r'^resolve/', 'libravatar.public.views.resolve'),
-    (r'^run_your_own$', 'libravatar.public.views.run_your_own'),
 )
