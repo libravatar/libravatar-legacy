@@ -1,8 +1,6 @@
 # Branding/homepage:
 
-* add an abuse form for reporting inappropriate content to abuse@
 * make a collage of the user photos in the shape of libravatar logo (the ones licensed under Creative Commons)
-* come up with terms and conditions? a [privacy policy](http://ubuildcontracts.com/)
 * write a comparison table of Libravatar & Gravatar features
 * improve basic layout (using http://960.gs/ maybe?)
 
@@ -13,95 +11,17 @@
 * post presentation audio and slides on blog/slideshare?
 * create Freshmeat account (once there's a first release)
 
-# Apache config:
-
-* support dynamic resizing of images delivered over https
-* split apps between secure (account) and www (public and tools)
-* enforce referer of www.libravatar.org on /user/* using [ABE rule](http://noscript.net/abe/web-authors.html)
-* prevent POST requests to www from other sites using ABE rule
-* only allow display of /uploaded/* on the crop page using ABE rule
-* support SPDY protocol for seccdn.libravatar.org
-
 # Federation
 
-* when adding an email address, check if the domain is controlled by another avatar server elsewhere and issue a warning
 * create a test [mugshots.debian.net](http://liw.iki.fi/liw/log/2006-11.html#20061127b) server with db.people.org auth as [suggested by Lars](http://www.mail-archive.com/debian-project@lists.debian.org/msg00572.html))
-* add the ability for private/public images for each email address (i.e. internal images only displayed within company subnet)
-* create a pool of servers to serve libravatar.org (cdn-like), maybe using [MirrorBrain](http://mirrorbrain.org/)
-
-# Storage
-* use git-like directories (first two hash characters is dirname)
-* write an S3 backend
-* write a file backend on a different server
-
-# Content licensing
-
-* have a checkbox for "this image is CC-BY-SA" and a "different license" link (should we support "all rights reserved"?)
-* licenses can be specified by clients like the G/PG/X Gravatar ratings and an image is hardlinked into all of the directories that make sense for the license (e.g. CC-BY is also in CC-SA and CC-ND)
-* or perhaps licensing should be embedded into the files as [EXIF comments](http://q-funk.blogspot.com/2010/08/batch-editing-exif-data-to-add.html)
-* or another idea is to have /avatar/HASH.json include metadata
 
 # Gearman jobs
 
-* photo importers
 * make gearman jobs persist inside the Postgres DB
-
-# Image resizing
-
-* when writing a resized image, create hardlinks to all hashes by looking up the inode number of the md5 using "ls -i" then finding the sha1 and sha256 using "find -mount -inum xxxxx"
-
-# User sovereignty
-
-* "import my data" for moving between libravatar.org instances (email addresses will need to be re-validated presumably)
-
-# Admin
-
-* CLI admin interface using [Commandant](https://launchpad.net/commandant)
-* control page to lookup images/profiles based on a hash
-* ability to disable a profile (which deletes all email -> photo associations)
-* delete old expired unconfirmed emails/OpenIDs on cron (django-admin cleanup)
-
-# Images
-
-* automatic OpenID URL image importer for [existing](http://claimedavatar.net) [services](http://paulisageek.com/openidavatar)
-* image importer from gpg key servers for embedded photos
-* image importer for Twitter and Launchpad (need to specify username)
-* Pavatar.com importer (need to specify homepage URL)
-* URL image downloader/importer
-* provide a gallery of [built-in images](http://www.isity.net/blog/?p=65]
-* implement unique wavatar-like images so that people without a photo don't all look the same
-
-# Plugins/hooks
-
-* libraries for common languages:
- * PHP Pear module
- * [PyPI](http://pypi.python.org/pypi)
-* plugins for FOSS programs:
- * StatusNet
- * Mahara
- * Launchpad
- * Wordpress
- * [Drupal](http://drupal.org/node/1045064)
- * [Django](https://code.google.com/p/django-gravatar/)
- * Moodle
- * Koha
- * wikkid
- * [Thunderbird](https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
- * [pfaces](https://projects.pekdon.net/projects/pfaces)
- * [GMail](https://chrome.google.com/extensions/detail/empehcjbkdjpjckbllcgekbkngdolcln?hl=en)
- * [GroupServer/OnlineGroups.net](http://groupserver.org/)
- * [gnus](http://julien.danjou.info/blog/index.html#Gnus_and_Gravatar_support)
-* use Facebook / Twitter API to change profile pictures there too
-* rss feeds to see when a user (based on sha256 hash) changes photos
-
-# General Django app
-
-* add OpenID (python-django-auth-openid) support instead of creating an account
-* internationalization of the Django UI and localization to French (then add the templates to Launchpad to be widly translated)
-* add support for client certificates to authenticate
 
 # Sysadmin stuff
 
 * use Puppet for all server config
 * monitor server with Nagios
 * monitor gearman queues (http://labs.consol.de/nagios/mod-gearman/)
+* use [mod_spdy](https://code.google.com/p/mod-spdy/) on seccdn.libravatar.org
