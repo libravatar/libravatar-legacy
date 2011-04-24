@@ -84,7 +84,7 @@ Plugins/hooks:
 - plugins for FOSS programs: StatusNet, Mahara, Launchpad, Wordpress,
    Drupal (http://drupal.org/node/1045064), Django (https://code.google.com/p/django-gravatar/),
    Moodle, Koha, wikkid, Thunderbird (https://addons.mozilla.org/en-US/thunderbird/addon/58034/)
-   and pfaces (https://projects.pekdon.net/projects/pfaces)
+   and pfaces (https://projects.pekdon.net/projects/pfaces), PyPI (http://pypi.python.org/pypi),
    GMail (https://chrome.google.com/extensions/detail/empehcjbkdjpjckbllcgekbkngdolcln?hl=en)
    GroupServer/OnlineGroups.net (http://groupserver.org/)
 - gnus (http://julien.danjou.info/blog/index.html#Gnus_and_Gravatar_support)
