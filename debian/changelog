@@ -1,3 +1,9 @@
+libravatar (20110424.2) unstable; urgency=low
+
+  * Remove support for the SHA1 hash algorithm (closes: #769766)
+
+ -- Francois Marier <francois@debian.org>  Sun, 24 Apr 2011 22:32:08 +1200
+
 libravatar (20110424.1) unstable; urgency=low
 
   * Move documentation to the wiki.
