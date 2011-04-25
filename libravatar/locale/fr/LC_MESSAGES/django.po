@@ -1,0 +1,162 @@
+# French translation of Libravatar
+# Copyright (C) 2011 François Marier
+# This file is distributed under the same license as the libravatar package.
+# François Marier <francois@libravatar.org>, 2011.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-25 18:07+1200\n"
+"PO-Revision-Date: 2011-04-25 18:07+1200\n"
+"Last-Translator: François Marier <francois@libravatar.org>\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+
+#: settings.py:49
+msgid "English"
+msgstr "Anglais"
+
+#: settings.py:50
+msgid "French"
+msgstr "Français"
+
+#: templates/base.html:7
+msgid "Freeing the Web, one face at a time!"
+msgstr "La libération du Web, un visage à la fois !"
+
+#: templates/base.html:15
+msgid "Homepage"
+msgstr "Accueil"
+
+#: templates/base.html:19
+msgid "alpha"
+msgstr "alpha"
+
+#: templates/base.html:19
+msgid "freeing the web one face at a time"
+msgstr "la libération du web, un visage à la fois"
+
+#: templates/base.html:24
+msgid "Profile"
+msgstr "Profil"
+
+#: templates/base.html:25
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: templates/base.html:27
+msgid "Login"
+msgstr "Connexion"
+
+#: templates/base.html:39
+#, python-format
+msgid ""
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"http://www."
+"libravatar.org\">Libravatar</a>\n"
+"  software, version %(libravatar_version)s, available under the\n"
+"  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
+"Public License</a>."
+msgstr ""
+"<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a href=\"http://www."
+"libravatar.org\">Libravatar</a>\n"
+", version %(libravatar_version)s, disponible sous la license\n"
+"  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
+"Public License</a>."
+
+#: templates/public/home.html:4
+msgid "federated avatar hosting service"
+msgstr "hébergement fédéré d'avatars"
+
+#: templates/public/home.html:9
+msgid "Get Involved!"
+msgstr "Participatez !"
+
+#: templates/public/home.html:12
+#, python-format
+msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
+msgstr "Ouvrir un <a href=\"%(new_account_url)s\">compte gratuit</a>"
+
+#: templates/public/home.html:14
+msgid ""
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
+"a>"
+msgstr ""
+"Télécharger le <a href=\"https://code.launchpad.net/libravatar\">code "
+"source</a>"
+
+#: templates/public/home.html:15
+msgid ""
+"File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
+"href=\"https://answers.launchpad.net/libravatar\">questions</a>"
+msgstr ""
+"Rapporter un <a href=\"https://bugs.launchpad.net/libravatar\">bogue</a> ou "
+"poser une <a href=\"https://answers.launchpad.net/libravatar\">question</a>"
+
+#: templates/public/home.html:16
+msgid ""
+"Join the <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-devel"
+"\">mailing list</a>"
+msgstr ""
+"Joindre la <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-"
+"devel\">liste de diffusion</a>"
+
+#: templates/public/home.html:17
+msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
+msgstr "Suivez-nous sur <a href=\"http://identi.ca/libravatar\">Identica</a>"
+
+#: templates/public/home.html:21
+#, python-format
+msgid ""
+"Libravatar is a service which delivers your avatar (profile picture) to "
+"other websites. If you <a href=\"%(new_account_url)s\">create an account</a> "
+"with us, your photo could start popping up next to forum posts or blog "
+"comments on any site where you left your email address."
+msgstr ""
+"Libravatar est un service qui sert votre avatar (photo de profil) à d'autres "
+"sites web. Si vous <a href=\"%(new_account_url)s\">ouvrez un compte</a> avec "
+"nous, votre photo pourrait commence à apparaître sur les commentaires ou "
+"billets que vous laissez sur un site qui connait votre adresse de courriel."
+
+#: templates/public/home.html:23
+msgid "Federated Open Source Service"
+msgstr "Service fédéré libre"
+
+#: templates/public/home.html:25
+msgid ""
+"This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
+"\">Free and Open Source software</a> and allows owners of a domain name to "
+"<a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
+"instance</a> of Libravatar and serve avatars themselves."
+msgstr ""
+"Ce service roule sur des <a href=\"http://www.gnu.org/licenses/agpl.html"
+"\">logiciels libres</a> et permet aux propriétaires d'un domaine de <a href="
+"\"http://wiki.libravatar.org/running_your_own/\">rouler leur propre "
+"instance</a> de Libravatar et de servir eux-mêmes leurs avatars."
+
+#: templates/public/home.html:27
+msgid "Simple API for Developers"
+msgstr "Interface de programmation simple"
+
+#: templates/public/home.html:29
+msgid ""
+"Application developers can easily add support for this service using our <a "
+"href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
+"href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
+"available for a number of platforms and languages."
+msgstr ""
+"Les développeurs d'applications peuvent facilement supporter ce service "
+"grâce à notre <a href=\"http://wiki.libravatar.org/api/\">interface de "
+"programmation simple</a> ou bien l'une des <a href=\"http://wiki.libravatar."
+"org/libraries/\">bibliothèques ou plugiciels</a> disponibles sous plusieurs "
+"plateformes et langages."
+
+#: templates/public/home.html:31
+msgid "Big thanks to our sponsors without whom none of this would be possible!"
+msgstr ""
+"Un gros merci à nos commanditaires sans qui rien de ceci ne serait possible !"
