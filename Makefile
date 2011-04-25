@@ -7,7 +7,7 @@ COMPRESSED_CSS = ${CSS:=.gz}
 COMPRESSED_JS = ${JS:=.gz}
 CLEANUP = 
 
-all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS)
+all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) translations
 
 %.css: %
 	yui-compressor -o $@ $<
@@ -18,6 +18,9 @@ all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS)
 	gzip --best < $< > $@
 %.gz: %.js
 	gzip --best < $< > $@
+
+translations:
+	cd libravatar && django-admin compilemessages
 
 clean:
 	rm -f $(COMPRESSED_CSS) $(COMPRESSED_JS) $(MIN_CSS) $(MIN_JS)

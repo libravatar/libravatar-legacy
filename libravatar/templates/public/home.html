@@ -1,30 +1,34 @@
 {% extends 'base.html' %}
-{% block title %}Libravatar - federated avatar hosting service{% endblock title %}
+{% load i18n %}
+
+{% block title %}Libravatar - {% trans 'federated avatar hosting service' %}{% endblock title %}
 
 {% block content %}
 
 <div id="action-panel">
-  <h2>Get Involved!</h2>
+  <h2>{% trans 'Get Involved!' %}</h2>
   {% if not user.is_authenticated and not disable_signup %}
-  <p>Create a <a href="{% url libravatar.account.views.new %}">free account</a></p>
+    {% url libravatar.account.views.new as new_account_url %}
+    <p>{% blocktrans %}Create a <a href="{{ new_account_url }}">free account</a>{% endblocktrans %}</p>
   {% endif %}
-  <p>Download the <a href="https://code.launchpad.net/libravatar">source code</a></p>
-  <p>File <a href="https://bugs.launchpad.net/libravatar">bugs</a> or ask <a href="https://answers.launchpad.net/libravatar">questions</a></p>
-  <p>Join the <a href="http://libravatar.onlinegroups.net/groups/libravatar-devel">mailing list</a></p>
-  <p>Follow us on <a href="http://identi.ca/libravatar">Identica</a></p>
+  <p>{% trans 'Download the <a href="https://code.launchpad.net/libravatar">source code</a>' %}</p>
+  <p>{% trans 'File <a href="https://bugs.launchpad.net/libravatar">bugs</a> or ask <a href="https://answers.launchpad.net/libravatar">questions</a>' %}</p>
+  <p>{% trans 'Join the <a href="http://libravatar.onlinegroups.net/groups/libravatar-devel">mailing list</a>' %}</p>
+  <p>{% trans 'Follow us on <a href="http://identi.ca/libravatar">Identica</a>' %}</p>
 </div>
 
-<p>Libravatar is a service which delivers your avatar (profile picture) to other websites. If you <a href="{% url libravatar.account.views.new %}">create an account</a> with us, your photo could start popping up next to forum posts or blog comments on any site where you left your email address.</p>
+{% url libravatar.account.views.new as new_account_url %}
+<p>{% blocktrans %}Libravatar is a service which delivers your avatar (profile picture) to other websites. If you <a href="{{ new_account_url }}">create an account</a> with us, your photo could start popping up next to forum posts or blog comments on any site where you left your email address.{% endblocktrans %}</p>
 
-<h2>Federated Open Source Service</h2>
+<h2>{% trans 'Federated Open Source Service' %}</h2>
 
-<p>This service is powered by <a href="http://www.gnu.org/licenses/agpl.html">Free and Open Source software</a> and allows owners of a domain name to <a href="http://wiki.libravatar.org/running_your_own/">run their own instance</a> of Libravatar and serve avatars themselves.</p>
+<p>{% trans 'This service is powered by <a href="http://www.gnu.org/licenses/agpl.html">Free and Open Source software</a> and allows owners of a domain name to <a href="http://wiki.libravatar.org/running_your_own/">run their own instance</a> of Libravatar and serve avatars themselves.' %}</p>
 
-<h2>Simple API for Developers</h2>
+<h2>{% trans 'Simple API for Developers' %}</h2>
 
-<p>Application developers can easily add support for this service using our <a href="http://wiki.libravatar.org/api/">simple API</a> or one of the <a href="http://wiki.libravatar.org/libraries/">libraries and plugins</a> available for a number of platforms and languages.</p>
+<p>{% trans 'Application developers can easily add support for this service using our <a href="http://wiki.libravatar.org/api/">simple API</a> or one of the <a href="http://wiki.libravatar.org/libraries/">libraries and plugins</a> available for a number of platforms and languages.' %}</p>
 
-<p>Big thanks to our sponsors without whom none of this would be possible!</p>
+<p>{% trans 'Big thanks to our sponsors without whom none of this would be possible!' %}</p>
 
 <div id="sponsors">
   <a href="http://www.braawi.com"><img src="{{media_url}}/img/braawi_logo.png" width="140" height="140" alt="Braawi"></a>
