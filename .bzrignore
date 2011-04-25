@@ -9,6 +9,7 @@
 /debian/*.debhelper.log
 /debian/*.substvars
 /libravatar/libravatar.db
+/libravatar/locale/*/LC_MESSAGES/*.mo
 /libravatar/settings.py
 /ready
 /uploaded
