@@ -21,6 +21,7 @@ from urlparse import urlsplit, urlunsplit
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_lazy as _
 
 from libravatar import settings
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, Photo, password_reset_key, MAX_LENGTH_URL
@@ -130,7 +131,7 @@ class UploadPhotoForm(forms.Form):
         return p
 
 class PasswordResetForm(forms.Form):
-    email = forms.EmailField(label="Email address")
+    email = forms.EmailField(label=_('Email'))
 
     def save(self):
         if not self.cleaned_data['email']:

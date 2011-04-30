@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-30 08:48+0000\n"
+"POT-Creation-Date: 2011-04-30 09:23+0000\n"
 "PO-Revision-Date: 2011-04-30 08:49+0000\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: none\n"
@@ -59,7 +59,8 @@ msgstr "Profil"
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:27
+#: templates/base.html:27 templates/account/login.html:9
+#: templates/account/login.html.py:38
 msgid "Login"
 msgstr "Connexion"
 
@@ -86,9 +87,136 @@ msgstr "Erreur !"
 msgid "Libravatar has encountered an error."
 msgstr "Libravatar a causé une erreur."
 
-#: templates/error.html:15
+#: templates/error.html:15 templates/account/password_change_done.html:13
 msgid "Back to your profile"
 msgstr "Retourner sur votre profil"
+
+#: templates/account/login.html:4
+msgid "Libravatar Login"
+msgstr "Connexion à Libravatar"
+
+#: templates/account/login.html:13
+#, python-format
+msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgstr ""
+"Vous n'avez pas de compte ? <a href=\"%(signup_url)s\">Créez-en un "
+"maintenant</a>"
+
+#: templates/account/login.html:17
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Votre nom d'utilisateur ou votre mot de passe est incorrect. Veuillez "
+"réessayer à nouveau."
+
+#: templates/account/login.html:35
+#, python-format
+msgid ""
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
+"a>."
+msgstr ""
+"Vous avez oublié votre mot de passe ? <a href=\"%(password_reset_url)s"
+"\">Réinitialisez-le</a>."
+
+#: templates/account/login.html:40 templates/account/new.html:44
+#: templates/account/password_change.html:24
+#: templates/account/password_reset.html:17
+msgid "Cancel"
+msgstr "Annuler"
+
+#: templates/account/new.html:4
+msgid "Create a new Libravatar account"
+msgstr "Créer un compte Libravatar"
+
+#: templates/account/new.html:9
+msgid "Create a new account"
+msgstr "Créer un nouveau compte"
+
+#: templates/account/new.html:43
+msgid "Create account"
+msgstr "Créer le compte"
+
+#: templates/account/password_change.html:4
+msgid "Change your Libravatar password"
+msgstr "Changez votre mot de passe Libravatar"
+
+#: templates/account/password_change.html:9
+msgid "Change password"
+msgstr "Changer de mot de passe"
+
+#: templates/account/password_change.html:23
+msgid "Change my password"
+msgstr "Changer le mot de passe"
+
+#: templates/account/password_change_done.html:4
+#: templates/account/password_change_done.html:8
+msgid "Password changed successfully"
+msgstr "Changement de mot de passe"
+
+#: templates/account/password_change_done.html:10
+msgid "Your password was changed."
+msgstr "Votre mot de passe a été modifié."
+
+#: templates/account/password_change_done.html:15
+msgid "Back to the login page"
+msgstr "Retour à la page de connexion"
+
+#: templates/account/password_reset.html:4
+msgid "Reset your Libravatar password"
+msgstr "Réinitialisez votre mot de passe Libravatar"
+
+#: templates/account/password_reset.html:9
+msgid "Reset password"
+msgstr "Réinitialisation du mot de passe"
+
+#: templates/account/password_reset.html:16
+msgid "Reset my password"
+msgstr "Réinitialiser le mot de passe"
+
+#: templates/account/password_reset_submitted.html:4
+msgid "Password reset requested"
+msgstr "Réinitialisation du mot de passe demandée."
+
+#: templates/account/password_reset_submitted.html:8
+msgid "You have sucessfully requested a password reset for your account."
+msgstr ""
+"Vous avez fait une demande de réinitialisation du mot de passe de votre "
+"compte."
+
+#: templates/account/password_reset_submitted.html:10
+msgid "You will receive an email with the details on how to proceed."
+msgstr "Vous recevrez d'ici peu un courriel avec la marche à suivre"
+
+#: templates/account/password_reset_submitted.html:12
+msgid "Still haven't received the email?"
+msgstr "Vous n'avez toujours pas reçu de courriel ?"
+
+#: templates/account/password_reset_submitted.html:15
+msgid "Did you look in your spam folder?"
+msgstr "Le message est-il tombé dans votre boîte de pourriels ?"
+
+#: templates/account/password_reset_submitted.html:16
+#, python-format
+msgid "Did you use an email address which is in the %(site_name)s system?"
+msgstr "Avez-vous utilisé une adresse qui est dans le système %(site_name)s ?"
+
+#: templates/account/password_reset_submitted.html:17
+msgid "Has this email address ever been confirmed within the system?"
+msgstr "Est-ce que cette adresse a déjà été confirmée dans le système ?"
+
+#: templates/account/password_reset_submitted.html:21
+#, python-format
+msgid ""
+"If everything else fails, you can always <a href=\"%(new_account_url)s"
+"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
+"us</a>."
+msgstr ""
+"Si tout le reste échoue, vous pouvez toujours <a href=\"%(new_account_url)s"
+"\">créer un nouveau compte</a> ou <a href=\"mailto:%(support_email)s\">nous "
+"écrire</a>."
+
+#: templates/account/password_reset_submitted.html:23
+msgid "Back to the homepage"
+msgstr "Retour à la page principale"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"

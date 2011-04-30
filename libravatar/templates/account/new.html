@@ -1,22 +1,47 @@
 {% extends 'base.html' %}
-{% block title %}Create a new Libravatar account{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Create a new Libravatar account' %}{% endblock title %}
 
 {% block body-onload %}document.forms.new.username.focus(){% endblock body-onload %}
 {% block content %}
 
-<h1>Create a new account</h1>
+<h1>{% trans 'Create a new account' %}</h1>
 
 <form action="{% url libravatar.account.views.new %}" method="post" name="new">{% csrf_token %}
 
-{{ form.username.errors }}
-<p class="aligned wide">{{ form.username.label_tag }}: {{ form.username }}</p>
-{{ form.password1.errors }}
-<p class="aligned wide">{{ form.password1.label_tag }}: {{ form.password1 }}</p>
-{{ form.password2.errors }}
-<p class="aligned wide">{{ form.password2.label_tag }}: {{ form.password2 }}</p>
+<table summary="">
+{% if form.username.errors %}
+<tr>
+  <td colspan="2">{{ form.username.errors }}</td>
+</tr>
+{% endif %}
+<tr>
+  <td>{{ form.username.label_tag }}:</td>
+  <td>{{ form.username }}</td>
+</tr>
+{% if form.password1.errors %}
+<tr>
+  <td colspan="2">{{ form.password1.errors }}</td>
+</tr>
+{% endif %}
+<tr>
+  <td>{{ form.password1.label_tag }}:</td>
+  <td>{{ form.password1 }}</td>
+</tr>
+{% if form.password2.errors %}
+<tr>
+  <td colspan="2">{{ form.password2.errors }}</td>
+</tr>
+{% endif %}
+<tr>
+  <td>{{ form.password2.label_tag }}:</td>
+  <td>{{ form.password2 }}</td>
+</tr>
+</table>
 
-<p><input type="submit" value="Create account">
-&nbsp;<a href="{% url libravatar.public.views.home %}">Cancel</a></p>
+<p><input type="submit" value="{% trans 'Create account' %}">
+&nbsp;<a href="{% url libravatar.public.views.home %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 
