@@ -138,8 +138,11 @@ def resolve(request):
     final_url = avatar_url + email_hash + query_string
     return HttpResponseRedirect(final_url)
 
-def avatar_exists(email_hash, size):
-    filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
+def avatar_exists(email_hash, size=None):
+    if size:
+        filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
+    else:
+        filename = settings.AVATAR_ROOT + '/%s' % email_hash
     return os.path.isfile(filename)
 
 def resized_avatar(email_hash, size):
@@ -155,6 +158,8 @@ def resized_avatar(email_hash, size):
     return (resized_filename, resized_img.format)
 
 def resize(request):
+    https = False # TODO: add support for secure resizing (bug #769735)
+
     if request.method == 'POST':
         return render_to_response('public/nopost.html',
                                   context_instance=RequestContext(request))
@@ -176,8 +181,11 @@ def resize(request):
         size = max(size, settings.AVATAR_MIN_SIZE)
         size = min(size, settings.AVATAR_MAX_SIZE)
 
-    if avatar_exists(email_hash, size):
-        return HttpResponseRedirect(settings.AVATAR_URL + email_hash + '?s=%s' % size)
+    if avatar_exists(email_hash, size) or not avatar_exists(email_hash):
+        if https:
+            return HttpResponseRedirect(settings.SECURE_AVATAR_URL + email_hash + '?s=%s' % size)
+        else:
+            return HttpResponseRedirect(settings.AVATAR_URL + email_hash + '?s=%s' % size)
 
     # Add a note to the logs to keep track of frequently requested sizes
     print '[RESIZE] %s px' % size
