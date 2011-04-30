@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Domain lookup - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Domain lookup' %} - Libravatar{% endblock title %}
 
 {% block body-onload %}document.forms.lookup.domain.focus(){% endblock body-onload %}
 {% block content %}
 
-<h1>Domain lookup</h1>
+<h1>{% trans 'Domain lookup' %}</h1>
 
 <form action="{% url libravatar.tools.views.check_domain %}" method="post" name="lookup">
 
@@ -15,7 +17,7 @@
 </tr>
 </table>
 
-<p><input type="submit" value="Check"></p>
+<p><input type="submit" value="{% trans 'Check' %}"></p>
 
 </form>
 
@@ -23,36 +25,38 @@
 
 <table>
 <tr>
-  <td>HTTP avatar server:</td>
-  <td><tt>{{data.avatar_server_http}}</tt>
+  <td>{% trans 'HTTP avatar server:' %}</td>
+  <td>
   {% if data.avatar_server_http %}
+    <tt>{{data.avatar_server_http}}</tt>
     {% if data.avatar_server_http_ipv4 %}
   <br>{{ data.avatar_server_http_ipv4 }}
     {% else %}
-  <br><strong>Warning: no A record for this hostname</strong>
+  <br><strong>{% trans 'Warning: no A record for this hostname' %}</strong>
     {% endif %}
     {% if data.avatar_server_http_ipv6 %}
   <br>{{ data.avatar_server_http_ipv6 }}
     {% endif %}
   {% else %}
-  (use <tt>http://cdn.libravatar.org</tt>)
+  <i>{% trans 'use <tt>http://cdn.libravatar.org</tt>' %}</i>
   {% endif %}
   </td>
 </tr>
 <tr>
-  <td>HTTPS avatar server:</td>
-  <td><tt>{{data.avatar_server_https}}</tt>
+  <td>{% trans 'HTTPS avatar server:' %}</td>
+  <td>
   {% if data.avatar_server_https %}
+    <tt>{{data.avatar_server_https}}</tt>
     {% if data.avatar_server_https_ipv4 %}
   <br>{{ data.avatar_server_https_ipv4 }}
     {% else %}
-  <br><strong>Warning: no A record for this hostname</strong>
+  <br><strong>{% trans 'Warning: no A record for this hostname' %}</strong>
     {% endif %}
     {% if data.avatar_server_https_ipv6 %}
   <br>{{ data.avatar_server_https_ipv6 }}
     {% endif %}
   {% else %}
-  (use <tt>https://seccdn.libravatar.org</tt>)
+  <i>{% trans 'use <tt>https://seccdn.libravatar.org</tt>' %}</i>
   {% endif %}
   </td>
 </tr>

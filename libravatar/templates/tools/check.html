@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Photo lookup - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Photo lookup' %} - Libravatar{% endblock title %}
 
 {% block body-onload %}document.forms.lookup.email.focus(){% endblock body-onload %}
 {% block content %}
 
-<h1>Photo lookup</h1>
+<h1>{% trans 'Photo lookup' %}</h1>
 
 <form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
 
@@ -18,7 +20,7 @@
   <td>{{form.openid.errors}}{{form.openid.label_tag}}:</td>
   <td>{{form.openid}}</td>
 </tr>
-<tr><td colspan="1"><i>Optional parameters</i></td></tr>
+<tr><td colspan="1"><i>{% trans 'Optional parameters' %}</i></td></tr>
 <tr>
   <td>{{ form.size.errors }}{{ form.size.label_tag }}:</td>
   <td>{{ form.size }}</td>
@@ -29,7 +31,7 @@
 </tr>
 </table>
 
-<p><input type="submit" value="Check"></p>
+<p><input type="submit" value="{% trans 'Check' %}"></p>
 
 </form>
 
@@ -37,21 +39,21 @@
 
 <p>
 {% if data.md5 %}
-MD5 hash: <tt>{{ data.md5 }}</tt> (compatible with Gravatar)<br>
+{% trans 'MD5 hash:' %} <tt>{{ data.md5 }}</tt> ({% trans 'compatible with Gravatar' %})<br>
 {% endif %}
-SHA256 hash: <tt>{{ data.sha256 }}</tt></p>
+{% trans 'SHA256 hash:' %} <tt>{{ data.sha256 }}</tt></p>
 
-<p>This is what the avatars will look like depending on the hash and protocol you use:</p>
+<p>{% trans 'This is what the avatars will look like depending on the hash and protocol you use:' %}</p>
 <ul class="horizontal-list avatar-list centered">
   {% if data.md5 %}
-  <li><a href="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}" alt=""></a><br>MD5</li>
+  <li><a href="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.md5 }}{{data.query_string}}" alt="{% trans 'using MD5 over HTTP' %}"></a><br>{% trans 'MD5' %}</li>
   {% endif %}
-  <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt=""></a><br>SHA256</li>
+  <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt="{% trans 'using SHA256 over HTTP' %}"></a><br>{% trans 'SHA256' %}</li>
   {% if secure_avatar_url %}
   {% if data.md5 %}
-  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt=""></a><br>MD5&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt="{% trans 'using MD5 over HTTPS' %}"></a><br>{% trans 'MD5' %}&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
   {% endif %}
-  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt=""></a><br>SHA256&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt="{% trans 'using SHA256 over HTTPS' %}"></a><br>{% trans 'SHA256' %}&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
   {% endif %}
 </ul>
 
