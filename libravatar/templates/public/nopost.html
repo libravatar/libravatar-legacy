@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-This only works via HTTP GET.
+{% trans 'This only works via HTTP GET.' %}
 {% endblock errormessage %}

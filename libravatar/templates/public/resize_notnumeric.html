@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-The size parameter must be an integer between {{ min_size }} and {{ max_size }}.
+{% blocktrans %}The size parameter must be an integer between {{ min_size }} and {{ max_size }}.{% endblocktrans %}
 {% endblock errormessage %}

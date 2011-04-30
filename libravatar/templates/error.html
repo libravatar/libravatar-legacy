@@ -1,17 +1,18 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}Libravatar: Error!{% endblock title %}
+{% block title %}Libravatar: {% trans 'Error!' %}{% endblock title %}
 
 {% block content %}
-<h1 class="error">Error!</h1>
+<h1 class="error">{% trans 'Error!' %}</h1>
 
-<p>{% block errormessage %}Libravatar has encountered an error.{% endblock errormessage %}</p>
+<p>{% block errormessage %}{% trans 'Libravatar has encountered an error.' %}{% endblock errormessage %}</p>
 {% endblock content %}
 
 {% block backlink %}
 
 {% if user.is_authenticated %}
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
 {% endif %}
 
 {% endblock backlink %}

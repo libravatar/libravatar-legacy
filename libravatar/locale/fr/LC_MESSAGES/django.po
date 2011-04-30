@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-25 18:07+1200\n"
-"PO-Revision-Date: 2011-04-25 18:07+1200\n"
+"POT-Creation-Date: 2011-04-30 05:36+0000\n"
+"PO-Revision-Date: 2011-04-30 05:42+0000\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -25,6 +25,15 @@ msgstr "Anglais"
 #: settings.py:50
 msgid "French"
 msgstr "Français"
+
+#: templates/404.html:5
+#, python-format
+msgid ""
+"Page not found. If you think you got here by mistake, please <a href="
+"\"mailto:%(support_email)s\">let us know</a>!"
+msgstr ""
+"Page introuvable. Si vous pensez avoir abouti ici par erreur, veuilez <a href="
+"\"mailto:%(support_email)s\">nous en aviser</a>."
 
 #: templates/base.html:7
 msgid "Freeing the Web, one face at a time!"
@@ -63,11 +72,23 @@ msgid ""
 "  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
 "Public License</a>."
 msgstr ""
-"<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a href=\"http://www."
-"libravatar.org\">Libravatar</a>\n"
+"<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a href="
+"\"http://www.libravatar.org\">Libravatar</a>\n"
 ", version %(libravatar_version)s, disponible sous la license\n"
 "  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
 "Public License</a>."
+
+#: templates/error.html:4 templates/error.html.py:7
+msgid "Error!"
+msgstr "Erreur !"
+
+#: templates/error.html:9
+msgid "Libravatar has encountered an error."
+msgstr "Libravatar a causé une erreur."
+
+#: templates/error.html:15
+msgid "Back to your profile"
+msgstr "Retourner sur votre profil"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -160,3 +181,24 @@ msgstr ""
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Un gros merci à nos commanditaires sans qui rien de ceci ne serait possible !"
+
+#: templates/public/nohash.html:6
+#, python-format
+msgid ""
+"An email hash is required. You can use the <a href=\"%(check_url)s\">check "
+"tool</a> to generate one."
+msgstr ""
+"Une empreinte de courriel est nécessaire. Vous pouvez utiliser cet <a href="
+"\"%(check_url)s\">outil</a> pour en générer une."
+
+#: templates/public/nopost.html:5
+msgid "This only works via HTTP GET."
+msgstr "Fonctionne uniquement avec HTTP GET."
+
+#: templates/public/resize_notnumeric.html:5
+#, python-format
+msgid ""
+"The size parameter must be an integer between %(min_size)s and %(max_size)s."
+msgstr ""
+"Le paramètre « size » doit être un nombre entier entre %(min_size)s et "
+"%(max_size)s."
