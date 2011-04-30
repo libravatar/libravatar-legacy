@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Invalid or missing confirmation key.<br>Did you copy the whole link carefully?
+{% trans 'Invalid or missing confirmation key.<br>Did you copy the whole link carefully?' %}
 {% endblock errormessage %}

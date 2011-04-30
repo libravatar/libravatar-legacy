@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Invalid OpenID ID.
+{% trans 'Invalid OpenID ID.' %}
 {% endblock errormessage %}

@@ -1,10 +1,11 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-This email address could not be added. Possible reasons:
+{% trans 'This email address could not be added. Possible reasons:' %}
 <ul>
-<li>it is already in your list of unconfirmed email addresses (try removing it first)</li>
-<li>you have too many unconfirmed email addresses (maximum: {{max_emails}})</li>
-<li>another account has confirmed this email address</li>
+<li>{% trans 'it is already in your list of unconfirmed email addresses (try removing it first)' %}</li>
+<li>{% blocktrans %}you have too many unconfirmed email addresses (maximum: {{ max_emails }}){% endblocktrans %}</li>
+<li>{% trans 'another account has confirmed this email address' %}</li>
 </ul>
 {% endblock errormessage %}

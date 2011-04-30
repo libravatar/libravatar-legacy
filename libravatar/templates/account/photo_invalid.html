@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Invalid photo ID.
+{% trans 'Invalid photo ID.' %}
 {% endblock errormessage %}

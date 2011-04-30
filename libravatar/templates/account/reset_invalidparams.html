@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Invalid verification key or email address.
+{% trans 'Invalid verification key or email address.' %}
 {% endblock errormessage %}

@@ -1,9 +1,10 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-This OpenID could not be added. Possible reasons:
+{% trans 'This OpenID could not be added. Possible reasons:' %}
 <ul>
-  <li>it is already in your list of unconfirmed OpenIDs (try removing it first)</li>
-  <li>another account has linked this OpenID</li>
+  <li>{% trans 'it is already in your list of unconfirmed OpenIDs (try removing it first)' %}</li>
+  <li>{% trans 'another account has linked this OpenID' %}</li>
 </ul>
 {% endblock errormessage %}

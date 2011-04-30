@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Photos imported into Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Photos imported into Libravatar' %}{% endblock title %}
 
 {% block content %}
 
-<h1>Photo import</h1>
+<h1>{% trans 'Photo import' %}</h1>
 
-<p>Photo(s) successfully imported.</p>
+<p>{% trans 'Photo(s) successfully imported.' %}</p>
 
 {% if not user.is_anonymous %}
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
 {% endif %}
 
 {% endblock content %}

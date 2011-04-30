@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Photo import failed.
+{% trans 'Photo import failed.' %}
 {% endblock errormessage %}

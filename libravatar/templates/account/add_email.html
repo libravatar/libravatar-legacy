@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}Add a new email address - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Add a new email address' %} - Libravatar{% endblock title %}
 
 {% block body-onload %}document.forms.addemail.email.focus(){% endblock body-onload %}
 {% block content %}
 
-<h1>Add a new email address</h1>
+<h1>{% trans 'Add a new email address' %}</h1>
 
 <form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post">{% csrf_token %}
 
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
 
-<p><input type="submit" value="Add" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+<p><input type="submit" value="{% trans 'Add' %}" />
+&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

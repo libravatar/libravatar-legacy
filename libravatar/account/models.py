@@ -60,6 +60,7 @@ from urlparse import urlsplit, urlunsplit
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 from libravatar import settings
 from libravatar.account.external_photos import identica_photo, gravatar_photo
@@ -109,6 +110,10 @@ class Photo(models.Model):
     format = models.CharField(max_length=3) # png or jpg
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
     objects = PhotoManager()
+
+    class Meta:
+        verbose_name = _('photo')
+        verbose_name_plural = _('photos')
 
     def __unicode__(self):
         return settings.USER_FILES_URL + self.full_filename()
@@ -217,6 +222,10 @@ class ConfirmedEmail(models.Model):
     photo = models.ForeignKey(Photo, related_name='emails', blank=True, null=True)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
+    class Meta:
+        verbose_name = _('confirmed email')
+        verbose_name_plural = _('confirmed emails')
+
     def __unicode__(self):
         return self.email
 
@@ -246,8 +255,12 @@ class UnconfirmedEmail(models.Model):
     verification_key = models.CharField(max_length=64)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
+    class Meta:
+        verbose_name = _('unconfirmed email')
+        verbose_name_plural = _('unconfirmed emails')
+
     def __unicode__(self):
-        return self.email + ' (unconfirmed)'
+        return self.email + ' ' + _('(unconfirmed)')
 
     def save(self, force_insert=False, force_update=False):
         salted_username = urandom(1024) + str(self.user.username)
@@ -261,8 +274,12 @@ class UnconfirmedOpenId(models.Model):
     openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
+    class Meta:
+        verbose_name = _('unconfirmed OpenID')
+        verbose_name_plural = _('unconfirmed OpenIDs')
+
     def __unicode__(self):
-        return self.openid + ' (unconfirmed)'
+        return self.openid + ' ' + _('(unconfirmed)')
 
 class ConfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='confirmed_openids')
@@ -270,6 +287,10 @@ class ConfirmedOpenId(models.Model):
     openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
     photo = models.ForeignKey(Photo, related_name='openids', blank=True, null=True)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
+
+    class Meta:
+        verbose_name = _('confirmed OpenID')
+        verbose_name_plural = _('confirmed OpenIDs')
 
     def __unicode__(self):
         return self.openid

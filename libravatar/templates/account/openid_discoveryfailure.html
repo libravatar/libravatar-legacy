@@ -1,7 +1,8 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Could not discover an OpenID from the URL you provided:
+{% trans 'Could not discover an OpenID from the URL you provided:' %}
 <blockquote>
 {{message}}
 </blockquote>

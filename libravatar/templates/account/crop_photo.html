@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Crop photo - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Crop photo' %} - Libravatar{% endblock title %}
 {% block header %}<link rel='stylesheet' href='{{ media_url }}/css/jcrop.css' type='text/css'/>{%endblock%}
 {% block content %}
 <noscript>
 <meta http-equiv="refresh" content="0;url={% url libravatar.account.views.auto_crop photo.id %}"/>
 </noscript>
-<h1>Crop photo</h1>
+<h1>{% trans 'Crop photo' %}</h1>
 
 <form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
 <p class="aligned wide"><img src='{{photo.uploaded_pathname}}' id='cropbox' /></p>
@@ -13,8 +15,8 @@
 <input type='hidden' id='y' name='y' value='0'/>
 <input type='hidden' id='w' name='w' value='0'/>
 <input type='hidden' id='h' name='h' value='0'/>
-<p><input type="submit" value="Crop" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">Cancel</a></p>
+<p><input type="submit" value="{% trans 'Crop' %}" />
+&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Choose a photo for {{email.email}} - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% blocktrans with email.email as email_address %}Choose a photo for {{ email_address }}{% endblocktrans %} - Libravatar{% endblock title %}
 
 {% block content %}
 
-<h1>Choose a photo for {{email.email}}</h1>
+<h1>{% blocktrans with email.email as email_address %}Choose a photo for {{ email_address }}{% endblocktrans %}</h1>
 
 {% if not photos %}
 
-<p>You need to <a href="{% url libravatar.account.views.upload_photo %}">upload some photos</a> first!</p>
+{% url libravatar.account.views.upload_photo as upload_url %}
+<p>{% blocktrans %}You need to <a href="{{ upload_url }}">upload some photos</a> first!{% endblocktrans %}</p>
 
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
 
 {% else %}
 
-<p>Here are the pictures you have uploaded, click on the one you wish to associate with this email address:</p>
+<p>{% trans 'Here are the pictures you have uploaded, click on the one you wish to associate with this email address:' %}</p>
 <ul class="horizontal-list avatar-list centered">
 {% for photo in photos %}
   <li>
@@ -21,19 +24,18 @@
   <input type="hidden" name="photo_id" value="{{ photo.id }}">
   <input type="image" name="photo{{ photo.id }}" src="{{ photo }}" class="thumbnail">
   {% ifequal email.photo.id photo.id %}
-  <br>(current)
+  <br>{% trans '(current)' %}
   {% endifequal %}
   </form></li>
 {% endfor %}
   <li>
   <form action="{% url libravatar.account.views.assign_photo_email email.id %}" method="post">{% csrf_token %}
-  <input type="submit" name="photoNone" value="None">
+  <input type="submit" name="photoNone" value="{% trans 'None' %}">
   {% ifequal email.photo.id photo.id %}
-  <br>(current)
+  <br>{% trans '(current)' %}
   {% endifequal %}
   </form></li>
 </ul>
-
 
 {% endif %}
 

@@ -1,18 +1,20 @@
 {% extends 'base.html' %}
-{% block title %}Exporting Your Libravatar Data{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Exporting Your Libravatar Data' %}{% endblock title %}
 
 {% block content %}
 
-<h1>Export in progress</h1>
+<h1>{% trans 'Export in progress' %}</h1>
 
-<p>Libravatar is currently exporting your data. It <b>may take a few moments</b> for the file to be available:</p>
+<p>{% trans 'Libravatar is currently exporting your data. It <b>may take a few moments</b> for the file to be available:' %}</p>
 
 <ul>
   <li><a href="{{download_url}}">{{user.username}}.xml.gz</a></li>
 </ul>
 
-<p><i>This export will be deleted in a few hours.</i></p>
+<p><i>{% trans 'This export will be deleted in a few hours.' %}</i></p>
 
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
 
 {% endblock content %}

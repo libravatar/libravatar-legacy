@@ -1,15 +1,17 @@
 {% extends 'base.html' %}
-{% block title %}Email confirmation - Libravatar{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Email confirmation' %} - Libravatar{% endblock title %}
 
 {% block content %}
 
-<h1>Email confirmation</h1>
+<h1>{% trans 'Email confirmation' %}</h1>
 
-<p><b>Your email address was successfully confirmed!</b></p>
+<p><b>{% trans 'Your email address was successfully confirmed!' %}</b></p>
 
 {% if photos %}
 
-<p>Would you like to import some these externally hosted photos?</p>
+<p>{% trans 'Would you like to import some these externally hosted photos?' %}</p>
 <form action="{% url libravatar.account.views.import_photo user.id %}" method="post">{% csrf_token %}
 <input type="hidden" name="email_id" value="{{ email_id }}">
 <ul class="horizontal-list imported-list centered">
@@ -26,13 +28,13 @@
 {% endfor %}
 </ul>
 
-<p><input type="submit" value="Import"></p>
+<p><input type="submit" value="{% trans 'Import' %}"></p>
 </form>
 
 {% endif %}
 
 {% if not user.is_anonymous %}
-<p><a href="{% url libravatar.account.views.profile %}">Back to your profile</a></p>
+<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
 {% endif %}
 
 {% endblock content %}

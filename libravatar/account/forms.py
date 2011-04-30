@@ -29,7 +29,7 @@ from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Confirme
 MIN_LENGTH_URL = 5 # completely arbitrary guess
 
 class AddEmailForm(forms.Form):
-    email = forms.EmailField()
+    email = forms.EmailField(label=_('Email'))
 
     def clean_email(self):
         """
@@ -39,7 +39,7 @@ class AddEmailForm(forms.Form):
         domain = settings.REQUIRED_DOMAIN.lower()
 
         if domain and "@%s" % domain not in data:
-            raise forms.ValidationError("Valid email addresses end with @%s" % domain)
+            raise forms.ValidationError(_('Valid email addresses end with @%(domain)s') % {'domain' : domain})
 
         return data
 
@@ -82,7 +82,7 @@ Otherwise, please accept our apologies and ignore this message.
         return True
 
 class AddOpenIdForm(forms.Form):
-    openid = forms.URLField(verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://', label='OpenID')
+    openid = forms.URLField(label=_('OpenID'), verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
 
     def clean_openid(self):
         """
@@ -96,7 +96,7 @@ class AddOpenIdForm(forms.Form):
         domain = settings.REQUIRED_DOMAIN.lower()
 
         if domain and "%s/" % domain not in data: # FIXME: improve this check, it's not all that great
-            raise forms.ValidationError("Valid OpenID URLs are on this domain: %s" % domain)
+            raise forms.ValidationError(_('Valid OpenID URLs are on this domain: ') + domain)
 
         return data
 
@@ -117,9 +117,9 @@ class AddOpenIdForm(forms.Form):
         return unconfirmed.id
 
 class UploadPhotoForm(forms.Form):
-    photo = forms.ImageField()
-    not_porn = forms.BooleanField(required=True, label='suitable for all ages (i.e. no offensive content)')
-    can_distribute = forms.BooleanField(required=True, label='can be freely copied')
+    photo = forms.ImageField(label=_('Photo'))
+    not_porn = forms.BooleanField(label=_('suitable for all ages (i.e. no offensive content)'), required=True)
+    can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True)
 
     # pylint: disable=R0201
     def save(self, user, ip_address, image):
@@ -166,7 +166,7 @@ Otherwise, please accept our apologies and ignore this message.
         return True
 
 class DeleteAccountForm(forms.Form):
-    password = forms.CharField(widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput(render_value=False))
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
@@ -176,6 +176,6 @@ class DeleteAccountForm(forms.Form):
         data = self.cleaned_data['password']
 
         if not self.user.check_password(data):
-            raise forms.ValidationError('Invalid password')
+            raise forms.ValidationError(_('Invalid password'))
 
         return data

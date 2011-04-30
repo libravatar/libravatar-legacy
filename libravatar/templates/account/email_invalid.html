@@ -1,5 +1,6 @@
 {% extends 'error.html' %}
+{% load i18n %}
 
 {% block errormessage %}
-Invalid email ID.
+{% trans 'Invalid email ID.' %}
 {% endblock errormessage %}

@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
-{% block title %}Libravatar Account Deleted{% endblock title %}
+{% load i18n %}
+
+{% block title %}{% trans 'Libravatar Account Deleted' %}{% endblock title %}
 
 {% block content %}
 
-<h1>Account deleted</h1>
+<h1>{% trans 'Account deleted' %}</h1>
 
-<p>Your account has been permanently and completely deleted. It may <b>take a few days</b> for your photos to disappear from all mirrors and a few weeks for your photos to disappear from web caches.</p>
+<p>{% trans 'Your account has been permanently and completely deleted. It may <b>take a few days</b> for your photos to disappear from all mirrors and a few weeks for your photos to disappear from web caches.' %}</p>
 
-<p>In case you want to take your data with you, it's currenlty being exported and will be <b>ready in a few moments</b>:</p>
+<p>{% trans "In case you want to take your data with you, it's currenlty being exported and will be <b>ready in a few moments</b>:" %}</p>
 
 <ul>
   <li><a href="{{download_url}}">{{username}}.xml.gz</a></li>
 </ul>
 
-<p><i>This export will be deleted in a few hours.</i></p>
+<p><i>{% trans 'This export will be deleted in a few hours.' %}</i></p>
 
-<p><a href="{% url libravatar.public.views.home %}">Back to the homepage</a></p>
+<p><a href="{% url libravatar.public.views.home %}">{% trans 'Back to the homepage' %}</a></p>
 
 {% endblock content %}
