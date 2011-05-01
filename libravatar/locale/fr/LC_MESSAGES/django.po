@@ -343,7 +343,7 @@ msgstr "Confirmation d'une adresse de courriel"
 
 #: templates/account/email_confirmed.html:10
 msgid "Your email address was successfully confirmed!"
-msgstr "Votre adresse a été cfirmé avec succès."
+msgstr "Votre adresse a été confirmée avec succès."
 
 #: templates/account/email_confirmed.html:14
 msgid "Would you like to import some these externally hosted photos?"
