@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-30 11:17+0000\n"
-"PO-Revision-Date: 2011-04-30 08:49+0000\n"
+"POT-Creation-Date: 2011-05-01 08:54+0000\n"
+"PO-Revision-Date: 2011-05-01 08:51+0000\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -33,7 +33,7 @@ msgstr "Courriel"
 #: account/forms.py:42
 #, python-format
 msgid "Valid email addresses end with @%(domain)s"
-msgstr ""
+msgstr "Les adresses valides se terminent par @%(domain)s"
 
 #: account/forms.py:85 tools/forms.py:25
 msgid "OpenID"
@@ -41,7 +41,7 @@ msgstr "OpenID"
 
 #: account/forms.py:99
 msgid "Valid OpenID URLs are on this domain: "
-msgstr ""
+msgstr "Les OpenIDs valides se trouvent dans le domaine suivant :"
 
 #: account/forms.py:120
 msgid "Photo"
@@ -49,11 +49,11 @@ msgstr "Photo"
 
 #: account/forms.py:121
 msgid "suitable for all ages (i.e. no offensive content)"
-msgstr ""
+msgstr "appropriée pour tout âge (pas de contenu offençant)"
 
 #: account/forms.py:122
 msgid "can be freely copied"
-msgstr ""
+msgstr "peut être librement copiée"
 
 #: account/forms.py:169
 msgid "Password"
@@ -219,6 +219,8 @@ msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this email address:"
 msgstr ""
+"Voici les photos disponibles dans votre compte. Cliquez sur celle que vous "
+"désirez associer avec cette adresse de courriel :"
 
 #: templates/account/assign_photo_email.html:27
 #: templates/account/assign_photo_email.html:35
@@ -236,13 +238,15 @@ msgstr "Aucune"
 #: templates/account/assign_photo_openid.html:8
 #, python-format
 msgid "Choose a photo for %(openid_url)s"
-msgstr ""
+msgstr "Choisissez une photo pour %(openid_url)s"
 
 #: templates/account/assign_photo_openid.html:19
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this OpenID:"
 msgstr ""
+"Voici les photos disponibles dans votre compte. Cliquez sur celle que vous "
+"désirez associer avec cet OpenID :"
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -262,21 +266,24 @@ msgstr "Effacer votre compte"
 
 #: templates/account/delete.html:11
 msgid "There is no way to undo this operation."
-msgstr ""
+msgstr "Il n'est pas possible d'annuler cette opération."
 
 #: templates/account/delete.html:13
 msgid "Please confirm your identity by entering your current password."
 msgstr ""
+"Veuillez confirmer votre identité en entrant votre mot de passe courant."
 
 #: templates/account/delete.html:20
 msgid ""
 "Are you sure you want to <strong>permanently delete</strong> your Libravatar "
 "account?"
 msgstr ""
+"Désirez-vous <strong>effacer de façon permanente</strong> votre compte "
+"Libravatar ?"
 
 #: templates/account/delete.html:22
 msgid "Yes, delete all of my stuff"
-msgstr ""
+msgstr "Oui, effacer toutes mes données"
 
 #: templates/account/delete_done.html:4
 msgid "Libravatar Account Deleted"
@@ -292,16 +299,21 @@ msgid ""
 "few days</b> for your photos to disappear from all mirrors and a few weeks "
 "for your photos to disappear from web caches."
 msgstr ""
+"Vos donnée ont été complètement effacées cependant il se peut que certains "
+"sites mirroir gardent vos photos pour <b>quelques jours encore</b> et que "
+"des caches web les conservent pour quelques semaines."
 
 #: templates/account/delete_done.html:12
 msgid ""
 "In case you want to take your data with you, it's currenlty being exported "
 "and will be <b>ready in a few moments</b>:"
 msgstr ""
+"Si vous désirez prendre une copie de vos données, elles en processus "
+"d'exportation et seront prêtes <b>d'ici peu</b> :"
 
 #: templates/account/delete_done.html:18 templates/account/export_done.html:16
 msgid "This export will be deleted in a few hours."
-msgstr ""
+msgstr "Cette copie sera effacée dans quelques heures."
 
 #: templates/account/delete_done.html:20
 #: templates/account/password_reset_submitted.html:23
@@ -347,28 +359,33 @@ msgstr "Identifiant de courriel invalide."
 
 #: templates/account/email_notadded.html:5
 msgid "This email address could not be added. Possible reasons:"
-msgstr ""
+msgstr "L'adresse de courriel n'a pas peu être ajoutée. Raisons possibles :"
 
 #: templates/account/email_notadded.html:7
 msgid ""
 "it is already in your list of unconfirmed email addresses (try removing it "
 "first)"
 msgstr ""
+"elle est déjà dans votre liste d'adresses non-confirmées (réessayez après "
+"l'avoir enlevée)"
 
 #: templates/account/email_notadded.html:8
 #, python-format
 msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr ""
+"vous avez déjà trop d'adresses confirmées (la limite est de %(max_emails)s)"
 
 #: templates/account/email_notadded.html:9
 msgid "another account has confirmed this email address"
-msgstr ""
+msgstr "un autre compte a confirmé cette adresse"
 
 #: templates/account/email_notconfirmed.html:5
 msgid ""
 "Invalid or missing confirmation key.<br>Did you copy the whole link "
 "carefully?"
 msgstr ""
+"La clef de confirmation est manquante ou invalide.<br>Avez-vous copié le "
+"lien en entier ?"
 
 #: templates/account/export.html:4
 msgid "Export your Libravatar data"
@@ -383,6 +400,8 @@ msgid ""
 "Libravatar will now export all of your personal data to a compressed XML "
 "file."
 msgstr ""
+"Libravatar va maintenant exporter toutes vos données vers un fichier XML "
+"compressé."
 
 #: templates/account/export.html:14
 msgid "Export"
@@ -401,10 +420,12 @@ msgid ""
 "Libravatar is currently exporting your data. It <b>may take a few moments</"
 "b> for the file to be available:"
 msgstr ""
+"Libravatar exporte vos données. Dans <b>quelques instants</b>, le fichier "
+"suivant sera disponible :"
 
 #: templates/account/login.html:4
 msgid "Libravatar Login"
-msgstr "Connexion àLibravatar"
+msgstr "Connexion à Libravatar"
 
 #: templates/account/login.html:13
 #, python-format
@@ -449,28 +470,30 @@ msgstr "Créer le compte"
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
-msgstr ""
+msgstr "Impossible de vérifier votre OpenID :"
 
 #: templates/account/openid_discoveryfailure.html:5
 msgid "Could not discover an OpenID from the URL you provided:"
-msgstr ""
+msgstr "Un OpenID n'a pas été trouvé à l'adresse donnée :"
 
 #: templates/account/openid_invalid.html:5
 msgid "Invalid OpenID ID."
-msgstr ""
+msgstr "Identifiant OpenID invalide."
 
 #: templates/account/openid_notadded.html:5
 msgid "This OpenID could not be added. Possible reasons:"
-msgstr ""
+msgstr "Cet OpenID n'a pas pu être ajouté. Raisons possibles :"
 
 #: templates/account/openid_notadded.html:7
 msgid ""
 "it is already in your list of unconfirmed OpenIDs (try removing it first)"
 msgstr ""
+"il est déjà dans votre liste d'OpenID non-confirmés (réessayez après l'avoir "
+"enlevé)"
 
 #: templates/account/openid_notadded.html:8
 msgid "another account has linked this OpenID"
-msgstr ""
+msgstr "un autre compte a confirmé cette OpenID"
 
 #: templates/account/password_change.html:4
 msgid "Change your Libravatar password"
@@ -553,47 +576,49 @@ msgstr ""
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
-msgstr ""
+msgstr "Identifiant de photo invalide."
 
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
 msgstr ""
+"Cette photo est trop lourde. La taille maximale est de %(max_size)s octets."
 
 #: templates/account/photo_toobig.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgstr ""
+"Veuillez en <a href=\"%(upload_url)s\">téléverser</a> une autre plus petite."
 
 #: templates/account/photos_imported.html:4
 msgid "Photos imported into Libravatar"
-msgstr ""
+msgstr "Les photos ont été importées dans Libravatar."
 
 #: templates/account/photos_imported.html:8
 msgid "Photo import"
-msgstr ""
+msgstr "Importation de photo"
 
 #: templates/account/photos_imported.html:10
 msgid "Photo(s) successfully imported."
-msgstr ""
+msgstr "Photo(s) importées avec succès."
 
 #: templates/account/photos_notimported.html:5
 msgid "Photo import failed."
-msgstr ""
+msgstr "L'importation de photo a échouée."
 
 #: templates/account/profile.html:4
 #, python-format
 msgid "%(username)s's Libravatar Profile"
-msgstr ""
+msgstr "Profil Libravatar de %(username)s"
 
 #: templates/account/profile.html:8
 #, python-format
 msgid "%(username)s's Profile"
-msgstr ""
+msgstr "Profil de %(username)s"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
-msgstr ""
+msgstr "Vous avez les adresses de courriel et les OpenID confirmés suivants :"
 
 #: templates/account/profile.html:18 templates/account/profile.html.py:26
 msgid "Change photo"
@@ -607,24 +632,25 @@ msgstr "Enlever"
 #: templates/account/profile.html:34
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr ""
+"Vous avez les adresses de courriel et les OpenID non-confirmés suivants :"
 
 #: templates/account/profile.html:54
 msgid "Here are the photos you have uploaded/imported:"
-msgstr ""
+msgstr "Voici les photos que vous avez téléversées ou importées :"
 
 #: templates/account/profile.html:57
 #, python-format
 msgid "Uploaded on %(datetime)s"
-msgstr ""
+msgstr "Téléversée le %(datetime)s"
 
 #: templates/account/profile.html:64 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:8
 msgid "Upload a new photo"
-msgstr ""
+msgstr "Téléverser une photo"
 
 #: templates/account/profile.html:67
 msgid "Account settings"
-msgstr ""
+msgstr "Paramètres du compte"
 
 #: templates/account/profile.html:69
 msgid "Change your password"
@@ -632,20 +658,20 @@ msgstr "Changer le mot de passe"
 
 #: templates/account/profile.html:73
 msgid "Permanently delete your account"
-msgstr ""
+msgstr "Effacer votre compte de façons permanente"
 
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
-msgstr ""
+msgstr "Clef de vérification ou adresse de courriel invalide."
 
 #: templates/account/upload_photo.html:13
 #, python-format
 msgid "Maximum file size of %(max_size)s."
-msgstr ""
+msgstr "Limite de taille de %(max_size)s."
 
 #: templates/account/upload_photo.html:20
 msgid "Upload"
-msgstr ""
+msgstr "Envoyer"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -653,7 +679,7 @@ msgstr "hébergement fédéré d'avatars"
 
 #: templates/public/home.html:9
 msgid "Get Involved!"
-msgstr "Participatez !"
+msgstr "Participez !"
 
 #: templates/public/home.html:12
 #, python-format
