@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the libravatar package.
 # François Marier <francois@libravatar.org>, 2011.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-01 09:32+0000\n"
+"POT-Creation-Date: 2011-05-01 10:45+0000\n"
 "PO-Revision-Date: 2011-05-01 09:32+0000\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: none\n"
@@ -26,40 +25,50 @@ msgstr "Anglais"
 msgid "French"
 msgstr "Français"
 
-#: account/forms.py:32 account/forms.py:134 tools/forms.py:24
+#: account/forms.py:33 account/forms.py:124 tools/forms.py:24
 msgid "Email"
 msgstr "Courriel"
 
-#: account/forms.py:42
+#: account/forms.py:43
 #, python-format
 msgid "Valid email addresses end with @%(domain)s"
 msgstr "Les adresses valides se terminent par @%(domain)s"
 
-#: account/forms.py:85 tools/forms.py:25
+#: account/forms.py:68
+#, python-format
+msgid "Confirm your email address on %(site_name)s"
+msgstr "Confirmation d'adresse pour %(site_name)s"
+
+#: account/forms.py:75 tools/forms.py:25
 msgid "OpenID"
 msgstr "OpenID"
 
-#: account/forms.py:99
+#: account/forms.py:89
 msgid "Valid OpenID URLs are on this domain: "
 msgstr "Les OpenIDs valides se trouvent dans le domaine suivant :"
 
-#: account/forms.py:120
+#: account/forms.py:110
 msgid "Photo"
 msgstr "Photo"
 
-#: account/forms.py:121
+#: account/forms.py:111
 msgid "suitable for all ages (i.e. no offensive content)"
 msgstr "appropriée pour tout âge (pas de contenu offençant)"
 
-#: account/forms.py:122
+#: account/forms.py:112
 msgid "can be freely copied"
 msgstr "peut être librement copiée"
 
-#: account/forms.py:169
+#: account/forms.py:141
+#, python-format
+msgid "Password reset for %(site_name)s"
+msgstr "Réinitialisation du mot de passe pour %(site_name)s"
+
+#: account/forms.py:149
 msgid "Password"
 msgstr "Mot de passe"
 
-#: account/forms.py:179
+#: account/forms.py:159
 msgid "Invalid password"
 msgstr "Mot de passe invalide"
 
@@ -336,6 +345,33 @@ msgstr "Voulez-vous vraiment effacer cette photo ?"
 msgid "Delete"
 msgstr "Effacer"
 
+#: templates/account/email_confirmation.txt:1
+#, python-format
+msgid ""
+"Someone, probably you, requested that this email address be added to their\n"
+"%(site_name)s account.\n"
+"\n"
+"If that's what you want, please confirm that you are the owner of this\n"
+"email address by clicking the following link:\n"
+"\n"
+"  %(verification_link)s\n"
+"\n"
+"Otherwise, please accept our apologies and ignore this message.\n"
+"\n"
+"- The %(site_name)s accounts team\n"
+msgstr ""
+"Quelqu'un, proablement vous, a demandé que cette adresse de courriel soit\n"
+"ajoutée à leur compte %(site_name)s.\n"
+"\n"
+"Si c'est ce que vous voulez, veuillez confirmer que vous êtes propriétaire\n"
+"de cette adresse en cliquant sur le lien suivant :\n"
+"\n"
+"  %(verification_link)s\n"
+"\n"
+"Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
+"\n"
+"- L'équipe administrative de %(site_name)s\n"
+
 #: templates/account/email_confirmed.html:4
 #: templates/account/email_confirmed.html:8
 msgid "Email confirmation"
@@ -533,6 +569,31 @@ msgstr "Réinitialisation du mot de passe"
 #: templates/account/password_reset.html:16
 msgid "Reset my password"
 msgstr "Réinitialiser le mot de passe"
+
+#: templates/account/password_reset.txt:1
+#, python-format
+msgid ""
+"Someone, probably you, requested a password reset for your\n"
+"%(site_name)s account.\n"
+"\n"
+"If that's what you want, please go to the following page:\n"
+"\n"
+"  %(reset_link)s\n"
+"\n"
+"Otherwise, please accept our apologies and ignore this message.\n"
+"\n"
+"- The %(site_name)s accounts team\n"
+msgstr ""
+"Quelqu'un, proablement vous, a demandé une réinitialisation du mot de \n"
+"passe de ce compte %(site_name)s.\n"
+"\n"
+"Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :\n"
+"\n"
+"  %(verification_link)s\n"
+"\n"
+"Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
+"\n"
+"- L'équipe administrative de %(site_name)s\n"
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
