@@ -21,6 +21,7 @@ from urlparse import urlsplit, urlunsplit
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
+from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 from libravatar import settings
@@ -64,19 +65,8 @@ class AddEmailForm(forms.Form):
 
         link = settings.SITE_URL + reverse('libravatar.account.views.confirm_email') + '?verification_key=' + unconfirmed.verification_key
 
-        email_subject = 'Confirm your email address on %s' % settings.SITE_NAME
-        email_body = """Someone, probably you, requested that this email address be added to their
-%(site_name)s account.
-
-If that's what you want, please confirm that you are the owner of this
-email address by clicking the following link:
-
-  %(verification_link)s
-
-Otherwise, please accept our apologies and ignore this message.
-
-- The %(site_name)s accounts team
-""" % {'verification_link' : link, 'site_name' : settings.SITE_NAME }
+        email_subject = _('Confirm your email address on %(site_name)s') % {'site_name': settings.SITE_NAME}
+        email_body = render_to_string('account/email_confirmation.txt', {'verification_link': link, 'site_name': settings.SITE_NAME})
 
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [unconfirmed.email])
         return True
@@ -148,18 +138,8 @@ class PasswordResetForm(forms.Form):
         link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')
         link += '?verification_key=%s&email_address=%s' % (key, urllib.quote_plus(email_address))
 
-        email_subject = 'Password reset for %s' % settings.SITE_NAME
-        email_body = """Someone, probably you, requested a password reset for your
-%(site_name)s account.
-
-If that's what you want, please go to the following page:
-
-  %(reset_link)s
-
-Otherwise, please accept our apologies and ignore this message.
-
-- The %(site_name)s accounts team
-""" % {'reset_link' : link, 'site_name' : settings.SITE_NAME }
+        email_subject = _('Password reset for %(site_name)s') % {'site_name': settings.SITE_NAME}
+        email_body = render_to_string('account/password_reset.txt', {'reset_link' : link, 'site_name' : settings.SITE_NAME})
 
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [email_address])
 

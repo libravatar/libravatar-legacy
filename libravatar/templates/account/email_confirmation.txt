@@ -1,0 +1,12 @@
+{% load i18n %}{% blocktrans %}Someone, probably you, requested that this email address be added to their
+{{ site_name }} account.
+
+If that's what you want, please confirm that you are the owner of this
+email address by clicking the following link:
+
+  {{ verification_link }}
+
+Otherwise, please accept our apologies and ignore this message.
+
+- The {{ site_name }} accounts team
+{% endblocktrans %}
