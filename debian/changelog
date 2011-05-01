@@ -1,3 +1,10 @@
+libravatar (20110501.1) unstable; urgency=low
+
+  * French translation
+  * Error checking in dynamic resize
+
+ -- Francois Marier <francois@debian.org>  Sun, 01 May 2011 23:01:33 +1200
+
 libravatar (20110424.2) unstable; urgency=low
 
   * Remove support for the SHA1 hash algorithm (closes: #769766)
