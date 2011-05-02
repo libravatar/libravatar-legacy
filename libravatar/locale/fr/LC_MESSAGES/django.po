@@ -317,7 +317,7 @@ msgid ""
 "In case you want to take your data with you, it's currenlty being exported "
 "and will be <b>ready in a few moments</b>:"
 msgstr ""
-"Si vous désirez prendre une copie de vos données, elles en processus "
+"Si vous désirez prendre une copie de vos données, elles sont en processus "
 "d'exportation et seront prêtes <b>d'ici peu</b> :"
 
 #: templates/account/delete_done.html:18 templates/account/export_done.html:16
@@ -593,7 +593,7 @@ msgstr ""
 "\n"
 "Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :\n"
 "\n"
-"  %(verification_link)s\n"
+"  %(reset_link)s\n"
 "\n"
 "Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
 "\n"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
-msgstr "Réinitialisation du mot de passe demandée."
+msgstr "Réinitialisation du mot de passe demandée"
 
 #: templates/account/password_reset_submitted.html:8
 msgid "You have sucessfully requested a password reset for your account."
@@ -611,7 +611,7 @@ msgstr ""
 
 #: templates/account/password_reset_submitted.html:10
 msgid "You will receive an email with the details on how to proceed."
-msgstr "Vous recevrez d'ici peu un courriel avec la marche à suivre"
+msgstr "Vous recevrez d'ici peu un courriel avec la marche à suivre."
 
 #: templates/account/password_reset_submitted.html:12
 msgid "Still haven't received the email?"
