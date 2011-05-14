@@ -21,6 +21,7 @@
 
 # Sysadmin stuff
 
+* automate deployments with [Fabric](http://www.fabfile.org) or [Capistrano](https://github.com/capistrano/capistrano/wiki)
 * use Puppet for all server config
 * monitor server with Nagios
 * monitor gearman queues (http://labs.consol.de/nagios/mod-gearman/)
