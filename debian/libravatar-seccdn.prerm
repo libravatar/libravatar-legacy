@@ -21,6 +21,7 @@ case "$1" in
     remove|deconfigure)
         a2dissite libravatar-seccdn > /dev/null 2>&1 || true
         rm -f /etc/apache2/sites-available/libravatar-seccdn
+        rm -f /etc/awstats/awstats.seccdn.conf
     ;;
 
     upgrade)

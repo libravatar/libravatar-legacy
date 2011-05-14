@@ -26,6 +26,7 @@ Description: avatar image hosting - main web application
 Package: libravatar-cdn
 Architecture: all
 Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Recommends: awstats
 Description: avatar image hosting - mirror node 
  Package for running a mirror of the Libravatar avatar images and
  join the content delivery network.
@@ -33,6 +34,7 @@ Description: avatar image hosting - mirror node
 Package: libravatar-seccdn
 Architecture: all
 Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Recommends: awstats
 Description: avatar image hosting - https mirror node 
  Package for running a mirror of the Libravatar avatar images and
  join the content delivery network over https.

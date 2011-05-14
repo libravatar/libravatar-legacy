@@ -1,1 +1,2 @@
+config/awstats.cdn.conf etc/libravatar
 config/cdn.apache2.conf etc/libravatar

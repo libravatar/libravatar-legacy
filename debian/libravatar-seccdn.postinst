@@ -20,17 +20,26 @@ set -e
 . /usr/share/debconf/confmodule
 
 APACHE_CONFIG=/etc/libravatar/seccdn.apache2.conf
+AWSTATS_CONFIG=/etc/libravatar/awstats.seccdn.conf
+AWSTATS_DIR=/var/lib/awstats/seccdn
 
 case "$1" in
     configure)
-        # Make a copy of the template apache config to work on, then copy into place
+        # Make a copy of the templates to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working
+        cp ${AWSTATS_CONFIG} ${AWSTATS_CONFIG}.working
 
         for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${APACHE_CONFIG}.working); do
             # Turns __MARKER__ into marker and puts packagename/ on the front
             DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
             db_get libravatar-common/$DEBCONF_VAR
             sed -i -e "s/${MARKER}/${RET}/g" ${APACHE_CONFIG}.working
+        done
+        for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${AWSTATS_CONFIG}.working); do
+            # Turns __MARKER__ into marker and puts packagename/ on the front
+            DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
+            db_get libravatar-common/$DEBCONF_VAR
+            sed -i -e "s/${MARKER}/${RET}/g" ${AWSTATS_CONFIG}.working
         done
 
         # We a2ensite the site the first time the config is installed, but not after
@@ -56,6 +65,12 @@ case "$1" in
         echo "Libravatar is now ready for action. You need to restart apache for any"
         echo "configuration changes to take effect"
         echo ""
+
+        mkdir -p /etc/awstats
+        mv ${AWSTATS_CONFIG}.working /etc/awstats/awstats.seccdn.conf
+
+        mkdir -p ${AWSTATS_DIR}
+        chown www-data:www-data ${AWSTATS_DIR}
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
