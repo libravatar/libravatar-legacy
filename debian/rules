@@ -14,3 +14,4 @@ override_dh_installinit:
 	dh_installinit --name=changephoto
 	dh_installinit --name=resizeavatar
 	dh_installinit --name=exportaccount
+	dh_installinit

@@ -3,6 +3,7 @@
 /debian/libravatar
 /debian/libravatar-cdn
 /debian/libravatar-common
+/debian/libravatar-master
 /debian/libravatar-seccdn
 /debian/libravatar-slave
 /debian/libravatar-www
