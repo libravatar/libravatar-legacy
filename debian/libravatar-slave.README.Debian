@@ -1,0 +1,33 @@
+libravatar-slave for Debian
+---------------------------
+
+Once you have installed this package and its dependencies,
+
+1- Enable ryncs using the libravatar-slave user by uncommenting
+   "allowrsync" in /etc/rssh.conf.
+
+2- Install the SSL certificate you were given by copying seccdn.crt,
+   seccdn.pem and chain.pem into /etc/libravatar/.
+
+3- Put "ServerName X.cdn.libravatar.org" in your /etc/apache2/httpd.conf
+   where X is the mirror number you were given.
+
+4- (Optional) Turn on all of the Apache security settings in
+   /etc/apache2/conf.d/security.
+
+5- Restart apache: apache2ctl configtest && apache2ctl graceful
+
+
+Optional generation of traffic statistics
+-----------------------------------------
+
+Both libravatar-cdn and libravatar-seccdn come pre-configured
+for awstats. To turn it on:
+
+1- Install the awstats package
+2- Make the statistics accessible through Apache:
+
+  ln -s /var/cache/awstats /var/www/stats
+  ln -s /usr/share/awstats/icon/ /var/www/awstats-icon
+
+ -- Francois Marier <francois@debian.org>  Sat, 14 May 2011 21:47:07 +1200

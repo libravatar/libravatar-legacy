@@ -1,0 +1,16 @@
+libravatar-master for Debian
+----------------------------
+
+Once you have installed this package and its dependencies,
+
+1- Copy the master ssh key (used to rsync data to each mirror) to
+   /var/lib/libravatar/master/.ssh/id_rsa.
+
+2- Add all of the mirror hostnames of IP addresses in
+   /etc/default/libravatar-master.
+
+3- Run the sync manually to add each mirror to the ssh known_hosts file:
+
+  sudo -u libravatar-master /usr/bin/libravatar-update-mirrors
+
+ -- Francois Marier <francois@debian.org>  Sat, 14 May 2011 21:47:07 +1200
