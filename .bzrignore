@@ -4,6 +4,7 @@
 /debian/libravatar-cdn
 /debian/libravatar-common
 /debian/libravatar-seccdn
+/debian/libravatar-slave
 /debian/libravatar-www
 /debian/*.debhelper
 /debian/*.debhelper.log

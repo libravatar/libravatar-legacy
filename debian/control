@@ -42,3 +42,9 @@ Architecture: all
 Depends: ${misc:Depends}, debconf
 Description: avatar image hosting - common files
  Files needed by the main Libravatar website and both CDN packages.
+
+Package: libravatar-slave
+Architecture: all
+Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync, rssh
+Description: avatar image hosting - mirror slave
+ Package for receiving mirror updates from the master server.
