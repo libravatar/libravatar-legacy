@@ -162,8 +162,10 @@ MAX_NUM_UNCONFIRMED_EMAILS = 10
 
 # The maximum number of photos per profile
 MAX_NUM_PHOTOS = 4
+
 # Maximum file size for each photo
-MAX_PHOTO_SIZE = 1048576 # in bytes
+MAX_PHOTO_SIZE = 5242880 # in bytes
+FILE_UPLOAD_MAX_MEMORY_SIZE = MAX_PHOTO_SIZE
 
 # Quality can be from 1 to 95
 JPEG_QUALITY = 75
