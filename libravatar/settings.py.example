@@ -152,9 +152,9 @@ AVATAR_DEFAULT_SIZE = 80
 AVATAR_MIN_SIZE = 1
 AVATAR_MAX_SIZE = 512
 
-# StatusNet uses 48 and 96
-# Launchpad uses 16, 64 and 192
 # Mahara uses 20, 40 and 50
+# Koha uses 40 and 80
+# Ikiwiki uses 80
 AVATAR_PREGENERATED_SIZES = [80]
 
 # The maximum number of unconfirmed email addresses per profile
