@@ -1,0 +1,16 @@
+The recommended PHP class is:
+
+  https://gitorious.org/services_libravatar
+
+
+Testing
+--------
+
+Clone the module under ~/devel/remote/services_libravatar:
+
+  cd ~/devel/remote/
+  git clone git://gitorious.org/services_libravatar/services_libravatar.git
+
+Then put the test page under /var/www and create this symlink:
+
+  ln -s ~/devel/remote/services_libravatar/Services /var/www/
