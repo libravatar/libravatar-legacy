@@ -25,7 +25,7 @@ AWSTATS_DIR=/var/lib/awstats/seccdn
 
 case "$1" in
     remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-        rmdir --ignore-fail-on-non-empty /etc/awstats
+        rmdir --ignore-fail-on-non-empty /etc/awstats || true
         rmdir -p ${AWSTATS_DIR} || true
     ;;
 
