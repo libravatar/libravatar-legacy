@@ -74,14 +74,18 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
     # Need to reopen the image after verify()
     img = Image.open(source)
-    unused, unused, a, b = img.getbbox()
+    a, b = img.size
+    if a > 3000 or b > 3000:
+        logger.error('Image dimensions are too big (max: 3000x3000)')
+        return 6
 
     if w == 0 and h == 0:
         w, h = a, b
         i = min(w, h)
         w, h = i, i
     elif w < 0 or x+w > a or h < 0 or y+h > b:
-        raise ValueError('crop dimensions outside of original image bounding box')
+        logger.error('Crop dimensions outside of original image bounding box')
+        return 6
 
     cropped = img.crop((x, y, x+w, y+h))
     cropped.load()
