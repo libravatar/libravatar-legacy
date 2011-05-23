@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
+   width="257.5"
+   height="257.5"
    id="svg2"
    version="1.1"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="Nouveau document 1">
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="missing.svg">
   <defs
      id="defs4">
     <inkscape:perspective
@@ -33,8 +33,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.0181848"
-     inkscape:cx="370.28833"
-     inkscape:cy="454.24448"
+     inkscape:cx="245.81958"
+     inkscape:cy="126.91355"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -42,7 +42,11 @@
      inkscape:window-height="781"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0" />
+     inkscape:window-maximized="0"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -51,31 +55,29 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-124.46875,-467.53125)">
     <rect
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16,16;stroke-dashoffset:10;stroke-linejoin:miter;stroke-linecap:round"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16, 16;stroke-dashoffset:10"
        id="rect2816"
        width="255.50296"
        height="255.50296"
        x="125.46281"
        y="468.53928" />
-    <text
-       xml:space="preserve"
+    <g
        style="font-size:40px;font-style:normal;font-weight:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="199.94281"
-       y="670.50952"
-       id="text3590"><tspan
-         sodipodi:role="line"
-         id="tspan3592"
-         x="199.94281"
-         y="670.50952"
-         style="font-size:200px">?</tspan></text>
+       id="text3590">
+      <path
+         d="m 238.1264,645.70483 19.82422,0 0,24.80469 -19.82422,0 0,-24.80469 m 19.23829,-14.35546 -18.65235,0 0,-15.03907 c -4e-5,-6.57546 0.91142,-11.9791 2.73438,-16.21093 1.82287,-4.2317 5.66401,-9.14706 11.52343,-14.7461 l 8.78907,-8.6914 c 3.71087,-3.45043 6.38014,-6.70563 8.00781,-9.76563 1.69264,-3.05979 2.53899,-6.18479 2.53906,-9.375 -7e-5,-5.79415 -2.14851,-10.48165 -6.44531,-14.0625 -4.23183,-3.5806 -9.86334,-5.37096 -16.89453,-5.37109 -5.14328,1.3e-4 -10.64457,1.13945 -16.50391,3.41797 -5.7943,2.27877 -11.84898,5.59908 -18.16406,9.96093 l 0,-18.35937 c 6.11977,-3.7108 12.30466,-6.47772 18.55469,-8.30078 6.31506,-1.82277 12.82547,-2.73423 19.53125,-2.73438 11.9791,1.5e-4 21.58195,3.1577 28.80859,9.47266 7.29158,6.31523 10.93741,14.64856 10.9375,25 -9e-5,4.94802 -1.17197,9.66807 -3.51562,14.16015 -2.34384,4.42718 -6.4454,9.4402 -12.30469,15.03907 l -8.59375,8.39843 c -3.05996,3.05997 -5.24095,5.46882 -6.54297,7.22657 -1.23704,1.69277 -2.11595,3.35293 -2.63672,4.98047 -0.39068,1.36725 -0.68365,3.0274 -0.87891,4.98046 -0.19537,1.95319 -0.29302,4.62245 -0.29296,8.00782 l 0,12.01172"
+         style="font-size:200px"
+         id="path2987" />
+    </g>
   </g>
 </svg>

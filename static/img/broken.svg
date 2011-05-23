@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
+   width="257.50296"
+   height="257.50296"
    id="svg2"
    version="1.1"
    inkscape:version="0.47 r22583"
-   sodipodi:docname="missing.svg">
+   sodipodi:docname="broken.svg">
   <defs
      id="defs4">
     <inkscape:perspective
@@ -33,13 +33,13 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.0181848"
-     inkscape:cx="142.92292"
-     inkscape:cy="447.79801"
+     inkscape:cx="18.460113"
+     inkscape:cy="120.47806"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="text3590"
      showgrid="false"
      inkscape:window-width="1280"
-     inkscape:window-height="781"
+     inkscape:window-height="1005"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0" />
@@ -51,31 +51,29 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-124.46281,-467.53928)">
     <rect
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16,16;stroke-dashoffset:10;stroke-linejoin:miter;stroke-linecap:round"
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:16, 16;stroke-dashoffset:10"
        id="rect2816"
        width="255.50296"
        height="255.50296"
        x="125.46281"
        y="468.53928" />
-    <text
-       xml:space="preserve"
+    <g
        style="font-size:40px;font-style:normal;font-weight:normal;fill:#ff0000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans"
-       x="179.72797"
-       y="664.65015"
-       id="text3590"><tspan
-         sodipodi:role="line"
-         id="tspan3592"
-         x="179.72797"
-         y="664.65015"
-         style="font-size:250px;fill:#ff0000">x</tspan></text>
+       id="text3590">
+      <path
+         d="m 316.935,527.9314 -49.43848,66.52832 52.00195,70.19043 -26.48925,0 -39.79493,-53.71094 -39.79492,53.71094 -26.48926,0 53.10059,-71.53321 -48.58398,-65.18554 26.48925,0 36.25489,48.70605 36.25488,-48.70605 26.48926,0"
+         style="font-size:250px;fill:#ff0000"
+         id="path2816" />
+    </g>
   </g>
 </svg>
