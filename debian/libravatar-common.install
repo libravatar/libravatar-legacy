@@ -1,3 +1,4 @@
+static/.well-known usr/share/libravatar/static/
 static/*.abe usr/share/libravatar/static
 static/*.txt usr/share/libravatar/static
 static/*.html usr/share/libravatar/static
