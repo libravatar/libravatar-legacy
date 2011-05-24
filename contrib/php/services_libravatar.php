@@ -25,8 +25,8 @@ print '<img src="' . $avatar_url . '">';
 print '<img src="' . $missing_avatar . '">';
 print "<br><br>\n";
 
-$avatar_url = $libravatar->url('fmarier@gmail.com', array('https' => 1));
-$missing_avatar = $libravatar->url('fmarier+1@gmail.com', array('https' => 1));
+$avatar_url = $libravatar->url('fmarier@gmail.com', array('https' => true));
+$missing_avatar = $libravatar->url('fmarier+1@gmail.com', array('https' => true));
 
 print 'Regular HTTPS images:<br>';
 print '<img src="' . $avatar_url . '">';
@@ -41,8 +41,8 @@ print '<img src="' . $avatar_url . '">';
 print '<img src="' . $missing_avatar . '">';
 print "<br><br>\n";
 
-$avatar_url = $libravatar->url('francois@catalyst.net.nz', array('https' => 1));
-$missing_avatar = $libravatar->url('francois+1@catalyst.net.nz', array('https' => 1));
+$avatar_url = $libravatar->url('francois@catalyst.net.nz', array('https' => true));
+$missing_avatar = $libravatar->url('francois+1@catalyst.net.nz', array('https' => true));
 
 print 'Federated HTTPS images:<br>';
 print '<img src="' . $avatar_url . '">';
