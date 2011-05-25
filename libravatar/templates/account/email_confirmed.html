@@ -11,7 +11,7 @@
 
 {% if photos %}
 
-<p>{% trans 'Would you like to import some these externally hosted photos?' %}</p>
+<p>{% trans 'Would you like to import some of these externally hosted photos?' %}</p>
 <form action="{% url libravatar.account.views.import_photo user.id %}" method="post">{% csrf_token %}
 <input type="hidden" name="email_id" value="{{ email_id }}">
 <ul class="horizontal-list imported-list centered">
