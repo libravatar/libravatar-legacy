@@ -1,5 +1,5 @@
 #!/bin/sh
-# prerm script for libravatar-common
+# prerm script for libravatar-cdn-common
 #
 # see: dh_installdeb(1)
 

@@ -51,9 +51,9 @@
   <li><a href="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}"><img class="thumbnail" src="{{ avatar_url }}{{ data.sha256 }}{{data.query_string}}" alt="{% trans 'using SHA256 over HTTP' %}"></a><br>{% trans 'SHA256' %}</li>
   {% if secure_avatar_url %}
   {% if data.md5 %}
-  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt="{% trans 'using MD5 over HTTPS' %}"></a><br>{% trans 'MD5' %}&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.md5}}{{data.query_string}}" alt="{% trans 'using MD5 over HTTPS' %}"></a><br>{% trans 'MD5' %}&nbsp;<img src="/img/https_lock.png" alt="https"></li>
   {% endif %}
-  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt="{% trans 'using SHA256 over HTTPS' %}"></a><br>{% trans 'SHA256' %}&nbsp;<img src="{{media_url}}/img/https_lock.png" alt="https"></li>
+  <li><a href="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}"><img class="thumbnail" src="{{secure_avatar_url}}{{data.sha256}}{{data.query_string}}" alt="{% trans 'using SHA256 over HTTPS' %}"></a><br>{% trans 'SHA256' %}&nbsp;<img src="/img/https_lock.png" alt="https"></li>
   {% endif %}
 </ul>
 

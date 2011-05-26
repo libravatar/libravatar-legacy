@@ -1,5 +1,5 @@
 #!/bin/bash
-# postinst script for libravatar-slave
+# postinst script for libravatar-cdn-common
 #
 # see: dh_installdeb(1)
 
@@ -17,18 +17,23 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-AVATAR_ROOT=/var/lib/libravatar/avatar
-SLAVE_ROOT=/var/lib/libravatar/slave
+. /usr/share/debconf/confmodule
+
+APACHE_CONFIG=/etc/libravatar/cdn-common.apache2.conf
 
 case "$1" in
     configure)
-        adduser --system --quiet --disabled-login --shell /usr/bin/rssh --no-create-home --home ${SLAVE_ROOT} --gecos 'Libravatar Mirror Slave,,,' libravatar-slave || true
+        # Make a copy of the template apache config to work on, then copy into place
+        cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working
 
-        mkdir -p ${AVATAR_ROOT}
-        chown -R libravatar-slave ${AVATAR_ROOT}
+        for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${APACHE_CONFIG}.working); do
+            # Turns __MARKER__ into marker and puts packagename/ on the front
+            DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
+            db_get libravatar-common/$DEBCONF_VAR
+            sed -i -e "s/${MARKER}/${RET}/g" ${APACHE_CONFIG}.working
+        done
 
-        mkdir -p ${SLAVE_ROOT}/cert/
-        chown libravatar-slave ${SLAVE_ROOT}/cert/
+        mv ${APACHE_CONFIG}.working /etc/libravatar/cdn-common.include
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
@@ -45,4 +50,5 @@ esac
 
 #DEBHELPER#
 
+db_stop
 exit 0

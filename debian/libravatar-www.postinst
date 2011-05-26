@@ -106,6 +106,8 @@ case "$1" in
         mkdir -p ${EXPORT_FILES_ROOT}
         chown -R root:root ${EXPORT_FILES_ROOT}
 
+        mkdir -p ${AVATAR_ROOT}
+
         touch /var/log/libravatar/workers.log
         chown libravatar-img /var/log/libravatar/workers.log
 

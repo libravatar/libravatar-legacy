@@ -23,7 +23,7 @@ SLAVE_ROOT=/var/lib/libravatar/slave
 
 case "$1" in
     remove|purge|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
-        chown -R root ${AVATAR_ROOT}
+        rm -rf ${AVATAR_ROOT}
         rm -rf ${SLAVE_ROOT}/cert/
         deluser libravatar-slave || true
     ;;

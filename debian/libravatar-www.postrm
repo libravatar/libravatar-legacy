@@ -28,6 +28,13 @@ case "$1" in
 
     purge)
         rm -f /etc/libravatar/settings.py
+        if [ -d /var/lib/libravatar ]; then
+            echo
+            echo "NOTE: purge does _not_ remove:"
+            echo " * /var/lib/libravatar"
+            echo "You must do this yourself if you really want to!"
+            echo
+        fi
     ;;
 
     *)

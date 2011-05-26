@@ -17,15 +17,21 @@ Description: avatar image hosting - full install
 
 Package: libravatar-www
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, libravatar-common, apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python2.6, debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng, python-openid
+Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python2.6, debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng, python-openid
 XB-Python-Version: ${python:Versions}
 Description: avatar image hosting - main web application
  Main Libravatar application for uploading images and associating
  them with email addresses.
 
+Package: libravatar-cdn-common
+Architecture: all
+Depends: ${misc:Depends}, debconf, libravatar-common (=${source:Version}), apache2
+Description: avatar image hosting - common cdn files
+ Files needed by both Libravatar CDN packages.
+
 Package: libravatar-cdn
 Architecture: all
-Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Depends: ${misc:Depends}, libravatar-cdn-common (=${source:Version})
 Recommends: awstats
 Description: avatar image hosting - mirror node 
  Package for running a mirror of the Libravatar avatar images and
@@ -33,7 +39,7 @@ Description: avatar image hosting - mirror node
 
 Package: libravatar-seccdn
 Architecture: all
-Depends: ${misc:Depends}, libravatar-common (=${source:Version}), apache2
+Depends: ${misc:Depends}, libravatar-cdn-common (=${source:Version})
 Recommends: awstats
 Description: avatar image hosting - https mirror node 
  Package for running a mirror of the Libravatar avatar images and
@@ -43,7 +49,8 @@ Package: libravatar-common
 Architecture: all
 Depends: ${misc:Depends}, debconf
 Description: avatar image hosting - common files
- Files needed by the main Libravatar website and both CDN packages.
+ This is an empty package which contains configuration needed by the
+ main Libravatar website and both CDN packages.
 
 Package: libravatar-master
 Architecture: all
@@ -54,5 +61,6 @@ Description: avatar image hosting - mirror master
 Package: libravatar-slave
 Architecture: all
 Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync, rssh
+Conflicts: libravatar-www
 Description: avatar image hosting - mirror slave
  Package for receiving mirror updates from the master server.

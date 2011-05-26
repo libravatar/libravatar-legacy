@@ -1,2 +1,5 @@
 usr/share/libravatar
 etc/libravatar
+usr/share/libravatar/static/img
+usr/share/libravatar/static/css
+usr/share/libravatar/static/js
