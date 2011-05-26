@@ -1,3 +1,16 @@
+libravatar (20110526.1) unstable; urgency=low
+
+  * Move js and css to -www and move lots of images into -cdn-common
+  * Put a 5000x5000 pixel limit on uploaded images
+  * Bump max photo size to 5MB
+  * Fix cropping of empty PNGs
+  * Supply browser-hints file and CORS headers on CDNs
+  * Remove ETags from avatars we serve
+  * Remove "Cache-Control: public" from non-SSL images
+  * Updated French translation
+
+ -- Francois Marier <francois@debian.org>  Thu, 26 May 2011 23:45:19 +1200
+
 libravatar (20110501.1) unstable; urgency=low
 
   * French translation
