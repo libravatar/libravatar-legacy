@@ -27,6 +27,8 @@ from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W040
 
 logger = create_logger('cropresize')
 
+MAX_PIXELS = 5000
+
 def create_broken_image(broken, dest):
     delete_if_exists(dest)
 
@@ -75,8 +77,8 @@ def crop(filename, x=0, y=0, w=0, h=0):
     # Need to reopen the image after verify()
     img = Image.open(source)
     a, b = img.size
-    if a > 3000 or b > 3000:
-        logger.error('Image dimensions are too big (max: 3000x3000)')
+    if a > MAX_PIXELS or b > MAX_PIXELS:
+        logger.error('Image dimensions are too big (max: %s x %s)' % (MAX_PIXELS, MAX_PIXELS))
         return 6
 
     if w == 0 and h == 0:
