@@ -162,3 +162,26 @@ ul li {
     padding : 4px 18px;
     width: 400px;
 }
+
+#contribute-button {
+    text-align: center;
+}
+
+#contribute-button a {
+    border: 1px;
+    border-style: solid;
+    border-color: #000000;
+    background-color: #F9711F;
+    color: #FFFFFF;
+    -moz-border-radius:8px;
+    border-radius: 8px;
+    padding: 3px 5px 5px 5px;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+#agpl-button {
+    border: none;
+    vertical-align: middle;
+    padding: 0 5px 0 0;
+}

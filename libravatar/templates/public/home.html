@@ -6,15 +6,15 @@
 {% block content %}
 
 <div id="action-panel">
-  <h2>{% trans 'Get Involved!' %}</h2>
   {% if not user.is_authenticated and not disable_signup %}
     {% url libravatar.account.views.new as new_account_url %}
     <p>{% blocktrans %}Create a <a href="{{ new_account_url }}">free account</a>{% endblocktrans %}</p>
   {% endif %}
   <p>{% trans 'Download the <a href="https://code.launchpad.net/libravatar">source code</a>' %}</p>
   <p>{% trans 'File <a href="https://bugs.launchpad.net/libravatar">bugs</a> or ask <a href="https://answers.launchpad.net/libravatar">questions</a>' %}</p>
-  <p>{% trans 'Join the <a href="http://libravatar.onlinegroups.net/groups/libravatar-devel">mailing list</a>' %}</p>
+  <p>{% trans 'Browse the <a href="http://wiki.libravatar.org">wiki</a>' %}</p>
   <p>{% trans 'Follow us on <a href="http://identi.ca/libravatar">Identica</a>' %}</p>
+  <p id="contribute-button"><a href="http://wiki.libravatar.org/contribute/">{% trans 'Contribute!' %}</a></p>
 </div>
 
 {% url libravatar.account.views.new as new_account_url %}
