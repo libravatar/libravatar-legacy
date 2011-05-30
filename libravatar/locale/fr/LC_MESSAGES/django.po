@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-05-26 23:56+1200\n"
-"PO-Revision-Date: 2011-05-26 23:55+1200\n"
+"POT-Creation-Date: 2011-05-30 23:55+1200\n"
+"PO-Revision-Date: 2011-05-30 23:58+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
 "Language: fr\n"
@@ -20,10 +20,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
 #: settings.py:49
+msgid "German"
+msgstr "Allemand"
+
+#: settings.py:50
 msgid "English"
 msgstr "Anglais"
 
-#: settings.py:50
+#: settings.py:51
 msgid "French"
 msgstr "Français"
 
@@ -159,17 +163,19 @@ msgstr "Connexion"
 #: templates/base.html:39
 #, python-format
 msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a href=\"http://www."
-"libravatar.org\">Libravatar</a>\n"
-"  software, version %(libravatar_version)s, available under the\n"
-"  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
-"Public License</a>."
+"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img src=\"/img/"
+"agpl_button.png\" width=\"107\" height=\"20\" id=\"agpl-button\" alt=\"GNU "
+"Affero General Public License\" title=\"GNU Affero General Public License"
+"\"></a> <b>%(site_name)s</b> is an avatar service running the <a href="
+"\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+"  software, version %(libravatar_version)s"
 msgstr ""
-"<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a href="
-"\"http://www.libravatar.org\">Libravatar</a>\n"
-", version %(libravatar_version)s, disponible sous la license\n"
-"  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
-"Public License</a>."
+"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img src=\"/img/"
+"agpl_button.png\" width=\"107\" height=\"20\" id=\"agpl-button\" alt=\"GNU "
+"Affero General Public License\" title=\"GNU Affero General Public License"
+"\"></a> <b>%(site_name)s</b> est un service d'hébergement d'avatars roulant "
+"le logiciel <a href=\"https://www.launchpad.net/libravatar\">Libravatar</a>, "
+"version %(libravatar_version)s"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -743,16 +749,12 @@ msgstr "Envoyer"
 msgid "federated avatar hosting service"
 msgstr "hébergement fédéré d'avatars"
 
-#: templates/public/home.html:9
-msgid "Get Involved!"
-msgstr "Participez !"
-
-#: templates/public/home.html:12
+#: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
 msgstr "Ouvrir un <a href=\"%(new_account_url)s\">compte gratuit</a>"
 
-#: templates/public/home.html:14
+#: templates/public/home.html:13
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
 "a>"
@@ -760,7 +762,7 @@ msgstr ""
 "Télécharger le <a href=\"https://code.launchpad.net/libravatar\">code "
 "source</a>"
 
-#: templates/public/home.html:15
+#: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
@@ -768,17 +770,17 @@ msgstr ""
 "Rapporter un <a href=\"https://bugs.launchpad.net/libravatar\">bogue</a> ou "
 "poser une <a href=\"https://answers.launchpad.net/libravatar\">question</a>"
 
-#: templates/public/home.html:16
-msgid ""
-"Join the <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-devel"
-"\">mailing list</a>"
-msgstr ""
-"Joindre la <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-"
-"devel\">liste de diffusion</a>"
+#: templates/public/home.html:15
+msgid "Browse the <a href=\"http://wiki.libravatar.org\">wiki</a>"
+msgstr "Consultez le <a href=\"http://wiki.libravatar.org\">wiki</a>"
 
-#: templates/public/home.html:17
+#: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr "Suivez-nous sur <a href=\"http://identi.ca/libravatar\">Identica</a>"
+
+#: templates/public/home.html:17
+msgid "Contribute!"
+msgstr "Participez !"
 
 #: templates/public/home.html:21
 #, python-format

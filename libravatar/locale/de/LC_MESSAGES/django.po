@@ -6,11 +6,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-26 23:58+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-30 23:53+1200\n"
 "PO-Revision-Date: 2011-05-30 11:41+0000\n"
 "Last-Translator: Kristina Hoeppner <Unknown>\n"
 "Language-Team: German <de@li.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,10 +19,14 @@ msgstr ""
 "X-Generator: Launchpad (build 13117)\n"
 
 #: settings.py:49
+msgid "German"
+msgstr ""
+
+#: settings.py:50
 msgid "English"
 msgstr "Englisch"
 
-#: settings.py:50
+#: settings.py:51
 msgid "French"
 msgstr "Französisch"
 
@@ -119,12 +124,12 @@ msgstr "bestätigte OpenIDs"
 #: templates/404.html:5
 #, python-format
 msgid ""
-"Page not found. If you think you got here by mistake, please <a "
-"href=\"mailto:%(support_email)s\">let us know</a>!"
+"Page not found. If you think you got here by mistake, please <a href="
+"\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
 "Die Seite konnte nicht gefunden werden. Wenn Sie denken, dass Sie hier durch "
-"einen Fehler gelandet sind, <a "
-"href=\"mailto:%(support_email)s\">kontaktieren Sie uns bitte</a>."
+"einen Fehler gelandet sind, <a href=\"mailto:%(support_email)s"
+"\">kontaktieren Sie uns bitte</a>."
 
 #: templates/base.html:7
 msgid "Freeing the Web, one face at a time!"
@@ -158,17 +163,13 @@ msgstr "Anmelden"
 #: templates/base.html:39
 #, python-format
 msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"http://www.libravatar.org\">Libravatar</a>\n"
-"  software, version %(libravatar_version)s, available under the\n"
-"  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero General "
-"Public License</a>."
+"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img src=\"/img/"
+"agpl_button.png\" width=\"107\" height=\"20\" id=\"agpl-button\" alt=\"GNU "
+"Affero General Public License\" title=\"GNU Affero General Public License"
+"\"></a> <b>%(site_name)s</b> is an avatar service running the <a href="
+"\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+"  software, version %(libravatar_version)s"
 msgstr ""
-"<b>%(site_name)s</b> ist ein Avatar-Service, der auf <a "
-"href=\"http://www.libravatar.org\">Libravatar</a>\n"
-"  , Version %(libravatar_version)s basiert, verfügbar unter\n"
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero Allgemeine "
-"Öffentliche GNU-Lizenz (GNU GPL)</a>."
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -289,8 +290,8 @@ msgid ""
 "Are you sure you want to <strong>permanently delete</strong> your Libravatar "
 "account?"
 msgstr ""
-"Sind Sie sicher, dass Sie Ihr Libravatar-Konto <strong>komplett "
-"löschen</strong> möchten?"
+"Sind Sie sicher, dass Sie Ihr Libravatar-Konto <strong>komplett löschen</"
+"strong> möchten?"
 
 #: templates/account/delete.html:22
 msgid "Yes, delete all of my stuff"
@@ -410,8 +411,7 @@ msgstr ""
 
 #: templates/account/email_notadded.html:8
 #, python-format
-msgid ""
-"you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
+msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr ""
 "Sie haben zu viele unbestätigte E-Mail-Adressen (Maximum: %(max_emails)s)"
 
@@ -457,8 +457,8 @@ msgstr "Export in Bearbeitung"
 
 #: templates/account/export_done.html:10
 msgid ""
-"Libravatar is currently exporting your data. It <b>may take a few "
-"moments</b> for the file to be available:"
+"Libravatar is currently exporting your data. It <b>may take a few moments</"
+"b> for the file to be available:"
 msgstr ""
 "Libravatar exportiert gerade Ihre Daten. Es kann <b>ein bisschen dauern</b>, "
 "bis die Datei zur Verfügung steht:"
@@ -469,8 +469,7 @@ msgstr "Libravatar-Login"
 
 #: templates/account/login.html:13
 #, python-format
-msgid ""
-"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr ""
 "Sie haben noch kein Benutzerkonto? <a href=\"%(signup_url)s\">Registrieren "
 "Sie sich jetzt!</a>"
@@ -484,8 +483,8 @@ msgstr ""
 #: templates/account/login.html:35
 #, python-format
 msgid ""
-"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
-"email</a>."
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
+"a>."
 msgstr ""
 "Passwort vergessen? <a href=\"%(password_reset_url)s\">Per E-Mail "
 "zurücksetzen</a>."
@@ -493,9 +492,8 @@ msgstr ""
 #: templates/account/max_photos.html:6
 #, python-format
 msgid ""
-"You've got too many photos in <a href=\"%(profile_url)s\">your "
-"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
-"one."
+"You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
+"<br>You need to <b>delete</b> some before you can upload a new one."
 msgstr ""
 "Sie haben zu viele Bilder in <a href=\"%(profile_url)s\">Ihrem "
 "Benutzerkonto</a>.<br>Sie müssen ein paar <b>löschen</b>, bevor Sie ein "
@@ -615,8 +613,7 @@ msgstr ""
 
 #: templates/account/password_reset_submitted.html:10
 msgid "You will receive an email with the details on how to proceed."
-msgstr ""
-"Sie werden eine E-Mail mit den Details zum weiteren Vorgehen erhalten."
+msgstr "Sie werden eine E-Mail mit den Details zum weiteren Vorgehen erhalten."
 
 #: templates/account/password_reset_submitted.html:12
 msgid "Still haven't received the email?"
@@ -640,13 +637,13 @@ msgstr "Wurde diese E-Mail-Adresse jemals in diesem System bestätigt?"
 #: templates/account/password_reset_submitted.html:21
 #, python-format
 msgid ""
-"If everything else fails, you can always <a "
-"href=\"%(new_account_url)s\">create a new account</a> or <a "
-"href=\"mailto:%(support_email)s\">email us</a>."
+"If everything else fails, you can always <a href=\"%(new_account_url)s"
+"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
+"us</a>."
 msgstr ""
-"Sollte kein Lösungsvorschlag funktionieren, können Sie jederzeit <a "
-"href=\"%(new_account_url)s\">einen neuen Account eröffnen</a> oder <a "
-"href=\"mailto:%(support_email)s\">uns eine E-Mail schicken</a>."
+"Sollte kein Lösungsvorschlag funktionieren, können Sie jederzeit <a href="
+"\"%(new_account_url)s\">einen neuen Account eröffnen</a> oder <a href="
+"\"mailto:%(support_email)s\">uns eine E-Mail schicken</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
@@ -655,8 +652,7 @@ msgstr "Ungültige Bild-ID."
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
-msgstr ""
-"Dieses Bild ist zu groß. Die Maximalgröße beträgt %(max_size)s Bytes."
+msgstr "Dieses Bild ist zu groß. Die Maximalgröße beträgt %(max_size)s Bytes."
 
 #: templates/account/photo_toobig.html:7
 #, python-format
@@ -749,47 +745,44 @@ msgstr "Upload"
 msgid "federated avatar hosting service"
 msgstr "federierter Avatar-Hosting-Service"
 
-#: templates/public/home.html:9
-msgid "Get Involved!"
-msgstr "Machen Sie mit!"
-
-#: templates/public/home.html:12
+#: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
+msgstr "Erönnen Sie ein <a href=\"%(new_account_url)s\">kostenloses Konto</a>"
+
+#: templates/public/home.html:13
+msgid ""
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
+"a>"
 msgstr ""
-"Erönnen Sie ein <a href=\"%(new_account_url)s\">kostenloses Konto</a>"
+"Laden Sie den <a href=\"https://code.launchpad.net/libravatar\">Quellcode</"
+"a> herunter"
 
 #: templates/public/home.html:14
-msgid ""
-"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
-"code</a>"
-msgstr ""
-"Laden Sie den <a "
-"href=\"https://code.launchpad.net/libravatar\">Quellcode</a> herunter"
-
-#: templates/public/home.html:15
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
 msgstr ""
-"Teilen Sie uns <a "
-"href=\"https://bugs.launchpad.net/libravatar\">Probleme</a> mit oder stellen "
-"Sie <a href=\"https://answers.launchpad.net/libravatar\">Fragen</a>"
+"Teilen Sie uns <a href=\"https://bugs.launchpad.net/libravatar\">Probleme</"
+"a> mit oder stellen Sie <a href=\"https://answers.launchpad.net/libravatar"
+"\">Fragen</a>"
+
+#: templates/public/home.html:15
+#, fuzzy
+msgid "Browse the <a href=\"http://wiki.libravatar.org\">wiki</a>"
+msgstr ""
+"Bleiben Sie in Kontakt über <a href=\"http://identi.ca/libravatar"
+"\">Identica</a>"
 
 #: templates/public/home.html:16
-msgid ""
-"Join the <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-"
-"devel\">mailing list</a>"
-msgstr ""
-"Abonnieren Sie die <a "
-"href=\"http://libravatar.onlinegroups.net/groups/libravatar-devel\">Mailing-"
-"Liste</a>"
-
-#: templates/public/home.html:17
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr ""
-"Bleiben Sie in Kontakt über <a "
-"href=\"http://identi.ca/libravatar\">Identica</a>"
+"Bleiben Sie in Kontakt über <a href=\"http://identi.ca/libravatar"
+"\">Identica</a>"
+
+#: templates/public/home.html:17
+msgid "Contribute!"
+msgstr ""
 
 #: templates/public/home.html:21
 #, python-format
@@ -810,17 +803,16 @@ msgstr "Federierter Open-Source-Service"
 
 #: templates/public/home.html:25
 msgid ""
-"This service is powered by <a "
-"href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
-"software</a> and allows owners of a domain name to <a "
-"href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
+"This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
+"\">Free and Open Source software</a> and allows owners of a domain name to "
+"<a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Dieser Service basiert auf <a "
-"href=\"http://www.gnu.org/licenses/agpl.html\">freier und Open-Source-"
-"Software</a> und ermöglicht den Besitzern dieser Domäne, ihren <a "
-"href=\"http://wiki.libravatar.org/running_your_own/\">eigenen Libravatar-"
-"Dienst</a> zu installieren und selbst Avatare zur Verfügung zu stellen."
+"Dieser Service basiert auf <a href=\"http://www.gnu.org/licenses/agpl.html"
+"\">freier und Open-Source-Software</a> und ermöglicht den Besitzern dieser "
+"Domäne, ihren <a href=\"http://wiki.libravatar.org/running_your_own/"
+"\">eigenen Libravatar-Dienst</a> zu installieren und selbst Avatare zur "
+"Verfügung zu stellen."
 
 #: templates/public/home.html:27
 msgid "Simple API for Developers"
@@ -840,8 +832,7 @@ msgstr ""
 "gibt."
 
 #: templates/public/home.html:31
-msgid ""
-"Big thanks to our sponsors without whom none of this would be possible!"
+msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Ein großes Dankeschön an unsere Sponsoren, ohne deren Unterstützung, die "
 "Entwicklung der Software nicht möglich gewesen wäre."
@@ -852,8 +843,8 @@ msgid ""
 "An email hash is required. You can use the <a href=\"%(check_url)s\">check "
 "tool</a> to generate one."
 msgstr ""
-"Ein E-Mail-Hash wird benötigt. Sie können einen mit dem <a "
-"href=\"%(check_url)s\">Überprüfungswerkzeug</a> generieren."
+"Ein E-Mail-Hash wird benötigt. Sie können einen mit dem <a href="
+"\"%(check_url)s\">Überprüfungswerkzeug</a> generieren."
 
 #: templates/public/nopost.html:5
 msgid "This only works via HTTP GET."
@@ -966,6 +957,29 @@ msgstr ""
 #: tools/forms.py:38
 msgid "Domain"
 msgstr "Domäne"
+
+#~ msgid ""
+#~ "<b>%(site_name)s</b> is an avatar service running the <a href=\"http://"
+#~ "www.libravatar.org\">Libravatar</a>\n"
+#~ "  software, version %(libravatar_version)s, available under the\n"
+#~ "  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero "
+#~ "General Public License</a>."
+#~ msgstr ""
+#~ "<b>%(site_name)s</b> ist ein Avatar-Service, der auf <a href=\"http://www."
+#~ "libravatar.org\">Libravatar</a>\n"
+#~ "  , Version %(libravatar_version)s basiert, verfügbar unter\n"
+#~ "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero "
+#~ "Allgemeine Öffentliche GNU-Lizenz (GNU GPL)</a>."
+
+#~ msgid "Get Involved!"
+#~ msgstr "Machen Sie mit!"
+
+#~ msgid ""
+#~ "Join the <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-"
+#~ "devel\">mailing list</a>"
+#~ msgstr ""
+#~ "Abonnieren Sie die <a href=\"http://libravatar.onlinegroups.net/groups/"
+#~ "libravatar-devel\">Mailing-Liste</a>"
 
 #~ msgid "Would you like to import some these externally hosted photos?"
 #~ msgstr "Möchten Sie ein paar dieser extern verfügbaren Bilder importieren?"
