@@ -1,3 +1,14 @@
+libravatar (20110531.1) unstable; urgency=low
+
+  * Honour SRV weights and priorities in tools
+  * Hack to work around sleepy sshd on 1.cdn.libravatar.org
+  * Add AGPL button to the footer and Contribute! to the sidebar
+  * Replace mailing list link with wiki link
+  * Add new German translation
+  * Update French translation
+
+ -- Francois Marier <francois@debian.org>  Tue, 31 May 2011 00:05:57 +1200
+
 libravatar (20110526.1) unstable; urgency=low
 
   * Move js and css to -www and move lots of images into -cdn-common
