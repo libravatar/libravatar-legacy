@@ -22,6 +22,7 @@ import DNS
 from gearman import libgearman
 import Image
 import json
+import random
 import os
 import urllib
 
@@ -43,6 +44,57 @@ def mimetype_format(pil_format):
 def home(request):
     return render_to_response('public/home.html',
                               context_instance=RequestContext(request))
+
+def srv_hostname(records):
+    """
+    Return the right (target, port) pair from a list of SRV records.
+    """
+
+    if len(records) < 1:
+        return (None, None)
+
+    if 1 == len(records):
+        rr = records[0]
+        return (rr['target'], rr['port'])
+
+    # Keep only the servers in the top priority
+    priority_records = []
+    total_weight = 0
+    top_priority = records[0]['priority'] # highest priority = lowest number
+
+    for rr in records:
+        if rr['priority'] > top_priority:
+            # ignore the record (rr has lower priority)
+            continue
+        elif rr['priority'] < top_priority:
+            # reset the array (rr has higher priority)
+            top_priority = rr['priority']
+            total_weight = 0
+            priority_records = []
+
+        total_weight += rr['weight']
+
+        if rr['weight'] > 0:
+            priority_records.append((total_weight, rr))
+        else:
+            # zero-weigth elements must come first
+            priority_records.insert(0, (0, rr))
+
+    if 1 == len(priority_records):
+        unused, rr = priority_records[0]
+        return (rr['target'], rr['port'])
+
+    # Select first record according to RFC2782 weight ordering algorithm (page 3)
+    random_number = random.randint(0, total_weight)
+
+    for record in priority_records:
+        weighted_index, rr = record
+
+        if weighted_index >= random_number:
+            return (rr['target'], rr['port'])
+
+    print 'There is something wrong with our SRV weight ordering algorithm'
+    return (None, None)
 
 def lookup_avatar_server(domain, https):
     """
@@ -75,21 +127,22 @@ def lookup_avatar_server(domain, https):
         print "DNS Error: status=%s" % dns_request.header['status']
         return None
 
+    records = []
     for answer in dns_request.answers:
         if (not 'data' in answer) or (not answer['data']):
             continue
 
-        # TODO: implement priority and weight
-        #priority = int(answer['data'][0])
-        #weight = int(answer['data'][1])
-        port = int(answer['data'][2])
-        target = answer['data'][3]
-        if (https and port != 443) or (not https and port != 80):
-            return "%s:%s" % (target, port)
-        else:
-            return target
+        rr = {'priority': int(answer['data'][0]), 'weight': int(answer['data'][1]),
+              'port': int(answer['data'][2]), 'target': answer['data'][3]}
 
-    return None
+        records.append(rr)
+
+    target, port = srv_hostname(records)
+
+    if target and ((https and port != 443) or (not https and port != 80)):
+        return "%s:%s" % (target, port)
+
+    return target
 
 def resolve(request):
     if request.method == 'POST':
