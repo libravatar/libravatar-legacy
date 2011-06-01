@@ -1,0 +1,16 @@
+The recommended Python module is:
+
+  http://pypi.python.org/pypi/pyLibravatar
+
+
+Testing
+--------
+
+Clone the module under ~/devel/remote/pylibravatar:
+
+  cd ~/devel/remote/
+  bzr branch lp:pylibravatar
+
+Then put the test CGI under /var/www and create these symlinks:
+
+  ln -s ~/devel/remote/pylibravatar/libravatar.py /var/www/
