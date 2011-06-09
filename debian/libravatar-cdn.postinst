@@ -32,7 +32,7 @@ case "$1" in
         for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${APACHE_CONFIG}.working); do
             # Turns __MARKER__ into marker and puts packagename/ on the front
             DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
-            db_get libravatar-common/$DEBCONF_VAR
+            db_get libravatar-common/$DEBCONF_VAR || db_get libravatar-cdn/$DEBCONF_VAR
             sed -i -e "s/${MARKER}/${RET}/g" ${APACHE_CONFIG}.working
         done
         for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${AWSTATS_CONFIG}.working); do

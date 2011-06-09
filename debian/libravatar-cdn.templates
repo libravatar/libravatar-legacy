@@ -1,0 +1,8 @@
+Template: libravatar-cdn/vhostaddress
+Type: string
+Default: *:80
+Description: Apache vhost address for the CDN:
+ Please enter the address of the Apache vhost to listen on. This must match
+ what you have put in the NameVirtualHost directive.
+ .
+ The default is usually right for most people.

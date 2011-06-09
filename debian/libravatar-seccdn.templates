@@ -1,0 +1,8 @@
+Template: libravatar-seccdn/vhostaddress
+Type: string
+Default: *:443
+Description: Apache vhost address for the secure CDN:
+ Please enter the address of the Apache vhost to listen on. This must match
+ what you have put in the NameVirtualHost directive.
+ .
+ The default is usually right for most people.
