@@ -4,6 +4,12 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SEND_BROKEN_LINK_EMAILS = True
 
+# LDAP debugging
+#import logging
+#logger = logging.getLogger('django_auth_ldap')
+#logger.addHandler(logging.StreamHandler())
+#logger.setLevel(logging.DEBUG)
+
 import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
@@ -182,6 +188,12 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # TODO: SESSION_COOKIE_SECURE = True
 
 # LDAP Authentication
+#import ldap
+#AUTH_LDAP_GLOBAL_OPTIONS = {
+#    ldap.OPT_PROTOCOL_VERSION: 3,
+#    ldap.OPT_DEBUG_LEVEL: 7,
+#    ldap.OPT_X_TLS_REQUIRE_CERT: False,
+#}
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
 AUTH_LDAP_USER_ATTR_MAP = {

@@ -112,12 +112,9 @@ Have a look in debian/libravatar-www.cron.daily for an example.
 
 # Authenticating with an external LDAP server:
 
-Download and install the [Django LDAP authentication backend](http://packages.python.org/django-auth-ldap/).
+Download and install the [Django LDAP authentication backend](http://packages.python.org/django-auth-ldap/):
 
-The module can be checked out and installed as follows:
-
-    hg clone http://bitbucket.org/psagers/django-auth-ldap
-    sudo easy_install django-auth-ldap
+    apt-get install python-django-auth-ldap
 
 Then uncomment the LDAP backend line in AUTHENTICATION\_BACKENDS in your
 settings.py and set your AUTH\_LDAP\_SERVER\_URI and AUTH\_LDAP\_USER\_DN\_TEMPLATE
