@@ -1,3 +1,14 @@
+libravatar (20110612.1) unstable; urgency=low
+
+  * Beta!
+  * Turn off ETags on static CDN images
+  * Make Apache vhost addresses configurable in CDNs
+  * Fix broken redirects in dynamic resizer
+  * Use better redirect types in CDNs
+  * Update French translation
+
+ -- Francois Marier <francois@debian.org>  Sun, 12 Jun 2011 23:21:24 +1200
+
 libravatar (20110531.1) unstable; urgency=low
 
   * Honour SRV weights and priorities in tools
