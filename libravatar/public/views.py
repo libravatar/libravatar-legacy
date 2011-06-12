@@ -24,6 +24,7 @@ import Image
 import json
 import random
 import os
+import time
 import urllib
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -194,19 +195,29 @@ def resolve(request):
 def avatar_exists(email_hash, size=None):
     if size:
         filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
-    else:
-        filename = settings.AVATAR_ROOT + '/%s' % email_hash
+        if not os.path.isfile(filename):
+            return False
+
+        # If the resized avatar is too recent, pretend it's not
+        # there so that it gets served dynamically
+        file_age = time.time() - os.path.getctime(filename)
+        return (file_age > settings.CDN_SYNC_DELAY)
+
+    filename = settings.AVATAR_ROOT + '/%s' % email_hash
     return os.path.isfile(filename)
 
 def resized_avatar(email_hash, size):
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
-    workload = {'email_hash': email_hash, 'size': size}
-    gm_client.do('resizeavatar', json.dumps(workload))
-
     resized_filename = '%s/%s/%s' % (settings.AVATAR_ROOT, size, email_hash)
+
+    # If the resized avatar already exists, don't re-generate it
+    if not os.path.isfile(resized_filename):
+        gm_client = libgearman.Client()
+        for server in settings.GEARMAN_SERVERS:
+            gm_client.add_server(server)
+
+        workload = {'email_hash': email_hash, 'size': size}
+        gm_client.do('resizeavatar', json.dumps(workload))
+
     resized_img = Image.open(resized_filename)
     return (resized_filename, resized_img.format)
 
