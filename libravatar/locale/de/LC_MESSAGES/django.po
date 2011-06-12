@@ -1,1 +1,1 @@
-../../../../po/django/de.po
+../../../../po/libravatar/de.po

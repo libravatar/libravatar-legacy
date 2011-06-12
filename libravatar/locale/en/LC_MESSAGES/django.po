@@ -1,1 +1,1 @@
-../../../../po/django/libravatar.pot
+../../../../po/libravatar/libravatar.pot
