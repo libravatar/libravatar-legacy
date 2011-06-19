@@ -154,6 +154,8 @@ def resolve(request):
         return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
 
+    https = ('https' in request.GET and '1' == request.GET['https'])
+
     # Maintain the default redirection that was specified
     query_string = ''
     if 'd' in request.GET:
@@ -177,14 +179,14 @@ def resolve(request):
 
     email_hash = request.GET['email_hash']
     avatar_url = settings.AVATAR_URL
-    if request.is_secure():
+    if https:
         avatar_url = settings.SECURE_AVATAR_URL
 
     # Check to see if we need to delegate to another avatar server
     if 'domain' in request.GET:
-        delegation_server = lookup_avatar_server(request.GET['domain'], request.is_secure())
+        delegation_server = lookup_avatar_server(request.GET['domain'], https)
         if delegation_server:
-            if request.is_secure():
+            if https:
                 avatar_url = "https://%s/avatar/" % delegation_server
             else:
                 avatar_url = "http://%s/avatar/" % delegation_server
@@ -222,8 +224,6 @@ def resized_avatar(email_hash, size):
     return (resized_filename, resized_img.format)
 
 def resize(request):
-    https = False # TODO: add support for secure resizing (bug #769735)
-
     if request.method == 'POST':
         return render_to_response('public/nopost.html',
                                   context_instance=RequestContext(request))
@@ -232,6 +232,8 @@ def resize(request):
         return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
     email_hash = request.GET['email_hash']
+
+    https = ('https' in request.GET and '1' == request.GET['https'])
 
     size = settings.AVATAR_DEFAULT_SIZE
     if 'size' in request.GET:
