@@ -1,3 +1,14 @@
+libravatar (20110619.1) unstable; urgency=low
+
+  * Switch main application to HTTPS
+  * Always serve dynamically resized images over HTTPS
+  * Use secure session cookies
+  * Replace Adbard ad with Flattr button
+  * Cache redirects for a second only
+  * Don't purge avatars and certs in slave's postrm
+
+ -- Francois Marier <francois@debian.org>  Sun, 19 Jun 2011 17:18:39 +1200
+
 libravatar (20110612.1) unstable; urgency=low
 
   * Beta!
