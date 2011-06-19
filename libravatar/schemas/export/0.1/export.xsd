@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            targetNamespace="http://www.libravatar.org/schemas/export/0.1"
-            xmlns="http://www.libravatar.org/schemas/export/0.1"
+            targetNamespace="https://www.libravatar.org/schemas/export/0.1"
+            xmlns="https://www.libravatar.org/schemas/export/0.1"
             elementFormDefault="qualified">
 
 <xsd:annotation>

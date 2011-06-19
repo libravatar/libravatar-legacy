@@ -29,7 +29,7 @@ from utils import create_logger, is_hex # pylint: disable=W0403
 
 logger = create_logger('exportaccount')
 
-SCHEMA_ROOT = 'http://www.libravatar.org/schemas/export/0.1'
+SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.1'
 SCHEMA_XSD = '%s/export.xsd' % SCHEMA_ROOT
 
 def xml_header():

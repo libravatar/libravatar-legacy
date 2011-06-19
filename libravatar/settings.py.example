@@ -14,7 +14,7 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'libravatar.org'
-SITE_URL = 'http://www.libravatar.org'
+SITE_URL = 'https://www.libravatar.org'
 SERVER_EMAIL = 'accounts@libravatar.org'
 SUPPORT_EMAIL = 'support@libravatar.org'
 DEV_EMAIL = 'dev@libravatar.org'
