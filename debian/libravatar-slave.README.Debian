@@ -7,7 +7,7 @@ Once you have installed this package and its dependencies,
    "allowrsync" in /etc/rssh.conf.
 
 2- Install the SSL certificate you were given by copying seccdn.crt,
-   seccdn.pem and chain.pem into /etc/libravatar/.
+   seccdn.pem and seccdn-chain.pem into /etc/libravatar/.
 
 3- Put "ServerName X.cdn.libravatar.org" in your /etc/apache2/httpd.conf
    where X is the mirror number you were given.

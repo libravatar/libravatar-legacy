@@ -189,7 +189,7 @@ CDN_SYNC_DELAY = 30 * 60
 
 # Session settings
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# TODO: SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # LDAP Authentication
 #import ldap

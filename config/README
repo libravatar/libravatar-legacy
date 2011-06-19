@@ -1,16 +1,16 @@
 Here is an explanation of what each host does:
 
 www.libravatar.org:
-- hosts the main Django applications (TODO: public ones only)
-- hosts the static files served directly by Apache
+- hosts the main Django applications
+- hosts the static files served directly by Apache for Djano
 
 cdn.libravatar.org:
 - hosts the avatars over http
-- serves the /static/img/ directory (for the nobody icon)
+- serves the /static/cdn/ directory (for the nobody icon)
 
 seccdn.libravatar.org:
 - hosts the avatars over https
-- serves the /static/img/ directory (for the nobody icon)
+- serves the /static/cdn/ directory (for the nobody icon)
 
 It should be possible to host these on 3 different servers.
 
@@ -22,6 +22,3 @@ In order to distribute the load over multiple mirrors of the
 Libravatar avatars, DNS round-robin can be used to make the
 cdn.libravatar.org and seccdn.libravatar.org hosts point to
 lots of different IP addresses.
-
-Such mirrors will need to have regular (daily?) rsync of
-the /avatar/ directory.

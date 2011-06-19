@@ -2,10 +2,10 @@
 
 APACHE_CERT=/etc/libravatar/seccdn.crt
 APACHE_KEY=/etc/libravatar/seccdn.pem
-APACHE_CHAIN=/etc/libravatar/chain.pem
+APACHE_CHAIN=/etc/libravatar/seccdn-chain.pem
 SLAVE_CERT=/var/lib/libravatar/slave/cert/seccdn.crt
 SLAVE_KEY=/var/lib/libravatar/slave/cert/seccdn.pem
-SLAVE_CHAIN=/var/lib/libravatar/slave/cert/chain.pem
+SLAVE_CHAIN=/var/lib/libravatar/slave/cert/seccdn-chain.pem
 
 if [ ! -s $SLAVE_CERT -o ! -s $APACHE_CERT ] ; then
         echo "libravatar-slave: SSL certificate is missing"
