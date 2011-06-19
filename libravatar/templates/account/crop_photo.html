@@ -2,7 +2,7 @@
 {% load i18n %}
 
 {% block title %}{% trans 'Crop photo' %} - Libravatar{% endblock title %}
-{% block header %}<link rel='stylesheet' href='/css/jcrop.css' type='text/css'/>{%endblock%}
+{% block header %}<link rel="stylesheet" href="/css/jcrop.css" type="text/css">{% endblock header %}
 {% block content %}
 <noscript>
 <meta http-equiv="refresh" content="0;url={% url libravatar.account.views.auto_crop photo.id %}"/>
@@ -21,7 +21,7 @@
 </form>
 
 {% endblock content %}
-{% block footer %}<script src='/js/jcrop.js' type='text/javascript'></script>
+{% block footer %}<script src="/js/jcrop.js" type="text/javascript"></script>
 <script type="text/javascript">
 //<![CDATA[
 $(window).ready(function(){
