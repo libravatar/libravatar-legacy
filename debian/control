@@ -10,7 +10,8 @@ Vcs-browser: http://codebrowse.launchpad.net/~libravatar/libravatar/trunk/change
 
 Package: libravatar
 Architecture: all
-Depends: ${misc:Depends}, libravatar-www (=${source:Version}), libravatar-cdn (=${source:Version}), libravatar-seccdn (=${source:Version})
+Depends: ${misc:Depends}, libravatar-www, libravatar-cdn
+Recommends: libravatar-seccdn
 Description: avatar image hosting - full install
  This is a virtual package to install all of the components necessary to 
  run a full Libravatar server on a single host.
@@ -54,7 +55,7 @@ Description: avatar image hosting - common files
 
 Package: libravatar-master
 Architecture: all
-Depends: ${misc:Depends}, libravatar, rsync
+Depends: ${misc:Depends}, libravatar-www, rsync
 Description: avatar image hosting - mirror master
  Package for sending mirror updates to slaves.
 
