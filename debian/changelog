@@ -1,3 +1,13 @@
+libravatar (20110619.2) unstable; urgency=low
+
+  * Drop some dependencies for libravatar and -master
+  * Add prefetching to the upload photo page
+  * Update URL in account exports (for HTTPS)
+  * Use HTTPS version of Flattr button on homepage
+  * Update German translation
+
+ -- Francois Marier <francois@debian.org>  Sun, 19 Jun 2011 20:42:20 +1200
+
 libravatar (20110619.1) unstable; urgency=low
 
   * Switch main application to HTTPS
