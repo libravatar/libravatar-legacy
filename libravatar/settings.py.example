@@ -177,7 +177,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = MAX_PHOTO_SIZE
 # Quality can be from 1 to 95
 JPEG_QUALITY = 75
 
-DEFAULT_PHOTO = '/img/nobody.jpg'
+DEFAULT_PHOTO = '/img/nobody.png'
 LIBRAVATAR_VERSION = '0.1'
 
 GEARMAN_SERVERS = ['localhost']
