@@ -18,7 +18,6 @@
 import urllib
 from urlparse import urlsplit, urlunsplit
 
-from django_openid_auth.models import UserOpenID
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
@@ -155,9 +154,9 @@ class DeleteAccountForm(forms.Form):
 
     def clean_password(self):
         data = self.cleaned_data['password']
-        uses_openid = UserOpenID.objects.filter(user=self.user).exists()
+        has_password = self.user.password != u'!'
 
-        if not uses_openid and not self.user.check_password(data):
+        if has_password and not self.user.check_password(data):
             raise forms.ValidationError(_('Invalid password'))
 
         return data

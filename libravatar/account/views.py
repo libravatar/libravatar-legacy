@@ -587,8 +587,8 @@ def delete(request):
     else:
         form = DeleteAccountForm(request.user)
 
-    uses_openid = UserOpenID.objects.filter(user=request.user).exists()
-    return render_to_response('account/delete.html', {'form' : form, 'uses_openid': uses_openid},
+    has_password = request.user.password != u'!'
+    return render_to_response('account/delete.html', {'form' : form, 'has_password': has_password},
                               context_instance=RequestContext(request))
 
 def _perform_export(user, do_delete):

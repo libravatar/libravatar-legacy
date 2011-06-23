@@ -12,7 +12,7 @@
 
 <form action="{% url libravatar.account.views.delete %}" method="post" name="delete">{% csrf_token %}
 
-{% if not uses_openid %}
+{% if has_password %}
 <p>{% trans 'Please confirm your identity by entering your current password.' %}</p>
 
 {{ form.password.errors }}
