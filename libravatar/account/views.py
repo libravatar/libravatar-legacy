@@ -338,8 +338,8 @@ def remove_confirmed_openid(request, openid_id):
             UserOpenID.objects.filter(claimed_id=openid.openid).delete()
             openid.delete()
         else:
-             return render_to_response('account/openid_cannotdelete.html',
-                                       context_instance=RequestContext(request))
+            return render_to_response('account/openid_cannotdelete.html',
+                                      context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
