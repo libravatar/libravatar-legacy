@@ -20,6 +20,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     (r'^account/', include('libravatar.account.urls')),
+    (r'^openid/', include('django_openid_auth.urls')),
     (r'^tools/', include('libravatar.tools.urls')),
 
     (r'^$', 'libravatar.public.views.home'),

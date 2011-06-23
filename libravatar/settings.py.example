@@ -90,6 +90,7 @@ TEMPLATE_LOADERS = (
 AUTHENTICATION_BACKENDS = (
     # Enable this to allow LDAP authentication. See INSTALL for more information.
     # 'django_auth_ldap.backend.LDAPBackend',
+    'django_openid_auth.auth.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -122,6 +123,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django_openid_auth',
     'django.contrib.sites',
     'libravatar.account',
     'libravatar.public',
@@ -212,3 +214,5 @@ DISABLE_SIGNUP = False
 
 # To restrict email addresses to a given domain, enter it here
 REQUIRED_DOMAIN = ''
+
+OPENID_CREATE_USERS = True
