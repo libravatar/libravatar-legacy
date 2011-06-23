@@ -184,11 +184,12 @@ def successfully_authenticated(request):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 def _confirm_claimed_openid(user, remote_address):
-    openids = UserOpenID.objects.filter(user=user)
-    if 0 == openids.count():
+    if user.password != u'!':
         return # not using OpenID auth
-    elif openids.count() > 1:
-        return # user has already confirmed lots of OpenIDs
+
+    openids = UserOpenID.objects.filter(user=user)
+    if openids.count() != 1:
+        return # only the first OpenID needs to be confirmed this way
 
     claimed_id = openids[0].claimed_id
     if ConfirmedOpenId.objects.filter(openid=claimed_id).exists():
@@ -311,12 +312,13 @@ def confirm_openid(request, openid_id):
 
     unconfirmed.delete()
 
-    # Also allow user to login using this OpenID
-    user_openid = UserOpenID()
-    user_openid.user = request.user
-    user_openid.claimed_id = confirmed.openid
-    user_openid.display_id = confirmed.openid
-    user_openid.save()
+    # Also allow user to login using this OpenID (if not taken already)
+    if not UserOpenID.objects.filter(claimed_id=confirmed.openid).exists():
+        user_openid = UserOpenID()
+        user_openid.user = request.user
+        user_openid.claimed_id = confirmed.openid
+        user_openid.display_id = confirmed.openid
+        user_openid.save()
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -330,7 +332,14 @@ def remove_confirmed_openid(request, openid_id):
             return render_to_response('account/openid_invalid.html',
                                       context_instance=RequestContext(request))
 
-        openid.delete()
+        has_password = request.user.password != u'!'
+        if has_password or UserOpenID.objects.filter(user=request.user).count() > 1:
+            # remove it from the auth table as well
+            UserOpenID.objects.filter(claimed_id=openid.openid).delete()
+            openid.delete()
+        else:
+             return render_to_response('account/openid_cannotdelete.html',
+                                       context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 

@@ -1,0 +1,9 @@
+{% extends 'error.html' %}
+{% load i18n %}
+
+{% block errormessage %}
+
+{% url libravatar.account.views.delete as delete_url %}
+{% url libravatar.account.views.add_openid as add_openid_url %}
+{% blocktrans %}You cannot delete your only OpenID since it's the only way to access this account. Either <a href="{{ add_openid_url }}">add another OpenID</a> or <a href="{{ delete_url }}">permanently delete your account</a> if you really want to do this.{% endblocktrans %}
+{% endblock errormessage %}
