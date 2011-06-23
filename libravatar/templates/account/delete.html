@@ -10,12 +10,14 @@
 
 <p><strong>{% trans 'There is no way to undo this operation.' %}</strong></p>
 
-<p>{% trans 'Please confirm your identity by entering your current password.' %}</p>
-
 <form action="{% url libravatar.account.views.delete %}" method="post" name="delete">{% csrf_token %}
+
+{% if not uses_openid %}
+<p>{% trans 'Please confirm your identity by entering your current password.' %}</p>
 
 {{ form.password.errors }}
 <p class="aligned wide">{{ form.password.label_tag }}: {{ form.password }}</p>
+{% endif %}
 
 <p>{% trans 'Are you sure you want to <strong>permanently delete</strong> your Libravatar account?' %}</p>
 
