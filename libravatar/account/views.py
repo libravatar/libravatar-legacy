@@ -183,10 +183,30 @@ def successfully_authenticated(request):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+def _confirm_claimed_openid(user, remote_address):
+    openids = UserOpenID.objects.filter(user=user)
+    if 0 == openids.count():
+        return # not using OpenID auth
+    elif openids.count() > 1:
+        return # user has already confirmed lots of OpenIDs
+
+    claimed_id = openids[0].claimed_id
+    if ConfirmedOpenId.objects.filter(openid=claimed_id).exists():
+        return # already confirmed (by this user or someone else)
+
+    # confirm the claimed ID for the logged in user
+    confirmed = ConfirmedOpenId()
+    confirmed.user = user
+    confirmed.ip_address = remote_address
+    confirmed.openid = claimed_id
+    confirmed.save()
+
 @csrf_protect
 @login_required
 def profile(request):
     u = request.user
+    _confirm_claimed_openid(u, request.META['REMOTE_ADDR'])
+
     confirmed_emails = u.confirmed_emails.order_by('email')
     unconfirmed_emails = u.unconfirmed_emails.order_by('email')
     confirmed_openids = u.confirmed_openids.order_by('openid')
