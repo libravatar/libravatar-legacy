@@ -311,6 +311,13 @@ def confirm_openid(request, openid_id):
 
     unconfirmed.delete()
 
+    # Also allow user to login using this OpenID
+    user_openid = UserOpenID()
+    user_openid.user = request.user
+    user_openid.claimed_id = confirmed.openid
+    user_openid.display_id = confirmed.openid
+    user_openid.save()
+
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @csrf_protect
