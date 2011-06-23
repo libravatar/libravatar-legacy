@@ -132,6 +132,7 @@ class PasswordResetForm(forms.Form):
         except ConfirmedEmail.DoesNotExist:
             return False
 
+        # TODO: if a password isn't set, then give the OpenID URL that's needed
         email_address = self.cleaned_data['email']
         key = password_reset_key(email.user)
 

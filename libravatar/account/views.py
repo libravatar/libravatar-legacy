@@ -560,8 +560,12 @@ def password_reset_confirm(request):
                                   context_instance=RequestContext(request))
 
     user = email.user
-    expected_key = password_reset_key(user)
+    if u'!' == user.password:
+        # no password is set, cannot reset it
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
 
+    expected_key = password_reset_key(user)
     if verification_key != expected_key:
         return render_to_response('account/reset_invalidparams.html',
                                   context_instance=RequestContext(request))
