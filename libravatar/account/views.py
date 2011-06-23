@@ -499,7 +499,7 @@ def password_reset_confirm(request):
     email_address = None
 
     if 'verification_key' in request.GET and request.GET['verification_key']:
-        verification_key = request.GET['verification_key']
+        verification_key = request.GET['verification_key'].replace(' ', '')
 
     if 'email_address' in request.GET and request.GET['email_address']:
         email_address = request.GET['email_address']
