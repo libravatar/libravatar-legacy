@@ -223,10 +223,12 @@ def profile(request):
     list(unconfirmed_openids)
     list(photos)
 
+    has_password = request.user.password != u'!'
     return render_to_response('account/profile.html',
                               {'confirmed_emails' : confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
                                'confirmed_openids' : confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
-                               'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
+                               'photos': photos, 'max_photos': max_photos, 'max_emails': max_emails,
+                               'has_password': has_password},
                               context_instance=RequestContext(request))
 
 def openid_logging(message, level=0):
@@ -640,3 +642,22 @@ def export(request):
                                   context_instance=RequestContext(request))
 
     return render_to_response('account/export.html', context_instance=RequestContext(request))
+
+@csrf_protect
+@login_required
+def password_set(request):
+    has_password = request.user.password != u'!'
+    if has_password or settings.DISABLE_SIGNUP:
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+    if request.method == 'POST':
+        form = SetPasswordForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return render_to_response('account/password_change_done.html',
+                                      context_instance=RequestContext(request))
+    else:
+        form = SetPasswordForm(request.user)
+
+    return render_to_response('account/password_change.html', {'form' : form},
+                              context_instance=RequestContext(request))

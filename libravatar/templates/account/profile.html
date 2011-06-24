@@ -66,7 +66,11 @@
 
 <h2>{% trans 'Account settings' %}</h2>
 
+{% if has_password %}
 <p><a href="{% url django.contrib.auth.views.password_change %}">{% trans 'Change your password' %}</a></p>
+{% else %}
+<p><a href="{% url libravatar.account.views.password_set %}">{% trans 'Set a password' %}</a></p>
+{% endif %}
 
 <p><a href="{% url libravatar.account.views.export %}">{% trans 'Export your data' %}</a></p>
 

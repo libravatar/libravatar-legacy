@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     ('logout/$', 'django.contrib.auth.views.logout', {'next_page' : '/'}),
     ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
     ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
+    ('password_set/$', 'libravatar.account.views.password_set'),
 
     ('add_email/$', 'libravatar.account.views.add_email'),
     ('add_openid/$', 'libravatar.account.views.add_openid'),
