@@ -13,6 +13,9 @@
 <p>{% blocktrans %}Don't have an account yet? <a href="{{ signup_url }}">Sign up now!</a>{% endblocktrans %}</p>
 {% endif %}
 
+{% url django_openid_auth.views.login_begin as login_url %}
+<p>{% trans "You'd rather use your <b>OpenID</b>?" %} {% blocktrans %}That's fine, just use <a href="{{ login_url }}">this login form</a> instead.{% endblocktrans %}</p>
+
 {% if form.errors %}
 <p class="error">{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}

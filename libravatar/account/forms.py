@@ -18,6 +18,7 @@
 import urllib
 from urlparse import urlsplit, urlunsplit
 
+from django_openid_auth.models import UserOpenID
 from django import forms
 from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
@@ -133,20 +134,25 @@ class PasswordResetForm(forms.Form):
             return False
 
         email_address = self.cleaned_data['email']
-        key = password_reset_key(email.user)
-
-        link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')
-        link += '?verification_key=%s&email_address=%s' % (key, urllib.quote_plus(email_address))
-
         email_subject = _('Password reset for %(site_name)s') % {'site_name': settings.SITE_NAME}
-        email_body = render_to_string('account/password_reset.txt', {'reset_link' : link, 'site_name' : settings.SITE_NAME})
+
+        has_password = email.user.password != u'!'
+        if has_password:
+            key = password_reset_key(email.user)
+
+            link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')
+            link += '?verification_key=%s&email_address=%s' % (key, urllib.quote_plus(email_address))
+
+            email_body = render_to_string('account/password_reset.txt', {'reset_link' : link, 'site_name' : settings.SITE_NAME})
+        else:
+            openids = UserOpenID.objects.filter(user=email.user)
+            email_body = render_to_string('account/password_reminder.txt', {'openids' : openids, 'site_name' : settings.SITE_NAME})
 
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [email_address])
-
         return True
 
 class DeleteAccountForm(forms.Form):
-    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput(render_value=False))
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
@@ -154,8 +160,9 @@ class DeleteAccountForm(forms.Form):
 
     def clean_password(self):
         data = self.cleaned_data['password']
+        has_password = self.user.password != u'!'
 
-        if not self.user.check_password(data):
+        if has_password and not self.user.check_password(data):
             raise forms.ValidationError(_('Invalid password'))
 
         return data

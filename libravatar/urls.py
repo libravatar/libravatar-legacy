@@ -1,4 +1,4 @@
-# Copyright (C) 2010  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 # 
@@ -20,6 +20,10 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('',
     (r'^account/', include('libravatar.account.urls')),
+
+    (r'^openid/login/$', 'django_openid_auth.views.login_begin'),
+    (r'^openid/complete/$', 'django_openid_auth.views.login_complete'),
+
     (r'^tools/', include('libravatar.tools.urls')),
 
     (r'^$', 'libravatar.public.views.home'),

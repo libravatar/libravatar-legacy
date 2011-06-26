@@ -8,6 +8,8 @@
 
 <h1>{% trans 'Add a new OpenID' %}</h1>
 
+<p>{% trans 'Once you have confirmed this OpenID URL, you will be able to log into your account using that OpenID URL.' %}</p>
+
 <form action="{% url libravatar.account.views.add_openid %}" name="addopenid" method="post">{% csrf_token %}
 
 {{form.openid.errors}}

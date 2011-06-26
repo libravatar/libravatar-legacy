@@ -25,6 +25,7 @@ from openid import oidutil
 from openid.consumer import consumer
 from StringIO import StringIO
 
+from django_openid_auth.models import UserOpenID
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -182,10 +183,31 @@ def successfully_authenticated(request):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+def _confirm_claimed_openid(user, remote_address):
+    if user.password != u'!':
+        return # not using OpenID auth
+
+    openids = UserOpenID.objects.filter(user=user)
+    if openids.count() != 1:
+        return # only the first OpenID needs to be confirmed this way
+
+    claimed_id = openids[0].claimed_id
+    if ConfirmedOpenId.objects.filter(openid=claimed_id).exists():
+        return # already confirmed (by this user or someone else)
+
+    # confirm the claimed ID for the logged in user
+    confirmed = ConfirmedOpenId()
+    confirmed.user = user
+    confirmed.ip_address = remote_address
+    confirmed.openid = claimed_id
+    confirmed.save()
+
 @csrf_protect
 @login_required
 def profile(request):
     u = request.user
+    _confirm_claimed_openid(u, request.META['REMOTE_ADDR'])
+
     confirmed_emails = u.confirmed_emails.order_by('email')
     unconfirmed_emails = u.unconfirmed_emails.order_by('email')
     confirmed_openids = u.confirmed_openids.order_by('openid')
@@ -201,10 +223,12 @@ def profile(request):
     list(unconfirmed_openids)
     list(photos)
 
+    has_password = request.user.password != u'!'
     return render_to_response('account/profile.html',
                               {'confirmed_emails' : confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
                                'confirmed_openids' : confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
-                               'photos' : photos, 'max_photos' : max_photos, 'max_emails' : max_emails},
+                               'photos': photos, 'max_photos': max_photos, 'max_emails': max_emails,
+                               'has_password': has_password},
                               context_instance=RequestContext(request))
 
 def openid_logging(message, level=0):
@@ -290,6 +314,14 @@ def confirm_openid(request, openid_id):
 
     unconfirmed.delete()
 
+    # Also allow user to login using this OpenID (if not taken already)
+    if not UserOpenID.objects.filter(claimed_id=confirmed.openid).exists():
+        user_openid = UserOpenID()
+        user_openid.user = request.user
+        user_openid.claimed_id = confirmed.openid
+        user_openid.display_id = confirmed.openid
+        user_openid.save()
+
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 @csrf_protect
@@ -302,7 +334,14 @@ def remove_confirmed_openid(request, openid_id):
             return render_to_response('account/openid_invalid.html',
                                       context_instance=RequestContext(request))
 
-        openid.delete()
+        has_password = request.user.password != u'!'
+        if has_password or UserOpenID.objects.filter(user=request.user).count() > 1:
+            # remove it from the auth table as well
+            UserOpenID.objects.filter(claimed_id=openid.openid).delete()
+            openid.delete()
+        else:
+            return render_to_response('account/openid_cannotdelete.html',
+                                      context_instance=RequestContext(request))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -523,8 +562,12 @@ def password_reset_confirm(request):
                                   context_instance=RequestContext(request))
 
     user = email.user
-    expected_key = password_reset_key(user)
+    if u'!' == user.password:
+        # no password is set, cannot reset it
+        return render_to_response('account/reset_invalidparams.html',
+                                  context_instance=RequestContext(request))
 
+    expected_key = password_reset_key(user)
     if verification_key != expected_key:
         return render_to_response('account/reset_invalidparams.html',
                                   context_instance=RequestContext(request))
@@ -559,7 +602,8 @@ def delete(request):
     else:
         form = DeleteAccountForm(request.user)
 
-    return render_to_response('account/delete.html', {'form' : form},
+    has_password = request.user.password != u'!'
+    return render_to_response('account/delete.html', {'form' : form, 'has_password': has_password},
                               context_instance=RequestContext(request))
 
 def _perform_export(user, do_delete):
@@ -598,3 +642,22 @@ def export(request):
                                   context_instance=RequestContext(request))
 
     return render_to_response('account/export.html', context_instance=RequestContext(request))
+
+@csrf_protect
+@login_required
+def password_set(request):
+    has_password = request.user.password != u'!'
+    if has_password or settings.DISABLE_SIGNUP:
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+    if request.method == 'POST':
+        form = SetPasswordForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            return render_to_response('account/password_change_done.html',
+                                      context_instance=RequestContext(request))
+    else:
+        form = SetPasswordForm(request.user)
+
+    return render_to_response('account/password_change.html', {'form' : form},
+                              context_instance=RequestContext(request))
