@@ -1,3 +1,19 @@
+libravatar (20110626.1) unstable; urgency=low
+
+  * OpenID authentication
+  * Move password reset link after buttons on login form
+  * Tolerate extra spaces in password reset keys
+  * Allow intermediate proxies to cache JS and CSS files
+
+  * Convert sponsor logos to CSS sprites
+  * Convert nobody images and main logo to PNG
+  * Convert AGPL logo to inline PNG in the CSS file
+  * Convert Flattr JS to static PNG in the CSS file
+
+  * Update French translation
+
+ -- Francois Marier <francois@debian.org>  Sun, 26 Jun 2011 21:57:58 +1200
+
 libravatar (20110619.2) unstable; urgency=low
 
   * Drop some dependencies for libravatar and -master
