@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Libravatar OpenID Login' %}{% endblock title %}
+
+{% block body-onload %}document.forms.login.openid_identifier.focus(){% endblock body-onload %}
+{% block content %}
+
+<h1>{% trans 'OpenID Login' %}</h1>
+
+{% if openid_form.errors %}
+<p class="error">{% trans "Please correct errors below:" %}<br>
+{% if openid_form.openid_identifier.errors %}
+{{ openid_form.openid_identifier.errors|join:", " }}
+{% endif %}
+{% if openid_form.next.errors %}
+{{ openid_form.next.errors|join:", " }}
+{% endif %}
+</p>
+{% endif %}
+
+<form name="login" action="{{ action }}" method="post">{% csrf_token %}
+
+{% url django.contrib.auth.views.login as login_url %}
+<p>{% trans "You'd rather use a regular account?" %} {% blocktrans %}That's fine, just use <a href="{{ login_url }}">this login form</a> instead.{% endblocktrans %}</p>
+
+<p><label for="id_openid_identifier">{% trans 'OpenID' %}:</label>&nbsp;{{ form.openid_identifier }}</p>
+
+<p><input type="submit" value="{% trans 'Login' %}" />
+<input type="hidden" name="next" value="{{ next }}" />
+&nbsp;<a href="{% url libravatar.public.views.home %}">{% trans 'Cancel' %}</a></p>
+
+</form>
+
+{% endblock content %}
