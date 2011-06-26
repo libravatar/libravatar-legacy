@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-12 22:41+1200\n"
+"POT-Creation-Date: 2011-06-26 20:48+1200\n"
 "PO-Revision-Date: 2011-05-30 23:58+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
@@ -19,62 +19,62 @@ msgstr ""
 "X-Generator: Launchpad (build 12915)\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: settings.py:49
+#: settings.py:55
 msgid "German"
 msgstr "Allemand"
 
-#: settings.py:50
+#: settings.py:56
 msgid "English"
 msgstr "Anglais"
 
-#: settings.py:51
+#: settings.py:57
 msgid "French"
 msgstr "Français"
 
-#: account/forms.py:33 account/forms.py:124 tools/forms.py:24
+#: account/forms.py:34 account/forms.py:125 tools/forms.py:24
 msgid "Email"
 msgstr "Courriel"
 
-#: account/forms.py:43
+#: account/forms.py:44
 #, python-format
 msgid "Valid email addresses end with @%(domain)s"
 msgstr "Les adresses valides se terminent par @%(domain)s"
 
-#: account/forms.py:68
+#: account/forms.py:69
 #, python-format
 msgid "Confirm your email address on %(site_name)s"
 msgstr "Confirmation d'adresse pour %(site_name)s"
 
-#: account/forms.py:75 tools/forms.py:25
+#: account/forms.py:76 templates/openid/login.html:27 tools/forms.py:25
 msgid "OpenID"
 msgstr "OpenID"
 
-#: account/forms.py:89
+#: account/forms.py:90
 msgid "Valid OpenID URLs are on this domain: "
 msgstr "Les OpenIDs valides se trouvent dans le domaine suivant : "
 
-#: account/forms.py:110
+#: account/forms.py:111
 msgid "Photo"
 msgstr "Photo"
 
-#: account/forms.py:111
+#: account/forms.py:112
 msgid "suitable for all ages (i.e. no offensive content)"
 msgstr "appropriée pour tout âge (pas de contenu offençant)"
 
-#: account/forms.py:112
+#: account/forms.py:113
 msgid "can be freely copied"
 msgstr "peut être librement copiée"
 
-#: account/forms.py:141
+#: account/forms.py:137
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "Réinitialisation du mot de passe pour %(site_name)s"
 
-#: account/forms.py:149
+#: account/forms.py:155
 msgid "Password"
 msgstr "Mot de passe"
 
-#: account/forms.py:159
+#: account/forms.py:166
 msgid "Invalid password"
 msgstr "Mot de passe invalide"
 
@@ -156,16 +156,15 @@ msgid "Logout"
 msgstr "Déconnexion"
 
 #: templates/base.html:27 templates/account/login.html:9
-#: templates/account/login.html.py:38
+#: templates/account/login.html.py:36 templates/openid/login.html:29
 msgid "Login"
 msgstr "Connexion"
 
 #: templates/base.html:39
-#, python-format
+#, fuzzy, python-format
 msgid ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img src=\"/img/"
-"agpl_button.png\" width=\"107\" height=\"20\" id=\"agpl-button\" alt=\"GNU "
-"Affero General Public License\" title=\"GNU Affero General Public License"
+"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
+"height=\"20\" id=\"agpl-button\" title=\"GNU Affero General Public License"
 "\"></a> <b>%(site_name)s</b> is an avatar service running the <a href="
 "\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
@@ -199,17 +198,17 @@ msgstr "Retourner sur votre profil"
 msgid "Add a new email address"
 msgstr "Ajouter une nouvelle adresse de courriel"
 
-#: templates/account/add_email.html:16 templates/account/add_openid.html:16
+#: templates/account/add_email.html:16 templates/account/add_openid.html:18
 msgid "Add"
 msgstr "Ajouter"
 
-#: templates/account/add_email.html:17 templates/account/add_openid.html:17
-#: templates/account/crop_photo.html:19 templates/account/delete.html:23
+#: templates/account/add_email.html:17 templates/account/add_openid.html:19
+#: templates/account/crop_photo.html:19 templates/account/delete.html:25
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
-#: templates/account/login.html:40 templates/account/new.html:44
+#: templates/account/login.html:38 templates/account/new.html:44
 #: templates/account/password_change.html:48
 #: templates/account/password_reset.html:17
-#: templates/account/upload_photo.html:21
+#: templates/account/upload_photo.html:24 templates/openid/login.html:31
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -217,6 +216,12 @@ msgstr "Annuler"
 #: templates/account/profile.html:51
 msgid "Add a new OpenID"
 msgstr "Ajouter un nouvel OpenID"
+
+#: templates/account/add_openid.html:11
+msgid ""
+"Once you have confirmed this OpenID URL, you will be able to log into your "
+"account using that OpenID URL."
+msgstr ""
 
 #: templates/account/assign_photo_email.html:4
 #: templates/account/assign_photo_email.html:8
@@ -285,12 +290,12 @@ msgstr "Effacer votre compte"
 msgid "There is no way to undo this operation."
 msgstr "Il n'est pas possible d'annuler cette opération."
 
-#: templates/account/delete.html:13
+#: templates/account/delete.html:16
 msgid "Please confirm your identity by entering your current password."
 msgstr ""
 "Veuillez confirmer votre identité en entrant votre mot de passe courant."
 
-#: templates/account/delete.html:20
+#: templates/account/delete.html:22
 msgid ""
 "Are you sure you want to <strong>permanently delete</strong> your Libravatar "
 "account?"
@@ -298,7 +303,7 @@ msgstr ""
 "Désirez-vous <strong>effacer de façon permanente</strong> votre compte "
 "Libravatar ?"
 
-#: templates/account/delete.html:22
+#: templates/account/delete.html:24
 msgid "Yes, delete all of my stuff"
 msgstr "Oui, effacer toutes mes données"
 
@@ -435,7 +440,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Exporter vos données Libravatar"
 
-#: templates/account/export.html:8 templates/account/profile.html:71
+#: templates/account/export.html:8 templates/account/profile.html:75
 msgid "Export your data"
 msgstr "Exporter vos données"
 
@@ -479,12 +484,22 @@ msgstr ""
 "maintenant</a>"
 
 #: templates/account/login.html:17
+msgid "You'd rather use your <b>OpenID</b>?"
+msgstr ""
+
+#: templates/account/login.html:17 templates/openid/login.html:25
+#, python-format
+msgid ""
+"That's fine, just use <a href=\"%(login_url)s\">this login form</a> instead."
+msgstr ""
+
+#: templates/account/login.html:20
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Votre nom d'utilisateur ou votre mot de passe est incorrect. Veuillez "
 "réessayer à nouveau."
 
-#: templates/account/login.html:35
+#: templates/account/login.html:44
 #, python-format
 msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
@@ -513,6 +528,15 @@ msgstr "Créer un nouveau compte"
 #: templates/account/new.html:43
 msgid "Create account"
 msgstr "Créer le compte"
+
+#: templates/account/openid_cannotdelete.html:8
+#, python-format
+msgid ""
+"You cannot delete your only OpenID since it's the only way to access this "
+"account. Either <a href=\"%(add_openid_url)s\">add another OpenID</a> or <a "
+"href=\"%(delete_url)s\">permanently delete your account</a> if you really "
+"want to do this."
+msgstr ""
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
@@ -566,6 +590,28 @@ msgstr "Votre mot de passe a été modifié."
 msgid "Back to the login page"
 msgstr "Retour à la page de connexion"
 
+#: templates/account/password_reminder.txt:1
+#: templates/account/password_reset.txt:1
+#, fuzzy, python-format
+msgid ""
+"Someone, probably you, requested a password reset for your\n"
+"%(site_name)s account."
+msgstr ""
+"Vous avez fait une demande de réinitialisation du mot de passe de votre "
+"compte."
+
+#: templates/account/password_reminder.txt:4
+msgid ""
+"There is however, no password associated with this account.\n"
+"Instead, you must use one of the following OpenIDs to login:"
+msgstr ""
+
+#: templates/account/password_reminder.txt:9
+#: templates/account/password_reset.txt:10
+#, python-format
+msgid "- The %(site_name)s accounts team"
+msgstr ""
+
 #: templates/account/password_reset.html:4
 msgid "Reset your Libravatar password"
 msgstr "Réinitialisez votre mot de passe Libravatar"
@@ -578,31 +624,13 @@ msgstr "Réinitialisation du mot de passe"
 msgid "Reset my password"
 msgstr "Réinitialiser le mot de passe"
 
-#: templates/account/password_reset.txt:1
-#, python-format
-msgid ""
-"Someone, probably you, requested a password reset for your\n"
-"%(site_name)s account.\n"
-"\n"
-"If that's what you want, please go to the following page:\n"
-"\n"
-"  %(reset_link)s\n"
-"\n"
-"Otherwise, please accept our apologies and ignore this message.\n"
-"\n"
-"- The %(site_name)s accounts team\n"
+#: templates/account/password_reset.txt:4
+msgid "If that's what you want, please go to the following page:"
 msgstr ""
-"Quelqu'un, probablement vous, a demandé une réinitialisation du mot de "
-"passe\n"
-"de ce compte %(site_name)s.\n"
-"\n"
-"Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :\n"
-"\n"
-"  %(reset_link)s\n"
-"\n"
-"Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
-"\n"
-"- L'équipe administrative de %(site_name)s\n"
+
+#: templates/account/password_reset.txt:8
+msgid "Otherwise, please accept our apologies and ignore this message."
+msgstr ""
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
@@ -716,7 +744,7 @@ msgid "Uploaded on %(datetime)s"
 msgstr "Téléversée le %(datetime)s"
 
 #: templates/account/profile.html:64 templates/account/upload_photo.html:4
-#: templates/account/upload_photo.html:8
+#: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "Téléverser une photo"
 
@@ -724,11 +752,16 @@ msgstr "Téléverser une photo"
 msgid "Account settings"
 msgstr "Paramètres du compte"
 
-#: templates/account/profile.html:69
+#: templates/account/profile.html:70
 msgid "Change your password"
 msgstr "Changer le mot de passe"
 
-#: templates/account/profile.html:73
+#: templates/account/profile.html:72
+#, fuzzy
+msgid "Set a password"
+msgstr "Réinitialisation du mot de passe"
+
+#: templates/account/profile.html:77
 msgid "Permanently delete your account"
 msgstr "Effacer votre compte de façons permanente"
 
@@ -736,14 +769,37 @@ msgstr "Effacer votre compte de façons permanente"
 msgid "Invalid verification key or email address."
 msgstr "Clef de vérification ou adresse de courriel invalide."
 
-#: templates/account/upload_photo.html:13
+#: templates/account/upload_photo.html:16
 #, python-format
 msgid "Maximum file size of %(max_size)s."
 msgstr "Limite de taille de %(max_size)s."
 
-#: templates/account/upload_photo.html:20
+#: templates/account/upload_photo.html:23
 msgid "Upload"
 msgstr "Envoyer"
+
+#: templates/openid/failure.html:5
+#, fuzzy
+msgid "OpenID error:"
+msgstr "OpenID"
+
+#: templates/openid/login.html:4
+#, fuzzy
+msgid "Libravatar OpenID Login"
+msgstr "Connexion à Libravatar"
+
+#: templates/openid/login.html:9
+#, fuzzy
+msgid "OpenID Login"
+msgstr "OpenID"
+
+#: templates/openid/login.html:12
+msgid "Please correct errors below:"
+msgstr ""
+
+#: templates/openid/login.html:25
+msgid "You'd rather use a regular account?"
+msgstr ""
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -959,3 +1015,27 @@ msgstr ""
 #: tools/forms.py:38
 msgid "Domain"
 msgstr "Domaine"
+
+#~ msgid ""
+#~ "Someone, probably you, requested a password reset for your\n"
+#~ "%(site_name)s account.\n"
+#~ "\n"
+#~ "If that's what you want, please go to the following page:\n"
+#~ "\n"
+#~ "  %(reset_link)s\n"
+#~ "\n"
+#~ "Otherwise, please accept our apologies and ignore this message.\n"
+#~ "\n"
+#~ "- The %(site_name)s accounts team\n"
+#~ msgstr ""
+#~ "Quelqu'un, probablement vous, a demandé une réinitialisation du mot de "
+#~ "passe\n"
+#~ "de ce compte %(site_name)s.\n"
+#~ "\n"
+#~ "Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :\n"
+#~ "\n"
+#~ "  %(reset_link)s\n"
+#~ "\n"
+#~ "Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
+#~ "\n"
+#~ "- L'équipe administrative de %(site_name)s\n"
