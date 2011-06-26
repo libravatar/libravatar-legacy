@@ -7,7 +7,7 @@ COMPRESSED_CSS = ${CSS:=.gz}
 COMPRESSED_JS = ${JS:=.gz}
 CLEANUP = 
 
-all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) translations
+all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) mofiles
 
 %.css: %
 	yui-compressor -o $@ $<
@@ -19,7 +19,10 @@ all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) translations
 %.gz: %.js
 	gzip --best < $< > $@
 
-translations:
+pofiles:
+	cd libravatar && for l in en de fr ; do django-admin makemessages -l $$l -e html,txt ; done
+
+mofiles:
 	cd libravatar && django-admin compilemessages
 
 clean:
