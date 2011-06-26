@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-06-26 20:48+1200\n"
-"PO-Revision-Date: 2011-05-30 23:58+1200\n"
+"PO-Revision-Date: 2011-06-26 21:00+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
 "Language: fr\n"
@@ -161,7 +161,7 @@ msgid "Login"
 msgstr "Connexion"
 
 #: templates/base.html:39
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
 "height=\"20\" id=\"agpl-button\" title=\"GNU Affero General Public License"
@@ -169,9 +169,8 @@ msgid ""
 "\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img src=\"/img/"
-"agpl_button.png\" width=\"107\" height=\"20\" id=\"agpl-button\" alt=\"GNU "
-"Affero General Public License\" title=\"GNU Affero General Public License"
+"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
+"height=\"20\" id=\"agpl-button\" title=\"GNU Affero General Public License"
 "\"></a> <b>%(site_name)s</b> est un service d'hébergement d'avatars roulant "
 "le logiciel <a href=\"https://www.launchpad.net/libravatar\">Libravatar</a>, "
 "version %(libravatar_version)s"
@@ -222,6 +221,8 @@ msgid ""
 "Once you have confirmed this OpenID URL, you will be able to log into your "
 "account using that OpenID URL."
 msgstr ""
+"Une fois cet identifiant OpenID confirmé, vous serez en mesure de l'utiliser "
+"lors de votre connexion."
 
 #: templates/account/assign_photo_email.html:4
 #: templates/account/assign_photo_email.html:8
@@ -485,13 +486,15 @@ msgstr ""
 
 #: templates/account/login.html:17
 msgid "You'd rather use your <b>OpenID</b>?"
-msgstr ""
+msgstr "Préférez-vous utiliser votre <b>OpenID</b> ?"
 
 #: templates/account/login.html:17 templates/openid/login.html:25
 #, python-format
 msgid ""
 "That's fine, just use <a href=\"%(login_url)s\">this login form</a> instead."
 msgstr ""
+"Dans ce cas, utilisez <a href=\"%(login_url)s\">ce formulaire de connexion</"
+"a>."
 
 #: templates/account/login.html:20
 msgid "Your username and password didn't match. Please try again."
@@ -537,6 +540,10 @@ msgid ""
 "href=\"%(delete_url)s\">permanently delete your account</a> if you really "
 "want to do this."
 msgstr ""
+"Vous ne pouvez pas effacer cet identifiant OpenID puisque c'est la seule "
+"façon d'accéder à ce compte. <a href=\"%(add_openid_url)s\">Ajoutez un "
+"nouvel OpenID</a> ou <a href=\"%(delete_url)s\">effacez votre compte</a> si "
+"vous désirez vraiment faire ceci."
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
@@ -592,25 +599,27 @@ msgstr "Retour à la page de connexion"
 
 #: templates/account/password_reminder.txt:1
 #: templates/account/password_reset.txt:1
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Someone, probably you, requested a password reset for your\n"
 "%(site_name)s account."
 msgstr ""
 "Vous avez fait une demande de réinitialisation du mot de passe de votre "
-"compte."
+"compte %(site_name)s."
 
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
 "Instead, you must use one of the following OpenIDs to login:"
 msgstr ""
+"Il n'y a cependant pas de mot de passe associé à ce compte. Vous devez "
+"utiliser un des identifiant OpenID suivants pour vous connecter :"
 
 #: templates/account/password_reminder.txt:9
 #: templates/account/password_reset.txt:10
 #, python-format
 msgid "- The %(site_name)s accounts team"
-msgstr ""
+msgstr "- L'équipe administrative de %(site_name)s"
 
 #: templates/account/password_reset.html:4
 msgid "Reset your Libravatar password"
@@ -626,11 +635,11 @@ msgstr "Réinitialiser le mot de passe"
 
 #: templates/account/password_reset.txt:4
 msgid "If that's what you want, please go to the following page:"
-msgstr ""
+msgstr "Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :"
 
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
-msgstr ""
+msgstr "Sinon, veuillez accepter nos excuses et ignorez ce message."
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
@@ -757,9 +766,8 @@ msgid "Change your password"
 msgstr "Changer le mot de passe"
 
 #: templates/account/profile.html:72
-#, fuzzy
 msgid "Set a password"
-msgstr "Réinitialisation du mot de passe"
+msgstr "Ajout d'un mot de passe"
 
 #: templates/account/profile.html:77
 msgid "Permanently delete your account"
@@ -779,27 +787,24 @@ msgid "Upload"
 msgstr "Envoyer"
 
 #: templates/openid/failure.html:5
-#, fuzzy
 msgid "OpenID error:"
-msgstr "OpenID"
+msgstr "Erreur OpenID :"
 
 #: templates/openid/login.html:4
-#, fuzzy
 msgid "Libravatar OpenID Login"
-msgstr "Connexion à Libravatar"
+msgstr "Connexion OpenID à Libravatar"
 
 #: templates/openid/login.html:9
-#, fuzzy
 msgid "OpenID Login"
-msgstr "OpenID"
+msgstr "Connexion OpenID"
 
 #: templates/openid/login.html:12
 msgid "Please correct errors below:"
-msgstr ""
+msgstr "Veuillez corriger les erreurs suivantes :"
 
 #: templates/openid/login.html:25
 msgid "You'd rather use a regular account?"
-msgstr ""
+msgstr "Préférez-vous utiliser un compte normal ?"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -1015,27 +1020,3 @@ msgstr ""
 #: tools/forms.py:38
 msgid "Domain"
 msgstr "Domaine"
-
-#~ msgid ""
-#~ "Someone, probably you, requested a password reset for your\n"
-#~ "%(site_name)s account.\n"
-#~ "\n"
-#~ "If that's what you want, please go to the following page:\n"
-#~ "\n"
-#~ "  %(reset_link)s\n"
-#~ "\n"
-#~ "Otherwise, please accept our apologies and ignore this message.\n"
-#~ "\n"
-#~ "- The %(site_name)s accounts team\n"
-#~ msgstr ""
-#~ "Quelqu'un, probablement vous, a demandé une réinitialisation du mot de "
-#~ "passe\n"
-#~ "de ce compte %(site_name)s.\n"
-#~ "\n"
-#~ "Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :\n"
-#~ "\n"
-#~ "  %(reset_link)s\n"
-#~ "\n"
-#~ "Sinon, veuillez accepter nos excuses et ignorez ce message.\n"
-#~ "\n"
-#~ "- L'équipe administrative de %(site_name)s\n"
