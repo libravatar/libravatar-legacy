@@ -28,6 +28,22 @@ print '<img src="', avatar_url, '">'
 print '<img src="', missing_avatar, '">'
 print "<br><br>\n"
 
+avatar_url = Libravatar.new(:email => "francois@catalyst.net.nz")
+missing_avatar = Libravatar.new(:email => "francois+1@catalyst.net.nz")
+
+print 'Federated HTTP images:<br>'
+print '<img src="', avatar_url, '">'
+print '<img src="', missing_avatar, '">'
+print "<br><br>\n"
+
+avatar_url = Libravatar.new(:email => "francois@catalyst.net.nz", :https => true)
+missing_avatar = Libravatar.new(:email => "francois+1@catalyst.net.nz", :https => true)
+
+print 'Federated HTTPS images:<br>'
+print '<img src="', avatar_url, '">'
+print '<img src="', missing_avatar, '">'
+print "<br><br>\n"
+
 avatar_url = Libravatar.new(:openid => 'https://launchpad.net/~fmarier')
 missing_avatar = Libravatar.new(:openid => 'https://launchpad.net/~notfmarier')
 
