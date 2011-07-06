@@ -14,3 +14,4 @@ Clone the module under ~/devel/remote/pylibravatar:
 Then put the test CGI under /var/www and create these symlinks:
 
   ln -s ~/devel/remote/pylibravatar/libravatar.py /var/www/
+  touch /var/www/__init__.py

@@ -7,6 +7,11 @@
 # e.g.
 #  ln -s ~/devel/remote/pylibravatar/libravatar.py /var/www/
 
+import os, sys
+cmd_folder = os.path.dirname(os.path.abspath(__file__))
+if cmd_folder not in sys.path:
+    sys.path.insert(0, cmd_folder)
+
 from libravatar import libravatar_url
 
 print 'Content-type: text/html\n\n'
