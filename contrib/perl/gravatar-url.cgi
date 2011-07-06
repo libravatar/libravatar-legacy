@@ -9,6 +9,7 @@
 #  ln -s ~/devel/remote/gravatar_url/lib/Libravatar /var/www/
 
 print "Content-type: text/html\n\n";
+print "<h1>Libravatar::URL</h1>";
 
 use Libravatar::URL;
 

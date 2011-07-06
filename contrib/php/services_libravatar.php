@@ -13,6 +13,8 @@ ini_set('display_startup_errors', true);
 ini_set('error_reporting', E_ALL);
 ini_set('html_errors', true);
 
+print '<h1>Services_Libravatar</h1>';
+
 require_once 'Services/Libravatar.php';
 
 $libravatar = new Services_Libravatar();

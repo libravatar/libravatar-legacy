@@ -9,6 +9,7 @@
 
 puts "Content-Type: text/html"
 puts
+puts "<h1>Libravatar Gem</h1>"
 
 require 'libravatar'
 

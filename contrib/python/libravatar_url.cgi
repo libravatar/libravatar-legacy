@@ -15,6 +15,7 @@ if cmd_folder not in sys.path:
 from libravatar import libravatar_url
 
 print 'Content-type: text/html\n\n'
+print "<h1>pyLibravatar</h1>";
 
 avatar_url = libravatar_url(email = 'fmarier@gmail.com')
 missing_avatar = libravatar_url(email = 'fmarier+1@gmail.com')
