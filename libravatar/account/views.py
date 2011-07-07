@@ -312,7 +312,7 @@ def confirm_openid(request, openid_id):
                                   context_instance=RequestContext(request))
 
     try:
-        unconfirmed = UnconfirmedOpenId.objects.get(id=openid_id)
+        unconfirmed = UnconfirmedOpenId.objects.get(id=openid_id, user=request.user)
     except UnconfirmedOpenId.DoesNotExist:
         return render_to_response('account/openid_confirmationfailed.html',
                                   {'message': 'ID %s not found in the database.' % openid_id},
