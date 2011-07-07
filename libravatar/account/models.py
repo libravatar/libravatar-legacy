@@ -271,7 +271,7 @@ class UnconfirmedEmail(models.Model):
 
 class UnconfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_openids')
-    openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
+    openid = models.URLField(unique=False, verify_exists=False, max_length=MAX_LENGTH_URL)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
     class Meta:

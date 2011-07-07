@@ -96,14 +96,13 @@ class AddOpenIdForm(forms.Form):
         if ConfirmedOpenId.objects.filter(openid=self.cleaned_data['openid']).exists():
             return False
 
+        if UnconfirmedOpenId.objects.filter(openid=self.cleaned_data['openid'], user=user).exists():
+            return False
+
         unconfirmed = UnconfirmedOpenId()
         unconfirmed.openid = self.cleaned_data['openid']
         unconfirmed.user = user
-        try:
-            unconfirmed.save()
-        except:
-            # probably a duplicate URL (e.g. http://localhost and http://localhost/)
-            return False
+        unconfirmed.save()
 
         return unconfirmed.id
 
