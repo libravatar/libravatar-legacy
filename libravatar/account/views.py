@@ -247,31 +247,44 @@ def add_openid(request):
                 return render_to_response('account/openid_notadded.html',
                                           context_instance=RequestContext(request))
 
-            user_url = form.cleaned_data['openid']
-            session = {'id': request.session.session_key}
-
-            oidutil.log = openid_logging
-            openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
-
-            try:
-                auth_request = openid_consumer.begin(user_url)
-            except consumer.DiscoveryFailure, exception:
-                return render_to_response('account/openid_discoveryfailure.html', {'message': exception},
-                                          context_instance=RequestContext(request))
-
-            if auth_request is None:
-                return render_to_response('account/openid_discoveryfailure', {'message': '(unknown error)'},
-                                          context_instance=RequestContext(request))
-
-            realm = settings.SITE_URL
-            return_url = realm + reverse('libravatar.account.views.confirm_openid', args=[openid_id])
-
-            return HttpResponseRedirect(auth_request.redirectURL(realm, return_url))
+            return render_to_response('account/add_openid_redirection.html', {'unconfirmed_id': openid_id},
+                                      context_instance=RequestContext(request))
     else:
         form = AddOpenIdForm()
 
     return render_to_response('account/add_openid.html', {'form': form},
                               RequestContext(request))
+
+# CSRF check not possible (using a meta redirect)
+@login_required
+def redirect_openid(request, openid_id):
+    try:
+        unconfirmed = UnconfirmedOpenId.objects.get(id=openid_id, user=request.user)
+    except UnconfirmedOpenId.DoesNotExist:
+        return render_to_response('account/openid_confirmationfailed.html',
+                                  {'message': 'ID %s not found in the database.' % openid_id},
+                                  context_instance=RequestContext(request))
+
+    user_url = unconfirmed.openid
+    session = {'id': request.session.session_key}
+
+    oidutil.log = openid_logging
+    openid_consumer = consumer.Consumer(session, DjangoOpenIDStore())
+
+    try:
+        auth_request = openid_consumer.begin(user_url)
+    except consumer.DiscoveryFailure, exception:
+        return render_to_response('account/openid_discoveryfailure.html', {'message': exception},
+                                  context_instance=RequestContext(request))
+
+    if auth_request is None:
+        return render_to_response('account/openid_discoveryfailure', {'message': '(unknown error)'},
+                                  context_instance=RequestContext(request))
+
+    realm = settings.SITE_URL
+    return_url = realm + reverse('libravatar.account.views.confirm_openid', args=[openid_id])
+
+    return HttpResponseRedirect(auth_request.redirectURL(realm, return_url))
 
 # CSRF check not needed (OpenID return URL)
 @login_required

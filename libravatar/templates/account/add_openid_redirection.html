@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Redirecting to OpenID Provider...' %} - Libravatar{% endblock title %}
+
+{% block header %}<meta http-equiv="Refresh" content="1; url={% url libravatar.account.views.redirect_openid unconfirmed_id %}">{% endblock header %}
+
+{% block content %}
+
+<h1>{% trans 'Redirecting to OpenID Provider...' %}</h1>
+
+<p>{% trans 'Libravatar will attempt to verify your OpenID credentials. You may be asked by your OpenID provider to login and authorise this check.' %}
+
+{% url libravatar.account.views.profile as profile_url %}
+<p>{% blocktrans %}Depending on the provider, this operation <b>may take up to a minute</b>. If it takes longer than that, go <a href="{{ profile_url }}">back to your profile</a>, remove the OpenID URL and try adding it again.{% endblocktrans %}</p>
+
+<p><a href="{% url libravatar.account.views.redirect_openid unconfirmed_id %}">{% trans 'Verify credentials' %}</a></p>
+
+{% endblock content %}
