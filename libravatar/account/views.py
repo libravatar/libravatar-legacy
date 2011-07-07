@@ -228,7 +228,7 @@ def profile(request):
                               {'confirmed_emails' : confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
                                'confirmed_openids' : confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
                                'photos': photos, 'max_photos': max_photos, 'max_emails': max_emails,
-                               'has_password': has_password},
+                               'has_password': has_password, 'sender_email': settings.SERVER_EMAIL},
                               context_instance=RequestContext(request))
 
 def openid_logging(message, level=0):

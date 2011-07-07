@@ -46,7 +46,7 @@
 
 {% if not max_emails %}
 <p><a href="{% url libravatar.account.views.add_email %}">{% trans 'Add a new email address' %}</a></p>
-<p>{% trans 'Please check your email for a message from us. You may need to whitelist accounts@libravatar.org or check the junk folder.' %}</p>
+<p>{% blocktrans with sender_email as sender_email %}Please check your email for a message from us. You may need to whitelist <tt>{{ sender_email }}</tt> or check the junk folder.{% endblocktrans %}</p>
 {% endif %}
 
 <p><a href="{% url libravatar.account.views.add_openid %}">{% trans 'Add a new OpenID' %}</a></p>
