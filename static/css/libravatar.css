@@ -134,6 +134,12 @@ ul li {
   margin: 0;
 }
 
+.hint {
+  margin: 0 0 0 20px;
+  font-style: italic;
+  color: #6D6D6D;
+}
+
 #sponsors { 
   position: relative;
   height: 96px;
