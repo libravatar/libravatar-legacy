@@ -46,9 +46,11 @@
 
 {% if not max_emails %}
 <p><a href="{% url libravatar.account.views.add_email %}">{% trans 'Add a new email address' %}</a></p>
+<p>{% trans 'Please check your email for a message from us. You may need to whitelist accounts@libravatar.org or check the junk folder.' %}</p>
 {% endif %}
 
 <p><a href="{% url libravatar.account.views.add_openid %}">{% trans 'Add a new OpenID' %}</a></p>
+<p>{% trans 'You will be redirected to the authorisation page for the provider. If the process fails, you can remove the id from this list and try again.' %}</p>
 
 {% if photos %}
 <p>{% trans 'Here are the photos you have uploaded/imported:' %}</p>
