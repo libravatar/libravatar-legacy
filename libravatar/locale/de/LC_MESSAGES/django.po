@@ -1,1 +1,1 @@
-../../../../po/libravatar/libravatar-de.po
+../../../../po/libravatar/de.po
