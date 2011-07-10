@@ -1,3 +1,11 @@
+libravatar (20110710.1) unstable; urgency=low
+
+  * Fix infinite redirect loop in dynamic resizer
+  * Fix rsync deletes so that they include top-level files
+  * Add trailing slashes to rewrite rules to reduce number of redirects
+
+ -- Francois Marier <francois@debian.org>  Sun, 10 Jul 2011 21:38:30 +1200
+
 libravatar (20110709.1) unstable; urgency=low
 
   * Fix duplicate unconfirmed OpenID bug (LP: #780205)
