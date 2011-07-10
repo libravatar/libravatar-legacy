@@ -247,11 +247,19 @@ def resize(request):
         size = max(size, settings.AVATAR_MIN_SIZE)
         size = min(size, settings.AVATAR_MAX_SIZE)
 
-    if avatar_exists(email_hash, size) or not avatar_exists(email_hash):
+    if avatar_exists(email_hash, size):
+        # The right size is already available
         if https:
             return HttpResponseRedirect(settings.SECURE_AVATAR_URL + email_hash + '?s=%s' % size)
         else:
             return HttpResponseRedirect(settings.AVATAR_URL + email_hash + '?s=%s' % size)
+
+    if not avatar_exists(email_hash):
+        # That image doesn't exist at all
+        if https:
+            return HttpResponseRedirect(settings.SECURE_MEDIA_URL + '/nobody/%s.png' % size)
+        else:
+            return HttpResponseRedirect(settings.MEDIA_URL + '/nobody/%s.png' % size)
 
     # Add a note to the logs to keep track of frequently requested sizes
     print '[RESIZE] %s px' % size
