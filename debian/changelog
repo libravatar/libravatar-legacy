@@ -1,3 +1,20 @@
+libravatar (20110709.1) unstable; urgency=low
+
+  * Fix duplicate unconfirmed OpenID bug (LP: #780205)
+  * Add instructions before OpenID redirections (LP: #780218)
+  * Extra instructions when adding OpenID/email (LP: #780197)
+
+  * Change 303 redirects to 302
+  * Improved Branchable logo
+  * Remove "title" attribute on Flattr logo
+  * Simpler and smaller "mm" images
+
+  * Update French translation
+  * Update German translation
+  * Add new (incomplete) Japanese translation
+
+ -- Francois Marier <francois@debian.org>  Sat, 09 Jul 2011 21:32:34 +1200
+
 libravatar (20110626.1) unstable; urgency=low
 
   * OpenID authentication
