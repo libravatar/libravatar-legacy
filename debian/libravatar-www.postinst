@@ -67,7 +67,7 @@ case "$1" in
         fi
 
         db_get libravatar-common/wwwservername
-        set_config SITE_URL "http://${RET}" ${SETTINGS_PY}
+        set_config SITE_URL "https://${RET}" ${SETTINGS_PY}
 
         db_get libravatar-www/sitename
         set_config SITE_NAME "${RET}" ${SETTINGS_PY}
