@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-07-08 00:06+1200\n"
-"PO-Revision-Date: 2011-07-08 17:14+0000\n"
+"PO-Revision-Date: 2011-07-11 16:04+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-09 08:08+0000\n"
-"X-Generator: Launchpad (build 13376)\n"
+"X-Launchpad-Export-Date: 2011-07-12 01:00+0000\n"
+"X-Generator: Launchpad (build 13388)\n"
 
 #: settings.py:55
 msgid "German"
@@ -36,7 +36,7 @@ msgstr "E メール"
 #: account/forms.py:44
 #, python-format
 msgid "Valid email addresses end with @%(domain)s"
-msgstr ""
+msgstr "@%(domain)s で終わる有効なEメールアドレス"
 
 #: account/forms.py:69
 #, python-format
@@ -49,7 +49,7 @@ msgstr "OpenID"
 
 #: account/forms.py:90
 msgid "Valid OpenID URLs are on this domain: "
-msgstr ""
+msgstr "有効なOpenID URIはこのドメインにあります: "
 
 #: account/forms.py:110
 msgid "Photo"
@@ -57,7 +57,7 @@ msgstr "写真"
 
 #: account/forms.py:111
 msgid "suitable for all ages (i.e. no offensive content)"
-msgstr ""
+msgstr "すべての年齢向け (例: 不快なコンテンツなし)"
 
 #: account/forms.py:112
 msgid "can be freely copied"
@@ -223,6 +223,7 @@ msgid ""
 "Libravatar will attempt to verify your OpenID credentials. You may be asked "
 "by your OpenID provider to login and authorise this check."
 msgstr ""
+"LibravatarはあなたのOpenID認証情報の確認を試みます。このチェックを許可するため、あなたのOpenIDプロバイダよりログインを求められます。"
 
 #: templates/account/add_openid_redirection.html:17
 #, python-format
@@ -276,7 +277,7 @@ msgstr "%(openid_url)s の写真を選択する"
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this OpenID:"
-msgstr ""
+msgstr "あなたがアップロードした写真です。あなたがこのOpenIDと関連付けたい写真を選択してください:"
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -310,7 +311,7 @@ msgstr "本当のあなたのLibravatar アカウントを<strong>完全に削�
 
 #: templates/account/delete.html:24
 msgid "Yes, delete all of my stuff"
-msgstr ""
+msgstr "はい、私のデータすべて削除します"
 
 #: templates/account/delete_done.html:4
 msgid "Libravatar Account Deleted"
@@ -409,11 +410,11 @@ msgstr ""
 #, python-format
 msgid ""
 "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
-msgstr ""
+msgstr "あなたの未確認メールアドレスが多すぎます (最大: %(max_emails)s)。"
 
 #: templates/account/email_notadded.html:9
 msgid "another account has confirmed this email address"
-msgstr ""
+msgstr "別のアカウントがこのEメールアドレスを確認しました。"
 
 #: templates/account/email_notconfirmed.html:5
 msgid ""
@@ -465,7 +466,7 @@ msgstr "まだアカウントを持っていませんか? <a href=\"%(signup_url
 
 #: templates/account/login.html:17
 msgid "You'd rather use your <b>OpenID</b>?"
-msgstr ""
+msgstr "あなたの<b>OpenID</b>の方を使いますか?"
 
 #: templates/account/login.html:17 templates/openid/login.html:25
 #, python-format
@@ -516,7 +517,7 @@ msgstr ""
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
-msgstr ""
+msgstr "あなたのOpenIDを正常に確認できませんでした:"
 
 #: templates/account/openid_discoveryfailure.html:5
 msgid "Could not discover an OpenID from the URL you provided:"
@@ -570,7 +571,7 @@ msgstr "ログインページに戻る"
 msgid ""
 "Someone, probably you, requested a password reset for your\n"
 "%(site_name)s account."
-msgstr ""
+msgstr "誰か、恐らくあなたが %(site_name)s アカウントのパスワードのリセットをリクエストしました。"
 
 #: templates/account/password_reminder.txt:4
 msgid ""
@@ -598,7 +599,7 @@ msgstr "私のパスワードをリセットする"
 
 #: templates/account/password_reset.txt:4
 msgid "If that's what you want, please go to the following page:"
-msgstr ""
+msgstr "あなたがパスワードのリセットを希望する場合、次のページにアクセスしてください:"
 
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
@@ -648,12 +649,12 @@ msgstr "無効な写真IDです。"
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
-msgstr ""
+msgstr "このイメージは大きすぎます。許可される最大サイズは %(max_size)s バイトです。"
 
 #: templates/account/photo_toobig.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
-msgstr ""
+msgstr "小さな写真を<a href=\"%(upload_url)s\">アップロード</a>してください。"
 
 #: templates/account/photos_imported.html:4
 msgid "Photos imported into Libravatar"
@@ -669,12 +670,12 @@ msgstr "写真が正常にインポートされました。"
 
 #: templates/account/photos_notimported.html:5
 msgid "Photo import failed."
-msgstr ""
+msgstr "写真のアップロードに失敗しました。"
 
 #: templates/account/profile.html:4
 #, python-format
 msgid "%(username)s's Libravatar Profile"
-msgstr ""
+msgstr "%(username)s のLibravatarプロファイル"
 
 #: templates/account/profile.html:8
 #, python-format
@@ -748,7 +749,7 @@ msgstr ""
 #: templates/account/upload_photo.html:16
 #, python-format
 msgid "Maximum file size of %(max_size)s."
-msgstr ""
+msgstr "%(max_size)s の最大ファイルサイズ"
 
 #: templates/account/upload_photo.html:23
 msgid "Upload"
@@ -781,7 +782,7 @@ msgstr ""
 #: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
-msgstr ""
+msgstr "<a href=\"%(new_account_url)s\">フリーアカウント</a>を作成する"
 
 #: templates/public/home.html:13
 msgid ""
