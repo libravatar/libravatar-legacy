@@ -1,3 +1,10 @@
+libravatar (20110712.1) unstable; urgency=low
+
+  * Switch SITE_URL to https as it should be
+  * Update Japanese translation
+
+ -- Francois Marier <francois@debian.org>  Tue, 12 Jul 2011 13:42:38 +1200
+
 libravatar (20110710.1) unstable; urgency=low
 
   * Fix infinite redirect loop in dynamic resizer
