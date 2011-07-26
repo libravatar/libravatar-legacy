@@ -15,7 +15,7 @@
 
 # Gearman jobs
 
-* make gearman jobs persist inside the Postgres DB
+* make gearman jobs persist (inside a Redis DB?) but not inside the main Pg DB
 
 # Sysadmin stuff
 
