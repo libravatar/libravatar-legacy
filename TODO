@@ -6,8 +6,6 @@
 # Promotion
 
 * announce on autonomo.us list
-* post presentation audio and slides on blog/slideshare?
-* create Freshmeat account (once there's a first release)
 
 # Federation
 
@@ -19,7 +17,7 @@
 
 # Sysadmin stuff
 
-* automate deployments with [Fabric](http://www.fabfile.org) or [Capistrano](https://github.com/capistrano/capistrano/wiki)
+* automate deployments with [Fabric](http://www.fabfile.org) (see [this article](http://www.debian-administration.org/article/A_simple_introduction_to_fabric))
 * use Puppet for all server config
 * monitor server with Nagios
 * monitor gearman queues (http://labs.consol.de/nagios/mod-gearman/)
