@@ -18,7 +18,7 @@
 </div>
 
 {% url libravatar.account.views.new as new_account_url %}
-<p>{% blocktrans %}Libravatar is a service which delivers your avatar (profile picture) to other websites. If you <a href="{{ new_account_url }}">create an account</a> with us, your photo could start popping up next to forum posts or blog comments on any site where you left your email address.{% endblocktrans %}</p>
+<p>{% blocktrans %}Libravatar is a service which delivers your avatar (profile picture) to other websites. If you <a href="{{ new_account_url }}">create an account</a> with us, your photo could start popping up next to forum posts or blog comments on any site where you left your email address.{% endblocktrans %} {% trans '<a href="http://wiki.libravatar.org/description/">Read more...</a>' %}</p>
 
 <h2>{% trans 'Federated Open Source Service' %}</h2>
 
