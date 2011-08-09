@@ -32,6 +32,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
+from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -42,6 +43,7 @@ from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountF
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
 
+@transaction.commit_on_success
 @csrf_protect
 def new(request):
     if settings.DISABLE_SIGNUP:
@@ -63,6 +65,7 @@ def new(request):
     return render_to_response('account/new.html', { 'form': form },
                               context_instance=RequestContext(request))
 
+# No transactions: confirmation should always work no matter what
 @csrf_protect
 def confirm_email(request):
     if not 'verification_key' in request.GET:
@@ -104,6 +107,7 @@ def confirm_email(request):
                               {'email_id' : confirmed.id, 'photos' : external_photos},
                               context_instance=RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 def import_photo(request, user_id):
     if request.method == 'POST':
@@ -154,6 +158,7 @@ def import_photo(request, user_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @login_required
 def successfully_authenticated(request):
     if request.user.ldap_user:
@@ -236,6 +241,7 @@ def openid_logging(message, level=0):
     if (level > 0):
         print message
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def add_openid(request):
@@ -286,6 +292,7 @@ def redirect_openid(request, openid_id):
 
     return HttpResponseRedirect(auth_request.redirectURL(realm, return_url))
 
+# No transactions: confirmation should always work no matter what
 # CSRF check not needed (OpenID return URL)
 @login_required
 def confirm_openid(request, openid_id):
@@ -337,6 +344,7 @@ def confirm_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def remove_confirmed_openid(request, openid_id):
@@ -358,6 +366,7 @@ def remove_confirmed_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def remove_unconfirmed_openid(request, openid_id):
@@ -372,6 +381,7 @@ def remove_unconfirmed_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def add_email(request):
@@ -389,6 +399,7 @@ def add_email(request):
     return render_to_response('account/add_email.html', { 'form': form },
                               RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def remove_confirmed_email(request, email_id):
@@ -403,6 +414,7 @@ def remove_confirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def remove_unconfirmed_email(request, email_id):
@@ -416,6 +428,7 @@ def remove_unconfirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def upload_photo(request):
@@ -470,6 +483,7 @@ def auto_crop(request, photo_id):
     photo.crop()
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def delete_photo(request, photo_id):
@@ -503,6 +517,7 @@ def _assign_photo(request, identifier_type, identifier):
     return render_to_response('account/assign_photo_%s.html' % identifier_type, {'photos': photos, identifier_type: identifier},
                               context_instance=RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def assign_photo_email(request, email_id):
@@ -514,6 +529,7 @@ def assign_photo_email(request, email_id):
 
     return _assign_photo(request, 'email', email)
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def assign_photo_openid(request, openid_id):
@@ -525,6 +541,7 @@ def assign_photo_openid(request, openid_id):
 
     return _assign_photo(request, 'openid', openid)
 
+@transaction.commit_on_success
 @csrf_protect
 def password_reset(request):
     if settings.DISABLE_SIGNUP:
@@ -542,6 +559,7 @@ def password_reset(request):
     return render_to_response('account/password_reset.html', { 'form': form },
                               context_instance=RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 def password_reset_confirm(request):
     if settings.DISABLE_SIGNUP:
@@ -598,6 +616,7 @@ def password_reset_confirm(request):
                               'verification_key' : verification_key, 'email_address' : email_address},
                               context_instance=RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def delete(request):
@@ -651,6 +670,7 @@ def export(request):
 
     return render_to_response('account/export.html', context_instance=RequestContext(request))
 
+@transaction.commit_on_success
 @csrf_protect
 @login_required
 def password_set(request):
