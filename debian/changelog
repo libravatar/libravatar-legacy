@@ -1,3 +1,16 @@
+libravatar (20110809.1) unstable; urgency=low
+
+  * Turn ON DB autocommit
+  * Add link to "About Libravatar" on homepage
+  * Stronger SSL config for www
+  * Trailing slash on cdn-to-www redirection
+  * Use "border: 0" in CSS
+
+  * Update French translation
+  * Update Japanese translation (now complete)
+
+ -- Francois Marier <francois@debian.org>  Tue, 09 Aug 2011 14:24:52 -0400
+
 libravatar (20110712.1) unstable; urgency=low
 
   * Switch SITE_URL to https as it should be
