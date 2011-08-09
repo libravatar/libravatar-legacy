@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-08 00:06+1200\n"
+"POT-Creation-Date: 2011-08-10 05:53+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: settings.py:55
+#: settings.py:56
 msgid "German"
 msgstr ""
 
-#: settings.py:56
+#: settings.py:57
 msgid "English"
 msgstr ""
 
-#: settings.py:57
+#: settings.py:58
 msgid "French"
+msgstr ""
+
+#: settings.py:59
+msgid "Japanese"
 msgstr ""
 
 #: account/forms.py:34 account/forms.py:124 tools/forms.py:24
@@ -812,6 +816,10 @@ msgid ""
 "other websites. If you <a href=\"%(new_account_url)s\">create an account</a> "
 "with us, your photo could start popping up next to forum posts or blog "
 "comments on any site where you left your email address."
+msgstr ""
+
+#: templates/public/home.html:21
+msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
 
 #: templates/public/home.html:23
