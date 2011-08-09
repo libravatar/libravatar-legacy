@@ -7,29 +7,33 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-07-08 00:06+1200\n"
+"POT-Creation-Date: 2011-08-10 05:53+1200\n"
 "PO-Revision-Date: 2011-07-09 21:29+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2011-07-09 08:08+0000\n"
 "X-Generator: Launchpad (build 13376)\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: settings.py:55
+#: settings.py:56
 msgid "German"
 msgstr "Allemand"
 
-#: settings.py:56
+#: settings.py:57
 msgid "English"
 msgstr "Anglais"
 
-#: settings.py:57
+#: settings.py:58
 msgid "French"
 msgstr "Français"
+
+#: settings.py:59
+msgid "Japanese"
+msgstr "Japonais"
 
 #: account/forms.py:34 account/forms.py:124 tools/forms.py:24
 msgid "Email"
@@ -908,6 +912,10 @@ msgstr ""
 "sites web. Si vous <a href=\"%(new_account_url)s\">ouvrez un compte</a> avec "
 "nous, votre photo pourrait commence à apparaître sur les commentaires ou "
 "billets que vous laissez sur un site qui connait votre adresse de courriel."
+
+#: templates/public/home.html:21
+msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
+msgstr "<a href=\"http://wiki.libravatar.org/description/\">Plus de détails...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
