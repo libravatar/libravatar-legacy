@@ -622,13 +622,8 @@ def delete(request):
 def _perform_export(user, do_delete):
     file_hash = sha256(user.username + user.password).hexdigest()
 
-    emails = []
-    for email in user.confirmed_emails.all():
-        emails.append(email.email)
-
-    openids = []
-    for openid in user.confirmed_openids.all():
-        openids.append(openid.openid)
+    emails = list(user.confirmed_emails.values_list('email', flat=True))
+    openids = list(user.confirmed_openids.values_list('openid', flat=True))
 
     photos = []
     for photo in user.photos.all():
