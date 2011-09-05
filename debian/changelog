@@ -1,3 +1,10 @@
+libravatar (20110905.1) unstable; urgency=low
+
+  * Improve caching of redirected requests
+  * Update Japanese translation
+
+ -- Francois Marier <francois@debian.org>  Mon, 05 Sep 2011 22:15:44 +1200
+
 libravatar (20110809.1) unstable; urgency=low
 
   * Turn ON DB autocommit
