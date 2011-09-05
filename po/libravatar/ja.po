@@ -7,27 +7,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-07-08 00:06+1200\n"
-"PO-Revision-Date: 2011-07-27 16:50+0000\n"
+"POT-Creation-Date: 2011-08-10 05:53+1200\n"
+"PO-Revision-Date: 2011-08-17 10:41+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-07-27 22:01+0000\n"
-"X-Generator: Launchpad (build 13535)\n"
+"X-Launchpad-Export-Date: 2011-09-05 05:24+0000\n"
+"X-Generator: Launchpad (build 13830)\n"
 
-#: settings.py:55
+#: settings.py:56
 msgid "German"
 msgstr "ドイツ語"
 
-#: settings.py:56
+#: settings.py:57
 msgid "English"
 msgstr "英語"
 
-#: settings.py:57
+#: settings.py:58
 msgid "French"
 msgstr "フランス語"
+
+#: settings.py:59
+msgid "Japanese"
+msgstr "日本語"
 
 #: account/forms.py:34 account/forms.py:124 tools/forms.py:24
 msgid "Email"
@@ -131,7 +135,7 @@ msgstr ""
 
 #: templates/base.html:7
 msgid "Freeing the Web, one face at a time!"
-msgstr "一度にウェブをフリーに!"
+msgstr "ひとつの顔でウェブをフリーに!"
 
 #: templates/base.html:15
 msgid "Homepage"
@@ -143,7 +147,7 @@ msgstr "beta"
 
 #: templates/base.html:19
 msgid "freeing the web one face at a time"
-msgstr "一度にウェブをフリーに"
+msgstr "ひとつの顔でウェブをフリーに"
 
 #: templates/base.html:24
 msgid "Profile"
@@ -171,7 +175,7 @@ msgstr ""
 "height=\"20\" id=\"agpl-button\" title=\"GNU Affero General Public "
 "License\"></a> <b>%(site_name)s</b>は<a "
 "href=\"https://www.launchpad.net/libravatar\">Libravatar</a> (バージョン: "
-"%(libravatar_version)s) によるアバターサービスです。"
+"%(libravatar_version)s)  によるアバターサービスです。"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -387,7 +391,7 @@ msgid ""
 msgstr ""
 "恐らく、あなたが %(site_name)s のアカウントにメールアドレスを追加するよう、リクエストしました。\n"
 "\n"
-"あなたがリクエストした場合、下記のリンクをクリックすることで、あなたがこのメールアドレスの所有者であることを確認してください:\n"
+"あなたがリクエストした場合、下記のリンクをクリックすることで、このメールアドレスの所有者であることを確認してください:\n"
 "\n"
 "  %(verification_link)s\n"
 "\n"
@@ -430,7 +434,7 @@ msgstr "すでにあなたの未確認メールアドレス一覧に登録され
 #, python-format
 msgid ""
 "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
-msgstr "あなたの未確認メールアドレスが多すぎます (最大: %(max_emails)s)。"
+msgstr "未確認メールアドレスが多すぎます (最大: %(max_emails)s)。"
 
 #: templates/account/email_notadded.html:9
 msgid "another account has confirmed this email address"
@@ -472,7 +476,7 @@ msgstr "エクスポート中"
 msgid ""
 "Libravatar is currently exporting your data. It <b>may take a few "
 "moments</b> for the file to be available:"
-msgstr "現在、Libravatarはあなたのデータをエクスポートしています。ファイルが利用できるまで、<b>数分かかる場合があります</b>。"
+msgstr "現在、Libravatarはあなたのデータをエクスポートしています。ファイルが利用できるまで、<b>数分かかる場合があります</b>:"
 
 #: templates/account/login.html:4
 msgid "Libravatar Login"
@@ -486,7 +490,7 @@ msgstr "まだアカウントを持っていませんか? <a href=\"%(signup_url
 
 #: templates/account/login.html:17
 msgid "You'd rather use your <b>OpenID</b>?"
-msgstr "あなたの<b>OpenID</b>を使いますか?"
+msgstr "あなたの<b>OpenID</b>を使用しますか?"
 
 #: templates/account/login.html:17 templates/openid/login.html:25
 #, python-format
@@ -513,8 +517,8 @@ msgid ""
 "account</a>.<br>You need to <b>delete</b> some before you can upload a new "
 "one."
 msgstr ""
-"<a href=\"%(profile_url)s\">あなたのアカウント</a>内に多くの写真をアップロードし過ぎました。<br "
-"/>新しい写真をアップロードできるようにするには、あなたはいくつかの写真を<b>削除</b>する必要があります。"
+"あなたは<a href=\"%(profile_url)s\">アカウント</a>内に多くの写真をアップロードし過ぎました。<br "
+"/>新しい写真をアップロードできるようにするには、いくつかの写真を<b>削除</b>する必要があります。"
 
 #: templates/account/new.html:4
 msgid "Create a new Libravatar account"
@@ -537,8 +541,8 @@ msgid ""
 "want to do this."
 msgstr ""
 "このアカウントにアクセスする唯一の方法のため、あなたのOpenIDを削除することはできません。<a "
-"href=\"%(add_openid_url)s\">別のOpenIDを追加する</a>、または本当に望む場合、<a "
-"href=\"%(delete_url)s\">あなたのアカウントを完全に削除</a>してください。"
+"href=\"%(add_openid_url)s\">別のOpenIDを追加する</a>、またはあなたが本当に望む場合、<a "
+"href=\"%(delete_url)s\">アカウントを完全に削除</a>してください。"
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
@@ -546,7 +550,7 @@ msgstr "あなたのOpenIDを正常に確認できませんでした:"
 
 #: templates/account/openid_discoveryfailure.html:5
 msgid "Could not discover an OpenID from the URL you provided:"
-msgstr "あなたが提供したURIからはOpenIDを見つけることができませんでした:"
+msgstr "あなたが提供したURIからはOpenIDを探すことができませんでした:"
 
 #: templates/account/openid_invalid.html:5
 msgid "Invalid OpenID ID."
@@ -596,7 +600,7 @@ msgstr "ログインページに戻る"
 msgid ""
 "Someone, probably you, requested a password reset for your\n"
 "%(site_name)s account."
-msgstr "誰か、恐らくあなたが %(site_name)s アカウントのパスワードのリセットをリクエストしました。"
+msgstr "誰か、恐らくあなたが %(site_name)s のアカウントのパスワードリセットをリクエストしました。"
 
 #: templates/account/password_reminder.txt:4
 msgid ""
@@ -734,7 +738,7 @@ msgid ""
 "Please check your email for a message from us. You may need to whitelist "
 "<tt>%(sender_email)s</tt> or check the junk folder."
 msgstr ""
-"私たちからのEメールの内容を確認してください。必要に応じて、<tt>%(sender_email)s</tt> "
+"私たちからのメールの内容を確認してください。必要に応じて、<tt>%(sender_email)s</tt> "
 "をホワイトリストに入れるか、ジャンクフォルダを確認してください。"
 
 #: templates/account/profile.html:53
@@ -829,7 +833,7 @@ msgid ""
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
 msgstr ""
 "<a href=\"https://bugs.launchpad.net/libravatar\">バグ</a> を報告する、または<a "
-"href=\"https://answers.launchpad.net/libravatar\">質問</a>します。"
+"href=\"https://answers.launchpad.net/libravatar\">質問</a>する"
 
 #: templates/public/home.html:15
 msgid ""
@@ -837,15 +841,15 @@ msgid ""
 "href=\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
 "私たちの<a href=\"http://wiki.libravatar.org\">wiki</a>、または<a "
-"href=\"http://blog.libravatar.org\">blog</a>ブログを閲覧します。"
+"href=\"http://blog.libravatar.org\">blog</a>ブログを閲覧する"
 
 #: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
-msgstr "<a href=\"http://identi.ca/libravatar\">Identica</a>で私たちをフォローします。"
+msgstr "<a href=\"http://identi.ca/libravatar\">Identica</a>で私たちをフォローする"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
-msgstr "コントリビュートしてください!"
+msgstr "ご協力ください!"
 
 #: templates/public/home.html:21
 #, python-format
@@ -858,6 +862,10 @@ msgstr ""
 "Libravatarはあなたのアバター (プロファイル写真) を他のウェブサイトに配信するためのサービスです。あなたが<a "
 "href=\"%(new_account_url)s\">アカウントを作成</a> "
 "した場合、あなたのメールアドレスを置いたサイトにおいて、フォーラム投稿またはブログコメント等の横にあなたの写真を表示することができます。"
+
+#: templates/public/home.html:21
+msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
+msgstr "<a href=\"http://wiki.libravatar.org/description/\">詳細 ...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
@@ -896,7 +904,7 @@ msgstr ""
 #: templates/public/home.html:31
 msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
-msgstr "私たちのスポンサーの皆様に心より感謝致します!"
+msgstr "スポンサーの皆様に心より感謝致します!"
 
 #: templates/public/nohash.html:6
 #, python-format
@@ -915,7 +923,7 @@ msgstr "これはHTTP GET経由でのみ動作します。"
 #, python-format
 msgid ""
 "The size parameter must be an integer between %(min_size)s and %(max_size)s."
-msgstr "このサイズパラメータは %(min_size)s から %(max_size)s の数字である必要があります。"
+msgstr "このサイズパラメータは %(min_size)s から %(max_size)s の数値である必要があります。"
 
 #: templates/tools/check.html:4 templates/tools/check.html.py:9
 msgid "Photo lookup"
