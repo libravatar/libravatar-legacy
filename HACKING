@@ -1,2 +1,5 @@
-There isn't much here yet, but please note that the coding guidelines for Libravatar
-follow the usual [PEP-8](http://www.python.org/dev/peps/pep-0008/) style.
+Please note that the coding guidelines for Libravatar follow the usual
+[PEP-8](http://www.python.org/dev/peps/pep-0008/) style.
+
+See our [developer documentation](http://wiki.libravatar.org/developer/)
+for more information on how to hack on the Libravatar codebase.
