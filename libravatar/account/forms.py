@@ -142,7 +142,10 @@ class PasswordResetForm(forms.Form):
             link = settings.SITE_URL + reverse('libravatar.account.views.password_reset_confirm')
             link += '?verification_key=%s&email_address=%s' % (key, urllib.quote_plus(email_address))
 
-            email_body = render_to_string('account/password_reset.txt', {'reset_link' : link, 'site_name' : settings.SITE_NAME})
+            email_body = render_to_string('account/password_reset.txt',
+                                          {'reset_link': link,
+                                           'site_name': settings.SITE_NAME,
+                                           'username': email.user.username})
         else:
             openids = UserOpenID.objects.filter(user=email.user)
             email_body = render_to_string('account/password_reminder.txt', {'openids' : openids, 'site_name' : settings.SITE_NAME})
