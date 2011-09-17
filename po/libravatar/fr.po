@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-10 05:53+1200\n"
-"PO-Revision-Date: 2011-07-09 21:29+1200\n"
+"POT-Creation-Date: 2011-09-18 00:18+1200\n"
+"PO-Revision-Date: 2011-09-18 00:24+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
 "Language: fr\n"
@@ -74,11 +74,11 @@ msgstr "peut être librement copiée"
 msgid "Password reset for %(site_name)s"
 msgstr "Réinitialisation du mot de passe pour %(site_name)s"
 
-#: account/forms.py:154
+#: account/forms.py:157
 msgid "Password"
 msgstr "Mot de passe"
 
-#: account/forms.py:165
+#: account/forms.py:168
 msgid "Invalid password"
 msgstr "Mot de passe invalide"
 
@@ -135,36 +135,36 @@ msgstr ""
 "Page introuvable. Si vous pensez avoir abouti ici par erreur, veuilez <a "
 "href=\"mailto:%(support_email)s\">nous en aviser</a>."
 
-#: templates/base.html:7
+#: templates/base.html:10
 msgid "Freeing the Web, one face at a time!"
 msgstr "La libération du Web, un visage à la fois !"
 
-#: templates/base.html:15
+#: templates/base.html:18
 msgid "Homepage"
 msgstr "Accueil"
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "beta"
 msgstr "bêta"
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "freeing the web one face at a time"
 msgstr "la libération du web, un visage à la fois"
 
-#: templates/base.html:24
+#: templates/base.html:27
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:25
+#: templates/base.html:28
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:27 templates/account/login.html:9
+#: templates/base.html:30 templates/account/login.html:9
 #: templates/account/login.html.py:36 templates/openid/login.html:29
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:39
+#: templates/base.html:42
 #, python-format
 msgid ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
@@ -650,7 +650,7 @@ msgstr ""
 "utiliser un des identifiant OpenID suivants pour vous connecter :"
 
 #: templates/account/password_reminder.txt:9
-#: templates/account/password_reset.txt:10
+#: templates/account/password_reset.txt:12
 #, python-format
 msgid "- The %(site_name)s accounts team"
 msgstr "- L'équipe administrative de %(site_name)s"
@@ -674,6 +674,11 @@ msgstr "Si c'est ce que vous voulez, veuillez vous rendre à la page suivante :"
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
 msgstr "Sinon, veuillez accepter nos excuses et ignorez ce message."
+
+#: templates/account/password_reset.txt:10
+#, python-format
+msgid "By the way, your username is: %(username)s"
+msgstr "Votre nom d'utilisateur est : %(username)s"
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
@@ -915,7 +920,8 @@ msgstr ""
 
 #: templates/public/home.html:21
 msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr "<a href=\"http://wiki.libravatar.org/description/\">Plus de détails...</a>"
+msgstr ""
+"<a href=\"http://wiki.libravatar.org/description/\">Plus de détails...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"

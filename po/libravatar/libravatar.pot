@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-10 05:53+1200\n"
+"POT-Creation-Date: 2011-09-18 00:18+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,11 +72,11 @@ msgstr ""
 msgid "Password reset for %(site_name)s"
 msgstr ""
 
-#: account/forms.py:154
+#: account/forms.py:157
 msgid "Password"
 msgstr ""
 
-#: account/forms.py:165
+#: account/forms.py:168
 msgid "Invalid password"
 msgstr ""
 
@@ -131,36 +131,36 @@ msgid ""
 "\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
 
-#: templates/base.html:7
+#: templates/base.html:10
 msgid "Freeing the Web, one face at a time!"
 msgstr ""
 
-#: templates/base.html:15
+#: templates/base.html:18
 msgid "Homepage"
 msgstr ""
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "beta"
 msgstr ""
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "freeing the web one face at a time"
 msgstr ""
 
-#: templates/base.html:24
+#: templates/base.html:27
 msgid "Profile"
 msgstr ""
 
-#: templates/base.html:25
+#: templates/base.html:28
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:27 templates/account/login.html:9
+#: templates/base.html:30 templates/account/login.html:9
 #: templates/account/login.html.py:36 templates/openid/login.html:29
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:39
+#: templates/base.html:42
 #, python-format
 msgid ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
@@ -579,7 +579,7 @@ msgid ""
 msgstr ""
 
 #: templates/account/password_reminder.txt:9
-#: templates/account/password_reset.txt:10
+#: templates/account/password_reset.txt:12
 #, python-format
 msgid "- The %(site_name)s accounts team"
 msgstr ""
@@ -602,6 +602,11 @@ msgstr ""
 
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
+msgstr ""
+
+#: templates/account/password_reset.txt:10
+#, python-format
+msgid "By the way, your username is: %(username)s"
 msgstr ""
 
 #: templates/account/password_reset_submitted.html:4
