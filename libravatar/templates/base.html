@@ -43,5 +43,27 @@
   {% block footer %}{% endblock %}
 </div>
 
+<script type="text/javascript">
+if (navigator.id) {
+  {% if user.is_authenticated %}
+  navigator.id.sessions = [{
+    email: "{{user.username}}",
+    bound_to: {
+      type: "cookie",
+      cookie_name: "sessionid"
+    }
+  }];
+  {% else %}
+  navigator.id.sessions = [];
+  {% endif %}
+  document.addEventListener("login", function(event) {
+    document.location.href = "/account/login/";
+  }, false);
+  document.addEventListener("logout", function(event) {
+    document.location.href = "/account/logout/";
+  }, false);
+}
+</script>
+
 </body>
 </html>{% endspaceless %}
