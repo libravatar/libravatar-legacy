@@ -13,6 +13,8 @@
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
 
+<p class="hint">{% blocktrans with sender_email as sender_email %}Please check your email for a message from us. You may need to whitelist <tt>{{ sender_email }}</tt> or check the junk folder.{% endblocktrans %}</p>
+
 <p><input type="submit" value="{% trans 'Add' %}" />
 &nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
