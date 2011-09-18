@@ -1,3 +1,19 @@
+libravatar (20110918.1) unstable; urgency=low
+
+  * Add rules.abe for www, cdn and seccdn
+  * Enable Content Security Policy
+  * Use Mozilla Sessions API
+  * Add Retake the Net link to homepage
+  * Add Safari WebClip images
+
+  * Improve photo upload error messages
+  * Move email/OpenID hints to their respective pages
+  * Fix Gravatar importer and make it use HTTPS
+  * Include username in password reset emails
+  * Ensure correct ownership of settings.py
+
+ -- Francois Marier <francois@debian.org>  Sun, 18 Sep 2011 21:44:57 +1200
+
 libravatar (20110905.1) unstable; urgency=low
 
   * Improve caching of redirected requests
