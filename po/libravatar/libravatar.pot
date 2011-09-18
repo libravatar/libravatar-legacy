@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-18 00:18+1200\n"
+"POT-Creation-Date: 2011-09-18 13:26+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -853,6 +853,11 @@ msgstr ""
 
 #: templates/public/home.html:31
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
+msgstr ""
+
+#: templates/public/home.html:38
+msgid ""
+"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
 msgstr ""
 
 #: templates/public/nohash.html:6

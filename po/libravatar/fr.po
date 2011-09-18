@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-18 00:18+1200\n"
-"PO-Revision-Date: 2011-09-18 00:24+1200\n"
+"POT-Creation-Date: 2011-09-18 13:26+1200\n"
+"PO-Revision-Date: 2011-09-18 13:27+1200\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
 "Language: fr\n"
@@ -960,6 +960,13 @@ msgstr ""
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Un gros merci à nos commanditaires sans qui rien de ceci ne serait possible !"
+
+#: templates/public/home.html:38
+msgid ""
+"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
+msgstr ""
+"Libravatar est un projet membre de l'initiative <a href=\"http://retakethe."
+"net\">Retake the Net</a>."
 
 #: templates/public/nohash.html:6
 #, python-format
