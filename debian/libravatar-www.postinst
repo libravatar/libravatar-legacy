@@ -34,6 +34,7 @@ UPLOADED_FILES_ROOT=/var/lib/libravatar/uploaded
 USER_FILES_ROOT=/var/lib/libravatar/user
 EXPORT_FILES_ROOT=/var/lib/libravatar/export
 APACHE_CONFIG=/etc/libravatar/www.apache2.conf
+RULES_ABE=/usr/share/libravatar/libravatar/rules.abe
 
 case "$1" in
     configure)
@@ -110,6 +111,18 @@ case "$1" in
 
         touch /var/log/libravatar/workers.log
         chown libravatar-img /var/log/libravatar/workers.log
+
+        # Make a copy of the template rules.abe to work on, then copy into place
+        cp ${RULES_ABE}.template ${RULES_ABE}.working
+
+        for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${RULES_ABE}.working); do
+            # Turns __MARKER__ into marker and puts packagename/ on the front
+            DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
+            db_get libravatar-common/$DEBCONF_VAR
+            sed -i -e "s/${MARKER}/${RET}/g" ${RULES_ABE}.working
+        done
+
+        mv ${RULES_ABE}.working ${RULES_ABE}
 
         # Make a copy of the template apache config to work on, then copy into place
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working

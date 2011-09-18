@@ -1,0 +1,11 @@
+Site __WWWSERVERNAME__
+Accept from SELF
+Deny POST
+
+Site __WWWSERVERNAME__/user
+Accept from SELF
+Deny
+
+Site __WWWSERVERNAME__/uploaded
+Accept from __WWWSERVERNAME__/account/[0-9]*/crop_photo
+Deny

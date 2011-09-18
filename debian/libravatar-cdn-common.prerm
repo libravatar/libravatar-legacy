@@ -20,6 +20,7 @@ set -e
 case "$1" in
     remove|deconfigure)
         rm -f /etc/libravatar/cdn-common.include
+        rm -f /usr/share/libravatar/static/cdn/rules.abe
     ;;
 
     upgrade)
