@@ -54,8 +54,8 @@ def identica_photo(email):
     return False
 
 def gravatar_photo(email):
-    thumbnail_url = 'http://www.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
-    image_url = 'http://www.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=512&d=404'
+    thumbnail_url = 'https://secure.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
+    image_url = 'https://secure.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=512&d=404'
 
     # Will redirect to the public profile URL if it exists
     service_url = 'http://www.gravatar.com/' + md5(email.lower()).hexdigest()
