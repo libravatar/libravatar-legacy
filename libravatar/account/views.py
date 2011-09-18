@@ -99,9 +99,9 @@ def confirm_email(request):
         identica = identica_photo(confirmed.email)
         if identica:
             external_photos.append(identica)
-            gravatar = gravatar_photo(confirmed.email)
-            if gravatar:
-                external_photos.append(gravatar)
+        gravatar = gravatar_photo(confirmed.email)
+        if gravatar:
+            external_photos.append(gravatar)
 
     return render_to_response('account/email_confirmed.html',
                               {'email_id' : confirmed.id, 'photos' : external_photos},
