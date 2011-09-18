@@ -107,9 +107,11 @@ class AddOpenIdForm(forms.Form):
         return unconfirmed.id
 
 class UploadPhotoForm(forms.Form):
-    photo = forms.ImageField(label=_('Photo'))
-    not_porn = forms.BooleanField(label=_('suitable for all ages (i.e. no offensive content)'), required=True)
-    can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True)
+    photo = forms.ImageField(label=_('Photo'), error_messages={'required': _('You must choose an image to upload.')})
+    not_porn = forms.BooleanField(label=_('suitable for all ages (i.e. no offensive content)'), required=True,
+                                  error_messages={'required': _('We only host "G-rated" images and so this field must be checked.')})
+    can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True,
+                                        error_messages={'required': _('This field must be checked since we need to be able to distribute photos to third parties.')})
 
     # pylint: disable=R0201
     def save(self, user, ip_address, image):
