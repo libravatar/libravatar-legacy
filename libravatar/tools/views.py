@@ -54,7 +54,7 @@ def check(request):
                     data['query_string'] += '&'
                 else:
                     data['query_string'] = '?'
-                
+
                 data['query_string'] += 'd=' + form.cleaned_data['not_found']
 
             if form.cleaned_data['size']:

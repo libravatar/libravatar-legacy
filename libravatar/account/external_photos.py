@@ -30,7 +30,7 @@ def identica_photo(email):
 
     contents = fh.read()
     response = minidom.parseString(contents)
-    
+
     elements = response.getElementsByTagName('profile_image_url')
     for element in elements:
         textnode = element.firstChild
