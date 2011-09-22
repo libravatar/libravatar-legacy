@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-08-10 05:53+1200\n"
-"PO-Revision-Date: 2011-08-17 10:41+0000\n"
+"POT-Creation-Date: 2011-09-18 23:22+1200\n"
+"PO-Revision-Date: 2011-09-20 03:57+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-09-05 05:24+0000\n"
-"X-Generator: Launchpad (build 13830)\n"
+"X-Launchpad-Export-Date: 2011-09-22 06:00+0000\n"
+"X-Generator: Launchpad (build 13996)\n"
 
 #: settings.py:56
 msgid "German"
@@ -33,7 +33,7 @@ msgstr "フランス語"
 msgid "Japanese"
 msgstr "日本語"
 
-#: account/forms.py:34 account/forms.py:124 tools/forms.py:24
+#: account/forms.py:34 account/forms.py:126 tools/forms.py:24
 msgid "Email"
 msgstr "E メール"
 
@@ -59,24 +59,38 @@ msgstr "有効なOpenID URIはこのドメインにあります: "
 msgid "Photo"
 msgstr "写真"
 
+#: account/forms.py:110
+msgid "You must choose an image to upload."
+msgstr "あなたはアップロードするイメージを選択する必要があります。"
+
 #: account/forms.py:111
 msgid "suitable for all ages (i.e. no offensive content)"
 msgstr "すべての年齢向け (例: 不快なコンテンツなし)"
 
 #: account/forms.py:112
+msgid "We only host \"G-rated\" images and so this field must be checked."
+msgstr "私たちは「一般向け (G-rated)」イメージのみ受け付けます。そのため、このフィールドをチェックする必要があります。"
+
+#: account/forms.py:113
 msgid "can be freely copied"
 msgstr "自由にコピー可能"
 
-#: account/forms.py:136
+#: account/forms.py:114
+msgid ""
+"This field must be checked since we need to be able to distribute photos to "
+"third parties."
+msgstr "私たちが第三者に写真を配布することができるよう、このフィールドをチェックする必要があります。"
+
+#: account/forms.py:138
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "%(site_name)s のパスワードリセット"
 
-#: account/forms.py:154
+#: account/forms.py:159
 msgid "Password"
 msgstr "パスワード"
 
-#: account/forms.py:165
+#: account/forms.py:170
 msgid "Invalid password"
 msgstr "パスワードが正しくありません。"
 
@@ -133,36 +147,36 @@ msgstr ""
 "ページが見つかりませんでした。あなたが間違ってここにアクセスしてしまったと思う場合、<a "
 "href=\"mailto:%(support_email)s\">私たちにお教えください</a>!"
 
-#: templates/base.html:7
+#: templates/base.html:10
 msgid "Freeing the Web, one face at a time!"
 msgstr "ひとつの顔でウェブをフリーに!"
 
-#: templates/base.html:15
+#: templates/base.html:18
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "beta"
 msgstr "beta"
 
-#: templates/base.html:19
+#: templates/base.html:22
 msgid "freeing the web one face at a time"
 msgstr "ひとつの顔でウェブをフリーに"
 
-#: templates/base.html:24
+#: templates/base.html:27
 msgid "Profile"
 msgstr "プロファイル"
 
-#: templates/base.html:25
+#: templates/base.html:28
 msgid "Logout"
 msgstr "ログアウト"
 
-#: templates/base.html:27 templates/account/login.html:9
+#: templates/base.html:30 templates/account/login.html:9
 #: templates/account/login.html.py:36 templates/openid/login.html:29
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/base.html:39
+#: templates/base.html:42
 #, python-format
 msgid ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
@@ -199,11 +213,20 @@ msgstr "あなたのプロファイルに戻る"
 msgid "Add a new email address"
 msgstr "新しいメールアドレスを追加する"
 
-#: templates/account/add_email.html:16 templates/account/add_openid.html:18
+#: templates/account/add_email.html:16
+#, python-format
+msgid ""
+"Please check your email for a message from us. You may need to whitelist "
+"<tt>%(sender_email)s</tt> or check the junk folder."
+msgstr ""
+"私たちからのメールの内容を確認してください。必要に応じて、<tt>%(sender_email)s</tt> "
+"をホワイトリストに入れるか、ジャンクフォルダを確認してください。"
+
+#: templates/account/add_email.html:18 templates/account/add_openid.html:20
 msgid "Add"
 msgstr "追加"
 
-#: templates/account/add_email.html:17 templates/account/add_openid.html:19
+#: templates/account/add_email.html:19 templates/account/add_openid.html:21
 #: templates/account/crop_photo.html:19 templates/account/delete.html:25
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:38 templates/account/new.html:44
@@ -214,7 +237,7 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:9
-#: templates/account/profile.html:52
+#: templates/account/profile.html:51
 msgid "Add a new OpenID"
 msgstr "新しいOpenIDを追加する"
 
@@ -223,6 +246,13 @@ msgid ""
 "Once you have confirmed this OpenID URL, you will be able to log into your "
 "account using that OpenID URL."
 msgstr "このOpenID URIを承認した後、あなたのアカウントにOpenID URIを使用してログインすることができます。"
+
+#: templates/account/add_openid.html:18
+msgid ""
+"You will be redirected to the authorisation page for the provider. If the "
+"process fails, you can remove the ID from this list and try adding it again."
+msgstr ""
+"あなたはプロバイダの認証ページにリダイレクトされます。正常にリダイレクトされない場合、このリストからIDを削除した後、再度お試しください。"
 
 #: templates/account/add_openid_redirection.html:4
 #: templates/account/add_openid_redirection.html:12
@@ -370,7 +400,7 @@ msgstr "写真を削除する"
 msgid "Are you sure you want to delete this photo?"
 msgstr "本当にこの写真を削除してもよろしいですか?"
 
-#: templates/account/delete_photo.html:16 templates/account/profile.html:60
+#: templates/account/delete_photo.html:16 templates/account/profile.html:58
 msgid "Delete"
 msgstr "削除"
 
@@ -450,7 +480,7 @@ msgstr "無効な確認キーです。<br />リンク全体を完全にコピー
 msgid "Export your Libravatar data"
 msgstr "あなたのLibravatarデータをエクスポートする"
 
-#: templates/account/export.html:8 templates/account/profile.html:77
+#: templates/account/export.html:8 templates/account/profile.html:75
 msgid "Export your data"
 msgstr "あなたのデータをエクスポートする"
 
@@ -611,7 +641,7 @@ msgstr ""
 "代わりに、あなたは次のOpenIDをログインに使用する必要があります:"
 
 #: templates/account/password_reminder.txt:9
-#: templates/account/password_reset.txt:10
+#: templates/account/password_reset.txt:12
 #, python-format
 msgid "- The %(site_name)s accounts team"
 msgstr "- %(site_name)s アカウントチーム"
@@ -635,6 +665,11 @@ msgstr "あなたがパスワードのリセットを希望する場合、次の
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
 msgstr "そうでない場合、このメッセージを無視してください。"
+
+#: templates/account/password_reset.txt:10
+#, python-format
+msgid "By the way, your username is: %(username)s"
+msgstr "あなたのユーザ名: %(username)s"
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
@@ -732,49 +767,33 @@ msgstr "削除する"
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr "あなたには次の未承認メールアドレスおよびOpenIDがあります:"
 
-#: templates/account/profile.html:49
-#, python-format
-msgid ""
-"Please check your email for a message from us. You may need to whitelist "
-"<tt>%(sender_email)s</tt> or check the junk folder."
-msgstr ""
-"私たちからのメールの内容を確認してください。必要に応じて、<tt>%(sender_email)s</tt> "
-"をホワイトリストに入れるか、ジャンクフォルダを確認してください。"
-
-#: templates/account/profile.html:53
-msgid ""
-"You will be redirected to the authorisation page for the provider. If the "
-"process fails, you can remove the ID from this list and try adding it again."
-msgstr ""
-"あなたはプロバイダの認証ページにリダイレクトされます。正常にリダイレクトされない場合、このリストからIDを削除した後、再度お試しください。"
-
-#: templates/account/profile.html:56
+#: templates/account/profile.html:54
 msgid "Here are the photos you have uploaded/imported:"
 msgstr "あなたがアップロード/インポートした写真です:"
 
-#: templates/account/profile.html:59
+#: templates/account/profile.html:57
 #, python-format
 msgid "Uploaded on %(datetime)s"
 msgstr "アップロード日時: %(datetime)s"
 
-#: templates/account/profile.html:66 templates/account/upload_photo.html:4
+#: templates/account/profile.html:64 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "新しい写真をアップロードする"
 
-#: templates/account/profile.html:69
+#: templates/account/profile.html:67
 msgid "Account settings"
 msgstr "アカウント設定"
 
-#: templates/account/profile.html:72
+#: templates/account/profile.html:70
 msgid "Change your password"
 msgstr "あなたのパスワードを変更する"
 
-#: templates/account/profile.html:74
+#: templates/account/profile.html:72
 msgid "Set a password"
 msgstr "パスワードを設定する"
 
-#: templates/account/profile.html:79
+#: templates/account/profile.html:77
 msgid "Permanently delete your account"
 msgstr "あなたのアカウントを完全に削除する"
 
@@ -905,6 +924,12 @@ msgstr ""
 msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr "スポンサーの皆様に心より感謝致します!"
+
+#: templates/public/home.html:38
+msgid ""
+"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
+msgstr ""
+"Libravatarは<a href=\"http://retakethe.net\">Retake the Net</a>プロジェクトです。"
 
 #: templates/public/nohash.html:6
 #, python-format
