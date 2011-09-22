@@ -130,7 +130,7 @@ def lookup_avatar_server(domain, https):
 
     records = []
     for answer in dns_request.answers:
-        if (not 'data' in answer) or (not answer['data']):
+        if (not 'data' in answer) or (not answer['data']) or (not answer['typename']) or (answer['typename'] != 'SRV'):
             continue
 
         rr = {'priority': int(answer['data'][0]), 'weight': int(answer['data'][1]),
