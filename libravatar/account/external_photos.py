@@ -15,17 +15,23 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-from urllib2 import urlopen, HTTPError
+from urllib2 import urlopen, HTTPError, URLError
 from hashlib import md5
 import xml.dom.minidom as minidom
+
+URL_TIMEOUT = 5 # in seconds
 
 def identica_photo(email):
     image_url = ''
     screen_name = ''
 
     try:
-        fh = urlopen('http://identi.ca/api/users/show.xml?email=' + email)
-    except HTTPError:
+        fh = urlopen('http://identi.ca/api/users/show.xml?email=' + email, timeout=URL_TIMEOUT)
+    except HTTPError as e:
+        print 'Identica fetch failed with an HTTP error: %s' % e.code
+        return False
+    except URLError as e:
+        print 'Identica fetch failed: %s' % e.reason
         return False
 
     contents = fh.read()
@@ -61,8 +67,13 @@ def gravatar_photo(email):
     service_url = 'http://www.gravatar.com/' + md5(email.lower()).hexdigest()
 
     try:
-        urlopen(image_url)
-    except HTTPError:
+        urlopen(image_url, timeout=URL_TIMEOUT)
+    except HTTPError as e:
+        if e.code != 404:
+            print 'Gravatar fetch failed with an unexpected %s HTTP error' % e.code
+        return False
+    except URLError as e:
+        print 'Gravatar fetch failed: %s' % e.reason
         return False
 
     return {'thumbnail_url' : thumbnail_url, 'image_url' : image_url, 'width' : 80, 'height' : 80,
