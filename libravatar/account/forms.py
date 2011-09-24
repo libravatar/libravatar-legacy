@@ -26,12 +26,13 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 
 from libravatar import settings
-from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, Photo, password_reset_key, MAX_LENGTH_URL
+from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, Photo, password_reset_key, MAX_LENGTH_URL, MAX_LENGTH_EMAIL
 
+MIN_LENGTH_EMAIL = 3 # http://www.eph.co.uk/resources/email-address-length-faq/
 MIN_LENGTH_URL = 5 # completely arbitrary guess
 
 class AddEmailForm(forms.Form):
-    email = forms.EmailField(label=_('Email'))
+    email = forms.EmailField(label=_('Email'), max_length=MAX_LENGTH_EMAIL, min_length=MIN_LENGTH_EMAIL)
 
     def clean_email(self):
         """
@@ -123,7 +124,7 @@ class UploadPhotoForm(forms.Form):
         return p
 
 class PasswordResetForm(forms.Form):
-    email = forms.EmailField(label=_('Email'))
+    email = forms.EmailField(label=_('Email'), max_length=MAX_LENGTH_EMAIL, min_length=MIN_LENGTH_EMAIL)
 
     def save(self):
         if not self.cleaned_data['email']:
