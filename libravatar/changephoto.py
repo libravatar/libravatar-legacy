@@ -39,7 +39,7 @@ def link_image(source_filename, destination_hash, size=None):
 
 def create_links(source_filename, md5_hash, sha256_hash):
     if not path.isfile(source_filename):
-        logger.warn("the cropped photo '%s' does not exist" % source_filename)
+        logger.warning("the cropped photo '%s' does not exist" % source_filename)
         return 0
 
     if md5_hash:

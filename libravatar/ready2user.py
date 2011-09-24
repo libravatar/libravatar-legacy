@@ -50,7 +50,7 @@ def main(argv=None):
 
     # Sanity checks
     if os.path.isfile(dest):
-        logger.warn('Destination already exists')
+        logger.warning('Destination already exists')
         return 0
 
     if not os.path.isfile(source):
