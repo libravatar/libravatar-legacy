@@ -8,16 +8,36 @@
 
 <h1>{% trans 'Add a new email address' %}</h1>
 
+<p>{% blocktrans with 'javascript:try_browserid()' as browserid_target %}If you have a <a href="https://browserid.org">BrowserID</a> account, you can <a href="{{browserid_target}}">use it to add a new email address</a> to your profile.{% endblocktrans %}</p>
+
+{# Invisible form to process BrowserID assertions #}
+<form id="browserid-form" action="{% url libravatar.account.views.add_browserid %}" name="addbrowserid" method="post">{% csrf_token %}
+<input id="browserid-assertion" type="hidden" name="assertion" value="">
+<input style="display: none" type="submit">
+</form>
+
+<p>{% blocktrans %}Otherwise, type your email address in the box below and we will send you an email with a link to click on in order to verify that you own that email address.{% endblocktrans %}</p>
+
 <form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post">{% csrf_token %}
 
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
 
-<p class="hint">{% blocktrans with sender_email as sender_email %}Please check your email for a message from us. You may need to whitelist <tt>{{ sender_email }}</tt> or check the junk folder.{% endblocktrans %}</p>
-
 <p><input type="submit" value="{% trans 'Add' %}" />
 &nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
 </form>
+
+<script src="https://browserid.org/include.js" type="text/javascript"></script>
+<script type="text/javascript">
+function try_browserid() {
+    navigator.id.getVerifiedEmail(function(assertion) {
+        if (assertion) {
+            document.getElementById('browserid-assertion').setAttribute('value', assertion);
+            document.getElementById('browserid-form').submit();
+        }
+    });
+}
+</script>
 
 {% endblock content %}
