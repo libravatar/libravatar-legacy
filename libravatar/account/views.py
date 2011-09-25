@@ -24,12 +24,8 @@ import json
 from openid import oidutil
 from openid.consumer import consumer
 from StringIO import StringIO
-import time
-from urllib2 import urlopen, HTTPError, URLError
 
 from django_openid_auth.models import UserOpenID
-from django.core import validators
-from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
@@ -40,15 +36,13 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_protect
 
+from libravatar.account.browserid_auth import verify_assertion
 from libravatar.account.external_photos import identica_photo, gravatar_photo
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
-
-URL_TIMEOUT = 5 # in seconds
 
 @transaction.commit_on_success
 @csrf_protect
@@ -708,61 +702,6 @@ def password_set(request):
     return render_to_response('account/password_change.html', {'form' : form},
                               context_instance=RequestContext(request))
 
-def _browserid_audience(site_url):
-    site_url = site_url.lower()
-
-    # TODO: isn't the scheme supposed to be included in the audience?
-    if 0 == site_url.find('https://'):
-        return site_url[8:]
-    elif 0 == site_url.find('http://'):
-        return site_url[7:]
-    else:
-        print 'Invalid SITE_URL setting: %s' % site_url
-        return None
-
-def _verify_assertion(verification_response):
-    try:
-        parsed_response = json.loads(verification_response)
-    except ValueError:
-        parsed_response = None
-
-    if not parsed_response:
-        print 'BrowserID verification service returned non-JSON or empty output: %s' % verification_response
-        return (None, None)
-
-    if 'status' not in parsed_response:
-        print 'BrowserID verification service did not return a status code'
-        return (None, None)
-    if 'failure' == parsed_response['status']:
-        return (None, parsed_response['reason'])
-    if parsed_response['status'] != 'okay':
-        return (None, _('unexpected "%s" status code' % parsed_response['status']))
-
-    if 'audience' not in parsed_response:
-        print 'BrowserID verification service did not return a status code'
-        return (None, None)
-    if parsed_response['audience'] != _browserid_audience(settings.SITE_URL):
-        return (None, _('assertion only valid for an audience of "%s"' % parsed_response['audience']))
-
-    if 'valid-until' not in parsed_response:
-        print 'BrowserID verification service did not return an expiration'
-        return (None, None)
-    if parsed_response['valid-until'] < time.time():
-        expiration = time.gmtime(parsed_response['valid-until'] / 1000)
-        formatted_expiration = time.strftime('%Y-%m-%dT%H:%M:%S', expiration)
-        return (None, _('assertion expired on %s' % formatted_expiration))
-
-    if not 'email' in parsed_response:
-        return (None, _('missing email address'))
-
-    email_address = parsed_response['email']
-    try:
-        validators.validate_email(email_address)
-    except ValidationError:
-        return (None, _('"%s" is not a valid email address' % email_address))
-
-    return (email_address, None)
-
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -771,23 +710,7 @@ def add_browserid(request):
         return render_to_response('account/browserid_noassertion.html',
                                   context_instance=RequestContext(request))
 
-    email_address = None
-    assertion_error = None
-
-    audience = _browserid_audience(settings.SITE_URL)
-    verification_data = 'assertion=%s&audience=%s' % (request.POST['assertion'], audience)
-    try:
-        fh = urlopen('https://browserid.org/verify', data=verification_data, timeout=URL_TIMEOUT)
-    except HTTPError as e:
-        print 'BrowserID verification service return a %s HTTP error' % e.code
-        fh = None
-    except URLError as e:
-        print 'BrowserID verification service failure: %s' % e.reason
-        fh = None
-
-    if fh:
-        verification_response = fh.read()
-        (email_address, assertion_error) = _verify_assertion(verification_response)
+    (email_address, assertion_error) = verify_assertion(request.POST['assertion'])
 
     if not email_address:
         return render_to_response('account/browserid_invalidassertion.html', {'error': assertion_error},
@@ -805,3 +728,17 @@ def add_browserid(request):
     return render_to_response('account/email_confirmed.html',
                               {'email_id' : confirmed_id, 'photos' : external_photos},
                               context_instance=RequestContext(request))
+
+@transaction.commit_on_success
+@csrf_protect
+def login_browserid(request):
+    if not request.method == 'POST' or not 'assertion' in request.POST:
+        return render_to_response('account/browserid_noassertion.html',
+                                  context_instance=RequestContext(request))
+
+    user = authenticate(assertion=request.POST['assertion'])
+    if not user:
+        return HttpResponseRedirect(settings.LOGIN_URL)
+
+    login(request, user)
+    return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)

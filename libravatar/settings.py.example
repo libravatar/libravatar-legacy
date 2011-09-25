@@ -92,6 +92,7 @@ TEMPLATE_LOADERS = (
 AUTHENTICATION_BACKENDS = (
     # Enable this to allow LDAP authentication. See INSTALL for more information.
     # 'django_auth_ldap.backend.LDAPBackend',
+    'libravatar.account.browserid_auth.BrowserIDBackend',
     'django_openid_auth.auth.OpenIDBackend',
     'django.contrib.auth.backends.ModelBackend',
 )

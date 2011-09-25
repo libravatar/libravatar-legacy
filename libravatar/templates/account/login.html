@@ -16,6 +16,14 @@
 {% url django_openid_auth.views.login_begin as login_url %}
 <p>{% trans "You'd rather use your <b>OpenID</b>?" %} {% blocktrans %}That's fine, just use <a href="{{ login_url }}">this login form</a> instead.{% endblocktrans %}</p>
 
+<p>{% trans "You like <b>BrowserID</b> even more?" %} {% blocktrans with 'javascript:try_browserid()' as browserid_target %}Well, you're in luck because you can also <a href="{{browserid_target}}">login with that</a>.{% endblocktrans %}</p>
+
+{# Invisible form to process BrowserID assertions #}
+<form id="browserid-form" action="{% url libravatar.account.views.login_browserid %}" name="loginbrowserid" method="post">{% csrf_token %}
+<input id="browserid-assertion" type="hidden" name="assertion" value="">
+<input style="display: none" type="submit">
+</form>
+
 {% if form.errors %}
 <p class="error">{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}
@@ -43,5 +51,17 @@
 {% url libravatar.account.views.password_reset as password_reset_url %}
 <p>{% blocktrans %}Forgot your password? <a href="{{ password_reset_url }}">Reset it by email</a>.{% endblocktrans %}</p>
 {% endif %}
+
+<script src="https://browserid.org/include.js" type="text/javascript"></script>
+<script type="text/javascript">
+function try_browserid() {
+    navigator.id.getVerifiedEmail(function(assertion) {
+        if (assertion) {
+            document.getElementById('browserid-assertion').setAttribute('value', assertion);
+            document.getElementById('browserid-form').submit();
+        }
+    });
+}
+</script>
 
 {% endblock content %}
