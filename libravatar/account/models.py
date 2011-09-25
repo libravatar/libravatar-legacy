@@ -321,7 +321,7 @@ class OpenIDNonce(models.Model):
     server_url = models.CharField(max_length=255)
     timestamp = models.IntegerField()
     salt = models.CharField(max_length=40)
-    
+
     def __unicode__(self):
         return u"OpenIDNonce: %s for %s" % (self.salt, self.server_url)
 
@@ -332,16 +332,16 @@ class OpenIDAssociation(models.Model):
     issued = models.IntegerField()
     lifetime = models.IntegerField()
     assoc_type = models.TextField(max_length=64)
-    
+
     def __unicode__(self):
         return u"OpenIDAssociation: %s, %s" % (self.server_url, self.handle)
 
 class DjangoOpenIDStore(OpenIDStore):
     """
-    The Python openid library needs an OpenIDStore subclass to persist data 
+    The Python openid library needs an OpenIDStore subclass to persist data
     related to OpenID authentications. This one uses our Django models.
     """
-    
+
     def storeAssociation(self, server_url, association):
         assoc = OpenIDAssociation(
             server_url = server_url,
@@ -352,7 +352,7 @@ class DjangoOpenIDStore(OpenIDStore):
             assoc_type = association.assoc_type
         )
         assoc.save()
-    
+
     def getAssociation(self, server_url, handle=None):
         assocs = []
         if handle is not None:
@@ -378,7 +378,7 @@ class DjangoOpenIDStore(OpenIDStore):
         if not associations:
             return None
         return associations[-1][1]
-    
+
     def removeAssociation(self, server_url, handle):
         assocs = list(OpenIDAssociation.objects.filter(
             server_url = server_url, handle = handle
@@ -387,7 +387,7 @@ class DjangoOpenIDStore(OpenIDStore):
         for assoc in assocs:
             assoc.delete()
         return assocs_exist
-    
+
     def useNonce(self, server_url, timestamp, salt):
         # Has nonce expired?
         if abs(timestamp - time.time()) > oidnonce.SKEW:
@@ -407,17 +407,17 @@ class DjangoOpenIDStore(OpenIDStore):
             return True
         nonce.delete()
         return False
-    
+
     def cleanupNonces(self):
         OpenIDNonce.objects.filter(
             timestamp__lt = (int(time.time()) - oidnonce.SKEW)
         ).delete()
-    
+
     def cleanupAssociations(self):
         OpenIDAssociation.objects.extra(
             where=['issued + lifetimeint < (%s)' % time.time()]
         ).delete()
-    
+
     def getAuthKey(self):
         # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY
         return md5(settings.SECRET_KEY).hexdigest()[:self.AUTH_KEY_LEN]
