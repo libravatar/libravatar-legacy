@@ -108,7 +108,31 @@ class BrowserIDBackend(object):
     supports_anonymous_user = False
     supports_object_permissions = False
 
-    def authenticate(self, assertion=None):
+    def create_user_from_browserid(self, email_address, ip_address):
+        nickname = 'browserid'
+        email = ''
+
+        # Pick a username for the user based on their nickname,
+        # checking for conflicts.
+        i = 1
+        while True:
+            username = nickname
+            if i > 1:
+                username += str(i)
+            try:
+                User.objects.get(username__exact=username)
+            except User.DoesNotExist:
+                break
+            i += 1
+
+        user = User.objects.create_user(username, email, password=None)
+        user.is_active = True
+        user.save()
+
+        ConfirmedEmail.objects.create_confirmed_email(user, ip_address, email_address, False)
+        return user
+
+    def authenticate(self, assertion=None, ip_address=None):
         (email_address, unused) = verify_assertion(assertion)
 
         if not email_address:
@@ -118,9 +142,12 @@ class BrowserIDBackend(object):
         try:
             confirmed_email = ConfirmedEmail.objects.get(email=email_address)
         except ConfirmedEmail.DoesNotExist:
-            return None # TODO: add support for account creation
+            confirmed_email = None
 
-        return confirmed_email.user
+        if confirmed_email:
+            return confirmed_email.user
+        else:
+            return self.create_user_from_browserid(email_address, ip_address)
 
     def get_user(self, user_id):
         try:

@@ -216,12 +216,33 @@ class Photo(models.Model):
                     'x' : x, 'y' : y, 'w' : w, 'h' : h}
         gm_client.do_background('cropresize', json.dumps(workload))
 
+class ConfirmedEmailManager(models.Manager):
+    # pylint: disable=R0201
+    def create_confirmed_email(self, user, ip_address, email_address, is_logged_in):
+        confirmed = ConfirmedEmail()
+        confirmed.user = user
+        confirmed.ip_address = ip_address
+        confirmed.email = email_address
+        confirmed.save()
+
+        external_photos = []
+        if is_logged_in:
+            identica = identica_photo(confirmed.email)
+            if identica:
+                external_photos.append(identica)
+            gravatar = gravatar_photo(confirmed.email)
+            if gravatar:
+                external_photos.append(gravatar)
+
+        return (confirmed.id, external_photos)
+
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User, related_name='confirmed_emails')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     email = models.EmailField(unique=True, max_length=MAX_LENGTH_EMAIL)
     photo = models.ForeignKey(Photo, related_name='emails', blank=True, null=True)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
+    objects = ConfirmedEmailManager()
 
     class Meta:
         verbose_name = _('confirmed email')

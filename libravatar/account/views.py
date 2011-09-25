@@ -39,7 +39,6 @@ from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
 
 from libravatar.account.browserid_auth import verify_assertion
-from libravatar.account.external_photos import identica_photo, gravatar_photo
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
@@ -66,28 +65,6 @@ def new(request):
     return render_to_response('account/new.html', { 'form': form },
                               context_instance=RequestContext(request))
 
-def _create_confirmed_email(user, ip_address, email_address, is_logged_in, unconfirmed_record=None):
-    confirmed = ConfirmedEmail()
-    confirmed.user = user
-    confirmed.ip_address = ip_address
-    confirmed.email = email_address
-    confirmed.save()
-
-    if unconfirmed_record:
-        unconfirmed_record.delete()
-
-    external_photos = []
-
-    if is_logged_in:
-        identica = identica_photo(confirmed.email)
-        if identica:
-            external_photos.append(identica)
-        gravatar = gravatar_photo(confirmed.email)
-        if gravatar:
-            external_photos.append(gravatar)
-
-    return (confirmed.id, external_photos)
-
 # No transactions: confirmation should always work no matter what
 @csrf_protect
 def confirm_email(request):
@@ -109,11 +86,11 @@ def confirm_email(request):
 
     # TODO: check for a reasonable expiration time in unconfirmed email
 
-    confirmed_id, external_photos = _create_confirmed_email(unconfirmed.user,
-                                                            request.META['REMOTE_ADDR'],
-                                                            unconfirmed.email,
-                                                            not request.user.is_anonymous(),
-                                                            unconfirmed)
+    (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
+        unconfirmed.user, request.META['REMOTE_ADDR'], unconfirmed.email,
+        not request.user.is_anonymous())
+
+    unconfirmed.delete()
 
     return render_to_response('account/email_confirmed.html',
                               {'email_id' : confirmed_id, 'photos' : external_photos},
@@ -721,9 +698,8 @@ def add_browserid(request):
         return render_to_response('account/browserid_emailalreadyconfirmed.html',
                                   context_instance=RequestContext(request))
 
-    (confirmed_id, external_photos) = _create_confirmed_email(request.user,
-                                                              request.META['REMOTE_ADDR'],
-                                                              email_address, True)
+    (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
+        request.user, request.META['REMOTE_ADDR'], email_address, True)
 
     return render_to_response('account/email_confirmed.html',
                               {'email_id' : confirmed_id, 'photos' : external_photos},
@@ -736,7 +712,7 @@ def login_browserid(request):
         return render_to_response('account/browserid_noassertion.html',
                                   context_instance=RequestContext(request))
 
-    user = authenticate(assertion=request.POST['assertion'])
+    user = authenticate(assertion=request.POST['assertion'], ip_address=request.META['REMOTE_ADDR'])
     if not user:
         return HttpResponseRedirect(settings.LOGIN_URL)
 
