@@ -1,3 +1,19 @@
+libravatar (20110926.1) unstable; urgency=low
+
+  * BrowserID support for auth and for adding confirmed emails
+  * Much smaller mm and nobody images for the CDNs
+  * Hand-optimized PNG images for www
+  * Reduce body of 301, 302 and 307 redirections
+
+  * Add timeouts and error logging on automatic photo importers
+  * Ignore non-SRV records returned when querying for SRV records
+  * Limit size of email addresses
+
+  * Update Japanese translation
+  * Update French translation
+
+ -- Francois Marier <francois@debian.org>  Mon, 26 Sep 2011 01:32:48 +1300
+
 libravatar (20110918.1) unstable; urgency=low
 
   * Add rules.abe for www, cdn and seccdn
