@@ -19,12 +19,17 @@ ORIG_IMAGE=$1
 EXTENSION=$2
 
 for s in {1..512} ; do
-        convert $ORIG_IMAGE -resize ${s}x${s} ${s}.$EXTENSION
-
-        # Make sure all files are losslessly optimized
         if [ "$EXTENSION" = "png" ] ; then
-                optipng -q ${s}.$EXTENSION
+                # ORIG_IMAGE is an SVG file
+                inkscape --without-gui --export-width=${s} --export-height=${s} --export-png=${s}.png $ORIG_IMAGE
+                pngcrush -q -rem gAMA -rem alla -rem text ${s}.$EXTENSION ${s}.crushed.$EXTENSION
+                mv ${s}.crushed.$EXTENSION ${s}.$EXTENSION
+                pngnq -f -n 32 -s 3 ${s}.$EXTENSION
+                mv ${s}-nq8.$EXTENSION ${s}.$EXTENSION
+                optipng -o9 -q ${s}.$EXTENSION
         elif [ "$EXTENSION" = "jpg" ] ; then
+                # ORIG_IMAGE is a JPEG file
+                convert $ORIG_IMAGE -resize ${s}x${s} ${s}.$EXTENSION
                 jpegoptim -q -p --strip-all ${s}.$EXTENSION
         fi
 done
