@@ -266,6 +266,12 @@ class ConfirmedEmail(models.Model):
         else:
             return sha256(self.email.lower()).hexdigest()
 
+    def public_url(self, https=False, algorithm='sha256'):
+        if https:
+            return settings.SECURE_AVATAR_URL + self.public_hash(algorithm)
+        else:
+            return settings.AVATAR_URL + self.public_hash(algorithm)
+
     def set_photo(self, photo):
         self.photo = photo
         change_photo(photo, self.public_hash('md5'), self.public_hash('sha256'))
@@ -330,6 +336,12 @@ class ConfirmedOpenId(models.Model):
         url = urlsplit(self.openid)
         lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
         return sha256(lowercase_value).hexdigest()
+
+    def public_url(self, https=False):
+        if https:
+            return settings.SECURE_AVATAR_URL + self.public_hash()
+        else:
+            return settings.AVATAR_URL + self.public_hash()
 
     def set_photo(self, photo):
         self.photo = photo

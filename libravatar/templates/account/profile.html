@@ -46,11 +46,13 @@
 </ul>
 {% endif %}
 
+<p>
 {% if not max_emails %}
-<p><a href="{% url libravatar.account.views.add_email %}">{% trans 'Add a new email address' %}</a></p>
+<a href="{% url libravatar.account.views.add_email %}">{% trans 'Add a new email address' %}</a>
+|
 {% endif %}
-
-<p><a href="{% url libravatar.account.views.add_openid %}">{% trans 'Add a new OpenID' %}</a></p>
+<a href="{% url libravatar.account.views.add_openid %}">{% trans 'Add a new OpenID' %}</a></p>
+</p>
 
 {% if photos %}
 <p>{% trans 'Here are the photos you have uploaded/imported:' %}</p>
@@ -64,6 +66,18 @@
 
 {% if not max_photos %}
 <p><a href="{% url libravatar.account.views.upload_photo %}">{% trans 'Upload a new photo' %}</a></p>
+{% endif %}
+
+{% if confirmed_emails or confirmed_openids %}
+<p>{% trans 'Your avatars are accessible from the following URLs:' %}</p>
+<ul>
+    {% for email in confirmed_emails %}
+       <li>{{email.public_url|urlizetrunc:50}}</li>
+    {% endfor %}
+    {% for openid in confirmed_openids %}
+       <li>{{openid.public_url|urlizetrunc:50}}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
 <h2>{% trans 'Account settings' %}</h2>
