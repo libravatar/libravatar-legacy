@@ -1,3 +1,17 @@
+libravatar (20111001.1) unstable; urgency=low
+
+  * Add X-Frame-Options headers
+  * Add list of URLS where photos are accessible
+  * Increase JPEG quality from 75% to 85%
+
+  * Remove BrowserID expiry checks
+  * Display error message when trying to crop missing photo
+  * Include Vary: accept-encoding header for /css and /js
+
+  * Update Japanese translation
+
+ -- Francois Marier <francois@debian.org>  Sat, 01 Oct 2011 23:14:42 +1300
+
 libravatar (20110926.1) unstable; urgency=low
 
   * BrowserID support for auth and for adding confirmed emails
