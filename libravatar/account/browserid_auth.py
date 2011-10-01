@@ -17,7 +17,6 @@
 
 import json
 from urllib2 import urlopen, HTTPError, URLError
-import time
 
 from django.contrib.auth.models import User
 from django.core import validators
@@ -83,14 +82,6 @@ def verify_assertion(assertion):
         return (None, None)
     if parsed_response['audience'] != _browserid_audience(settings.SITE_URL):
         return (None, _('assertion only valid for an audience of "%s"' % parsed_response['audience']))
-
-    if 'valid-until' not in parsed_response:
-        print 'BrowserID verification service did not return an expiration'
-        return (None, None)
-    if parsed_response['valid-until'] < time.time():
-        expiration = time.gmtime(parsed_response['valid-until'] / 1000)
-        formatted_expiration = time.strftime('%Y-%m-%dT%H:%M:%S', expiration)
-        return (None, _('assertion expired on %s' % formatted_expiration))
 
     if not 'email' in parsed_response:
         return (None, _('missing email address'))
