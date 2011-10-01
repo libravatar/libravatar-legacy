@@ -1,0 +1,6 @@
+{% extends 'error.html' %}
+{% load i18n %}
+
+{% block errormessage %}
+{% trans 'The original photo you uploaded is missing and so it cannot be cropped. Perhaps you have already cropped it or it was uploaded too long ago and has expired.' %}
+{% endblock errormessage %}

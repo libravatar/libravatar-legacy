@@ -23,6 +23,7 @@ from hashlib import sha256
 import json
 from openid import oidutil
 from openid.consumer import consumer
+import os
 from StringIO import StringIO
 
 from django_openid_auth.models import UserOpenID
@@ -448,6 +449,11 @@ def crop_photo(request, photo_id):
         photo = Photo.objects.get(id=photo_id, user=request.user)
     except Photo.DoesNotExist:
         return render_to_response('account/photo_invalid.html',
+                                  context_instance=RequestContext(request))
+
+    photo_file = settings.UPLOADED_FILES_ROOT + photo.full_filename()
+    if not os.path.exists(photo_file):
+        return render_to_response('account/uploaded_photo_missing.html',
                                   context_instance=RequestContext(request))
 
     if request.method == 'POST':
