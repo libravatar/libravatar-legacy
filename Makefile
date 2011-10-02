@@ -34,10 +34,13 @@ lint:
 	( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
 	DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
 
+pyflakes:
+	pyflakes libravatar/
+
 unittests:
 	python libravatar/manage.py test public tools
 
-test: lint unittests
+test: pyflakes lint unittests
 
 package:
 	dpkg-buildpackage -us -uc
