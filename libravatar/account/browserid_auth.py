@@ -15,8 +15,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+import httplib2
 import json
-from urllib2 import urlopen, HTTPError, URLError
 
 from django.contrib.auth.models import User
 from django.core import validators
@@ -44,29 +44,27 @@ def verify_assertion(assertion):
     if not assertion:
         return (None, None)
 
+    url = 'https://browserid.org/verify'
     audience = _browserid_audience(settings.SITE_URL)
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
 
-    fh = None
+    client = httplib2.Http(timeout=URL_TIMEOUT) # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
+    response = content = None
     try:
-        # TODO: verify SSL certs
-        fh = urlopen('https://browserid.org/verify', data=verification_data, timeout=URL_TIMEOUT)
-    except HTTPError as e:
-        print 'BrowserID verification service return a %s HTTP error' % e.code
-    except URLError as e:
-        print 'BrowserID verification service failure: %s' % e.reason
+        response, content = client.request('%s?%s' % (url, verification_data), 'POST')
+    except httplib2.HttpLib2Error as e:
+        print 'BrowserID verification service failure: ' % e
 
-    if not fh:
+    if not response or response.status != 200 or not content:
         return (None, None)
 
-    verification_response = fh.read()
     try:
-        parsed_response = json.loads(verification_response)
+        parsed_response = json.loads(content)
     except ValueError:
         parsed_response = None
 
     if not parsed_response:
-        print 'BrowserID verification service returned non-JSON or empty output: %s' % verification_response
+        print 'BrowserID verification service returned non-JSON or empty output: %s' % content
         return (None, None)
 
     if 'status' not in parsed_response:

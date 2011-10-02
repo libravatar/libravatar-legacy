@@ -219,3 +219,5 @@ DISABLE_SIGNUP = False
 REQUIRED_DOMAIN = ''
 
 OPENID_CREATE_USERS = True
+
+CACERTS = '/etc/ssl/ca-certificates.crt'
