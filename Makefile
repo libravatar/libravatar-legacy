@@ -31,14 +31,17 @@ clean:
 	( [ -h libravatar/settings.py ] && rm -f libravatar/settings.py ) || true
 
 lint:
-	( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
-	DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
+	@echo Running pylint...
+	@( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
+	@DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
 
 pyflakes:
-	pyflakes libravatar/
+	@echo Running pyflakes...
+	@pyflakes libravatar/
 
 unittests:
-	python libravatar/manage.py test public tools
+	@echo Running unit tests...
+	@python libravatar/manage.py test public tools
 
 test: pyflakes lint unittests
 
