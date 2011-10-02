@@ -19,7 +19,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 # pylint: disable=W0401,W0614
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
     ('login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}),
