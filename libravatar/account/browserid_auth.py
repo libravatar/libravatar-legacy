@@ -77,12 +77,6 @@ def verify_assertion(assertion):
     if parsed_response['status'] != 'okay':
         return (None, _('unexpected "%s" status code' % parsed_response['status']))
 
-    if 'audience' not in parsed_response:
-        print 'BrowserID verification service did not return a status code'
-        return (None, None)
-    if parsed_response['audience'] != _browserid_audience(settings.SITE_URL):
-        return (None, _('assertion only valid for an audience of "%s"' % parsed_response['audience']))
-
     if not 'email' in parsed_response:
         return (None, _('missing email address'))
 
