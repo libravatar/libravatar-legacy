@@ -28,7 +28,8 @@ def identica_photo(email):
     try:
         fh = urlopen('http://identi.ca/api/users/show.xml?email=' + email, timeout=URL_TIMEOUT)
     except HTTPError as e:
-        print 'Identica fetch failed with an HTTP error: %s' % e.code
+        if e.code != 404:
+            print 'Identica fetch failed with an HTTP error: %s' % e.code
         return False
     except URLError as e:
         print 'Identica fetch failed: %s' % e.reason
