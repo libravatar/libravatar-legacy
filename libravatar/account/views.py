@@ -44,6 +44,7 @@ from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountF
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
 
+
 @transaction.commit_on_success
 @csrf_protect
 def new(request):
@@ -63,8 +64,9 @@ def new(request):
     else:
         form = UserCreationForm()
 
-    return render_to_response('account/new.html', { 'form': form },
+    return render_to_response('account/new.html', {'form': form},
                               context_instance=RequestContext(request))
+
 
 # No transactions: confirmation should always work no matter what
 @csrf_protect
@@ -94,8 +96,9 @@ def confirm_email(request):
     unconfirmed.delete()
 
     return render_to_response('account/email_confirmed.html',
-                              {'email_id' : confirmed_id, 'photos' : external_photos},
+                              {'email_id': confirmed_id, 'photos': external_photos},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -120,7 +123,7 @@ def import_photo(request, user_id):
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
-        photos_to_import = False # are there photos to import at all?
+        photos_to_import = False  # are there photos to import at all?
         photos_imported = False
 
         if 'photo_Identica' in request.POST:
@@ -148,6 +151,7 @@ def import_photo(request, user_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @login_required
 def successfully_authenticated(request):
@@ -169,7 +173,7 @@ def successfully_authenticated(request):
 
             # add photo to database, bung LDAP photo into the expected file
             photo_contents = request.user.ldap_user.attrs[settings.AUTH_LDAP_USER_PHOTO][0]
-            fp = StringIO(photo_contents) # file pointer to in-memory string buffer
+            fp = StringIO(photo_contents)  # file pointer to in-memory string buffer
             image = File(fp)
             p = Photo()
             p.user = request.user
@@ -178,17 +182,18 @@ def successfully_authenticated(request):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 def _confirm_claimed_openid(user, remote_address):
     if user.password != u'!':
-        return # not using OpenID auth
+        return  # not using OpenID auth
 
     openids = UserOpenID.objects.filter(user=user)
     if openids.count() != 1:
-        return # only the first OpenID needs to be confirmed this way
+        return  # only the first OpenID needs to be confirmed this way
 
     claimed_id = openids[0].claimed_id
     if ConfirmedOpenId.objects.filter(openid=claimed_id).exists():
-        return # already confirmed (by this user or someone else)
+        return  # already confirmed (by this user or someone else)
 
     # confirm the claimed ID for the logged in user
     confirmed = ConfirmedOpenId()
@@ -196,6 +201,7 @@ def _confirm_claimed_openid(user, remote_address):
     confirmed.ip_address = remote_address
     confirmed.openid = claimed_id
     confirmed.save()
+
 
 @csrf_protect
 @login_required
@@ -220,16 +226,18 @@ def profile(request):
 
     has_password = request.user.password != u'!'
     return render_to_response('account/profile.html',
-                              {'confirmed_emails' : confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
-                               'confirmed_openids' : confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
+                              {'confirmed_emails': confirmed_emails, 'unconfirmed_emails': unconfirmed_emails,
+                               'confirmed_openids': confirmed_openids, 'unconfirmed_openids': unconfirmed_openids,
                                'photos': photos, 'max_photos': max_photos, 'max_emails': max_emails,
                                'has_password': has_password, 'sender_email': settings.SERVER_EMAIL},
                               context_instance=RequestContext(request))
+
 
 def openid_logging(message, level=0):
     # Normal messages are not that important
     if (level > 0):
         print message
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -250,6 +258,7 @@ def add_openid(request):
 
     return render_to_response('account/add_openid.html', {'form': form},
                               RequestContext(request))
+
 
 # CSRF check not possible (using a meta redirect)
 @login_required
@@ -281,6 +290,7 @@ def redirect_openid(request, openid_id):
     return_url = realm + reverse('libravatar.account.views.confirm_openid', args=[openid_id])
 
     return HttpResponseRedirect(auth_request.redirectURL(realm, return_url))
+
 
 # No transactions: confirmation should always work no matter what
 # CSRF check not needed (OpenID return URL)
@@ -334,6 +344,7 @@ def confirm_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -356,6 +367,7 @@ def remove_confirmed_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -371,6 +383,7 @@ def remove_unconfirmed_openid(request, openid_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -380,14 +393,15 @@ def add_email(request):
         if form.is_valid():
             if not form.save(request.user):
                 return render_to_response('account/email_notadded.html',
-                                          {'max_emails' : settings.MAX_NUM_UNCONFIRMED_EMAILS},
+                                          {'max_emails': settings.MAX_NUM_UNCONFIRMED_EMAILS},
                                           context_instance=RequestContext(request))
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
     else:
         form = AddEmailForm()
 
-    return render_to_response('account/add_email.html', { 'form': form },
+    return render_to_response('account/add_email.html', {'form': form},
                               RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -404,6 +418,7 @@ def remove_confirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -418,6 +433,7 @@ def remove_unconfirmed_email(request, email_id):
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -431,7 +447,7 @@ def upload_photo(request):
         if form.is_valid():
             photo_data = request.FILES['photo']
             if photo_data.size > settings.MAX_PHOTO_SIZE:
-                return render_to_response('account/photo_toobig.html', { 'max_size' : settings.MAX_PHOTO_SIZE },
+                return render_to_response('account/photo_toobig.html', {'max_size': settings.MAX_PHOTO_SIZE},
                                           context_instance=RequestContext(request))
 
             photo = form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
@@ -439,8 +455,9 @@ def upload_photo(request):
     else:
         form = UploadPhotoForm()
 
-    return render_to_response('account/upload_photo.html', {'form': form, 'max_file_size' : settings.MAX_PHOTO_SIZE},
+    return render_to_response('account/upload_photo.html', {'form': form, 'max_file_size': settings.MAX_PHOTO_SIZE},
                               context_instance=RequestContext(request))
+
 
 @csrf_protect
 @login_required
@@ -464,8 +481,9 @@ def crop_photo(request, photo_id):
         photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery':True, 'needs_jcrop':True},
+    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery': True, 'needs_jcrop': True},
                               context_instance=RequestContext(request))
+
 
 @login_required
 def auto_crop(request, photo_id):
@@ -477,6 +495,7 @@ def auto_crop(request, photo_id):
 
     photo.crop()
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -491,8 +510,9 @@ def delete_photo(request, photo_id):
         photo.delete()
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/delete_photo.html', { 'photo': photo },
+    return render_to_response('account/delete_photo.html', {'photo': photo},
                               context_instance=RequestContext(request))
+
 
 def _assign_photo(request, identifier_type, identifier):
     if request.method == 'POST':
@@ -508,9 +528,10 @@ def _assign_photo(request, identifier_type, identifier):
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     photos = request.user.photos.order_by('add_date')
-    list(photos) # force evaluation of the QuerySet
+    list(photos)  # force evaluation of the QuerySet
     return render_to_response('account/assign_photo_%s.html' % identifier_type, {'photos': photos, identifier_type: identifier},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -524,6 +545,7 @@ def assign_photo_email(request, email_id):
 
     return _assign_photo(request, 'email', email)
 
+
 @transaction.commit_on_success
 @csrf_protect
 @login_required
@@ -536,6 +558,7 @@ def assign_photo_openid(request, openid_id):
 
     return _assign_photo(request, 'openid', openid)
 
+
 @transaction.commit_on_success
 @csrf_protect
 def password_reset(request):
@@ -546,13 +569,14 @@ def password_reset(request):
         if form.is_valid():
             form.save()
             return render_to_response('account/password_reset_submitted.html',
-                                      {'form': form, 'support_email' : settings.SUPPORT_EMAIL},
+                                      {'form': form, 'support_email': settings.SUPPORT_EMAIL},
                                       context_instance=RequestContext(request))
     else:
         form = PasswordResetForm()
 
-    return render_to_response('account/password_reset.html', { 'form': form },
+    return render_to_response('account/password_reset.html', {'form': form},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -607,9 +631,10 @@ def password_reset_confirm(request):
     else:
         form = SetPasswordForm(user)
 
-    return render_to_response('account/password_change.html', {'form' : form,
-                              'verification_key' : verification_key, 'email_address' : email_address},
+    return render_to_response('account/password_change.html', {'form': form,
+                              'verification_key': verification_key, 'email_address': email_address},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -621,7 +646,7 @@ def delete(request):
             username = request.user.username
             download_url = _perform_export(request.user, True)
             Photo.objects.delete_user_photos(request.user)
-            request.user.delete() # cascading through unconfirmed and confirmed emails/openids
+            request.user.delete()  # cascading through unconfirmed and confirmed emails/openids
             logout(request)
             return render_to_response('account/delete_done.html',
                                       {'download_url': download_url, 'username': username},
@@ -630,8 +655,9 @@ def delete(request):
         form = DeleteAccountForm(request.user)
 
     has_password = request.user.password != u'!'
-    return render_to_response('account/delete.html', {'form' : form, 'has_password': has_password},
+    return render_to_response('account/delete.html', {'form': form, 'has_password': has_password},
                               context_instance=RequestContext(request))
+
 
 def _perform_export(user, do_delete):
     file_hash = sha256(user.username + user.password).hexdigest()
@@ -655,6 +681,7 @@ def _perform_export(user, do_delete):
     download_url = settings.EXPORT_FILES_URL + file_hash + '.xml.gz'
     return download_url
 
+
 @csrf_protect
 @login_required
 def export(request):
@@ -664,6 +691,7 @@ def export(request):
                                   context_instance=RequestContext(request))
 
     return render_to_response('account/export.html', context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -682,8 +710,9 @@ def password_set(request):
     else:
         form = SetPasswordForm(request.user)
 
-    return render_to_response('account/password_change.html', {'form' : form},
+    return render_to_response('account/password_change.html', {'form': form},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect
@@ -708,8 +737,9 @@ def add_browserid(request):
         request.user, request.META['REMOTE_ADDR'], email_address, True)
 
     return render_to_response('account/email_confirmed.html',
-                              {'email_id' : confirmed_id, 'photos' : external_photos},
+                              {'email_id': confirmed_id, 'photos': external_photos},
                               context_instance=RequestContext(request))
+
 
 @transaction.commit_on_success
 @csrf_protect

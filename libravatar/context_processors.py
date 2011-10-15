@@ -18,6 +18,7 @@
 
 from libravatar import settings
 
+
 # Default useful variables for the base page template.
 def basepage(request):
     # pylint: disable=W0613
@@ -31,4 +32,3 @@ def basepage(request):
     context['site_url'] = settings.SITE_URL
     context['support_email'] = settings.SUPPORT_EMAIL
     return context
-

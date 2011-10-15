@@ -20,11 +20,13 @@ import json
 from os import link, path
 import sys
 
-import settings # pylint: disable=W0403
-from resizeavatar import resize_image # pylint: disable=W0403
-from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+# pylint: disable=W0403
+import settings
+from resizeavatar import resize_image
+from utils import create_logger, delete_if_exists, is_hex
 
 logger = create_logger('changephoto')
+
 
 def link_image(source_filename, destination_hash, size=None):
     if size:
@@ -36,6 +38,7 @@ def link_image(source_filename, destination_hash, size=None):
         link(source_filename, destination_filename)
     except OSError:
         logger.error("Unable to link '%s' to %s" % (source_filename, destination_filename))
+
 
 def create_links(source_filename, md5_hash, sha256_hash):
     if not path.isfile(source_filename):
@@ -53,6 +56,7 @@ def create_links(source_filename, md5_hash, sha256_hash):
             link_image(resized_filename, md5_hash, size)
 
     return 0
+
 
 def main(argv=None):
     if argv is None:
@@ -76,7 +80,7 @@ def main(argv=None):
     if md5_hash and not is_hex(md5_hash):
         logger.error('md5_hash is not a hexadecimal value')
         return 1
-    if not is_hex(sha256_hash): # mandatory
+    if not is_hex(sha256_hash):  # mandatory
         logger.error('sha256_hash is not a hexadecimal value')
         return 1
 

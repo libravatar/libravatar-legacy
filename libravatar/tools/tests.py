@@ -20,14 +20,16 @@ import unittest
 
 from django.test.client import Client
 
-from views import lookup_ip_address # pylint: disable=W0403
+from views import lookup_ip_address  # pylint: disable=W0403
+
 
 def match_regexp(result, regexp):
     return re.match(regexp, result)
 
+
 class ToolsTestCase(unittest.TestCase):
     def setUp(self):
-        pass # Nothing to do
+        pass  # Nothing to do
 
     def testIpLookup(self):
         self.assertTrue(match_regexp(lookup_ip_address('www.google.com', False), r'^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$'))
@@ -57,16 +59,16 @@ class ToolsTestCase(unittest.TestCase):
 
     def testErrorMessages(self):
         c = Client()
-        response = c.post('/tools/check/', {'email' : 'person@example.com', 'openid': 'http://example.com/id/Bob', 'size': '80'})
+        response = c.post('/tools/check/', {'email': 'person@example.com', 'openid': 'http://example.com/id/Bob', 'size': '80'})
         self.assertTrue('You cannot provide both an email and an OpenID' in response.content)
 
-        response = c.post('/tools/check/', {'email' : 'personexample.com', 'size': '80'})
+        response = c.post('/tools/check/', {'email': 'personexample.com', 'size': '80'})
         self.assertTrue('Enter a valid e-mail' in response.content)
 
-        response = c.post('/tools/check/', {'openid' : 'example', 'size': '80'})
+        response = c.post('/tools/check/', {'openid': 'example', 'size': '80'})
         self.assertTrue('Enter a valid URL' in response.content)
 
-        response = c.post('/tools/check/', {'openid' : 'example.com', 'size': '520'})
+        response = c.post('/tools/check/', {'openid': 'example.com', 'size': '520'})
         self.assertTrue('Ensure this value is less than or equal to 512' in response.content)
 
     def testDomainLookup(self):
@@ -81,5 +83,5 @@ class ToolsTestCase(unittest.TestCase):
         self.assertTrue('<tt>static.avatars.catalyst.net.nz' in response.content)
         self.assertTrue('use <tt>https://seccdn.libravatar.org' in response.content)
 
-        response = c.post('/tools/check_domain/', {'domain' : ''})
+        response = c.post('/tools/check_domain/', {'domain': ''})
         self.assertTrue('This field is required' in response.content)

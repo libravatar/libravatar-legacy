@@ -21,10 +21,12 @@ import json
 import os
 import sys
 
-import settings # pylint: disable=W0403
-from utils import create_logger, is_hex # pylint: disable=W0403
+# pylint: disable=W0403
+import settings
+from utils import create_logger, is_hex
 
 logger = create_logger('resizeavatar')
+
 
 def resize_image(email_hash, size):
     original_filename = settings.AVATAR_ROOT + email_hash
@@ -40,6 +42,7 @@ def resize_image(email_hash, size):
     resized_img.save(resized_filename, original_img.format, quality=settings.JPEG_QUALITY)
 
     return resized_filename
+
 
 def main(argv=None):
     if argv is None:

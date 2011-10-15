@@ -26,7 +26,8 @@ from django.utils.translation import ugettext_lazy as _
 from libravatar import settings
 from libravatar.account.models import ConfirmedEmail
 
-URL_TIMEOUT = 5 # in seconds
+URL_TIMEOUT = 5  # in seconds
+
 
 # TODO: use request.get_host() instead of settings.SITE_URL
 def _browserid_audience(site_url):
@@ -40,6 +41,7 @@ def _browserid_audience(site_url):
         print 'Invalid SITE_URL setting: %s' % site_url
         return None
 
+
 def verify_assertion(assertion):
     if not assertion:
         return (None, None)
@@ -48,7 +50,7 @@ def verify_assertion(assertion):
     audience = _browserid_audience(settings.SITE_URL)
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
 
-    client = httplib2.Http(timeout=URL_TIMEOUT) # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
+    client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
     response = content = None
     try:
         response, content = client.request('%s?%s' % (url, verification_data), 'POST')
@@ -85,6 +87,7 @@ def verify_assertion(assertion):
         return (None, _('"%s" is not a valid email address' % email_address))
 
     return (email_address, None)
+
 
 # pylint: disable=R0201
 class BrowserIDBackend(object):

@@ -19,7 +19,8 @@ from urllib2 import urlopen, HTTPError, URLError
 from hashlib import md5
 import xml.dom.minidom as minidom
 
-URL_TIMEOUT = 5 # in seconds
+URL_TIMEOUT = 5  # in seconds
+
 
 def identica_photo(email):
     image_url = ''
@@ -55,10 +56,12 @@ def identica_photo(email):
         image_url = image_url.replace('-48-', '-96-')
 
     if image_url and screen_name:
-        return {'thumbnail_url' : image_url, 'image_url' : image_url, 'width' : 96, 'height' : 96,
-                'service_url' : 'http://identi.ca/' + screen_name, 'service_name' : 'Identica'}
+        return {'thumbnail_url': image_url, 'image_url': image_url, 'width': 96,
+                'height': 96, 'service_url': 'http://identi.ca/' + screen_name,
+                'service_name': 'Identica'}
 
     return False
+
 
 def gravatar_photo(email):
     thumbnail_url = 'https://secure.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
@@ -77,5 +80,5 @@ def gravatar_photo(email):
         print 'Gravatar fetch failed: %s' % e.reason
         return False
 
-    return {'thumbnail_url' : thumbnail_url, 'image_url' : image_url, 'width' : 80, 'height' : 80,
-            'service_url' : service_url, 'service_name' : 'Gravatar'}
+    return {'thumbnail_url': thumbnail_url, 'image_url': image_url, 'width': 80,
+            'height': 80, 'service_url': service_url, 'service_name': 'Gravatar'}

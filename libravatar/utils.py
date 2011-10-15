@@ -18,7 +18,8 @@
 import logging
 from os import unlink, path
 
-import settings # pylint: disable=W0403
+import settings  # pylint: disable=W0403
+
 
 # functions common to all gearman workers
 
@@ -26,8 +27,10 @@ def delete_if_exists(filename):
     if path.isfile(filename):
         unlink(filename)
 
+
 def is_hex(s):
     return set(s).issubset('0123456789abcdefABCDEF')
+
 
 def create_logger(worker_name):
     log_filename = settings.GEARMAN_WORKER_LOGFILE

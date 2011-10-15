@@ -27,6 +27,7 @@ from django.template import RequestContext
 from libravatar.public.views import lookup_avatar_server
 from libravatar.tools.forms import CheckForm, CheckDomainForm
 
+
 def check(request):
     data = None
     if (request.POST):
@@ -43,8 +44,8 @@ def check(request):
                 data['md5'] = md5(lowercase_value).hexdigest()
             else:
                 url = urlsplit(openid.strip())
-                lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
-                domain = url.netloc # pylint: disable=E1103
+                lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))  # pylint: disable=E1103
+                domain = url.netloc  # pylint: disable=E1103
 
             data['sha256'] = sha256(lowercase_value).hexdigest()
             data['query_string'] = '?domain=' + domain
@@ -67,8 +68,9 @@ def check(request):
     else:
         form = CheckForm()
 
-    return render_to_response('tools/check.html', {'form': form, 'data' : data},
+    return render_to_response('tools/check.html', {'form': form, 'data': data},
                               context_instance=RequestContext(request))
+
 
 def lookup_ip_address(hostname, ipv6):
     """
@@ -93,7 +95,7 @@ def lookup_ip_address(hostname, ipv6):
         if (not 'data' in answer) or (not answer['data']):
             continue
         if (ipv6 and answer['typename'] != 'AAAA') or (not ipv6 and answer['typename'] != 'A'):
-            continue # skip CNAME records
+            continue  # skip CNAME records
 
         if ipv6:
             return inet_ntop(AF_INET6, answer['data'])
@@ -101,6 +103,7 @@ def lookup_ip_address(hostname, ipv6):
             return answer['data']
 
     return None
+
 
 def check_domain(request):
     data = None
@@ -120,5 +123,5 @@ def check_domain(request):
     else:
         form = CheckDomainForm()
 
-    return render_to_response('tools/check_domain.html', {'form': form, 'data' : data},
+    return render_to_response('tools/check_domain.html', {'form': form, 'data': data},
                               context_instance=RequestContext(request))

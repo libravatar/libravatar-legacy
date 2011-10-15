@@ -21,10 +21,12 @@ import os
 import shutil
 import sys
 
-import settings # pylint: disable=W0403
-from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+# pylint: disable=W0403
+import settings
+from utils import create_logger, delete_if_exists, is_hex
 
 logger = create_logger('ready2user')
+
 
 def main(argv=None):
     if argv is None:

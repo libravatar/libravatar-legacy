@@ -28,8 +28,9 @@ from django.utils.translation import ugettext_lazy as _
 from libravatar import settings
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, Photo, password_reset_key, MAX_LENGTH_URL, MAX_LENGTH_EMAIL
 
-MIN_LENGTH_EMAIL = 3 # http://www.eph.co.uk/resources/email-address-length-faq/
-MIN_LENGTH_URL = 5 # completely arbitrary guess
+MIN_LENGTH_EMAIL = 3  # http://www.eph.co.uk/resources/email-address-length-faq/
+MIN_LENGTH_URL = 5  # completely arbitrary guess
+
 
 class AddEmailForm(forms.Form):
     email = forms.EmailField(label=_('Email'), max_length=MAX_LENGTH_EMAIL, min_length=MIN_LENGTH_EMAIL)
@@ -42,7 +43,7 @@ class AddEmailForm(forms.Form):
         domain = settings.REQUIRED_DOMAIN.lower()
 
         if domain and "@%s" % domain not in data:
-            raise forms.ValidationError(_('Valid email addresses end with @%(domain)s') % {'domain' : domain})
+            raise forms.ValidationError(_('Valid email addresses end with @%(domain)s') % {'domain': domain})
 
         return data
 
@@ -73,6 +74,7 @@ class AddEmailForm(forms.Form):
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [unconfirmed.email])
         return True
 
+
 class AddOpenIdForm(forms.Form):
     openid = forms.URLField(label=_('OpenID'), verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
 
@@ -83,11 +85,11 @@ class AddOpenIdForm(forms.Form):
 
         # Lowercase the hostname part of the URL
         url = urlsplit(self.cleaned_data['openid'])
-        data = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
+        data = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))  # pylint: disable=E1103
 
         domain = settings.REQUIRED_DOMAIN.lower()
 
-        if domain and "%s/" % domain not in data: # FIXME: improve this check, it's not all that great
+        if domain and "%s/" % domain not in data:  # FIXME: improve this check, it's not all that great
             raise forms.ValidationError(_('Valid OpenID URLs are on this domain: ') + domain)
 
         return data
@@ -107,6 +109,7 @@ class AddOpenIdForm(forms.Form):
 
         return unconfirmed.id
 
+
 class UploadPhotoForm(forms.Form):
     photo = forms.ImageField(label=_('Photo'), error_messages={'required': _('You must choose an image to upload.')})
     not_porn = forms.BooleanField(label=_('suitable for all ages (i.e. no offensive content)'), required=True,
@@ -122,6 +125,7 @@ class UploadPhotoForm(forms.Form):
         p.ip_address = ip_address
         p.save(image)
         return p
+
 
 class PasswordResetForm(forms.Form):
     email = forms.EmailField(label=_('Email'), max_length=MAX_LENGTH_EMAIL, min_length=MIN_LENGTH_EMAIL)
@@ -152,11 +156,13 @@ class PasswordResetForm(forms.Form):
         else:
             openids = UserOpenID.objects.filter(user=email.user)
             emails = ConfirmedEmail.objects.filter(user=email.user)
-            email_body = render_to_string('account/password_reminder.txt', {'openids' : openids, 'browserids': emails,
-                                                                            'site_name' : settings.SITE_NAME})
+            email_body = render_to_string('account/password_reminder.txt',
+                                          {'openids': openids, 'browserids': emails,
+                                           'site_name': settings.SITE_NAME})
 
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [email_address])
         return True
+
 
 class DeleteAccountForm(forms.Form):
     password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput(render_value=False))

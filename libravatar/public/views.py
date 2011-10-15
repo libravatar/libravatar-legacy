@@ -33,6 +33,7 @@ from django.template import RequestContext
 
 from libravatar import settings
 
+
 def mimetype_format(pil_format):
     if 'JPEG' == pil_format:
         return 'image/jpeg'
@@ -42,9 +43,11 @@ def mimetype_format(pil_format):
     print "ERROR: got invalid file format from PIL: %s" % pil_format
     return 'image/jpeg'
 
+
 def home(request):
     return render_to_response('public/home.html',
                               context_instance=RequestContext(request))
+
 
 def srv_hostname(records):
     """
@@ -61,7 +64,7 @@ def srv_hostname(records):
     # Keep only the servers in the top priority
     priority_records = []
     total_weight = 0
-    top_priority = records[0]['priority'] # highest priority = lowest number
+    top_priority = records[0]['priority']  # highest priority = lowest number
 
     for rr in records:
         if rr['priority'] > top_priority:
@@ -96,6 +99,7 @@ def srv_hostname(records):
 
     print 'There is something wrong with our SRV weight ordering algorithm'
     return (None, None)
+
 
 def lookup_avatar_server(domain, https):
     """
@@ -144,6 +148,7 @@ def lookup_avatar_server(domain, https):
         return "%s:%s" % (target, port)
 
     return target
+
 
 def resolve(request):
     if request.method == 'POST':
@@ -194,6 +199,7 @@ def resolve(request):
     final_url = avatar_url + email_hash + query_string
     return HttpResponseRedirect(final_url)
 
+
 def avatar_exists(email_hash, size=None):
     if size:
         filename = settings.AVATAR_ROOT + '/%s/%s' % (size, email_hash)
@@ -207,6 +213,7 @@ def avatar_exists(email_hash, size=None):
 
     filename = settings.AVATAR_ROOT + '/%s' % email_hash
     return os.path.isfile(filename)
+
 
 def resized_avatar(email_hash, size):
     resized_filename = '%s/%s/%s' % (settings.AVATAR_ROOT, size, email_hash)
@@ -222,6 +229,7 @@ def resized_avatar(email_hash, size):
 
     resized_img = Image.open(resized_filename)
     return (resized_filename, resized_img.format)
+
 
 def resize(request):
     if request.method == 'POST':
@@ -241,7 +249,7 @@ def resize(request):
             size = int(request.GET['size'])
         except ValueError:
             return render_to_response('public/resize_notnumeric.html',
-                                      {'min_size' : settings.AVATAR_MIN_SIZE, 'max_size' : settings.AVATAR_MAX_SIZE},
+                                      {'min_size': settings.AVATAR_MIN_SIZE, 'max_size': settings.AVATAR_MAX_SIZE},
                                       context_instance=RequestContext(request))
 
         size = max(size, settings.AVATAR_MIN_SIZE)

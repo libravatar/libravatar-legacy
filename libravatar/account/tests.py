@@ -24,6 +24,7 @@ Replace these with more appropriate tests for your application.
 
 from django.test import TestCase
 
+
 class SimpleTest(TestCase):
     def test_basic_addition(self):
         """
@@ -37,4 +38,3 @@ Another way to test that 1 + 1 is equal to 2.
 >>> 1 + 1 == 2
 True
 """}
-

@@ -20,6 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from libravatar.account.forms import MIN_LENGTH_URL, MAX_LENGTH_URL
 
+
 class CheckForm(forms.Form):
     email = forms.EmailField(label=_('Email'), required=False)
     openid = forms.URLField(label=_('OpenID'), required=False, verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL)
@@ -33,6 +34,7 @@ class CheckForm(forms.Form):
         if cleaned_data.get('email') and cleaned_data.get('openid'):
             raise forms.ValidationError(_('You cannot provide both an email and an OpenID. Choose one!'))
         return cleaned_data
+
 
 class CheckDomainForm(forms.Form):
     domain = forms.CharField(label=_('Domain'))

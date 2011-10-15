@@ -45,6 +45,7 @@
 #     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 #     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+import base64
 import datetime
 from gearman import libgearman
 from hashlib import md5, sha256
@@ -54,7 +55,7 @@ from openid.store import nonce as oidnonce
 from openid.store.interface import OpenIDStore
 from openid.association import Association as OIDAssociation
 from os import urandom, path, rename
-import time, base64
+import time
 from urllib2 import urlopen
 from urlparse import urlsplit, urlunsplit
 
@@ -66,12 +67,14 @@ from libravatar import settings
 from libravatar.account.external_photos import identica_photo, gravatar_photo
 
 DEFAULT_IMAGE_FORMAT = 'jpg'
-MAX_LENGTH_EMAIL = 254 # http://stackoverflow.com/questions/386294
-MAX_LENGTH_IPV6 = 45 # http://stackoverflow.com/questions/166132
-MAX_LENGTH_URL = 2048 # http://stackoverflow.com/questions/754547
+MAX_LENGTH_EMAIL = 254  # http://stackoverflow.com/questions/386294
+MAX_LENGTH_IPV6 = 45  # http://stackoverflow.com/questions/166132
+MAX_LENGTH_URL = 2048  # http://stackoverflow.com/questions/754547
+
 
 def password_reset_key(user):
     return sha256(user.username + user.password).hexdigest()
+
 
 def file_format(image_type):
     if 'JPEG' == image_type:
@@ -80,6 +83,7 @@ def file_format(image_type):
         return 'png'
 
     return DEFAULT_IMAGE_FORMAT
+
 
 def change_photo(photo, md5_hash, sha256_hash):
     '''
@@ -99,16 +103,18 @@ def change_photo(photo, md5_hash, sha256_hash):
                 'md5_hash': md5_hash, 'sha256_hash': sha256_hash}
     gm_client.do_background('changephoto', json.dumps(workload))
 
+
 class PhotoManager(models.Manager):
     def delete_user_photos(self, user):
         for photo in self.filter(user=user):
             photo.delete(delete_file_on_disk=False)
 
+
 class Photo(models.Model):
     user = models.ForeignKey(User, related_name='photos')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
-    filename = models.CharField(max_length=64) # sha256 hash is 64 characters
-    format = models.CharField(max_length=3) # png or jpg
+    filename = models.CharField(max_length=64)  # sha256 hash is 64 characters
+    format = models.CharField(max_length=3)  # png or jpg
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
     objects = PhotoManager()
 
@@ -202,10 +208,10 @@ class Photo(models.Model):
 
     def crop(self, x=0, y=0, w=0, h=0):
         if path.isfile(settings.USER_FILES_ROOT + self.full_filename()):
-            return # already done, skip
+            return  # already done, skip
 
         if not path.isfile(settings.UPLOADED_FILES_ROOT + self.full_filename()):
-            return # source image doesn't exist, can't crop it
+            return  # source image doesn't exist, can't crop it
 
         # Queue a job for the cropping/resizing gearman worker
         gm_client = libgearman.Client()
@@ -213,8 +219,9 @@ class Photo(models.Model):
             gm_client.add_server(server)
 
         workload = {'file_hash': self.filename, 'format': self.format,
-                    'x' : x, 'y' : y, 'w' : w, 'h' : h}
+                    'x': x, 'y': y, 'w': w, 'h': h}
         gm_client.do_background('cropresize', json.dumps(workload))
+
 
 class ConfirmedEmailManager(models.Manager):
     # pylint: disable=R0201
@@ -235,6 +242,7 @@ class ConfirmedEmailManager(models.Manager):
                 external_photos.append(gravatar)
 
         return (confirmed.id, external_photos)
+
 
 class ConfirmedEmail(models.Model):
     user = models.ForeignKey(User, related_name='confirmed_emails')
@@ -277,6 +285,7 @@ class ConfirmedEmail(models.Model):
         change_photo(photo, self.public_hash('md5'), self.public_hash('sha256'))
         self.save()
 
+
 class UnconfirmedEmail(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_emails')
     email = models.EmailField(max_length=MAX_LENGTH_EMAIL)
@@ -297,6 +306,7 @@ class UnconfirmedEmail(models.Model):
 
         super(UnconfirmedEmail, self).save(force_insert, force_update)
 
+
 class UnconfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_openids')
     openid = models.URLField(unique=False, verify_exists=False, max_length=MAX_LENGTH_URL)
@@ -308,6 +318,7 @@ class UnconfirmedOpenId(models.Model):
 
     def __unicode__(self):
         return self.openid + ' ' + _('(unconfirmed)')
+
 
 class ConfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='confirmed_openids')
@@ -334,7 +345,7 @@ class ConfirmedOpenId(models.Model):
 
     def public_hash(self):
         url = urlsplit(self.openid)
-        lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment)) # pylint: disable=E1103
+        lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))  # pylint: disable=E1103
         return sha256(lowercase_value).hexdigest()
 
     def public_url(self, https=False):
@@ -348,6 +359,7 @@ class ConfirmedOpenId(models.Model):
         change_photo(photo, md5_hash=None, sha256_hash=self.public_hash())
         self.save()
 
+
 # Classes related to the OpenID Store (from https://github.com/simonw/django-openid)
 
 class OpenIDNonce(models.Model):
@@ -358,16 +370,18 @@ class OpenIDNonce(models.Model):
     def __unicode__(self):
         return u"OpenIDNonce: %s for %s" % (self.salt, self.server_url)
 
+
 class OpenIDAssociation(models.Model):
     server_url = models.TextField(max_length=2047)
     handle = models.CharField(max_length=255)
-    secret = models.TextField(max_length=255) # Stored base64 encoded
+    secret = models.TextField(max_length=255)  # stored base64 encoded
     issued = models.IntegerField()
     lifetime = models.IntegerField()
     assoc_type = models.TextField(max_length=64)
 
     def __unicode__(self):
         return u"OpenIDAssociation: %s, %s" % (self.server_url, self.handle)
+
 
 class DjangoOpenIDStore(OpenIDStore):
     """
@@ -376,34 +390,27 @@ class DjangoOpenIDStore(OpenIDStore):
     """
 
     def storeAssociation(self, server_url, association):
-        assoc = OpenIDAssociation(
-            server_url = server_url,
-            handle = association.handle,
-            secret = base64.encodestring(association.secret),
-            issued = association.issued,
-            lifetime = association.issued,
-            assoc_type = association.assoc_type
-        )
+        assoc = OpenIDAssociation(server_url=server_url,
+                                  handle=association.handle,
+                                  secret=base64.encodestring(association.secret),
+                                  issued=association.issued,
+                                  lifetime=association.issued,
+                                  assoc_type=association.assoc_type)
         assoc.save()
 
     def getAssociation(self, server_url, handle=None):
         assocs = []
         if handle is not None:
-            assocs = OpenIDAssociation.objects.filter(
-                server_url = server_url, handle = handle
-            )
+            assocs = OpenIDAssociation.objects.filter(server_url=server_url,
+                                                      handle=handle)
         else:
-            assocs = OpenIDAssociation.objects.filter(
-                server_url = server_url
-            )
+            assocs = OpenIDAssociation.objects.filter(server_url=server_url)
         if not assocs:
             return None
         associations = []
         for assoc in assocs:
-            association = OIDAssociation(
-                assoc.handle, base64.decodestring(assoc.secret), assoc.issued,
-                assoc.lifetime, assoc.assoc_type
-            )
+            association = OIDAssociation(assoc.handle, base64.decodestring(assoc.secret),
+                                         assoc.issued, assoc.lifetime, assoc.assoc_type)
             if association.getExpiresIn() == 0:
                 self.removeAssociation(server_url, assoc.handle)
             else:
@@ -413,9 +420,8 @@ class DjangoOpenIDStore(OpenIDStore):
         return associations[-1][1]
 
     def removeAssociation(self, server_url, handle):
-        assocs = list(OpenIDAssociation.objects.filter(
-            server_url = server_url, handle = handle
-        ))
+        assocs = list(OpenIDAssociation.objects.filter(server_url=server_url,
+                                                       handle=handle))
         assocs_exist = len(assocs) > 0
         for assoc in assocs:
             assoc.delete()
@@ -426,30 +432,23 @@ class DjangoOpenIDStore(OpenIDStore):
         if abs(timestamp - time.time()) > oidnonce.SKEW:
             return False
         try:
-            nonce = OpenIDNonce.objects.get(
-                server_url__exact = server_url,
-                timestamp__exact = timestamp,
-                salt__exact = salt
-            )
+            nonce = OpenIDNonce.objects.get(server_url__exact=server_url,
+                                            timestamp__exact=timestamp,
+                                            salt__exact=salt)
         except OpenIDNonce.DoesNotExist:
-            nonce = OpenIDNonce.objects.create(
-                server_url = server_url,
-                timestamp = timestamp,
-                salt = salt
-            )
+            nonce = OpenIDNonce.objects.create(server_url=server_url,
+                                               timestamp=timestamp,
+                                               salt=salt)
             return True
         nonce.delete()
         return False
 
     def cleanupNonces(self):
-        OpenIDNonce.objects.filter(
-            timestamp__lt = (int(time.time()) - oidnonce.SKEW)
-        ).delete()
+        ts = int(time.time()) - oidnonce.SKEW
+        OpenIDNonce.objects.filter(timestamp__lt=ts).delete()
 
     def cleanupAssociations(self):
-        OpenIDAssociation.objects.extra(
-            where=['issued + lifetimeint < (%s)' % time.time()]
-        ).delete()
+        OpenIDAssociation.objects.extra(where=['issued + lifetimeint < (%s)' % time.time()]).delete()
 
     def getAuthKey(self):
         # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY

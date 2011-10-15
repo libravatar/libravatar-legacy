@@ -24,13 +24,15 @@ import os
 import sys
 from xml.sax import saxutils
 
-import settings # pylint: disable=W0403
-from utils import create_logger, is_hex # pylint: disable=W0403
+# pylint: disable=W0403
+import settings
+from utils import create_logger, is_hex
 
 logger = create_logger('exportaccount')
 
 SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.1'
 SCHEMA_XSD = '%s/export.xsd' % SCHEMA_ROOT
+
 
 def xml_header():
     return '''<?xml version="1.0" encoding="UTF-8"?>
@@ -38,13 +40,16 @@ def xml_header():
       xsi:schemaLocation="%s %s"
       xmlns="%s">\n''' % (SCHEMA_ROOT, SCHEMA_XSD, SCHEMA_ROOT)
 
+
 def xml_footer():
     return '</user>\n'
+
 
 def xml_account(username):
     escaped_username = saxutils.quoteattr(username)
     escaped_site_url = saxutils.quoteattr(settings.SITE_URL)
     return '  <account username=%s site=%s/>\n' % (escaped_username, escaped_site_url)
+
 
 def xml_list(list_type, list_elements):
     s = '  <%ss>\n' % list_type
@@ -52,6 +57,7 @@ def xml_list(list_type, list_elements):
         s += '    <%s>%s</%s>\n' % (list_type, saxutils.escape(element), list_type)
     s += '  </%ss>\n' % list_type
     return s
+
 
 def xml_photos(photos):
     s = '  <photos>\n'
@@ -64,6 +70,7 @@ def xml_photos(photos):
     </photo>\n''' % (saxutils.quoteattr(photo_format), encoded_photo)
     s += '  </photos>\n'
     return s
+
 
 def encode_photo(photo_filename, photo_format):
     filename = settings.USER_FILES_ROOT + photo_filename + '.' + photo_format
@@ -80,6 +87,7 @@ def encode_photo(photo_filename, photo_format):
         return None
 
     return base64.b64encode(photo_content)
+
 
 def main(argv=None):
     if argv is None:
@@ -118,7 +126,7 @@ def main(argv=None):
     destination.write(xml_footer())
     destination.close()
 
-    if do_delete: # Delete files on disk
+    if do_delete:  # Delete files on disk
         gm_client = libgearman.Client()
         for server in settings.GEARMAN_SERVERS:
             gm_client.add_server(server)

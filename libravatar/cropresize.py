@@ -22,17 +22,20 @@ import json
 import os
 import sys
 
-import settings # pylint: disable=W0403
-from utils import create_logger, delete_if_exists, is_hex # pylint: disable=W0403
+# pylint: disable=W0403
+import settings
+from utils import create_logger, delete_if_exists, is_hex
 
 logger = create_logger('cropresize')
 
 MAX_PIXELS = 5000
 
+
 def create_broken_image(broken, dest):
     delete_if_exists(dest)
 
     os.symlink(broken, dest)
+
 
 def pil_format_to_ext(pil_format):
     if 'PNG' == pil_format:
@@ -41,17 +44,18 @@ def pil_format_to_ext(pil_format):
         return '.jpg'
     return None
 
+
 def crop(filename, x=0, y=0, w=0, h=0):
     source = settings.UPLOADED_FILES_ROOT + filename
     dest = settings.READY_FILES_ROOT + filename
 
     if os.path.isfile(dest):
         logger.info('Already done')
-        return 0 # already done, skip
+        return 0  # already done, skip
 
     if not os.path.isfile(source):
         logger.error('Source image missing')
-        return 1 # source image doesn't exist, can't crop it
+        return 1  # source image doesn't exist, can't crop it
 
     broken_file = settings.MEDIA_ROOT + 'img/broken'
 
@@ -85,11 +89,11 @@ def crop(filename, x=0, y=0, w=0, h=0):
         w, h = a, b
         i = min(w, h)
         w, h = i, i
-    elif w < 0 or x+w > a or h < 0 or y+h > b:
+    elif w < 0 or (x + w) > a or h < 0 or (y + h) > b:
         logger.error('Crop dimensions outside of original image bounding box')
         return 6
 
-    cropped = img.crop((x, y, x+w, y+h))
+    cropped = img.crop((x, y, x + w, y + h))
     cropped.load()
 
     # Resize the image only if it's larger than the specified max width.
@@ -115,6 +119,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
         return 5
 
     return 0
+
 
 def main(argv=None):
     if argv is None:
@@ -147,7 +152,7 @@ def main(argv=None):
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    params = {'file_hash' : file_hash, 'format': file_format}
+    params = {'file_hash': file_hash, 'format': file_format}
     gm_client.do_background('ready2user', json.dumps(params))
 
     return 0
