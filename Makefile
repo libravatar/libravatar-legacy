@@ -39,11 +39,15 @@ pyflakes:
 	@echo Running pyflakes...
 	@pyflakes libravatar/
 
+pep8:
+	@echo Running pep8...
+	@pep8 --ignore=E501 libravatar/
+
 unittests:
 	@echo Running unit tests...
 	@python libravatar/manage.py test public tools
 
-test: pyflakes lint unittests
+test: pep8 pyflakes lint unittests
 
 package:
 	dpkg-buildpackage -us -uc
