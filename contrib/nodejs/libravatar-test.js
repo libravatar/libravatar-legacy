@@ -3,64 +3,60 @@
 var http = require('http');
 var libravatar = require('libravatar');
 
+var data = [
+    {name: 'http_avatar', email: 'fmarier@gmail.com', openid: null, https: false},
+    {name: 'http_missing', email: 'fmarier+1@gmail.com', openid: null, https: false},
+    {name: 'https_avatar', email: 'fmarier@gmail.com', openid: null, https: true},
+    {name: 'https_missing', email: 'fmarier+1@gmail.com', openid: null, https: true},
+    {name: 'http_federated_avatar', email: 'francois@catalyst.net.nz', openid: null, https: false},
+    {name: 'http_federated_missing', email: 'francois+1@catalyst.net.nz', openid: null, https: false},
+    {name: 'https_federated_avatar', email: 'francois@catalyst.net.nz', openid: null, https: true},
+    {name: 'https_federated_missing', email: 'francois+1@catalyst.net.nz', openid: null, https: true},
+    {name: 'http_openid_avatar', email: null, openid : 'https://launchpad.net/~fmarier', https: false},
+    {name: 'http_openid_missing', email: null, openid : 'https://launchpad.net/~notfmarier', https: false},
+];
+
+var urls = {};
+
 var server = http.createServer(function (req, res) {
-  libravatar.url('fmarier@gmail.com', openid=null, {}, https=false,
-    function (http_avatar) {
-      libravatar.url('fmarier+1@gmail.com', openid=null, {}, https=false,
-        function (http_missing) {
-          libravatar.url('fmarier@gmail.com', openid=null, {}, https=true,
-            function (https_avatar) {
-              libravatar.url('fmarier+1@gmail.com', openid=null, {}, https=true,
-                function (https_missing) {
-                  libravatar.url('francois@catalyst.net.nz', openid=null, {}, https=false,
-                    function (http_federated_avatar) {
-                      libravatar.url('francois+1@catalyst.net.nz', openid=null, {}, https=false,
-                        function (http_federated_missing) {
-                          libravatar.url('francois@catalyst.net.nz', openid=null, {}, https=true,
-                            function (https_federated_avatar) {
-                              libravatar.url('francois+1@catalyst.net.nz', openid=null, {}, https=true,
-                                function (https_federated_missing) {
-                                  libravatar.url(email=null, 'https://launchpad.net/~fmarier', {}, https=false,
-                                    function (http_openid_avatar) {
-                                      libravatar.url(email=null, 'https://launchpad.net/~notfmarier', {}, https=false,
-                                        function (http_openid_missing) {
-                                            res.writeHead(200, {'Content-Type': 'text/html'});
-                                            res.write('<h1>node-libravatar</h1>');
+    var count = 0;
+    data.forEach(function(v) {
+        libravatar.url(v.email, v.openid, {}, v.https, function(error, url) {
+            count++;
 
-                                            res.write('Regular HTTP images:<br>');
-                                            res.write('<img src="' + http_avatar + '">');
-                                            res.write('<img src="' + http_missing + '">');
-                                            res.write("<br><br>\n");
+            urls[v.name] = url;
 
-                                            res.write('Regular HTTPS images:<br>');
-                                            res.write('<img src="' + https_avatar + '">');
-                                            res.write('<img src="' + https_missing + '">');
-                                            res.write("<br><br>\n");
+            if (count === data.length) {
+                res.writeHead(200, {'Content-Type': 'text/html'});
+                res.write('<h1>node-libravatar</h1>');
 
-                                            res.write('Federated HTTP images:<br>');
-                                            res.write('<img src="' + http_federated_avatar + '">');
-                                            res.write('<img src="' + http_federated_missing + '">');
-                                            res.write("<br><br>\n");
+                res.write('Regular HTTP images:<br>');
+                res.write('<img src="' + urls['http_avatar'] + '">');
+                res.write('<img src="' + urls['http_missing'] + '">');
+                res.write("<br><br>\n");
 
-                                            res.write('Federated HTTPS images:<br>');
-                                            res.write('<img src="' + https_federated_avatar + '">');
-                                            res.write('<img src="' + https_federated_missing + '">');
-                                            res.write("<br><br>\n");
+                res.write('Regular HTTPS images:<br>');
+                res.write('<img src="' + urls['https_avatar'] + '">');
+                res.write('<img src="' + urls['https_missing'] + '">');
+                res.write("<br><br>\n");
 
-                                            res.write('Regular HTTP images (OpenID):<br>');
-                                            res.write('<img src="' + http_openid_avatar + '">');
-                                            res.write('<img src="' + http_openid_missing + '">');
-                                            res.write("<br><br>\n");
+                res.write('Federated HTTP images:<br>');
+                res.write('<img src="' + urls['http_federated_avatar'] + '">');
+                res.write('<img src="' + urls['http_federated_missing'] + '">');
+                res.write("<br><br>\n");
 
-                                            res.end();
-                                        });
-                                    });
-                                });
-                            });
-                        });
-                    });
-                });
-            });
+                res.write('Federated HTTPS images:<br>');
+                res.write('<img src="' + urls['https_federated_avatar'] + '">');
+                res.write('<img src="' + urls['https_federated_missing'] + '">');
+                res.write("<br><br>\n");
+
+                res.write('Regular HTTP images (OpenID):<br>');
+                res.write('<img src="' + urls['http_openid_avatar'] + '">');
+                res.write('<img src="' + urls['http_openid_missing'] + '">');
+                res.write("<br><br>\n");
+
+                res.end();
+            }
         });
     });
 });
