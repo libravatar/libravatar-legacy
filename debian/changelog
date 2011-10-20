@@ -1,3 +1,19 @@
+libravatar (20111020.1) unstable; urgency=low
+
+  * Catch HTTP errors in photo importer
+  * Hide 404 errors from Identica in photo importer
+  * Improve rsync error message on master
+  * Updated CSP headers to match latest draft
+
+  * Remove unnecessary audience check in BrowserID assertions
+  * Alt text on Flattr button
+  * Remove unnecessary BrowserID link on add_email
+
+  * Update French translation
+  * Update Japanese translation
+
+ -- Francois Marier <francois@debian.org>  Thu, 20 Oct 2011 21:30:15 +1300
+
 libravatar (20111001.1) unstable; urgency=low
 
   * Add X-Frame-Options headers
