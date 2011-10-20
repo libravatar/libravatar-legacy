@@ -56,7 +56,7 @@ from openid.store.interface import OpenIDStore
 from openid.association import Association as OIDAssociation
 from os import urandom, path, rename
 import time
-from urllib2 import urlopen
+from urllib2 import urlopen, HTTPError, URLError
 from urlparse import urlsplit, urlunsplit
 
 from django.db import models
@@ -188,7 +188,14 @@ class Photo(models.Model):
         self.filename = sha256(service_name + email_address).hexdigest()
 
         tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
-        image = urlopen(image_url)
+        try:
+            image = urlopen(image_url)
+        except HTTPError as e:
+            print '%s import failed with an HTTP error: %s' % (service_name, e.code)
+            return False
+        except URLError as e:
+            print '%s import failed: %s' % (service_name, e.reason)
+            return False
 
         # Write file to disk
         destination = open(tmp_filename, 'wb+')
