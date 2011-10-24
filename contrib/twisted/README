@@ -1,0 +1,29 @@
+The recommended Python module is:
+
+  http://pypi.python.org/pypi/txLibravatar
+
+
+Testing
+--------
+
+Install dependencies (as root):
+
+  pip install pylibravatar
+  apt-get install python-twisted-names python-twisted-web
+
+Clone the module under ~/devel/remote/txlibravatar:
+
+  cd ~/devel/remote/
+  bzr branch lp:txlibravatar
+
+and symlink it into place:
+
+  ln -s ~/devel/remote/txlibravatar/txlibravatar.py .
+
+Then run the service:
+
+  ./txlibravatar-test.py
+
+and visit the site at:
+
+  http://localhost:3000/
