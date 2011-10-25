@@ -16,7 +16,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 # pylint: disable=W0401,W0614
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls.defaults import patterns, include, handler404, handler500
 
 urlpatterns = patterns('',
     (r'^account/', include('libravatar.account.urls')),
