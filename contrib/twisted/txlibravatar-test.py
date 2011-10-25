@@ -3,7 +3,6 @@
 # Test for the txLibravatar module
 
 from twisted.internet import defer, reactor
-from twisted.names import client, dns
 from twisted.web import server, resource
 
 from txlibravatar import libravatar_url
