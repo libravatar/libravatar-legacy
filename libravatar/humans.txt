@@ -1,0 +1,54 @@
+/* TEAM */
+
+Lead developer: François Marier
+Site: http://fmarier.org/
+Twitter: @fmarier
+Identica: @fmarier
+Location: Wellington, New Zealand
+
+Developer: Jonathan Harker
+Site: http://jon.geek.nz/
+
+Developer: Brett Wilkins
+Twitter: @bjmaz
+
+Library maintainer (Ruby): Kang-min Liu
+Site: http://gugod.org/
+Twitter: @gugod
+
+Library maintainer (C#): Chris Forbes
+Site: http://blogs.ijw.co.nz/chris
+Twitter: @ijw_chrisf
+
+Library maintainer (PHP): Melissa Draper
+Site: http://www.meldraweb.com/
+Twitter: @elkbuntu
+
+
+/* THANKS */
+
+Name: Andy Chilton
+Site: http://www.chilts.org/
+
+Name: Chris Cormack
+Site: http://blog.bigballofwax.co.nz/
+Identica: @ranginui
+Twitter: @ranginui
+
+Name: Joey Hess
+Site: http://branchable.com/
+Identica: @joeyh
+
+Name: Kai Hendry
+Site: http://hendry.iki.fi/
+Twitter: @kaihendry
+
+Name: Lars Wirzenius
+Site: http://braawi.com/
+Identica: @liw
+
+Name: Olly Betts
+Identica: @olly
+
+Name: Thomas Goirand
+Site: http://gplhost.com
