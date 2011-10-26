@@ -33,7 +33,7 @@ clean:
 lint:
 	@echo Running pylint...
 	@( [ -d debian/libravatar-www ] && rm -rf debian/libravatar-www/ ) || true
-	@DJANGO_SETTINGS_MODULE=libravatar.settings find -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
+	@DJANGO_SETTINGS_MODULE=libravatar.settings find libravatar/ -type f -name "*.py" -exec pylint --rcfile=.pylintrc {} \;
 
 pyflakes:
 	@echo Running pyflakes...
