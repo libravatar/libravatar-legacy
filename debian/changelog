@@ -1,3 +1,14 @@
+libravatar (20111026.1) unstable; urgency=low
+
+  * Remove unnecessary chunks in PNG files
+  * Only allow selection of photos that exist on disk
+  * Use "accept" attribute in photo upload form
+  * Restore Django's 404 and 500 handlers
+  * Add a humans.txt file
+  * Fix alt text on Flattr and AGPL buttons
+
+ -- Francois Marier <francois@debian.org>  Wed, 26 Oct 2011 22:03:53 +1300
+
 libravatar (20111020.1) unstable; urgency=low
 
   * Catch HTTP errors in photo importer
