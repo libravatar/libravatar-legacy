@@ -20,6 +20,7 @@ from gearman import libgearman
 import Image
 import json
 import os
+import subprocess
 import sys
 
 # pylint: disable=W0403
@@ -104,16 +105,31 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
     cropped.save(dest, img.format, quality=settings.JPEG_QUALITY)
 
-    if 'JPEG' == img.format:
-        if os.system("jpegoptim -q -p --strip-all %s" % dest) != 0:
+    return optimize_image(dest, img.format, ext, broken_file)
+
+
+def optimize_image(dest, img_format, ext, broken_file):
+    if 'JPEG' == img_format:
+        process = subprocess.Popen(['jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
+        if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('JPEG optimisation failed')
+            logger.error('JPEG optimisation failed: %s' % process.communicate()[0])
             return 4
-    elif 'PNG' == img.format:
-        if os.system("optipng -q -o9 -preserve %s" % dest) != 0:
+    elif 'PNG' == img_format:
+        process = subprocess.Popen(['pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
+        if process.wait() != 0:
+            delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation failed')
+            logger.error('PNG optimisation (pngcrush) failed: %s' % process.communicate()[0])
             return 4
+        delete_if_exists(dest)
+        process = subprocess.Popen(['optipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
+        if process.wait() != 0:
+            delete_if_exists(dest + '.tmp')
+            create_broken_image(broken_file + ext, dest)
+            logger.error('PNG optimisation (optipng) failed: %s' % process.communicate()[0])
+            return 4
+        delete_if_exists(dest + '.tmp')
     else:
         logger.error('Unexpected error while cropping')
         return 5
