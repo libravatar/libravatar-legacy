@@ -18,6 +18,9 @@
 # pylint: disable=W0401,W0614
 from django.conf.urls.defaults import patterns, include, handler404, handler500
 
+handler404  # make pyflakes happy, pylint: disable=W0104
+handler500  # make pyflakes happy, pylint: disable=W0104
+
 urlpatterns = patterns('',
     (r'^account/', include('libravatar.account.urls')),
 
