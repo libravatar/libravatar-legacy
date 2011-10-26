@@ -125,6 +125,9 @@ class Photo(models.Model):
     def __unicode__(self):
         return settings.USER_FILES_URL + self.full_filename()
 
+    def exists(self):
+        return path.isfile(settings.USER_FILES_ROOT + self.full_filename())
+
     def save(self, image, force_insert=False, force_update=False):
         self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
 
