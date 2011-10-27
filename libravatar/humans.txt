@@ -7,7 +7,8 @@ Identica: @fmarier
 Location: Wellington, New Zealand
 
 Developer: Jonathan Harker
-Site: http://jon.geek.nz/
+Site: https://www.ohloh.net/accounts/jonathanharker
+Identica: @jonathanharker
 
 Developer: Brett Wilkins
 Twitter: @bjmaz
@@ -23,6 +24,7 @@ Twitter: @ijw_chrisf
 Library maintainer (PHP): Melissa Draper
 Site: http://www.meldraweb.com/
 Twitter: @elkbuntu
+Identica: @elkbuntu
 
 
 /* THANKS */
