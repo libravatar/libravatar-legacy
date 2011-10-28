@@ -722,7 +722,8 @@ def add_browserid(request):
         return render_to_response('account/browserid_noassertion.html',
                                   context_instance=RequestContext(request))
 
-    (email_address, assertion_error) = verify_assertion(request.POST['assertion'])
+    (email_address, assertion_error) = verify_assertion(request.POST['assertion'], request.get_host(),
+                                                        request.is_secure())
 
     if not email_address:
         return render_to_response('account/browserid_invalidassertion.html', {'error': assertion_error},
@@ -748,7 +749,8 @@ def login_browserid(request):
         return render_to_response('account/browserid_noassertion.html',
                                   context_instance=RequestContext(request))
 
-    user = authenticate(assertion=request.POST['assertion'], ip_address=request.META['REMOTE_ADDR'])
+    user = authenticate(assertion=request.POST['assertion'], host=request.get_host(),
+                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'])
     if not user:
         return HttpResponseRedirect(settings.LOGIN_URL)
 

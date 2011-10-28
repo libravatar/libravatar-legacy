@@ -23,31 +23,32 @@ from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
-from libravatar import settings
 from libravatar.account.models import ConfirmedEmail
 
 URL_TIMEOUT = 5  # in seconds
 
 
-# TODO: use request.get_host() instead of settings.SITE_URL
-def _browserid_audience(site_url):
-    site_url = site_url.lower()
-
-    if 0 == site_url.find('https://'):
-        return site_url[8:]
-    elif 0 == site_url.find('http://'):
-        return site_url[7:]
+def _browserid_audience(host, https):
+    if https:
+        scheme = 'https'
+        port = 443
     else:
-        print 'Invalid SITE_URL setting: %s' % site_url
-        return None
+        scheme = 'http'
+        port = 80
+
+    audience = "%s://%s" % (scheme, host)
+    if ':' in host:
+        return audience
+    else:
+        return "%s:%s" % (audience, port)
 
 
-def verify_assertion(assertion):
+def verify_assertion(assertion, host, https):
     if not assertion:
         return (None, None)
 
     url = 'https://browserid.org/verify'
-    audience = _browserid_audience(settings.SITE_URL)
+    audience = _browserid_audience(host, https)
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
 
     client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
@@ -118,8 +119,8 @@ class BrowserIDBackend(object):
         ConfirmedEmail.objects.create_confirmed_email(user, ip_address, email_address, False)
         return user
 
-    def authenticate(self, assertion=None, ip_address=None):
-        (email_address, unused) = verify_assertion(assertion)
+    def authenticate(self, assertion=None, host=None, https=None, ip_address=None):
+        (email_address, unused) = verify_assertion(assertion, host, https)
 
         if not email_address:
             return None
