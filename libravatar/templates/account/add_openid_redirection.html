@@ -5,8 +5,6 @@
 
 {% block header %}<meta http-equiv="Refresh" content="1; url={% url libravatar.account.views.redirect_openid unconfirmed_id %}">{% endblock header %}
 
-{% block body-onload %}window.location = '{% url libravatar.account.views.redirect_openid unconfirmed_id %}'{% endblock body-onload %}
-
 {% block content %}
 
 <h1>{% trans 'Redirecting to OpenID Provider...' %}</h1>

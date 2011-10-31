@@ -1195,3 +1195,22 @@ $.fn.Jcrop = function(options)/*{{{*/
 /*}}}*/
 
 })(jQuery);
+
+// Libravatar customizations below
+$(window).ready(function(){
+    $('#cropbox').Jcrop({
+        onSelect: changeCoords,
+        aspectRatio: 1,
+        boxWidth: 800,
+        boxHeight: 600,
+        bgColor: '#000',
+        bgOpacity: .4
+    });
+});
+
+function changeCoords(c) {
+    $('#x').val(c.x);
+    $('#y').val(c.y);
+    $('#w').val(c.w);
+    $('#h').val(c.h);
+}

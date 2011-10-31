@@ -11,7 +11,7 @@
     <title>{% block title %}Libravatar - {% trans 'Freeing the Web, one face at a time!' %}{% endblock title %}</title>
 {% block header %}{% endblock header %}
 </head>
-<body onLoad="{% block body-onload %}{% endblock body-onload %}">
+<body>
 
 <div id="header">
   <div>
@@ -25,9 +25,11 @@
   </div>
   <div id="account">
     {% if user.is_authenticated %}
+    <span id="session-username">{{user.username}}</span>:&nbsp;
     <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>
     &nbsp;<a href="{% url django.contrib.auth.views.logout %}">{% trans 'Logout' %}</a>
     {% else %}
+    <span id="session-username"></span>
     <a href="{% url django.contrib.auth.views.login %}">{% trans 'Login' %}</a>
     {% endif %}
   </div>
@@ -45,29 +47,8 @@
   <a href="http://flattr.com/thing/311293/Libravatar"><img id="flattr-button" width="93" height="20" alt="" title="Flattr this!"></a>
   {% if needs_jquery %}<script src="/js/jquery.min.js" type="text/javascript"></script>{% endif %}
   {% block footer %}{% endblock footer %}
+  <script src="/js/libravatar.js" type="text/javascript"></script>
 </div>
-
-<script type="text/javascript">
-if (navigator.id) {
-  {% if user.is_authenticated %}
-  navigator.id.sessions = [{
-    email: "{{user.username}}",
-    bound_to: {
-      type: "cookie",
-      cookie_name: "sessionid"
-    }
-  }];
-  {% else %}
-  navigator.id.sessions = [];
-  {% endif %}
-  document.addEventListener("login", function(event) {
-    document.location.href = "/account/login/";
-  }, false);
-  document.addEventListener("logout", function(event) {
-    document.location.href = "/account/logout/";
-  }, false);
-}
-</script>
 
 </body>
 </html>{% endspaceless %}

@@ -3,7 +3,6 @@
 
 {% block title %}{% trans 'Add a new email address' %} - Libravatar{% endblock title %}
 
-{% block body-onload %}document.forms.addemail.email.focus(){% endblock body-onload %}
 {% block content %}
 
 <h1>{% trans 'Add a new email address' %}</h1>
@@ -28,16 +27,8 @@
 
 </form>
 
-<script src="https://browserid.org/include.js" type="text/javascript"></script>
-<script type="text/javascript">
-function try_browserid() {
-    navigator.id.getVerifiedEmail(function(assertion) {
-        if (assertion) {
-            document.getElementById('browserid-assertion').setAttribute('value', assertion);
-            document.getElementById('browserid-form').submit();
-        }
-    });
-}
-</script>
-
 {% endblock content %}
+
+{% block footer %}
+<script src="https://browserid.org/include.js" type="text/javascript"></script>
+{% endblock footer %}

@@ -22,24 +22,4 @@
 
 {% endblock content %}
 {% block footer %}<script src="/js/jcrop.js" type="text/javascript"></script>
-<script type="text/javascript">
-//<![CDATA[
-$(window).ready(function(){
-    $('#cropbox').Jcrop({
-        onSelect: changeCoords,
-        aspectRatio: 1,
-        boxWidth: 800,
-        boxHeight: 600,
-        bgColor: '#000',
-        bgOpacity: .4
-    });
-});
-
-function changeCoords(c) {
-    $('#x').val(c.x);
-    $('#y').val(c.y);
-    $('#w').val(c.w);
-    $('#h').val(c.h);
-}
-//]]>
-</script>{% endblock footer %}
+{% endblock footer %}
