@@ -7,7 +7,7 @@
 
 <h1>{% trans 'Create a new account' %}</h1>
 
-<form action="{% url libravatar.account.views.new %}" method="post" name="new">{% csrf_token %}
+<form action="{% url libravatar.account.views.new %}" method="post" name="newaccount">{% csrf_token %}
 
 <table summary="">
 {% if form.username.errors %}

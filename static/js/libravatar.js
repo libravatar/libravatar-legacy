@@ -40,9 +40,9 @@ else if (document.forms.addopenid) {
 else if (document.forms.changepassword) {
     document.forms.changepassword.old_password.focus();
 }
-else if (document.forms.delete) {
-    if (document.forms.delete.password) {
-        document.forms.delete.password.focus();
+else if (document.forms.deleteaccount) {
+    if (document.forms.deleteaccount.password) {
+        document.forms.deleteaccount.password.focus();
     }
 }
 else if (document.forms.lookup) {
@@ -53,8 +53,8 @@ else if (document.forms.lookup) {
         document.forms.lookup.domain.focus();
     }
 }
-else if (document.forms.new) {
-    document.forms.new.username.focus();
+else if (document.forms.newaccount) {
+    document.forms.newaccount.username.focus();
 }
 else if (document.forms.reset) {
     document.forms.reset.email.focus();
