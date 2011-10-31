@@ -15,7 +15,7 @@
 {% url django_openid_auth.views.login_begin as login_url %}
 <p>{% trans "You'd rather use your <b>OpenID</b>?" %} {% blocktrans %}That's fine, just use <a href="{{ login_url }}">this login form</a> instead.{% endblocktrans %}</p>
 
-<p>{% trans "You like <b>BrowserID</b> even more?" %} {% blocktrans with 'javascript:try_browserid()' as browserid_target %}Well, you're in luck because you can also <a href="{{browserid_target}}">login with that</a>.{% endblocktrans %}</p>
+<p id="browserid-option">{% trans "You like <b>BrowserID</b> even more?" %} {% blocktrans with '#' as browserid_target %}Well, you're in luck because you can also <a id="browserid-link" href="{{browserid_target}}">login with that</a>.{% endblocktrans %}</p>
 
 {# Invisible form to process BrowserID assertions #}
 <form id="browserid-form" action="{% url libravatar.account.views.login_browserid %}" name="loginbrowserid" method="post">{% csrf_token %}

@@ -60,8 +60,8 @@ else if (document.forms.reset) {
     document.forms.reset.email.focus();
 }
 
-// For the BrowserID addon (session API)
 if (navigator.id) {
+    // For the BrowserID addon (session API)
     var username = document.getElementById('session-username').textContent;
     if (username) {
         navigator.id.sessions = [{
@@ -81,6 +81,15 @@ if (navigator.id) {
     document.addEventListener("logout", function(event) {
         document.location.href = "/account/logout/";
     }, false);
+
+    // Show BrowserID option and make link clickable
+    var option = document.getElementById('browserid-option');
+    var link = document.getElementById('browserid-link');
+    if (option && link) {
+        option.style.display = 'block';
+        link.onclick = try_browserid;
+        link.addEventListener('click', try_browserid, false);
+    }
 }
 
 // For main BrowserID functionality on the add_email and login pages

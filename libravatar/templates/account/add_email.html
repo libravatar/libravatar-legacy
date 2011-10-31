@@ -7,7 +7,7 @@
 
 <h1>{% trans 'Add a new email address' %}</h1>
 
-<p>{% blocktrans with 'javascript:try_browserid()' as browserid_target %}If you have a <b>BrowserID</b> account, you can <a href="{{browserid_target}}">use it to add a new email address</a> to your profile.{% endblocktrans %}</p>
+<p id="browserid-option">{% blocktrans with '#' as browserid_target %}If you have a <b>BrowserID</b> account, you can <a id="browserid-link" href="{{browserid_target}}">use it to add a new email address</a> to your profile.{% endblocktrans %}</p>
 
 {# Invisible form to process BrowserID assertions #}
 <form id="browserid-form" action="{% url libravatar.account.views.add_browserid %}" name="addbrowserid" method="post">{% csrf_token %}
