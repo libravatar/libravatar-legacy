@@ -481,7 +481,7 @@ def crop_photo(request, photo_id):
         photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery': True, 'needs_jcrop': True},
+    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery': True},
                               context_instance=RequestContext(request))
 
 
