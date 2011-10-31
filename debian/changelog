@@ -1,3 +1,14 @@
+libravatar (20111031.1) unstable; urgency=low
+
+  * Fix BrowserID and photo cropping on Firefox (CSP issues)
+  * Remove all inline scripts and turn on XSS protection with CSP
+  * Add scheme and port to BrowserID audience
+
+  * Fix CSS errors in JCrop
+  * Update contact details of Melissa and Jonathan in humans.txt
+
+ -- Francois Marier <francois@debian.org>  Mon, 31 Oct 2011 21:45:47 +1300
+
 libravatar (20111026.1) unstable; urgency=low
 
   * Remove unnecessary chunks in PNG files
