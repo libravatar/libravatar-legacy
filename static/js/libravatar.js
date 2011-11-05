@@ -86,7 +86,7 @@ if (navigator.id) {
     var option = document.getElementById('browserid-option');
     var link = document.getElementById('browserid-link');
     if (option && link) {
-        option.style.display = 'block';
+        option.style.display = 'inline';
         link.onclick = try_browserid;
         link.addEventListener('click', try_browserid, false);
     }
