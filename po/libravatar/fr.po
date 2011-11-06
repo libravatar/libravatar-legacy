@@ -195,7 +195,6 @@ msgid "Login"
 msgstr "Connexion"
 
 #: templates/base.html:45
-#, fuzzy, python-format
 msgid ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
 "height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
@@ -204,10 +203,10 @@ msgid ""
 "  software, version %(libravatar_version)s"
 msgstr ""
 "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" title=\"GNU Affero General Public License"
-"\"></a> <b>%(site_name)s</b> est un service d'hébergement d'avatars roulant "
-"le logiciel <a href=\"https://www.launchpad.net/libravatar\">Libravatar</a>, "
-"version %(libravatar_version)s"
+"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
+"License\"></a> <b>%(site_name)s</b> est un service d'hébergement d'avatars "
+"roulant le logiciel <a href=\"https://www.launchpad.net/libravatar\">"
+"Libravatar</a>, version %(libravatar_version)s"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -232,15 +231,14 @@ msgid "Add a new email address"
 msgstr "Ajouter une nouvelle adresse de courriel"
 
 #: templates/account/add_email.html:10
-#, fuzzy, python-format
 msgid ""
 "If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
 "href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Si vous possédez un identifiant <b>BrowserID</b>, vous pouvez <a href="
-"\"%(browserid_target)s\">l'utiliser pour ajouter une nouvelle adresse de "
-"courriel</a> à votre profil."
+"Si vous possédez un identifiant <b>BrowserID</b>, vous pouvez <a id=" 
+"\"browser-id-link\" href=\"%(browserid_target)s\">l'utiliser pour ajouter "
+"une nouvelle adresse de courriel</a> à votre profil."
 
 #: templates/account/add_email.html:18
 msgid ""
