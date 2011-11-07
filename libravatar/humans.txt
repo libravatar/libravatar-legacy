@@ -26,6 +26,15 @@ Site: http://www.meldraweb.com/
 Twitter: @elkbuntu
 Identica: @elkbuntu
 
+Translator (Japanese): Mitsuhiro Yoshida
+Site: http://mitstek.com/
+Twitter: @mitstek
+
+Translator (German): Kristina Hoeppner
+Twitter: @anitsirk
+
+Translator (German): Jakob Kramer
+
 
 /* THANKS */
 
