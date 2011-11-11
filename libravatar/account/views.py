@@ -114,12 +114,8 @@ def import_photo(request, user_id):
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
         try:
-            email = ConfirmedEmail.objects.get(id=request.POST['email_id'])
+            email = ConfirmedEmail.objects.get(id=request.POST['email_id'], user=user)
         except ConfirmedEmail.DoesNotExist:
-            return render_to_response('account/photos_notimported.html',
-                                      context_instance=RequestContext(request))
-
-        if int(user_id) != email.user_id:
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
