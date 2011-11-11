@@ -50,11 +50,12 @@ def verify_assertion(assertion, host, https):
     url = 'https://browserid.org/verify'
     audience = _browserid_audience(host, https)
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
+    headers = {'Content-type': 'application/x-www-form-urlencoded'}
 
     client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
     response = content = None
     try:
-        response, content = client.request('%s?%s' % (url, verification_data), 'POST')
+        response, content = client.request(url, 'POST', body=verification_data, headers=headers)
     except httplib2.HttpLib2Error as e:
         print 'BrowserID verification service failure: ' % e
 
