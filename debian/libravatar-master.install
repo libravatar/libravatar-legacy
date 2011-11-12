@@ -1,1 +1,2 @@
 debian/libravatar-update-mirrors usr/bin
+debian/libravatar-deployment etc/sudoers.d/

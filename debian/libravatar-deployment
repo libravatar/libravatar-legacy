@@ -1,0 +1,1 @@
+%libravatar-deployment  ALL = NOPASSWD: /usr/sbin/apache2ctl configtest, NOPASSWD: /usr/sbin/apache2ctl graceful, NOPASSWD: /usr/bin/dpkg -i /home/*/debs/libravatar*.deb

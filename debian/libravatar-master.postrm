@@ -22,13 +22,18 @@ AVATAR_ROOT=/var/lib/libravatar/avatar
 MASTER_ROOT=/var/lib/libravatar/master
 
 case "$1" in
-    remove|purge|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    remove|abort-install|disappear)
         deluser libravatar-master || true
+        delgroup libravatar-deployment || true
     ;;
 
     purge)
         rm -f ${MASTER_ROOT}/.ssh/known_hosts
         rmdir -p ${MASTER_ROOT}/.ssh/ || true
+    ;;
+
+    upgrade|failed-upgrade|abort-upgrade)
+        # Nothing to do
     ;;
 
     *)

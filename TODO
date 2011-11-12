@@ -17,7 +17,6 @@
 
 # Sysadmin stuff
 
-* automate deployments with [Fabric](http://www.fabfile.org) (see [this article](http://www.debian-administration.org/article/A_simple_introduction_to_fabric))
 * create a staging server to test deployments
 * create a public package repository to upload libravatar packages
 * use Puppet for all server config

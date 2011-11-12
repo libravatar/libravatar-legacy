@@ -1,4 +1,4 @@
-from fabric.api import abort, env, local, put, roles
+from fabric.api import abort, env, local, put, roles, run, sudo
 import re
 
 env.roledefs = {'slave': ['1.cdn.libravatar.org', '2.cdn.libravatar.org', '3.cdn.libravatar.org'],
@@ -20,34 +20,49 @@ def commit_changelog():
     local('bzr commit -m "Bump changelog for deployment"', capture=False)
 
 
-def build_package():
-    local('make package', capture=False)
-
-
 def prepare():
     local('make clean', capture=False)
     commit_changelog()
-    build_package()
+    local('make package', capture=False)
 
 
-def copy_common_packages():
-    for package_name in COMMON_PACKAGES:
-        put('../%s_%s_all.deb' % (package_name, PACKAGE_VERSION), '~')
-    # TODO: install all packages using sudo
+def copy_and_install_packages(package_names):
+    all_debs = ''
+    for package_name in package_names:
+        deb = '%s_%s_all.deb' % (package_name, PACKAGE_VERSION)
+        all_debs += ' /home/%s/debs/%s' % (env.user, deb)
+        put('../%s' % deb, 'debs/')
+
+    sudo('/usr/bin/dpkg -i%s' % all_debs, shell=False)
+
+
+def restart_apache():
+    # Restart Apache to make mod_wsgi use the new files
+    sudo('/usr/sbin/apache2ctl configtest', shell=False)
+    sudo('/usr/sbin/apache2ctl graceful', shell=False)
+
+
+def commit_etc_changes():
     # TODO: deal with etckeeper (check that the git branch is clean, then commit automatically)
-    # TODO: restart apache
+    pass
 
 
 @roles('slave')
 def deploy_slave():
-    copy_common_packages()
-    # TODO: copy slave-related packages onto the slave
+    run('mkdir -p debs')  # ensure the target directory exists
+    copy_and_install_packages(COMMON_PACKAGES)
+    copy_and_install_packages(SLAVE_PACKAGES)
+    restart_apache()
+    commit_etc_changes()
 
 
 @roles('master')
 def deploy_master():
-    copy_common_packages()
-    # TODO: copy master-related packages on the master
+    run('mkdir -p debs')  # ensure the target directory exists
+    copy_and_install_packages(COMMON_PACKAGES)
+    copy_and_install_packages(MASTER_PACKAGES)
+    restart_apache()
+    commit_etc_changes()
 
 
 def deploy():
@@ -56,4 +71,4 @@ def deploy():
 
 
 def stage():
-    pass # TODO: deploy all of the packages to a staging server
+    pass  # TODO: deploy all of the packages to a staging server

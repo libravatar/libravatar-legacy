@@ -24,6 +24,9 @@ case "$1" in
     configure)
         adduser --system --quiet --disabled-login --shell /usr/bin/rssh --no-create-home --home ${SLAVE_ROOT} --gecos 'Libravatar Mirror Slave,,,' libravatar-slave || true
 
+        addgroup --system --quiet libravatar-deployment || true
+        chmod 440 /etc/sudoers.d/libravatar-deployment
+
         mkdir -p ${AVATAR_ROOT}
         chown -R libravatar-slave ${AVATAR_ROOT}
 
