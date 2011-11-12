@@ -1,3 +1,14 @@
+libravatar (20111112.1) unstable; urgency=low
+
+  * Fix BrowserID assertion verification
+  * Offer BrowserID on password_reset and simplify wording on login
+  * Faster and safer SSL configuration for www and seccdn
+
+  * Update French and Japanese translations
+  * Add translators to humans.txt
+
+ -- Francois Marier <francois@debian.org>  Sat, 12 Nov 2011 17:29:56 +1300
+
 libravatar (20111031.1) unstable; urgency=low
 
   * Fix BrowserID and photo cropping on Firefox (CSP issues)
