@@ -22,6 +22,8 @@
  * @licend
  */
 
+"use strict";
+
 // Autofocus the right field on forms
 if (document.forms.login) {
     if (document.forms.login.username) {
