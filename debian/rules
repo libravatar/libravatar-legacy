@@ -21,4 +21,4 @@ override_dh_install:
 	find $(CURDIR)/debian/libravatar-www/usr/share/libravatar/libravatar/locale -type l -name "*.po" -delete
 
 override_dh_pysupport:
-	dh_python2
+	dh_python2 -p libravatar-www
