@@ -1,3 +1,15 @@
+libravatar (20111130.1) unstable; urgency=low
+
+  * Omit CSP headers when serving static files
+  * Generate .pyc files in postinst
+  * Don't delete libravatar-img user account on upgrades
+
+  * Defer execution of Javascript files
+  * Add "use strict" to our Javascript files
+  * Enable mod_ssl in libravatar-www
+
+ -- Francois Marier <francois@debian.org>  Wed, 30 Nov 2011 22:33:22 +1300
+
 libravatar (20111112.1) unstable; urgency=low
 
   * Fix BrowserID assertion verification
