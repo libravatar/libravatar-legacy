@@ -22,7 +22,7 @@ set -e
 . /usr/share/debconf/confmodule
 
 case "$1" in
-    remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    remove|abort-install|disappear)
         deluser libravatar-img || true
     ;;
 
@@ -35,6 +35,10 @@ case "$1" in
             echo "You must do this yourself if you really want to!"
             echo
         fi
+    ;;
+
+    upgrade|failed-upgrade|abort-upgrade)
+        # Nothing to do
     ;;
 
     *)
