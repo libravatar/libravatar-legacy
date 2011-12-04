@@ -27,6 +27,7 @@ for s in {1..512} ; do
                 pngnq -f -n 32 -s 3 ${s}.$EXTENSION
                 mv ${s}-nq8.$EXTENSION ${s}.$EXTENSION
                 optipng -o9 -q ${s}.$EXTENSION
+                advpng -z -4 -q ${s}.$EXTENSION
         elif [ "$EXTENSION" = "jpg" ] ; then
                 # ORIG_IMAGE is a JPEG file
                 convert $ORIG_IMAGE -resize ${s}x${s} ${s}.$EXTENSION
