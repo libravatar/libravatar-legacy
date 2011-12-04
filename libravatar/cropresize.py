@@ -130,6 +130,11 @@ def optimize_image(dest, img_format, ext, broken_file):
             logger.error('PNG optimisation (optipng) failed: %s' % process.communicate()[0])
             return 4
         delete_if_exists(dest + '.tmp')
+        process = subprocess.Popen(['advpng', '--recompress', '--shrink-insane', dest], stdout=subprocess.PIPE)
+        if process.wait() != 0:
+            create_broken_image(broken_file + ext, dest)
+            logger.error('PNG optimisation (advpng) failed: %s' % process.communicate()[0])
+            return 4
     else:
         logger.error('Unexpected error while cropping')
         return 5
