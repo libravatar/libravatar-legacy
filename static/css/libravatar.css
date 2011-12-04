@@ -140,35 +140,6 @@ ul li {
   color: #6D6D6D;
 }
 
-#sponsors { 
-  position: relative;
-  height: 96px;
-}
-
-#sponsors li {
-  background-image: url("../img/sponsors.png");
-  height: 96px;
-  width: 96px;
-  list-style: none;
-  position: absolute;
-}
-
-#sponsors li a {
-  height: 96px;
-  width: 96px;
-  display: block;
-}
-
-#branchable-logo {
-  background-position: 0px 0px;
-  left: 96px;
-}
-
-#braawi-logo {
-  background-position: 96px 0px;
-  left: 0px;
-}
-
 .avatar-chooser {
   float: left;
 }
