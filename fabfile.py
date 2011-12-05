@@ -1,6 +1,14 @@
 from fabric.api import abort, env, local, put, roles, run, sudo
 import re
 
+try:
+    # This will fail on Squeeze's version of fabric
+    from fabric.api import parallel
+except ImportError:
+    # Define a stub decorator that doesn't do anything
+    def parallel(function):
+        return function
+
 env.roledefs = {'slave': ['1.cdn.libravatar.org', '2.cdn.libravatar.org', '3.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org']}
 
@@ -47,6 +55,7 @@ def commit_etc_changes():
     pass
 
 
+@parallel
 @roles('slave')
 def deploy_slave():
     run('mkdir -p debs')  # ensure the target directory exists
