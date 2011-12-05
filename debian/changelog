@@ -1,3 +1,12 @@
+libravatar (20111205.1) unstable; urgency=low
+
+  * Run uploaded files through advpng
+  * Optimize all static PNGs using advpng
+  * Drop "beta" label
+  * Change sponsors
+
+ -- Francois Marier <francois@debian.org>  Mon, 05 Dec 2011 16:43:40 +1300
+
 libravatar (20111130.1) unstable; urgency=low
 
   * Omit CSP headers when serving static files
