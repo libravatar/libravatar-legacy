@@ -1,3 +1,11 @@
+libravatar (20111212.1) unstable; urgency=low
+
+  * Catch another type of OpenID discovery error
+  * Improve 500 error message
+  * Don't blacklist local paths in the Apache config for www
+
+ -- Francois Marier <francois@debian.org>  Mon, 12 Dec 2011 22:33:00 +1300
+
 libravatar (20111205.1) unstable; urgency=low
 
   * Run uploaded files through advpng
