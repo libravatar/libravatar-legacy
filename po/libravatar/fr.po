@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-06 00:39+1300\n"
-"PO-Revision-Date: 2011-11-06 00:46+1300\n"
+"POT-Creation-Date: 2011-12-17 13:15+1300\n"
+"PO-Revision-Date: 2011-12-17 13:49+1300\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
 "Language: fr\n"
@@ -35,16 +35,16 @@ msgstr "Français"
 msgid "Japanese"
 msgstr "Japonais"
 
-#: account/browserid_auth.py:79
+#: account/browserid_auth.py:80
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "code de status \"%s\" non-attendu"
 
-#: account/browserid_auth.py:82
+#: account/browserid_auth.py:83
 msgid "missing email address"
 msgstr "adresse de courriel manquante"
 
-#: account/browserid_auth.py:88
+#: account/browserid_auth.py:89
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" n'est pas une adresse de courriel valide"
@@ -174,10 +174,6 @@ msgid "Homepage"
 msgstr "Accueil"
 
 #: templates/base.html:23
-msgid "beta"
-msgstr "bêta"
-
-#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr "la libération du web, un visage à la fois"
 
@@ -195,18 +191,23 @@ msgid "Login"
 msgstr "Connexion"
 
 #: templates/base.html:45
+msgid "GNU Affero General Public License"
+msgstr "Licence GNU Affero GPL"
+
+#: templates/base.html:45
+#, python-format
 msgid ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
-"License\"></a> <b>%(site_name)s</b> is an avatar service running the <a href="
-"\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
+"launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
-"License\"></a> <b>%(site_name)s</b> est un service d'hébergement d'avatars "
-"roulant le logiciel <a href=\"https://www.launchpad.net/libravatar\">"
-"Libravatar</a>, version %(libravatar_version)s"
+"<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a href="
+"\"http://www.libravatar.org\">Libravatar</a>\n"
+", version %(libravatar_version)s"
+
+#: templates/base.html:47
+msgid "Flattr this!"
+msgstr "Flattr"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -231,12 +232,13 @@ msgid "Add a new email address"
 msgstr "Ajouter une nouvelle adresse de courriel"
 
 #: templates/account/add_email.html:10
+#, python-format
 msgid ""
 "If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
 "href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Si vous possédez un identifiant <b>BrowserID</b>, vous pouvez <a id=" 
+"Si vous possédez un identifiant <b>BrowserID</b>, vous pouvez <a id="
 "\"browser-id-link\" href=\"%(browserid_target)s\">l'utiliser pour ajouter "
 "une nouvelle adresse de courriel</a> à votre profil."
 
@@ -751,16 +753,16 @@ msgid ""
 "remember a password again?"
 msgstr ""
 "Saviez-vous que vous pouvez également <a id=\"browserid-link\" href="
-"\"%(browserid_target)s\">vous connecter avec BrowserID</a> et ne plus "
-"avoir de mot de passe à retenir ?"
+"\"%(browserid_target)s\">vous connecter avec BrowserID</a> et ne plus avoir "
+"de mot de passe à retenir ?"
 
 #: templates/account/password_reset.html:18
 msgid ""
 "To continue with the password reset, enter one of the email addresses "
 "associated with your account."
 msgstr ""
-"Pour continuer la réinitialisation de votre mot de passe, entrez une "
-"des adresses de courriel associées à votre compte."
+"Pour continuer la réinitialisation de votre mot de passe, entrez une des "
+"adresses de courriel associées à votre compte."
 
 #: templates/account/password_reset.html:25
 msgid "Reset my password"
@@ -1063,7 +1065,7 @@ msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Un gros merci à nos commanditaires sans qui rien de ceci ne serait possible !"
 
-#: templates/public/home.html:40
+#: templates/public/home.html:39
 msgid ""
 "Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
 msgstr ""
@@ -1193,6 +1195,22 @@ msgstr ""
 msgid "Domain"
 msgstr "Domaine"
 
+#~ msgid "beta"
+#~ msgstr "bêta"
+
+#~ msgid ""
+#~ "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
+#~ "height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General "
+#~ "Public License\"></a> <b>%(site_name)s</b> is an avatar service running "
+#~ "the <a href=\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+#~ "  software, version %(libravatar_version)s"
+#~ msgstr ""
+#~ "<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
+#~ "height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General "
+#~ "Public License\"></a> <b>%(site_name)s</b> est un service d'hébergement "
+#~ "d'avatars roulant le logiciel <a href=\"https://www.launchpad.net/"
+#~ "libravatar\">Libravatar</a>, version %(libravatar_version)s"
+
 #~ msgid "You'd rather use your <b>OpenID</b>?"
 #~ msgstr "Préférez-vous utiliser votre <b>OpenID</b> ?"
 
@@ -1222,19 +1240,6 @@ msgstr "Domaine"
 
 #~ msgid "alpha"
 #~ msgstr "alpha"
-
-#~ msgid ""
-#~ "<b>%(site_name)s</b> is an avatar service running the <a href=\"http://"
-#~ "www.libravatar.org\">Libravatar</a>\n"
-#~ "  software, version %(libravatar_version)s, available under the\n"
-#~ "  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero "
-#~ "General Public License</a>."
-#~ msgstr ""
-#~ "<b>%(site_name)s</b> est un service d'avatar utilisant le logiciel <a "
-#~ "href=\"http://www.libravatar.org\">Libravatar</a>\n"
-#~ ", version %(libravatar_version)s, disponible sous la license\n"
-#~ "  <a href=\"http://www.gnu.org/licenses/agpl-3.0.html\">GNU Affero "
-#~ "General Public License</a>."
 
 #~ msgid ""
 #~ "Join the <a href=\"http://libravatar.onlinegroups.net/groups/libravatar-"

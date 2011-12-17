@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-06 00:39+1300\n"
+"POT-Creation-Date: 2011-12-17 13:15+1300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,16 +33,16 @@ msgstr ""
 msgid "Japanese"
 msgstr ""
 
-#: account/browserid_auth.py:79
+#: account/browserid_auth.py:80
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr ""
 
-#: account/browserid_auth.py:82
+#: account/browserid_auth.py:83
 msgid "missing email address"
 msgstr ""
 
-#: account/browserid_auth.py:88
+#: account/browserid_auth.py:89
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr ""
@@ -168,10 +168,6 @@ msgid "Homepage"
 msgstr ""
 
 #: templates/base.html:23
-msgid "beta"
-msgstr ""
-
-#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr ""
 
@@ -189,13 +185,19 @@ msgid "Login"
 msgstr ""
 
 #: templates/base.html:45
+msgid "GNU Affero General Public License"
+msgstr ""
+
+#: templates/base.html:45
 #, python-format
 msgid ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
-"License\"></a> <b>%(site_name)s</b> is an avatar service running the <a href="
-"\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
+"launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
+msgstr ""
+
+#: templates/base.html:47
+msgid "Flattr this!"
 msgstr ""
 
 #: templates/error.html:4 templates/error.html.py:7
@@ -939,7 +941,7 @@ msgstr ""
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 
-#: templates/public/home.html:40
+#: templates/public/home.html:39
 msgid ""
 "Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
 msgstr ""
