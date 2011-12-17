@@ -42,9 +42,9 @@
 </div>
 
 <div id="footer">
-  {% blocktrans %}<a href="http://www.gnu.org/licenses/agpl-3.0.html"><img width="107" height="20" id="agpl-button" alt="" title="GNU Affero General Public License"></a> <b>{{ site_name }}</b> is an avatar service running the <a href="https://www.launchpad.net/libravatar">Libravatar</a>
+  <a href="http://www.gnu.org/licenses/agpl-3.0.html"><img width="107" height="20" id="agpl-button" alt="" title="{% trans 'GNU Affero General Public License' %}"></a> {% blocktrans %}<b>{{ site_name }}</b> is an avatar service running the <a href="https://launchpad.net/libravatar">Libravatar</a>
   software, version {{ libravatar_version }}{% endblocktrans %}
-  <a href="http://flattr.com/thing/311293/Libravatar"><img id="flattr-button" width="93" height="20" alt="" title="Flattr this!"></a>
+  <a href="http://flattr.com/thing/311293/Libravatar"><img id="flattr-button" width="93" height="20" alt="" title="{% trans 'Flattr this!' %}"></a>
   {% if needs_jquery %}<script src="/js/jquery.min.js" type="text/javascript" defer></script>{% endif %}
   {% block footer %}{% endblock footer %}
   <script src="/js/libravatar.js" type="text/javascript" defer></script>
