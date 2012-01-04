@@ -86,7 +86,7 @@ if (navigator.id) {
 
 // For main BrowserID functionality on the add_email and login pages
 function try_browserid() {
-    navigator.id.getVerifiedEmail(function (assertion) {
+    navigator.id.get(function (assertion) {
         if (assertion) {
             document.getElementById('browserid-assertion').setAttribute('value', assertion);
             document.getElementById('browserid-form').submit();
