@@ -52,7 +52,7 @@ def verify_assertion(assertion, host, https):
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
 
-    client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set cacerts=settings.CACERTS (need HttpLib2 >= 0.7)
+    client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set ca_certs=settings.CACERTS (need HttpLib2 >= 0.7)
     response = content = None
     try:
         response, content = client.request(url, 'POST', body=verification_data, headers=headers)
