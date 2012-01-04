@@ -28,37 +28,28 @@
 if (document.forms.login) {
     if (document.forms.login.username) {
         document.forms.login.username.focus();
-    }
-    else if (document.forms.login.openid_identifier) {
+    } else if (document.forms.login.openid_identifier) {
         document.forms.login.openid_identifier.focus();
     }
-}
-else if (document.forms.addemail) {
+} else if (document.forms.addemail) {
     document.forms.addemail.email.focus();
-}
-else if (document.forms.addopenid) {
+} else if (document.forms.addopenid) {
     document.forms.addopenid.openid.focus();
-}
-else if (document.forms.changepassword) {
+} else if (document.forms.changepassword) {
     document.forms.changepassword.old_password.focus();
-}
-else if (document.forms.deleteaccount) {
+} else if (document.forms.deleteaccount) {
     if (document.forms.deleteaccount.password) {
         document.forms.deleteaccount.password.focus();
     }
-}
-else if (document.forms.lookup) {
+} else if (document.forms.lookup) {
     if (document.forms.lookup.email) {
         document.forms.lookup.email.focus();
-    }
-    else if (document.forms.lookup.domain) {
+    } else if (document.forms.lookup.domain) {
         document.forms.lookup.domain.focus();
     }
-}
-else if (document.forms.newaccount) {
+} else if (document.forms.newaccount) {
     document.forms.newaccount.username.focus();
-}
-else if (document.forms.reset) {
+} else if (document.forms.reset) {
     document.forms.reset.email.focus();
 }
 
@@ -73,14 +64,13 @@ if (navigator.id) {
                 cookie_name: "sessionid"
             }
         }];
-    }
-    else {
+    } else {
         navigator.id.sessions = [];
     }
-    document.addEventListener("login", function(event) {
+    document.addEventListener("login", function (event) {
         document.location.href = "/account/login/";
     }, false);
-    document.addEventListener("logout", function(event) {
+    document.addEventListener("logout", function (event) {
         document.location.href = "/account/logout/";
     }, false);
 
@@ -96,7 +86,7 @@ if (navigator.id) {
 
 // For main BrowserID functionality on the add_email and login pages
 function try_browserid() {
-    navigator.id.getVerifiedEmail(function(assertion) {
+    navigator.id.getVerifiedEmail(function (assertion) {
         if (assertion) {
             document.getElementById('browserid-assertion').setAttribute('value', assertion);
             document.getElementById('browserid-form').submit();
