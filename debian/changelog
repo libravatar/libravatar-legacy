@@ -1,3 +1,11 @@
+libravatar (20120126.1) unstable; urgency=low
+
+  * Use navigator.id.get in BrowserID auth plugin
+  * Minor footer cleanups
+  * Update French, German and Japanese translations
+
+ -- Francois Marier <francois@debian.org>  Thu, 26 Jan 2012 17:49:54 +1300
+
 libravatar (20111212.1) unstable; urgency=low
 
   * Catch another type of OpenID discovery error
