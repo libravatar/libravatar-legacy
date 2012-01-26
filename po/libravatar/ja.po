@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-11-06 00:39+1300\n"
-"PO-Revision-Date: 2011-11-06 15:21+0000\n"
+"POT-Creation-Date: 2011-12-17 13:15+1300\n"
+"PO-Revision-Date: 2011-12-19 04:38+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-11-12 04:40+0000\n"
-"X-Generator: Launchpad (build 14277)\n"
+"X-Launchpad-Export-Date: 2011-12-20 04:57+0000\n"
+"X-Generator: Launchpad (build 14538)\n"
 
 #: settings.py:56
 msgid "German"
@@ -33,16 +33,16 @@ msgstr "フランス語"
 msgid "Japanese"
 msgstr "日本語"
 
-#: account/browserid_auth.py:79
+#: account/browserid_auth.py:80
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "不明なステータスコード「 %s 」"
 
-#: account/browserid_auth.py:82
+#: account/browserid_auth.py:83
 msgid "missing email address"
 msgstr "Eメールアドレスがありません。"
 
-#: account/browserid_auth.py:88
+#: account/browserid_auth.py:89
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "「 %s 」は有効なEメールアドレスではありません。"
@@ -170,10 +170,6 @@ msgid "Homepage"
 msgstr "ホームページ"
 
 #: templates/base.html:23
-msgid "beta"
-msgstr "beta"
-
-#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr "ひとつの顔でウェブをフリーに"
 
@@ -191,19 +187,23 @@ msgid "Login"
 msgstr "ログイン"
 
 #: templates/base.html:45
+msgid "GNU Affero General Public License"
+msgstr "GNU Affero General Public License"
+
+#: templates/base.html:45
 #, python-format
 msgid ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
-"License\"></a> <b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"https://www.launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
-"<a href=\"http://www.gnu.org/licenses/agpl-3.0.html\"><img width=\"107\" "
-"height=\"20\" id=\"agpl-button\" alt=\"\" title=\"GNU Affero General Public "
-"License\"></a> <b>%(site_name)s</b>では、アバターサービス<a "
-"href=\"https://www.launchpad.net/libravatar\">Libravatar</a>ソフトウェア、バージョン "
-"%(libravatar_version) sが動作しています。"
+"<b>%(site_name)s</b> は<a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>ソフトウェア、バージョン "
+"%(libravatar_version)s で運用されるアバターサービスです。"
+
+#: templates/base.html:47
+msgid "Flattr this!"
+msgstr "Flattrします!"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -1004,7 +1004,7 @@ msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr "スポンサーの皆様に心より感謝致します!"
 
-#: templates/public/home.html:40
+#: templates/public/home.html:39
 msgid ""
 "Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
 msgstr ""
