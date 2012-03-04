@@ -68,18 +68,6 @@
 <p><a href="{% url libravatar.account.views.upload_photo %}">{% trans 'Upload a new photo' %}</a></p>
 {% endif %}
 
-{% if confirmed_emails or confirmed_openids %}
-<p>{% trans 'Your avatars are accessible from the following URLs:' %}</p>
-<ul>
-    {% for email in confirmed_emails %}
-       <li>{{email.public_url|urlizetrunc:50}}</li>
-    {% endfor %}
-    {% for openid in confirmed_openids %}
-       <li>{{openid.public_url|urlizetrunc:50}}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
 <h2>{% trans 'Account settings' %}</h2>
 
 {% if has_password %}
