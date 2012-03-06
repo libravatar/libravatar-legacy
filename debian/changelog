@@ -1,3 +1,18 @@
+libravatar (20120306.1) unstable; urgency=low
+
+  * Add a "Contact Us" link to header
+  * Add X-WebKit-CSP headers to www
+  * Remove the list of URLs where photos are accessible from profile page
+  * Pre-generate 50 and 128 pixel images 
+
+  * Add -webkit-border-radius to the stylesheet
+  * Don't trust Host request header when using BrowserID
+
+  * Add an awstats config file for www
+  * Remove temporary directories under /var/lib/libravatar on purge of www
+
+ -- Francois Marier <francois@debian.org>  Tue, 06 Mar 2012 22:06:29 +1300
+
 libravatar (20120126.1) unstable; urgency=low
 
   * Use navigator.id.get in BrowserID auth plugin
