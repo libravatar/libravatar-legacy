@@ -1,4 +1,5 @@
 libravatar usr/share/libravatar
+config/awstats.www.conf etc/libravatar
 config/www.apache2.conf etc/libravatar
 config/django.wsgi etc/libravatar
 static/img/*.html usr/share/libravatar/static/img
