@@ -26,10 +26,12 @@
   <div id="account">
     {% if user.is_authenticated %}
     <span id="session-username">{{user.username}}</span>:&nbsp;
-    <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>
-    &nbsp;<a href="{% url django.contrib.auth.views.logout %}">{% trans 'Logout' %}</a>
+    <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>&nbsp;|&nbsp;
+    <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
+    <a href="{% url django.contrib.auth.views.logout %}">{% trans 'Logout' %}</a>
     {% else %}
     <span id="session-username"></span>
+    <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
     <a href="{% url django.contrib.auth.views.login %}">{% trans 'Login' %}</a>
     {% endif %}
   </div>

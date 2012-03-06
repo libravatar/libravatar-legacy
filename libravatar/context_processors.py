@@ -24,6 +24,7 @@ def basepage(request):
     # pylint: disable=W0613
     context = {}
     context['avatar_url'] = settings.AVATAR_URL
+    context['contact_us'] = settings.CONTACT_US
     context['dev_email'] = settings.DEV_EMAIL
     context['disable_signup'] = settings.DISABLE_SIGNUP
     context['libravatar_version'] = settings.LIBRAVATAR_VERSION
