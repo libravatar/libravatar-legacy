@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-17 13:15+1300\n"
+"POT-Creation-Date: 2012-03-06 22:01+1300\n"
 "PO-Revision-Date: 2011-12-17 13:49+1300\n"
 "Last-Translator: François Marier <francois@libravatar.org>\n"
 "Language-Team: Français <none>\n"
@@ -19,32 +19,32 @@ msgstr ""
 "X-Generator: Launchpad (build 13376)\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
 
-#: settings.py:56
+#: settings.py:57
 msgid "German"
 msgstr "Allemand"
 
-#: settings.py:57
+#: settings.py:58
 msgid "English"
 msgstr "Anglais"
 
-#: settings.py:58
+#: settings.py:59
 msgid "French"
 msgstr "Français"
 
-#: settings.py:59
+#: settings.py:60
 msgid "Japanese"
 msgstr "Japonais"
 
-#: account/browserid_auth.py:80
+#: account/browserid_auth.py:77
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "code de status \"%s\" non-attendu"
 
-#: account/browserid_auth.py:83
+#: account/browserid_auth.py:80
 msgid "missing email address"
 msgstr "adresse de courriel manquante"
 
-#: account/browserid_auth.py:89
+#: account/browserid_auth.py:86
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" n'est pas une adresse de courriel valide"
@@ -181,20 +181,24 @@ msgstr "la libération du web, un visage à la fois"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:30
+#: templates/base.html:30 templates/base.html.py:34
+msgid "Contact Us"
+msgstr "Contactez-nous"
+
+#: templates/base.html:31
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:33 templates/account/login.html:8
+#: templates/base.html:35 templates/account/login.html:8
 #: templates/account/login.html.py:42 templates/openid/login.html:28
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:45
+#: templates/base.html:47
 msgid "GNU Affero General Public License"
 msgstr "Licence GNU Affero GPL"
 
-#: templates/base.html:45
+#: templates/base.html:47
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
@@ -205,7 +209,7 @@ msgstr ""
 "\"http://www.libravatar.org\">Libravatar</a>\n"
 ", version %(libravatar_version)s"
 
-#: templates/base.html:47
+#: templates/base.html:49
 msgid "Flattr this!"
 msgstr "Flattr"
 
@@ -555,7 +559,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Exporter vos données Libravatar"
 
-#: templates/account/export.html:8 templates/account/profile.html:91
+#: templates/account/export.html:8 templates/account/profile.html:79
 msgid "Export your data"
 msgstr "Exporter vos données"
 
@@ -897,23 +901,19 @@ msgstr "Téléversée le %(datetime)s"
 msgid "Upload a new photo"
 msgstr "Téléverser une photo"
 
-#: templates/account/profile.html:72
-msgid "Your avatars are accessible from the following URLs:"
-msgstr "Vos avatars sont disponibles aux adresses suivantes :"
-
-#: templates/account/profile.html:83
+#: templates/account/profile.html:71
 msgid "Account settings"
 msgstr "Paramètres du compte"
 
-#: templates/account/profile.html:86
+#: templates/account/profile.html:74
 msgid "Change your password"
 msgstr "Changer le mot de passe"
 
-#: templates/account/profile.html:88
+#: templates/account/profile.html:76
 msgid "Set a password"
 msgstr "Ajout d'un mot de passe"
 
-#: templates/account/profile.html:93
+#: templates/account/profile.html:81
 msgid "Permanently delete your account"
 msgstr "Effacer votre compte de façons permanente"
 
@@ -1194,6 +1194,9 @@ msgstr ""
 #: tools/forms.py:40
 msgid "Domain"
 msgstr "Domaine"
+
+#~ msgid "Your avatars are accessible from the following URLs:"
+#~ msgstr "Vos avatars sont disponibles aux adresses suivantes :"
 
 #~ msgid "beta"
 #~ msgstr "bêta"
