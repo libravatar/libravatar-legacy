@@ -30,17 +30,14 @@ URL_TIMEOUT = 5  # in seconds
 
 def _browserid_audience(host, https):
     if https:
-        scheme = 'https'
         port = 443
     else:
-        scheme = 'http'
         port = 80
 
-    audience = "%s://%s" % (scheme, host)
     if ':' in host:
-        return audience
+        return host
     else:
-        return "%s:%s" % (audience, port)
+        return "%s:%s" % (host, port)
 
 
 def verify_assertion(assertion, host, https):
