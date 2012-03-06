@@ -42,6 +42,7 @@ h2 {
   font-weight: bold;
   padding: 8px;
   -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
@@ -77,6 +78,7 @@ a {
   background-color: #FFFFFF;
   padding: 8px 16px 16px 16px;
   -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
@@ -145,11 +147,12 @@ ul li {
   border: 5px;
   border-style: dashed;
   -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
 #id_openid, #id_openid_identifier {
-  background : #FFFFFF url("../img/openid_logo.png") no-repeat scroll 0pt 50%;
+  background : #FFFFFF url("../img/openid_logo.png") no-repeat scroll 0 50%;
   padding : 4px 18px;
   width: 400px;
 }
@@ -165,6 +168,7 @@ ul li {
   background-color: #F9711F;
   color: #FFFFFF;
   -moz-border-radius:8px;
+  -webkit-border-radius:8px;
   border-radius: 8px;
   padding: 3px 5px 5px 5px;
   text-decoration: none;
