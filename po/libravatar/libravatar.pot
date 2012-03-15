@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-06 22:01+1300\n"
+"POT-Creation-Date: 2012-03-16 10:56+1300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -700,7 +700,7 @@ msgid "Password reset requested"
 msgstr ""
 
 #: templates/account/password_reset_submitted.html:8
-msgid "You have sucessfully requested a password reset for your account."
+msgid "You have successfully requested a password reset for your account."
 msgstr ""
 
 #: templates/account/password_reset_submitted.html:10

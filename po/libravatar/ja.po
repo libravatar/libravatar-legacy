@@ -736,7 +736,7 @@ msgid "Password reset requested"
 msgstr "パスワードのリセットがリクエストされました。"
 
 #: templates/account/password_reset_submitted.html:8
-msgid "You have sucessfully requested a password reset for your account."
+msgid "You have successfully requested a password reset for your account."
 msgstr "あなたのアカウントのパスワードリセットが正常にリクエストされました。"
 
 #: templates/account/password_reset_submitted.html:10

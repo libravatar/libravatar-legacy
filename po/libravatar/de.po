@@ -797,7 +797,7 @@ msgid "Password reset requested"
 msgstr "Zurücksetzen des Passwortes wurde angefordert"
 
 #: templates/account/password_reset_submitted.html:8
-msgid "You have sucessfully requested a password reset for your account."
+msgid "You have successfully requested a password reset for your account."
 msgstr ""
 "Sie haben erfolgreich das Zurücksetzen Ihres Passwortes für Ihr "
 "Benutzerkonto angefordert."
