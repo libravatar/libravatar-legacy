@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-16 10:56+1300\n"
+"POT-Creation-Date: 2012-03-18 15:51-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: templates/account/delete_done.html:12
 msgid ""
-"In case you want to take your data with you, it's currenlty being exported "
+"In case you want to take your data with you, it's currently being exported "
 "and will be <b>ready in a few moments</b>:"
 msgstr ""
 

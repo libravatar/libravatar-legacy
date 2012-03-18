@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-12-17 13:15+1300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-18 15:51-0700\n"
 "PO-Revision-Date: 2011-12-19 04:38+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
@@ -417,7 +417,7 @@ msgstr ""
 
 #: templates/account/delete_done.html:12
 msgid ""
-"In case you want to take your data with you, it's currenlty being exported "
+"In case you want to take your data with you, it's currently being exported "
 "and will be <b>ready in a few moments</b>:"
 msgstr "現在、あなたのデータはエクスポートされています。<b>数分以内で準備が整いますので</b>、もうしばらくお待ちください:"
 
