@@ -1,3 +1,9 @@
+libravatar (20120411.4) unstable; urgency=low
+
+  * Django needs the right symlinks to see the translations
+
+ -- Francois Marier <francois@debian.org>  Thu, 12 Apr 2012 00:13:16 +1200
+
 libravatar (20120411.3) unstable; urgency=low
 
   * Add the new translations to the makefile so they get built
