@@ -1,3 +1,9 @@
+libravatar (20120411.2) unstable; urgency=low
+
+  * Actually enable the new languages
+
+ -- Francois Marier <francois@debian.org>  Wed, 11 Apr 2012 23:36:24 +1200
+
 libravatar (20120411.1) unstable; urgency=low
 
   * Remove X-WebKit-CSP headers (chromium is broken)
