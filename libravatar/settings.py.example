@@ -54,8 +54,12 @@ LANGUAGE_CODE = 'en-us'
 
 ugettext = lambda s: s
 LANGUAGES = (
+    ('ca', ugettext('Catalan')),
+    ('cs', ugettext('Czech')),
     ('de', ugettext('German')),
     ('en', ugettext('English')),
+    ('es', ugettext('Spanish')),
+    ('eu', ugettext('Basque')),
     ('fr', ugettext('French')),
     ('ja', ugettext('Japanese')),
 )
