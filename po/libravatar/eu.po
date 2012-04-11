@@ -1,0 +1,1193 @@
+# Basque translation for libravatar
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the libravatar package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libravatar\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-03-18 15:51-0700\n"
+"PO-Revision-Date: 2012-03-26 23:54+0000\n"
+"Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
+"Language-Team: Basque <eu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-03-28 04:58+0000\n"
+"X-Generator: Launchpad (build 15027)\n"
+
+#: settings.py:57
+msgid "German"
+msgstr "Alemana"
+
+#: settings.py:58
+msgid "English"
+msgstr "Ingelesa"
+
+#: settings.py:59
+msgid "French"
+msgstr "Frantsesa"
+
+#: settings.py:60
+msgid "Japanese"
+msgstr "Japoniera"
+
+#: account/browserid_auth.py:77
+#, python-format
+msgid "unexpected \"%s\" status code"
+msgstr "ustekabeko \"%s\" egoera kodea"
+
+#: account/browserid_auth.py:80
+msgid "missing email address"
+msgstr "e-posta helbidea falta da"
+
+#: account/browserid_auth.py:86
+#, python-format
+msgid "\"%s\" is not a valid email address"
+msgstr "\"%s\" ez da baliozko e-posta helbidea"
+
+#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+msgid "Email"
+msgstr "E-posta"
+
+#: account/forms.py:46
+#, python-format
+msgid "Valid email addresses end with @%(domain)s"
+msgstr "Baliozko e-posta helbideak @%(domain)s-(r)ekin bukatzen dira"
+
+#: account/forms.py:71
+#, python-format
+msgid "Confirm your email address on %(site_name)s"
+msgstr "Baieztatu zure e-posta helbidea %(site_name)s-(e)n"
+
+#: account/forms.py:79 templates/openid/login.html:26 tools/forms.py:26
+msgid "OpenID"
+msgstr "OpenID"
+
+#: account/forms.py:93
+msgid "Valid OpenID URLs are on this domain: "
+msgstr "Baliozko OpenID URLak domeinu honetan daude: "
+
+#: account/forms.py:114
+msgid "Photo"
+msgstr "Argazkia"
+
+#: account/forms.py:114
+msgid "You must choose an image to upload."
+msgstr "Irudi bat aukeratu behar duzu kargatzeko."
+
+#: account/forms.py:115
+msgid "suitable for all ages (i.e. no offensive content)"
+msgstr "adin guztientzako modukoa (adb. ez dauka eduki iraingarririk)"
+
+#: account/forms.py:116
+msgid "We only host \"G-rated\" images and so this field must be checked."
+msgstr ""
+"\"Adin guztientzako moduko\" irudiak soilik ostatatzen ditugu eta beraz "
+"eremu hau markatu behar da."
+
+#: account/forms.py:117
+msgid "can be freely copied"
+msgstr "libreki kopiatu daiteke"
+
+#: account/forms.py:118
+msgid ""
+"This field must be checked since we need to be able to distribute photos to "
+"third parties."
+msgstr ""
+"Eremu hau markatu behar da hirugarrenei argazkiak banatzeko gai izan nahi "
+"dugulako."
+
+#: account/forms.py:143
+#, python-format
+msgid "Password reset for %(site_name)s"
+msgstr "%(site_name)s-(r)rako pasahitza berrezarrita"
+
+#: account/forms.py:168
+msgid "Password"
+msgstr "Pasahitza"
+
+#: account/forms.py:179
+msgid "Invalid password"
+msgstr "Baliogabeko pasahitza"
+
+#: account/models.py:122
+msgid "photo"
+msgstr "argazkia"
+
+#: account/models.py:123
+msgid "photos"
+msgstr "argazkiak"
+
+#: account/models.py:266
+msgid "confirmed email"
+msgstr "baieztatutako e-posta"
+
+#: account/models.py:267
+msgid "confirmed emails"
+msgstr "baieztatutako e-postak"
+
+#: account/models.py:306
+msgid "unconfirmed email"
+msgstr "baieztatu gabeko e-posta"
+
+#: account/models.py:307
+msgid "unconfirmed emails"
+msgstr "baieztatu gabeko e-postak"
+
+#: account/models.py:310 account/models.py:330
+msgid "(unconfirmed)"
+msgstr "(baieztatu gabea)"
+
+#: account/models.py:326
+msgid "unconfirmed OpenID"
+msgstr "baieztatu gabeko OpenID"
+
+#: account/models.py:327
+msgid "unconfirmed OpenIDs"
+msgstr "baieztatu gabeko OpenIDak"
+
+#: account/models.py:341
+msgid "confirmed OpenID"
+msgstr "baieztatutako OpenIDa"
+
+#: account/models.py:342
+msgid "confirmed OpenIDs"
+msgstr "baieztatutako OpenIDak"
+
+#: templates/404.html:5
+#, python-format
+msgid ""
+"Page not found. If you think you got here by mistake, please <a "
+"href=\"mailto:%(support_email)s\">let us know</a>!"
+msgstr ""
+"Ez da orria aurkitu. Hona huts baten ondorioz iritsi zarela uste baduzu, "
+"mesedez <a href=\"mailto:%(support_email)s\">jakinaraz iezaguzu</a>!"
+
+#: templates/base.html:11
+msgid "Freeing the Web, one face at a time!"
+msgstr "Aurpegiz aurpegi, sarea askatzen!"
+
+#: templates/base.html:19
+msgid "Homepage"
+msgstr "Webgune nagusia"
+
+#: templates/base.html:23
+msgid "freeing the web one face at a time"
+msgstr "aurpegiz aurpegi, sarea askatzen"
+
+#: templates/base.html:29
+msgid "Profile"
+msgstr "Profila"
+
+#: templates/base.html:30 templates/base.html.py:34
+msgid "Contact Us"
+msgstr "Jarri gurekin harremanetan"
+
+#: templates/base.html:31
+msgid "Logout"
+msgstr "Amaitu saioa"
+
+#: templates/base.html:35 templates/account/login.html:8
+#: templates/account/login.html.py:42 templates/openid/login.html:28
+msgid "Login"
+msgstr "Hasi saioa"
+
+#: templates/base.html:47
+msgid "GNU Affero General Public License"
+msgstr "GNU Affero Lizentzia Publiko Orokorra (AGPL)"
+
+#: templates/base.html:47
+#, python-format
+msgid ""
+"<b>%(site_name)s</b> is an avatar service running the <a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"  software, version %(libravatar_version)s"
+msgstr ""
+"<b>%(site_name)s</b> <a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"  softwarearen %(libravatar_version)s bertsioa erabiltzen duen avatar "
+"zerbitzu bat da"
+
+#: templates/base.html:49
+msgid "Flattr this!"
+msgstr "Flattr hau!"
+
+#: templates/error.html:4 templates/error.html.py:7
+msgid "Error!"
+msgstr "Errorea!"
+
+#: templates/error.html:9
+msgid "Libravatar has encountered an error."
+msgstr "Libravatar-ek errore bat aurkitu du."
+
+#: templates/error.html:15 templates/account/assign_photo_email.html:15
+#: templates/account/assign_photo_openid.html:15
+#: templates/account/email_confirmed.html:37
+#: templates/account/export_done.html:18
+#: templates/account/password_change_done.html:13
+#: templates/account/photos_imported.html:13
+msgid "Back to your profile"
+msgstr "Itzuli zure profilera"
+
+#: templates/account/add_email.html:4 templates/account/add_email.html.py:8
+#: templates/account/profile.html:51
+msgid "Add a new email address"
+msgstr "Gehitu e-posta helbide berri bat"
+
+#: templates/account/add_email.html:10
+#, python-format
+msgid ""
+"If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
+"profile."
+msgstr ""
+"<b>BrowserID</b> kontu bat baduzu, zure profilari <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">e-posta  helbide berri bat gehitzeko erabil "
+"dezakezu</a>."
+
+#: templates/account/add_email.html:18
+msgid ""
+"Otherwise, type your email address in the box below and we will send you an "
+"email with a link to click on in order to verify that you own that email "
+"address."
+msgstr ""
+"Bestela, idatzi zure e-posta helbidea azpiko kaxan eta klik egiteko esteka "
+"bat duen e-posta bat bidaliko dizugu e-posta helbide horren jabea zu zarela "
+"baieztatzeko."
+
+#: templates/account/add_email.html:25 templates/account/add_openid.html:19
+msgid "Add"
+msgstr "Gehitu"
+
+#: templates/account/add_email.html:26 templates/account/add_openid.html:20
+#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/delete_photo.html:17 templates/account/export.html:15
+#: templates/account/login.html:44 templates/account/new.html:43
+#: templates/account/password_change.html:47
+#: templates/account/password_reset.html:26
+#: templates/account/upload_photo.html:25 templates/openid/login.html:30
+msgid "Cancel"
+msgstr "Utzi"
+
+#: templates/account/add_openid.html:4 templates/account/add_openid.html:8
+#: templates/account/profile.html:54
+msgid "Add a new OpenID"
+msgstr "Gehitu OpenID berri bat"
+
+#: templates/account/add_openid.html:10
+msgid ""
+"Once you have confirmed this OpenID URL, you will be able to log into your "
+"account using that OpenID URL."
+msgstr ""
+"OpenID URL hau baieztatzean, zure kontuan saioa hasteko gai izango zara "
+"OpenID URL hori erabiliz."
+
+#: templates/account/add_openid.html:17
+msgid ""
+"You will be redirected to the authorisation page for the provider. If the "
+"process fails, you can remove the ID from this list and try adding it again."
+msgstr ""
+"Zure hornitzailearen autorizazio orrira birbideratua izango zara. Prozesuak "
+"huts egiten badu, IDa zerrendatik kendu eta berriz gehitzen saiatu zaitezke."
+
+#: templates/account/add_openid_redirection.html:4
+#: templates/account/add_openid_redirection.html:10
+msgid "Redirecting to OpenID Provider..."
+msgstr "OpenID hornitzailera birbideratzen"
+
+#: templates/account/add_openid_redirection.html:12
+msgid ""
+"Libravatar will attempt to verify your OpenID credentials. You may be asked "
+"by your OpenID provider to login and authorise this check."
+msgstr ""
+"Libravatar zure OpenID kredentzialak egiaztatzen saiatuko da. Baliteke zure "
+"OpenID hornitzaileak saioa hasi eta egiaztapen hau baimentzeko eskatzea."
+
+#: templates/account/add_openid_redirection.html:15
+#, python-format
+msgid ""
+"Depending on the provider, this operation <b>may take up to a minute</b>. If "
+"it takes longer than that, go <a href=\"%(profile_url)s\">back to your "
+"profile</a>, remove the OpenID URL and try adding it again."
+msgstr ""
+"Hornitzailearen arabera, eragiketa honek <b>minutu bat iraun dezake</b>. "
+"Gehiago luzatzen bada, joan <a href=\"%(profile_url)s\">zure profilera</a>, "
+"kendu OpenID URLa eta saiatu berriro gehitzen."
+
+#: templates/account/add_openid_redirection.html:17
+msgid "Verify credentials"
+msgstr "Egiaztatu kredentzialak"
+
+#: templates/account/assign_photo_email.html:4
+#: templates/account/assign_photo_email.html:8
+#, python-format
+msgid "Choose a photo for %(email_address)s"
+msgstr "Aukeratu argazki bat %(email_address)s-(e)ntzat"
+
+#: templates/account/assign_photo_email.html:13
+#: templates/account/assign_photo_openid.html:13
+#, python-format
+msgid "You need to <a href=\"%(upload_url)s\">upload some photos</a> first!"
+msgstr ""
+"<a href=\"%(upload_url)s\">Zenbait argazki kargatu</a> behar dituzu lehenik!"
+
+#: templates/account/assign_photo_email.html:19
+msgid ""
+"Here are the pictures you have uploaded, click on the one you wish to "
+"associate with this email address:"
+msgstr ""
+"Hemen daude kargatu dituzun argazkiak, klikatu e-posta honekin lotu nahi "
+"duzunaren gainean:"
+
+#: templates/account/assign_photo_email.html:28
+#: templates/account/assign_photo_email.html:37
+#: templates/account/assign_photo_openid.html:28
+#: templates/account/assign_photo_openid.html:37
+msgid "(current)"
+msgstr "(unekoa)"
+
+#: templates/account/assign_photo_email.html:35
+#: templates/account/assign_photo_openid.html:35
+msgid "None"
+msgstr "Bat ere ez"
+
+#: templates/account/assign_photo_openid.html:4
+#: templates/account/assign_photo_openid.html:8
+#, python-format
+msgid "Choose a photo for %(openid_url)s"
+msgstr "Aukeratu argazki bat %(openid_url)s-(r)ntzat"
+
+#: templates/account/assign_photo_openid.html:19
+msgid ""
+"Here are the pictures you have uploaded, click on the one you wish to "
+"associate with this OpenID:"
+msgstr ""
+"Hemen daude kargatu dituzun argazkiak, klikatu OpenID honekin lotu nahi "
+"duzunaren gainean:"
+
+#: templates/account/browserid_emailalreadyconfirmed.html:5
+msgid "This email address already exists in a user account."
+msgstr "E-posta hau dagoeneko existitzen da erabiltzaile-kontu batean."
+
+#: templates/account/browserid_invalidassertion.html:5
+msgid "Invalid BrowserID assertion."
+msgstr "Browser ID baieztapen baliogabea."
+
+#: templates/account/browserid_invalidassertion.html:7
+msgid "Error: "
+msgstr "Errorea: "
+
+#: templates/account/browserid_noassertion.html:5
+msgid ""
+"Missing BrowserID assertion. An assertion must be sent to the server via a "
+"POST request."
+msgstr ""
+"BrowserID baieztapena falta da. Baieztapen bat bidali behar da zerbitzarira "
+"POST eskaera baten bidez."
+
+#: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
+msgid "Crop photo"
+msgstr "Moztu argazkia"
+
+#: templates/account/crop_photo.html:18
+msgid "Crop"
+msgstr "Moztu"
+
+#: templates/account/delete.html:4
+msgid "Delete your Libravatar account"
+msgstr "Ezabatu zure Libravatar kontua"
+
+#: templates/account/delete.html:8
+msgid "Delete your account"
+msgstr "Ezabatu zure kontua"
+
+#: templates/account/delete.html:10
+msgid "There is no way to undo this operation."
+msgstr "Ez dago eragiketa hau desegiteko modurik."
+
+#: templates/account/delete.html:15
+msgid "Please confirm your identity by entering your current password."
+msgstr "Mesedez, baieztatu zure nortasuna zure uneko pasahitza sartuz."
+
+#: templates/account/delete.html:21
+msgid ""
+"Are you sure you want to <strong>permanently delete</strong> your Libravatar "
+"account?"
+msgstr ""
+"Ziur zaude <strong>betirako ezabatu</strong> nahi duzula zure Libravatar "
+"kontua?"
+
+#: templates/account/delete.html:23
+msgid "Yes, delete all of my stuff"
+msgstr "Bai, ezabatu nire gauza guztiak"
+
+#: templates/account/delete_done.html:4
+msgid "Libravatar Account Deleted"
+msgstr "Libravatar kontua ezabatuta"
+
+#: templates/account/delete_done.html:8
+msgid "Account deleted"
+msgstr "Kontua ezabatuta"
+
+#: templates/account/delete_done.html:10
+msgid ""
+"Your account has been permanently and completely deleted. It may <b>take a "
+"few days</b> for your photos to disappear from all mirrors and a few weeks "
+"for your photos to disappear from web caches."
+msgstr ""
+"Zure kontua betirako eta erabat ezabatu da. Zure argazkiak ispilu "
+"guztietatik ezabatu arte <b>egun batzuk</b> igaro daitezke eta aste batzuk "
+"beharko dira zure argazkiak web cache-etatik desager daitezen."
+
+#: templates/account/delete_done.html:12
+msgid ""
+"In case you want to take your data with you, it's currently being exported "
+"and will be <b>ready in a few moments</b>:"
+msgstr ""
+"Badaezpada zure datuak esportatzen ari gara, zurekin eraman nahi badituzu "
+"ere. <b>Segituan egongo dira prest</b>:"
+
+#: templates/account/delete_done.html:18 templates/account/export_done.html:16
+msgid "This export will be deleted in a few hours."
+msgstr "Esportazio hau ordu gutxi barru ezabatuko da."
+
+#: templates/account/delete_done.html:20
+#: templates/account/password_reset_submitted.html:23
+msgid "Back to the homepage"
+msgstr "Itzuli webgune nagusira"
+
+#: templates/account/delete_photo.html:4
+msgid "Delete a photo"
+msgstr "Ezabatu argazki bat"
+
+#: templates/account/delete_photo.html:8
+msgid "Delete photo"
+msgstr "Ezabatu argazkia"
+
+#: templates/account/delete_photo.html:10
+msgid "Are you sure you want to delete this photo?"
+msgstr "Ziur zaude argazki hau ezabatu nahi duzula?"
+
+#: templates/account/delete_photo.html:16 templates/account/profile.html:62
+msgid "Delete"
+msgstr "Ezabatu"
+
+#: templates/account/email_confirmation.txt:1
+#, python-format
+msgid ""
+"Someone, probably you, requested that this email address be added to their\n"
+"%(site_name)s account.\n"
+"\n"
+"If that's what you want, please confirm that you are the owner of this\n"
+"email address by clicking the following link:\n"
+"\n"
+"  %(verification_link)s\n"
+"\n"
+"Otherwise, please accept our apologies and ignore this message.\n"
+"\n"
+"- The %(site_name)s accounts team\n"
+msgstr ""
+"Norbaitek, segur aski zuk, eskaera egin du e-posta helbide hau bere\n"
+"%(site_name)s kontura gehitzeko.\n"
+"\n"
+"Hori bada nahi duzuna, mesedez, e-posta helbide honen jabea zu\n"
+"zarela baieztatu ondorengo estekan klik eginez:\n"
+"\n"
+"  %(verification_link)s\n"
+"\n"
+"Bestela, barkatu mesedez eta ez ikusia egin mezu honi.\n"
+"\n"
+"- %(site_name)s-(e)ko kontuen taldea\n"
+
+#: templates/account/email_confirmed.html:4
+#: templates/account/email_confirmed.html:8
+msgid "Email confirmation"
+msgstr "E-posta baieztapena"
+
+#: templates/account/email_confirmed.html:10
+msgid "Your email address was successfully confirmed!"
+msgstr "Zure e-posta behar bezala baieztatu da!"
+
+#: templates/account/email_confirmed.html:14
+msgid "Would you like to import some of these externally hosted photos?"
+msgstr "Kanpoan ostatatutako argazki hauetako batzuk inportatu nahi dituzu?"
+
+#: templates/account/email_confirmed.html:31
+msgid "Import"
+msgstr "Inportatu"
+
+#: templates/account/email_invalid.html:5
+msgid "Invalid email ID."
+msgstr "E-posta ID baliogabea."
+
+#: templates/account/email_notadded.html:5
+msgid "This email address could not be added. Possible reasons:"
+msgstr "E-posta helbide hau ezin izan da gehitu. Arrazoi posibleak:"
+
+#: templates/account/email_notadded.html:7
+msgid ""
+"it is already in your list of unconfirmed email addresses (try removing it "
+"first)"
+msgstr ""
+"dagoeneko zure baieztatu gabeko e-posta helbideen zerrendan dago (saiatu "
+"lehenik ezabatzen)"
+
+#: templates/account/email_notadded.html:8
+#, python-format
+msgid ""
+"you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
+msgstr ""
+"baieztatu gabeko e-posta helbide gehiegi dauzkazu (gehienez: %(max_emails)s)"
+
+#: templates/account/email_notadded.html:9
+msgid "another account has confirmed this email address"
+msgstr "beste kontu batek e-posta helbide hau baieztatu du"
+
+#: templates/account/email_notconfirmed.html:5
+msgid ""
+"Invalid or missing confirmation key.<br>Did you copy the whole link "
+"carefully?"
+msgstr ""
+"Baieztapen gakoa falta da edo baliogabea da. <br>Ziur zaude esteka osorik "
+"kopiatu duzula?"
+
+#: templates/account/export.html:4
+msgid "Export your Libravatar data"
+msgstr "Esportatu zure Libravatar datuak"
+
+#: templates/account/export.html:8 templates/account/profile.html:79
+msgid "Export your data"
+msgstr "Esportatu zure datuak"
+
+#: templates/account/export.html:10
+msgid ""
+"Libravatar will now export all of your personal data to a compressed XML "
+"file."
+msgstr ""
+"Libravatar-ek orain zure datu pertsonal guztiak esportatuko ditu "
+"konprimatutako XML fitxategi batera."
+
+#: templates/account/export.html:14
+msgid "Export"
+msgstr "Esportatu"
+
+#: templates/account/export_done.html:4
+msgid "Exporting Your Libravatar Data"
+msgstr "Zure Libravatar datuak esportatzen"
+
+#: templates/account/export_done.html:8
+msgid "Export in progress"
+msgstr "Esportatzen"
+
+#: templates/account/export_done.html:10
+msgid ""
+"Libravatar is currently exporting your data. It <b>may take a few "
+"moments</b> for the file to be available:"
+msgstr ""
+"Libravatar zure datuak esportatzen ari da. <b>Minutu batzuk igaro "
+"daitezke</b> fitxategia eskuragarri egon arte:"
+
+#: templates/account/login.html:4
+msgid "Libravatar Login"
+msgstr "Libravatar saio hasiera"
+
+#: templates/account/login.html:12
+#, python-format
+msgid ""
+"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgstr ""
+"Ez daukazu konturik oraindik? <a href=\"%(signup_url)s\">Erregistratu "
+"orain!</a>"
+
+#: templates/account/login.html:16
+#, python-format
+msgid ""
+"Do you hate having lots of passwords? You can login with <a "
+"href=\"%(openid_url)s\">OpenID</a>\n"
+"<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
+"href=\"#\">BrowserID</a></span> instead!"
+msgstr ""
+"Pasahitz asko izatea gorroto duzu? Hala bada, <a "
+"href=\"%(openid_url)s\">OpenID</a>\n"
+"<span id=\"browserid-option\"> edo <a id=\"browserid-link\" "
+"href=\"#\">BrowserID</a></span> erabil ditzakezu!"
+
+#: templates/account/login.html:26
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Zure erabiltzaile-izena eta pasahitza ez datoz bat. Mesedez, saiatu berriro."
+
+#: templates/account/login.html:50
+#, python-format
+msgid ""
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
+"email</a>."
+msgstr ""
+"Zure pasahitza ahaztu duzu? <a href=\"%(password_reset_url)s\">Berrezarri e-"
+"posta bidez</a>."
+
+#: templates/account/max_photos.html:6
+#, python-format
+msgid ""
+"You've got too many photos in <a href=\"%(profile_url)s\">your "
+"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
+"one."
+msgstr ""
+"Argazki gehiegi dauzkazu <a href=\"%(profile_url)s\">zure "
+"kontuan</a>.<br>Zenbait <b>ezabatu</b> beharko dituzu berri bat kargatu "
+"aurretik."
+
+#: templates/account/new.html:4
+msgid "Create a new Libravatar account"
+msgstr "Sortu Libravatar kontu berri bat"
+
+#: templates/account/new.html:8
+msgid "Create a new account"
+msgstr "Sortu kontu berri bat"
+
+#: templates/account/new.html:42
+msgid "Create account"
+msgstr "Sortu kontua"
+
+#: templates/account/openid_cannotdelete.html:8
+#, python-format
+msgid ""
+"You cannot delete your only OpenID since it's the only way to access this "
+"account. Either <a href=\"%(add_openid_url)s\">add another OpenID</a> or <a "
+"href=\"%(delete_url)s\">permanently delete your account</a> if you really "
+"want to do this."
+msgstr ""
+"Ezin duzu zure OpenID-a ezabatu, hori baita kontu honetara sartzeko duzun "
+"modu bakarra. Hori bada egin nahi duzuna, <a "
+"href=\"%(add_openid_url)s\">gehitu beste OpenID bat</a> edo <a "
+"href=\"%(delete_url)s\">ezabatu betirako zure kontua</a>."
+
+#: templates/account/openid_confirmationfailed.html:5
+msgid "Could not verify your OpenID successfully:"
+msgstr "Ezin izan da behar bezala egiaztatu zure OpenIDa:"
+
+#: templates/account/openid_discoveryfailure.html:5
+msgid "Could not discover an OpenID from the URL you provided:"
+msgstr "Ezin izan da OpenID-rik aurkitu zuk emandako URL-an:"
+
+#: templates/account/openid_invalid.html:5
+msgid "Invalid OpenID ID."
+msgstr "Baliogabeko OpenID IDa."
+
+#: templates/account/openid_notadded.html:5
+msgid "This OpenID could not be added. Possible reasons:"
+msgstr "Ezin izan da OpenID hau gehitu. Arrazoi posibleak:"
+
+#: templates/account/openid_notadded.html:7
+msgid ""
+"it is already in your list of unconfirmed OpenIDs (try removing it first)"
+msgstr ""
+"dagoeneko zure baieztatu gabeko OpenIDen zerrendan dago (saiatu lehenik "
+"ezabatzen)"
+
+#: templates/account/openid_notadded.html:8
+msgid "another account has linked this OpenID"
+msgstr "beste kontu batek estekatu du OpenID hau"
+
+#: templates/account/password_change.html:4
+msgid "Change your Libravatar password"
+msgstr "Aldatu zure Libravatar pasahitza"
+
+#: templates/account/password_change.html:8
+msgid "Change password"
+msgstr "Aldatu pasahitza"
+
+#: templates/account/password_change.html:46
+msgid "Change my password"
+msgstr "Aldatu nire pasahitza"
+
+#: templates/account/password_change_done.html:4
+#: templates/account/password_change_done.html:8
+msgid "Password changed successfully"
+msgstr "Pasahitza behar bezala aldatu da"
+
+#: templates/account/password_change_done.html:10
+msgid "Your password was changed."
+msgstr "Zure pasahitza aldatu da."
+
+#: templates/account/password_change_done.html:15
+msgid "Back to the login page"
+msgstr "Itzuli saio hasiera orrira"
+
+#: templates/account/password_reminder.txt:1
+#: templates/account/password_reset.txt:1
+#, python-format
+msgid ""
+"Someone, probably you, requested a password reset for your\n"
+"%(site_name)s account."
+msgstr ""
+"Norbaitek, segur aski zuk, %(site_name)s-(e)ko\n"
+"zure kontuaren pasahitza berrezartzeko eskaera egin du."
+
+#: templates/account/password_reminder.txt:4
+msgid ""
+"There is however, no password associated with this account.\n"
+"Instead, you must use one of the following OpenIDs or BrowserIDs to login:"
+msgstr ""
+"Ez dago, ordea, kontu honekin erlazionatutako pasahitzik. Horren ordez,\n"
+"hurrengo OpenID edo BrowserID-etako bat erabili behar duzu saioa hasteko:"
+
+#: templates/account/password_reminder.txt:11
+#: templates/account/password_reset.txt:12
+#, python-format
+msgid "- The %(site_name)s accounts team"
+msgstr "- %(site_name)s-(e)ko kontuen taldea"
+
+#: templates/account/password_reset.html:4
+msgid "Reset your Libravatar password"
+msgstr "Berrezarri zyre Libravatar pasahitza"
+
+#: templates/account/password_reset.html:8
+msgid "Reset password"
+msgstr "Berrezarri pasahitza"
+
+#: templates/account/password_reset.html:10
+#, python-format
+msgid ""
+"Did you know that you can also <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">sign in with BrowserID</a> and never have to "
+"remember a password again?"
+msgstr ""
+"Ba al zenekien <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">BrowserID-rekin saioa hasi</a> dezakezula eta "
+"ez duzula gehiagotan pasahitzik gogoratu beharko?"
+
+#: templates/account/password_reset.html:18
+msgid ""
+"To continue with the password reset, enter one of the email addresses "
+"associated with your account."
+msgstr ""
+"Pasahitzaren berrezarpenarekin jarraitzeko, sartu zure kontuari loturiko e-"
+"posta helbideetako bat."
+
+#: templates/account/password_reset.html:25
+msgid "Reset my password"
+msgstr "Berrezarri nire pasahitza"
+
+#: templates/account/password_reset.txt:4
+msgid "If that's what you want, please go to the following page:"
+msgstr "Hori bada nahi duzuna, mesedez, zoaz ondorengo orrira:"
+
+#: templates/account/password_reset.txt:8
+msgid "Otherwise, please accept our apologies and ignore this message."
+msgstr "Bestela, barkatu mesedez eta ez ikusia egin mezu honi."
+
+#: templates/account/password_reset.txt:10
+#, python-format
+msgid "By the way, your username is: %(username)s"
+msgstr "Bide batez, zure erabiltzaile-izena %(username)s da"
+
+#: templates/account/password_reset_submitted.html:4
+msgid "Password reset requested"
+msgstr "Pasahitza berrezartzea eskatuta"
+
+#: templates/account/password_reset_submitted.html:8
+msgid "You have successfully requested a password reset for your account."
+msgstr ""
+"Zure kontuaren pasahitza berrezartzeko eskaera arrakastatsua izan da."
+
+#: templates/account/password_reset_submitted.html:10
+msgid "You will receive an email with the details on how to proceed."
+msgstr "E-posta bat jasoko duzu jarraibideen xehetasunekin."
+
+#: templates/account/password_reset_submitted.html:12
+msgid "Still haven't received the email?"
+msgstr "Ez duzu oraindik e-postarik jaso?"
+
+#: templates/account/password_reset_submitted.html:15
+msgid "Did you look in your spam folder?"
+msgstr "Begiratu duzu spam karpetan?"
+
+#: templates/account/password_reset_submitted.html:16
+#, python-format
+msgid "Did you use an email address which is in the %(site_name)s system?"
+msgstr "%(site_name)s sistemako e-posta helbide bat erabili zenuen?"
+
+#: templates/account/password_reset_submitted.html:17
+msgid "Has this email address ever been confirmed within the system?"
+msgstr "E-posta helbide hau baieztatu da inoiz sistema barruan?"
+
+#: templates/account/password_reset_submitted.html:21
+#, python-format
+msgid ""
+"If everything else fails, you can always <a "
+"href=\"%(new_account_url)s\">create a new account</a> or <a "
+"href=\"mailto:%(support_email)s\">email us</a>."
+msgstr ""
+"Beste guztiak huts egiten badu, <a href=\"%(new_account_url)s\">sortu kontu "
+"berri bat</a> edo <a href=\"mailto:%(support_email)s\">bidal iezaguzu e-"
+"posta bat</a>."
+
+#: templates/account/photo_invalid.html:5
+msgid "Invalid photo ID."
+msgstr "Argazki ID baliogabea."
+
+#: templates/account/photo_toobig.html:5
+#, python-format
+msgid "This image is too big, the maximum size is %(max_size)s bytes."
+msgstr "Irudi hau handiegia da, gehienezko tamaina %(max_size)s byte da."
+
+#: templates/account/photo_toobig.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
+msgstr "Mesedez, <a href=\"%(upload_url)s\">kargatu</a> txikiago bat."
+
+#: templates/account/photos_imported.html:4
+msgid "Photos imported into Libravatar"
+msgstr "Libravatar-era inportatutako argazkiak"
+
+#: templates/account/photos_imported.html:8
+msgid "Photo import"
+msgstr "Inportatu argazkia"
+
+#: templates/account/photos_imported.html:10
+msgid "Photo(s) successfully imported."
+msgstr "Argazkia(k) behar bezala inportatu d(ir)a."
+
+#: templates/account/photos_notimported.html:5
+msgid "Photo import failed."
+msgstr "Huts egin du argazkia inportatzeak."
+
+#: templates/account/profile.html:4
+#, python-format
+msgid "%(username)s's Libravatar Profile"
+msgstr "%(username)s-(r)en Libravatar profila"
+
+#: templates/account/profile.html:10
+#, python-format
+msgid "%(username)s's Profile"
+msgstr "%(username)s-(r)en profila"
+
+#: templates/account/profile.html:13
+msgid "You have the following confirmed email addresses and OpenIDs:"
+msgstr "Ondorengo baieztatutako e-posta helbide eta OpenIDak dauzkazu:"
+
+#: templates/account/profile.html:20 templates/account/profile.html.py:28
+msgid "Change photo"
+msgstr "Aldatu argazkia"
+
+#: templates/account/profile.html:21 templates/account/profile.html.py:29
+#: templates/account/profile.html:40 templates/account/profile.html.py:44
+msgid "Remove"
+msgstr "Ezabatu"
+
+#: templates/account/profile.html:36
+msgid "You have the following unconfirmed email addresses and OpenIDs:"
+msgstr "Ondorengo baieztatu gabeko e-posta helbide eta OpenIDak dauzkazu:"
+
+#: templates/account/profile.html:58
+msgid "Here are the photos you have uploaded/imported:"
+msgstr "Hemen daude kargatu/inportatu dituzun argazkiak:"
+
+#: templates/account/profile.html:61
+#, python-format
+msgid "Uploaded on %(datetime)s"
+msgstr "%(datetime)s-(e)an kargatua"
+
+#: templates/account/profile.html:68 templates/account/upload_photo.html:4
+#: templates/account/upload_photo.html:11
+msgid "Upload a new photo"
+msgstr "Kargatu argazki berri bat"
+
+#: templates/account/profile.html:71
+msgid "Account settings"
+msgstr "Kontuaren ezarpenak"
+
+#: templates/account/profile.html:74
+msgid "Change your password"
+msgstr "Aldatu zure pasahitza"
+
+#: templates/account/profile.html:76
+msgid "Set a password"
+msgstr "Ezarri pasahitz bat"
+
+#: templates/account/profile.html:81
+msgid "Permanently delete your account"
+msgstr "Betirako ezabatu zure kontua"
+
+#: templates/account/reset_invalidparams.html:5
+msgid "Invalid verification key or email address."
+msgstr "Baliogabeko egiaztapen gako edo e-posta helbidea."
+
+#: templates/account/upload_photo.html:17
+#, python-format
+msgid "Maximum file size of %(max_size)s."
+msgstr "Fitxategiaren gehienezko tamaina: %(max_size)s."
+
+#: templates/account/upload_photo.html:24
+msgid "Upload"
+msgstr "Kargatu"
+
+#: templates/account/uploaded_photo_missing.html:5
+msgid ""
+"The original photo you uploaded is missing and so it cannot be cropped. "
+"Perhaps you have already cropped it or it was uploaded too long ago and has "
+"expired."
+msgstr ""
+"Kargatu zenuen jatorrizko argazkia falta da, eta ondorioz, ezin da moztu. "
+"Behar bada dagoeneko moztuta dago edo denbora asko igaro da kargatu "
+"zenuenetik eta iraungi egin da."
+
+#: templates/openid/failure.html:5
+msgid "OpenID error:"
+msgstr "OpenID errorea:"
+
+#: templates/openid/login.html:4
+msgid "Libravatar OpenID Login"
+msgstr "Libravatar OpenID saio hasiera"
+
+#: templates/openid/login.html:8
+msgid "OpenID Login"
+msgstr "OpenID saio hasiera"
+
+#: templates/openid/login.html:11
+msgid "Please correct errors below:"
+msgstr "Mesedez, zuzendu errore hauek:"
+
+#: templates/openid/login.html:24
+msgid "You'd rather use a regular account?"
+msgstr "Nahiago duzu kontu arrunt bat erabiltzea?"
+
+#: templates/openid/login.html:24
+#, python-format
+msgid ""
+"That's fine, just use <a href=\"%(login_url)s\">this login form</a> instead."
+msgstr ""
+"Ondo, erabili <a href=\"%(login_url)s\">saio hasiera formulario hau</a> "
+"orduan."
+
+#: templates/public/home.html:4
+msgid "federated avatar hosting service"
+msgstr "federatutako avatar ostatatze zerbitzua"
+
+#: templates/public/home.html:13
+#, python-format
+msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
+msgstr "Sortu <a href=\"%(new_account_url)s\">doako kontu</a> bat"
+
+#: templates/public/home.html:15
+msgid ""
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
+"code</a>"
+msgstr ""
+"Deskargatu <a href=\"https://code.launchpad.net/libravatar\">iturburu "
+"kodea</a>"
+
+#: templates/public/home.html:16
+msgid ""
+"File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
+"href=\"https://answers.launchpad.net/libravatar\">questions</a>"
+msgstr ""
+"<a href=\"https://bugs.launchpad.net/libravatar\">Eman erroreen berri</a> "
+"edo <a href=\"https://answers.launchpad.net/libravatar\">argitu zure "
+"zalantzak</a>"
+
+#: templates/public/home.html:17
+msgid ""
+"Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
+"href=\"http://blog.libravatar.org\">blog</a>"
+msgstr ""
+"Irakurri gure <a href=\"http://wiki.libravatar.org\">wikia</a> edo <a "
+"href=\"http://blog.libravatar.org\">bloga</a>"
+
+#: templates/public/home.html:18
+msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
+msgstr ""
+"Jarrai gaitzazu <a href=\"http://identi.ca/libravatar\">Identica-n</a>"
+
+#: templates/public/home.html:19
+msgid "Contribute!"
+msgstr "Lagundu!"
+
+#: templates/public/home.html:23
+#, python-format
+msgid ""
+"Libravatar is a service which delivers your avatar (profile picture) to "
+"other websites. If you <a href=\"%(new_account_url)s\">create an account</a> "
+"with us, your photo could start popping up next to forum posts or blog "
+"comments on any site where you left your email address."
+msgstr ""
+"Libravatar beste webguneei zure avatar-a (profileko argazkia) eskaintzen "
+"dien zerbitzua da. <a href=\"%(new_account_url)s\">Kontu bat sortzen "
+"baduzu</a>, zure argazkia agertuko da zure e-posta helbidea erabiltzen duzun "
+"foro edo blogetako iruzkinetan."
+
+#: templates/public/home.html:23
+msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
+msgstr ""
+"<a href=\"http://wiki.libravatar.org/description/\">Irakurri gehiago...</a>"
+
+#: templates/public/home.html:25
+msgid "Federated Open Source Service"
+msgstr "Kode Irekiko Zerbitzu Federatua"
+
+#: templates/public/home.html:27
+msgid ""
+"This service is powered by <a "
+"href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
+"software</a> and allows owners of a domain name to <a "
+"href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
+"instance</a> of Libravatar and serve avatars themselves."
+msgstr ""
+"Zerbitzu hau <a href=\"http://www.gnu.org/licenses/agpl.html\">Kode Irekiko "
+"Software Librean</a> oinarritzen da eta domeinu izen baten jabeei <a "
+"href=\"http://wiki.libravatar.org/running_your_own/\">Libravatar-en "
+"instantzia propioa erabili</a> eta avatar-ak zerbitzatzeko aukera eskaintzen "
+"die."
+
+#: templates/public/home.html:29
+msgid "Simple API for Developers"
+msgstr "API sinplea garatzaileentzat"
+
+#: templates/public/home.html:31
+msgid ""
+"Application developers can easily add support for this service using our <a "
+"href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
+"href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
+"available for a number of platforms and languages."
+msgstr ""
+"Aplikazioen garatzaileek modu errazean gehitu dezakete zerbitzu honen "
+"euskarria gure <a href=\"http://wiki.libravatar.org/api/\">API sinplea</a> "
+"edo hainbat lengoaia eta plataformatarako eskuragarri dauden <a "
+"href=\"http://wiki.libravatar.org/libraries/\">liburutegi eta pluginak</a> "
+"erabiliz."
+
+#: templates/public/home.html:33
+msgid ""
+"Big thanks to our sponsors without whom none of this would be possible!"
+msgstr ""
+"Mila esker gure babesleei, hau ez litzateke posible izango beraiek gabe!"
+
+#: templates/public/home.html:39
+msgid ""
+"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
+msgstr ""
+"Libravatar <a href=\"http://retakethe.net\">Retake the Net (Berreskuratu "
+"sarea)</a> proiektu bat da."
+
+#: templates/public/nohash.html:6
+#, python-format
+msgid ""
+"An email hash is required. You can use the <a href=\"%(check_url)s\">check "
+"tool</a> to generate one."
+msgstr ""
+"E-posta hash bat behar da. <a href=\"%(check_url)s\">Egiaztatze tresna</a> "
+"erabil dezakezu bat sortzeko."
+
+#: templates/public/nopost.html:5
+msgid "This only works via HTTP GET."
+msgstr "Honek HTTP GET bidez soilik funtzionatzen du."
+
+#: templates/public/resize_notnumeric.html:5
+#, python-format
+msgid ""
+"The size parameter must be an integer between %(min_size)s and %(max_size)s."
+msgstr ""
+"Tamaina parametroak %(min_size)s eta %(max_size)s arteko zenbaki oso bat "
+"izan behar du."
+
+#: templates/tools/check.html:4 templates/tools/check.html.py:8
+msgid "Photo lookup"
+msgstr "Argazki bilaketa"
+
+#: templates/tools/check.html:22
+msgid "Optional parameters"
+msgstr "Hautazko parametroak"
+
+#: templates/tools/check.html:33 templates/tools/check_domain.html:19
+msgid "Check"
+msgstr "Egiaztatu"
+
+#: templates/tools/check.html:41
+msgid "MD5 hash:"
+msgstr "MD5 hash-a:"
+
+#: templates/tools/check.html:41
+msgid "compatible with Gravatar"
+msgstr "Gravatar-ekin bateragarria"
+
+#: templates/tools/check.html:43
+msgid "SHA256 hash:"
+msgstr "SHA256 hash-a:"
+
+#: templates/tools/check.html:45
+msgid ""
+"This is what the avatars will look like depending on the hash and protocol "
+"you use:"
+msgstr ""
+"Itxura hau dute avatar-ek erabiltzen duzun hash eta protokoloaren arabera:"
+
+#: templates/tools/check.html:48
+msgid "using MD5 over HTTP"
+msgstr "HTTP gaineko MD5 erabiliz"
+
+#: templates/tools/check.html:48 templates/tools/check.html.py:53
+msgid "MD5"
+msgstr "MD5"
+
+#: templates/tools/check.html:50
+msgid "using SHA256 over HTTP"
+msgstr "HTTP gaineko SHA256 erabiliz"
+
+#: templates/tools/check.html:50 templates/tools/check.html.py:55
+msgid "SHA256"
+msgstr "SHA256"
+
+#: templates/tools/check.html:53
+msgid "using MD5 over HTTPS"
+msgstr "HTTPS gaineko MD5 erabiliz"
+
+#: templates/tools/check.html:55
+msgid "using SHA256 over HTTPS"
+msgstr "HTTPS gaineko SHA256 erabiliz"
+
+#: templates/tools/check_domain.html:4 templates/tools/check_domain.html:8
+msgid "Domain lookup"
+msgstr "Domeinu bilaketa"
+
+#: templates/tools/check_domain.html:27
+msgid "HTTP avatar server:"
+msgstr "HTTP avatar zerbitzaria:"
+
+#: templates/tools/check_domain.html:34 templates/tools/check_domain.html:52
+msgid "Warning: no A record for this hostname"
+msgstr "Kontuz: ez dago A erregistrorik ostalari-izen honentzat"
+
+#: templates/tools/check_domain.html:40
+msgid "use <tt>http://cdn.libravatar.org</tt>"
+msgstr "erabili <tt>http://cdn.libravatar.org</tt>"
+
+#: templates/tools/check_domain.html:45
+msgid "HTTPS avatar server:"
+msgstr "HTTPS avatar zerbitzaria:"
+
+#: templates/tools/check_domain.html:58
+msgid "use <tt>https://seccdn.libravatar.org</tt>"
+msgstr "erabili <tt>https://seccdn.libravatar.org</tt>"
+
+#: tools/forms.py:27
+msgid "Size"
+msgstr "Tamaina"
+
+#: tools/forms.py:28
+msgid "Default URL"
+msgstr "URL lehenetsia"
+
+#: tools/forms.py:33
+msgid "You must provide a valid email or OpenID"
+msgstr "Baliozko e-posta edo OpenID bat eman behar duzu"
+
+#: tools/forms.py:35
+msgid "You cannot provide both an email and an OpenID. Choose one!"
+msgstr "Ezin dituzu, e-posta eta OpenID, biak eman. Aukeratu bat!"
+
+#: tools/forms.py:40
+msgid "Domain"
+msgstr "Domeinua"
