@@ -21,7 +21,7 @@ var urls = {};
 var server = http.createServer(function (req, res) {
     var count = 0;
     data.forEach(function(v) {
-        libravatar.url(v.email, v.openid, {}, v.https, function(error, url) {
+        libravatar.url({email: v.email, openid: v.openid, https: v.https}, function(error, url) {
             count++;
 
             urls[v.name] = url;
