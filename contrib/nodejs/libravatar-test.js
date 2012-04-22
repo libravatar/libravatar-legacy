@@ -1,7 +1,8 @@
 // Test for the Libravatar node.js module
 
-var http = require('http');
-var libravatar = require('libravatar');
+const
+http = require('http'),
+libravatar = require('libravatar');
 
 var data = [
     {name: 'http_avatar', email: 'fmarier@gmail.com', openid: null, https: false},
@@ -13,7 +14,7 @@ var data = [
     {name: 'https_federated_avatar', email: 'francois@catalyst.net.nz', openid: null, https: true},
     {name: 'https_federated_missing', email: 'francois+1@catalyst.net.nz', openid: null, https: true},
     {name: 'http_openid_avatar', email: null, openid : 'https://launchpad.net/~fmarier', https: false},
-    {name: 'http_openid_missing', email: null, openid : 'https://launchpad.net/~notfmarier', https: false},
+    {name: 'http_openid_missing', email: null, openid : 'https://launchpad.net/~notfmarier', https: false}
 ];
 
 var urls = {};
