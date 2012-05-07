@@ -13,7 +13,7 @@
 <form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">{% csrf_token %}
 
 {{ form.photo.errors }}
-<p class="aligned wide">{{ form.photo.label_tag }}: <input id="id_photo" type="file" name="photo" accept="image/jpeg,image/png">
+<p class="aligned wide">{{ form.photo.label_tag }}: <input id="id_photo" type="file" name="photo" accept="image/*">
 <br>{% blocktrans with max_file_size|filesizeformat as max_size %}Maximum file size of {{ max_size }}.{% endblocktrans %}</p>
 
 <ul class="conditions">
