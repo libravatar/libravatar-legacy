@@ -1,3 +1,12 @@
+libravatar (20120507.1) unstable; urgency=low
+
+  * Enable CameraAPI on upload page
+  * New translations: Albanian and Ukrainian
+  * Add GPLHost logo to homepage
+  * Remove RetakeTheNet link from homepage
+
+ -- Francois Marier <francois@debian.org>  Mon, 07 May 2012 19:10:31 +1200
+
 libravatar (20120411.4) unstable; urgency=low
 
   * Django needs the right symlinks to see the translations
