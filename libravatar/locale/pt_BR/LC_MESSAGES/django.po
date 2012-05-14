@@ -1,0 +1,1 @@
+../../../../po/libravatar/pt_BR.po
