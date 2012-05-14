@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-18 15:51-0700\n"
+"POT-Creation-Date: 2012-05-14 19:39+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,19 +18,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: settings.py:57
-msgid "German"
+msgid "Catalan"
 msgstr ""
 
 #: settings.py:58
-msgid "English"
+msgid "Czech"
 msgstr ""
 
 #: settings.py:59
-msgid "French"
+msgid "German"
 msgstr ""
 
 #: settings.py:60
+msgid "English"
+msgstr ""
+
+#: settings.py:61
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:62
+msgid "Basque"
+msgstr ""
+
+#: settings.py:63
+msgid "French"
+msgstr ""
+
+#: settings.py:64
 msgid "Japanese"
+msgstr ""
+
+#: settings.py:65
+msgid "Albanian"
+msgstr ""
+
+#: settings.py:66
+msgid "Ukrainian"
 msgstr ""
 
 #: account/browserid_auth.py:77
@@ -939,11 +963,6 @@ msgstr ""
 
 #: templates/public/home.html:33
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
-msgstr ""
-
-#: templates/public/home.html:39
-msgid ""
-"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
 msgstr ""
 
 #: templates/public/nohash.html:6
