@@ -1,3 +1,10 @@
+libravatar (20120514.1) unstable; urgency=low
+
+  * New translation: Brazillian Portuguese
+  * Add Webconverger logo to homepage
+
+ -- Francois Marier <francois@debian.org>  Mon, 14 May 2012 22:32:50 +1200
+
 libravatar (20120507.1) unstable; urgency=low
 
   * Enable CameraAPI on upload page
