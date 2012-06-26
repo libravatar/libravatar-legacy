@@ -1,11 +1,11 @@
 CSS := $(shell find static/css -type f -name "*.css" -a -not -name "*.css.css")
 JS := $(shell find static/js -type f -name "*.js" -a -not -name "*.js.js")
 
-MIN_CSS = ${CSS:=.css} 
-MIN_JS = ${JS:=.js}
-COMPRESSED_CSS = ${CSS:=.gz}
-COMPRESSED_JS = ${JS:=.gz}
-CLEANUP = 
+MIN_CSS := ${CSS:=.css} 
+MIN_JS := ${JS:=.js}
+COMPRESSED_CSS := ${CSS:=.gz}
+COMPRESSED_JS := ${JS:=.gz}
+CLEANUP := 
 
 all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) mofiles
 
