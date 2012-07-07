@@ -1,6 +1,6 @@
 Libravatar - free online avatar service
 
-    Copyright (C) 2010, 2011  Francois Marier <francois@libravatar.org>
+    Copyright (C) 2010, 2011, 2012  Francois Marier <francois@libravatar.org>
                   2010  Jonathan Harker <jon@jon.geek.nz>
                         Brett Wilkins <bushido.katana@gmail.com>
 
