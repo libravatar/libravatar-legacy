@@ -27,7 +27,7 @@ are a few useful pointers:
 * [Bug tracker](https://bugs.launchpad.net/libravatar)
 * [Source code](https://code.launchpad.net/libravatar)
 * [Wiki](http://wiki.libravatar.org)
-* [Mailing list](http://libravatar.onlinegroups.net/groups/libravatar-devel)
+* [Mailing list](https://launchpad.net/~libravatar-fans)
 * [Identica group](http://identi.ca/group/libravatar)
 * IRC channel: #libravatar on chat.freenode.net
 
@@ -40,7 +40,7 @@ Basic instructions on getting this to run are in INSTALL.
 
 If you'd like to keep up with new developments, have a look at these:
 
-* [Homepage](http://www.libravatar.org)
+* [Homepage](https://www.libravatar.org)
 * [Blog](http://blog.libravatar.org)
 * [Identica](http://identi.ca/libravatar)
 * [Twitter](http://twitter.com/libravatar)
