@@ -131,6 +131,19 @@ case "$1" in
         cp ${APACHE_CONFIG} ${APACHE_CONFIG}.working
         cp ${AWSTATS_CONFIG} ${AWSTATS_CONFIG}.working
 
+        for MARKER in __WWWSERVERALIAS__ __CDNSERVERALIAS__ __SECCDNSERVERALIAS__ ; do
+            # Turns __MARKER__ into marker and puts packagename/ on the front
+            DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')
+
+            db_get libravatar-common/$DEBCONF_VAR
+            VALUE=${RET}
+            if [ "z${VALUE}" = "z" ] ; then
+                sed -i -e "s/${MARKER}//g" ${APACHE_CONFIG}.working
+            else
+                sed -i -e "s/${MARKER}/ServerAlias ${RET}/g" ${APACHE_CONFIG}.working
+            fi
+        done
+
         for MARKER in $(grep -o -E '__[A-Z0-9_]+__' ${APACHE_CONFIG}.working); do
             # Turns __MARKER__ into marker and puts packagename/ on the front
             DEBCONF_VAR=$(echo "${MARKER:2:${#MARKER}-4}" | tr '[:upper:]' '[:lower:]')

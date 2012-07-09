@@ -2,7 +2,14 @@ Template: libravatar-common/wwwservername
 Type: string
 Default: www.libravatar.org
 Description: URL of the main service:
- Please enter the URL of the main Libravatar service (without the "http://" part).
+ Please enter the URL of the main Libravatar service (without the "https://" part).
+
+Template: libravatar-common/wwwserveralias
+Type: string
+Default: www.libravatar.bit
+Description: Alias for the main service:
+ Please enter an alias (if any) for the main Libravatar service (without the
+ "https://" part).
 
 Template: libravatar-common/cdnservername
 Type: string
@@ -12,12 +19,28 @@ Description: URL of the CDN server:
  .
  This has to be on a DIFFERENT (sub)domain from the URL of the main service.
 
+Template: libravatar-common/cdnserveralias
+Type: string
+Default: cdn.libravatar.bit
+Description: Alias for the CDN server:
+ Please enter an alias (if any) for the content delivery network (without the
+ "http://" part).
+ .
+ This has to be on a DIFFERENT (sub)domain from the alias of the main service.
+
 Template: libravatar-common/seccdnservername
 Type: string
 Default: seccdn.libravatar.org
 Description: URL of the secure CDN server:
  Please enter the URL of the https-based content delivery network (without the
  "https://" part). This value is optional and can be left blank.
+
+Template: libravatar-common/seccdnserveralias
+Type: string
+Default: seccdn.libravatar.bit
+Description: Alias for the secure CDN server:
+ Please enter an alias (if any) of the https-based content delivery network
+ (without the "https://" part). This value is optional and can be left blank.
 
 Template: libravatar-common/webmasteremail
 Type: string
