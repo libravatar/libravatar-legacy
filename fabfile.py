@@ -22,10 +22,10 @@ with open('debian/changelog', 'r') as changelog:
 
 
 def commit_changelog():
-    if local("bzr status --short", capture=True) != 'M  debian/changelog':
+    if local("git status --porcelain", capture=True) != "M debian/changelog":
         abort("You must first update the Debian changelog.")
 
-    local('bzr commit -m "Bump changelog for deployment"', capture=False)
+    local('git commit -a -m "Bump changelog for deployment"', capture=False)
 
 
 def prepare():
