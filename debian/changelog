@@ -1,3 +1,10 @@
+libravatar (20120709.1) unstable; urgency=low
+
+  * Add support for the libravatar.bit domain (LP: 789751)
+  * Minor updates to all translations
+
+ -- Francois Marier <francois@debian.org>  Mon, 09 Jul 2012 22:18:50 +1200
+
 libravatar (20120514.1) unstable; urgency=low
 
   * New translation: Brazillian Portuguese
