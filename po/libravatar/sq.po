@@ -2,32 +2,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-18 15:51-0700\n"
-"PO-Revision-Date: 2012-05-03 11:45+0000\n"
+"POT-Creation-Date: 2012-05-14 21:42+1200\n"
+"PO-Revision-Date: 2012-07-07 10:01+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-04 05:07+0000\n"
-"X-Generator: Launchpad (build 15195)\n"
+"X-Launchpad-Export-Date: 2012-07-08 04:47+0000\n"
+"X-Generator: Launchpad (build 15558)\n"
 "Language: \n"
 
 #: settings.py:57
+msgid "Catalan"
+msgstr ""
+
+#: settings.py:58
+msgid "Czech"
+msgstr ""
+
+#: settings.py:59
 msgid "German"
 msgstr "Gjermanisht"
 
-#: settings.py:58
+#: settings.py:60
 msgid "English"
 msgstr "Anglisht"
 
-#: settings.py:59
+#: settings.py:61
+msgid "Spanish"
+msgstr ""
+
+#: settings.py:62
+msgid "Basque"
+msgstr ""
+
+#: settings.py:63
 msgid "French"
 msgstr "Frëngjisht"
 
-#: settings.py:60
+#: settings.py:64
 msgid "Japanese"
 msgstr "Japonisht"
+
+#: settings.py:65
+msgid "Brazilian Portuguese"
+msgstr ""
+
+#: settings.py:66
+msgid "Albanian"
+msgstr ""
+
+#: settings.py:67
+msgid "Ukrainian"
+msgstr ""
 
 #: account/browserid_auth.py:77
 #, python-format
@@ -1062,13 +1090,6 @@ msgid ""
 msgstr ""
 "Falënderime të shumta sponsorve tanë, pa të cilët asgjë prej kësaj nuk do të "
 "ish e mundur!"
-
-#: templates/public/home.html:39
-msgid ""
-"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
-msgstr ""
-"Libravatar-i është një projekt <a href=\"http://retakethe.net\">Retake the "
-"Net</a>."
 
 #: templates/public/nohash.html:6
 #, python-format

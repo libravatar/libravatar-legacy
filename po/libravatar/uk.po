@@ -8,32 +8,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-03-18 15:51-0700\n"
-"PO-Revision-Date: 2012-05-02 14:09+0000\n"
-"Last-Translator: yurchor <Unknown>\n"
+"POT-Creation-Date: 2012-05-14 21:42+1200\n"
+"PO-Revision-Date: 2012-07-07 10:01+0000\n"
+"Last-Translator: François Marier <francois@debian.org>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-05-03 05:40+0000\n"
-"X-Generator: Launchpad (build 15185)\n"
+"X-Launchpad-Export-Date: 2012-07-08 04:47+0000\n"
+"X-Generator: Launchpad (build 15558)\n"
 "Language: uk\n"
 
 #: settings.py:57
+msgid "Catalan"
+msgstr "каталонська"
+
+#: settings.py:58
+msgid "Czech"
+msgstr "чеська"
+
+#: settings.py:59
 msgid "German"
 msgstr "німецька"
 
-#: settings.py:58
+#: settings.py:60
 msgid "English"
 msgstr "англійська"
 
-#: settings.py:59
+#: settings.py:61
+msgid "Spanish"
+msgstr "іспанська"
+
+#: settings.py:62
+msgid "Basque"
+msgstr "баскська"
+
+#: settings.py:63
 msgid "French"
 msgstr "французька"
 
-#: settings.py:60
+#: settings.py:64
 msgid "Japanese"
 msgstr "японська"
+
+#: settings.py:65
+msgid "Brazilian Portuguese"
+msgstr "бразильська португальська"
+
+#: settings.py:66
+msgid "Albanian"
+msgstr "албанська"
+
+#: settings.py:67
+msgid "Ukrainian"
+msgstr "українська"
 
 #: account/browserid_auth.py:77
 #, python-format
@@ -1092,12 +1120,6 @@ msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Дуже дякуємо тим, хто підтримував нас фінансово. Без вас нічого б не вийшло!"
-
-#: templates/public/home.html:39
-msgid ""
-"Libravatar is a <a href=\"http://retakethe.net\">Retake the Net</a> project."
-msgstr ""
-"Libravatar є проектом <a href=\"http://retakethe.net\">Retake the Net</a>."
 
 #: templates/public/nohash.html:6
 #, python-format
