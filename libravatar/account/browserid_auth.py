@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2012  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -44,7 +44,7 @@ def verify_assertion(assertion, host, https):
     if not assertion:
         return (None, None)
 
-    url = 'https://browserid.org/verify'
+    url = 'https://verifier.login.persona.org/verify'
     audience = _browserid_audience(host, https)
     verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
