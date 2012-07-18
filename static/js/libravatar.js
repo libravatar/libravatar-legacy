@@ -3,7 +3,7 @@
  * @source: https://code.launchpad.net/libravatar
  *
  * @licstart
- * Copyright (C) 2011 Francois Marier <francois@libravatar.org>
+ * Copyright (C) 2011, 2012 Francois Marier <francois@libravatar.org>
  *
  * The JavaScript code in this page is free software: you can
  * redistribute it and/or modify it under the terms of the GNU Affero
@@ -54,26 +54,6 @@ if (document.forms.login) {
 }
 
 if (navigator.id) {
-    // For the BrowserID addon (session API)
-    var username = document.getElementById('session-username').textContent;
-    if (username) {
-        navigator.id.sessions = [{
-            email: username,
-            bound_to: {
-                type: "cookie",
-                cookie_name: "sessionid"
-            }
-        }];
-    } else {
-        navigator.id.sessions = [];
-    }
-    document.addEventListener("login", function (event) {
-        document.location.href = "/account/login/";
-    }, false);
-    document.addEventListener("logout", function (event) {
-        document.location.href = "/account/logout/";
-    }, false);
-
     // Show BrowserID option and make link clickable
     var option = document.getElementById('browserid-option');
     var link = document.getElementById('browserid-link');
