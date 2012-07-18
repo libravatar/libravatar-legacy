@@ -3,8 +3,6 @@
 
 {% block title %}{% blocktrans with user.username as username %}{{ username }}'s Libravatar Profile{% endblocktrans %}{% endblock title %}
 
-{% block header %}<link rel="prefetch" href="https://login.persona.org/include.js">{% endblock header %}
-
 {% block content %}
 
 <h1>{% blocktrans with user.username as username %}{{ username }}'s Profile{% endblocktrans %}</h1>

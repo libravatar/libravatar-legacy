@@ -54,27 +54,49 @@ if (document.forms.login) {
 }
 
 if (navigator.id) {
-    // Show BrowserID option and make link clickable
-    var option = document.getElementById('browserid-option');
-    var link = document.getElementById('browserid-link');
-    if (option && link) {
-        option.style.display = 'inline';
-        link.onclick = try_browserid;
-        link.addEventListener('click', try_browserid, false);
+    var browserid_user = $('#browserid-user').text();
+    if (browserid_user === '') {
+        browserid_user = null;
     }
-}
 
-// For main BrowserID functionality on the add_email and login pages
-function try_browserid() {
-    navigator.id.get(function (assertion) {
-        if (assertion) {
-            $.post('/account/login_browserid/', {assertion: assertion}, function (data) {
-                if (data.success === true) {
-                    window.location = '/account/profile/';
-                } else {
-                    alert(data.error);
-                }
-            });
+    // Show BrowserID option and make links clickable
+    $('#browserid-option').show();
+    var browserid_link = $('#browserid-link');
+    browserid_link.attr('href', '#');
+    browserid_link.bind('click', browserid_login);
+    var logout_link = $('#logout-link');
+    if (browserid_user) {
+        logout_link.attr('href', '#');
+        logout_link.bind('click', browserid_logout);
+    }
+
+    navigator.id.watch({
+        loggedInUser: browserid_user,
+        onlogin: function (assertion) {
+            if (assertion) {
+                $.post('/account/login_browserid/', {assertion: assertion}, function (data) {
+                    if (data.success === true) {
+                        if (data.user !== browserid_user) {
+                            window.location = '/account/profile/';
+                        }
+                    } else {
+                        alert(data.error);
+                    }
+                });
+            }
+        },
+        onlogout: function () {
+            if (browserid_user) {
+                window.location = '/account/logout/';
+            }
         }
     });
+}
+
+// For main BrowserID functionality
+function browserid_login() {
+    navigator.id.request();
+}
+function browserid_logout() {
+    navigator.id.logout();
 }

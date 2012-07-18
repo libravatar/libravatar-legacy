@@ -751,10 +751,11 @@ def login_browserid(request):
                                   context_instance=RequestContext(request))
 
     user = authenticate(assertion=request.POST['assertion'], host=settings.SITE_URL,
-                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'])
+                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'],
+                        session=request.session)
     if not user:
         return render_to_response('account/browserid_userauthfailed.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
     login(request, user)
-    return HttpResponse('{"success": true}', mimetype="application/json")
+    return HttpResponse(json.dumps({"success": True, "user": request.session['browserid_user']}), mimetype="application/json")

@@ -23,11 +23,12 @@
   </div>
   </div>
   <div id="account">
+    <span id="browserid-user" style="display: none">{{browserid_user}}</span>
     {% if user.is_authenticated %}
     <span id="session-username">{{user.username}}</span>:&nbsp;
     <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>&nbsp;|&nbsp;
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
-    <a href="{% url django.contrib.auth.views.logout %}">{% trans 'Logout' %}</a>
+    <a href="{% url django.contrib.auth.views.logout %}" id="logout-link">{% trans 'Logout' %}</a>
     {% else %}
     <span id="session-username"></span>
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
@@ -48,6 +49,7 @@
   <a href="http://flattr.com/thing/311293/Libravatar"><img id="flattr-button" width="93" height="20" alt="" title="{% trans 'Flattr this!' %}"></a>
   <script src="/js/jquery.min.js" defer></script>
   {% block footer %}{% endblock footer %}
+  <script src="https://login.persona.org/include.js" defer></script>
   <script src="/js/libravatar.js" defer></script>
 </div>
 

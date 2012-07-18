@@ -21,7 +21,6 @@ from libravatar import settings
 
 # Default useful variables for the base page template.
 def basepage(request):
-    # pylint: disable=W0613
     context = {}
     context['avatar_url'] = settings.AVATAR_URL
     context['contact_us'] = settings.CONTACT_US
@@ -32,4 +31,8 @@ def basepage(request):
     context['site_name'] = settings.SITE_NAME
     context['site_url'] = settings.SITE_URL
     context['support_email'] = settings.SUPPORT_EMAIL
+    if 'browserid_user' in request.session:
+        context['browserid_user'] = request.session['browserid_user']
+    else:
+        context['browserid_user'] = ''
     return context
