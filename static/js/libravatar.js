@@ -68,8 +68,13 @@ if (navigator.id) {
 function try_browserid() {
     navigator.id.get(function (assertion) {
         if (assertion) {
-            document.getElementById('browserid-assertion').setAttribute('value', assertion);
-            document.getElementById('browserid-form').submit();
+            $.post('/account/login_browserid/', {assertion: assertion}, function (data) {
+                if (data.success === true) {
+                    window.location = '/account/profile/';
+                } else {
+                    alert(data.error);
+                }
+            });
         }
     });
 }

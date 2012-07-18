@@ -34,10 +34,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
 from django.db import transaction
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from libravatar.account.browserid_auth import verify_assertion
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
@@ -482,7 +482,7 @@ def crop_photo(request, photo_id):
         photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery': True},
+    return render_to_response('account/crop_photo.html', {'photo': photo},
                               context_instance=RequestContext(request))
 
 
@@ -744,16 +744,17 @@ def add_browserid(request):
 
 
 @transaction.commit_on_success
-@csrf_protect
+@csrf_exempt
 def login_browserid(request):
     if not request.method == 'POST' or not 'assertion' in request.POST:
-        return render_to_response('account/browserid_noassertion.html',
+        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
     user = authenticate(assertion=request.POST['assertion'], host=settings.SITE_URL,
                         https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'])
     if not user:
-        return HttpResponseRedirect(settings.LOGIN_URL)
+        return render_to_response('account/browserid_userauthfailed.json', mimetype='application/json',
+                                  context_instance=RequestContext(request))
 
     login(request, user)
-    return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+    return HttpResponse('{"success": true}', mimetype="application/json")

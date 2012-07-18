@@ -1,0 +1,1 @@
+{% load i18n %}{"success": false, "error": "{% trans 'BrowserID authentication failed. Please try again later.' %}"}
