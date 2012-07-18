@@ -14,7 +14,7 @@
 
 {% url django_openid_auth.views.login_begin as openid_url %}
 <p>{% blocktrans %}Do you hate having lots of passwords? You can login with <a href="{{openid_url}}">OpenID</a>
-<span id="browserid-option"> or <a id="browserid-link" href="#">BrowserID</a></span> instead!{% endblocktrans %}</p>
+<span id="browserid-option"> or <a id="browserid-link" href="#">Persona</a></span> instead!{% endblocktrans %}</p>
 
 {# Invisible form to process BrowserID assertions #}
 <form id="browserid-form" action="{% url libravatar.account.views.login_browserid %}" name="loginbrowserid" method="post">{% csrf_token %}
