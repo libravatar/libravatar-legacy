@@ -1,6 +1,5 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
-# Copyright (C) 2010  Francois Marier <francois@libravatar.org>
-#                     Jonathan Harker <jon@jon.geek.nz>
+# Copyright (C) 2010, 2011, 2012  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
 # This file is part of Libravatar
@@ -69,7 +68,8 @@ from libravatar.account.external_photos import identica_photo, gravatar_photo
 DEFAULT_IMAGE_FORMAT = 'jpg'
 MAX_LENGTH_EMAIL = 254  # http://stackoverflow.com/questions/386294
 MAX_LENGTH_IPV6 = 45  # http://stackoverflow.com/questions/166132
-MAX_LENGTH_URL = 2048  # http://stackoverflow.com/questions/754547
+#MAX_LENGTH_URL = 2048  # http://stackoverflow.com/questions/754547
+MAX_LENGTH_URL = 255  # MySQL can't handle more than that (LP: 1018682)
 
 
 def password_reset_key(user):
