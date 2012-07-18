@@ -15,12 +15,12 @@
 * [Python bindings for libgearman](http://www.launchpad.net/gearman-interface)
 * [Python OpenID](https://github.com/openid/python-openid)
 * [OpenID Integration for django.contrib.auth](https://launchpad.net/django-openid-auth)
-* [HttpLib2](https://code.google.com/p/httplib2/)
+* [Requests](http://python-requests.org/)
 * Python LDAP library (if using optional LDAP authenticaion)
 
-On Debian unstable or squeeze:
+On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
 
-    apt-get install python-django python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-httplib2 ca-certificates
+    apt-get install python-django python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates
   
     apt-get install python-ldap
 

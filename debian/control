@@ -19,7 +19,7 @@ Description: avatar image hosting - full install
 
 Package: libravatar-www
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python (>= 2.6), debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng, pngcrush, advancecomp, python-openid, python-django-auth-openid, python-httplib2, ca-certificates
+Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery, python-psycopg2, python (>= 2.6), debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman.libgearman, jpegoptim, optipng, pngcrush, advancecomp, python-openid, python-django-auth-openid, python-requests, ca-certificates
 Recommends: awstats
 Description: avatar image hosting - main web application
  Main Libravatar application for uploading images and associating

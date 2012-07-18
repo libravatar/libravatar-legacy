@@ -15,14 +15,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import httplib2
 import json
+import requests
 
 from django.contrib.auth.models import User
 from django.core import validators
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
+from libravatar import settings
 from libravatar.account.models import ConfirmedEmail
 
 URL_TIMEOUT = 5  # in seconds
@@ -46,26 +47,27 @@ def verify_assertion(assertion, host, https):
 
     url = 'https://verifier.login.persona.org/verify'
     audience = _browserid_audience(host, https)
-    verification_data = 'assertion=%s&audience=%s' % (assertion, audience)
+    verification_data = {'assertion': assertion, 'audience': audience}
     headers = {'Content-type': 'application/x-www-form-urlencoded'}
 
-    client = httplib2.Http(timeout=URL_TIMEOUT)  # TODO: set ca_certs=settings.CACERTS (need HttpLib2 >= 0.7)
-    response = content = None
+    response = None
     try:
-        response, content = client.request(url, 'POST', body=verification_data, headers=headers)
-    except httplib2.HttpLib2Error as e:
-        print 'BrowserID verification service failure: ' % e
+        response = requests.post(url, verify=settings.CACERTS, data=verification_data, headers=headers, timeout=URL_TIMEOUT)
+    except requests.exceptions.SSLError:
+        print 'Failed to verify the BrowserID TLS certificate'
+    except requests.exceptions.ConnectionError:
+        print 'Could not connect to the BrowserID verifier'
 
-    if not response or response.status != 200 or not content:
+    if not response or response.status_code != 200:
         return (None, None)
 
     try:
-        parsed_response = json.loads(content)
+        parsed_response = json.loads(response.text)
     except ValueError:
         parsed_response = None
 
     if not parsed_response:
-        print 'BrowserID verification service returned non-JSON or empty output: %s' % content
+        print 'BrowserID verification service returned non-JSON or empty output: %s' % response.text
         return (None, None)
 
     if 'status' not in parsed_response:
