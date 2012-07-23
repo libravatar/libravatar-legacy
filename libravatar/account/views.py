@@ -716,31 +716,33 @@ def password_set(request):
 
 
 @transaction.commit_on_success
-@csrf_protect
+@csrf_exempt
 @login_required
 def add_browserid(request):
     if not request.method == 'POST' or not 'assertion' in request.POST:
-        return render_to_response('account/browserid_noassertion.html',
+        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
     (email_address, assertion_error) = verify_assertion(request.POST['assertion'], settings.SITE_URL,
                                                         request.is_secure())
 
     if not email_address:
-        return render_to_response('account/browserid_invalidassertion.html', {'error': assertion_error},
-                                  context_instance=RequestContext(request))
+        sanitised_error = assertion_error
+        if sanitised_error:
+            sanitised_error = sanitised_error.replace('"', '')
+        return render_to_response('account/browserid_invalidassertion.json', {'error': sanitised_error},
+                                  mimetype='application/json', context_instance=RequestContext(request))
 
     # Check whether or not the email is already confirmed by someone
     if ConfirmedEmail.objects.filter(email=email_address).exists():
-        return render_to_response('account/browserid_emailalreadyconfirmed.html',
+        return render_to_response('account/browserid_emailalreadyconfirmed.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
-    (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
+    (unused, unused) = ConfirmedEmail.objects.create_confirmed_email(
         request.user, request.META['REMOTE_ADDR'], email_address, True)
+    request.session['browserid_user'] = email_address
 
-    return render_to_response('account/email_confirmed.html',
-                              {'email_id': confirmed_id, 'photos': external_photos},
-                              context_instance=RequestContext(request))
+    return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
 
 @transaction.commit_on_success

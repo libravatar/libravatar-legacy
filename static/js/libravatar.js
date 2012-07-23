@@ -59,6 +59,12 @@ if (deleteaccount_button.length > 0) {
     is_deleteaccount = true;
 }
 
+var is_addemail = false;
+if ($('#form-addemail').length > 0) {
+    is_addemail = true;
+}
+var email_requested = false;
+
 if (navigator.id) {
     var browserid_user = $('#browserid-user').text();
     if (browserid_user === '') {
@@ -71,17 +77,22 @@ if (navigator.id) {
     browserid_link.attr('href', '#');
     browserid_link.bind('click', browserid_login);
     var logout_link = $('#logout-link');
-    if (browserid_user) {
+    if (browserid_user && !is_addemail) {
         logout_link.attr('href', '#');
         logout_link.bind('click', browserid_logout);
     }
     deleteaccount_button.bind('click', browserid_logout);
 
+    var post_url = '/account/login_browserid/';
+    if (is_addemail) {
+        post_url = '/account/add_browserid/';
+    }
+
     navigator.id.watch({
         loggedInUser: browserid_user,
         onlogin: function (assertion) {
-            if (assertion) {
-                $.post('/account/login_browserid/', {assertion: assertion}, function (data) {
+            if (assertion && (!is_addemail || email_requested)) {
+                $.post(post_url, {assertion: assertion}, function (data) {
                     if (data.success === true) {
                         if (data.user !== browserid_user) {
                             window.location = '/account/profile/';
@@ -102,6 +113,7 @@ if (navigator.id) {
 
 // For main BrowserID functionality
 function browserid_login() {
+    email_requested = true;
     navigator.id.request();
 }
 function browserid_logout() {
