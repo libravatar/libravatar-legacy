@@ -118,7 +118,8 @@ if (navigator.id) {
 // For main BrowserID functionality
 function browserid_login() {
     email_requested = true;
-    navigator.id.request();
+    navigator.id.request({siteLogo: '/img/logo.png',
+                          siteName: $('#site-name').text()});
 }
 function browserid_logout(silent) {
     if (silent) {
