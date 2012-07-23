@@ -99,6 +99,8 @@ if (navigator.id) {
                         }
                     } else {
                         alert(data.error);
+                        browserid_user = null; // make sure onlogout doesn't redirect
+                        browserid_logout();
                     }
                 });
             }

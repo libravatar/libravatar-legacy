@@ -735,6 +735,7 @@ def add_browserid(request):
 
     # Check whether or not the email is already confirmed by someone
     if ConfirmedEmail.objects.filter(email=email_address).exists():
+        del(request.session['browserid_user'])
         return render_to_response('account/browserid_emailalreadyconfirmed.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
