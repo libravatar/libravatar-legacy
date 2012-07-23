@@ -53,6 +53,12 @@ if (document.forms.login) {
     document.forms.reset.email.focus();
 }
 
+var deleteaccount_button = $('#deleteaccount-button');
+var is_deleteaccount = false;
+if (deleteaccount_button.length > 0) {
+    is_deleteaccount = true;
+}
+
 if (navigator.id) {
     var browserid_user = $('#browserid-user').text();
     if (browserid_user === '') {
@@ -69,6 +75,7 @@ if (navigator.id) {
         logout_link.attr('href', '#');
         logout_link.bind('click', browserid_logout);
     }
+    deleteaccount_button.bind('click', browserid_logout);
 
     navigator.id.watch({
         loggedInUser: browserid_user,
@@ -86,7 +93,7 @@ if (navigator.id) {
             }
         },
         onlogout: function () {
-            if (browserid_user) {
+            if (browserid_user && !is_deleteaccount) {
                 window.location = '/account/logout/';
             }
         }
