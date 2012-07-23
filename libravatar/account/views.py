@@ -416,6 +416,10 @@ def remove_confirmed_email(request, email_id):
                                       context_instance=RequestContext(request))
 
         email.delete()
+        if 'browserid_user' in request.session and request.session['browserid_user'] == email.email:
+            # Since we are removing the email to which the BrowserID session is tied,
+            # we need to convert the session to a non-BrowserID session
+            del(request.session['browserid_user'])
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 

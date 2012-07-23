@@ -53,24 +53,18 @@ if (document.forms.login) {
     document.forms.reset.email.focus();
 }
 
-var deleteaccount_button = $('#deleteaccount-button');
-var is_deleteaccount = false;
-if (deleteaccount_button.length > 0) {
-    is_deleteaccount = true;
-}
-
 var is_addemail = false;
 if ($('#form-addemail').length > 0) {
     is_addemail = true;
 }
 var email_requested = false;
 
-if (navigator.id) {
-    var browserid_user = $('#browserid-user').text();
-    if (browserid_user === '') {
-        browserid_user = null;
-    }
+var browserid_user = $('#browserid-user').text();
+if (browserid_user === '') {
+    browserid_user = null;
+}
 
+if (navigator.id) {
     // Show BrowserID option and make links clickable
     $('#browserid-option').show();
     var browserid_link = $('#browserid-link');
@@ -79,9 +73,18 @@ if (navigator.id) {
     var logout_link = $('#logout-link');
     if (browserid_user && !is_addemail) {
         logout_link.attr('href', '#');
-        logout_link.bind('click', browserid_logout);
+        logout_link.bind('click', function () {
+            browserid_logout(false);
+        });
     }
-    deleteaccount_button.bind('click', browserid_logout);
+
+    // Silent logouts for operations that clear the browserid_user session variable
+    $('#deleteaccount-button').bind('click', function () {
+        browserid_logout(true);
+    });
+    $('#remove-browserid-user').bind('click', function () {
+        browserid_logout(true);
+    });
 
     var post_url = '/account/login_browserid/';
     if (is_addemail) {
@@ -99,14 +102,13 @@ if (navigator.id) {
                         }
                     } else {
                         alert(data.error);
-                        browserid_user = null; // make sure onlogout doesn't redirect
-                        browserid_logout();
+                        browserid_logout(true);
                     }
                 });
             }
         },
         onlogout: function () {
-            if (browserid_user && !is_deleteaccount) {
+            if (browserid_user) {
                 window.location = '/account/logout/';
             }
         }
@@ -118,6 +120,10 @@ function browserid_login() {
     email_requested = true;
     navigator.id.request();
 }
-function browserid_logout() {
+function browserid_logout(silent) {
+    if (silent) {
+        // make sure onlogout doesn't redirect
+        browserid_user = null;
+    }
     navigator.id.logout();
 }
