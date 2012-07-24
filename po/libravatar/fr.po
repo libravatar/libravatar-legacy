@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-14 21:42+1200\n"
+"POT-Creation-Date: 2012-07-24 20:46+1200\n"
 "PO-Revision-Date: 2012-07-07 10:01+0000\n"
 "Last-Translator: François Marier <francois@debian.org>\n"
 "Language-Team: Français <none>\n"
@@ -62,16 +62,16 @@ msgstr "Albanais"
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: account/browserid_auth.py:77
+#: account/browserid_auth.py:79
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "code de status \"%s\" non-attendu"
 
-#: account/browserid_auth.py:80
+#: account/browserid_auth.py:82
 msgid "missing email address"
 msgstr "adresse de courriel manquante"
 
-#: account/browserid_auth.py:86
+#: account/browserid_auth.py:88
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" n'est pas une adresse de courriel valide"
@@ -192,15 +192,15 @@ msgstr ""
 "Page introuvable. Si vous pensez avoir abouti ici par erreur, veuilez <a "
 "href=\"mailto:%(support_email)s\">nous en aviser</a>."
 
-#: templates/base.html:11
+#: templates/base.html:10
 msgid "Freeing the Web, one face at a time!"
 msgstr "La libération du Web, un visage à la fois !"
 
-#: templates/base.html:19
+#: templates/base.html:18
 msgid "Homepage"
 msgstr "Accueil"
 
-#: templates/base.html:23
+#: templates/base.html:22
 msgid "freeing the web one face at a time"
 msgstr "la libération du web, un visage à la fois"
 
@@ -216,8 +216,8 @@ msgstr "Contactez-nous"
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:35 templates/account/login.html:8
-#: templates/account/login.html.py:42 templates/openid/login.html:28
+#: templates/base.html:35 templates/account/login.html:11
+#: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Connexion"
 
@@ -258,22 +258,22 @@ msgid "Back to your profile"
 msgstr "Retourner sur votre profil"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
-#: templates/account/profile.html:51
+#: templates/account/profile.html:50
 msgid "Add a new email address"
 msgstr "Ajouter une nouvelle adresse de courriel"
 
 #: templates/account/add_email.html:10
 #, python-format
 msgid ""
-"If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
+"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Si vous possédez un identifiant <b>BrowserID</b>, vous pouvez <a "
-"id=\"browser-id-link\" href=\"%(browserid_target)s\">l'utiliser pour ajouter "
+"Si vous possédez un identifiant <b>Persona</b>, vous pouvez <a id="
+"\"browser-id-link\" href=\"%(browserid_target)s\">l'utiliser pour ajouter "
 "une nouvelle adresse de courriel</a> à votre profil."
 
-#: templates/account/add_email.html:18
+#: templates/account/add_email.html:12
 msgid ""
 "Otherwise, type your email address in the box below and we will send you an "
 "email with a link to click on in order to verify that you own that email "
@@ -283,14 +283,14 @@ msgstr ""
 "vous enverrons un courriel avec un lien à cliquer pour vérifier que vous "
 "possédez bel et bien cette adresse de courriel."
 
-#: templates/account/add_email.html:25 templates/account/add_openid.html:19
+#: templates/account/add_email.html:19 templates/account/add_openid.html:19
 msgid "Add"
 msgstr "Ajouter"
 
-#: templates/account/add_email.html:26 templates/account/add_openid.html:20
+#: templates/account/add_email.html:20 templates/account/add_openid.html:20
 #: templates/account/crop_photo.html:19 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
-#: templates/account/login.html:44 templates/account/new.html:43
+#: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
 #: templates/account/upload_photo.html:25 templates/openid/login.html:30
@@ -298,7 +298,7 @@ msgid "Cancel"
 msgstr "Annuler"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:8
-#: templates/account/profile.html:54
+#: templates/account/profile.html:53
 msgid "Add a new OpenID"
 msgstr "Ajouter un nouvel OpenID"
 
@@ -396,25 +396,29 @@ msgstr ""
 "Voici les photos disponibles dans votre compte. Cliquez sur celle que vous "
 "désirez associer avec cet OpenID :"
 
-#: templates/account/browserid_emailalreadyconfirmed.html:5
+#: templates/account/browserid_emailalreadyconfirmed.json:1
 msgid "This email address already exists in a user account."
 msgstr "Cette adresse de courriel existe déjà dans un compte utilisateur."
 
-#: templates/account/browserid_invalidassertion.html:5
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Invalid BrowserID assertion."
 msgstr "Assertion BrowserID invalide."
 
-#: templates/account/browserid_invalidassertion.html:7
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Error: "
 msgstr "Erreur : "
 
-#: templates/account/browserid_noassertion.html:5
+#: templates/account/browserid_noassertion.json:1
 msgid ""
 "Missing BrowserID assertion. An assertion must be sent to the server via a "
 "POST request."
 msgstr ""
 "Assertion BrowserID manquante. Une assertion doit être transmise au serveur "
 "par une requête POST."
+
+#: templates/account/browserid_userauthfailed.json:1
+msgid "BrowserID authentication failed. Please try again later."
+msgstr ""
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -500,7 +504,7 @@ msgstr "Effacer la photo"
 msgid "Are you sure you want to delete this photo?"
 msgstr "Voulez-vous vraiment effacer cette photo ?"
 
-#: templates/account/delete_photo.html:16 templates/account/profile.html:62
+#: templates/account/delete_photo.html:16 templates/account/profile.html:61
 msgid "Delete"
 msgstr "Effacer"
 
@@ -587,7 +591,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Exporter vos données Libravatar"
 
-#: templates/account/export.html:8 templates/account/profile.html:79
+#: templates/account/export.html:8 templates/account/profile.html:78
 msgid "Export your data"
 msgstr "Exporter vos données"
 
@@ -623,7 +627,7 @@ msgstr ""
 msgid "Libravatar Login"
 msgstr "Connexion à Libravatar"
 
-#: templates/account/login.html:12
+#: templates/account/login.html:15
 #, python-format
 msgid ""
 "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
@@ -631,26 +635,26 @@ msgstr ""
 "Vous n'avez pas de compte ? <a href=\"%(signup_url)s\">Créez-en un "
 "maintenant</a>"
 
-#: templates/account/login.html:16
+#: templates/account/login.html:19
 #, python-format
 msgid ""
-"Do you hate having lots of passwords? You can login with <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span> instead!"
+"Do you hate having lots of passwords? You can login with <a href="
+"\"%(openid_url)s\">OpenID</a>\n"
+"<span id=\"browserid-option\"> or <a id=\"browserid-link\" href=\"#"
+"\">Persona</a></span> instead!"
 msgstr ""
 "Vous avez déjà trop de mots de passe ? Vous pouvez également vous connecter "
 "avec <a href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> ou <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span> !"
+"<span id=\"browserid-option\"> ou <a id=\"browserid-link\" href=\"#"
+"\">Persona</a></span> !"
 
-#: templates/account/login.html:26
+#: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Votre nom d'utilisateur ou votre mot de passe est incorrect. Veuillez "
 "réessayer à nouveau."
 
-#: templates/account/login.html:50
+#: templates/account/login.html:47
 #, python-format
 msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
@@ -760,10 +764,11 @@ msgstr ""
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
-"Instead, you must use one of the following OpenIDs or BrowserIDs to login:"
+"Instead, you must use one of the following OpenIDs or Persona email "
+"addresses to login:"
 msgstr ""
 "Il n'y a cependant pas de mot de passe associé à ce compte. Vous devez "
-"utiliser un des identifiants OpenID ou BrowserID suivants pour vous "
+"utiliser un des identifiants OpenID ou Persona suivants pour vous "
 "connecter :"
 
 #: templates/account/password_reminder.txt:11
@@ -783,13 +788,13 @@ msgstr "Réinitialisation du mot de passe"
 #: templates/account/password_reset.html:10
 #, python-format
 msgid ""
-"Did you know that you can also <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">sign in with BrowserID</a> and never have to "
-"remember a password again?"
+"Did you know that you can also <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">sign in with Persona</a> and never have to remember "
+"a password again?"
 msgstr ""
-"Saviez-vous que vous pouvez également <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">vous connecter avec BrowserID</a> et ne plus "
-"avoir de mot de passe à retenir ?"
+"Saviez-vous que vous pouvez également <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">vous connecter avec Persona</a> et ne plus avoir "
+"de mot de passe à retenir ?"
 
 #: templates/account/password_reset.html:18
 msgid ""
@@ -897,57 +902,57 @@ msgstr "L'importation de photo a échouée."
 msgid "%(username)s's Libravatar Profile"
 msgstr "Profil Libravatar de %(username)s"
 
-#: templates/account/profile.html:10
+#: templates/account/profile.html:8
 #, python-format
 msgid "%(username)s's Profile"
 msgstr "Profil de %(username)s"
 
-#: templates/account/profile.html:13
+#: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr ""
 "Vous avez les adresses de courriel et les OpenID confirmés suivants :"
 
-#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:18 templates/account/profile.html.py:27
 msgid "Change photo"
 msgstr "Changer de photo"
 
-#: templates/account/profile.html:21 templates/account/profile.html.py:29
-#: templates/account/profile.html:40 templates/account/profile.html.py:44
+#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:39 templates/account/profile.html.py:43
 msgid "Remove"
 msgstr "Enlever"
 
-#: templates/account/profile.html:36
+#: templates/account/profile.html:35
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr ""
 "Vous avez les adresses de courriel et les OpenID non-confirmés suivants :"
 
-#: templates/account/profile.html:58
+#: templates/account/profile.html:57
 msgid "Here are the photos you have uploaded/imported:"
 msgstr "Voici les photos que vous avez téléversées ou importées :"
 
-#: templates/account/profile.html:61
+#: templates/account/profile.html:60
 #, python-format
 msgid "Uploaded on %(datetime)s"
 msgstr "Téléversée le %(datetime)s"
 
-#: templates/account/profile.html:68 templates/account/upload_photo.html:4
+#: templates/account/profile.html:67 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "Téléverser une photo"
 
-#: templates/account/profile.html:71
+#: templates/account/profile.html:70
 msgid "Account settings"
 msgstr "Paramètres du compte"
 
-#: templates/account/profile.html:74
+#: templates/account/profile.html:73
 msgid "Change your password"
 msgstr "Changer le mot de passe"
 
-#: templates/account/profile.html:76
+#: templates/account/profile.html:75
 msgid "Set a password"
 msgstr "Ajout d'un mot de passe"
 
-#: templates/account/profile.html:81
+#: templates/account/profile.html:80
 msgid "Permanently delete your account"
 msgstr "Effacer votre compte de façons permanente"
 
@@ -1006,12 +1011,12 @@ msgstr ""
 msgid "federated avatar hosting service"
 msgstr "hébergement fédéré d'avatars"
 
-#: templates/public/home.html:13
+#: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
 msgstr "Ouvrir un <a href=\"%(new_account_url)s\">compte gratuit</a>"
 
-#: templates/public/home.html:15
+#: templates/public/home.html:13
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source "
 "code</a>"
@@ -1019,7 +1024,7 @@ msgstr ""
 "Télécharger le <a href=\"https://code.launchpad.net/libravatar\">code "
 "source</a>"
 
-#: templates/public/home.html:16
+#: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
@@ -1027,7 +1032,7 @@ msgstr ""
 "Rapporter un <a href=\"https://bugs.launchpad.net/libravatar\">bogue</a> ou "
 "poser une <a href=\"https://answers.launchpad.net/libravatar\">question</a>"
 
-#: templates/public/home.html:17
+#: templates/public/home.html:15
 msgid ""
 "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
 "href=\"http://blog.libravatar.org\">blog</a>"
@@ -1035,15 +1040,15 @@ msgstr ""
 "Lire notre <a href=\"http://wiki.libravatar.org\">wiki</a> ou notre <a "
 "href=\"http://blog.libravatar.org\">blogue</a>"
 
-#: templates/public/home.html:18
+#: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr "Suivez-nous sur <a href=\"http://identi.ca/libravatar\">Identica</a>"
 
-#: templates/public/home.html:19
+#: templates/public/home.html:17
 msgid "Contribute!"
 msgstr "Participez !"
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 #, python-format
 msgid ""
 "Libravatar is a service which delivers your avatar (profile picture) to "
@@ -1057,16 +1062,16 @@ msgstr ""
 "pourra commencer à apparaître aux côtés des messages et commentaires laissés "
 "sur tous les sites qui vont demander votre adresse électronique."
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
 "<a href=\"http://wiki.libravatar.org/description/\">En savoir plus...</a>"
 
-#: templates/public/home.html:25
+#: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Service fédéré libre"
 
-#: templates/public/home.html:27
+#: templates/public/home.html:25
 msgid ""
 "This service is powered by <a "
 "href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
@@ -1080,11 +1085,11 @@ msgstr ""
 "href=\"http://wiki.libravatar.org/running_your_own/\">rouler leur propre "
 "instance</a> de Libravatar et de servir eux-mêmes leurs avatars."
 
-#: templates/public/home.html:29
+#: templates/public/home.html:27
 msgid "Simple API for Developers"
 msgstr "Interface de programmation simple"
 
-#: templates/public/home.html:31
+#: templates/public/home.html:29
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
