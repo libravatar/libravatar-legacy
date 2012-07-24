@@ -3,8 +3,6 @@
 
 {% block title %}{% blocktrans with user.username as username %}{{ username }}'s Libravatar Profile{% endblocktrans %}{% endblock title %}
 
-{% block header %}<link rel="prefetch" href="https://login.persona.org/include.js">{% endblock header %}
-
 {% block content %}
 
 <h1>{% blocktrans with user.username as username %}{{ username }}'s Profile{% endblocktrans %}</h1>
@@ -18,7 +16,8 @@
         <img class="thumbnail editable avatar-chooser" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
         <br><a href="{% url libravatar.account.views.assign_photo_email email.id %}">{% trans 'Change photo' %}</a>
-        <br><br><input type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form></li>
+        <br><br><input {%if email.email == browserid_user %}id="remove-browserid-user"{% endif %}
+                       type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form></li>
     {% endfor %}
     {% for openid in confirmed_openids %}
         <li><form action="{% url libravatar.account.views.remove_confirmed_openid openid.id %}" method="post">{% csrf_token %}

@@ -34,10 +34,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
 from django.db import transaction
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from libravatar.account.browserid_auth import verify_assertion
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
@@ -416,6 +416,10 @@ def remove_confirmed_email(request, email_id):
                                       context_instance=RequestContext(request))
 
         email.delete()
+        if 'browserid_user' in request.session and request.session['browserid_user'] == email.email:
+            # Since we are removing the email to which the BrowserID session is tied,
+            # we need to convert the session to a non-BrowserID session
+            del(request.session['browserid_user'])
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -482,7 +486,7 @@ def crop_photo(request, photo_id):
         photo.crop(x, y, w, h)
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
-    return render_to_response('account/crop_photo.html', {'photo': photo, 'needs_jquery': True},
+    return render_to_response('account/crop_photo.html', {'photo': photo},
                               context_instance=RequestContext(request))
 
 
@@ -716,44 +720,49 @@ def password_set(request):
 
 
 @transaction.commit_on_success
-@csrf_protect
+@csrf_exempt
 @login_required
 def add_browserid(request):
     if not request.method == 'POST' or not 'assertion' in request.POST:
-        return render_to_response('account/browserid_noassertion.html',
+        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
     (email_address, assertion_error) = verify_assertion(request.POST['assertion'], settings.SITE_URL,
                                                         request.is_secure())
 
     if not email_address:
-        return render_to_response('account/browserid_invalidassertion.html', {'error': assertion_error},
-                                  context_instance=RequestContext(request))
+        sanitised_error = assertion_error
+        if sanitised_error:
+            sanitised_error = sanitised_error.replace('"', '')
+        return render_to_response('account/browserid_invalidassertion.json', {'error': sanitised_error},
+                                  mimetype='application/json', context_instance=RequestContext(request))
 
     # Check whether or not the email is already confirmed by someone
     if ConfirmedEmail.objects.filter(email=email_address).exists():
-        return render_to_response('account/browserid_emailalreadyconfirmed.html',
+        del(request.session['browserid_user'])
+        return render_to_response('account/browserid_emailalreadyconfirmed.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
-    (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
+    (unused, unused) = ConfirmedEmail.objects.create_confirmed_email(
         request.user, request.META['REMOTE_ADDR'], email_address, True)
+    request.session['browserid_user'] = email_address
 
-    return render_to_response('account/email_confirmed.html',
-                              {'email_id': confirmed_id, 'photos': external_photos},
-                              context_instance=RequestContext(request))
+    return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
 
 @transaction.commit_on_success
-@csrf_protect
+@csrf_exempt
 def login_browserid(request):
     if not request.method == 'POST' or not 'assertion' in request.POST:
-        return render_to_response('account/browserid_noassertion.html',
+        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
     user = authenticate(assertion=request.POST['assertion'], host=settings.SITE_URL,
-                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'])
+                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'],
+                        session=request.session)
     if not user:
-        return HttpResponseRedirect(settings.LOGIN_URL)
+        return render_to_response('account/browserid_userauthfailed.json', mimetype='application/json',
+                                  context_instance=RequestContext(request))
 
     login(request, user)
-    return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+    return HttpResponse(json.dumps({"success": True, "user": request.session['browserid_user']}), mimetype="application/json")

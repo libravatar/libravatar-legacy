@@ -53,23 +53,78 @@ if (document.forms.login) {
     document.forms.reset.email.focus();
 }
 
-if (navigator.id) {
-    // Show BrowserID option and make link clickable
-    var option = document.getElementById('browserid-option');
-    var link = document.getElementById('browserid-link');
-    if (option && link) {
-        option.style.display = 'inline';
-        link.onclick = try_browserid;
-        link.addEventListener('click', try_browserid, false);
-    }
+var is_addemail = false;
+if ($('#form-addemail').length > 0) {
+    is_addemail = true;
+}
+var email_requested = false;
+
+var browserid_user = $('#browserid-user').text();
+if (browserid_user === '') {
+    browserid_user = null;
 }
 
-// For main BrowserID functionality on the add_email and login pages
-function try_browserid() {
-    navigator.id.get(function (assertion) {
-        if (assertion) {
-            document.getElementById('browserid-assertion').setAttribute('value', assertion);
-            document.getElementById('browserid-form').submit();
+if (navigator.id) {
+    // Show BrowserID option and make links clickable
+    $('#browserid-option').show();
+    var browserid_link = $('#browserid-link');
+    browserid_link.attr('href', '#');
+    browserid_link.bind('click', browserid_login);
+    var logout_link = $('#logout-link');
+    if (browserid_user && !is_addemail) {
+        logout_link.attr('href', '#');
+        logout_link.bind('click', function () {
+            browserid_logout(false);
+        });
+    }
+
+    // Silent logouts for operations that clear the browserid_user session variable
+    $('#deleteaccount-button').bind('click', function () {
+        browserid_logout(true);
+    });
+    $('#remove-browserid-user').bind('click', function () {
+        browserid_logout(true);
+    });
+
+    var post_url = '/account/login_browserid/';
+    if (is_addemail) {
+        post_url = '/account/add_browserid/';
+    }
+
+    navigator.id.watch({
+        loggedInUser: browserid_user,
+        onlogin: function (assertion) {
+            if (assertion && (!is_addemail || email_requested)) {
+                $.post(post_url, {assertion: assertion}, function (data) {
+                    if (data.success === true) {
+                        if (data.user !== browserid_user) {
+                            window.location = '/account/profile/';
+                        }
+                    } else {
+                        alert(data.error);
+                        browserid_logout(true);
+                    }
+                });
+            }
+        },
+        onlogout: function () {
+            if (browserid_user) {
+                window.location = '/account/logout/';
+            }
         }
     });
+}
+
+// For main BrowserID functionality
+function browserid_login() {
+    email_requested = true;
+    navigator.id.request({siteLogo: '/img/logo.png',
+                          siteName: $('#site-name').text()});
+}
+function browserid_logout(silent) {
+    if (silent) {
+        // make sure onlogout doesn't redirect
+        browserid_user = null;
+    }
+    navigator.id.logout();
 }

@@ -19,12 +19,6 @@
 <p>{% blocktrans %}Do you hate having lots of passwords? You can login with <a href="{{openid_url}}">OpenID</a>
 <span id="browserid-option"> or <a id="browserid-link" href="#">Persona</a></span> instead!{% endblocktrans %}</p>
 
-{# Invisible form to process BrowserID assertions #}
-<form id="browserid-form" action="{% url libravatar.account.views.login_browserid %}" name="loginbrowserid" method="post">{% csrf_token %}
-<input id="browserid-assertion" type="hidden" name="assertion" value="">
-<input style="display: none" type="submit">
-</form>
-
 {% if form.errors %}
 <p class="error">{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}
@@ -54,7 +48,3 @@
 {% endif %}
 
 {% endblock content %}
-
-{% block footer %}
-<script src="https://login.persona.org/include.js" defer></script>
-{% endblock footer %}

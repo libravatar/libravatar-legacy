@@ -9,15 +9,9 @@
 
 <p id="browserid-option">{% blocktrans with '#' as browserid_target %}If you have a <b>Persona</b> account, you can <a id="browserid-link" href="{{browserid_target}}">use it to add a new email address</a> to your profile.{% endblocktrans %}</p>
 
-{# Invisible form to process BrowserID assertions #}
-<form id="browserid-form" action="{% url libravatar.account.views.add_browserid %}" name="addbrowserid" method="post">{% csrf_token %}
-<input id="browserid-assertion" type="hidden" name="assertion" value="">
-<input style="display: none" type="submit">
-</form>
-
 <p>{% blocktrans %}Otherwise, type your email address in the box below and we will send you an email with a link to click on in order to verify that you own that email address.{% endblocktrans %}</p>
 
-<form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post" id="form-addemail">{% csrf_token %}
 
 {{ form.email.errors }}
 <p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
@@ -28,7 +22,3 @@
 </form>
 
 {% endblock content %}
-
-{% block footer %}
-<script src="https://login.persona.org/include.js" defer></script>
-{% endblock footer %}

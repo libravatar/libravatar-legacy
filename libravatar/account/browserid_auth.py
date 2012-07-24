@@ -119,10 +119,12 @@ class BrowserIDBackend(object):
         ConfirmedEmail.objects.create_confirmed_email(user, ip_address, email_address, False)
         return user
 
-    def authenticate(self, assertion=None, host=None, https=None, ip_address=None):
+    def authenticate(self, assertion=None, host=None, https=None, ip_address=None, session=None):
         (email_address, unused) = verify_assertion(assertion, host, https)
 
-        if not email_address:
+        if email_address:
+            session['browserid_user'] = email_address
+        else:
             return None
 
         # Find user account that contains this email address
