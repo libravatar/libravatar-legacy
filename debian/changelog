@@ -1,3 +1,18 @@
+libravatar (20120724.1) unstable; urgency=low
+
+  * Update BrowserID URLs to Persona (LP: 1023731)
+  * Rename "BrowserID" to "Persona" (LP: 1023731)
+  * Switch to the Persona Observer API (LP: 1025957)
+  * Make use of siteName and siteLogo in Persona
+  * Switch from httplib2 to requests (LP: 864464)
+  * Remove support for the obsolete Sessions API (LP: 1025941)
+
+  * Prevent framing of any part of www (LP: 863904)
+  * Remove charset from base template (LP: 1000467)
+  * Prefetch profile page images from the login page
+
+ -- Francois Marier <francois@debian.org>  Tue, 24 Jul 2012 18:38:35 +1200
+
 libravatar (20120709.1) unstable; urgency=low
 
   * Add support for the libravatar.bit domain (LP: 789751)
