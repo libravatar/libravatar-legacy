@@ -8,7 +8,7 @@
  * mod\_headers
  * mod\_rewrite
 * [Python DNS 2.3.4](http://pydns.sourceforge.net/)
-* jQuery 1.4
+* jQuery 1.5
 * [Python Imaging Library](http://www.pythonware.com/library/)
 * [YUI Compressor](http://developer.yahoo.com/yui/compressor/), for minifying CSS/JS files
 * [Gearman](http://www.gearman.org)
@@ -20,7 +20,7 @@
 
 On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
 
-    apt-get install python-django python-dns libjs-jquery python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates
+    apt-get install python-django python-dns libjs-jquery/squeeze-backports python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates
   
     apt-get install python-ldap
 
