@@ -1,6 +1,5 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
-# Copyright (C) 2010  Francois Marier <francois@libravatar.org>
-#                     Jonathan Harker <jon@jon.geek.nz>
+# Copyright (C) 2010, 2011, 2012  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
 # This file is part of Libravatar
