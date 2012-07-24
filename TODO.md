@@ -1,7 +1,7 @@
 # Branding/homepage:
 
 * make a collage of the user photos in the shape of libravatar logo (the ones licensed under Creative Commons)
-* improve basic layout (using http://960.gs/ maybe?)
+* improve basic layout (using http://960.gs/ maybe? or perhaps a responsive design framework?)
 
 # Federation
 
@@ -15,8 +15,8 @@
 
 * create a staging server to test deployments
 * create a public package repository to upload libravatar packages
-* use rsyslog to copy logs to another machine
+* use rsyslog to copy logs to another machine (useful in the case of a server compromise)
 * use Puppet or [Salt](http://saltstack.org) for all server config
 * monitor server with Nagios
 * monitor gearman queues (http://labs.consol.de/nagios/mod-gearman/)
-* use [mod_spdy](https://code.google.com/p/mod-spdy/) on seccdn.libravatar.org
+* use [mod_spdy](https://code.google.com/p/mod-spdy/) for all HTTPS serving
