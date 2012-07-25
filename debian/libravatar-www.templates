@@ -22,9 +22,7 @@ Template: libravatar-www/db_pass
 Type: string
 Default:
 Description: Database password:
- Password to use to connect to the database.  By default, the database will be called
- mahara-org-mahara, and will be accessed as the database user
- mahara-org.
+ Password to use to connect to the database.
 
 Template: libravatar-www/db_name
 Type: string
