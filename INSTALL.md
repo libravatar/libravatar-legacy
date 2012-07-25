@@ -17,10 +17,12 @@
 * [OpenID Integration for django.contrib.auth](https://launchpad.net/django-openid-auth)
 * [Requests](http://python-requests.org/)
 * Python LDAP library (if using optional LDAP authenticaion)
+* PNG crush
+* AdvanceCOMP
 
 On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
 
-    apt-get install python-django python-dns libjs-jquery/squeeze-backports python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates
+    apt-get install python-django python-dns libjs-jquery/squeeze-backports python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp
   
     apt-get install python-ldap
 
