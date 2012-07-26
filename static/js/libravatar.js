@@ -119,7 +119,8 @@ if (navigator.id) {
 function browserid_login() {
     email_requested = true;
     navigator.id.request({siteLogo: '/img/logo.png',
-                          siteName: $('#site-name').text()});
+                          siteName: $('#site-name').text(),
+                          returnTo: '/account/profile/'});
 }
 function browserid_logout(silent) {
     if (silent) {
