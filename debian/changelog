@@ -1,3 +1,11 @@
+libravatar (20120726.1) unstable; urgency=low
+
+  * Fix race condition in concurrent Persona logins
+  * Use Persona's loggedInEmail option (not yet called loggedInUser)
+  * Update French, Japanese and Ukranian translations
+
+ -- Francois Marier <francois@debian.org>  Thu, 26 Jul 2012 23:39:36 +1200
+
 libravatar (20120724.1) unstable; urgency=low
 
   * Update BrowserID URLs to Persona (LP: 1023731)
