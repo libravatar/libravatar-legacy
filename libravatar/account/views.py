@@ -763,5 +763,6 @@ def login_browserid(request):
         return render_to_response('account/browserid_userauthfailed.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
+    browserid_user = request.session['browserid_user']  # do not move below login()!
     login(request, user)
-    return HttpResponse(json.dumps({"success": True, "user": request.session['browserid_user']}), mimetype="application/json")
+    return HttpResponse(json.dumps({"success": True, "user": browserid_user}), mimetype="application/json")
