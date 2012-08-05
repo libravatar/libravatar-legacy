@@ -340,6 +340,11 @@ def confirm_openid(request, openid_id):
 
     unconfirmed.delete()
 
+    # if there's a single image in this user's profile, assign it to the new email
+    photos = confirmed.user.photos
+    if photos.count() == 1:
+        confirmed.set_photo(photos.get())
+
     # Also allow user to login using this OpenID (if not taken already)
     if not UserOpenID.objects.filter(claimed_id=confirmed.openid).exists():
         user_openid = UserOpenID()
