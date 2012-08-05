@@ -1,3 +1,16 @@
+libravatar (20120805.1) unstable; urgency=low
+
+  * Assign first uploaded photo to all emails/openids (LP: #1026993)
+  * Automatically set photo after confirming email/openid (LP: #971263)
+  * Bump max upload size to 10MB
+
+  * Replace ImageField with FileField (LP: #1031492)
+  * Pre-generate 32 and 64 images
+  * Add icon for high-res iPads
+  * Move iPhone/iPad icons to HTTPS
+
+ -- Francois Marier <francois@debian.org>  Sun, 05 Aug 2012 23:46:12 +1200
+
 libravatar (20120726.1) unstable; urgency=low
 
   * Fix race condition in concurrent Persona logins
