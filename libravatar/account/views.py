@@ -454,7 +454,11 @@ def upload_photo(request):
                 return render_to_response('account/photo_toobig.html', {'max_size': settings.MAX_PHOTO_SIZE},
                                           context_instance=RequestContext(request))
 
-            photo = form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
+            try:
+                photo = form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
+            except IOError:
+                return render_to_response('account/photo_invalidfile.html', context_instance=RequestContext(request))
+
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[photo.id]))
     else:
         form = UploadPhotoForm()

@@ -111,7 +111,7 @@ class AddOpenIdForm(forms.Form):
 
 
 class UploadPhotoForm(forms.Form):
-    photo = forms.ImageField(label=_('Photo'), error_messages={'required': _('You must choose an image to upload.')})
+    photo = forms.FileField(label=_('Photo'), error_messages={'required': _('You must choose an image to upload.')})
     not_porn = forms.BooleanField(label=_('suitable for all ages (i.e. no offensive content)'), required=True,
                                   error_messages={'required': _('We only host "G-rated" images and so this field must be checked.')})
     can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True,
