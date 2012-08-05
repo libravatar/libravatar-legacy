@@ -1,8 +1,8 @@
 #!/bin/bash
 #
-# This script needs imagemagick (apt-get install imagemagick)
+# This script needs a lot of external tools (see below)
 #
-# Copyright (C) 2010  Francois Marier <fmarier@gmail.com>
+# Copyright (C) 2010, 2012  Francois Marier <francois@libravatar.org>
 #
 # Copying and distribution of this file, with or without modification,
 # are permitted in any medium without royalty provided the copyright
@@ -11,7 +11,7 @@
 
 if [ "z$1" = "z" -o "z$2" = "z" ] ; then
         echo "Usage: $0 <original_image> <output_extension>"
-        echo "       (e.g. $0 nobody.png png)"
+        echo "       (e.g. $0 nobody.svg png)"
         exit 1;
 fi
 
