@@ -94,6 +94,12 @@ def confirm_email(request):
 
     unconfirmed.delete()
 
+    # if there's a single image in this user's profile, assign it to the new email
+    confirmed = ConfirmedEmail.objects.get(id=confirmed_id)
+    photos = confirmed.user.photos
+    if photos.count() == 1:
+        confirmed.set_photo(photos.get())
+
     return render_to_response('account/email_confirmed.html',
                               {'email_id': confirmed_id, 'photos': external_photos},
                               context_instance=RequestContext(request))
