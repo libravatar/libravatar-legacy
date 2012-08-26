@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 20:46+1200\n"
+"POT-Creation-Date: 2012-08-26 19:43+1200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,40 +187,40 @@ msgid ""
 "\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
 
-#: templates/base.html:10
+#: templates/base.html:11
 msgid "Freeing the Web, one face at a time!"
 msgstr ""
 
-#: templates/base.html:18
+#: templates/base.html:19
 msgid "Homepage"
 msgstr ""
 
-#: templates/base.html:22
+#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr ""
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Profile"
 msgstr ""
 
-#: templates/base.html:30 templates/base.html.py:34
+#: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
 msgstr ""
 
-#: templates/base.html:31
+#: templates/base.html:32
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:35 templates/account/login.html:11
+#: templates/base.html:36 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "GNU Affero General Public License"
 msgstr ""
 
-#: templates/base.html:47
+#: templates/base.html:48
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
@@ -228,7 +228,7 @@ msgid ""
 "  software, version %(libravatar_version)s"
 msgstr ""
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "Flattr this!"
 msgstr ""
 
@@ -384,7 +384,7 @@ msgid ""
 msgstr ""
 
 #: templates/account/browserid_userauthfailed.json:1
-msgid "BrowserID authentication failed. Please try again later."
+msgid "Persona authentication failed. Please try again later."
 msgstr ""
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
@@ -767,6 +767,15 @@ msgstr ""
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
+msgstr ""
+
+#: templates/account/photo_invalidfile.html:5
+msgid "Uploaded photo is broken or invalid."
+msgstr ""
+
+#: templates/account/photo_invalidfile.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr ""
 
 #: templates/account/photo_toobig.html:5
