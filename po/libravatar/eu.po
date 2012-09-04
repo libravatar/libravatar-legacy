@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-05-14 21:42+1200\n"
-"PO-Revision-Date: 2012-07-07 10:01+0000\n"
-"Last-Translator: François Marier <francois@debian.org>\n"
+"POT-Creation-Date: 2012-08-26 19:43+1200\n"
+"PO-Revision-Date: 2012-08-23 22:16+0000\n"
+"Last-Translator: Asier Iturralde Sarasola <Unknown>\n"
 "Language-Team: Basque <eu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-08 04:47+0000\n"
-"X-Generator: Launchpad (build 15558)\n"
+"X-Launchpad-Export-Date: 2012-08-28 07:26+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 
 #: settings.py:57
 msgid "Catalan"
@@ -51,7 +51,7 @@ msgstr "Japoniera"
 
 #: settings.py:65
 msgid "Brazilian Portuguese"
-msgstr "Brasileko portugesa"
+msgstr "Brasilgo portugesa"
 
 #: settings.py:66
 msgid "Albanian"
@@ -61,16 +61,16 @@ msgstr "Albaniera"
 msgid "Ukrainian"
 msgstr "Ukrainera"
 
-#: account/browserid_auth.py:77
+#: account/browserid_auth.py:79
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "ustekabeko \"%s\" egoera kodea"
 
-#: account/browserid_auth.py:80
+#: account/browserid_auth.py:82
 msgid "missing email address"
 msgstr "e-posta helbidea falta da"
 
-#: account/browserid_auth.py:86
+#: account/browserid_auth.py:88
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" ez da baliozko e-posta helbidea"
@@ -205,28 +205,28 @@ msgstr "Webgune nagusia"
 msgid "freeing the web one face at a time"
 msgstr "aurpegiz aurpegi, sarea askatzen"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Profile"
 msgstr "Profila"
 
-#: templates/base.html:30 templates/base.html.py:34
+#: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
 msgstr "Jarri gurekin harremanetan"
 
-#: templates/base.html:31
+#: templates/base.html:32
 msgid "Logout"
 msgstr "Amaitu saioa"
 
-#: templates/base.html:35 templates/account/login.html:8
-#: templates/account/login.html.py:42 templates/openid/login.html:28
+#: templates/base.html:36 templates/account/login.html:11
+#: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Hasi saioa"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero Lizentzia Publiko Orokorra (AGPL)"
 
-#: templates/base.html:47
+#: templates/base.html:48
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -238,7 +238,7 @@ msgstr ""
 "  softwarearen %(libravatar_version)s bertsioa erabiltzen duen avatar "
 "zerbitzu bat da"
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "Flattr this!"
 msgstr "Flattr hau!"
 
@@ -260,22 +260,19 @@ msgid "Back to your profile"
 msgstr "Itzuli zure profilera"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
-#: templates/account/profile.html:51
+#: templates/account/profile.html:50
 msgid "Add a new email address"
 msgstr "Gehitu e-posta helbide berri bat"
 
 #: templates/account/add_email.html:10
 #, python-format
 msgid ""
-"If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
+"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" "
 "href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"<b>BrowserID</b> kontu bat baduzu, zure profilari <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">e-posta  helbide berri bat gehitzeko erabil "
-"dezakezu</a>."
 
-#: templates/account/add_email.html:18
+#: templates/account/add_email.html:12
 msgid ""
 "Otherwise, type your email address in the box below and we will send you an "
 "email with a link to click on in order to verify that you own that email "
@@ -285,14 +282,14 @@ msgstr ""
 "bat duen e-posta bat bidaliko dizugu e-posta helbide horren jabea zu zarela "
 "baieztatzeko."
 
-#: templates/account/add_email.html:25 templates/account/add_openid.html:19
+#: templates/account/add_email.html:19 templates/account/add_openid.html:19
 msgid "Add"
 msgstr "Gehitu"
 
-#: templates/account/add_email.html:26 templates/account/add_openid.html:20
+#: templates/account/add_email.html:20 templates/account/add_openid.html:20
 #: templates/account/crop_photo.html:19 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
-#: templates/account/login.html:44 templates/account/new.html:43
+#: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
 #: templates/account/upload_photo.html:25 templates/openid/login.html:30
@@ -300,7 +297,7 @@ msgid "Cancel"
 msgstr "Utzi"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:8
-#: templates/account/profile.html:54
+#: templates/account/profile.html:53
 msgid "Add a new OpenID"
 msgstr "Gehitu OpenID berri bat"
 
@@ -395,25 +392,29 @@ msgstr ""
 "Hemen daude kargatu dituzun argazkiak, klikatu OpenID honekin lotu nahi "
 "duzunaren gainean:"
 
-#: templates/account/browserid_emailalreadyconfirmed.html:5
+#: templates/account/browserid_emailalreadyconfirmed.json:1
 msgid "This email address already exists in a user account."
 msgstr "E-posta hau dagoeneko existitzen da erabiltzaile-kontu batean."
 
-#: templates/account/browserid_invalidassertion.html:5
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Invalid BrowserID assertion."
 msgstr "Browser ID baieztapen baliogabea."
 
-#: templates/account/browserid_invalidassertion.html:7
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Error: "
 msgstr "Errorea: "
 
-#: templates/account/browserid_noassertion.html:5
+#: templates/account/browserid_noassertion.json:1
 msgid ""
 "Missing BrowserID assertion. An assertion must be sent to the server via a "
 "POST request."
 msgstr ""
 "BrowserID baieztapena falta da. Baieztapen bat bidali behar da zerbitzarira "
 "POST eskaera baten bidez."
+
+#: templates/account/browserid_userauthfailed.json:1
+msgid "Persona authentication failed. Please try again later."
+msgstr ""
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -498,7 +499,7 @@ msgstr "Ezabatu argazkia"
 msgid "Are you sure you want to delete this photo?"
 msgstr "Ziur zaude argazki hau ezabatu nahi duzula?"
 
-#: templates/account/delete_photo.html:16 templates/account/profile.html:62
+#: templates/account/delete_photo.html:16 templates/account/profile.html:61
 msgid "Delete"
 msgstr "Ezabatu"
 
@@ -585,7 +586,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Esportatu zure Libravatar datuak"
 
-#: templates/account/export.html:8 templates/account/profile.html:79
+#: templates/account/export.html:8 templates/account/profile.html:78
 msgid "Export your data"
 msgstr "Esportatu zure datuak"
 
@@ -621,7 +622,7 @@ msgstr ""
 msgid "Libravatar Login"
 msgstr "Libravatar saio hasiera"
 
-#: templates/account/login.html:12
+#: templates/account/login.html:15
 #, python-format
 msgid ""
 "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
@@ -629,25 +630,21 @@ msgstr ""
 "Ez daukazu konturik oraindik? <a href=\"%(signup_url)s\">Erregistratu "
 "orain!</a>"
 
-#: templates/account/login.html:16
+#: templates/account/login.html:19
 #, python-format
 msgid ""
 "Do you hate having lots of passwords? You can login with <a "
 "href=\"%(openid_url)s\">OpenID</a>\n"
 "<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span> instead!"
+"href=\"#\">Persona</a></span> instead!"
 msgstr ""
-"Pasahitz asko izatea gorroto duzu? Hala bada, <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> edo <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span> erabil ditzakezu!"
 
-#: templates/account/login.html:26
+#: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Zure erabiltzaile-izena eta pasahitza ez datoz bat. Mesedez, saiatu berriro."
 
-#: templates/account/login.html:50
+#: templates/account/login.html:47
 #, python-format
 msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
@@ -757,10 +754,9 @@ msgstr ""
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
-"Instead, you must use one of the following OpenIDs or BrowserIDs to login:"
+"Instead, you must use one of the following OpenIDs or Persona email "
+"addresses to login:"
 msgstr ""
-"Ez dago, ordea, kontu honekin erlazionatutako pasahitzik. Horren ordez,\n"
-"hurrengo OpenID edo BrowserID-etako bat erabili behar duzu saioa hasteko:"
 
 #: templates/account/password_reminder.txt:11
 #: templates/account/password_reset.txt:12
@@ -780,12 +776,9 @@ msgstr "Berrezarri pasahitza"
 #, python-format
 msgid ""
 "Did you know that you can also <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">sign in with BrowserID</a> and never have to "
+"href=\"%(browserid_target)s\">sign in with Persona</a> and never have to "
 "remember a password again?"
 msgstr ""
-"Ba al zenekien <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">BrowserID-rekin saioa hasi</a> dezakezula eta "
-"ez duzula gehiagotan pasahitzik gogoratu beharko?"
 
 #: templates/account/password_reset.html:18
 msgid ""
@@ -857,6 +850,15 @@ msgstr ""
 msgid "Invalid photo ID."
 msgstr "Argazki ID baliogabea."
 
+#: templates/account/photo_invalidfile.html:5
+msgid "Uploaded photo is broken or invalid."
+msgstr ""
+
+#: templates/account/photo_invalidfile.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
+msgstr ""
+
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
@@ -888,55 +890,55 @@ msgstr "Huts egin du argazkia inportatzeak."
 msgid "%(username)s's Libravatar Profile"
 msgstr "%(username)s-(r)en Libravatar profila"
 
-#: templates/account/profile.html:10
+#: templates/account/profile.html:8
 #, python-format
 msgid "%(username)s's Profile"
 msgstr "%(username)s-(r)en profila"
 
-#: templates/account/profile.html:13
+#: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "Ondorengo baieztatutako e-posta helbide eta OpenIDak dauzkazu:"
 
-#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:18 templates/account/profile.html.py:27
 msgid "Change photo"
 msgstr "Aldatu argazkia"
 
-#: templates/account/profile.html:21 templates/account/profile.html.py:29
-#: templates/account/profile.html:40 templates/account/profile.html.py:44
+#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:39 templates/account/profile.html.py:43
 msgid "Remove"
 msgstr "Ezabatu"
 
-#: templates/account/profile.html:36
+#: templates/account/profile.html:35
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr "Ondorengo baieztatu gabeko e-posta helbide eta OpenIDak dauzkazu:"
 
-#: templates/account/profile.html:58
+#: templates/account/profile.html:57
 msgid "Here are the photos you have uploaded/imported:"
 msgstr "Hemen daude kargatu/inportatu dituzun argazkiak:"
 
-#: templates/account/profile.html:61
+#: templates/account/profile.html:60
 #, python-format
 msgid "Uploaded on %(datetime)s"
 msgstr "%(datetime)s-(e)an kargatua"
 
-#: templates/account/profile.html:68 templates/account/upload_photo.html:4
+#: templates/account/profile.html:67 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "Kargatu argazki berri bat"
 
-#: templates/account/profile.html:71
+#: templates/account/profile.html:70
 msgid "Account settings"
 msgstr "Kontuaren ezarpenak"
 
-#: templates/account/profile.html:74
+#: templates/account/profile.html:73
 msgid "Change your password"
 msgstr "Aldatu zure pasahitza"
 
-#: templates/account/profile.html:76
+#: templates/account/profile.html:75
 msgid "Set a password"
 msgstr "Ezarri pasahitz bat"
 
-#: templates/account/profile.html:81
+#: templates/account/profile.html:80
 msgid "Permanently delete your account"
 msgstr "Betirako ezabatu zure kontua"
 
@@ -995,12 +997,12 @@ msgstr ""
 msgid "federated avatar hosting service"
 msgstr "federatutako avatar ostatatze zerbitzua"
 
-#: templates/public/home.html:13
+#: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
 msgstr "Sortu <a href=\"%(new_account_url)s\">doako kontu</a> bat"
 
-#: templates/public/home.html:15
+#: templates/public/home.html:13
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source "
 "code</a>"
@@ -1008,7 +1010,7 @@ msgstr ""
 "Deskargatu <a href=\"https://code.launchpad.net/libravatar\">iturburu "
 "kodea</a>"
 
-#: templates/public/home.html:16
+#: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
@@ -1017,7 +1019,7 @@ msgstr ""
 "edo <a href=\"https://answers.launchpad.net/libravatar\">argitu zure "
 "zalantzak</a>"
 
-#: templates/public/home.html:17
+#: templates/public/home.html:15
 msgid ""
 "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
 "href=\"http://blog.libravatar.org\">blog</a>"
@@ -1025,16 +1027,16 @@ msgstr ""
 "Irakurri gure <a href=\"http://wiki.libravatar.org\">wikia</a> edo <a "
 "href=\"http://blog.libravatar.org\">bloga</a>"
 
-#: templates/public/home.html:18
+#: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr ""
 "Jarrai gaitzazu <a href=\"http://identi.ca/libravatar\">Identica-n</a>"
 
-#: templates/public/home.html:19
+#: templates/public/home.html:17
 msgid "Contribute!"
 msgstr "Lagundu!"
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 #, python-format
 msgid ""
 "Libravatar is a service which delivers your avatar (profile picture) to "
@@ -1047,16 +1049,16 @@ msgstr ""
 "baduzu</a>, zure argazkia agertuko da zure e-posta helbidea erabiltzen duzun "
 "foro edo blogetako iruzkinetan."
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
 "<a href=\"http://wiki.libravatar.org/description/\">Irakurri gehiago...</a>"
 
-#: templates/public/home.html:25
+#: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Kode Irekiko Zerbitzu Federatua"
 
-#: templates/public/home.html:27
+#: templates/public/home.html:25
 msgid ""
 "This service is powered by <a "
 "href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
@@ -1070,11 +1072,11 @@ msgstr ""
 "instantzia propioa erabili</a> eta avatar-ak zerbitzatzeko aukera eskaintzen "
 "die."
 
-#: templates/public/home.html:29
+#: templates/public/home.html:27
 msgid "Simple API for Developers"
 msgstr "API sinplea garatzaileentzat"
 
-#: templates/public/home.html:31
+#: templates/public/home.html:29
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1087,7 +1089,7 @@ msgstr ""
 "href=\"http://wiki.libravatar.org/libraries/\">liburutegi eta pluginak</a> "
 "erabiliz."
 
-#: templates/public/home.html:33
+#: templates/public/home.html:31
 msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""

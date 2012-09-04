@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 20:46+1200\n"
-"PO-Revision-Date: 2012-07-26 11:32+0000\n"
+"POT-Creation-Date: 2012-08-26 19:43+1200\n"
+"PO-Revision-Date: 2012-08-26 18:25+0000\n"
 "Last-Translator: François Marier <francois@debian.org>\n"
 "Language-Team: Français <none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-26 11:40+0000\n"
-"X-Generator: Launchpad (build 15679)\n"
+"X-Launchpad-Export-Date: 2012-08-28 07:26+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 "Language: fr\n"
 
 #: settings.py:57
@@ -192,40 +192,40 @@ msgstr ""
 "Page introuvable. Si vous pensez avoir abouti ici par erreur, veuilez <a "
 "href=\"mailto:%(support_email)s\">nous en aviser</a>."
 
-#: templates/base.html:10
+#: templates/base.html:11
 msgid "Freeing the Web, one face at a time!"
 msgstr "La libération du Web, un visage à la fois !"
 
-#: templates/base.html:18
+#: templates/base.html:19
 msgid "Homepage"
 msgstr "Accueil"
 
-#: templates/base.html:22
+#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr "la libération du web, un visage à la fois"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:30 templates/base.html.py:34
+#: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
 msgstr "Contactez-nous"
 
-#: templates/base.html:31
+#: templates/base.html:32
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/base.html:35 templates/account/login.html:11
+#: templates/base.html:36 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Connexion"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "GNU Affero General Public License"
 msgstr "Licence GNU Affero GPL"
 
-#: templates/base.html:47
+#: templates/base.html:48
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -236,7 +236,7 @@ msgstr ""
 "href=\"http://www.libravatar.org\">Libravatar</a>\n"
 ", version %(libravatar_version)s"
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "Flattr this!"
 msgstr "Flattr"
 
@@ -417,9 +417,8 @@ msgstr ""
 "par une requête POST."
 
 #: templates/account/browserid_userauthfailed.json:1
-msgid "BrowserID authentication failed. Please try again later."
-msgstr ""
-"L'authentification BrowserID a échoué. Veuillez ré-essayer plus tard."
+msgid "Persona authentication failed. Please try again later."
+msgstr "L'authentification Persona a échoué. Veuillez ré-essayer plus tard."
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -868,6 +867,15 @@ msgstr ""
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
 msgstr "Identifiant de photo invalide."
+
+#: templates/account/photo_invalidfile.html:5
+msgid "Uploaded photo is broken or invalid."
+msgstr "La photo envoyée est défectueuse."
+
+#: templates/account/photo_invalidfile.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
+msgstr "Veuillez en <a href=\"%(upload_url)s\">téléverser</a> une autre."
 
 #: templates/account/photo_toobig.html:5
 #, python-format

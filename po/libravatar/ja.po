@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-24 20:46+1200\n"
-"PO-Revision-Date: 2012-07-24 15:19+0000\n"
+"POT-Creation-Date: 2012-08-26 19:43+1200\n"
+"PO-Revision-Date: 2012-08-27 14:40+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-25 04:53+0000\n"
-"X-Generator: Launchpad (build 15679)\n"
+"X-Launchpad-Export-Date: 2012-08-28 07:27+0000\n"
+"X-Generator: Launchpad (build 15864)\n"
 
 #: settings.py:57
 msgid "Catalan"
@@ -189,40 +189,40 @@ msgstr ""
 "ページが見つかりませんでした。あなたが間違ってここにアクセスしてしまったと思う場合、<a "
 "href=\"mailto:%(support_email)s\">私たちにお教えください</a>!"
 
-#: templates/base.html:10
+#: templates/base.html:11
 msgid "Freeing the Web, one face at a time!"
 msgstr "ひとつの顔でウェブをフリーに!"
 
-#: templates/base.html:18
+#: templates/base.html:19
 msgid "Homepage"
 msgstr "ホームページ"
 
-#: templates/base.html:22
+#: templates/base.html:23
 msgid "freeing the web one face at a time"
 msgstr "ひとつの顔でウェブをフリーに"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Profile"
 msgstr "プロファイル"
 
-#: templates/base.html:30 templates/base.html.py:34
+#: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
 msgstr "お問い合わせ"
 
-#: templates/base.html:31
+#: templates/base.html:32
 msgid "Logout"
 msgstr "ログアウト"
 
-#: templates/base.html:35 templates/account/login.html:11
+#: templates/base.html:36 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero General Public License"
 
-#: templates/base.html:47
+#: templates/base.html:48
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -233,7 +233,7 @@ msgstr ""
 "href=\"https://launchpad.net/libravatar\">Libravatar</a>ソフトウェア、バージョン "
 "%(libravatar_version)s で運用されるアバターサービスです。"
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "Flattr this!"
 msgstr "Flattrします!"
 
@@ -397,8 +397,8 @@ msgid ""
 msgstr "BrowserID前提条件がありません。前提条件はPOSTリクエスト経由でサーバ宛に送信される必要があります。"
 
 #: templates/account/browserid_userauthfailed.json:1
-msgid "BrowserID authentication failed. Please try again later."
-msgstr "BrowserID 認証に失敗しました。後ほど再度お試しください。"
+msgid "Persona authentication failed. Please try again later."
+msgstr "Persona認証に失敗しました。後ほど、再度お試しください。"
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -811,6 +811,15 @@ msgstr ""
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
 msgstr "無効な写真IDです。"
+
+#: templates/account/photo_invalidfile.html:5
+msgid "Uploaded photo is broken or invalid."
+msgstr "アップロードされた写真が壊れている、または無効です。"
+
+#: templates/account/photo_invalidfile.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
+msgstr "異なる写真を<a href=\"%(upload_url)s\">アップロード</a> してください。"
 
 #: templates/account/photo_toobig.html:5
 #, python-format
