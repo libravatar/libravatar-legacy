@@ -1,3 +1,11 @@
+libravatar (20120904.1) unstable; urgency=low
+
+  * Temporarily disable auto-assignment of uploaded photos (LP: #1041720)
+  * Add new Italian translation
+  * Update de, eu, fr, ja, pt_BR and uk translations
+
+ -- Francois Marier <francois@debian.org>  Tue, 04 Sep 2012 21:54:43 +1200
+
 libravatar (20120805.1) unstable; urgency=low
 
   * Assign first uploaded photo to all emails/openids (LP: #1026993)
