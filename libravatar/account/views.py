@@ -500,7 +500,7 @@ def crop_photo(request, photo_id):
         photo.crop(x, y, w, h)
 
         # if that's the first photo, use it for all confirmed emails and OpenIDs
-        if request.user.photos.count() == 1:
+        if False and request.user.photos.count() == 1:
             for email in request.user.confirmed_emails.all():
                 email.set_photo(photo)
             for openid in request.user.confirmed_openids.all():
