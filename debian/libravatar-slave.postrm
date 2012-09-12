@@ -30,6 +30,7 @@ case "$1" in
     purge)
         rm -rf ${AVATAR_ROOT}
         rm -rf ${SLAVE_ROOT}/cert/
+        rm -rf ${SLAVE_ROOT}/.ssh/
     ;;
 
     upgrade|failed-upgrade|abort-upgrade)
