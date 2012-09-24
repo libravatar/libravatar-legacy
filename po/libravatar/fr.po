@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-26 19:43+1200\n"
-"PO-Revision-Date: 2012-08-26 18:25+0000\n"
-"Last-Translator: François Marier <francois@debian.org>\n"
+"POT-Creation-Date: 2012-09-04 21:44+1200\n"
+"PO-Revision-Date: 2012-09-14 06:55+0000\n"
+"Last-Translator: cyrille <Unknown>\n"
 "Language-Team: Français <none>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 07:26+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-09-15 05:11+0000\n"
+"X-Generator: Launchpad (build 15944)\n"
 "Language: fr\n"
 
 #: settings.py:57
@@ -47,18 +47,22 @@ msgid "French"
 msgstr "Français"
 
 #: settings.py:64
+msgid "Italian"
+msgstr "Italien"
+
+#: settings.py:65
 msgid "Japanese"
 msgstr "Japonais"
 
-#: settings.py:65
+#: settings.py:66
 msgid "Brazilian Portuguese"
 msgstr "Portugais du Brésil"
 
-#: settings.py:66
+#: settings.py:67
 msgid "Albanian"
 msgstr "Albanais"
 
-#: settings.py:67
+#: settings.py:68
 msgid "Ukrainian"
 msgstr "Ukrainien"
 

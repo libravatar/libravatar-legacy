@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-26 19:43+1200\n"
-"PO-Revision-Date: 2012-08-27 14:40+0000\n"
+"POT-Creation-Date: 2012-09-04 21:44+1200\n"
+"PO-Revision-Date: 2012-09-07 00:55+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 07:27+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-09-08 05:19+0000\n"
+"X-Generator: Launchpad (build 15914)\n"
 
 #: settings.py:57
 msgid "Catalan"
@@ -46,18 +46,22 @@ msgid "French"
 msgstr "フランス語"
 
 #: settings.py:64
+msgid "Italian"
+msgstr "イタリア語"
+
+#: settings.py:65
 msgid "Japanese"
 msgstr "日本語"
 
-#: settings.py:65
+#: settings.py:66
 msgid "Brazilian Portuguese"
 msgstr "ポルトガル語 (ブラジル)"
 
-#: settings.py:66
+#: settings.py:67
 msgid "Albanian"
 msgstr "アルバニア語"
 
-#: settings.py:67
+#: settings.py:68
 msgid "Ukrainian"
 msgstr "ウクライナ語"
 
