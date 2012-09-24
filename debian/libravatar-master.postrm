@@ -28,7 +28,7 @@ case "$1" in
     ;;
 
     purge)
-        rm -f ${MASTER_ROOT}/.ssh/known_hosts
+        rm -f ${MASTER_ROOT}/.ssh/authorized_keys
         rmdir -p ${MASTER_ROOT}/.ssh/ || true
     ;;
 

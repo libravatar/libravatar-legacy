@@ -22,7 +22,7 @@ SLAVE_ROOT=/var/lib/libravatar/slave
 
 case "$1" in
     configure)
-        adduser --system --quiet --disabled-login --shell /usr/bin/rssh --no-create-home --home ${SLAVE_ROOT} --gecos 'Libravatar Mirror Slave,,,' libravatar-slave || true
+        adduser --system --quiet --disabled-login --shell /bin/false --no-create-home --home ${SLAVE_ROOT} --gecos 'Libravatar Mirror Slave,,,' libravatar-slave || true
 
         addgroup --system --quiet libravatar-deployment || true
         chmod 440 /etc/sudoers.d/libravatar-deployment
@@ -32,6 +32,12 @@ case "$1" in
 
         mkdir -p ${SLAVE_ROOT}/cert/
         chown libravatar-slave ${SLAVE_ROOT}/cert/
+
+        mkdir -p ${SLAVE_ROOT}/.ssh/
+        if [ ! -e /var/lib/libravatar/slave/.ssh/id_rsa ]; then
+            ssh-keygen -t rsa -N "" -f /var/lib/libravatar/slave/.ssh/id_rsa
+        fi
+        chown -R libravatar-slave ${SLAVE_ROOT}/.ssh/
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

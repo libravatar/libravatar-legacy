@@ -1,0 +1,6 @@
+#!/bin/sh
+
+host="0.cdn.libravatar.org"
+
+rsync --quiet --compress --copy-links --rsh=ssh libravatar-master@${host}:/etc/libravatar/seccdn* /var/lib/libravatar/slave/cert/ || echo "Failure during first rsync to $host"
+rsync --quiet --compress --delete --recursive --rsh=ssh libravatar-master@${host}:/var/lib/libravatar/avatar/ /var/lib/libravatar/avatar/ || echo "Failure during second rsync to $host"

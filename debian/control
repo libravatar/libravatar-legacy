@@ -56,13 +56,13 @@ Description: avatar image hosting - common files
 
 Package: libravatar-master
 Architecture: all
-Depends: ${misc:Depends}, libravatar-www, rsync
+Depends: ${misc:Depends}, libravatar-www, rsync, rssh
 Description: avatar image hosting - mirror master
- Package for sending mirror updates to slaves.
+ Package for giving mirror updates to slaves.
 
 Package: libravatar-slave
 Architecture: all
-Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync, rssh
+Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync
 Conflicts: libravatar-www
 Description: avatar image hosting - mirror slave
- Package for receiving mirror updates from the master server.
+ Package for fetching mirror updates from the master server.
