@@ -92,7 +92,7 @@ if (navigator.id) {
     }
 
     navigator.id.watch({
-        loggedInEmail: browserid_user,
+        loggedInUser: browserid_user,
         onlogin: function (assertion) {
             if (assertion && (!is_addemail || email_requested)) {
                 $.post(post_url, {assertion: assertion}, function (data) {
