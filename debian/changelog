@@ -1,3 +1,10 @@
+libravatar (20120929.1) unstable; urgency=low
+
+  * Work-around Gravatar's broken HTTPS caching (LP: #1057836)
+  * Fix exception in double-confirmation of email addresses (LP: #1057176)
+
+ -- Francois Marier <francois@debian.org>  Sat, 29 Sep 2012 11:05:16 +1200
+
 libravatar (20120924.1) unstable; urgency=low
 
   * Reverse mirror direction (LP: #947796)
