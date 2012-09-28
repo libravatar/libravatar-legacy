@@ -775,6 +775,9 @@ def add_browserid(request):
         request.user, request.META['REMOTE_ADDR'], email_address, True)
     request.session['browserid_user'] = email_address
 
+    # remove any unconfirmed emails this user might have for this BrowserID
+    UnconfirmedEmail.objects.filter(email=email_address, user=request.user).delete()
+
     return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
 
