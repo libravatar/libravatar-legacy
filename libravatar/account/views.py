@@ -88,8 +88,6 @@ def confirm_email(request):
 
     # TODO: check for a reasonable expiration time in unconfirmed email
 
-    unconfirmed.delete()
-
     # check to see whether this email is already confirmed
     if ConfirmedEmail.objects.filter(email=unconfirmed.email).exists():
         return render_to_response('account/email_alreadyconfirmed.html',
@@ -98,6 +96,8 @@ def confirm_email(request):
     (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
         unconfirmed.user, request.META['REMOTE_ADDR'], unconfirmed.email,
         not request.user.is_anonymous())
+
+    unconfirmed.delete()
 
     # if there's a single image in this user's profile, assign it to the new email
     confirmed = ConfirmedEmail.objects.get(id=confirmed_id)
