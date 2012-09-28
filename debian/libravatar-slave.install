@@ -1,3 +1,2 @@
 debian/libravatar-update-mirror usr/bin
 debian/known_hosts var/lib/libravatar/slave/.ssh/
-debian/libravatar-deployment etc/sudoers.d/

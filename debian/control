@@ -57,12 +57,21 @@ Description: avatar image hosting - common files
 Package: libravatar-master
 Architecture: all
 Depends: ${misc:Depends}, libravatar-www, rsync, rssh
+Suggests: libravatar-deployment
 Description: avatar image hosting - mirror master
  Package for giving mirror updates to slaves.
 
 Package: libravatar-slave
 Architecture: all
 Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync
+Suggests: libravatar-deployment
 Conflicts: libravatar-www
 Description: avatar image hosting - mirror slave
  Package for fetching mirror updates from the master server.
+
+Package: libravatar-deployment
+Architecture: all
+Depends: ${misc:Depends}
+Description: avatar image hosting - deployment account
+ Create a deployment account so that the Libravatar packages can
+ be managed by the Libravatar core team.

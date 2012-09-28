@@ -1,5 +1,4 @@
 #!/bin/bash
-# postinst script for libravatar-master
 #
 # see: dh_installdeb(1)
 
@@ -23,9 +22,6 @@ MASTER_ROOT=/var/lib/libravatar/master
 case "$1" in
     configure)
         adduser --system --quiet --disabled-login --shell /usr/bin/rssh --no-create-home --home ${MASTER_ROOT} --gecos 'Libravatar Mirror Master,,,' libravatar-master || true
-
-        addgroup --system --quiet libravatar-deployment || true
-        chmod 440 /etc/sudoers.d/libravatar-deployment
 
         mkdir -p ${MASTER_ROOT}/.ssh/
         touch ${MASTER_ROOT}/.ssh/authorized_keys

@@ -16,24 +16,10 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-AVATAR_ROOT=/var/lib/libravatar/avatar
-SLAVE_ROOT=/var/lib/libravatar/slave
-
 case "$1" in
     configure)
-        adduser --system --quiet --disabled-login --shell /bin/false --no-create-home --home ${SLAVE_ROOT} --gecos 'Libravatar Mirror Slave,,,' libravatar-slave || true
-
-        mkdir -p ${AVATAR_ROOT}
-        chown -R libravatar-slave ${AVATAR_ROOT}
-
-        mkdir -p ${SLAVE_ROOT}/cert/
-        chown libravatar-slave ${SLAVE_ROOT}/cert/
-
-        mkdir -p ${SLAVE_ROOT}/.ssh/
-        if [ ! -e /var/lib/libravatar/slave/.ssh/id_rsa ]; then
-            ssh-keygen -t rsa -N "" -f /var/lib/libravatar/slave/.ssh/id_rsa
-        fi
-        chown -R libravatar-slave ${SLAVE_ROOT}/.ssh/
+        addgroup --system --quiet libravatar-deployment || true
+        chmod 440 /etc/sudoers.d/libravatar-deployment
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

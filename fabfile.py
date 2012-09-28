@@ -12,7 +12,7 @@ except ImportError:
 env.roledefs = {'slave': ['1.cdn.libravatar.org', '2.cdn.libravatar.org', '3.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org']}
 
-COMMON_PACKAGES = ['libravatar-cdn', 'libravatar-common', 'libravatar-cdn-common']
+COMMON_PACKAGES = ['libravatar-cdn', 'libravatar-common', 'libravatar-cdn-common', 'libravatar-deployment']
 SLAVE_PACKAGES = ['libravatar-seccdn', 'libravatar-slave']
 MASTER_PACKAGES = ['libravatar', 'libravatar-www', 'libravatar-master']
 

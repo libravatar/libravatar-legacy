@@ -17,18 +17,9 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-AVATAR_ROOT=/var/lib/libravatar/avatar
-SLAVE_ROOT=/var/lib/libravatar/slave
-
 case "$1" in
-    remove|abort-install|disappear)
-        deluser libravatar-slave || true
-    ;;
-
-    purge)
-        rm -rf ${AVATAR_ROOT}
-        rm -rf ${SLAVE_ROOT}/cert/
-        rm -rf ${SLAVE_ROOT}/.ssh/
+    remove|abort-install|disappear|purge)
+        delgroup libravatar-deployment || true
     ;;
 
     upgrade|failed-upgrade|abort-upgrade)
