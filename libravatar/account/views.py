@@ -88,6 +88,11 @@ def confirm_email(request):
 
     # TODO: check for a reasonable expiration time in unconfirmed email
 
+    # check to see whether this email is already confirmed
+    if ConfirmedEmail.objects.filter(email=unconfirmed.email).exists():
+        return render_to_response('account/email_alreadyconfirmed.html',
+                                  context_instance=RequestContext(request))
+
     (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
         unconfirmed.user, request.META['REMOTE_ADDR'], unconfirmed.email,
         not request.user.is_anonymous())
@@ -769,6 +774,9 @@ def add_browserid(request):
     (unused, unused) = ConfirmedEmail.objects.create_confirmed_email(
         request.user, request.META['REMOTE_ADDR'], email_address, True)
     request.session['browserid_user'] = email_address
+
+    # remove any unconfirmed emails this user might have for this BrowserID
+    UnconfirmedEmail.objects.filter(email=email_address, user=request.user).delete()
 
     return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
