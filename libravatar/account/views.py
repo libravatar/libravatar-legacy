@@ -90,6 +90,11 @@ def confirm_email(request):
 
     unconfirmed.delete()
 
+    # check to see whether this email is already confirmed
+    if ConfirmedEmail.objects.filter(email=unconfirmed.email).exists():
+        return render_to_response('account/email_alreadyconfirmed.html',
+                                  context_instance=RequestContext(request))
+
     (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
         unconfirmed.user, request.META['REMOTE_ADDR'], unconfirmed.email,
         not request.user.is_anonymous())
