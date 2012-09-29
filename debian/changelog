@@ -1,3 +1,9 @@
+libravatar (20120929.2) unstable; urgency=low
+
+  * Create a new libravatar-deployment package (LP: #1049622)
+
+ -- Francois Marier <francois@debian.org>  Sat, 29 Sep 2012 12:02:18 +1200
+
 libravatar (20120929.1) unstable; urgency=low
 
   * Work-around Gravatar's broken HTTPS caching (LP: #1057836)
