@@ -1,3 +1,9 @@
+libravatar (20121021.2) unstable; urgency=low
+
+  * Fix the libravatar-deployment postinst
+
+ -- Francois Marier <francois@debian.org>  Sun, 21 Oct 2012 21:40:00 +1300
+
 libravatar (20121021.1) unstable; urgency=low
 
   * Remove work-around for Gravatar's broken HTTPS caching (LP: #1057836)
