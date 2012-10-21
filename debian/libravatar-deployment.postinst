@@ -19,7 +19,7 @@ set -e
 case "$1" in
     configure)
         addgroup --system --quiet libravatar-deployment || true
-        chmod 440 /etc/sudoers.d/libravatar-deployment
+        chmod 440 /etc/sudoers.d/libravatar-fabric
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
