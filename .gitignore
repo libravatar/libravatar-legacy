@@ -4,6 +4,7 @@
 /debian/libravatar-cdn
 /debian/libravatar-cdn-common
 /debian/libravatar-common
+/debian/libravatar-deployment
 /debian/libravatar-master
 /debian/libravatar-seccdn
 /debian/libravatar-slave
