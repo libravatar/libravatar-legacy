@@ -50,4 +50,4 @@ unittests:
 test: pep8 pyflakes lint unittests
 
 package:
-	dpkg-buildpackage -us -uc
+	dpkg-buildpackage -k$(GPGKEY)

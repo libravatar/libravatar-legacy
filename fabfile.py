@@ -9,8 +9,17 @@ except ImportError:
     def parallel(function):
         return function
 
+try:
+    # This will fail on Squeeze's version of fabric
+    from fabric.context_managers import lcd
+except ImportError:
+    # Define a stub context manager that doesn't do anything
+    def lcd():
+        return None
+
 env.roledefs = {'slave': ['1.cdn.libravatar.org', '2.cdn.libravatar.org', '3.cdn.libravatar.org'],
-                'master': ['0.cdn.libravatar.org']}
+                'master': ['0.cdn.libravatar.org'],
+                'repo': ['apt.libravatar.org']}
 
 COMMON_PACKAGES = ['libravatar-cdn', 'libravatar-common', 'libravatar-cdn-common', 'libravatar-deployment']
 SLAVE_PACKAGES = ['libravatar-seccdn', 'libravatar-slave']
@@ -34,14 +43,34 @@ def prepare():
     local('make package', capture=False)
 
 
-def copy_and_install_packages(package_names):
+def sign_repo():
+    # from http://blog.mycrot.ch/2011/04/26/creating-your-own-signed-apt-repository-and-debian-packages/
+    with lcd('../libravatar-repo/'):
+        local('rm -rf db dists pool');
+        all_packages = COMMON_PACKAGES + SLAVE_PACKAGES + MASTER_PACKAGES
+        for package_name in all_packages:
+            deb = '../%s_%s_all.deb' % (package_name, PACKAGE_VERSION)
+            local("/usr/bin/reprepro --ask-passphrase -Vb . includedeb squeeze %s" % deb)
+
+
+@roles('repo')
+def upload_packages():
+    run('rm -rf /var/www/apt-libravatar/db /var/www/apt-libravatar/dists /var/www/apt-libravatar/pool');
+    for directory in ['conf', 'db', 'dists', 'pool']:
+        put('../libravatar-repo/%s' % directory, '/var/www/apt-libravatar/')
+
+
+def update_repo():
+    sign_repo()
+    upload_packages()
+
+
+def install_packages(package_names):
     all_debs = ''
     for package_name in package_names:
-        deb = '%s_%s_all.deb' % (package_name, PACKAGE_VERSION)
-        all_debs += ' /home/%s/debs/%s' % (env.user, deb)
-        put('../%s' % deb, 'debs/')
+        all_debs += ' %s' % package_name
 
-    sudo('/usr/bin/dpkg -i%s' % all_debs, shell=False)
+    sudo('/usr/bin/apt-get install -y %s' % all_debs, shell=False)
 
 
 def restart_apache():
@@ -50,28 +79,19 @@ def restart_apache():
     sudo('/usr/sbin/apache2ctl graceful', shell=False)
 
 
-def commit_etc_changes():
-    # TODO: deal with etckeeper (check that the git branch is clean, then commit automatically)
-    pass
-
-
 @parallel
 @roles('slave')
 def deploy_slave():
-    run('mkdir -p debs')  # ensure the target directory exists
-    copy_and_install_packages(COMMON_PACKAGES)
-    copy_and_install_packages(SLAVE_PACKAGES)
+    sudo('/usr/bin/apt-get update', shell=False)
+    install_packages(COMMON_PACKAGES + SLAVE_PACKAGES)
     restart_apache()
-    commit_etc_changes()
 
 
 @roles('master')
 def deploy_master():
-    run('mkdir -p debs')  # ensure the target directory exists
-    copy_and_install_packages(COMMON_PACKAGES)
-    copy_and_install_packages(MASTER_PACKAGES)
+    sudo('/usr/bin/apt-get update', shell=False)
+    install_packages(COMMON_PACKAGES + MASTER_PACKAGES)
     restart_apache()
-    commit_etc_changes()
 
 
 def deploy():
