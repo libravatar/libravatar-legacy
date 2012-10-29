@@ -1,3 +1,9 @@
+libravatar (20121029.3) unstable; urgency=low
+
+  * Update deployment sudoers file for new apt repo
+
+ -- Francois Marier <francois@debian.org>  Mon, 29 Oct 2012 23:59:47 +1300
+
 libravatar (20121021.2) unstable; urgency=low
 
   * Fix the libravatar-deployment postinst
