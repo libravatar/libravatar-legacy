@@ -1,3 +1,9 @@
+libravatar (20121030.1) unstable; urgency=low
+
+  * Set the email address in slave cronjobs (LP: #1072680)
+
+ -- Francois Marier <francois@debian.org>  Tue, 30 Oct 2012 20:44:25 +1300
+
 libravatar (20121029.3) unstable; urgency=low
 
   * Update deployment sudoers file for new apt repo
