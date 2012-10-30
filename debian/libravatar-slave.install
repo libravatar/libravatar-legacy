@@ -1,2 +1,3 @@
 debian/libravatar-update-mirror usr/bin
+debian/libravatar-update-certs usr/sbin
 debian/known_hosts var/lib/libravatar/slave/.ssh/
