@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-26 19:43+1200\n"
-"PO-Revision-Date: 2012-08-06 17:40+0000\n"
-"Last-Translator: Leonardo Lemos <leonardolemos@live.com>\n"
+"POT-Creation-Date: 2012-09-04 21:44+1200\n"
+"PO-Revision-Date: 2012-11-05 19:24+0000\n"
+"Last-Translator: Fernando P Silveira <fernandopsilveira@yahoo.com.br>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-08-28 07:27+0000\n"
-"X-Generator: Launchpad (build 15864)\n"
+"X-Launchpad-Export-Date: 2012-11-06 05:13+0000\n"
+"X-Generator: Launchpad (build 16232)\n"
 "Language: pt_BR\n"
 
 #: settings.py:57
@@ -47,18 +47,22 @@ msgid "French"
 msgstr "Francês"
 
 #: settings.py:64
+msgid "Italian"
+msgstr "Italiano"
+
+#: settings.py:65
 msgid "Japanese"
 msgstr "Japonês"
 
-#: settings.py:65
+#: settings.py:66
 msgid "Brazilian Portuguese"
 msgstr "Português do Brasil"
 
-#: settings.py:66
+#: settings.py:67
 msgid "Albanian"
 msgstr "Albanês"
 
-#: settings.py:67
+#: settings.py:68
 msgid "Ukrainian"
 msgstr "Ucraniano"
 
@@ -419,6 +423,7 @@ msgstr ""
 #: templates/account/browserid_userauthfailed.json:1
 msgid "Persona authentication failed. Please try again later."
 msgstr ""
+"A autenticação do Persona falhou. Por favor, tente novamente mais tarde."
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -864,12 +869,12 @@ msgstr "ID da foto inválida."
 
 #: templates/account/photo_invalidfile.html:5
 msgid "Uploaded photo is broken or invalid."
-msgstr ""
+msgstr "A foto enviada está corrompida ou é inválida."
 
 #: templates/account/photo_invalidfile.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
-msgstr ""
+msgstr "Por favor, <a href=\"%(upload_url)s\">envie</a> uma foto diferente."
 
 #: templates/account/photo_toobig.html:5
 #, python-format

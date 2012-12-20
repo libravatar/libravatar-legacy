@@ -2,24 +2,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-14 21:42+1200\n"
-"PO-Revision-Date: 2012-07-07 10:01+0000\n"
+"POT-Creation-Date: 2012-09-04 21:44+1200\n"
+"PO-Revision-Date: 2012-11-30 20:12+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-07-08 04:47+0000\n"
-"X-Generator: Launchpad (build 15558)\n"
+"X-Launchpad-Export-Date: 2012-12-01 05:22+0000\n"
+"X-Generator: Launchpad (build 16319)\n"
 "Language: \n"
 
 #: settings.py:57
 msgid "Catalan"
-msgstr ""
+msgstr "Katalane"
 
 #: settings.py:58
 msgid "Czech"
-msgstr ""
+msgstr "Çekisht"
 
 #: settings.py:59
 msgid "German"
@@ -31,42 +31,46 @@ msgstr "Anglisht"
 
 #: settings.py:61
 msgid "Spanish"
-msgstr ""
+msgstr "Spanjisht"
 
 #: settings.py:62
 msgid "Basque"
-msgstr ""
+msgstr "Baske"
 
 #: settings.py:63
 msgid "French"
 msgstr "Frëngjisht"
 
 #: settings.py:64
+msgid "Italian"
+msgstr "Italisht"
+
+#: settings.py:65
 msgid "Japanese"
 msgstr "Japonisht"
 
-#: settings.py:65
-msgid "Brazilian Portuguese"
-msgstr ""
-
 #: settings.py:66
-msgid "Albanian"
-msgstr ""
+msgid "Brazilian Portuguese"
+msgstr "Portugezçe Braziliane"
 
 #: settings.py:67
-msgid "Ukrainian"
-msgstr ""
+msgid "Albanian"
+msgstr "Shqip"
 
-#: account/browserid_auth.py:77
+#: settings.py:68
+msgid "Ukrainian"
+msgstr "Ukrainase"
+
+#: account/browserid_auth.py:79
 #, python-format
 msgid "unexpected \"%s\" status code"
 msgstr "kod i papritur \"%s\" gjendjeje"
 
-#: account/browserid_auth.py:80
+#: account/browserid_auth.py:82
 msgid "missing email address"
 msgstr "mungon adresë email"
 
-#: account/browserid_auth.py:86
+#: account/browserid_auth.py:88
 #, python-format
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" nuk është adresë email e vlefshme"
@@ -200,28 +204,28 @@ msgstr "Faqe Hyrëse"
 msgid "freeing the web one face at a time"
 msgstr "çlirim i Web-it, një fytyrë në herë"
 
-#: templates/base.html:29
+#: templates/base.html:30
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:30 templates/base.html.py:34
+#: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
 msgstr "Lidhuni Me Ne"
 
-#: templates/base.html:31
+#: templates/base.html:32
 msgid "Logout"
 msgstr "Dalje"
 
-#: templates/base.html:35 templates/account/login.html:8
-#: templates/account/login.html.py:42 templates/openid/login.html:28
+#: templates/base.html:36 templates/account/login.html:11
+#: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Hyrje"
 
-#: templates/base.html:47
+#: templates/base.html:48
 msgid "GNU Affero General Public License"
 msgstr "Leja GNU Affero General Public License"
 
-#: templates/base.html:47
+#: templates/base.html:48
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -232,9 +236,9 @@ msgstr ""
 "<a href=\"https://launchpad.net/libravatar\">Libravatar</a>, version "
 "%(libravatar_version)s"
 
-#: templates/base.html:49
+#: templates/base.html:50
 msgid "Flattr this!"
-msgstr ""
+msgstr "Flattr-ojeni këtë!"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
@@ -254,22 +258,22 @@ msgid "Back to your profile"
 msgstr "Mbrapsht te profili juaj"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
-#: templates/account/profile.html:51
+#: templates/account/profile.html:50
 msgid "Add a new email address"
 msgstr "Shtoni një adresë email të re"
 
 #: templates/account/add_email.html:10
 #, python-format
 msgid ""
-"If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
+"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" "
 "href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Nëse keni një llogari <b>BrowserID</b>, mundeni ta <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">përdorni që të shtoni një adresë të re "
+"Nëse keni një llogari <b>Persona</b>, mund <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">ta përdorni atë që të shtoni një adresë të re "
 "email</a> te profili juaj."
 
-#: templates/account/add_email.html:18
+#: templates/account/add_email.html:12
 msgid ""
 "Otherwise, type your email address in the box below and we will send you an "
 "email with a link to click on in order to verify that you own that email "
@@ -279,14 +283,14 @@ msgstr ""
 "dërgojmë një email me një lidhje të klikueshme që të verifikohet se jeni i "
 "zoti i kësaj adrese email."
 
-#: templates/account/add_email.html:25 templates/account/add_openid.html:19
+#: templates/account/add_email.html:19 templates/account/add_openid.html:19
 msgid "Add"
 msgstr "Shtoje"
 
-#: templates/account/add_email.html:26 templates/account/add_openid.html:20
+#: templates/account/add_email.html:20 templates/account/add_openid.html:20
 #: templates/account/crop_photo.html:19 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
-#: templates/account/login.html:44 templates/account/new.html:43
+#: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
 #: templates/account/upload_photo.html:25 templates/openid/login.html:30
@@ -294,7 +298,7 @@ msgid "Cancel"
 msgstr "Anuloje"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:8
-#: templates/account/profile.html:54
+#: templates/account/profile.html:53
 msgid "Add a new OpenID"
 msgstr "Shtoni një Open ID të Ri"
 
@@ -389,25 +393,30 @@ msgstr ""
 "Ja figurat që keni ngarkuar, klikoni mbi atë që dëshironi të përshoqëroni me "
 "këtë adresë OpenID:"
 
-#: templates/account/browserid_emailalreadyconfirmed.html:5
+#: templates/account/browserid_emailalreadyconfirmed.json:1
 msgid "This email address already exists in a user account."
 msgstr "Kjo adresë email gjenden një herë te një llogari përdoruesi."
 
-#: templates/account/browserid_invalidassertion.html:5
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Invalid BrowserID assertion."
 msgstr "Pohim i Pavlefshëm BrowserID."
 
-#: templates/account/browserid_invalidassertion.html:7
+#: templates/account/browserid_invalidassertion.json:1
 msgid "Error: "
 msgstr "Gabim: "
 
-#: templates/account/browserid_noassertion.html:5
+#: templates/account/browserid_noassertion.json:1
 msgid ""
 "Missing BrowserID assertion. An assertion must be sent to the server via a "
 "POST request."
 msgstr ""
 "Mungon pohimi BrowserID. Pohimi duhet dërguar te shërbyesi përmes një "
 "kërkese POST."
+
+#: templates/account/browserid_userauthfailed.json:1
+msgid "Persona authentication failed. Please try again later."
+msgstr ""
+"Mirëfilltësimi përmes Persona-sh dështoi. Ju lutem, riprovoni më vonë."
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -493,7 +502,7 @@ msgstr "Fshije foton"
 msgid "Are you sure you want to delete this photo?"
 msgstr "Jeni i sigurt se doni të fshihet kjo foto?"
 
-#: templates/account/delete_photo.html:16 templates/account/profile.html:62
+#: templates/account/delete_photo.html:16 templates/account/profile.html:61
 msgid "Delete"
 msgstr "Fshije"
 
@@ -580,7 +589,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Eksportoni të dhënat tuaja Libaravatar"
 
-#: templates/account/export.html:8 templates/account/profile.html:79
+#: templates/account/export.html:8 templates/account/profile.html:78
 msgid "Export your data"
 msgstr "Eksportoni të dhënat tuaja"
 
@@ -616,32 +625,32 @@ msgstr ""
 msgid "Libravatar Login"
 msgstr "Hyrje Libravatar"
 
-#: templates/account/login.html:12
+#: templates/account/login.html:15
 #, python-format
 msgid ""
 "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr ""
 "Ende nuk keni llogari? <a href=\"%(signup_url)s\">Regjistrohuni tani!</a>"
 
-#: templates/account/login.html:16
+#: templates/account/login.html:19
 #, python-format
 msgid ""
 "Do you hate having lots of passwords? You can login with <a "
 "href=\"%(openid_url)s\">OpenID</a>\n"
 "<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span> instead!"
+"href=\"#\">Persona</a></span> instead!"
 msgstr ""
-"A ju ngre nervat pasja e shumë fjalëkalimeve? Në vend të kësaj, mund të bëni "
-"hyrjen me <a href=\"%(openid_url)s\">OpenID</a>\n"
+"Nuk ju pëlqen të keni shumë fjalëkalime? Atëherë mund të bëni hyrje me <a "
+"href=\"%(openid_url)s\">OpenID</a>\n"
 "<span id=\"browserid-option\"> ose <a id=\"browserid-link\" "
-"href=\"#\">BrowserID</a></span>!"
+"href=\"#\">Persona</a></span>!"
 
-#: templates/account/login.html:26
+#: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Emri juaj i përdoruesit dhe fjalëkalimi nuk përputhen. Ju lutemi, riprovoni."
 
-#: templates/account/login.html:50
+#: templates/account/login.html:47
 #, python-format
 msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
@@ -750,11 +759,12 @@ msgstr ""
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
-"Instead, you must use one of the following OpenIDs or BrowserIDs to login:"
+"Instead, you must use one of the following OpenIDs or Persona email "
+"addresses to login:"
 msgstr ""
-"Megjithatë, nuk ka fjalëkalim përshoqëruar me këtë llogari.\n"
-"Në vend të kësaj, për hyrje duhet të përdorni një nga OpenID-të ose "
-"BrowserID-të vijuese:"
+"Nuk ka, megjithatë, fjalëkalim përshoqëruar me këtë llogari.\n"
+"Në vend të kësaj, duhet të përdorni një nga adresat email OpenID ose Persona "
+"vijuese për hyrje:"
 
 #: templates/account/password_reminder.txt:11
 #: templates/account/password_reset.txt:12
@@ -774,12 +784,12 @@ msgstr "Ricaktoni fjalëkalimin"
 #, python-format
 msgid ""
 "Did you know that you can also <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">sign in with BrowserID</a> and never have to "
+"href=\"%(browserid_target)s\">sign in with Persona</a> and never have to "
 "remember a password again?"
 msgstr ""
-"E dini që mundeni gjithashtu <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">të hyni përmes BrowserID-eve</a> dhe të mos ju "
-"duhet më kurrë të mbani mend fjalëkalimin?"
+"E dini se mund të <a id=\"browserid-link\" "
+"href=\"%(browserid_target)s\">hyni me Persona</a> dhe të mos ju duhet kurrë "
+"më të mbani mend një fjalëkalim?"
 
 #: templates/account/password_reset.html:18
 msgid ""
@@ -854,6 +864,15 @@ msgstr ""
 msgid "Invalid photo ID."
 msgstr "ID e pavlefshme fotoje."
 
+#: templates/account/photo_invalidfile.html:5
+msgid "Uploaded photo is broken or invalid."
+msgstr "Fotoja e ngarkuar është e dëmtuar ose e pavlefshme."
+
+#: templates/account/photo_invalidfile.html:7
+#, python-format
+msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
+msgstr "Ju lutemi, <a href=\"%(upload_url)s\">ngarkoni</a> një tjetër."
+
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
@@ -886,57 +905,57 @@ msgstr "Importimi i fotos dështoi."
 msgid "%(username)s's Libravatar Profile"
 msgstr "Profili Libraavatar i %(username)s"
 
-#: templates/account/profile.html:10
+#: templates/account/profile.html:8
 #, python-format
 msgid "%(username)s's Profile"
 msgstr "Profili i %(username)s"
 
-#: templates/account/profile.html:13
+#: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "Zotëroni adresat email dhe OpenID-të e ripohuara të mëposhtme:"
 
-#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:18 templates/account/profile.html.py:27
 msgid "Change photo"
 msgstr "Ndryshoni foton"
 
-#: templates/account/profile.html:21 templates/account/profile.html.py:29
-#: templates/account/profile.html:40 templates/account/profile.html.py:44
+#: templates/account/profile.html:20 templates/account/profile.html.py:28
+#: templates/account/profile.html:39 templates/account/profile.html.py:43
 msgid "Remove"
 msgstr "Hiqe"
 
-#: templates/account/profile.html:36
+#: templates/account/profile.html:35
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr "Zotëroni adresat email dhe OpenID-të e paripohuara të mëposhtme:"
 
-#: templates/account/profile.html:58
+#: templates/account/profile.html:57
 msgid "Here are the photos you have uploaded/imported:"
 msgstr ""
 "Ja fotot që keni ngarkuar/importuarHere are the photos you have "
 "uploaded/imported:"
 
-#: templates/account/profile.html:61
+#: templates/account/profile.html:60
 #, python-format
 msgid "Uploaded on %(datetime)s"
 msgstr "Ngarkuar më %(datetime)s"
 
-#: templates/account/profile.html:68 templates/account/upload_photo.html:4
+#: templates/account/profile.html:67 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "Nngarkoni foto të re"
 
-#: templates/account/profile.html:71
+#: templates/account/profile.html:70
 msgid "Account settings"
 msgstr "Rregullime llogarie"
 
-#: templates/account/profile.html:74
+#: templates/account/profile.html:73
 msgid "Change your password"
 msgstr "Ndërroni fjalëkalimin tuaj"
 
-#: templates/account/profile.html:76
+#: templates/account/profile.html:75
 msgid "Set a password"
 msgstr "Caktoni fjalëkalim"
 
-#: templates/account/profile.html:81
+#: templates/account/profile.html:80
 msgid "Permanently delete your account"
 msgstr "Fshini llogarinë tuaj përgjithmonë"
 
@@ -994,19 +1013,19 @@ msgstr ""
 msgid "federated avatar hosting service"
 msgstr "shërbime të federuara strehimi avatarësh"
 
-#: templates/public/home.html:13
+#: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
 msgstr "Krijoni një <a href=\"%(new_account_url)s\">llogari falas</a>"
 
-#: templates/public/home.html:15
+#: templates/public/home.html:13
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source "
 "code</a>"
 msgstr ""
 "Shkarkoni <a href=\"https://code.launchpad.net/libravatar\">kodin burim</a>"
 
-#: templates/public/home.html:16
+#: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
@@ -1014,7 +1033,7 @@ msgstr ""
 "Raportoni <a href=\"https://bugs.launchpad.net/libravatar\">të meta</a> ose "
 "bëni <a href=\"https://answers.launchpad.net/libravatar\">pyetje</a>"
 
-#: templates/public/home.html:17
+#: templates/public/home.html:15
 msgid ""
 "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
 "href=\"http://blog.libravatar.org\">blog</a>"
@@ -1022,15 +1041,15 @@ msgstr ""
 "Lexoni <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
 "href=\"http://blog.libravatar.org\">blogun</a> tonë"
 
-#: templates/public/home.html:18
+#: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr "Na ndiqni në <a href=\"http://identi.ca/libravatar\">Identica</a>"
 
-#: templates/public/home.html:19
+#: templates/public/home.html:17
 msgid "Contribute!"
 msgstr "Kontribuoni!"
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 #, python-format
 msgid ""
 "Libravatar is a service which delivers your avatar (profile picture) to "
@@ -1044,16 +1063,16 @@ msgstr ""
 "në forume ose komente blogu në çfarëdo site-i ku keni dhënë adresën tuaj "
 "email."
 
-#: templates/public/home.html:23
+#: templates/public/home.html:21
 msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
 "<a href=\"http://wiki.libravatar.org/description/\">Lexoni më tepër...</a>"
 
-#: templates/public/home.html:25
+#: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Shërbime të Federuara Me Burim të Hapët"
 
-#: templates/public/home.html:27
+#: templates/public/home.html:25
 msgid ""
 "This service is powered by <a "
 "href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
@@ -1067,11 +1086,11 @@ msgstr ""
 "href=\"http://wiki.libravatar.org/running_your_own/\">xhirojnë instancën e "
 "tyre</a> të Libravatar-it dhe të shërbejnë ata vetë avatarë."
 
-#: templates/public/home.html:29
+#: templates/public/home.html:27
 msgid "Simple API for Developers"
 msgstr "API e thjeshtë për Zhvilluesa"
 
-#: templates/public/home.html:31
+#: templates/public/home.html:29
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1084,7 +1103,7 @@ msgstr ""
 "href=\"http://wiki.libravatar.org/libraries/\">libraritë dhe shtojcat</a> e "
 "mundshme për një numër platformash dhe gjuhësh."
 
-#: templates/public/home.html:33
+#: templates/public/home.html:31
 msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
