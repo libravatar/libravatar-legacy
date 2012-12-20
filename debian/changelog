@@ -1,3 +1,10 @@
+libravatar (20121220.1) unstable; urgency=low
+
+  * Add new tr translation
+  * Update sq, pt_BR and es translations
+
+ -- Francois Marier <francois@debian.org>  Thu, 20 Dec 2012 23:55:16 +1300
+
 libravatar (20121030.1) unstable; urgency=low
 
   * Set the email address in slave cronjobs (LP: #1072680)
