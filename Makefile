@@ -20,7 +20,7 @@ all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) mofiles
 	gzip --best < $< > $@
 
 pofiles:
-	cd libravatar && for l in ca cs en es eu de fr it ja pt_BR sq uk ; do django-admin makemessages -l $$l -e html,txt,json ; done
+	cd libravatar && for l in ca cs en es eu de fr it ja pt_BR sq tr uk ; do django-admin makemessages -l $$l -e html,txt,json ; done
 
 mofiles:
 	cd libravatar && django-admin compilemessages

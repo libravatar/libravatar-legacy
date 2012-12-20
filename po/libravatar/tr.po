@@ -1,65 +1,67 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Turkish translation for libravatar
+# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
+# This file is distributed under the same license as the libravatar package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
 #
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-20 23:50+1300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2012-12-12 16:36+0000\n"
+"Last-Translator: zapman <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2012-12-13 05:01+0000\n"
+"X-Generator: Launchpad (build 16361)\n"
+"X-Poedit-Language: Turkish\n"
 
 #: settings.py:57
 msgid "Catalan"
-msgstr ""
+msgstr "Katalanca"
 
 #: settings.py:58
 msgid "Czech"
-msgstr ""
+msgstr "Çekçe"
 
 #: settings.py:59
 msgid "German"
-msgstr ""
+msgstr "Almanca"
 
 #: settings.py:60
 msgid "English"
-msgstr ""
+msgstr "İngilizce"
 
 #: settings.py:61
 msgid "Spanish"
-msgstr ""
+msgstr "İspanyolca"
 
 #: settings.py:62
 msgid "Basque"
-msgstr ""
+msgstr "Baskça"
 
 #: settings.py:63
 msgid "French"
-msgstr ""
+msgstr "Fransızca"
 
 #: settings.py:64
 msgid "Italian"
-msgstr ""
+msgstr "İtalyanca"
 
 #: settings.py:65
 msgid "Japanese"
-msgstr ""
+msgstr "Japonca"
 
 #: settings.py:66
 msgid "Brazilian Portuguese"
-msgstr ""
+msgstr "Brezilya Portekizcesi"
 
 #: settings.py:67
 msgid "Albanian"
-msgstr ""
+msgstr "Arnavutça"
 
 #: settings.py:68
 msgid "Turkish"
@@ -67,126 +69,130 @@ msgstr ""
 
 #: settings.py:69
 msgid "Ukrainian"
-msgstr ""
+msgstr "Ukraynaca"
 
 #: account/browserid_auth.py:79
 #, python-format
 msgid "unexpected \"%s\" status code"
-msgstr ""
+msgstr "beklenmedik \"%s\" durum kodu"
 
 #: account/browserid_auth.py:82
 msgid "missing email address"
-msgstr ""
+msgstr "eksik e-posta adresi"
 
 #: account/browserid_auth.py:88
 #, python-format
 msgid "\"%s\" is not a valid email address"
-msgstr ""
+msgstr "\"%s\" geçerli bir e-posta adresi değildir"
 
 #: account/forms.py:36 account/forms.py:131 tools/forms.py:25
 msgid "Email"
-msgstr ""
+msgstr "E-posta"
 
 #: account/forms.py:46
 #, python-format
 msgid "Valid email addresses end with @%(domain)s"
-msgstr ""
+msgstr "Geçerli e-posta adresleri @%(domain)s ile biter"
 
 #: account/forms.py:71
 #, python-format
 msgid "Confirm your email address on %(site_name)s"
-msgstr ""
+msgstr "%(site_name)s üzerinde e-posta adresinizi doğrulayınız"
 
 #: account/forms.py:79 templates/openid/login.html:26 tools/forms.py:26
 msgid "OpenID"
-msgstr ""
+msgstr "OpenID"
 
 #: account/forms.py:93
 msgid "Valid OpenID URLs are on this domain: "
-msgstr ""
+msgstr "Geçerli OpenID adresleri şu alandadır: "
 
 #: account/forms.py:114
 msgid "Photo"
-msgstr ""
+msgstr "Fotoğraf"
 
 #: account/forms.py:114
 msgid "You must choose an image to upload."
-msgstr ""
+msgstr "Yüklenecek bir görsel seçmelisiniz."
 
 #: account/forms.py:115
 msgid "suitable for all ages (i.e. no offensive content)"
-msgstr ""
+msgstr "her yaşa uygun (yani uygunsuz içerik olmamalı)"
 
 #: account/forms.py:116
 msgid "We only host \"G-rated\" images and so this field must be checked."
 msgstr ""
+"Sadece \"G-rated \" görüntüleri barındırırız, dolayısıyla bu alan "
+"seçilmelidir."
 
 #: account/forms.py:117
 msgid "can be freely copied"
-msgstr ""
+msgstr "özgürce kopyalanabilir"
 
 #: account/forms.py:118
 msgid ""
 "This field must be checked since we need to be able to distribute photos to "
 "third parties."
 msgstr ""
+"Bu alanın seçilmesi gerekir çünkü üçüncü taraflara fotoğrafları "
+"dağıtabilmemiz gerekir."
 
 #: account/forms.py:143
 #, python-format
 msgid "Password reset for %(site_name)s"
-msgstr ""
+msgstr "%(site_name)s için parola sıfırlandı"
 
 #: account/forms.py:168
 msgid "Password"
-msgstr ""
+msgstr "Parola"
 
 #: account/forms.py:179
 msgid "Invalid password"
-msgstr ""
+msgstr "Geçersiz parola"
 
 #: account/models.py:122
 msgid "photo"
-msgstr ""
+msgstr "fotoğraf"
 
 #: account/models.py:123
 msgid "photos"
-msgstr ""
+msgstr "fotoğraf"
 
 #: account/models.py:266
 msgid "confirmed email"
-msgstr ""
+msgstr "teyit edilmiş e-posta"
 
 #: account/models.py:267
 msgid "confirmed emails"
-msgstr ""
+msgstr "teyit edilmiş e-posta"
 
 #: account/models.py:306
 msgid "unconfirmed email"
-msgstr ""
+msgstr "teyit edilmemiş e-posta"
 
 #: account/models.py:307
 msgid "unconfirmed emails"
-msgstr ""
+msgstr "teyit edilmemiş e-posta"
 
 #: account/models.py:310 account/models.py:330
 msgid "(unconfirmed)"
-msgstr ""
+msgstr "teyit edilmemiş"
 
 #: account/models.py:326
 msgid "unconfirmed OpenID"
-msgstr ""
+msgstr "teyit edilmemiş OpenID"
 
 #: account/models.py:327
 msgid "unconfirmed OpenIDs"
-msgstr ""
+msgstr "teyit edilmemiş OpenID"
 
 #: account/models.py:341
 msgid "confirmed OpenID"
-msgstr ""
+msgstr "teyit edilmiş OpenID"
 
 #: account/models.py:342
 msgid "confirmed OpenIDs"
-msgstr ""
+msgstr "teyit edilmiş OpenID"
 
 #: templates/404.html:5
 #, python-format
@@ -194,39 +200,41 @@ msgid ""
 "Page not found. If you think you got here by mistake, please <a href="
 "\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
+"Sayfa bulunamadı. Buraya bir hata nedeniyle geldiğiniz kanısındaysanız "
+"lütfen <a href=\"mailto:%(support_email)s\">bize bunu bildirin</a>"
 
 #: templates/base.html:11
 msgid "Freeing the Web, one face at a time!"
-msgstr ""
+msgstr "Ağı özgürleştiriyoruz, tek tek her yüzle"
 
 #: templates/base.html:19
 msgid "Homepage"
-msgstr ""
+msgstr "Ana sayfa"
 
 #: templates/base.html:23
 msgid "freeing the web one face at a time"
-msgstr ""
+msgstr "ağı özgürleştiriyoruz, tek tek her yüzle"
 
 #: templates/base.html:30
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: templates/base.html:31 templates/base.html.py:35
 msgid "Contact Us"
-msgstr ""
+msgstr "İrtibat"
 
 #: templates/base.html:32
 msgid "Logout"
-msgstr ""
+msgstr "Çıkış"
 
 #: templates/base.html:36 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
-msgstr ""
+msgstr "Giriş"
 
 #: templates/base.html:48
 msgid "GNU Affero General Public License"
-msgstr ""
+msgstr "GNU Affero Genel Kamu Lisansı"
 
 #: templates/base.html:48
 #, python-format
@@ -235,18 +243,21 @@ msgid ""
 "launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
+"<b>%(site_name)s</b>, <a href=\"https://launchpad.net/libravatar"
+"\">Libravatar</a> yazılımının\n"
+" %(libravatar_version)s sürümü kullanan bir havari hizmetidir."
 
 #: templates/base.html:50
 msgid "Flattr this!"
-msgstr ""
+msgstr "Bunu Flattr'la"
 
 #: templates/error.html:4 templates/error.html.py:7
 msgid "Error!"
-msgstr ""
+msgstr "Hata"
 
 #: templates/error.html:9
 msgid "Libravatar has encountered an error."
-msgstr ""
+msgstr "Libravatar bir hata ile karşılaştı"
 
 #: templates/error.html:15 templates/account/assign_photo_email.html:15
 #: templates/account/assign_photo_openid.html:15
@@ -255,12 +266,12 @@ msgstr ""
 #: templates/account/password_change_done.html:13
 #: templates/account/photos_imported.html:13
 msgid "Back to your profile"
-msgstr ""
+msgstr "Profilinize dönüş"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
 #: templates/account/profile.html:50
 msgid "Add a new email address"
-msgstr ""
+msgstr "Yeni bir e-posta adresi ekle"
 
 #: templates/account/add_email.html:10
 #, python-format
@@ -269,6 +280,9 @@ msgid ""
 "\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
+"Bir <b>Persona</b> hesabınız varsa, <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">bunu profilinize yeni bir e-posta ilâve etmek için "
+"kullanabilirsiniz</a>."
 
 #: templates/account/add_email.html:12
 msgid ""
@@ -276,10 +290,12 @@ msgid ""
 "email with a link to click on in order to verify that you own that email "
 "address."
 msgstr ""
+"Aksi takdirde e-posta adresinizi aşağıdaki kutuya girin ve bu adresin size "
+"ait olduğunu doğrulamak için bağlantı içeren bir e-posta göndeririz size."
 
 #: templates/account/add_email.html:19 templates/account/add_openid.html:19
 msgid "Add"
-msgstr ""
+msgstr "İlâve et"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
 #: templates/account/crop_photo.html:19 templates/account/delete.html:24
@@ -289,35 +305,41 @@ msgstr ""
 #: templates/account/password_reset.html:26
 #: templates/account/upload_photo.html:25 templates/openid/login.html:30
 msgid "Cancel"
-msgstr ""
+msgstr "İptal et"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:8
 #: templates/account/profile.html:53
 msgid "Add a new OpenID"
-msgstr ""
+msgstr "Yeni bir OpenID ekle"
 
 #: templates/account/add_openid.html:10
 msgid ""
 "Once you have confirmed this OpenID URL, you will be able to log into your "
 "account using that OpenID URL."
 msgstr ""
+"Bu OpenID adresini teyit ettiğinizde hesabınıza bu OpenID adresini "
+"kullanarak giriş yapabileceksiniz."
 
 #: templates/account/add_openid.html:17
 msgid ""
 "You will be redirected to the authorisation page for the provider. If the "
 "process fails, you can remove the ID from this list and try adding it again."
 msgstr ""
+"Sağlayıcının izin sayfasına yönlendirileceksiniz. İşlem başarısız olursa bu "
+"kimliği listeden kaldırıp yeniden eklemeyi deneyebilirsiniz."
 
 #: templates/account/add_openid_redirection.html:4
 #: templates/account/add_openid_redirection.html:10
 msgid "Redirecting to OpenID Provider..."
-msgstr ""
+msgstr "OpenID sağlayıcısına yönlendiriliyorsunuz..."
 
 #: templates/account/add_openid_redirection.html:12
 msgid ""
 "Libravatar will attempt to verify your OpenID credentials. You may be asked "
 "by your OpenID provider to login and authorise this check."
 msgstr ""
+"Lıbravatar OpenID bilgilerini teyit etmeye çalışacaktır. OpenID sağlayıcınız "
+"tarafından giriş yapıp bu kontrole izin vermeniz istenebilir."
 
 #: templates/account/add_openid_redirection.html:15
 #, python-format
@@ -326,117 +348,130 @@ msgid ""
 "it takes longer than that, go <a href=\"%(profile_url)s\">back to your "
 "profile</a>, remove the OpenID URL and try adding it again."
 msgstr ""
+"Sağlayıcıya dayalı olarak bu işlem <b>bir dakikaya kadar sürebilir</b>. Daha "
+"fazla sürerse go <a href=\"%(profile_url)s\">profilinize dönüp</a> OpenID "
+"adresini kaldırmayı ve tekrar eklemeyi deneyin."
 
 #: templates/account/add_openid_redirection.html:17
 msgid "Verify credentials"
-msgstr ""
+msgstr "Bilgileri kontrol et"
 
 #: templates/account/assign_photo_email.html:4
 #: templates/account/assign_photo_email.html:8
 #, python-format
 msgid "Choose a photo for %(email_address)s"
-msgstr ""
+msgstr "%(email_address)s için bir fotoğraf seçin"
 
 #: templates/account/assign_photo_email.html:13
 #: templates/account/assign_photo_openid.html:13
 #, python-format
 msgid "You need to <a href=\"%(upload_url)s\">upload some photos</a> first!"
 msgstr ""
+"Evvela <a href=\"%(upload_url)s\">biraz fotoğraf</a> yüklemeniz gerekiyor!"
 
 #: templates/account/assign_photo_email.html:19
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this email address:"
 msgstr ""
+"İşte yüklediğiniz fotoğraflar, bu e-posta adresi ile ilişkilendirmek "
+"istediğinizi tıklayın."
 
 #: templates/account/assign_photo_email.html:28
 #: templates/account/assign_photo_email.html:37
 #: templates/account/assign_photo_openid.html:28
 #: templates/account/assign_photo_openid.html:37
 msgid "(current)"
-msgstr ""
+msgstr "(güncel)"
 
 #: templates/account/assign_photo_email.html:35
 #: templates/account/assign_photo_openid.html:35
 msgid "None"
-msgstr ""
+msgstr "Hiçbiri"
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
 #, python-format
 msgid "Choose a photo for %(openid_url)s"
-msgstr ""
+msgstr "%(openid_url)s için bir fotoğraf seçin"
 
 #: templates/account/assign_photo_openid.html:19
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this OpenID:"
 msgstr ""
+"İşte yüklediğiniz fotoğraflar, bu OpenID ile ilişkilendirmek istediğinizi "
+"tıklayın."
 
 #: templates/account/browserid_emailalreadyconfirmed.json:1
 #: templates/account/email_alreadyconfirmed.html:5
 msgid "This email address already exists in a user account."
-msgstr ""
+msgstr "Bu e-posta adresi hâlihazırda bir kullanıcı hesabında mevcuttur."
 
 #: templates/account/browserid_invalidassertion.json:1
 msgid "Invalid BrowserID assertion."
-msgstr ""
+msgstr "Geçersiz BrowserID belirtmesi."
 
 #: templates/account/browserid_invalidassertion.json:1
 msgid "Error: "
-msgstr ""
+msgstr "Hata: "
 
 #: templates/account/browserid_noassertion.json:1
 msgid ""
 "Missing BrowserID assertion. An assertion must be sent to the server via a "
 "POST request."
 msgstr ""
+"Eksik BrowserID belirtmesi. Bir POST talebi vasıtasıyla sunucuya bir "
+"belirtme gönderilmelidir."
 
 #: templates/account/browserid_userauthfailed.json:1
 msgid "Persona authentication failed. Please try again later."
 msgstr ""
+"Persona doğrulaması başarısız oldu. Lütfen daha sonra tekrar deneyiniz."
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
-msgstr ""
+msgstr "Fotoğrafı kırp"
 
 #: templates/account/crop_photo.html:18
 msgid "Crop"
-msgstr ""
+msgstr "Kırp"
 
 #: templates/account/delete.html:4
 msgid "Delete your Libravatar account"
-msgstr ""
+msgstr "Libravatar hesabınızı silin"
 
 #: templates/account/delete.html:8
 msgid "Delete your account"
-msgstr ""
+msgstr "Hesabınızı silin"
 
 #: templates/account/delete.html:10
 msgid "There is no way to undo this operation."
-msgstr ""
+msgstr "Bu işlemi geri almanın hiçbir yolu yoktur."
 
 #: templates/account/delete.html:15
 msgid "Please confirm your identity by entering your current password."
-msgstr ""
+msgstr "Kimliğinizi güncel parolanızı girerek teyit ediniz."
 
 #: templates/account/delete.html:21
 msgid ""
 "Are you sure you want to <strong>permanently delete</strong> your Libravatar "
 "account?"
 msgstr ""
+"Libravatar hesabınızı <strong>daimi olarak silmek</strong> istediğinizden "
+"emin misiniz?"
 
 #: templates/account/delete.html:23
 msgid "Yes, delete all of my stuff"
-msgstr ""
+msgstr "Evet, bana ait her şeyi sil"
 
 #: templates/account/delete_done.html:4
 msgid "Libravatar Account Deleted"
-msgstr ""
+msgstr "Libravatar hesabı silindi"
 
 #: templates/account/delete_done.html:8
 msgid "Account deleted"
-msgstr ""
+msgstr "Hesap silindi"
 
 #: templates/account/delete_done.html:10
 msgid ""
@@ -444,37 +479,42 @@ msgid ""
 "few days</b> for your photos to disappear from all mirrors and a few weeks "
 "for your photos to disappear from web caches."
 msgstr ""
+"Hesabınız daimi olarak ve tamamen silindi. Fotoğraflarınızın tüm yansılardan "
+"silinmesi <b>birkaç gün alabilir</b> ve tüm tampon belleklerden silinmesi "
+"birkaç hafta gerektirebilir."
 
 #: templates/account/delete_done.html:12
 msgid ""
 "In case you want to take your data with you, it's currently being exported "
 "and will be <b>ready in a few moments</b>:"
 msgstr ""
+"Verilerinizi kendiniz almak istiyorsanız şu anda dışa aktarılmaktadırlar ve "
+"<b>kısa bir süre sonra hazır olacaklardır</b>."
 
 #: templates/account/delete_done.html:18 templates/account/export_done.html:16
 msgid "This export will be deleted in a few hours."
-msgstr ""
+msgstr "Bu dışa aktarım birkaç saat içinde silinecektir."
 
 #: templates/account/delete_done.html:20
 #: templates/account/password_reset_submitted.html:23
 msgid "Back to the homepage"
-msgstr ""
+msgstr "Ana sayfaya dönüş"
 
 #: templates/account/delete_photo.html:4
 msgid "Delete a photo"
-msgstr ""
+msgstr "Bir fotoğraf sil"
 
 #: templates/account/delete_photo.html:8
 msgid "Delete photo"
-msgstr ""
+msgstr "Fotoğraf sil"
 
 #: templates/account/delete_photo.html:10
 msgid "Are you sure you want to delete this photo?"
-msgstr ""
+msgstr "Bu fotoğrafları silmek istediğinizden emin misiniz?"
 
 #: templates/account/delete_photo.html:16 templates/account/profile.html:61
 msgid "Delete"
-msgstr ""
+msgstr "Sil"
 
 #: templates/account/email_confirmation.txt:1
 #, python-format
@@ -491,93 +531,118 @@ msgid ""
 "\n"
 "- The %(site_name)s accounts team\n"
 msgstr ""
+"Birisi, muhtemelen siz,  bu e-postanın kendi %(site_name)s hesabına "
+"eklenmesini\n"
+"talep etti.\n"
+"\n"
+"İstediğiniz buysa söz konusu e-posta adresinin size ait olduğunu teyit etmek "
+"için\n"
+"aşağıdaki bağlantıyı tıklayınız:\n"
+"\n"
+"%(verification_link)s\n"
+"\n"
+"Aksi takdirde lütfen özürlerimizi kabul edip bu mesajı görmezden geliniz.\n"
+"\n"
+"-  %(site_name)s  hesap ekibi\n"
 
 #: templates/account/email_confirmed.html:4
 #: templates/account/email_confirmed.html:8
 msgid "Email confirmation"
-msgstr ""
+msgstr "E-posta doğrulaması"
 
 #: templates/account/email_confirmed.html:10
 msgid "Your email address was successfully confirmed!"
-msgstr ""
+msgstr "E-posta adresiniz başarılı bir şekilde doğrulandı!"
 
 #: templates/account/email_confirmed.html:14
 msgid "Would you like to import some of these externally hosted photos?"
 msgstr ""
+"Harici olarak barındırılan bu fotoğrafların bazılarını içe aktarmak ister "
+"misiniz?"
 
 #: templates/account/email_confirmed.html:31
 msgid "Import"
-msgstr ""
+msgstr "İçe aktar"
 
 #: templates/account/email_invalid.html:5
 msgid "Invalid email ID."
-msgstr ""
+msgstr "Geçersiz e-posta kimliği"
 
 #: templates/account/email_notadded.html:5
 msgid "This email address could not be added. Possible reasons:"
-msgstr ""
+msgstr "Bu e-posta adresi eklenemedi. Mümkün sebepler:"
 
 #: templates/account/email_notadded.html:7
 msgid ""
 "it is already in your list of unconfirmed email addresses (try removing it "
 "first)"
 msgstr ""
+"hâlihazırda teyit edilmemiş e-posta adresler listenizdedir (önce kaldırmayı "
+"deneyiniz)"
 
 #: templates/account/email_notadded.html:8
 #, python-format
 msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr ""
+"çok fazla teyit edilmemiş e-posta adresiniz var (azami: %(max_emails)s)"
 
 #: templates/account/email_notadded.html:9
 msgid "another account has confirmed this email address"
-msgstr ""
+msgstr "başka bir hesap bu e-posta adresini teyit etmiştir"
 
 #: templates/account/email_notconfirmed.html:5
 msgid ""
 "Invalid or missing confirmation key.<br>Did you copy the whole link "
 "carefully?"
 msgstr ""
+"Geçersiz ya da eksik teyit anahtarı.<br>Bağlantının tamamını dikkatle "
+"kopyaladınız mı?"
 
 #: templates/account/export.html:4
 msgid "Export your Libravatar data"
-msgstr ""
+msgstr "Libravatar verilerinizi dışa aktarın"
 
 #: templates/account/export.html:8 templates/account/profile.html:78
 msgid "Export your data"
-msgstr ""
+msgstr "Verilerinizi dışa aktarın"
 
 #: templates/account/export.html:10
 msgid ""
 "Libravatar will now export all of your personal data to a compressed XML "
 "file."
 msgstr ""
+"Libravatar şimdi tüm kişisel verilerinizi sıkıştırılmış bir XML dosyası "
+"olarak dışa aktaracaktır."
 
 #: templates/account/export.html:14
 msgid "Export"
-msgstr ""
+msgstr "Dışa aktar"
 
 #: templates/account/export_done.html:4
 msgid "Exporting Your Libravatar Data"
-msgstr ""
+msgstr "Libravatar verileriniz dışa aktarılıyor"
 
 #: templates/account/export_done.html:8
 msgid "Export in progress"
-msgstr ""
+msgstr "Dışa aktarım sürüyor"
 
 #: templates/account/export_done.html:10
 msgid ""
 "Libravatar is currently exporting your data. It <b>may take a few moments</"
 "b> for the file to be available:"
 msgstr ""
+"Libravatar şu anda verilerinizi dışa aktarıyor. Dosyanın kullanıma hazır "
+"olması <b>belli bir süre alabilir</b>"
 
 #: templates/account/login.html:4
 msgid "Libravatar Login"
-msgstr ""
+msgstr "Libravatar girişi"
 
 #: templates/account/login.html:15
 #, python-format
 msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr ""
+"Henüz hesabınız yok mu? <a href=\"%(signup_url)s\">Şimdi hesap oluşturun!</a>"
 
 #: templates/account/login.html:19
 #, python-format
@@ -587,10 +652,14 @@ msgid ""
 "<span id=\"browserid-option\"> or <a id=\"browserid-link\" href=\"#"
 "\">Persona</a></span> instead!"
 msgstr ""
+"Çok parola yönetmekten nefret mi ediyorsunuz? <a href=\"%(openid_url)s"
+"\">OpenID</a> ile \n"
+"<span id=\"browserid-option\"> veya <a id=\"browserid-link\" href=\"#"
+"\">Persona</a></span> ile giriş yapabilirsiniz!"
 
 #: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
-msgstr ""
+msgstr "KUllanıcı isminiz parolanızla uyuşmadı. Tekrar deneyiniz."
 
 #: templates/account/login.html:47
 #, python-format
@@ -598,6 +667,8 @@ msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
 "a>."
 msgstr ""
+"Parolanızı mı unuttunuz? <a href=\"%(password_reset_url)s\">E-posta ile "
+"sıfırlayın</a>."
 
 #: templates/account/max_photos.html:6
 #, python-format
@@ -605,18 +676,21 @@ msgid ""
 "You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
 "<br>You need to <b>delete</b> some before you can upload a new one."
 msgstr ""
+"<a href=\"%(profile_url)s\">Hesabnızda</a>çok fazla fotoğrafınız var."
+"<br>Yeni bir fotoğraf yüklemeden önce bazılarını <b>silmeniz</b> "
+"gerekmektedir."
 
 #: templates/account/new.html:4
 msgid "Create a new Libravatar account"
-msgstr ""
+msgstr "Yeni bir Libravatar hesabı oluştur"
 
 #: templates/account/new.html:8
 msgid "Create a new account"
-msgstr ""
+msgstr "Yeni bir hesap oluştur"
 
 #: templates/account/new.html:42
 msgid "Create account"
-msgstr ""
+msgstr "Hesap oluştur"
 
 #: templates/account/openid_cannotdelete.html:8
 #, python-format
@@ -626,56 +700,60 @@ msgid ""
 "href=\"%(delete_url)s\">permanently delete your account</a> if you really "
 "want to do this."
 msgstr ""
+"Tek OpenID'nizi silemezsiniz çünkü o bu hesaba erişmenin tek yoludur. Ya <a "
+"href=\"%(add_openid_url)s\">başka bir OpenID ekleyin</a> ya da <a href="
+"\"%(delete_url)s\">hesabınızı daimi olarak silin</a>, bunu gerçekten yapmak "
+"istiyorsanız."
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
-msgstr ""
+msgstr "OpenID'niz başarılı bir şekilde kontrol edilemedi."
 
 #: templates/account/openid_discoveryfailure.html:5
 msgid "Could not discover an OpenID from the URL you provided:"
-msgstr ""
+msgstr "Girdiğiniz bağlantıdan bir OpenID keşfedilemedi."
 
 #: templates/account/openid_invalid.html:5
 msgid "Invalid OpenID ID."
-msgstr ""
+msgstr "Geçersiz OpenID kimliği"
 
 #: templates/account/openid_notadded.html:5
 msgid "This OpenID could not be added. Possible reasons:"
-msgstr ""
+msgstr "Bu OpenID eklenemedi. Mümkün sebepler:"
 
 #: templates/account/openid_notadded.html:7
 msgid ""
 "it is already in your list of unconfirmed OpenIDs (try removing it first)"
-msgstr ""
+msgstr "zaten teyit edilmemiş OpenID listenizde (önce kaldırmayı deneyiniz)"
 
 #: templates/account/openid_notadded.html:8
 msgid "another account has linked this OpenID"
-msgstr ""
+msgstr "başka bir hesap bu OpenID ile ilişkilendirilmiştir"
 
 #: templates/account/password_change.html:4
 msgid "Change your Libravatar password"
-msgstr ""
+msgstr "Libravatar parolanızı değiştirin"
 
 #: templates/account/password_change.html:8
 msgid "Change password"
-msgstr ""
+msgstr "Parolayı değiştir"
 
 #: templates/account/password_change.html:46
 msgid "Change my password"
-msgstr ""
+msgstr "Parolamı değiştir"
 
 #: templates/account/password_change_done.html:4
 #: templates/account/password_change_done.html:8
 msgid "Password changed successfully"
-msgstr ""
+msgstr "Parola başarılı bir şekilde değiştirildi"
 
 #: templates/account/password_change_done.html:10
 msgid "Your password was changed."
-msgstr ""
+msgstr "Parolanız değiştirildi"
 
 #: templates/account/password_change_done.html:15
 msgid "Back to the login page"
-msgstr ""
+msgstr "Giriş sayfasına dön"
 
 #: templates/account/password_reminder.txt:1
 #: templates/account/password_reset.txt:1
@@ -684,6 +762,8 @@ msgid ""
 "Someone, probably you, requested a password reset for your\n"
 "%(site_name)s account."
 msgstr ""
+"Birisi, muhtemelen siz, %(site_name)s hesabınız için parola\n"
+"sıfılaması talep etti."
 
 #: templates/account/password_reminder.txt:4
 msgid ""
@@ -691,20 +771,23 @@ msgid ""
 "Instead, you must use one of the following OpenIDs or Persona email "
 "addresses to login:"
 msgstr ""
+"Ancak bu hesap ile ilişkilendirilmiş hiçbir parola yoktur.\n"
+"Bunun yerine giriş yapmak için aşağıdaki OpenID veya Persona e-posta "
+"adreslerinden birini kullanmanız gerekir:"
 
 #: templates/account/password_reminder.txt:11
 #: templates/account/password_reset.txt:12
 #, python-format
 msgid "- The %(site_name)s accounts team"
-msgstr ""
+msgstr "%(site_name)s hesap ekibi"
 
 #: templates/account/password_reset.html:4
 msgid "Reset your Libravatar password"
-msgstr ""
+msgstr "Libravatar parolanızı sıfırlayın"
 
 #: templates/account/password_reset.html:8
 msgid "Reset password"
-msgstr ""
+msgstr "Parola sıfırla"
 
 #: templates/account/password_reset.html:10
 #, python-format
@@ -713,58 +796,65 @@ msgid ""
 "\"%(browserid_target)s\">sign in with Persona</a> and never have to remember "
 "a password again?"
 msgstr ""
+"<a id=\"browserid-link\" href=\"%(browserid_target)s\">Persona ile giriş "
+"yapıp</a> bir daha hiç parola hatırlamanız gerekmeyebileceğini biliyor "
+"muydunuz?"
 
 #: templates/account/password_reset.html:18
 msgid ""
 "To continue with the password reset, enter one of the email addresses "
 "associated with your account."
 msgstr ""
+"Parola sıfırlama işlemini devam ettirmek için hesabınızla ilişikli e-posta "
+"adreslerinden birini giriniz."
 
 #: templates/account/password_reset.html:25
 msgid "Reset my password"
-msgstr ""
+msgstr "Parolamı sıfırla"
 
 #: templates/account/password_reset.txt:4
 msgid "If that's what you want, please go to the following page:"
-msgstr ""
+msgstr "Eğer istediğiniz buysa, şu sayfaya gidiniz:"
 
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
 msgstr ""
+"Aksi takdirde lütfen özürlerimizi kabul edip bu mesajı görmezden geliniz."
 
 #: templates/account/password_reset.txt:10
 #, python-format
 msgid "By the way, your username is: %(username)s"
-msgstr ""
+msgstr "Bu arada kullanıcı isminiz şudur: %(username)s"
 
 #: templates/account/password_reset_submitted.html:4
 msgid "Password reset requested"
-msgstr ""
+msgstr "Parola sıfırlaması talep edildi"
 
 #: templates/account/password_reset_submitted.html:8
 msgid "You have successfully requested a password reset for your account."
 msgstr ""
+"Hesabınız için parola sıfırlamasını başarılı bir şekilde talep ettiniz."
 
 #: templates/account/password_reset_submitted.html:10
 msgid "You will receive an email with the details on how to proceed."
-msgstr ""
+msgstr "Ne yapmanız gerektiğini açıklayan bir e-posta alacaksınız."
 
 #: templates/account/password_reset_submitted.html:12
 msgid "Still haven't received the email?"
-msgstr ""
+msgstr "Hâlâ e-posta almadınız mı?"
 
 #: templates/account/password_reset_submitted.html:15
 msgid "Did you look in your spam folder?"
-msgstr ""
+msgstr "Spam klasörünüze baktınız mı?"
 
 #: templates/account/password_reset_submitted.html:16
 #, python-format
 msgid "Did you use an email address which is in the %(site_name)s system?"
-msgstr ""
+msgstr "%(site_name)s sisteminde belirtilmiş bir e-posta kullandınız mı?"
 
 #: templates/account/password_reset_submitted.html:17
 msgid "Has this email address ever been confirmed within the system?"
-msgstr ""
+msgstr "Bu e-posta adresi sistemde teyit edilmiş miydi?"
 
 #: templates/account/password_reset_submitted.html:21
 #, python-format
@@ -773,115 +863,118 @@ msgid ""
 "\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
 "us</a>."
 msgstr ""
+"Diğer hiçbir şey bir sonuç vermezse, tabii ki <a href=\"%(new_account_url)s"
+"\">yeni bir hesap oluşturabilir</a> ya da <a href=\"mailto:%(support_email)s"
+"\">bize yazabilirsiniz</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
-msgstr ""
+msgstr "Geçersiz fotoğraf kimliği"
 
 #: templates/account/photo_invalidfile.html:5
 msgid "Uploaded photo is broken or invalid."
-msgstr ""
+msgstr "Yüklenilen fotoğraf bozuk ya da geçersiz"
 
 #: templates/account/photo_invalidfile.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
-msgstr ""
+msgstr "Lütfen başka birini <a href=\"%(upload_url)s\">yükleyin</a>."
 
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
-msgstr ""
+msgstr "Bu resim çok büyük, azami boyut %(max_size)s bayttır."
 
 #: templates/account/photo_toobig.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
-msgstr ""
+msgstr "Lütfen daha küçüğünü <a href=\"%(upload_url)s\">yükleyin</a>."
 
 #: templates/account/photos_imported.html:4
 msgid "Photos imported into Libravatar"
-msgstr ""
+msgstr "Libravatar'a aktarılan fotoğraflar"
 
 #: templates/account/photos_imported.html:8
 msgid "Photo import"
-msgstr ""
+msgstr "Fotoğraf içe aktarımı"
 
 #: templates/account/photos_imported.html:10
 msgid "Photo(s) successfully imported."
-msgstr ""
+msgstr "Fotoğraf(lar) başarıyla içe aktarıldı."
 
 #: templates/account/photos_notimported.html:5
 msgid "Photo import failed."
-msgstr ""
+msgstr "Fotoğraf içe aktarımı başarısız oldu."
 
 #: templates/account/profile.html:4
 #, python-format
 msgid "%(username)s's Libravatar Profile"
-msgstr ""
+msgstr "%(username)s'in Libravatar Profili"
 
 #: templates/account/profile.html:8
 #, python-format
 msgid "%(username)s's Profile"
-msgstr ""
+msgstr "%(username)s'in Profili"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
-msgstr ""
+msgstr "Bu teyit edilmiş e-posta adresleri ve OpenID'leriniz var:"
 
 #: templates/account/profile.html:18 templates/account/profile.html.py:27
 msgid "Change photo"
-msgstr ""
+msgstr "Fotoğraf değiştir"
 
 #: templates/account/profile.html:20 templates/account/profile.html.py:28
 #: templates/account/profile.html:39 templates/account/profile.html.py:43
 msgid "Remove"
-msgstr ""
+msgstr "Kaldır"
 
 #: templates/account/profile.html:35
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
-msgstr ""
+msgstr "Bu teyit edilmemiş e-posta adresleri ve OpenID'leriniz var:"
 
 #: templates/account/profile.html:57
 msgid "Here are the photos you have uploaded/imported:"
-msgstr ""
+msgstr "İşte yüklediğiniz/içe aktardığınız fotoğraflar:"
 
 #: templates/account/profile.html:60
 #, python-format
 msgid "Uploaded on %(datetime)s"
-msgstr ""
+msgstr "%(datetime)s vaktinde yüklenmiş"
 
 #: templates/account/profile.html:67 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
-msgstr ""
+msgstr "Yeni bir fotoğraf yükle"
 
 #: templates/account/profile.html:70
 msgid "Account settings"
-msgstr ""
+msgstr "Hesap ayarları"
 
 #: templates/account/profile.html:73
 msgid "Change your password"
-msgstr ""
+msgstr "Parolanızı değiştirin"
 
 #: templates/account/profile.html:75
 msgid "Set a password"
-msgstr ""
+msgstr "Parola tanımla"
 
 #: templates/account/profile.html:80
 msgid "Permanently delete your account"
-msgstr ""
+msgstr "Hesabınızı daimi olarak silin"
 
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
-msgstr ""
+msgstr "Geçersiz denetleme anahtarı ya da e-posta adresi."
 
 #: templates/account/upload_photo.html:17
 #, python-format
 msgid "Maximum file size of %(max_size)s."
-msgstr ""
+msgstr "Azami dosya boyutu %(max_size)s."
 
 #: templates/account/upload_photo.html:24
 msgid "Upload"
-msgstr ""
+msgstr "Yükle"
 
 #: templates/account/uploaded_photo_missing.html:5
 msgid ""
@@ -889,67 +982,77 @@ msgid ""
 "Perhaps you have already cropped it or it was uploaded too long ago and has "
 "expired."
 msgstr ""
+"Yüklediğiniz orijinal fotoğraf eksik, dolayısıyla kırpılamaz. Belki de siz "
+"onu zaten kırptınız ya da yüklenmesi çok eski ve ömrünü doldurmuş olabilir."
 
 #: templates/openid/failure.html:5
 msgid "OpenID error:"
-msgstr ""
+msgstr "OpenID hatası:"
 
 #: templates/openid/login.html:4
 msgid "Libravatar OpenID Login"
-msgstr ""
+msgstr "Lıbravatar OpenID Girişi"
 
 #: templates/openid/login.html:8
 msgid "OpenID Login"
-msgstr ""
+msgstr "OpenID Girişi"
 
 #: templates/openid/login.html:11
 msgid "Please correct errors below:"
-msgstr ""
+msgstr "Lütfen aşağıdaki hataları düzeltin:"
 
 #: templates/openid/login.html:24
 msgid "You'd rather use a regular account?"
-msgstr ""
+msgstr "Klasik bir hesabı mı tercih ediyorsunuz?"
 
 #: templates/openid/login.html:24
 #, python-format
 msgid ""
 "That's fine, just use <a href=\"%(login_url)s\">this login form</a> instead."
 msgstr ""
+"Bu sorun değil, <a href=\"%(login_url)s\">bu giriş formunu</a> kullanmanız "
+"yeterlidir."
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
-msgstr ""
+msgstr "federe havari barındırma hizmeti"
 
 #: templates/public/home.html:11
 #, python-format
 msgid "Create a <a href=\"%(new_account_url)s\">free account</a>"
-msgstr ""
+msgstr "<a href=\"%(new_account_url)s\">Ücretsiz hesap</a> oluşturun"
 
 #: templates/public/home.html:13
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
 "a>"
 msgstr ""
+"<a href=\"https://code.launchpad.net/libravatar\">Kaynak kodu</a> indirin"
 
 #: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
 msgstr ""
+"<a href=\"https://bugs.launchpad.net/libravatar\">Hata</a>rapor edin veya "
+"soru<a href=\"https://answers.launchpad.net/libravatar\">sorun</a>"
 
 #: templates/public/home.html:15
 msgid ""
 "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href=\"http://"
 "blog.libravatar.org\">blog</a>"
 msgstr ""
+"<a href=\"http://wiki.libravatar.org\">Vikimizi</a> veya <a href=\"http://"
+"blog.libravatar.org\">günlüğümüzü</a> okuyun"
 
 #: templates/public/home.html:16
 msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgstr ""
+"Bizi <a href=\"http://identi.ca/libravatar\">Identica</a>'da takip edin"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
-msgstr ""
+msgstr "İştirâk edin!"
 
 #: templates/public/home.html:21
 #, python-format
@@ -959,14 +1062,18 @@ msgid ""
 "with us, your photo could start popping up next to forum posts or blog "
 "comments on any site where you left your email address."
 msgstr ""
+"Libravatar diğer sitelere havarinizi (profil fotoğrafı) aktaran bir "
+"hizmettir. <a href=\"%(new_account_url)s\">Sitemizde bir hesap açarsanız</"
+"a>, fotoğrafınız forum mesajları ya da blog yorumlarınızın karşısında, e-"
+"postanızı bıraktığınız her sitede görüntülenebilecektir."
 
 #: templates/public/home.html:21
 msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr ""
+msgstr "<a href=\"http://wiki.libravatar.org/description/\">Dahası...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
-msgstr ""
+msgstr "Federe Açık Kaynak Hizmet"
 
 #: templates/public/home.html:25
 msgid ""
@@ -975,10 +1082,14 @@ msgid ""
 "<a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
+"Bu hizmet <a href=\"http://www.gnu.org/licenses/agpl.html\">Özgür ve Açık "
+"Kaynaklı yazılım</a> ile çalışır ve alan adı sahiplerine <a href=\"http://"
+"wiki.libravatar.org/running_your_own/\">kendi Libravatar kopyalarını "
+"çalıştırma</a> ve havarileri kendileri suna imkânı verir."
 
 #: templates/public/home.html:27
 msgid "Simple API for Developers"
-msgstr ""
+msgstr "Geliştiriciler için sade bir API"
 
 #: templates/public/home.html:29
 msgid ""
@@ -987,10 +1098,16 @@ msgid ""
 "href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
 "available for a number of platforms and languages."
 msgstr ""
+"Uygulama geliştiricileri <a href=\"http://wiki.libravatar.org/api/\">sade "
+"API'mizi</a> ya da çeşitli platform ve programlama dilleri için <a href="
+"\"http://wiki.libravatar.org/libraries/\">kütüphane ve eklentileri</a> "
+"kullanarak kolayca bu servise destek ekleyebilirler."
 
 #: templates/public/home.html:31
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
+"Onlarsız bunlardan hiçbirinin mümkün olmayacağı sponsorlarımıza çok teşekkür "
+"ederiz!"
 
 #: templates/public/nohash.html:6
 #, python-format
@@ -998,111 +1115,116 @@ msgid ""
 "An email hash is required. You can use the <a href=\"%(check_url)s\">check "
 "tool</a> to generate one."
 msgstr ""
+"Bir e-posta karması gereklidir. <a href=\"%(check_url)s\">Kontrol aracını</"
+"a> kullanarak bir karma oluşturabilirsiniz."
 
 #: templates/public/nopost.html:5
 msgid "This only works via HTTP GET."
-msgstr ""
+msgstr "Bu sadece HTTP GET vasıtasıyla çalışır."
 
 #: templates/public/resize_notnumeric.html:5
 #, python-format
 msgid ""
 "The size parameter must be an integer between %(min_size)s and %(max_size)s."
 msgstr ""
+"Boyut parametresi %(min_size)s ilâ %(max_size)s arası bir tam sayı olmalıdır."
 
 #: templates/tools/check.html:4 templates/tools/check.html.py:8
 msgid "Photo lookup"
-msgstr ""
+msgstr "fotoğraf arama"
 
 #: templates/tools/check.html:22
 msgid "Optional parameters"
-msgstr ""
+msgstr "Seçmeye dayalı parametreler"
 
 #: templates/tools/check.html:33 templates/tools/check_domain.html:19
 msgid "Check"
-msgstr ""
+msgstr "Kontrol et"
 
 #: templates/tools/check.html:41
 msgid "MD5 hash:"
-msgstr ""
+msgstr "MD5 karması:"
 
 #: templates/tools/check.html:41
 msgid "compatible with Gravatar"
-msgstr ""
+msgstr "Gravatar ile uyumlu"
 
 #: templates/tools/check.html:43
 msgid "SHA256 hash:"
-msgstr ""
+msgstr "SHA256 karması:"
 
 #: templates/tools/check.html:45
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
 msgstr ""
+"Bu, kullandığınız karma ve protokole dayalı olarak havarilerin nasıl "
+"görüneceğidir:"
 
 #: templates/tools/check.html:48
 msgid "using MD5 over HTTP"
-msgstr ""
+msgstr "HTTP üzerinden MD5 kullanılıyor"
 
 #: templates/tools/check.html:48 templates/tools/check.html.py:53
 msgid "MD5"
-msgstr ""
+msgstr "MD5"
 
 #: templates/tools/check.html:50
 msgid "using SHA256 over HTTP"
-msgstr ""
+msgstr "HTTP üzerinden SHA256 kullanılıyor"
 
 #: templates/tools/check.html:50 templates/tools/check.html.py:55
 msgid "SHA256"
-msgstr ""
+msgstr "SHA256"
 
 #: templates/tools/check.html:53
 msgid "using MD5 over HTTPS"
-msgstr ""
+msgstr "HTTPS üzerinden MD5 kullanılıyor"
 
 #: templates/tools/check.html:55
 msgid "using SHA256 over HTTPS"
-msgstr ""
+msgstr "HTTPS üzerinden SHA256 kullanılıyor"
 
 #: templates/tools/check_domain.html:4 templates/tools/check_domain.html:8
 msgid "Domain lookup"
-msgstr ""
+msgstr "Alan araması"
 
 #: templates/tools/check_domain.html:27
 msgid "HTTP avatar server:"
-msgstr ""
+msgstr "HTTP havari sunucusu:"
 
 #: templates/tools/check_domain.html:34 templates/tools/check_domain.html:52
 msgid "Warning: no A record for this hostname"
-msgstr ""
+msgstr "Uyarı: bu makine ismi için A kaydı yoktur"
 
 #: templates/tools/check_domain.html:40
 msgid "use <tt>http://cdn.libravatar.org</tt>"
-msgstr ""
+msgstr "<tt>http://cdn.libravatar.org</tt>'u kullanın"
 
 #: templates/tools/check_domain.html:45
 msgid "HTTPS avatar server:"
-msgstr ""
+msgstr "HTTP havari sunucusu:"
 
 #: templates/tools/check_domain.html:58
 msgid "use <tt>https://seccdn.libravatar.org</tt>"
-msgstr ""
+msgstr "<tt>https://seccdn.libravatar.org</tt>'u kullanın"
 
 #: tools/forms.py:27
 msgid "Size"
-msgstr ""
+msgstr "Boyut"
 
 #: tools/forms.py:28
 msgid "Default URL"
-msgstr ""
+msgstr "Varsayılan adres"
 
 #: tools/forms.py:33
 msgid "You must provide a valid email or OpenID"
-msgstr ""
+msgstr "Geçerli bir e-posta ya da OpenID girmeniz gerekir"
 
 #: tools/forms.py:35
 msgid "You cannot provide both an email and an OpenID. Choose one!"
-msgstr ""
+msgstr "Hem bir e-posta hem de bir OpenID giremezsiniz! Birini seçin!"
 
 #: tools/forms.py:40
 msgid "Domain"
-msgstr ""
+msgstr "Alan"
