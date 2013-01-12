@@ -121,7 +121,7 @@ def lookup_avatar_server(domain, https):
     try:
         dns_request = DNS.Request(name=service_name, qtype='SRV').req()
     except DNS.DNSError as message:
-        print "DNS Error: %s" % message
+        print "DNS Error: %s (%s)" % (message, domain)
         return None
 
     if 'NXDOMAIN' == dns_request.header['status']:
@@ -129,7 +129,7 @@ def lookup_avatar_server(domain, https):
         return None
 
     if dns_request.header['status'] != 'NOERROR':
-        print "DNS Error: status=%s" % dns_request.header['status']
+        print "DNS Error: status=%s (%s)" % (dns_request.header['status'], domain)
         return None
 
     records = []

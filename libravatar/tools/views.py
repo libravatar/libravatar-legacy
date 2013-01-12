@@ -84,11 +84,11 @@ def lookup_ip_address(hostname, ipv6):
         else:
             dns_request = DNS.Request(name=hostname, qtype=DNS.Type.A).req()
     except DNS.DNSError as message:
-        print "DNS Error: %s" % message
+        print "DNS Error: %s (%s)" % (message, hostname)
         return None
 
     if dns_request.header['status'] != 'NOERROR':
-        print "DNS Error: status=%s" % dns_request.header['status']
+        print "DNS Error: status=%s (%s)" % (dns_request.header['status'], hostname)
         return None
 
     for answer in dns_request.answers:
