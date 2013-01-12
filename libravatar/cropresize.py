@@ -43,6 +43,8 @@ def pil_format_to_ext(pil_format):
         return '.png'
     elif 'JPEG' == pil_format:
         return '.jpg'
+    elif 'GIF' == pil_format:
+        return '.gif'
     return None
 
 
@@ -135,6 +137,12 @@ def optimize_image(dest, img_format, ext, broken_file):
             create_broken_image(broken_file + ext, dest)
             logger.error('PNG optimisation (advpng) failed: %s' % process.communicate()[0])
             return 4
+    elif 'GIF' == img_format:
+        process = subprocess.Popen(['gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
+        if process.wait() != 0:
+            create_broken_image(broken_file + ext, dest)
+            logger.error('GIF optimisation failed: %s' % process.communicate()[0])
+            return 4
     else:
         logger.error('Unexpected error while cropping')
         return 5
@@ -160,7 +168,7 @@ def main(argv=None):
     if not is_hex(file_hash):
         logger.error('file_hash is not a hexadecimal value')
         return 1
-    if file_format != 'jpg' and file_format != 'png':
+    if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
         logger.error('file_format is not recognized')
         return 1
 

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="https://www.libravatar.org/schemas/export/0.2"
+            xmlns="https://www.libravatar.org/schemas/export/0.2"
+            elementFormDefault="qualified">
+
+<xsd:annotation>
+  <xsd:documentation>
+    XML Schema for Libravatar user account exports.
+    Last Modifed 2013-01-12
+  </xsd:documentation>
+</xsd:annotation>
+
+<xsd:element name="user">
+  <xsd:annotation>
+    <xsd:documentation>
+      Container for emails, openids and photos elements.
+      This is the root element of the XML file.
+    </xsd:documentation>
+  </xsd:annotation>
+ <xsd:complexType>
+   <xsd:sequence>
+     <xsd:element name="account" type="accountType"/>
+     <xsd:element name="emails" type="emailList"/>
+     <xsd:element name="openids" type="openidList"/>
+     <xsd:element name="photos" type="photoList"/>
+   </xsd:sequence>
+ </xsd:complexType>
+</xsd:element>
+
+<xsd:complexType name="accountType">
+  <xsd:annotation>
+    <xsd:documentation>
+      Empty element holding user account-related information.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:complexContent>
+    <xsd:restriction base="xsd:anyType">
+      <xsd:attribute name="username" type="xsd:string"/>
+      <xsd:attribute name="site" type="xsd:string"/>
+    </xsd:restriction>
+  </xsd:complexContent>
+</xsd:complexType>
+
+<xsd:complexType name="emailList">
+  <xsd:annotation>
+    <xsd:documentation>
+      Container for confirmed email addresses.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:element name="email" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="openidList">
+  <xsd:annotation>
+    <xsd:documentation>
+      Container for confirmed OpenID URLs.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:element name="openid" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="photoList">
+  <xsd:annotation>
+    <xsd:documentation>
+      Container for uploaded/imported photos.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:sequence>
+    <xsd:element name="photo" type="photoType" minOccurs="0" maxOccurs="unbounded"/>
+  </xsd:sequence>
+</xsd:complexType>
+
+<xsd:complexType name="photoType">
+  <xsd:annotation>
+    <xsd:documentation>
+      Container for a base64 encoded photo.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:simpleContent>
+    <xsd:extension base="xsd:base64Binary">
+      <xsd:attribute name="encoding" type="xsd:string" fixed="base64"/>
+      <xsd:attribute name="format" type="photoFormat"/>
+    </xsd:extension>
+  </xsd:simpleContent>
+</xsd:complexType>
+
+<xsd:simpleType name="photoFormat">
+  <xsd:annotation>
+    <xsd:documentation>
+      File type for the given photo.
+    </xsd:documentation>
+  </xsd:annotation>
+  <xsd:restriction base="xsd:string">
+    <xsd:enumeration value="jpg"/>
+    <xsd:enumeration value="png"/>
+    <xsd:enumeration value="gif"/>
+  </xsd:restriction>
+</xsd:simpleType>
+
+</xsd:schema>

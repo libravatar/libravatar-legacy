@@ -80,6 +80,8 @@ def file_format(image_type):
         return 'jpg'
     elif 'PNG' == image_type:
         return 'png'
+    elif 'GIF' == image_type:
+        return 'gif'
 
     print 'Unsupported file format: %s' % image_type
     return None
@@ -114,7 +116,7 @@ class Photo(models.Model):
     user = models.ForeignKey(User, related_name='photos')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
     filename = models.CharField(max_length=64)  # sha256 hash is 64 characters
-    format = models.CharField(max_length=3)  # png or jpg
+    format = models.CharField(max_length=3)  # file extension (lowercase)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
     objects = PhotoManager()
 

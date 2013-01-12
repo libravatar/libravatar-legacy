@@ -30,7 +30,7 @@ from utils import create_logger, is_hex
 
 logger = create_logger('exportaccount')
 
-SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.1'
+SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.2'
 SCHEMA_XSD = '%s/export.xsd' % SCHEMA_ROOT
 
 
@@ -112,7 +112,7 @@ def main(argv=None):
         if not is_hex(photo_filename):
             logger.error("photo_filename '%s' is not a hexadecimal value" % photo_filename)
             return 1
-        if photo_format != 'jpg' and photo_format != 'png':
+        if photo_format != 'jpg' and photo_format != 'png' and photo_format != 'gif':
             logger.error("photo_format '%s' is not recognized" % photo_format)
             return 1
 

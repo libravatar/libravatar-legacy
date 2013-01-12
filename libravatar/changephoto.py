@@ -74,7 +74,7 @@ def main(argv=None):
     if photo_hash and not is_hex(photo_hash):
         logger.error('photo_hash is not a hexadecimal value')
         return 1
-    if photo_format and photo_format != 'jpg' and photo_format != 'png':
+    if photo_format and photo_format != 'jpg' and photo_format != 'png' and photo_format != 'gif':
         logger.error('photo_format is not recognized')
         return 1
     if md5_hash and not is_hex(md5_hash):

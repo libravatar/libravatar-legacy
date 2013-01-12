@@ -42,7 +42,7 @@ def main(argv=None):
     if not is_hex(file_hash):
         logger.error('file_hash is not a hexadecimal value')
         return 1
-    if file_format != 'jpg' and file_format != 'png':
+    if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
         logger.error('file_format is not recognized')
         return 1
 
