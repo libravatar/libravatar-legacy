@@ -475,6 +475,9 @@ def upload_photo(request):
             except IOError:
                 return render_to_response('account/photo_invalidfile.html', context_instance=RequestContext(request))
 
+            if not photo:
+                return render_to_response('account/photo_invalidformat.html', context_instance=RequestContext(request))
+
             return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[photo.id]))
     else:
         form = UploadPhotoForm()

@@ -65,7 +65,6 @@ from django.utils.translation import ugettext_lazy as _
 from libravatar import settings
 from libravatar.account.external_photos import identica_photo, gravatar_photo
 
-DEFAULT_IMAGE_FORMAT = 'jpg'
 MAX_LENGTH_EMAIL = 254  # http://stackoverflow.com/questions/386294
 MAX_LENGTH_IPV6 = 45  # http://stackoverflow.com/questions/166132
 #MAX_LENGTH_URL = 2048  # http://stackoverflow.com/questions/754547
@@ -82,7 +81,8 @@ def file_format(image_type):
     elif 'PNG' == image_type:
         return 'png'
 
-    return DEFAULT_IMAGE_FORMAT
+    print 'Unsupported file format: %s' % image_type
+    return None
 
 
 def change_photo(photo, md5_hash, sha256_hash):
@@ -140,6 +140,8 @@ class Photo(models.Model):
         # Use PIL to read the file format
         img = Image.open(tmp_filename)
         self.format = file_format(img.format)
+        if not self.format:
+            return False
         super(Photo, self).save(force_insert, force_update)
 
         dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()
@@ -208,6 +210,8 @@ class Photo(models.Model):
         # Use PIL to read the file format
         img = Image.open(tmp_filename)
         self.format = file_format(img.format)
+        if not self.format:
+            return False
         super(Photo, self).save()
 
         dest_filename = settings.UPLOADED_FILES_ROOT + self.full_filename()

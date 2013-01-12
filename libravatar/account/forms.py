@@ -123,7 +123,8 @@ class UploadPhotoForm(forms.Form):
         p = Photo()
         p.user = user
         p.ip_address = ip_address
-        p.save(image)
+        if not p.save(image):
+            return None
         return p
 
 

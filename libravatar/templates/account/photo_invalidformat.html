@@ -1,0 +1,8 @@
+{% extends 'error.html' %}
+{% load i18n %}
+
+{% block errormessage %}
+{% trans 'Uploaded photo uses an unsupported file format.' %}</p>
+{% url libravatar.account.views.upload_photo as upload_url %}
+<p>{% blocktrans %}Please <a href="{{ upload_url }}">upload</a> a different one.{% endblocktrans %}
+{% endblock errormessage %}
