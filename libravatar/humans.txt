@@ -46,6 +46,9 @@ Site: http://blog.bigballofwax.co.nz/
 Identica: @ranginui
 Twitter: @ranginui
 
+Name: Christian Weiske
+Site: http://cweiske.de/
+
 Name: Joey Hess
 Site: http://branchable.com/
 Identica: @joeyh
