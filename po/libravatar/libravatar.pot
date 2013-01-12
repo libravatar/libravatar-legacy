@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-20 23:50+1300\n"
+"POT-Creation-Date: 2013-01-12 23:08+1300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,7 +83,7 @@ msgstr ""
 msgid "\"%s\" is not a valid email address"
 msgstr ""
 
-#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
 msgstr ""
 
@@ -131,60 +131,60 @@ msgid ""
 "third parties."
 msgstr ""
 
-#: account/forms.py:143
+#: account/forms.py:144
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr ""
 
-#: account/forms.py:168
+#: account/forms.py:169
 msgid "Password"
 msgstr ""
 
-#: account/forms.py:179
+#: account/forms.py:180
 msgid "Invalid password"
 msgstr ""
 
-#: account/models.py:122
+#: account/models.py:124
 msgid "photo"
 msgstr ""
 
-#: account/models.py:123
+#: account/models.py:125
 msgid "photos"
 msgstr ""
 
-#: account/models.py:266
+#: account/models.py:272
 msgid "confirmed email"
 msgstr ""
 
-#: account/models.py:267
+#: account/models.py:273
 msgid "confirmed emails"
 msgstr ""
 
-#: account/models.py:306
+#: account/models.py:312
 msgid "unconfirmed email"
 msgstr ""
 
-#: account/models.py:307
+#: account/models.py:313
 msgid "unconfirmed emails"
 msgstr ""
 
-#: account/models.py:310 account/models.py:330
+#: account/models.py:316 account/models.py:336
 msgid "(unconfirmed)"
 msgstr ""
 
-#: account/models.py:326
+#: account/models.py:332
 msgid "unconfirmed OpenID"
 msgstr ""
 
-#: account/models.py:327
+#: account/models.py:333
 msgid "unconfirmed OpenIDs"
 msgstr ""
 
-#: account/models.py:341
+#: account/models.py:347
 msgid "confirmed OpenID"
 msgstr ""
 
-#: account/models.py:342
+#: account/models.py:348
 msgid "confirmed OpenIDs"
 msgstr ""
 
@@ -207,28 +207,28 @@ msgstr ""
 msgid "freeing the web one face at a time"
 msgstr ""
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Profile"
 msgstr ""
 
-#: templates/base.html:31 templates/base.html.py:35
+#: templates/base.html:30 templates/base.html.py:33
 msgid "Contact Us"
 msgstr ""
 
-#: templates/base.html:32
+#: templates/base.html:31
 msgid "Logout"
 msgstr ""
 
-#: templates/base.html:36 templates/account/login.html:11
+#: templates/base.html:34 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:46
 msgid "GNU Affero General Public License"
 msgstr ""
 
-#: templates/base.html:48
+#: templates/base.html:46
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
@@ -236,7 +236,7 @@ msgid ""
 "  software, version %(libravatar_version)s"
 msgstr ""
 
-#: templates/base.html:50
+#: templates/base.html:48
 msgid "Flattr this!"
 msgstr ""
 
@@ -282,7 +282,7 @@ msgid "Add"
 msgstr ""
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/crop_photo.html:21 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
@@ -400,7 +400,11 @@ msgstr ""
 msgid "Crop photo"
 msgstr ""
 
-#: templates/account/crop_photo.html:18
+#: templates/account/crop_photo.html:12
+msgid "Draw a square around the portion of the image you want to use:"
+msgstr ""
+
+#: templates/account/crop_photo.html:20
 msgid "Crop"
 msgstr ""
 
@@ -783,8 +787,13 @@ msgid "Uploaded photo is broken or invalid."
 msgstr ""
 
 #: templates/account/photo_invalidfile.html:7
+#: templates/account/photo_invalidformat.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
+msgstr ""
+
+#: templates/account/photo_invalidformat.html:5
+msgid "Uploaded photo uses an unsupported file format."
 msgstr ""
 
 #: templates/account/photo_toobig.html:5
@@ -813,14 +822,8 @@ msgstr ""
 msgid "Photo import failed."
 msgstr ""
 
-#: templates/account/profile.html:4
-#, python-format
-msgid "%(username)s's Libravatar Profile"
-msgstr ""
-
-#: templates/account/profile.html:8
-#, python-format
-msgid "%(username)s's Profile"
+#: templates/account/profile.html:4 templates/account/profile.html.py:8
+msgid "Your Profile"
 msgstr ""
 
 #: templates/account/profile.html:11
