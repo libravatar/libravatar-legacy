@@ -1,3 +1,16 @@
+libravatar (20130112.1) unstable; urgency=low
+
+  * Add support for GIF files (LP: #1089372)
+  * New "unsupported format" error message
+  * User instructions on the crop page
+  * Hide usernames from the UI
+
+  * More verbose DNS errors (LP: #1090852)
+  * Update de, es, fr, ja and tr translations
+  * Add Christian Weiske to humans.txt
+
+ -- Francois Marier <francois@debian.org>  Sat, 12 Jan 2013 23:13:20 +1300
+
 libravatar (20121220.1) unstable; urgency=low
 
   * Add new tr translation
