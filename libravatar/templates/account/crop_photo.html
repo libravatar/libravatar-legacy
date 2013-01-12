@@ -9,6 +9,8 @@
 </noscript>
 <h1>{% trans 'Crop photo' %}</h1>
 
+<p>{% trans 'Draw a square around the portion of the image you want to use:' %}</p>
+
 <form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
 <p class="aligned wide"><img src='{{photo.uploaded_pathname}}' id='cropbox' /></p>
 <input type='hidden' id='x' name='x' value='0'/>
