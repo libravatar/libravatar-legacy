@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #

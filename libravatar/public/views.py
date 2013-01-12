@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
