@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 
-{% block title %}{% blocktrans with user.username as username %}{{ username }}'s Libravatar Profile{% endblocktrans %}{% endblock title %}
+{% block title %}{% trans 'Your Profile' %}{% endblock title %}
 
 {% block content %}
 
-<h1>{% blocktrans with user.username as username %}{{ username }}'s Profile{% endblocktrans %}</h1>
+<h1>{% trans 'Your Profile' %}</h1>
 
 {% if confirmed_emails or confirmed_openids %}
 <p>{% trans 'You have the following confirmed email addresses and OpenIDs:' %}</p>
