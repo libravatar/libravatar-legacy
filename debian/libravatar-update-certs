@@ -31,4 +31,4 @@ cp $SLAVE_CHAIN $APACHE_CHAIN
 
 echo "Libravatar SSL certificate updated. Restarting Apache..."
 echo
-apache2ctl configtest && apache2ctl graceful
+/usr/sbin/apache2ctl configtest && /usr/sbin/apache2ctl graceful
