@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends base_template %}
 {% load i18n %}
 
 {% block title %}{% trans 'Crop photo' %} - Libravatar{% endblock title %}
@@ -11,14 +11,14 @@
 
 <p>{% trans 'Draw a square around the portion of the image you want to use:' %}</p>
 
-<form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.crop_photo photo.id %}{% if embedded %}?embedded=1{% endif %}" method="post">{% csrf_token %}
 <p class="aligned wide"><img src='{{photo.uploaded_pathname}}' id='cropbox' /></p>
 <input type='hidden' id='x' name='x' value='0'/>
 <input type='hidden' id='y' name='y' value='0'/>
 <input type='hidden' id='w' name='w' value='0'/>
 <input type='hidden' id='h' name='h' value='0'/>
 <p><input type="submit" value="{% trans 'Crop' %}" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a id="cancel-link" href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

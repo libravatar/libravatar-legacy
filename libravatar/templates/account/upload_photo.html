@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends base_template %}
 {% load i18n %}
 
 {% block title %}{% trans 'Upload a new photo' %} - Libravatar{% endblock title %}
@@ -10,7 +10,7 @@
 
 <h1>{% trans 'Upload a new photo' %}</h1>
 
-<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">{% csrf_token %}
+<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}{% if embedded %}?embedded=1{% endif %}" method="post">{% csrf_token %}
 
 {{ form.photo.errors }}
 <p class="aligned wide">{{ form.photo.label_tag }}: <input id="id_photo" type="file" name="photo" accept="image/*">
@@ -22,7 +22,7 @@
 </ul>
 
 <p><input type="submit" value="{% trans 'Upload' %}" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a id="cancel-link" href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

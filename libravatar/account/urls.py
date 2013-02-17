@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
@@ -28,6 +28,10 @@ urlpatterns = patterns('',
     ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
     ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
     ('password_set/$', 'libravatar.account.views.password_set'),
+
+    ('login_embedded/$', 'libravatar.account.views.login_embedded'),
+    ('logout_embedded/$', 'django.contrib.auth.views.logout', {'next_page': '/account/login_embedded'}),
+    ('profile_embedded/$', 'libravatar.account.views.profile_embedded'),
 
     ('add_browserid/$', 'libravatar.account.views.add_browserid'),
     ('add_email/$', 'libravatar.account.views.add_email'),

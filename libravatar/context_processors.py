@@ -1,4 +1,4 @@
-# Copyright (C) 2011, 2012  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2012, 2013  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #
 # This file is part of Libravatar
@@ -23,9 +23,14 @@ from libravatar import settings
 def basepage(request):
     context = {}
     context['avatar_url'] = settings.AVATAR_URL
+    if '1' == request.GET.get('embedded'):
+        context['base_template'] = 'base_embedded.html'
+    else:
+        context['base_template'] = 'base.html'
     context['contact_us'] = settings.CONTACT_US
     context['dev_email'] = settings.DEV_EMAIL
     context['disable_signup'] = settings.DISABLE_SIGNUP
+    context['embedded'] = request.GET.get('embedded')
     context['libravatar_version'] = settings.LIBRAVATAR_VERSION
     context['secure_avatar_url'] = settings.SECURE_AVATAR_URL
     context['site_name'] = settings.SITE_NAME

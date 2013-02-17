@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends base_template %}
 {% load i18n %}
 
 {% block title %}{% blocktrans with email.email as email_address %}Choose a photo for {{ email_address }}{% endblocktrans %} - Libravatar{% endblock title %}
@@ -21,7 +21,7 @@
 {% for photo in photos %}
   {%if photo.exists %}
   <li>
-  <form action="{% url libravatar.account.views.assign_photo_email email.id %}" method="post">{% csrf_token %}
+  <form action="{% url libravatar.account.views.assign_photo_email email.id %}{% if embedded %}?embedded=1{% endif %}" method="post">{% csrf_token %}
   <input type="hidden" name="photo_id" value="{{ photo.id }}">
   <input type="image" name="photo{{ photo.id }}" src="{{ photo }}" class="thumbnail">
   {% ifequal email.photo.id photo.id %}
@@ -31,7 +31,7 @@
   {% endif %}
 {% endfor %}
   <li>
-  <form action="{% url libravatar.account.views.assign_photo_email email.id %}" method="post">{% csrf_token %}
+  <form action="{% url libravatar.account.views.assign_photo_email email.id %}{% if embedded %}?embedded=1{% endif %}" method="post">{% csrf_token %}
   <input type="submit" name="photoNone" value="{% trans 'None' %}">
   {% ifequal email.photo.id photo.id %}
   <br>{% trans '(current)' %}

@@ -1,0 +1,18 @@
+{% extends 'base_embedded.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Your Libravatar Profile' %}{% endblock title %}
+
+{% block content %}
+
+<p>{% blocktrans %}Here is the photo currently associated with your email address ({{browserid_user}}):{% endblocktrans %}</p>
+
+<div>
+<a href="{% url libravatar.account.views.assign_photo_email email_id %}?embedded=1">
+<img class="thumbnail editable avatar-chooser" src="{{photo_url}}" alt=""></a>
+<br><a href="{% url libravatar.account.views.assign_photo_email email_id %}?embedded=1">{% trans 'Change photo' %}</a>
+</div>
+
+<div><input id="close-button" type="submit" value="{% trans 'Close' %}"></div>
+
+{% endblock content %}
