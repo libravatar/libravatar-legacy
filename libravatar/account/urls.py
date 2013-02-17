@@ -22,16 +22,16 @@
 from django.conf.urls.defaults import patterns
 
 urlpatterns = patterns('',
-    ('login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}),
-    ('login_browserid/$', 'libravatar.account.views.login_browserid'),
-    ('logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
-    ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
-    ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
-    ('password_set/$', 'libravatar.account.views.password_set'),
-
     ('login_embedded/$', 'libravatar.account.views.login_embedded'),
     ('logout_embedded/$', 'django.contrib.auth.views.logout', {'next_page': '/account/login_embedded'}),
     ('profile_embedded/$', 'libravatar.account.views.profile_embedded'),
+
+    ('login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}),
+    ('login_browserid/$', 'libravatar.account.views.login_browserid'),
+    ('logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),  # must be the last pattern using this view!
+    ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
+    ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
+    ('password_set/$', 'libravatar.account.views.password_set'),
 
     ('add_browserid/$', 'libravatar.account.views.add_browserid'),
     ('add_email/$', 'libravatar.account.views.add_email'),
