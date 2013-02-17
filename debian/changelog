@@ -1,3 +1,10 @@
+libravatar (20130217.1) unstable; urgency=low
+
+  * Add a barebones "embedded" mode (bug #1117643)
+  * Fix cert updating script (CDN mirrors)
+
+ -- Francois Marier <francois@debian.org>  Sun, 17 Feb 2013 21:26:40 +1300
+
 libravatar (20130112.1) unstable; urgency=low
 
   * Add support for GIF files (LP: #1089372)
