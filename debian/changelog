@@ -1,3 +1,12 @@
+libravatar (20130225.1) unstable; urgency=low
+
+  * Add upload link to assign_photo pages (LP: #1127724)
+  * Automatically assign first uploaded photo (LP: #1041720)
+  * Remove inline styles that were breaking CSP (LP: #1127945)
+  * Fix logout link in base template (LP: #1128381)
+
+ -- Francois Marier <francois@debian.org>  Mon, 25 Feb 2013 02:00:13 +1300
+
 libravatar (20130217.1) unstable; urgency=low
 
   * Add a barebones "embedded" mode (bug #1117643)
