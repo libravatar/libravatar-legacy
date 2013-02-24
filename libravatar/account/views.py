@@ -489,6 +489,27 @@ def upload_photo(request):
                               context_instance=RequestContext(request))
 
 
+def _perform_crop(request, photo, x=0, y=0, w=0, h=0):
+    links_to_create = []
+
+    # if that's the first photo, use it for all confirmed emails and OpenIDs
+    if 1 == request.user.photos.count():
+        for email in request.user.confirmed_emails.all():
+            (md5_hash, sha256_hash) = email.set_photo(photo, create_links=False)
+            links_to_create.append([md5_hash, sha256_hash])
+
+        for openid in request.user.confirmed_openids.all():
+            sha256_hash = openid.set_photo(photo, create_links=False)
+            links_to_create.append([None, sha256_hash])
+
+    photo.crop(x, y, w, h, links_to_create)
+
+    if '1' == request.GET.get('embedded'):
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
+    else:
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+
+
 @csrf_protect
 @login_required
 def crop_photo(request, photo_id):
@@ -508,24 +529,7 @@ def crop_photo(request, photo_id):
         y = int(request.POST['y'])
         w = int(request.POST['w'])
         h = int(request.POST['h'])
-        links_to_create = []
-
-        # if that's the first photo, use it for all confirmed emails and OpenIDs
-        if 1 == request.user.photos.count():
-            for email in request.user.confirmed_emails.all():
-                (md5_hash, sha256_hash) = email.set_photo(photo, create_links=False)
-                links_to_create.append([md5_hash, sha256_hash])
-
-            for openid in request.user.confirmed_openids.all():
-                sha256_hash = openid.set_photo(photo, create_links=False)
-                links_to_create.append([None, sha256_hash])
-
-        photo.crop(x, y, w, h, links_to_create)
-
-        if '1' == request.GET.get('embedded'):
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
-        else:
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+        return _perform_crop(request, photo, x, y, w, h)
 
     return render_to_response('account/crop_photo.html', {'photo': photo},
                               context_instance=RequestContext(request))
@@ -539,9 +543,7 @@ def auto_crop(request, photo_id):
         return render_to_response('account/photo_invalid.html',
                                   context_instance=RequestContext(request))
 
-    # TODO: deal with the first photo as with the crop_photo function
-    photo.crop()
-    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+    return _perform_crop(request, photo)
 
 
 @transaction.commit_on_success
