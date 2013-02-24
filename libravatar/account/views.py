@@ -24,6 +24,7 @@ from openid import oidutil
 from openid.consumer import consumer
 import os
 from StringIO import StringIO
+import urllib
 
 from django_openid_auth.models import UserOpenID
 from django.core.files import File
@@ -478,22 +479,45 @@ def upload_photo(request):
             if not photo:
                 return render_to_response('account/photo_invalidformat.html', context_instance=RequestContext(request))
 
+            # carry optional parameters to the crop page
+            params = {}
+            if 'embedded' in request.POST:
+                params['embedded'] = request.POST['embedded']
+            if 'email' in request.POST:
+                params['email'] = request.POST['email']
+            elif 'openid' in request.POST:
+                params['openid'] = request.POST['openid']
+            query_string = urllib.urlencode(params)
+
             crop_url = reverse('libravatar.account.views.crop_photo', args=[photo.id])
-            if '1' == request.GET.get('embedded'):
-                crop_url += '?embedded=1'
+            if query_string:
+                crop_url += '?' + query_string
             return HttpResponseRedirect(crop_url)
     else:
         form = UploadPhotoForm()
 
-    return render_to_response('account/upload_photo.html', {'form': form, 'max_file_size': settings.MAX_PHOTO_SIZE},
+    email = request.GET.get('email')
+    openid = request.GET.get('openid')
+
+    return render_to_response('account/upload_photo.html', {'form': form, 'email': email, 'openid': openid,
+                                                            'max_file_size': settings.MAX_PHOTO_SIZE},
                               context_instance=RequestContext(request))
 
 
-def _perform_crop(request, photo, x=0, y=0, w=0, h=0):
+def _perform_crop(request, photo, dimensions=None, email=None, openid=None):
     links_to_create = []
 
-    # if that's the first photo, use it for all confirmed emails and OpenIDs
-    if 1 == request.user.photos.count():
+    if email or openid:
+        # an automatic link was explicitly requested
+        md5_hash = sha256_hash = None
+        if email:
+            (md5_hash, sha256_hash) = email.set_photo(photo, create_links=False)
+        else:
+            sha256_hash = openid.set_photo(photo, create_links=False)
+        links_to_create.append([md5_hash, sha256_hash])
+
+    elif 1 == request.user.photos.count():
+        # it's the first photo, use it for all confirmed emails and OpenIDs
         for email in request.user.confirmed_emails.all():
             (md5_hash, sha256_hash) = email.set_photo(photo, create_links=False)
             links_to_create.append([md5_hash, sha256_hash])
@@ -502,9 +526,9 @@ def _perform_crop(request, photo, x=0, y=0, w=0, h=0):
             sha256_hash = openid.set_photo(photo, create_links=False)
             links_to_create.append([None, sha256_hash])
 
-    photo.crop(x, y, w, h, links_to_create)
+    photo.crop(dimensions, links_to_create)
 
-    if '1' == request.GET.get('embedded'):
+    if '1' == request.POST.get('embedded'):
         return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
     else:
         return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
@@ -525,13 +549,31 @@ def crop_photo(request, photo_id):
                                   context_instance=RequestContext(request))
 
     if request.method == 'POST':
-        x = int(request.POST['x'])
-        y = int(request.POST['y'])
-        w = int(request.POST['w'])
-        h = int(request.POST['h'])
-        return _perform_crop(request, photo, x, y, w, h)
+        dimensions = {'x': int(request.POST['x']),
+                      'y': int(request.POST['y']),
+                      'w': int(request.POST['w']),
+                      'h': int(request.POST['h'])}
 
-    return render_to_response('account/crop_photo.html', {'photo': photo},
+        email = openid = None
+        if 'email' in request.POST:
+            try:
+                email = ConfirmedEmail.objects.get(email=request.POST['email'])
+            except ConfirmedEmail.DoesNotExist:
+                pass  # ignore the automatic assignment request
+
+        elif 'openid' in request.POST:
+            try:
+                openid = ConfirmedOpenId.objects.get(openid=request.POST['openid'])
+            except ConfirmedOpenId.DoesNotExist:
+                pass  # ignore the automatic assignment request
+
+        return _perform_crop(request, photo, dimensions, email, openid)
+
+    email = request.GET.get('email')
+    openid = request.GET.get('openid')
+
+    return render_to_response('account/crop_photo.html',
+                              {'photo': photo, 'email': email, 'openid': openid},
                               context_instance=RequestContext(request))
 
 
@@ -579,9 +621,24 @@ def _assign_photo(request, identifier_type, identifier):
         else:
             return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
+    # carry optional parameters to the upload page
+    params = {}
+    if 'embedded' in request.GET:
+        params['embedded'] = request.GET['embedded']
+    if 'email' == identifier_type:
+        params['email'] = identifier
+    elif 'openid' == identifier_type:
+        params['openid'] = identifier
+    query_string = urllib.urlencode(params)
+
+    upload_url = reverse('libravatar.account.views.upload_photo')
+    if query_string:
+        upload_url += '?' + query_string
+
     photos = request.user.photos.order_by('add_date')
     list(photos)  # force evaluation of the QuerySet
-    return render_to_response('account/assign_photo_%s.html' % identifier_type, {'photos': photos, identifier_type: identifier},
+    return render_to_response('account/assign_photo_%s.html' % identifier_type,
+                              {'photos': photos, identifier_type: identifier, 'custom_upload_url': upload_url},
                               context_instance=RequestContext(request))
 
 

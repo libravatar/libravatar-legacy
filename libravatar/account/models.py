@@ -222,7 +222,7 @@ class Photo(models.Model):
 
         return True
 
-    def crop(self, x=0, y=0, w=0, h=0, links_to_create=None):
+    def crop(self, dimensions=None, links_to_create=None):
         if path.isfile(settings.USER_FILES_ROOT + self.full_filename()):
             return  # already done, skip
 
@@ -231,6 +231,13 @@ class Photo(models.Model):
 
         if not links_to_create:
             links_to_create = []
+
+        x = y = w = h = 0
+        if dimensions:
+            x = dimensions['x']
+            y = dimensions['y']
+            w = dimensions['w']
+            h = dimensions['h']
 
         # Queue a job for the cropping/resizing gearman worker
         gm_client = libgearman.Client()

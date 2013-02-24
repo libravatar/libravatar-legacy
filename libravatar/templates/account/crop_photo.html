@@ -11,7 +11,11 @@
 
 <p>{% trans 'Draw a square around the portion of the image you want to use:' %}</p>
 
-<form action="{% url libravatar.account.views.crop_photo photo.id %}{% if embedded %}?embedded=1{% endif %}" method="post">{% csrf_token %}
+<form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
+{% if embedded %}<input type="hidden" name="embedded" value="1">{% endif %}
+{% if email %}<input type="hidden" name="email" value="{{email}}">{% endif %}
+{% if openid %}<input type="hidden" name="openid" value="{{openid}}">{% endif %}
+
 <p class="aligned wide"><img src='{{photo.uploaded_pathname}}' id='cropbox' /></p>
 <input type='hidden' id='x' name='x' value='0'/>
 <input type='hidden' id='y' name='y' value='0'/>
