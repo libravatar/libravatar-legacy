@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from gearman import libgearman
 import json
 import os
 import shutil
@@ -23,7 +24,7 @@ import sys
 
 # pylint: disable=W0403
 import settings
-from utils import create_logger, delete_if_exists, is_hex
+from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
 logger = create_logger('ready2user')
 
@@ -37,6 +38,7 @@ def main(argv=None):
 
     file_hash = params['file_hash']
     file_format = params['format']
+    links = params['links']
 
     # Validate inputs
     if not is_hex(file_hash):
@@ -45,6 +47,13 @@ def main(argv=None):
     if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
         logger.error('file_format is not recognized')
         return 1
+    if not isinstance(links, list):
+        logger.error('links is not a list')
+        return 1
+    for l in links:
+        if not is_hash_pair(l):
+            logger.error('links is not a list of hash pairs')
+            return 1
 
     filename = "%s.%s" % (file_hash, file_format)
     source = settings.READY_FILES_ROOT + filename
@@ -69,6 +78,16 @@ def main(argv=None):
     # All done, we can delete the original file as uploaded by the user
     uploaded_file = settings.UPLOADED_FILES_ROOT + filename
     delete_if_exists(uploaded_file)
+
+    # Finally, create any links to email hashes that were requested
+    gm_client = libgearman.Client()
+    for server in settings.GEARMAN_SERVERS:
+        gm_client.add_server(server)
+
+    for hashes in links:
+        params = {'photo_hash': file_hash, 'photo_format': file_format,
+                  'md5_hash': hashes[0], 'sha256_hash': hashes[1]}
+        gm_client.do_background('changephoto', json.dumps(params))
 
     return 0
 

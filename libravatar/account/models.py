@@ -222,12 +222,15 @@ class Photo(models.Model):
 
         return True
 
-    def crop(self, x=0, y=0, w=0, h=0):
+    def crop(self, x=0, y=0, w=0, h=0, links_to_create=None):
         if path.isfile(settings.USER_FILES_ROOT + self.full_filename()):
             return  # already done, skip
 
         if not path.isfile(settings.UPLOADED_FILES_ROOT + self.full_filename()):
             return  # source image doesn't exist, can't crop it
+
+        if not links_to_create:
+            links_to_create = []
 
         # Queue a job for the cropping/resizing gearman worker
         gm_client = libgearman.Client()
@@ -235,7 +238,7 @@ class Photo(models.Model):
             gm_client.add_server(server)
 
         workload = {'file_hash': self.filename, 'format': self.format,
-                    'x': x, 'y': y, 'w': w, 'h': h}
+                    'x': x, 'y': y, 'w': w, 'h': h, 'links': links_to_create}
         gm_client.do_background('cropresize', json.dumps(workload))
 
 
@@ -296,10 +299,13 @@ class ConfirmedEmail(models.Model):
         else:
             return settings.AVATAR_URL + self.public_hash(algorithm)
 
-    def set_photo(self, photo):
+    def set_photo(self, photo, create_links=True):
         self.photo = photo
-        change_photo(photo, self.public_hash('md5'), self.public_hash('sha256'))
         self.save()
+        if create_links:
+            change_photo(photo, self.public_hash('md5'), self.public_hash('sha256'))
+        else:
+            return (self.public_hash('md5'), self.public_hash('sha256'))
 
 
 class UnconfirmedEmail(models.Model):
@@ -370,10 +376,13 @@ class ConfirmedOpenId(models.Model):
         else:
             return settings.AVATAR_URL + self.public_hash()
 
-    def set_photo(self, photo):
+    def set_photo(self, photo, create_links=True):
         self.photo = photo
-        change_photo(photo, md5_hash=None, sha256_hash=self.public_hash())
         self.save()
+        if create_links:
+            change_photo(photo, None, self.public_hash())
+        else:
+            return self.public_hash()
 
 
 # Classes related to the OpenID Store (from https://github.com/simonw/django-openid)

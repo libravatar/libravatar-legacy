@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -30,6 +30,15 @@ def delete_if_exists(filename):
 
 def is_hex(s):
     return set(s).issubset('0123456789abcdefABCDEF')
+
+
+def is_hash_pair(element):
+    if not isinstance(element, list):
+        return False
+    if len(element) < 2:
+        return False
+
+    return (element[0] is None or is_hex(element[0])) and (element[1] is None or is_hex(element[1]))
 
 
 def create_logger(worker_name):

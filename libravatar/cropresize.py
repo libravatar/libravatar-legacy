@@ -25,7 +25,7 @@ import sys
 
 # pylint: disable=W0403
 import settings
-from utils import create_logger, delete_if_exists, is_hex
+from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
 logger = create_logger('cropresize')
 
@@ -163,6 +163,7 @@ def main(argv=None):
     y = int(params['y'])
     w = int(params['w'])
     h = int(params['h'])
+    links = params['links']
 
     # Validate inputs
     if not is_hex(file_hash):
@@ -171,6 +172,13 @@ def main(argv=None):
     if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
         logger.error('file_format is not recognized')
         return 1
+    if not isinstance(links, list):
+        logger.error('links is not a list')
+        return 1
+    for l in links:
+        if not is_hash_pair(l):
+            logger.error('links is not a list of hash pairs')
+            return 1
 
     filename = "%s.%s" % (file_hash, file_format)
     return_code = crop(filename, x, y, w, h)
@@ -181,7 +189,7 @@ def main(argv=None):
     for server in settings.GEARMAN_SERVERS:
         gm_client.add_server(server)
 
-    params = {'file_hash': file_hash, 'format': file_format}
+    params = {'file_hash': file_hash, 'format': file_format, 'links': links}
     gm_client.do_background('ready2user', json.dumps(params))
 
     return 0
