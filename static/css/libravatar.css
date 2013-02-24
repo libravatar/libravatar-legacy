@@ -191,3 +191,15 @@ ul li {
 #browserid-option {
   display: none;
 }
+
+.bolder {
+  font-weight: bolder;
+}
+
+.hidden {
+  display: none;
+}
+
+.clear-both {
+  clear: both;
+}

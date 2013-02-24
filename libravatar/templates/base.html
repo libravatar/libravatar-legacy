@@ -19,12 +19,12 @@
     <a href="{{ site_url }}"><img src="/img/logo.png" height="60" width="60" alt="{% trans 'Homepage' %}"></a>
   </div>
   <div id="site-branding">
-    <span id="site-name">libr<span style="font-weight: bolder">avatar</span></span>
+    <span id="site-name">libr<span class="bolder">avatar</span></span>
     <br>{% trans 'freeing the web one face at a time' %}
   </div>
   </div>
   <div id="account">
-    <span id="browserid-user" style="display: none">{{browserid_user}}</span>
+    <span id="browserid-user" class="hidden">{{browserid_user}}</span>
     {% if user.is_authenticated %}
     <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>&nbsp;|&nbsp;
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
