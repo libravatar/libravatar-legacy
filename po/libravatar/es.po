@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-12-20 23:50+1300\n"
-"PO-Revision-Date: 2012-12-20 19:10+0000\n"
-"Last-Translator: Eduardo Alberto Calvo <Unknown>\n"
+"POT-Creation-Date: 2013-01-12 23:08+1300\n"
+"PO-Revision-Date: 2013-03-19 12:32+0000\n"
+"Last-Translator: Laura Arjona Reina <larjona99@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-21 05:07+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-03-20 04:51+0000\n"
+"X-Generator: Launchpad (build 16532)\n"
 
 #: settings.py:57
 msgid "Catalan"
@@ -83,7 +83,7 @@ msgstr "falta la dirección de correo"
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" no es una dirección de correo electrónico válida"
 
-#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
 msgstr "Correo electrónico"
 
@@ -121,8 +121,8 @@ msgstr "apto para todas las edades (esto es, no es contenido ofensivo)"
 #: account/forms.py:116
 msgid "We only host \"G-rated\" images and so this field must be checked."
 msgstr ""
-"Sólo almacenamos imágenes de \"G-rated\", por lo que ésta casilla debe estar "
-"activada."
+"Sólo almacenamos imágenes clasificadas como \"G\", por lo que esta casilla "
+"debe estar activada."
 
 #: account/forms.py:117
 msgid "can be freely copied"
@@ -133,63 +133,63 @@ msgid ""
 "This field must be checked since we need to be able to distribute photos to "
 "third parties."
 msgstr ""
-"Ésta casilla debe estar activada, ya que tenemos que poder distribuir fotos "
+"Esta casilla debe estar activada, ya que tenemos que poder distribuir fotos "
 "a terceros."
 
-#: account/forms.py:143
+#: account/forms.py:144
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "Contraseña blanqueada para %(site_name)s"
 
-#: account/forms.py:168
+#: account/forms.py:169
 msgid "Password"
 msgstr "Contraseña"
 
-#: account/forms.py:179
+#: account/forms.py:180
 msgid "Invalid password"
 msgstr "Contraseña no válida"
 
-#: account/models.py:122
+#: account/models.py:124
 msgid "photo"
 msgstr "foto"
 
-#: account/models.py:123
+#: account/models.py:125
 msgid "photos"
 msgstr "fotos"
 
-#: account/models.py:266
+#: account/models.py:272
 msgid "confirmed email"
 msgstr "email confirmado"
 
-#: account/models.py:267
+#: account/models.py:273
 msgid "confirmed emails"
 msgstr "emails confirmados"
 
-#: account/models.py:306
+#: account/models.py:312
 msgid "unconfirmed email"
 msgstr "email sin confirmar"
 
-#: account/models.py:307
+#: account/models.py:313
 msgid "unconfirmed emails"
 msgstr "emails sin confirmar"
 
-#: account/models.py:310 account/models.py:330
+#: account/models.py:316 account/models.py:336
 msgid "(unconfirmed)"
 msgstr "(sin confirmar)"
 
-#: account/models.py:326
+#: account/models.py:332
 msgid "unconfirmed OpenID"
 msgstr "OpenID sin confirmar"
 
-#: account/models.py:327
+#: account/models.py:333
 msgid "unconfirmed OpenIDs"
 msgstr "OpenIDs sin confirmar"
 
-#: account/models.py:341
+#: account/models.py:347
 msgid "confirmed OpenID"
 msgstr "OpenID confirmado"
 
-#: account/models.py:342
+#: account/models.py:348
 msgid "confirmed OpenIDs"
 msgstr "OpenIDs confirmados"
 
@@ -214,28 +214,28 @@ msgstr "Página web personal"
 msgid "freeing the web one face at a time"
 msgstr "liberando la web una cara cada vez"
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/base.html:31 templates/base.html.py:35
+#: templates/base.html:30 templates/base.html.py:33
 msgid "Contact Us"
 msgstr "Contáctenos"
 
-#: templates/base.html:32
+#: templates/base.html:31
 msgid "Logout"
 msgstr "Cerrar sesión"
 
-#: templates/base.html:36 templates/account/login.html:11
+#: templates/base.html:34 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/base.html:48
+#: templates/base.html:46
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero General Public License"
 
-#: templates/base.html:48
+#: templates/base.html:46
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -246,7 +246,7 @@ msgstr ""
 "href=\"https://launchpad.net/libravatar\">Libravatar</a>,\n"
 "  versión %(libravatar_version)s"
 
-#: templates/base.html:50
+#: templates/base.html:48
 msgid "Flattr this!"
 msgstr "¡Apoya con Flattr!"
 
@@ -298,7 +298,7 @@ msgid "Add"
 msgstr "Añadir"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/crop_photo.html:21 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
@@ -433,7 +433,11 @@ msgstr ""
 msgid "Crop photo"
 msgstr "Recortar la foto"
 
-#: templates/account/crop_photo.html:18
+#: templates/account/crop_photo.html:12
+msgid "Draw a square around the portion of the image you want to use:"
+msgstr ""
+
+#: templates/account/crop_photo.html:20
 msgid "Crop"
 msgstr "Recortar"
 
@@ -879,9 +883,14 @@ msgid "Uploaded photo is broken or invalid."
 msgstr "La Foto Subida esta Rota o Inválida."
 
 #: templates/account/photo_invalidfile.html:7
+#: templates/account/photo_invalidformat.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Por Favor <a href=\"%(upload_url)s\">Subir</a> una Diferente."
+
+#: templates/account/photo_invalidformat.html:5
+msgid "Uploaded photo uses an unsupported file format."
+msgstr ""
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -910,15 +919,9 @@ msgstr "Foto(s) satisfactoriamente importada(s)."
 msgid "Photo import failed."
 msgstr "Falló la importación de la foto."
 
-#: templates/account/profile.html:4
-#, python-format
-msgid "%(username)s's Libravatar Profile"
-msgstr "Perfil de %(username)s en Libravatar"
-
-#: templates/account/profile.html:8
-#, python-format
-msgid "%(username)s's Profile"
-msgstr "Perfil de %(username)s"
+#: templates/account/profile.html:4 templates/account/profile.html.py:8
+msgid "Your Profile"
+msgstr ""
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
