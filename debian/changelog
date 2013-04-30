@@ -1,3 +1,10 @@
+libravatar (20130430.1) unstable; urgency=low
+
+  * Update Spanish translation
+  * Make seccdn a recommendation instead of a dependency for slaves
+
+ -- Francois Marier <francois@debian.org>  Tue, 30 Apr 2013 22:54:01 +1200
+
 libravatar (20130225.1) unstable; urgency=low
 
   * Add upload link to assign_photo pages (LP: #1127724)
