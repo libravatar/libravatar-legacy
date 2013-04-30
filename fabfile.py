@@ -17,12 +17,14 @@ except ImportError:
     def lcd():
         return None
 
-env.roledefs = {'slave': ['1.cdn.libravatar.org', '2.cdn.libravatar.org', '3.cdn.libravatar.org'],
+env.roledefs = {'cdn_only': ['2.cdn.libravatar.org'],
+                'seccdn': ['1.cdn.libravatar.org', '3.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org'],
                 'repo': ['apt.libravatar.org']}
 
 COMMON_PACKAGES = ['libravatar-cdn', 'libravatar-common', 'libravatar-cdn-common', 'libravatar-deployment']
-SLAVE_PACKAGES = ['libravatar-seccdn', 'libravatar-slave']
+CDNCOMMON_PACKAGES = ['libravatar-slave']
+SECCDN_PACKAGES = ['libravatar-seccdn']
 MASTER_PACKAGES = ['libravatar', 'libravatar-www', 'libravatar-master']
 
 # Extract current version number from Debian changelog
@@ -47,7 +49,7 @@ def sign_repo():
     # from http://blog.mycrot.ch/2011/04/26/creating-your-own-signed-apt-repository-and-debian-packages/
     with lcd('../libravatar-repo/'):
         local('rm -rf db dists pool');
-        all_packages = COMMON_PACKAGES + SLAVE_PACKAGES + MASTER_PACKAGES
+        all_packages = COMMON_PACKAGES + CDNCOMMON_PACKAGES + SECCDN_PACKAGES + MASTER_PACKAGES
         for package_name in all_packages:
             deb = '../%s_%s_all.deb' % (package_name, PACKAGE_VERSION)
             local("/usr/bin/reprepro --ask-passphrase -Vb . includedeb squeeze %s" % deb)
@@ -80,12 +82,18 @@ def restart_apache():
 
 
 @parallel
-@roles('slave')
-def deploy_slave():
+@roles('cdn_only')
+def deploy_cdn():
     sudo('/usr/bin/apt-get update', shell=False)
-    install_packages(COMMON_PACKAGES + SLAVE_PACKAGES)
+    install_packages(COMMON_PACKAGES + CDNCOMMON_PACKAGES)
     restart_apache()
 
+@parallel
+@roles('seccdn')
+def deploy_seccdn():
+    sudo('/usr/bin/apt-get update', shell=False)
+    install_packages(COMMON_PACKAGES + CDNCOMMON_PACKAGES + SECCDN_PACKAGES)
+    restart_apache()
 
 @roles('master')
 def deploy_master():
@@ -95,7 +103,8 @@ def deploy_master():
 
 
 def deploy():
-    deploy_slave()
+    deploy_cdn()
+    deploy_seccdn()
     deploy_master()
 
 
