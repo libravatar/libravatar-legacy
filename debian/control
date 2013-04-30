@@ -63,7 +63,8 @@ Description: avatar image hosting - mirror master
 
 Package: libravatar-slave
 Architecture: all
-Depends: ${misc:Depends}, libravatar-cdn, libravatar-seccdn, rsync
+Recommends: libravatar-seccdn
+Depends: ${misc:Depends}, libravatar-cdn, rsync
 Suggests: libravatar-deployment
 Conflicts: libravatar-www
 Description: avatar image hosting - mirror slave
