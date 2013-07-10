@@ -3,6 +3,10 @@
 
 {% block title %}{% trans 'Photo lookup' %} - Libravatar{% endblock title %}
 
+{% block header %}<link rel="dns-prefetch" href="http://cdn.libravatar.org">
+<link rel="dns-prefetch" href="https://seccdn.libravatar.org">
+<link rel="dns-prefetch" href="http://www.gravatar.com">{% endblock header %}
+
 {% block content %}
 
 <h1>{% trans 'Photo lookup' %}</h1>
