@@ -260,9 +260,9 @@ class ConfirmedEmailManager(models.Manager):
 
         external_photos = []
         if is_logged_in:
-            identica = identica_photo(confirmed.email)
-            if identica:
-                external_photos.append(identica)
+            #identica = identica_photo(confirmed.email)
+            #if identica:
+            #    external_photos.append(identica)
             gravatar = gravatar_photo(confirmed.email)
             if gravatar:
                 external_photos.append(gravatar)
