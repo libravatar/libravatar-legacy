@@ -1,3 +1,14 @@
+libravatar (20130721.1) unstable; urgency=low
+
+  * Disable Identica photo importer (LP: #1200599)
+  * Specify Persona background color (LP: #1202483)
+  * Add dns-prefetch to check tool (LP: #1199604)
+
+  * Add new en_GB translation
+  * Update Turkish translation
+
+ -- Francois Marier <francois@debian.org>  Sun, 21 Jul 2013 23:22:43 +1200
+
 libravatar (20130430.1) unstable; urgency=low
 
   * Update Spanish translation
