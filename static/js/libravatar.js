@@ -126,6 +126,7 @@ if (navigator.id) {
 function browserid_login() {
     email_requested = true;
     navigator.id.request({siteLogo: '/img/logo.png',
+                          backgroundColor: '#fa711f',
                           siteName: $('#site-name').text()});
 }
 function browserid_logout(silent) {
