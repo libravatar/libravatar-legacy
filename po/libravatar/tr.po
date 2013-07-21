@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-20 23:50+1300\n"
-"PO-Revision-Date: 2012-12-21 19:09+0000\n"
-"Last-Translator: zapman <Unknown>\n"
+"POT-Creation-Date: 2013-01-12 23:08+1300\n"
+"PO-Revision-Date: 2013-05-14 09:50+0000\n"
+"Last-Translator: Volkan Gezer <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-22 06:26+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-07-21 02:12+0000\n"
+"X-Generator: Launchpad (build 16696)\n"
 "Language: tr\n"
 "X-Poedit-Language: Turkish\n"
 
@@ -85,7 +85,7 @@ msgstr "eksik e-posta adresi"
 msgid "\"%s\" is not a valid email address"
 msgstr "\"%s\" geçerli bir e-posta adresi değildir"
 
-#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
 msgstr "E-posta"
 
@@ -137,60 +137,60 @@ msgstr ""
 "Bu alanın seçilmesi gerekir çünkü üçüncü taraflara fotoğrafları "
 "dağıtabilmemiz gerekir."
 
-#: account/forms.py:143
+#: account/forms.py:144
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "%(site_name)s için parola sıfırlandı"
 
-#: account/forms.py:168
+#: account/forms.py:169
 msgid "Password"
 msgstr "Parola"
 
-#: account/forms.py:179
+#: account/forms.py:180
 msgid "Invalid password"
 msgstr "Geçersiz parola"
 
-#: account/models.py:122
+#: account/models.py:124
 msgid "photo"
 msgstr "fotoğraf"
 
-#: account/models.py:123
+#: account/models.py:125
 msgid "photos"
 msgstr "fotoğraf"
 
-#: account/models.py:266
+#: account/models.py:272
 msgid "confirmed email"
 msgstr "teyit edilmiş e-posta"
 
-#: account/models.py:267
+#: account/models.py:273
 msgid "confirmed emails"
 msgstr "teyit edilmiş e-posta"
 
-#: account/models.py:306
+#: account/models.py:312
 msgid "unconfirmed email"
 msgstr "teyit edilmemiş e-posta"
 
-#: account/models.py:307
+#: account/models.py:313
 msgid "unconfirmed emails"
 msgstr "teyit edilmemiş e-posta"
 
-#: account/models.py:310 account/models.py:330
+#: account/models.py:316 account/models.py:336
 msgid "(unconfirmed)"
 msgstr "(teyit edilmemiş)"
 
-#: account/models.py:326
+#: account/models.py:332
 msgid "unconfirmed OpenID"
 msgstr "teyit edilmemiş OpenID"
 
-#: account/models.py:327
+#: account/models.py:333
 msgid "unconfirmed OpenIDs"
 msgstr "teyit edilmemiş OpenID"
 
-#: account/models.py:341
+#: account/models.py:347
 msgid "confirmed OpenID"
 msgstr "teyit edilmiş OpenID"
 
-#: account/models.py:342
+#: account/models.py:348
 msgid "confirmed OpenIDs"
 msgstr "teyit edilmiş OpenID"
 
@@ -215,28 +215,28 @@ msgstr "Ana sayfa"
 msgid "freeing the web one face at a time"
 msgstr "ağı özgürleştiriyoruz, tek tek her yüzle"
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:31 templates/base.html.py:35
+#: templates/base.html:30 templates/base.html.py:33
 msgid "Contact Us"
 msgstr "İrtibat"
 
-#: templates/base.html:32
+#: templates/base.html:31
 msgid "Logout"
 msgstr "Çıkış"
 
-#: templates/base.html:36 templates/account/login.html:11
+#: templates/base.html:34 templates/account/login.html:11
 #: templates/account/login.html.py:39 templates/openid/login.html:28
 msgid "Login"
 msgstr "Giriş"
 
-#: templates/base.html:48
+#: templates/base.html:46
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero Genel Kamu Lisansı"
 
-#: templates/base.html:48
+#: templates/base.html:46
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -247,7 +247,7 @@ msgstr ""
 "href=\"https://launchpad.net/libravatar\">Libravatar</a> yazılımının\n"
 " %(libravatar_version)s sürümünü kullanan bir havari hizmetidir."
 
-#: templates/base.html:50
+#: templates/base.html:48
 msgid "Flattr this!"
 msgstr "Bunu Flattr'la"
 
@@ -295,10 +295,10 @@ msgstr ""
 
 #: templates/account/add_email.html:19 templates/account/add_openid.html:19
 msgid "Add"
-msgstr "İlâve et"
+msgstr "Ekle"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/crop_photo.html:21 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
@@ -433,7 +433,11 @@ msgstr ""
 msgid "Crop photo"
 msgstr "Fotoğrafı kırp"
 
-#: templates/account/crop_photo.html:18
+#: templates/account/crop_photo.html:12
+msgid "Draw a square around the portion of the image you want to use:"
+msgstr "Resmin kullanmak istediğiniz alanı etrafına bir kare çiziniz:"
+
+#: templates/account/crop_photo.html:20
 msgid "Crop"
 msgstr "Kırp"
 
@@ -879,9 +883,14 @@ msgid "Uploaded photo is broken or invalid."
 msgstr "Yüklenilen fotoğraf bozuk ya da geçersiz"
 
 #: templates/account/photo_invalidfile.html:7
+#: templates/account/photo_invalidformat.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Lütfen başka birini <a href=\"%(upload_url)s\">yükleyin</a>."
+
+#: templates/account/photo_invalidformat.html:5
+msgid "Uploaded photo uses an unsupported file format."
+msgstr "Yüklenen fotoğraf desteklenmeyen bir biçim kullanmaktadır."
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -909,15 +918,9 @@ msgstr "Fotoğraf(lar) başarıyla içe aktarıldı."
 msgid "Photo import failed."
 msgstr "Fotoğraf içe aktarımı başarısız oldu."
 
-#: templates/account/profile.html:4
-#, python-format
-msgid "%(username)s's Libravatar Profile"
-msgstr "%(username)s'in Libravatar Profili"
-
-#: templates/account/profile.html:8
-#, python-format
-msgid "%(username)s's Profile"
-msgstr "%(username)s'in Profili"
+#: templates/account/profile.html:4 templates/account/profile.html.py:8
+msgid "Your Profile"
+msgstr "Profiliniz"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
