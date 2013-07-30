@@ -19,6 +19,7 @@
 * Python LDAP library (if using optional LDAP authenticaion)
 * PNG crush
 * AdvanceCOMP
+* GIFsicle
 
 On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
 
