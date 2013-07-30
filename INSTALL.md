@@ -1,14 +1,14 @@
 # External dependencies
 
-* Python 2.6
-* Django 1.2
+* Python 2.7
+* Django 1.4
 * Apache 2 with:
  * mod\_alias
  * mod\_expires
  * mod\_headers
  * mod\_rewrite
-* [Python DNS 2.3.4](http://pydns.sourceforge.net/)
-* jQuery 1.5
+* [Python DNS 2.3.6](http://pydns.sourceforge.net/)
+* jQuery 1.7.2
 * [Python Imaging Library](http://www.pythonware.com/library/)
 * [YUI Compressor](http://developer.yahoo.com/yui/compressor/), for minifying CSS/JS files
 * [Gearman](http://www.gearman.org)
@@ -23,7 +23,7 @@
 
 On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
 
-    apt-get install python-django python-dns libjs-jquery/squeeze-backports python2.6 python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
+    apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
   
     apt-get install python-ldap
 
