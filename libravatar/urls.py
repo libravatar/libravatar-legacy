@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2013  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -24,8 +24,7 @@ handler500  # make pyflakes happy, pylint: disable=W0104
 urlpatterns = patterns('',
     (r'^account/', include('libravatar.account.urls')),
 
-    (r'^openid/login/$', 'django_openid_auth.views.login_begin'),
-    (r'^openid/complete/$', 'django_openid_auth.views.login_complete'),
+    (r'^openid/', include('django_openid_auth.urls')),
 
     (r'^tools/', include('libravatar.tools.urls')),
 
