@@ -21,7 +21,7 @@
 * AdvanceCOMP
 * GIFsicle
 
-On Debian unstable or squeeze (make sure you have the squeeze-backports repository enabled):
+On Debian unstable or wheezy:
 
     apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
   
