@@ -43,12 +43,6 @@ Create the required tables:
     cd /usr/share/libravatar/libravatar
     python manage.py syncdb
 
-Create an index for the sessions table (not needed for Django 1.3 or later):
-
-    sudo -u postrgres psql libravatar
-    CREATE INDEX "django_session_expire_date" ON "django_session" ("expire_date");
-
-
 # Apache Configuration
 
 Start by adding this to your /etc/hosts:
