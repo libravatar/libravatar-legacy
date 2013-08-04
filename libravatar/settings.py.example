@@ -31,13 +31,13 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        "NAME": 'libravatar',                      # Or path to database file if using sqlite3.
-        "USER": 'djangouser',                      # Not used with sqlite3.
-        "PASSWORD": '',                  # Not used with sqlite3.
-        "HOST": '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        "NAME": 'libravatar',
+        "USER": 'djangouser',
+        "PASSWORD": '',
+        "HOST": '',
         "PORT": '',
-        "OPTIONS": { 'autocommit': True },
+        "OPTIONS": {'autocommit': True},
     }
 }
 
@@ -144,7 +144,7 @@ INSTALLED_APPS = (
 )
 
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/account/profile/' # Set to /account/profile_success/ for authenticating ldap users
+LOGIN_REDIRECT_URL = '/account/profile/'  # Set to /account/profile_success/ for authenticating ldap users
 
 # Path and URL for images uploaded by users
 UPLOADED_FILES_ROOT = '%s/uploaded/' % PROJECT_ROOT
@@ -186,7 +186,7 @@ MAX_NUM_UNCONFIRMED_EMAILS = 10
 MAX_NUM_PHOTOS = 4
 
 # Maximum file size for each photo
-MAX_PHOTO_SIZE = 10485760 # in bytes
+MAX_PHOTO_SIZE = 10485760  # in bytes
 FILE_UPLOAD_MAX_MEMORY_SIZE = MAX_PHOTO_SIZE
 
 # Quality can be from 1 to 95
@@ -216,9 +216,9 @@ SESSION_COOKIE_SECURE = True
 AUTH_LDAP_SERVER_URI = "ldap://ldap.example.com:389/"
 AUTH_LDAP_USER_DN_TEMPLATE = "uid=%(user)s,ou=StaffGroup,dc=example,dc=com"
 AUTH_LDAP_USER_ATTR_MAP = {
-    'first_name':       'givenName',
-    'last_name':        'sn',
-    'email':            'mail',
+    'first_name': 'givenName',
+    'last_name': 'sn',
+    'email': 'mail',
 }
 AUTH_LDAP_USER_PHOTO = 'jpegPhoto'
 

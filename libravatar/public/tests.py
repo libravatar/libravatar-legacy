@@ -46,16 +46,16 @@ class PublicTestCase(unittest.TestCase):
         self.assertEquals(srv_hostname([{'target': 'avatars.example.com', 'priority': 0, 'weight': 0, 'port': 80}]),
                           ('avatars.example.com', 80))
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars2.example.com', 'priority': 10, 'weight': 0, 'port': 81},
-                            {'target': 'avatars.example.com', 'priority': 0, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars2.example.com', 'priority': 10, 'weight': 0, 'port': 81},
+                          {'target': 'avatars.example.com', 'priority': 0, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars.example.com', 80))
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars4.example.com', 'priority': 10, 'weight': 0, 'port': 83},
-                            {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
-                            {'target': 'avatars21.example.com', 'priority': 1, 'weight': 0, 'port': 81},
-                            {'target': 'avatars.example.com', 'priority': 10, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars4.example.com', 'priority': 10, 'weight': 0, 'port': 83},
+                          {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
+                          {'target': 'avatars21.example.com', 'priority': 1, 'weight': 0, 'port': 81},
+                          {'target': 'avatars.example.com', 'priority': 10, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars21.example.com', 81))
 
         # The following ones are randomly selected which is why we
@@ -64,41 +64,41 @@ class PublicTestCase(unittest.TestCase):
 
         # random_number = 49
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
-                            {'target': 'avatars3.example.com', 'priority': 10, 'weight': 5, 'port': 82},
-                            {'target': 'avatars2.example.com', 'priority': 10, 'weight': 10, 'port': 8100},
-                            {'target': 'avatars1.example.com', 'priority': 10, 'weight': 50, 'port': 800},
-                            {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
+                          {'target': 'avatars3.example.com', 'priority': 10, 'weight': 5, 'port': 82},
+                          {'target': 'avatars2.example.com', 'priority': 10, 'weight': 10, 'port': 8100},
+                          {'target': 'avatars1.example.com', 'priority': 10, 'weight': 50, 'port': 800},
+                          {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars1.example.com', 800))
 
         # random_number = 0
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
-                            {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
-                            {'target': 'avatars2.example.com', 'priority': 20, 'weight': 0, 'port': 81},
-                            {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
+                          {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
+                          {'target': 'avatars2.example.com', 'priority': 20, 'weight': 0, 'port': 81},
+                          {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars3.example.com', 82))
 
         # random_number = 1
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars4.example.com', 'priority': 10, 'weight': 0, 'port': 83},
-                            {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
-                            {'target': 'avatars20.example.com', 'priority': 10, 'weight': 10, 'port': 601},
-                            {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars4.example.com', 'priority': 10, 'weight': 0, 'port': 83},
+                          {'target': 'avatars3.example.com', 'priority': 10, 'weight': 0, 'port': 82},
+                          {'target': 'avatars20.example.com', 'priority': 10, 'weight': 10, 'port': 601},
+                          {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars20.example.com', 601))
 
         # random_number = 40
         self.assertEquals(srv_hostname([
-                            {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
-                            {'target': 'avatars3.example.com', 'priority': 10, 'weight': 5, 'port': 82},
-                            {'target': 'avatars2.example.com', 'priority': 10, 'weight': 10, 'port': 8100},
-                            {'target': 'avatars10.example.com', 'priority': 10, 'weight': 30, 'port': 8},
-                            {'target': 'avatars1.example.com', 'priority': 10, 'weight': 50, 'port': 800},
-                            {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
-                            ]),
+                          {'target': 'avatars4.example.com', 'priority': 10, 'weight': 1, 'port': 83},
+                          {'target': 'avatars3.example.com', 'priority': 10, 'weight': 5, 'port': 82},
+                          {'target': 'avatars2.example.com', 'priority': 10, 'weight': 10, 'port': 8100},
+                          {'target': 'avatars10.example.com', 'priority': 10, 'weight': 30, 'port': 8},
+                          {'target': 'avatars1.example.com', 'priority': 10, 'weight': 50, 'port': 800},
+                          {'target': 'avatars.example.com', 'priority': 20, 'weight': 0, 'port': 80},
+                          ]),
                           ('avatars10.example.com', 8))
 
     def testHomepage(self):
