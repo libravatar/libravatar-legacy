@@ -47,7 +47,7 @@
 import base64
 import datetime
 from gearman import libgearman
-from hashlib import md5, sha256
+import hashlib
 import Image
 import json
 from openid.store import nonce as oidnonce
@@ -72,7 +72,9 @@ MAX_LENGTH_URL = 255  # MySQL can't handle more than that (LP: 1018682)
 
 
 def password_reset_key(user):
-    return sha256(user.username + user.password).hexdigest()
+    hash_object = hashlib.new('sha256')
+    hash_object.update(user.username + user.password)
+    return hash_object.hexdigest()
 
 
 def file_format(image_type):
@@ -131,7 +133,9 @@ class Photo(models.Model):
         return path.isfile(settings.USER_FILES_ROOT + self.full_filename())
 
     def save(self, image, force_insert=False, force_update=False):
-        self.filename = sha256(urandom(1024) + str(self.user.username)).hexdigest()
+        hash_object = hashlib.new('sha256')
+        hash_object.update(urandom(1024) + str(self.user.username))
+        self.filename = hash_object.hexdigest()
 
         # Write file to disk
         tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
@@ -192,7 +196,9 @@ class Photo(models.Model):
         if not image_url:
             return False
 
-        self.filename = sha256(service_name + email_address).hexdigest()
+        hash_object = hashlib.new('sha256')
+        hash_object.update(service_name + email_address)
+        self.filename = hash_object.hexdigest()
 
         tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
         try:
@@ -296,9 +302,11 @@ class ConfirmedEmail(models.Model):
 
     def public_hash(self, algorithm):
         if 'md5' == algorithm:
-            return md5(self.email.lower()).hexdigest()
+            hash_object = hashlib.new('md5')
         else:
-            return sha256(self.email.lower()).hexdigest()
+            hash_object = hashlib.new('sha256')
+        hash_object.update(self.email.lower())
+        return hash_object.hexdigest()
 
     def public_url(self, https=False, algorithm='sha256'):
         if https:
@@ -329,8 +337,9 @@ class UnconfirmedEmail(models.Model):
         return self.email + ' ' + _('(unconfirmed)')
 
     def save(self, force_insert=False, force_update=False):
-        salted_username = urandom(1024) + str(self.user.username)
-        key = sha256(salted_username).hexdigest()
+        hash_object = hashlib.new('sha256')
+        hash_object.update(urandom(1024) + str(self.user.username))
+        key = hash_object.hexdigest()
         self.verification_key = key
 
         super(UnconfirmedEmail, self).save(force_insert, force_update)
@@ -375,7 +384,9 @@ class ConfirmedOpenId(models.Model):
     def public_hash(self):
         url = urlsplit(self.openid)
         lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))  # pylint: disable=E1103
-        return sha256(lowercase_value).hexdigest()
+        hash_object = hashlib.new('sha256')
+        hash_object.update(lowercase_value)
+        return hash_object.hexdigest()
 
     def public_url(self, https=False):
         if https:
@@ -484,4 +495,6 @@ class DjangoOpenIDStore(OpenIDStore):
 
     def getAuthKey(self):
         # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY
-        return md5(settings.SECRET_KEY).hexdigest()[:self.AUTH_KEY_LEN]
+        hash_object = hashlib.new('md5')
+        hash_object.update(settings.SECRET_KEY)
+        return hash_object.hexdigest()[:self.AUTH_KEY_LEN]
