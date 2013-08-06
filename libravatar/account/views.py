@@ -18,7 +18,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from gearman import libgearman
-from hashlib import sha256
+import hashlib
 import json
 from openid import oidutil
 from openid.consumer import consumer
@@ -769,7 +769,9 @@ def delete(request):
 
 
 def _perform_export(user, do_delete):
-    file_hash = sha256(user.username + user.password).hexdigest()
+    hash_object = hashlib.new('sha256')
+    hash_object.update(user.username + user.password)
+    file_hash = hash_object.hexdigest()
 
     emails = list(user.confirmed_emails.values_list('email', flat=True))
     openids = list(user.confirmed_openids.values_list('openid', flat=True))

@@ -16,7 +16,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 from urllib2 import urlopen, HTTPError, URLError
-from hashlib import md5
+import hashlib
 import xml.dom.minidom as minidom
 
 URL_TIMEOUT = 5  # in seconds
@@ -64,11 +64,13 @@ def identica_photo(email):
 
 
 def gravatar_photo(email):
-    thumbnail_url = 'https://secure.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=80&d=404'
-    image_url = 'https://secure.gravatar.com/avatar/' + md5(email.lower()).hexdigest() + '?s=512&d=404'
+    hash_object = hashlib.new('md5')
+    hash_object.update(email.lower())
+    thumbnail_url = 'https://secure.gravatar.com/avatar/' + hash_object.hexdigest() + '?s=80&d=404'
+    image_url = 'https://secure.gravatar.com/avatar/' + hash_object.hexdigest() + '?s=512&d=404'
 
     # Will redirect to the public profile URL if it exists
-    service_url = 'http://www.gravatar.com/' + md5(email.lower()).hexdigest()
+    service_url = 'http://www.gravatar.com/' + hash_object.hexdigest()
 
     try:
         urlopen(image_url, timeout=URL_TIMEOUT)

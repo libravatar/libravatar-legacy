@@ -1,3 +1,9 @@
+libravatar (20130804.1) unstable; urgency=low
+
+  * Update app and packaging for wheezy
+
+ -- Francois Marier <francois@debian.org>  Sun, 04 Aug 2013 14:04:47 +1200
+
 libravatar (20130721.1) unstable; urgency=low
 
   * Disable Identica photo importer (LP: #1200599)
