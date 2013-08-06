@@ -29,7 +29,7 @@ from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
 logger = create_logger('cropresize')
 
-MAX_PIXELS = 5000
+MAX_PIXELS = 7000
 
 
 def create_broken_image(broken, dest):
