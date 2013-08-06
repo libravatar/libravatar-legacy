@@ -1,3 +1,12 @@
+libravatar (20130807.1) unstable; urgency=low
+
+  * Add 312x312 to the list of pre-generated sizes
+  * Bump maximum size of images to 7000x7000
+  * Replace AppsAttic logo with Rackspace
+  * Update British English, French and Japanese translations
+
+ -- Francois Marier <francois@debian.org>  Wed, 07 Aug 2013 00:06:31 +1200
+
 libravatar (20130804.1) unstable; urgency=low
 
   * Update app and packaging for wheezy
