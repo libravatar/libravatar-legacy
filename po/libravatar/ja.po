@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-20 23:50+1300\n"
-"PO-Revision-Date: 2012-12-24 15:02+0000\n"
+"POT-Creation-Date: 2013-07-21 14:25+1200\n"
+"PO-Revision-Date: 2013-07-21 16:11+0000\n"
 "Last-Translator: Mitsuhiro Yoshida <Unknown>\n"
 "Language-Team: Japanese <ja@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2012-12-25 04:56+0000\n"
-"X-Generator: Launchpad (build 16378)\n"
+"X-Launchpad-Export-Date: 2013-08-06 11:40+0000\n"
+"X-Generator: Launchpad (build 16718)\n"
 
 #: settings.py:57
 msgid "Catalan"
@@ -34,38 +34,42 @@ msgid "English"
 msgstr "英語"
 
 #: settings.py:61
+msgid "British English"
+msgstr "イギリス英語"
+
+#: settings.py:62
 msgid "Spanish"
 msgstr "スペイン語"
 
-#: settings.py:62
+#: settings.py:63
 msgid "Basque"
 msgstr "バスク語"
 
-#: settings.py:63
+#: settings.py:64
 msgid "French"
 msgstr "フランス語"
 
-#: settings.py:64
+#: settings.py:65
 msgid "Italian"
 msgstr "イタリア語"
 
-#: settings.py:65
+#: settings.py:66
 msgid "Japanese"
 msgstr "日本語"
 
-#: settings.py:66
+#: settings.py:67
 msgid "Brazilian Portuguese"
 msgstr "ポルトガル語 (ブラジル)"
 
-#: settings.py:67
+#: settings.py:68
 msgid "Albanian"
 msgstr "アルバニア語"
 
-#: settings.py:68
+#: settings.py:69
 msgid "Turkish"
 msgstr "トルコ語"
 
-#: settings.py:69
+#: settings.py:70
 msgid "Ukrainian"
 msgstr "ウクライナ語"
 
@@ -83,7 +87,7 @@ msgstr "Eメールアドレスがありません。"
 msgid "\"%s\" is not a valid email address"
 msgstr "「 %s 」は有効なEメールアドレスではありません。"
 
-#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
 msgstr "E メール"
 
@@ -131,60 +135,60 @@ msgid ""
 "third parties."
 msgstr "私たちが第三者に写真を配布することができるよう、このフィールドをチェックする必要があります。"
 
-#: account/forms.py:143
+#: account/forms.py:144
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "%(site_name)s のパスワードリセット"
 
-#: account/forms.py:168
+#: account/forms.py:169
 msgid "Password"
 msgstr "パスワード"
 
-#: account/forms.py:179
+#: account/forms.py:180
 msgid "Invalid password"
 msgstr "パスワードが正しくありません。"
 
-#: account/models.py:122
+#: account/models.py:124
 msgid "photo"
 msgstr "写真"
 
-#: account/models.py:123
+#: account/models.py:125
 msgid "photos"
 msgstr "写真"
 
-#: account/models.py:266
+#: account/models.py:282
 msgid "confirmed email"
 msgstr "確認済みメールアドレス"
 
-#: account/models.py:267
+#: account/models.py:283
 msgid "confirmed emails"
 msgstr "確認済みメールアドレス"
 
-#: account/models.py:306
+#: account/models.py:325
 msgid "unconfirmed email"
 msgstr "確認未了メールアドレス"
 
-#: account/models.py:307
+#: account/models.py:326
 msgid "unconfirmed emails"
 msgstr "確認未了メールアドレス"
 
-#: account/models.py:310 account/models.py:330
+#: account/models.py:329 account/models.py:349
 msgid "(unconfirmed)"
 msgstr "(確認未了)"
 
-#: account/models.py:326
+#: account/models.py:345
 msgid "unconfirmed OpenID"
 msgstr "確認済みOpenID"
 
-#: account/models.py:327
+#: account/models.py:346
 msgid "unconfirmed OpenIDs"
 msgstr "確認未了OpenID"
 
-#: account/models.py:341
+#: account/models.py:360
 msgid "confirmed OpenID"
 msgstr "確認済みOpenID"
 
-#: account/models.py:342
+#: account/models.py:361
 msgid "confirmed OpenIDs"
 msgstr "確認未了OpenID"
 
@@ -197,7 +201,7 @@ msgstr ""
 "ページが見つかりませんでした。あなたが間違ってここにアクセスしてしまったと思う場合、<a "
 "href=\"mailto:%(support_email)s\">私たちにお教えください</a>!"
 
-#: templates/base.html:11
+#: templates/base.html:11 templates/base_embedded.html:7
 msgid "Freeing the Web, one face at a time!"
 msgstr "ひとつの顔でウェブをフリーに!"
 
@@ -209,28 +213,29 @@ msgstr "ホームページ"
 msgid "freeing the web one face at a time"
 msgstr "ひとつの顔でウェブをフリーに"
 
-#: templates/base.html:30
+#: templates/base.html:29
 msgid "Profile"
 msgstr "プロファイル"
 
-#: templates/base.html:31 templates/base.html.py:35
+#: templates/base.html:30 templates/base.html.py:33
 msgid "Contact Us"
 msgstr "お問い合わせ"
 
-#: templates/base.html:32
+#: templates/base.html:31
 msgid "Logout"
 msgstr "ログアウト"
 
-#: templates/base.html:36 templates/account/login.html:11
-#: templates/account/login.html.py:39 templates/openid/login.html:28
+#: templates/base.html:34 templates/account/login.html:11
+#: templates/account/login.html.py:39 templates/account/login_embedded.html:10
+#: templates/openid/login.html:28
 msgid "Login"
 msgstr "ログイン"
 
-#: templates/base.html:48
+#: templates/base.html:46
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero General Public License"
 
-#: templates/base.html:48
+#: templates/base.html:46
 #, python-format
 msgid ""
 "<b>%(site_name)s</b> is an avatar service running the <a "
@@ -241,7 +246,7 @@ msgstr ""
 "href=\"https://launchpad.net/libravatar\">Libravatar</a>ソフトウェア、バージョン "
 "%(libravatar_version)s で運用されるアバターサービスです。"
 
-#: templates/base.html:50
+#: templates/base.html:48
 msgid "Flattr this!"
 msgstr "Flattrします!"
 
@@ -291,12 +296,12 @@ msgid "Add"
 msgstr "追加"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/crop_photo.html:25 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
-#: templates/account/upload_photo.html:25 templates/openid/login.html:30
+#: templates/account/upload_photo.html:28 templates/openid/login.html:30
 msgid "Cancel"
 msgstr "キャンセル"
 
@@ -374,6 +379,12 @@ msgstr "(現在)"
 msgid "None"
 msgstr "なし"
 
+#: templates/account/assign_photo_email.html:42
+#: templates/account/assign_photo_openid.html:42
+#, python-format
+msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
+msgstr "または <a href=\"%(custom_upload_url)s\">新しい写真を</a>アップロードしてください。"
+
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
 #, python-format
@@ -413,7 +424,11 @@ msgstr "Persona認証に失敗しました。後ほど、再度お試しくだ�
 msgid "Crop photo"
 msgstr "写真をトリミングする"
 
-#: templates/account/crop_photo.html:18
+#: templates/account/crop_photo.html:12
+msgid "Draw a square around the portion of the image you want to use:"
+msgstr "あなたが使用したいイメージの範囲を四角で囲んでください:"
+
+#: templates/account/crop_photo.html:24
 msgid "Crop"
 msgstr "トリミングする"
 
@@ -595,7 +610,7 @@ msgid ""
 "moments</b> for the file to be available:"
 msgstr "現在、Libravatarはあなたのデータをエクスポートしています。ファイルが利用できるまで、<b>数分かかる場合があります</b>:"
 
-#: templates/account/login.html:4
+#: templates/account/login.html:4 templates/account/login_embedded.html:4
 msgid "Libravatar Login"
 msgstr "Libravatarログイン"
 
@@ -628,6 +643,14 @@ msgid ""
 "email</a>."
 msgstr ""
 "パスワードを忘れましたか? <a href=\"%(password_reset_url)s\">Eメールでパスワードをリセットします</a>。"
+
+#: templates/account/login_embedded.html:8
+msgid ""
+"To upload your photo to the Libravatar network and make it available to any "
+"site that knows your email address, please login with your email address."
+msgstr ""
+"あなたの写真をLibravatarネットーワークにアップロードして、あなたのメールアドレスを知っているサイトすべてにおいて利用できるようにするには、あなた"
+"のメールアドレスでログインしてください。"
 
 #: templates/account/max_photos.html:6
 #, python-format
@@ -826,9 +849,14 @@ msgid "Uploaded photo is broken or invalid."
 msgstr "アップロードされた写真が壊れている、または無効です。"
 
 #: templates/account/photo_invalidfile.html:7
+#: templates/account/photo_invalidformat.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "異なる写真を<a href=\"%(upload_url)s\">アップロード</a> してください。"
+
+#: templates/account/photo_invalidformat.html:5
+msgid "Uploaded photo uses an unsupported file format."
+msgstr "未サポートのファイルフォーマットを使用してファイルがアップロードされました。"
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -856,21 +884,16 @@ msgstr "写真が正常にインポートされました。"
 msgid "Photo import failed."
 msgstr "写真のアップロードに失敗しました。"
 
-#: templates/account/profile.html:4
-#, python-format
-msgid "%(username)s's Libravatar Profile"
-msgstr "%(username)s のLibravatarプロファイル"
-
-#: templates/account/profile.html:8
-#, python-format
-msgid "%(username)s's Profile"
-msgstr "%(username)s のプロファイル"
+#: templates/account/profile.html:4 templates/account/profile.html.py:8
+msgid "Your Profile"
+msgstr "あなたのプロファイル"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "あなたには次の承認済みメールアドレスおよびOpenIDがあります:"
 
 #: templates/account/profile.html:18 templates/account/profile.html.py:27
+#: templates/account/profile_embedded.html:13
 msgid "Change photo"
 msgstr "写真を変更する"
 
@@ -913,16 +936,31 @@ msgstr "パスワードを設定する"
 msgid "Permanently delete your account"
 msgstr "あなたのアカウントを完全に削除する"
 
+#: templates/account/profile_embedded.html:4
+msgid "Your Libravatar Profile"
+msgstr "あなたのLibravatarプロファイル"
+
+#: templates/account/profile_embedded.html:8
+#, python-format
+msgid ""
+"Here is the photo currently associated with your email address "
+"(%(browserid_user)s):"
+msgstr "あなたのメールアドレスに関連付けられている写真です (%(browserid_user)s):"
+
+#: templates/account/profile_embedded.html:16
+msgid "Close"
+msgstr "閉じる"
+
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
 msgstr "無効な確認キーまたはメールアドレスです。"
 
-#: templates/account/upload_photo.html:17
+#: templates/account/upload_photo.html:20
 #, python-format
 msgid "Maximum file size of %(max_size)s."
 msgstr "%(max_size)s の最大ファイルサイズ"
 
-#: templates/account/upload_photo.html:24
+#: templates/account/upload_photo.html:27
 msgid "Upload"
 msgstr "アップロード"
 
@@ -1075,57 +1113,57 @@ msgid ""
 "The size parameter must be an integer between %(min_size)s and %(max_size)s."
 msgstr "このサイズパラメータは %(min_size)s から %(max_size)s の数値である必要があります。"
 
-#: templates/tools/check.html:4 templates/tools/check.html.py:8
+#: templates/tools/check.html:4 templates/tools/check.html.py:12
 msgid "Photo lookup"
 msgstr "フォトルックアップ"
 
-#: templates/tools/check.html:22
+#: templates/tools/check.html:26
 msgid "Optional parameters"
 msgstr "任意のパラメータ"
 
-#: templates/tools/check.html:33 templates/tools/check_domain.html:19
+#: templates/tools/check.html:37 templates/tools/check_domain.html:19
 msgid "Check"
 msgstr "チェック"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "MD5 hash:"
 msgstr "MD5ハッシュ:"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "compatible with Gravatar"
 msgstr "Gravatar互換"
 
-#: templates/tools/check.html:43
+#: templates/tools/check.html:47
 msgid "SHA256 hash:"
 msgstr "SHA256ハッシュ:"
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:49
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
 msgstr "あなたが使用しているハッシュおよびプロトコルに応じて、アバターがどのように表示されるか変わります:"
 
-#: templates/tools/check.html:48
+#: templates/tools/check.html:52
 msgid "using MD5 over HTTP"
 msgstr "MD5 (HTTP)"
 
-#: templates/tools/check.html:48 templates/tools/check.html.py:53
+#: templates/tools/check.html:52 templates/tools/check.html.py:57
 msgid "MD5"
 msgstr "MD5"
 
-#: templates/tools/check.html:50
+#: templates/tools/check.html:54
 msgid "using SHA256 over HTTP"
 msgstr "SHA256 (HTTP)"
 
-#: templates/tools/check.html:50 templates/tools/check.html.py:55
+#: templates/tools/check.html:54 templates/tools/check.html.py:59
 msgid "SHA256"
 msgstr "SHA256"
 
-#: templates/tools/check.html:53
+#: templates/tools/check.html:57
 msgid "using MD5 over HTTPS"
 msgstr "MD5 (HTTPS)"
 
-#: templates/tools/check.html:55
+#: templates/tools/check.html:59
 msgid "using SHA256 over HTTPS"
 msgstr "SHA256 (HTTPS)"
 
