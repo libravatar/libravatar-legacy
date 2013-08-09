@@ -1,3 +1,12 @@
+libravatar (20130809.1) unstable; urgency=low
+
+  * Set umask and path in gearman workers (LP: #886011)
+  * Stronger TLS configuration for www (LP: #1163627)
+  * Limit size of domain name in lookups
+  * Fix first run of slave's cert updating script
+
+ -- Francois Marier <francois@debian.org>  Fri, 09 Aug 2013 23:37:06 +1200
+
 libravatar (20130807.2) unstable; urgency=low
 
   * Update master pubkey in the slave package
