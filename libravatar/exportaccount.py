@@ -28,6 +28,7 @@ from xml.sax import saxutils
 import settings
 from utils import create_logger, is_hex
 
+os.umask(022)
 logger = create_logger('exportaccount')
 
 SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.2'

@@ -17,12 +17,14 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
+import os
 import sys
 
 # pylint: disable=W0403
 import settings
 from utils import create_logger, delete_if_exists, is_hex
 
+os.umask(022)
 logger = create_logger('deletephoto')
 
 

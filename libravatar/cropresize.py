@@ -27,6 +27,7 @@ import sys
 import settings
 from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
+os.umask(022)
 logger = create_logger('cropresize')
 
 MAX_PIXELS = 7000
@@ -112,33 +113,33 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
 def optimize_image(dest, img_format, ext, broken_file):
     if 'JPEG' == img_format:
-        process = subprocess.Popen(['jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/bin/jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
             logger.error('JPEG optimisation failed: %s' % process.communicate()[0])
             return 4
     elif 'PNG' == img_format:
-        process = subprocess.Popen(['pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/bin/pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
             logger.error('PNG optimisation (pngcrush) failed: %s' % process.communicate()[0])
             return 4
         delete_if_exists(dest)
-        process = subprocess.Popen(['optipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/binoptipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
             logger.error('PNG optimisation (optipng) failed: %s' % process.communicate()[0])
             return 4
         delete_if_exists(dest + '.tmp')
-        process = subprocess.Popen(['advpng', '--recompress', '--shrink-insane', dest], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/bin/advpng', '--recompress', '--shrink-insane', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
             logger.error('PNG optimisation (advpng) failed: %s' % process.communicate()[0])
             return 4
     elif 'GIF' == img_format:
-        process = subprocess.Popen(['gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/bin/gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
             logger.error('GIF optimisation failed: %s' % process.communicate()[0])

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -25,6 +25,7 @@ import sys
 import settings
 from utils import create_logger, is_hex
 
+os.umask(022)
 logger = create_logger('resizeavatar')
 
 

@@ -17,7 +17,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import json
-from os import link, path
+from os import link, path, umask
 import sys
 
 # pylint: disable=W0403
@@ -25,6 +25,7 @@ import settings
 from resizeavatar import resize_image
 from utils import create_logger, delete_if_exists, is_hex
 
+umask(022)
 logger = create_logger('changephoto')
 
 

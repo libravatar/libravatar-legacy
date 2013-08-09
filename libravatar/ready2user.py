@@ -26,6 +26,7 @@ import sys
 import settings
 from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
+os.umask(022)
 logger = create_logger('ready2user')
 
 
