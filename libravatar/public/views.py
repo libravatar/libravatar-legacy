@@ -111,6 +111,9 @@ def lookup_avatar_server(domain, https):
        _avatars-sec._tcp.example.com. IN SRV 0 0 443 avatars.example.com
     """
 
+    if domain and len(domain) > 60:
+        domain = domain[:60]
+
     service_name = None
     if https:
         service_name = "_avatars-sec._tcp.%s" % domain
