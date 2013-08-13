@@ -126,7 +126,7 @@ def optimize_image(dest, img_format, ext, broken_file):
             logger.error('PNG optimisation (pngcrush) failed: %s' % process.communicate()[0])
             return 4
         delete_if_exists(dest)
-        process = subprocess.Popen(['/usr/binoptipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
+        process = subprocess.Popen(['/usr/bin/optipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
