@@ -39,6 +39,8 @@ def mimetype_format(pil_format):
         return 'image/jpeg'
     elif 'PNG' == pil_format:
         return 'image/png'
+    elif 'GIF' == pil_format:
+        return 'image/gif'
 
     print "ERROR: got invalid file format from PIL: %s" % pil_format
     return 'image/jpeg'

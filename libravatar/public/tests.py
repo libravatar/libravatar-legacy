@@ -30,7 +30,8 @@ class PublicTestCase(unittest.TestCase):
     def testMimetypes(self):
         self.assertEquals(mimetype_format('JPEG'), 'image/jpeg')
         self.assertEquals(mimetype_format('PNG'), 'image/png')
-        self.assertEquals(mimetype_format('GIF'), 'image/jpeg')
+        self.assertEquals(mimetype_format('GIF'), 'image/gif')
+        self.assertEquals(mimetype_format('BMP'), 'image/jpeg')
 
     def testDnsLookup(self):
         self.assertEquals(lookup_avatar_server('', False), None)
