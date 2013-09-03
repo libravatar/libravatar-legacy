@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-12 23:08+1300\n"
-"PO-Revision-Date: 2013-05-14 09:50+0000\n"
-"Last-Translator: Volkan Gezer <Unknown>\n"
+"POT-Creation-Date: 2013-07-21 14:25+1200\n"
+"PO-Revision-Date: 2013-09-01 12:26+0000\n"
+"Last-Translator: zapman <Unknown>\n"
 "Language-Team: Turkish <tr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2013-07-21 02:12+0000\n"
-"X-Generator: Launchpad (build 16696)\n"
+"X-Launchpad-Export-Date: 2013-09-03 04:56+0000\n"
+"X-Generator: Launchpad (build 16753)\n"
 "Language: tr\n"
 "X-Poedit-Language: Turkish\n"
 
@@ -36,38 +36,42 @@ msgid "English"
 msgstr "İngilizce"
 
 #: settings.py:61
+msgid "British English"
+msgstr "İngiltere İngilizcesi"
+
+#: settings.py:62
 msgid "Spanish"
 msgstr "İspanyolca"
 
-#: settings.py:62
+#: settings.py:63
 msgid "Basque"
 msgstr "Baskça"
 
-#: settings.py:63
+#: settings.py:64
 msgid "French"
 msgstr "Fransızca"
 
-#: settings.py:64
+#: settings.py:65
 msgid "Italian"
 msgstr "İtalyanca"
 
-#: settings.py:65
+#: settings.py:66
 msgid "Japanese"
 msgstr "Japonca"
 
-#: settings.py:66
+#: settings.py:67
 msgid "Brazilian Portuguese"
 msgstr "Brezilya Portekizcesi"
 
-#: settings.py:67
+#: settings.py:68
 msgid "Albanian"
 msgstr "Arnavutça"
 
-#: settings.py:68
+#: settings.py:69
 msgid "Turkish"
 msgstr "Türkçe"
 
-#: settings.py:69
+#: settings.py:70
 msgid "Ukrainian"
 msgstr "Ukraynaca"
 
@@ -158,39 +162,39 @@ msgstr "fotoğraf"
 msgid "photos"
 msgstr "fotoğraf"
 
-#: account/models.py:272
+#: account/models.py:282
 msgid "confirmed email"
 msgstr "teyit edilmiş e-posta"
 
-#: account/models.py:273
+#: account/models.py:283
 msgid "confirmed emails"
 msgstr "teyit edilmiş e-posta"
 
-#: account/models.py:312
+#: account/models.py:325
 msgid "unconfirmed email"
 msgstr "teyit edilmemiş e-posta"
 
-#: account/models.py:313
+#: account/models.py:326
 msgid "unconfirmed emails"
 msgstr "teyit edilmemiş e-posta"
 
-#: account/models.py:316 account/models.py:336
+#: account/models.py:329 account/models.py:349
 msgid "(unconfirmed)"
 msgstr "(teyit edilmemiş)"
 
-#: account/models.py:332
+#: account/models.py:345
 msgid "unconfirmed OpenID"
 msgstr "teyit edilmemiş OpenID"
 
-#: account/models.py:333
+#: account/models.py:346
 msgid "unconfirmed OpenIDs"
 msgstr "teyit edilmemiş OpenID"
 
-#: account/models.py:347
+#: account/models.py:360
 msgid "confirmed OpenID"
 msgstr "teyit edilmiş OpenID"
 
-#: account/models.py:348
+#: account/models.py:361
 msgid "confirmed OpenIDs"
 msgstr "teyit edilmiş OpenID"
 
@@ -203,7 +207,7 @@ msgstr ""
 "Sayfa bulunamadı. Buraya bir hata nedeniyle geldiğiniz kanısındaysanız "
 "lütfen <a href=\"mailto:%(support_email)s\">bize bunu bildirin</a>"
 
-#: templates/base.html:11
+#: templates/base.html:11 templates/base_embedded.html:7
 msgid "Freeing the Web, one face at a time!"
 msgstr "Ağı özgürleştiriyoruz, tek tek her yüzle"
 
@@ -228,7 +232,8 @@ msgid "Logout"
 msgstr "Çıkış"
 
 #: templates/base.html:34 templates/account/login.html:11
-#: templates/account/login.html.py:39 templates/openid/login.html:28
+#: templates/account/login.html.py:39 templates/account/login_embedded.html:10
+#: templates/openid/login.html:28
 msgid "Login"
 msgstr "Giriş"
 
@@ -298,12 +303,12 @@ msgid "Add"
 msgstr "Ekle"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:21 templates/account/delete.html:24
+#: templates/account/crop_photo.html:25 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
-#: templates/account/upload_photo.html:25 templates/openid/login.html:30
+#: templates/account/upload_photo.html:28 templates/openid/login.html:30
 msgid "Cancel"
 msgstr "İptal et"
 
@@ -389,6 +394,12 @@ msgstr "(güncel)"
 msgid "None"
 msgstr "Hiçbiri"
 
+#: templates/account/assign_photo_email.html:42
+#: templates/account/assign_photo_openid.html:42
+#, python-format
+msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
+msgstr "veya <a href=\"%(custom_upload_url)s\">yenisini yükleyin</a>."
+
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
 #, python-format
@@ -437,7 +448,7 @@ msgstr "Fotoğrafı kırp"
 msgid "Draw a square around the portion of the image you want to use:"
 msgstr "Resmin kullanmak istediğiniz alanı etrafına bir kare çiziniz:"
 
-#: templates/account/crop_photo.html:20
+#: templates/account/crop_photo.html:24
 msgid "Crop"
 msgstr "Kırp"
 
@@ -639,7 +650,7 @@ msgstr ""
 "Libravatar şu anda verilerinizi dışa aktarıyor. Dosyanın kullanıma hazır "
 "olması <b>belli bir süre alabilir</b>:"
 
-#: templates/account/login.html:4
+#: templates/account/login.html:4 templates/account/login_embedded.html:4
 msgid "Libravatar Login"
 msgstr "Libravatar girişi"
 
@@ -675,6 +686,14 @@ msgid ""
 msgstr ""
 "Parolanızı mı unuttunuz? <a href=\"%(password_reset_url)s\">E-posta ile "
 "sıfırlayın</a>."
+
+#: templates/account/login_embedded.html:8
+msgid ""
+"To upload your photo to the Libravatar network and make it available to any "
+"site that knows your email address, please login with your email address."
+msgstr ""
+"Fotoğrafınızı Libravatar ağına yüklemek ve onu e-posta adresinizi bilen tüm "
+"siteler için erişilebilir kılmak için e-posta adresinizle oturum açınız."
 
 #: templates/account/max_photos.html:6
 #, python-format
@@ -927,6 +946,7 @@ msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "Bu teyit edilmiş e-posta adresleri ve OpenID'leriniz var:"
 
 #: templates/account/profile.html:18 templates/account/profile.html.py:27
+#: templates/account/profile_embedded.html:13
 msgid "Change photo"
 msgstr "Fotoğraf değiştir"
 
@@ -969,16 +989,33 @@ msgstr "Parola tanımla"
 msgid "Permanently delete your account"
 msgstr "Hesabınızı daimi olarak silin"
 
+#: templates/account/profile_embedded.html:4
+msgid "Your Libravatar Profile"
+msgstr "Libravatar profiliniz"
+
+#: templates/account/profile_embedded.html:8
+#, python-format
+msgid ""
+"Here is the photo currently associated with your email address "
+"(%(browserid_user)s):"
+msgstr ""
+"Güncel olarak (%(browserid_user)s) e-posta adresinizle ilişkili fotoğraf "
+"işte şudur:"
+
+#: templates/account/profile_embedded.html:16
+msgid "Close"
+msgstr "Kapat"
+
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
 msgstr "Geçersiz denetleme anahtarı ya da e-posta adresi."
 
-#: templates/account/upload_photo.html:17
+#: templates/account/upload_photo.html:20
 #, python-format
 msgid "Maximum file size of %(max_size)s."
 msgstr "Azami dosya boyutu %(max_size)s."
 
-#: templates/account/upload_photo.html:24
+#: templates/account/upload_photo.html:27
 msgid "Upload"
 msgstr "Yükle"
 
@@ -1137,31 +1174,31 @@ msgid ""
 msgstr ""
 "Boyut parametresi %(min_size)s ilâ %(max_size)s arası bir tam sayı olmalıdır."
 
-#: templates/tools/check.html:4 templates/tools/check.html.py:8
+#: templates/tools/check.html:4 templates/tools/check.html.py:12
 msgid "Photo lookup"
 msgstr "fotoğraf arama"
 
-#: templates/tools/check.html:22
+#: templates/tools/check.html:26
 msgid "Optional parameters"
 msgstr "Seçmeye dayalı parametreler"
 
-#: templates/tools/check.html:33 templates/tools/check_domain.html:19
+#: templates/tools/check.html:37 templates/tools/check_domain.html:19
 msgid "Check"
 msgstr "Kontrol et"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "MD5 hash:"
 msgstr "MD5 karması:"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "compatible with Gravatar"
 msgstr "Gravatar ile uyumlu"
 
-#: templates/tools/check.html:43
+#: templates/tools/check.html:47
 msgid "SHA256 hash:"
 msgstr "SHA256 karması:"
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:49
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
@@ -1169,27 +1206,27 @@ msgstr ""
 "Bu, kullandığınız karma ve protokole dayalı olarak havarilerin nasıl "
 "görüneceğidir:"
 
-#: templates/tools/check.html:48
+#: templates/tools/check.html:52
 msgid "using MD5 over HTTP"
 msgstr "HTTP üzerinden MD5 kullanılıyor"
 
-#: templates/tools/check.html:48 templates/tools/check.html.py:53
+#: templates/tools/check.html:52 templates/tools/check.html.py:57
 msgid "MD5"
 msgstr "MD5"
 
-#: templates/tools/check.html:50
+#: templates/tools/check.html:54
 msgid "using SHA256 over HTTP"
 msgstr "HTTP üzerinden SHA256 kullanılıyor"
 
-#: templates/tools/check.html:50 templates/tools/check.html.py:55
+#: templates/tools/check.html:54 templates/tools/check.html.py:59
 msgid "SHA256"
 msgstr "SHA256"
 
-#: templates/tools/check.html:53
+#: templates/tools/check.html:57
 msgid "using MD5 over HTTPS"
 msgstr "HTTPS üzerinden MD5 kullanılıyor"
 
-#: templates/tools/check.html:55
+#: templates/tools/check.html:59
 msgid "using SHA256 over HTTPS"
 msgstr "HTTPS üzerinden SHA256 kullanılıyor"
 
