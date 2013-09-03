@@ -177,7 +177,7 @@ AVATAR_MAX_SIZE = 512
 # Mahara uses 20, 40 and 50
 # Koha uses 40 and 80
 # Ikiwiki uses 80
-AVATAR_PREGENERATED_SIZES = [32, 50, 64, 80, 128, 312]
+AVATAR_PREGENERATED_SIZES = [32, 50, 64, 80, 128, 150, 312]
 
 # The maximum number of unconfirmed email addresses per profile
 MAX_NUM_UNCONFIRMED_EMAILS = 10
