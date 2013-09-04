@@ -1,3 +1,13 @@
+libravatar (20130905.1) unstable; urgency=low
+
+  * Fix dynamic resizing of GIF images (LP: #1219336)
+  * Fix typo that broke PNG optimizations
+  * Revert to original TLS cipher list
+  * Add 40px and 150px to pregenerated sizes
+  * Update Turkish translation
+
+ -- Francois Marier <francois@debian.org>  Thu, 05 Sep 2013 06:32:39 +1200
+
 libravatar (20130809.1) unstable; urgency=low
 
   * Set umask and path in gearman workers (LP: #886011)
