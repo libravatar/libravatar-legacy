@@ -18,7 +18,7 @@ except ImportError:
         return None
 
 env.roledefs = {'cdn_only': ['2.cdn.libravatar.org'],
-                'seccdn': ['1.cdn.libravatar.org', '3.cdn.libravatar.org'],
+                'seccdn': ['1.cdn.libravatar.org', '3.cdn.libravatar.org', '5.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org'],
                 'repo': ['apt.libravatar.org']}
 
