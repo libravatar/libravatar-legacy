@@ -7,17 +7,17 @@ SLAVE_CERT=/var/lib/libravatar/slave/cert/seccdn.crt
 SLAVE_KEY=/var/lib/libravatar/slave/cert/seccdn.pem
 SLAVE_CHAIN=/var/lib/libravatar/slave/cert/seccdn-chain.pem
 
-if [ ! -e $SLAVE_CERT -o ! -s $APACHE_CERT ] ; then
+if [ ! -e $SLAVE_CERT -o ! -e $APACHE_CERT ] ; then
         echo "libravatar-slave: SSL certificate is missing"
         exit 1
 fi
 
-if [ ! -e $SLAVE_KEY -o ! -s $APACHE_KEY ] ; then
+if [ ! -e $SLAVE_KEY -o ! -e $APACHE_KEY ] ; then
         echo "libravatar-slave: SSL certificate key is missing"
         exit 2
 fi
 
-if [ ! -e $SLAVE_CHAIN -o ! -s $APACHE_CHAIN ] ; then
+if [ ! -e $SLAVE_CHAIN -o ! -e $APACHE_CHAIN ] ; then
         echo "libravatar-slave: SSL certificate chain is missing"
         exit 3
 fi
