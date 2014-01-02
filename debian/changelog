@@ -1,3 +1,15 @@
+libravatar (20140103.1) unstable; urgency=medium
+
+  * Add gittip button to footer (LP: #1219114)
+  * Add more favicon sizes (LP: #1223132)
+  * Remove GPLhost from the list of sponsors
+
+  * Use Mozilla SSL ciphers (LP: #1250650)
+  * Enable HSTS header in redirects and errors
+  * Fix the initial cert installation for new mirrors
+
+ -- Francois Marier <francois@debian.org>  Fri, 03 Jan 2014 01:14:58 +1300
+
 libravatar (20130905.1) unstable; urgency=low
 
   * Fix dynamic resizing of GIF images (LP: #1219336)
