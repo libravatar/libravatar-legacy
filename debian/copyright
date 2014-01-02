@@ -12,8 +12,8 @@ Upstream Authors:
 
 Copyright:
 
-    Copyright (C) 2011, 2012, 2013 Francois Marier
-    Copyright (C) 2010 Francois Marier, Jonathan Harker and Brett Wilkins
+    Copyright (C) 2010-2014 Francois Marier
+    Copyright (C) 2010 Jonathan Harker and Brett Wilkins
 
 License:
 
@@ -681,7 +681,7 @@ For more information on this, and how to apply and follow the GNU AGPL, see
 
 The Debian packaging is:
 
-    Copyright (C) 2010, 2011  Francois Marier
+    Copyright (C) 2010-2014  Francois Marier
 
 and is licensed under the same license as Libravatar.
 
