@@ -26,6 +26,8 @@ for s in {1..512} ; do
                 mv ${s}.crushed.$EXTENSION ${s}.$EXTENSION
                 pngnq -f -n 32 -s 3 ${s}.$EXTENSION
                 mv ${s}-nq8.$EXTENSION ${s}.$EXTENSION
+                pngquant --speed=1 ${s}.$EXTENSION
+                mv ${s}-fs8.$EXTENSION ${s}.$EXTENSION
                 optipng -o9 -q ${s}.$EXTENSION
                 advpng -z -4 -q ${s}.$EXTENSION
         elif [ "$EXTENSION" = "jpg" ] ; then
