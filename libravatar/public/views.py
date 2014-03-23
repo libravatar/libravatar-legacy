@@ -1,4 +1,4 @@
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2014  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
@@ -273,9 +273,6 @@ def resize(request):
             return HttpResponseRedirect(settings.SECURE_MEDIA_URL + '/nobody/%s.png' % size)
         else:
             return HttpResponseRedirect(settings.MEDIA_URL + '/nobody/%s.png' % size)
-
-    # Add a note to the logs to keep track of frequently requested sizes
-    print '[RESIZE] %s px' % size
 
     (resized_filename, file_format) = resized_avatar(email_hash, size)
 
