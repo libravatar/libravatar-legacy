@@ -1,3 +1,17 @@
+libravatar (20140323.1) unstable; urgency=low
+
+  * Use CSP 1.0 headers (LP: #1277294)
+  * Run static images through pngquant (LP: #1268086)
+  * Prevent image transformations by proxy (LP: #1268084)
+  * Stop logging image resizing
+  * Add more sizes to the pre-generated list
+
+  * Upgrade to latest Mozilla cipher suite
+  * Add IPv6 address of master in ssh known_hosts
+  * Add missing build dependencies
+
+ -- Francois Marier <francois@debian.org>  Sun, 23 Mar 2014 14:15:24 +1300
+
 libravatar (20140103.1) unstable; urgency=medium
 
   * Add gittip button to footer (LP: #1219114)
