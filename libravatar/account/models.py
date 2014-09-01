@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -305,7 +305,7 @@ class ConfirmedEmail(models.Model):
             hash_object = hashlib.new('md5')
         else:
             hash_object = hashlib.new('sha256')
-        hash_object.update(self.email.lower())
+        hash_object.update(self.email.lower().encode('utf-8'))
         return hash_object.hexdigest()
 
     def public_url(self, https=False, algorithm='sha256'):
@@ -385,7 +385,7 @@ class ConfirmedOpenId(models.Model):
         url = urlsplit(self.openid)
         lowercase_value = urlunsplit((url.scheme.lower(), url.netloc.lower(), url.path, url.query, url.fragment))  # pylint: disable=E1103
         hash_object = hashlib.new('sha256')
-        hash_object.update(lowercase_value)
+        hash_object.update(lowercase_value.encode('utf-8'))
         return hash_object.hexdigest()
 
     def public_url(self, https=False):

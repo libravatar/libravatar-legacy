@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2013, 2014  Francois Marier <francois@libravatar.org>
 #               2010  Jonathan Harker <jon@jon.geek.nz>
 #
 # This file is part of Libravatar
@@ -42,7 +42,7 @@ def check(request):
                 lowercase_value = email.strip().lower()
                 domain = email.split('@')[-1]
                 hash_md5 = hashlib.new('md5')
-                hash_md5.update(lowercase_value)
+                hash_md5.update(lowercase_value.encode('utf-8'))
                 data['md5'] = hash_md5.hexdigest()
             else:
                 url = urlsplit(openid.strip())
@@ -50,7 +50,7 @@ def check(request):
                 domain = url.netloc  # pylint: disable=E1103
 
             hash_sha256 = hashlib.new('sha256')
-            hash_sha256.update(lowercase_value)
+            hash_sha256.update(lowercase_value.encode('utf-8'))
             data['sha256'] = hash_sha256.hexdigest()
             data['query_string'] = '?domain=' + domain
 
