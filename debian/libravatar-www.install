@@ -2,6 +2,7 @@ libravatar usr/share/libravatar
 config/awstats.www.conf etc/libravatar
 config/www.apache2.conf etc/libravatar
 config/django.wsgi etc/libravatar
+static/avatar/*.html usr/share/libravatar/static/avatar
 static/img/*.html usr/share/libravatar/static/img
 static/img/*.gif usr/share/libravatar/static/img
 static/img/*.jpg usr/share/libravatar/static/img
