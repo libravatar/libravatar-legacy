@@ -25,8 +25,6 @@
   height: 7px !important;
   border: 1px #eee solid;
   background-color: #333;
-  width: 9px;
-  height: 9px;
 }
 
 .jcrop-tracker {
@@ -41,6 +39,5 @@
 .custom .jcrop-handle {
   border-color: black;
   background-color: #C7BB00;
-  -moz-border-radius: 3px;
   border-radius: 3px;
 }

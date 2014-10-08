@@ -41,8 +41,6 @@ h2 {
   color: #FFFFFF;
   font-weight: bold;
   padding: 8px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
@@ -77,8 +75,6 @@ a {
 #content {
   background-color: #FFFFFF;
   padding: 8px 16px 16px 16px;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
@@ -124,8 +120,7 @@ ul li {
 }
 
 .conditions {
-  -moz-padding-start: 0;
-  -webkit-padding-start: 0;
+  padding-start: 0;
   list-style-type: none;
   margin: 0;
 }
@@ -146,8 +141,6 @@ ul li {
   padding: 5px 20px 15px 20px;
   border: 5px;
   border-style: dashed;
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px;
   border-radius: 8px;
 }
 
@@ -167,8 +160,6 @@ ul li {
   border-color: #000000;
   background-color: #F9711F;
   color: #FFFFFF;
-  -moz-border-radius:8px;
-  -webkit-border-radius:8px;
   border-radius: 8px;
   padding: 3px 5px 5px 5px;
   text-decoration: none;
