@@ -1,7 +1,7 @@
 .thumbnail {
+  border: 0;
   height: 80px;
   width: 80px;
-  border: 0;
 }
 
 .hidden {
