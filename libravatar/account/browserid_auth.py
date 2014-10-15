@@ -78,7 +78,7 @@ def verify_assertion(assertion, host, https):
     if parsed_response['status'] != 'okay':
         return (None, _('unexpected "%s" status code' % parsed_response['status']))
 
-    if not 'email' in parsed_response:
+    if 'email' not in parsed_response:
         return (None, _('missing email address'))
 
     email_address = parsed_response['email']

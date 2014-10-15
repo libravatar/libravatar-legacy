@@ -67,7 +67,6 @@ from libravatar.account.external_photos import gravatar_photo
 
 MAX_LENGTH_EMAIL = 254  # http://stackoverflow.com/questions/386294
 MAX_LENGTH_IPV6 = 45  # http://stackoverflow.com/questions/166132
-#MAX_LENGTH_URL = 2048  # http://stackoverflow.com/questions/754547
 MAX_LENGTH_URL = 255  # MySQL can't handle more than that (LP: 1018682)
 
 

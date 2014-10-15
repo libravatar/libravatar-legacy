@@ -139,7 +139,7 @@ def lookup_avatar_server(domain, https):
 
     records = []
     for answer in dns_request.answers:
-        if (not 'data' in answer) or (not answer['data']) or (not answer['typename']) or (answer['typename'] != 'SRV'):
+        if ('data' not in answer) or (not answer['data']) or (not answer['typename']) or (answer['typename'] != 'SRV'):
             continue
 
         rr = {'priority': int(answer['data'][0]), 'weight': int(answer['data'][1]),
@@ -160,7 +160,7 @@ def resolve(request):
         return render_to_response('public/nopost.html',
                                   context_instance=RequestContext(request))
 
-    if not 'email_hash' in request.GET:
+    if 'email_hash' not in request.GET:
         return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
 
@@ -241,7 +241,7 @@ def resize(request):
         return render_to_response('public/nopost.html',
                                   context_instance=RequestContext(request))
 
-    if not 'email_hash' in request.GET:
+    if 'email_hash' not in request.GET:
         return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
     email_hash = request.GET['email_hash']

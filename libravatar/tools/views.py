@@ -96,7 +96,7 @@ def lookup_ip_address(hostname, ipv6):
         return None
 
     for answer in dns_request.answers:
-        if (not 'data' in answer) or (not answer['data']):
+        if ('data' not in answer) or (not answer['data']):
             continue
         if (ipv6 and answer['typename'] != 'AAAA') or (not ipv6 and answer['typename'] != 'A'):
             continue  # skip CNAME records

@@ -71,7 +71,7 @@ def new(request):
 # No transactions: confirmation should always work no matter what
 @csrf_protect
 def confirm_email(request):
-    if not 'verification_key' in request.GET:
+    if 'verification_key' not in request.GET:
         return render_to_response('account/email_notconfirmed.html',
                                   context_instance=RequestContext(request))
 
@@ -115,7 +115,7 @@ def confirm_email(request):
 @csrf_protect
 def import_photo(request, user_id):
     if request.method == 'POST':
-        if not 'email_id' in request.POST:
+        if 'email_id' not in request.POST:
             return render_to_response('account/photos_notimported.html',
                                       context_instance=RequestContext(request))
 
@@ -821,7 +821,7 @@ def password_set(request):
 @csrf_exempt
 @login_required
 def add_browserid(request):
-    if not request.method == 'POST' or not 'assertion' in request.POST:
+    if not request.method == 'POST' or 'assertion' not in request.POST:
         return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
@@ -855,7 +855,7 @@ def add_browserid(request):
 @transaction.commit_on_success
 @csrf_exempt
 def login_browserid(request):
-    if not request.method == 'POST' or not 'assertion' in request.POST:
+    if not request.method == 'POST' or 'assertion' not in request.POST:
         return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
                                   context_instance=RequestContext(request))
 
