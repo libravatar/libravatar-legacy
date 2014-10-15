@@ -144,7 +144,10 @@ class Photo(models.Model):
         destination.close()
 
         # Use PIL to read the file format
-        img = Image.open(tmp_filename)
+        try:
+            img = Image.open(tmp_filename)
+        except ValueError:
+            return False
         self.format = file_format(img.format)
         if not self.format:
             return False
@@ -216,7 +219,10 @@ class Photo(models.Model):
         destination.close()
 
         # Use PIL to read the file format
-        img = Image.open(tmp_filename)
+        try:
+            img = Image.open(tmp_filename)
+        except ValueError:
+            return False
         self.format = file_format(img.format)
         if not self.format:
             return False
