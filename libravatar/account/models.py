@@ -63,7 +63,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from libravatar import settings
-from libravatar.account.external_photos import identica_photo, gravatar_photo
+from libravatar.account.external_photos import gravatar_photo
 
 MAX_LENGTH_EMAIL = 254  # http://stackoverflow.com/questions/386294
 MAX_LENGTH_IPV6 = 45  # http://stackoverflow.com/questions/166132
@@ -187,11 +187,7 @@ class Photo(models.Model):
     def import_image(self, service_name, email_address):
         image_url = False
 
-        if 'Identica' == service_name:
-            identica = identica_photo(email_address)
-            if identica:
-                image_url = identica['image_url']
-        elif 'Gravatar' == service_name:
+        if 'Gravatar' == service_name:
             gravatar = gravatar_photo(email_address)
             if gravatar:
                 image_url = gravatar['image_url']
@@ -272,9 +268,6 @@ class ConfirmedEmailManager(models.Manager):
 
         external_photos = []
         if is_logged_in:
-            #identica = identica_photo(confirmed.email)
-            #if identica:
-            #    external_photos.append(identica)
             gravatar = gravatar_photo(confirmed.email)
             if gravatar:
                 external_photos.append(gravatar)

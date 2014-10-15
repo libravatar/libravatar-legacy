@@ -17,50 +17,8 @@
 
 from urllib2 import urlopen, HTTPError, URLError
 import hashlib
-import xml.dom.minidom as minidom
 
 URL_TIMEOUT = 5  # in seconds
-
-
-def identica_photo(email):
-    image_url = ''
-    screen_name = ''
-
-    try:
-        fh = urlopen('http://identi.ca/api/users/show.xml?email=' + email, timeout=URL_TIMEOUT)
-    except HTTPError as e:
-        if e.code != 404:
-            print 'Identica fetch failed with an HTTP error: %s' % e.code
-        return False
-    except URLError as e:
-        print 'Identica fetch failed: %s' % e.reason
-        return False
-
-    contents = fh.read()
-    response = minidom.parseString(contents)
-
-    elements = response.getElementsByTagName('profile_image_url')
-    for element in elements:
-        textnode = element.firstChild
-        if minidom.Node.TEXT_NODE == textnode.nodeType:
-            image_url = textnode.nodeValue
-
-    elements = response.getElementsByTagName('screen_name')
-    for element in elements:
-        textnode = element.firstChild
-        if minidom.Node.TEXT_NODE == textnode.nodeType:
-            screen_name = textnode.nodeValue
-
-    # get the larger-format image from the profile page
-    if image_url:
-        image_url = image_url.replace('-48-', '-96-')
-
-    if image_url and screen_name:
-        return {'thumbnail_url': image_url, 'image_url': image_url, 'width': 96,
-                'height': 96, 'service_url': 'http://identi.ca/' + screen_name,
-                'service_name': 'Identica'}
-
-    return False
 
 
 def gravatar_photo(email):

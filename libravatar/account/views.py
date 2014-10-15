@@ -133,14 +133,6 @@ def import_photo(request, user_id):
         photos_to_import = False  # are there photos to import at all?
         photos_imported = False
 
-        if 'photo_Identica' in request.POST:
-            photos_to_import = True
-            p = Photo()
-            p.user = user
-            p.ip_address = request.META['REMOTE_ADDR']
-            if p.import_image('Identica', email.email):
-                photos_imported = True
-
         if 'photo_Gravatar' in request.POST:
             photos_to_import = True
             p = Photo()
