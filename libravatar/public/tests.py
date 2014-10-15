@@ -39,8 +39,8 @@ class PublicTestCase(unittest.TestCase):
         self.assertEquals(lookup_avatar_server('invalid', True), None)
         self.assertEquals(lookup_avatar_server('example.com', False), None)
         self.assertEquals(lookup_avatar_server('example.com', True), None)
-        #self.assertEquals(lookup_avatar_server('catalyst.net.nz', False), 'static.avatars.catalyst.net.nz')
-        self.assertEquals(lookup_avatar_server('catalyst.net.nz', True), None)
+        self.assertEquals(lookup_avatar_server('fmarier.org', False), 'fmarier.org')
+        self.assertEquals(lookup_avatar_server('fmarier.org', True), 'fmarier.org')
 
     def testSrvHostname(self):
         self.assertEquals(srv_hostname([]), (None, None))

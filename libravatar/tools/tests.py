@@ -78,10 +78,10 @@ class ToolsTestCase(unittest.TestCase):
         self.assertTrue('use <tt>http://cdn.libravatar.org' in response.content)
         self.assertTrue('use <tt>https://seccdn.libravatar.org' in response.content)
 
-        response = c.post('/tools/check_domain/', {'domain': 'catalyst.net.nz'})
+        response = c.post('/tools/check_domain/', {'domain': 'fmarier.org'})
         self.assertEquals(response.status_code, 200)
-        #self.assertTrue('<tt>static.avatars.catalyst.net.nz' in response.content)
-        self.assertTrue('use <tt>https://seccdn.libravatar.org' in response.content)
+        self.assertTrue('<tt>fmarier.org' in response.content)
+        self.assertFalse('use <tt>https://seccdn.libravatar.org' in response.content)
 
         response = c.post('/tools/check_domain/', {'domain': ''})
         self.assertTrue('This field is required' in response.content)
