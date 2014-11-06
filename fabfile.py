@@ -42,7 +42,7 @@ def commit_changelog():
 def prepare():
     local('make clean', capture=False)
     commit_changelog()
-    local('make package', capture=False)
+    print "You must now build the packages in the LXC container: make package"
 
 
 def sign_repo():
