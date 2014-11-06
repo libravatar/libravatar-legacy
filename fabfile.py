@@ -1,21 +1,6 @@
-from fabric.api import abort, env, local, put, roles, run, sudo
+from fabric.api import abort, env, local, parallel, put, roles, run, sudo
+from fabric.context_managers import lcd
 import re
-
-try:
-    # This will fail on Squeeze's version of fabric
-    from fabric.api import parallel
-except ImportError:
-    # Define a stub decorator that doesn't do anything
-    def parallel(function):
-        return function
-
-try:
-    # This will fail on Squeeze's version of fabric
-    from fabric.context_managers import lcd
-except ImportError:
-    # Define a stub context manager that doesn't do anything
-    def lcd():
-        return None
 
 env.roledefs = {'cdn_only': ['2.cdn.libravatar.org'],
                 'seccdn': ['1.cdn.libravatar.org', '3.cdn.libravatar.org', '5.cdn.libravatar.org'],
