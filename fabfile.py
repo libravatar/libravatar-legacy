@@ -3,7 +3,7 @@ from fabric.context_managers import lcd
 import re
 
 env.roledefs = {'cdn_only': ['2.cdn.libravatar.org'],
-                'seccdn': ['1.cdn.libravatar.org', '3.cdn.libravatar.org', '5.cdn.libravatar.org'],
+                'seccdn': ['1.cdn.libravatar.org', '5.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org'],
                 'repo': ['apt.libravatar.org']}
 
