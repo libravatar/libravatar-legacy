@@ -1,3 +1,20 @@
+libravatar (20141106.1) unstable; urgency=medium
+
+  * Fix UTF-8 encoding errors with OpenID URLs (LP: 1363804)
+  * Turn off broken link emails
+  * Update Brazillian translation
+  * Catch PIL errors
+  * Break sites using www.libravatar.org/avatar
+
+  * Upgrade to latest Mozilla cipher suite
+  * Use a stricter default-src in the CSP
+  * Add favicons to the CSP
+  * Sort CSS properties and remove unnecessary entries
+  * Add tile color and image for Windows 8 and fennec
+  * Reduce size of 404s
+
+ -- Francois Marier <francois@debian.org>  Thu, 06 Nov 2014 23:43:54 +1300
+
 libravatar (20140323.1) unstable; urgency=low
 
   * Use CSP 1.0 headers (LP: #1277294)
