@@ -1,3 +1,5 @@
+*Note: these installation instructions are for the main libravatar.org service, not for mirrors. If you're interested in running a mirror, see <https://wiki.libravatar.org/run_a_mirror/> instead.*
+
 # External dependencies
 
 * Python 2.7
