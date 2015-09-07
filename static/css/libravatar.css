@@ -183,6 +183,9 @@ ul li {
 
 #gratipay-button {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFQAAAAWCAMAAABpJUuUAAAAMFBMVEUnKCYxMjBlMwI5OzhCREF0RhpOUE5fYF6JYDh/f3uWmJWvlHi0tbHU087s7Oj9//zcjiePAAABuklEQVR4AbWVDc7bMAhAk4IhYH7uf9tRu6nzqWo3bd2TggKkT47tuFsOwvvRbq175BcY0ujtNilvfEcax+1C829Io4b5F9b4IF3jXNb1fMS73yrpB2m/vXDkxJiI9VVrVWLg99Joc33GWh19DttHTwCIcJ/JIgijosZ7qZ8Wb62fi9azUESLcK2ie1qkm9qj7pX4vR5md3mMVuUjbH2972DkLavJKDmRjXUP2wF2TtsRgZM3Sd2RAChSqwUjj3pYt2NKnjxzJ/BUEdFUQJJwMaXdY45U9qojmVHZrFqAHoSWiLHdBv10+szjIWVAlLs0RtPuNcfKHlKOGdIdq6UoBpIlXUuzvoMYr68ZoUPK1TMgxlepVVgtZrTcjuvefO6vLATJIgR1SmOnCAIvC3osqaA4kucOpRBAitxOzXF1tsfWQapLTikKY2m8yjKl4wFwp2qVLtMR9Lml5rRe7gfChUQqS2ZFVp0pa/XGQjGxzZYxZwain5t/4Hms20kUWaxY1xnKhew/Wwry8zNtfX2mf8aY0ytjzn97oHxmTMYVq8I/HX1zdl4L//GQLvoa7Lf+Toqwo7ztKOUX+AVe5FGvifwAMAAAAABJRU5ErkJggg==');
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
   float: right;
   height: 22px;
   width: 84px;
@@ -190,6 +193,9 @@ ul li {
 
 #bountysource-button {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEoAAAAWCAMAAABQQvrPAAAAMFBMVEUAnl4koWIepGomqW46sHxKt4hhwJV2yKOHzq+U1bim3Max38zF59fe8uvu+PP9//w4Xg2lAAABkUlEQVR4Aa3T7YrcMAyF4dfyh+JY8rn/uy1myrYwWzbQOfiHjA5PCCRI4RXalfrPoI610Sv4t4Ugn1LOek2D8V3BiKfUn4cO/lnYd39AhRQ2zzjfKLNaoRr4fkB9vcO2N2q5N8o1z/oRlZiUE4be03E9DJLjMl7STklLWluhc2ApXmOMlr8bsV+NcznZ8aKMpQ5ln5HQJDZzchaCDLo6KlCr7Ng3K/EkOKdsB24hwTHTmio3dNAiBgkhkBMyC0J3a6/G8e/JACxYeBbE1/fgiK5gFNMgm9XGFl0NiZ60yKSeBsjJDuvCs072YApt2IcaiFuBShfI4DrLKTMtXFEZyVSwaaqoYbpY0oXh2qdNSkraZsoRniAYjhxEVWNKCm5cF8I3qOKaZ+FwK+1QlD4MtqDjee4U0EXhBhgQebuhQmcIGJyGBAYwGgsp16ilzi3tZlNqLbNd/ZLMUxlhzYDSPP9uuC9J6XXEHtQQ+jkX1Ec/zo/plub6BDWRuD9CtUub/AjVhyb6CJVM5mcozdL1JL8AFyJJp0zfGDIAAAAASUVORK5CYII=');
+  border-color: #000000;
+  border-style: solid;
+  border-width: 1px;
   float: right;
   height: 22px;
   width: 52px;
