@@ -159,10 +159,8 @@ msgid "English"
 msgstr "англійська"
 
 #: settings.py:61
-#, fuzzy
-#| msgid "English"
 msgid "British English"
-msgstr "англійська"
+msgstr ""
 
 #: settings.py:62
 msgid "Spanish"
@@ -345,10 +343,8 @@ msgstr "Немає"
 
 #: templates/account/assign_photo_email.html:42
 #: templates/account/assign_photo_openid.html:42
-#, fuzzy, python-format
-#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
-msgstr "Будь ласка, <a href=\"%(upload_url)s\">вивантажте</a> менше."
+msgstr ""
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
@@ -869,10 +865,8 @@ msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Будь ласка, <a href=\"%(upload_url)s\">вивантажте</a> іншу."
 
 #: templates/account/photo_invalidformat.html:5
-#, fuzzy
-#| msgid "Uploaded photo is broken or invalid."
 msgid "Uploaded photo uses an unsupported file format."
-msgstr "Вивантажену фотографію пошкоджено або її дані є некоректними."
+msgstr ""
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -903,10 +897,8 @@ msgid "Photo import failed."
 msgstr "Не вдалося імпортувати фотографію."
 
 #: templates/account/profile.html:4 templates/account/profile.html.py:8
-#, fuzzy
-#| msgid "Profile"
 msgid "Your Profile"
-msgstr "Профіль"
+msgstr ""
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
@@ -961,10 +953,8 @@ msgid "Permanently delete your account"
 msgstr "Вилучити цей обліковий запис назавжди"
 
 #: templates/account/profile_embedded.html:4
-#, fuzzy
-#| msgid "%(username)s's Libravatar Profile"
 msgid "Your Libravatar Profile"
-msgstr "Профіль %(username)s на Libravatar"
+msgstr ""
 
 #: templates/account/profile_embedded.html:8
 #, python-format
@@ -1111,23 +1101,17 @@ msgstr ""
 "a>"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"Ознайомтеся з нашою <a href=\"http://wiki.libravatar.org\">вікі</a> або <a "
+"Ознайомтеся з нашою <a href=\"https://wiki.libravatar.org\">вікі</a> або <a "
 "href=\"http://blog.libravatar.org\">дописами у блозі</a>"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
 msgstr ""
-"Слідкуйте за подіями у <a href=\"http://identi.ca/libravatar\">Identica</a>"
+"Слідкуйте за подіями у <a href=\"https://identi.ca/libravatar\">Identica</a>"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1148,32 +1132,24 @@ msgstr ""
 "електронної пошти."
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
-"<a href=\"http://wiki.libravatar.org/description/\">Дізнатися більше…</a>"
+"<a href=\"https://wiki.libravatar.org/description/\">Дізнатися більше…</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Інтегрована служба з відкритим кодом"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Ця служба працює на основі <a href=\"http://www.gnu.org/licenses/agpl.html"
+"Ця служба працює на основі <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">вільного програмного забезпечення з відкритим кодом</a> і надає власникам "
-"доменних назв змогу <a href=\"http://wiki.libravatar.org/running_your_own/"
+"доменних назв змогу <a href=\"https://wiki.libravatar.org/running_your_own/"
 "\">використовувати власний екземпляр</a> Libravatar для обслуговування "
 "власних систем роботи з аватарами."
 
@@ -1182,12 +1158,6 @@ msgid "Simple API for Developers"
 msgstr "Простий програмний інтерфейс для розробників"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1195,8 +1165,8 @@ msgid ""
 "available for a number of platforms and languages."
 msgstr ""
 "Розробники програмного забезпечення можуть без проблем додати підтримку "
-"нашої служби за допомогою нашого <a href=\"http://wiki.libravatar.org/api/"
-"\">простого програмного інтерфейсу</a> або однієї з <a href=\"http://wiki."
+"нашої служби за допомогою нашого <a href=\"https://wiki.libravatar.org/api/"
+"\">простого програмного інтерфейсу</a> або однієї з <a href=\"https://wiki."
 "libravatar.org/libraries/\">бібліотек</a>, які можна використовувати на "
 "багатьох програмних платформах та з багатьма мовами програмування."
 

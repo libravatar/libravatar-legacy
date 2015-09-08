@@ -1083,23 +1083,17 @@ msgstr ""
 "<a href=\"https://answers.launchpad.net/libravatar\">質問</a>する"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"私たちの<a href=\"http://wiki.libravatar.org\">wiki</a>、または<a href="
+"私たちの<a href=\"https://wiki.libravatar.org\">wiki</a>、または<a href="
 "\"http://blog.libravatar.org\">blog</a>ブログを閲覧する"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
 msgstr ""
-"<a href=\"http://identi.ca/libravatar\">Identica</a>で私たちをフォローする"
+"<a href=\"https://identi.ca/libravatar\">Identica</a>で私たちをフォローする"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1119,31 +1113,23 @@ msgstr ""
 "たはブログコメント等の横にあなたの写真を表示することができます。"
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr "<a href=\"http://wiki.libravatar.org/description/\">詳細 ...</a>"
+msgstr "<a href=\"https://wiki.libravatar.org/description/\">詳細 ...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "統合オープンソースサービス"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"このサービスは<a href=\"http://www.gnu.org/licenses/agpl.html\">Free and "
+"このサービスは<a href=\"https://www.gnu.org/licenses/agpl.html\">Free and "
 "Open Source software</a>として提供されます。ドメイン名のオーナーは独自の"
-"Libravatar<a href=\"http://wiki.libravatar.org/running_your_own/\">インスタン"
+"Libravatar<a href=\"https://wiki.libravatar.org/running_your_own/\">インスタン"
 "スを実行</a>して、アバターを提供することができます。"
 
 #: templates/public/home.html:27
@@ -1151,20 +1137,14 @@ msgid "Simple API for Developers"
 msgstr "開発者用シンプルAPI"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
 "href=\"https://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
 "available for a number of platforms and languages."
 msgstr ""
-"私たちの<a href=\"http://wiki.libravatar.org/api/\">シンプルなAPI</a>を使用す"
-"ることで、または多くのプラットフォームおよび言語で利用できる<a href=\"http://"
+"私たちの<a href=\"https://wiki.libravatar.org/api/\">シンプルなAPI</a>を使用す"
+"ることで、または多くのプラットフォームおよび言語で利用できる<a href=\"https://"
 "wiki.libravatar.org/libraries/\">ライブラリおよびプラグイン</a> を使用するこ"
 "とで、アプリケーション開発者は簡単にこのサービスのサポートを追加することがで"
 "きます。"

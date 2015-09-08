@@ -1082,23 +1082,17 @@ msgstr ""
 "soru <a href=\"https://answers.launchpad.net/libravatar\">sorun</a>"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"<a href=\"http://wiki.libravatar.org\">Vikimizi</a> veya <a href=\"http://"
+"<a href=\"https://wiki.libravatar.org\">Vikimizi</a> veya <a href=\"http://"
 "blog.libravatar.org\">günlüğümüzü</a> okuyun"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
 msgstr ""
-"Bizi <a href=\"http://identi.ca/libravatar\">Identica</a>'da takip edin"
+"Bizi <a href=\"https://identi.ca/libravatar\">Identica</a>'da takip edin"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1118,30 +1112,22 @@ msgstr ""
 "postanızı bıraktığınız her sitede görüntülenebilecektir."
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr "<a href=\"http://wiki.libravatar.org/description/\">Dahası...</a>"
+msgstr "<a href=\"https://wiki.libravatar.org/description/\">Dahası...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Federe Açık Kaynak Hizmet"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Bu hizmet <a href=\"http://www.gnu.org/licenses/agpl.html\">Özgür ve Açık "
-"Kaynaklı yazılım</a> ile çalışır ve alan adı sahiplerine <a href=\"http://"
+"Bu hizmet <a href=\"https://www.gnu.org/licenses/agpl.html\">Özgür ve Açık "
+"Kaynaklı yazılım</a> ile çalışır ve alan adı sahiplerine <a href=\"https://"
 "wiki.libravatar.org/running_your_own/\">kendi Libravatar kopyalarını "
 "çalıştırma</a> ve havarileri kendileri suna imkânı verir."
 
@@ -1150,21 +1136,15 @@ msgid "Simple API for Developers"
 msgstr "Geliştiriciler için sade bir API"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
 "href=\"https://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
 "available for a number of platforms and languages."
 msgstr ""
-"Uygulama geliştiricileri <a href=\"http://wiki.libravatar.org/api/\">sade "
+"Uygulama geliştiricileri <a href=\"https://wiki.libravatar.org/api/\">sade "
 "API'mizi</a> ya da çeşitli platform ve programlama dilleri için <a href="
-"\"http://wiki.libravatar.org/libraries/\">kütüphane ve eklentileri</a> "
+"\"https://wiki.libravatar.org/libraries/\">kütüphane ve eklentileri</a> "
 "kullanarak kolayca bu servise destek ekleyebilirler."
 
 #: templates/public/home.html:31

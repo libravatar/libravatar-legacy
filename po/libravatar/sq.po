@@ -152,10 +152,8 @@ msgid "English"
 msgstr "Anglisht"
 
 #: settings.py:61
-#, fuzzy
-#| msgid "English"
 msgid "British English"
-msgstr "Anglisht"
+msgstr ""
 
 #: settings.py:62
 msgid "Spanish"
@@ -335,10 +333,8 @@ msgstr "Asnjë"
 
 #: templates/account/assign_photo_email.html:42
 #: templates/account/assign_photo_openid.html:42
-#, fuzzy, python-format
-#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
-msgstr "Ju lutemi, <a href=\"%(upload_url)s\">ngarkoni</a> një më të vogël."
+msgstr ""
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
@@ -848,10 +844,8 @@ msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Ju lutemi, <a href=\"%(upload_url)s\">ngarkoni</a> një tjetër."
 
 #: templates/account/photo_invalidformat.html:5
-#, fuzzy
-#| msgid "Uploaded photo is broken or invalid."
 msgid "Uploaded photo uses an unsupported file format."
-msgstr "Fotoja e ngarkuar është e dëmtuar ose e pavlefshme."
+msgstr ""
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -881,10 +875,8 @@ msgid "Photo import failed."
 msgstr "Importimi i fotos dështoi."
 
 #: templates/account/profile.html:4 templates/account/profile.html.py:8
-#, fuzzy
-#| msgid "Profile"
 msgid "Your Profile"
-msgstr "Profil"
+msgstr ""
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
@@ -937,10 +929,8 @@ msgid "Permanently delete your account"
 msgstr "Fshini llogarinë tuaj përgjithmonë"
 
 #: templates/account/profile_embedded.html:4
-#, fuzzy
-#| msgid "%(username)s's Libravatar Profile"
 msgid "Your Libravatar Profile"
-msgstr "Profili Libraavatar i %(username)s"
+msgstr ""
 
 #: templates/account/profile_embedded.html:8
 #, python-format
@@ -1083,22 +1073,16 @@ msgstr ""
 "bëni <a href=\"https://answers.launchpad.net/libravatar\">pyetje</a>"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"Lexoni <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href=\"http://"
+"Lexoni <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href=\"http://"
 "blog.libravatar.org\">blogun</a> tonë"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
-msgstr "Na ndiqni në <a href=\"http://identi.ca/libravatar\">Identica</a>"
+msgstr "Na ndiqni në <a href=\"https://identi.ca/libravatar\">Identica</a>"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1119,32 +1103,24 @@ msgstr ""
 "email."
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
-"<a href=\"http://wiki.libravatar.org/description/\">Lexoni më tepër...</a>"
+"<a href=\"https://wiki.libravatar.org/description/\">Lexoni më tepër...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Shërbime të Federuara Me Burim të Hapët"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Ky shërbim bazohet në <a href=\"http://www.gnu.org/licenses/agpl.html"
+"Ky shërbim bazohet në <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">software të Lirë dhe me Burim të Hapur</a> dhe u lejon zotëruesve të një "
-"emri përkatësie të <a href=\"http://wiki.libravatar.org/running_your_own/"
+"emri përkatësie të <a href=\"https://wiki.libravatar.org/running_your_own/"
 "\">xhirojnë instancën e tyre</a> të Libravatar-it dhe të shërbejnë ata vetë "
 "avatarë."
 
@@ -1153,12 +1129,6 @@ msgid "Simple API for Developers"
 msgstr "API e thjeshtë për Zhvilluesa"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1166,8 +1136,8 @@ msgid ""
 "available for a number of platforms and languages."
 msgstr ""
 "Programuesit e zbatimeve mund të shtojnë lehtësisht mbulim për këtë shërbim "
-"duke përdorur <a href=\"http://wiki.libravatar.org/api/\">API-n tonë të "
-"thjeshtë</a> ose një nga <a href=\"http://wiki.libravatar.org/libraries/"
+"duke përdorur <a href=\"https://wiki.libravatar.org/api/\">API-n tonë të "
+"thjeshtë</a> ose një nga <a href=\"https://wiki.libravatar.org/libraries/"
 "\">libraritë dhe shtojcat</a> e mundshme për një numër platformash dhe "
 "gjuhësh."
 

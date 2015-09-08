@@ -158,10 +158,8 @@ msgid "English"
 msgstr "Englisch"
 
 #: settings.py:61
-#, fuzzy
-#| msgid "English"
 msgid "British English"
-msgstr "Englisch"
+msgstr ""
 
 #: settings.py:62
 msgid "Spanish"
@@ -344,10 +342,8 @@ msgstr "Keine"
 
 #: templates/account/assign_photo_email.html:42
 #: templates/account/assign_photo_openid.html:42
-#, fuzzy, python-format
-#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
-msgstr "Bitte <a href=\"%(upload_url)s\">laden</a> Sie ein kleineres hoch."
+msgstr ""
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
@@ -869,10 +865,8 @@ msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Bitte <a href=\"%(upload_url)s\">laden Sie</a> ein anderes hoch."
 
 #: templates/account/photo_invalidformat.html:5
-#, fuzzy
-#| msgid "Uploaded photo is broken or invalid."
 msgid "Uploaded photo uses an unsupported file format."
-msgstr "Das hochgeladene Bild ist beschädigt oder ungültig."
+msgstr ""
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -901,10 +895,8 @@ msgid "Photo import failed."
 msgstr "Der Bildimport schlug fehl."
 
 #: templates/account/profile.html:4 templates/account/profile.html.py:8
-#, fuzzy
-#| msgid "Profile"
 msgid "Your Profile"
-msgstr "Profil"
+msgstr ""
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
@@ -955,10 +947,8 @@ msgid "Permanently delete your account"
 msgstr "Ihr Konto komplett löschen"
 
 #: templates/account/profile_embedded.html:4
-#, fuzzy
-#| msgid "%(username)s's Libravatar Profile"
 msgid "Your Libravatar Profile"
-msgstr "Libravatar-Profil von %(username)s"
+msgstr ""
 
 #: templates/account/profile_embedded.html:8
 #, python-format
@@ -1105,23 +1095,17 @@ msgstr ""
 "\">Fragen</a>"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"Lesen Sie in unser <a href=\"http://wiki.libravatar.org\">Wiki</a> oder <a "
+"Lesen Sie in unser <a href=\"https://wiki.libravatar.org\">Wiki</a> oder <a "
 "href=\"http://blog.libravatar.org\">Blog</a>"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
 msgstr ""
-"Folgen Sie uns auf <a href=\"http://identi.ca/libravatar\">Identi.ca</a>"
+"Folgen Sie uns auf <a href=\"https://identi.ca/libravatar\">Identi.ca</a>"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1141,32 +1125,24 @@ msgstr ""
 "auf Webseiten erscheinen, bei denen Sie Ihre E-Mail-Adresse angegeben haben."
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
-"<a href=\"http://wiki.libravatar.org/description/\">Mehr Informationen...</a>"
+"<a href=\"https://wiki.libravatar.org/description/\">Mehr Informationen...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Föderierter Open-Source-Dienst"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Dieser Dienst basiert auf <a href=\"http://www.gnu.org/licenses/agpl.html"
+"Dieser Dienst basiert auf <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">freier Open-Source-Software</a> und ermöglicht den Besitzern eines "
-"Domänen-Namens, ihren <a href=\"http://wiki.libravatar.org/running_your_own/"
+"Domänen-Namens, ihren <a href=\"https://wiki.libravatar.org/running_your_own/"
 "\">eigenen Libravatar-Dienst</a> zu installieren und selber Avatare zur "
 "Verfügung zu stellen."
 
@@ -1175,12 +1151,6 @@ msgid "Simple API for Developers"
 msgstr "Einfache API für Entwickler"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1188,8 +1158,8 @@ msgid ""
 "available for a number of platforms and languages."
 msgstr ""
 "Software-Entwickler können die Unterstützung für diesen Dienst durch unsere "
-"<a href=\"http://wiki.libravatar.org/api/\">einfache API</a> oder durch eine "
-"der <a href=\"http://wiki.libravatar.org/libraries/\">Bibliotheken und "
+"<a href=\"https://wiki.libravatar.org/api/\">einfache API</a> oder durch eine "
+"der <a href=\"https://wiki.libravatar.org/libraries/\">Bibliotheken und "
 "Plugins</a> hinzufügen, die es für eine Reihe an Plattformen und Sprachen "
 "gibt."
 

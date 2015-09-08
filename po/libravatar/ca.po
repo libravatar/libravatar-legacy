@@ -158,10 +158,8 @@ msgid "English"
 msgstr "Anglés"
 
 #: settings.py:61
-#, fuzzy
-#| msgid "English"
 msgid "British English"
-msgstr "Anglés"
+msgstr ""
 
 #: settings.py:62
 msgid "Spanish"
@@ -214,17 +212,12 @@ msgid "Add a new email address"
 msgstr "Afegir una nova direcció de correu electrònic"
 
 #: templates/account/add_email.html:10
-#, fuzzy, python-format
-#| msgid ""
-#| "If you have a <b>BrowserID</b> account, you can <a id=\"browserid-link\" "
-#| "href=\"%(browserid_target)s\">use it to add a new email address</a> to "
-#| "your profile."
 msgid ""
 "If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" href="
 "\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Si poseix un compte <b>BrowserID</b>, pot <a id=\"browserid-link\" href="
+"Si poseix un compte <b>Persona</b>, pot <a id=\"browserid-link\" href="
 "\"%(browserid_target)s\">usar-lo par afegir una nova direcció de correu "
 "electrònic</a> al seu perfil."
 
@@ -345,10 +338,8 @@ msgstr "Cap"
 
 #: templates/account/assign_photo_email.html:42
 #: templates/account/assign_photo_openid.html:42
-#, fuzzy, python-format
-#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
-msgstr "Per favor <a href=\"%(upload_url)s\">puje</a> una més xicoteta."
+msgstr ""
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
@@ -612,12 +603,6 @@ msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr "Encara no té un compte? <a href=\"%(signup_url)s\">Registre's ara!</a>"
 
 #: templates/account/login.html:19
-#, fuzzy, python-format
-#| msgid ""
-#| "Do you hate having lots of passwords? You can login with <a href="
-#| "\"%(openid_url)s\">OpenID</a>\n"
-#| "<span id=\"browserid-option\"> or <a id=\"browserid-link\" href=\"#"
-#| "\">BrowserID</a></span> instead!"
 msgid ""
 "Do you hate having lots of passwords? You can login with <a href="
 "\"%(openid_url)s\">OpenID</a>\n"
@@ -627,7 +612,7 @@ msgstr ""
 "Odia tindre un munt de contrasenyes? Pot autenticar-se amb <a href="
 "\"%(openid_url)s\">OpenID</a>\n"
 "<span id=\"browserid-option\"> o <a id=\"browserid-link\" href=\"#"
-"\">BrowserID</a></span> en compte!"
+"\">Persona</a></span> en compte!"
 
 #: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
@@ -746,17 +731,13 @@ msgstr ""
 "per al seu compte %(site_name)s."
 
 #: templates/account/password_reminder.txt:4
-#, fuzzy
-#| msgid ""
-#| "There is however, no password associated with this account.\n"
-#| "Instead, you must use one of the following OpenIDs or BrowserIDs to login:"
 msgid ""
 "There is however, no password associated with this account.\n"
 "Instead, you must use one of the following OpenIDs or Persona email "
 "addresses to login:"
 msgstr ""
 "En canvi, no hi ha cap contrasenya associada a este compte.\n"
-"En comptes, deu usar una de les següents OpenIDs o BrowserIDs per iniciar "
+"En comptes, deu usar una de les següents OpenIDs o Personas per iniciar "
 "sessió:"
 
 #: templates/account/password_reminder.txt:11
@@ -774,18 +755,13 @@ msgid "Reset password"
 msgstr "Reinicialitza contrasenya"
 
 #: templates/account/password_reset.html:10
-#, fuzzy, python-format
-#| msgid ""
-#| "Did you know that you can also <a id=\"browserid-link\" href="
-#| "\"%(browserid_target)s\">sign in with BrowserID</a> and never have to "
-#| "remember a password again?"
 msgid ""
 "Did you know that you can also <a id=\"browserid-link\" href="
 "\"%(browserid_target)s\">sign in with Persona</a> and never have to remember "
 "a password again?"
 msgstr ""
 "Sap que també pot <a id=\"browserid-link\" href=\"%(browserid_target)s"
-"\">iniciar sessió amb un BrowserID</a> i no haver de recordar la contrasenya?"
+"\">iniciar sessió amb un Persona</a> i no haver de recordar la contrasenya?"
 
 #: templates/account/password_reset.html:18
 msgid ""
@@ -865,10 +841,8 @@ msgstr ""
 
 #: templates/account/photo_invalidfile.html:7
 #: templates/account/photo_invalidformat.html:7
-#, fuzzy, python-format
-#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
-msgstr "Per favor <a href=\"%(upload_url)s\">puje</a> una més xicoteta."
+msgstr ""
 
 #: templates/account/photo_invalidformat.html:5
 msgid "Uploaded photo uses an unsupported file format."
@@ -901,10 +875,8 @@ msgid "Photo import failed."
 msgstr "Ha falla la importació de la foto."
 
 #: templates/account/profile.html:4 templates/account/profile.html.py:8
-#, fuzzy
-#| msgid "Profile"
 msgid "Your Profile"
-msgstr "Perfil"
+msgstr ""
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
@@ -958,10 +930,8 @@ msgid "Permanently delete your account"
 msgstr "Elimina permanentment el seu compte"
 
 #: templates/account/profile_embedded.html:4
-#, fuzzy
-#| msgid "%(username)s's Libravatar Profile"
 msgid "Your Libravatar Profile"
-msgstr "Perfil a Libravatar de %(username)s"
+msgstr ""
 
 #: templates/account/profile_embedded.html:8
 #, python-format
@@ -1106,22 +1076,16 @@ msgstr ""
 "faça <a href=\"https://answers.launchpad.net/libravatar\">preguntes</a>"
 
 #: templates/public/home.html:15
-#, fuzzy
-#| msgid ""
-#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
-#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"Llija el nostre <a href=\"http://wiki.libravatar.org\">wiki</a> o <a href="
+"Llija el nostre <a href=\"https://wiki.libravatar.org\">wiki</a> o <a href="
 "\"http://blog.libravatar.org\">blog</a>"
 
 #: templates/public/home.html:16
-#, fuzzy
-#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
-msgstr "Seguisca-nos a <a href=\"http://identi.ca/libravatar\">Identica</a>"
+msgstr "Seguisca-nos a <a href=\"https://identi.ca/libravatar\">Identica</a>"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1142,31 +1106,23 @@ msgstr ""
 "direcció de correu electrònic."
 
 #: templates/public/home.html:21
-#, fuzzy
-#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr "<a href=\"http://wiki.libravatar.org/description/\">Conega més...</a>"
+msgstr "<a href=\"https://wiki.libravatar.org/description/\">Conega més...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
 msgstr "Servici Federat de Codi Obert (Open Source)"
 
 #: templates/public/home.html:25
-#, fuzzy
-#| msgid ""
-#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
-#| "\">Free and Open Source software</a> and allows owners of a domain name "
-#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
-#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
 "This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
 "\">Free and Open Source software</a> and allows owners of a domain name to "
 "<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Este servici està patrocinat per la <a href=\"http://www.gnu.org/licenses/"
+"Este servici està patrocinat per la <a href=\"https://www.gnu.org/licenses/"
 "agpl.html\">Free and Open Source software</a> i permet els propietaris dels "
-"noms de domini <a href=\"http://wiki.libravatar.org/running_your_own/"
+"noms de domini <a href=\"https://wiki.libravatar.org/running_your_own/"
 "\">executar la seua pròpia instància</a> de Libravatar i servir els seus "
 "propis avatars."
 
@@ -1175,12 +1131,6 @@ msgid "Simple API for Developers"
 msgstr "API senzilla per desenvolupadors"
 
 #: templates/public/home.html:29
-#, fuzzy
-#| msgid ""
-#| "Application developers can easily add support for this service using our "
-#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
-#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
-#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
@@ -1188,8 +1138,8 @@ msgid ""
 "available for a number of platforms and languages."
 msgstr ""
 "Els desenvolupadors de programes poden afegir de forma fàcil el suport per a "
-"este servici usant la nostra <a href=\"http://wiki.libravatar.org/api/\">API "
-"senzilla</a> o alguna de les <a href=\"http://wiki.libravatar.org/libraries/"
+"este servici usant la nostra <a href=\"https://wiki.libravatar.org/api/\">API "
+"senzilla</a> o alguna de les <a href=\"https://wiki.libravatar.org/libraries/"
 "\">llibreries i plugins</a> disponibles per a un nombre de plataformes i "
 "llenguatges."
 
