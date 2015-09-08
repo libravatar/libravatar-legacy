@@ -7,65 +7,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-09-04 21:44+1200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-07 17:12-0700\n"
 "PO-Revision-Date: 2012-09-04 15:59+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-09-05 04:57+0000\n"
 "X-Generator: Launchpad (build 15901)\n"
-"Language: uk\n"
-
-#: settings.py:57
-msgid "Catalan"
-msgstr "каталонська"
-
-#: settings.py:58
-msgid "Czech"
-msgstr "чеська"
-
-#: settings.py:59
-msgid "German"
-msgstr "німецька"
-
-#: settings.py:60
-msgid "English"
-msgstr "англійська"
-
-#: settings.py:61
-msgid "Spanish"
-msgstr "іспанська"
-
-#: settings.py:62
-msgid "Basque"
-msgstr "баскська"
-
-#: settings.py:63
-msgid "French"
-msgstr "французька"
-
-#: settings.py:64
-msgid "Italian"
-msgstr "італійська"
-
-#: settings.py:65
-msgid "Japanese"
-msgstr "японська"
-
-#: settings.py:66
-msgid "Brazilian Portuguese"
-msgstr "бразильська португальська"
-
-#: settings.py:67
-msgid "Albanian"
-msgstr "албанська"
-
-#: settings.py:68
-msgid "Ukrainian"
-msgstr "українська"
 
 #: account/browserid_auth.py:79
 #, python-format
@@ -81,7 +33,7 @@ msgstr "не вказано адреси електронної пошти"
 msgid "\"%s\" is not a valid email address"
 msgstr "«%s» не є коректною адресою електронної пошти"
 
-#: account/forms.py:36 account/forms.py:131 tools/forms.py:25
+#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
 msgstr "Ел. пошта"
 
@@ -133,136 +85,129 @@ msgstr ""
 "Цей пункт має бути позначено, оскільки ми повинні мати змогу надсилати "
 "фотографії стороннім організаціям."
 
-#: account/forms.py:143
+#: account/forms.py:144
 #, python-format
 msgid "Password reset for %(site_name)s"
 msgstr "Скидання пароля до %(site_name)s"
 
-#: account/forms.py:168
+#: account/forms.py:169
 msgid "Password"
 msgstr "Пароль"
 
-#: account/forms.py:179
+#: account/forms.py:180
 msgid "Invalid password"
 msgstr "Некоректний пароль"
 
-#: account/models.py:122
+#: account/models.py:125
 msgid "photo"
 msgstr "фотографія"
 
-#: account/models.py:123
+#: account/models.py:126
 msgid "photos"
 msgstr "фотографії"
 
-#: account/models.py:266
+#: account/models.py:286
 msgid "confirmed email"
 msgstr "підтверджена адреса ел. пошти"
 
-#: account/models.py:267
+#: account/models.py:287
 msgid "confirmed emails"
 msgstr "підтверджені адреси ел. пошти"
 
-#: account/models.py:306
+#: account/models.py:331
 msgid "unconfirmed email"
 msgstr "непідтверджена адреса ел. пошти"
 
-#: account/models.py:307
+#: account/models.py:332
 msgid "unconfirmed emails"
 msgstr "непідтверджені адреси ел. пошти"
 
-#: account/models.py:310 account/models.py:330
+#: account/models.py:335 account/models.py:356
 msgid "(unconfirmed)"
 msgstr "(не підтверджено)"
 
-#: account/models.py:326
+#: account/models.py:352
 msgid "unconfirmed OpenID"
 msgstr "непідтверджене OpenID"
 
-#: account/models.py:327
+#: account/models.py:353
 msgid "unconfirmed OpenIDs"
 msgstr "непідтверджені OpenID"
 
-#: account/models.py:341
+#: account/models.py:367
 msgid "confirmed OpenID"
 msgstr "підтверджене OpenID"
 
-#: account/models.py:342
+#: account/models.py:368
 msgid "confirmed OpenIDs"
 msgstr "підтверджені OpenID"
+
+#: settings.py:57
+msgid "Catalan"
+msgstr "каталонська"
+
+#: settings.py:58
+msgid "Czech"
+msgstr "чеська"
+
+#: settings.py:59
+msgid "German"
+msgstr "німецька"
+
+#: settings.py:60
+msgid "English"
+msgstr "англійська"
+
+#: settings.py:61
+#, fuzzy
+#| msgid "English"
+msgid "British English"
+msgstr "англійська"
+
+#: settings.py:62
+msgid "Spanish"
+msgstr "іспанська"
+
+#: settings.py:63
+msgid "Basque"
+msgstr "баскська"
+
+#: settings.py:64
+msgid "French"
+msgstr "французька"
+
+#: settings.py:65
+msgid "Italian"
+msgstr "італійська"
+
+#: settings.py:66
+msgid "Japanese"
+msgstr "японська"
+
+#: settings.py:67
+msgid "Brazilian Portuguese"
+msgstr "бразильська португальська"
+
+#: settings.py:68
+msgid "Albanian"
+msgstr "албанська"
+
+#: settings.py:69
+msgid "Turkish"
+msgstr ""
+
+#: settings.py:70
+msgid "Ukrainian"
+msgstr "українська"
 
 #: templates/404.html:5
 #, python-format
 msgid ""
-"Page not found. If you think you got here by mistake, please <a "
-"href=\"mailto:%(support_email)s\">let us know</a>!"
+"Page not found. If you think you got here by mistake, please <a href="
+"\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
 "Сторінку не знайдено. Якщо ви впевнені, що сталася якась помилка, будь "
 "ласка, <a href=\"mailto:%(support_email)s\">повідомте нам про це</a>!"
-
-#: templates/base.html:11
-msgid "Freeing the Web, one face at a time!"
-msgstr "Робимо інтернет вільним, одне обличчя за одним!"
-
-#: templates/base.html:19
-msgid "Homepage"
-msgstr "Домашня сторінка"
-
-#: templates/base.html:23
-msgid "freeing the web one face at a time"
-msgstr "робимо інтернет вільним, одне обличчя за одним"
-
-#: templates/base.html:30
-msgid "Profile"
-msgstr "Профіль"
-
-#: templates/base.html:31 templates/base.html.py:35
-msgid "Contact Us"
-msgstr "Зв’язок з авторами"
-
-#: templates/base.html:32
-msgid "Logout"
-msgstr "Вийти"
-
-#: templates/base.html:36 templates/account/login.html:11
-#: templates/account/login.html.py:39 templates/openid/login.html:28
-msgid "Login"
-msgstr "Увійти"
-
-#: templates/base.html:48
-msgid "GNU Affero General Public License"
-msgstr "Загальна громадська ліцензія GNU Affero"
-
-#: templates/base.html:48
-#, python-format
-msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
-"  software, version %(libravatar_version)s"
-msgstr ""
-"<b>%(site_name)s</b> — служба надання аватарів, яка працює на основі <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
-"версії %(libravatar_version)s"
-
-#: templates/base.html:50
-msgid "Flattr this!"
-msgstr "Повідомити на Flattr!"
-
-#: templates/error.html:4 templates/error.html.py:7
-msgid "Error!"
-msgstr "Помилка!"
-
-#: templates/error.html:9
-msgid "Libravatar has encountered an error."
-msgstr "У Libravatar сталася якась помилка."
-
-#: templates/error.html:15 templates/account/assign_photo_email.html:15
-#: templates/account/assign_photo_openid.html:15
-#: templates/account/email_confirmed.html:37
-#: templates/account/export_done.html:18
-#: templates/account/password_change_done.html:13
-#: templates/account/photos_imported.html:13
-msgid "Back to your profile"
-msgstr "Повернутися до профілю"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
 #: templates/account/profile.html:50
@@ -272,12 +217,12 @@ msgstr "Додати нову адресу ел. пошти"
 #: templates/account/add_email.html:10
 #, python-format
 msgid ""
-"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
+"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">use it to add a new email address</a> to your "
 "profile."
 msgstr ""
-"Якщо у вас є обліковий запис <b>Persona</b>, ви можете <a id=\"browserid-"
-"link\" href=\"%(browserid_target)s\">скористатися ним для додавання адреси "
+"Якщо у вас є обліковий запис <b>Persona</b>, ви можете <a id=\"browserid-link"
+"\" href=\"%(browserid_target)s\">скористатися ним для додавання адреси "
 "електронної пошти</a> до вашого профілю."
 
 #: templates/account/add_email.html:12
@@ -295,12 +240,12 @@ msgid "Add"
 msgstr "Додати"
 
 #: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:19 templates/account/delete.html:24
+#: templates/account/crop_photo.html:25 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
 #: templates/account/login.html:41 templates/account/new.html:43
 #: templates/account/password_change.html:47
 #: templates/account/password_reset.html:26
-#: templates/account/upload_photo.html:25 templates/openid/login.html:30
+#: templates/account/upload_photo.html:28 templates/openid/login.html:30
 msgid "Cancel"
 msgstr "Скасувати"
 
@@ -347,9 +292,9 @@ msgid ""
 "profile</a>, remove the OpenID URL and try adding it again."
 msgstr ""
 "Залежно від надавача, ця дія <b>може тривати близько хвилини</b>. Якщо "
-"протягом хвилини нічого не відбулося, <a "
-"href=\"%(profile_url)s\">поверніться до вашого профілю</a>, виулчіть адресу "
-"OpenID і спробуйте додати її ще раз."
+"протягом хвилини нічого не відбулося, <a href=\"%(profile_url)s"
+"\">поверніться до вашого профілю</a>, виулчіть адресу OpenID і спробуйте "
+"додати її ще раз."
 
 #: templates/account/add_openid_redirection.html:17
 msgid "Verify credentials"
@@ -367,6 +312,15 @@ msgstr "Виберіть фотографію для %(email_address)s"
 msgid "You need to <a href=\"%(upload_url)s\">upload some photos</a> first!"
 msgstr ""
 "Спочатку слід <a href=\"%(upload_url)s\">вивантажити якісь фотографії</a>!"
+
+#: templates/account/assign_photo_email.html:15
+#: templates/account/assign_photo_openid.html:15
+#: templates/account/email_confirmed.html:37
+#: templates/account/export_done.html:18
+#: templates/account/password_change_done.html:13
+#: templates/account/photos_imported.html:13 templates/error.html:15
+msgid "Back to your profile"
+msgstr "Повернутися до профілю"
 
 #: templates/account/assign_photo_email.html:19
 msgid ""
@@ -389,6 +343,13 @@ msgstr "(поточне)"
 msgid "None"
 msgstr "Немає"
 
+#: templates/account/assign_photo_email.html:42
+#: templates/account/assign_photo_openid.html:42
+#, fuzzy, python-format
+#| msgid "Please <a href=\"%(upload_url)s\">upload</a> a smaller one."
+msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
+msgstr "Будь ласка, <a href=\"%(upload_url)s\">вивантажте</a> менше."
+
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
 #, python-format
@@ -404,6 +365,7 @@ msgstr ""
 "якщо ви хочете пов’язати натиснене зображення з цим OpenID:"
 
 #: templates/account/browserid_emailalreadyconfirmed.json:1
+#: templates/account/email_alreadyconfirmed.html:5
 msgid "This email address already exists in a user account."
 msgstr ""
 "Цю адресу електронної пошти вже вказано у обліковому записі користувача."
@@ -434,7 +396,11 @@ msgstr ""
 msgid "Crop photo"
 msgstr "Обрізати фотографію"
 
-#: templates/account/crop_photo.html:18
+#: templates/account/crop_photo.html:12
+msgid "Draw a square around the portion of the image you want to use:"
+msgstr ""
+
+#: templates/account/crop_photo.html:24
 msgid "Crop"
 msgstr "Обрізати"
 
@@ -585,8 +551,7 @@ msgstr ""
 
 #: templates/account/email_notadded.html:8
 #, python-format
-msgid ""
-"you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
+msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr ""
 "у вас накопичилося забагато непідтверджених адрес електронної пошти "
 "(максимальна кількість — %(max_emails)s)"
@@ -601,8 +566,8 @@ msgid ""
 "Invalid or missing confirmation key.<br>Did you copy the whole link "
 "carefully?"
 msgstr ""
-"Некоректний ключ підтвердження або не вказано ключа "
-"підтвердження.<br>Можливо, ви скопіювали не всю адресу?"
+"Некоректний ключ підтвердження або не вказано ключа підтвердження."
+"<br>Можливо, ви скопіювали не всю адресу?"
 
 #: templates/account/export.html:4
 msgid "Export your Libravatar data"
@@ -634,36 +599,41 @@ msgstr "Триває експортування"
 
 #: templates/account/export_done.html:10
 msgid ""
-"Libravatar is currently exporting your data. It <b>may take a few "
-"moments</b> for the file to be available:"
+"Libravatar is currently exporting your data. It <b>may take a few moments</"
+"b> for the file to be available:"
 msgstr ""
 "Зараз Libravatar експортує ваші дані. Доступ до файла можна буде отримати за "
 "<b>декілька секунд</b>:"
 
-#: templates/account/login.html:4
+#: templates/account/login.html:4 templates/account/login_embedded.html:4
 msgid "Libravatar Login"
 msgstr "Вхід до Libravatar"
 
+#: templates/account/login.html:11 templates/account/login.html.py:39
+#: templates/account/login_embedded.html:10 templates/base.html:44
+#: templates/openid/login.html:28
+msgid "Login"
+msgstr "Увійти"
+
 #: templates/account/login.html:15
 #, python-format
-msgid ""
-"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr ""
-"У вас ще немає облікового запису? <a "
-"href=\"%(signup_url)s\">Зареєструйтеся!</a>"
+"У вас ще немає облікового запису? <a href=\"%(signup_url)s\">Зареєструйтеся!"
+"</a>"
 
 #: templates/account/login.html:19
 #, python-format
 msgid ""
-"Do you hate having lots of passwords? You can login with <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
-"href=\"#\">Persona</a></span> instead!"
+"Do you hate having lots of passwords? You can login with <a href="
+"\"%(openid_url)s\">OpenID</a>\n"
+"<span id=\"browserid-option\"> or <a id=\"browserid-link\" href=\"#"
+"\">Persona</a></span> instead!"
 msgstr ""
-"Набридло весь час вводити різні паролі? Можете увійти за допомогою <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> або <a id=\"browserid-link\" "
-"href=\"#\">Persona</a></span>!"
+"Набридло весь час вводити різні паролі? Можете увійти за допомогою <a href="
+"\"%(openid_url)s\">OpenID</a>\n"
+"<span id=\"browserid-option\"> або <a id=\"browserid-link\" href=\"#"
+"\">Persona</a></span>!"
 
 #: templates/account/login.html:23
 msgid "Your username and password didn't match. Please try again."
@@ -674,18 +644,23 @@ msgstr ""
 #: templates/account/login.html:47
 #, python-format
 msgid ""
-"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
-"email</a>."
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
+"a>."
 msgstr ""
 "Забули пароль? <a href=\"%(password_reset_url)s\">Відновіть його за "
 "допомогою електронної пошти</a>."
 
+#: templates/account/login_embedded.html:8
+msgid ""
+"To upload your photo to the Libravatar network and make it available to any "
+"site that knows your email address, please login with your email address."
+msgstr ""
+
 #: templates/account/max_photos.html:6
 #, python-format
 msgid ""
-"You've got too many photos in <a href=\"%(profile_url)s\">your "
-"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
-"one."
+"You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
+"<br>You need to <b>delete</b> some before you can upload a new one."
 msgstr ""
 "У <a href=\"%(profile_url)s\">вашому обліковому записі</a> забагато "
 "фотографій.<br>Вам слід <b>вилучити</b> деякі з цих фотографій, перш ніж "
@@ -712,10 +687,9 @@ msgid ""
 "want to do this."
 msgstr ""
 "Не можна вилучати ваш єдиний запис OpenID, оскільки за його допомогою "
-"здійснюється доступ до цього облікового запису. Або <a "
-"href=\"%(add_openid_url)s\">додайте інший OpenID</a>, або <a "
-"href=\"%(delete_url)s\">вилучіть ваш обліковий запис остаточно</a>, якщо "
-"саме цього ви і хочете."
+"здійснюється доступ до цього облікового запису. Або <a href="
+"\"%(add_openid_url)s\">додайте інший OpenID</a>, або <a href=\"%(delete_url)s"
+"\">вилучіть ваш обліковий запис остаточно</a>, якщо саме цього ви і хочете."
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
@@ -806,13 +780,13 @@ msgstr "Скинути пароль"
 #: templates/account/password_reset.html:10
 #, python-format
 msgid ""
-"Did you know that you can also <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">sign in with Persona</a> and never have to "
-"remember a password again?"
+"Did you know that you can also <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">sign in with Persona</a> and never have to remember "
+"a password again?"
 msgstr ""
-"Знаєте, що ви також можете <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">увійти за допомогою облікового запису "
-"Persona</a> і забути про потребу весь час пам’ятати паролі?"
+"Знаєте, що ви також можете <a id=\"browserid-link\" href="
+"\"%(browserid_target)s\">увійти за допомогою облікового запису Persona</a> і "
+"забути про потребу весь час пам’ятати паролі?"
 
 #: templates/account/password_reset.html:18
 msgid ""
@@ -872,14 +846,13 @@ msgstr "Чи було цю адресу електронної пошти під
 #: templates/account/password_reset_submitted.html:21
 #, python-format
 msgid ""
-"If everything else fails, you can always <a "
-"href=\"%(new_account_url)s\">create a new account</a> or <a "
-"href=\"mailto:%(support_email)s\">email us</a>."
+"If everything else fails, you can always <a href=\"%(new_account_url)s"
+"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
+"us</a>."
 msgstr ""
-"Якщо нічого не допомагає, ви завжди можете <a "
-"href=\"%(new_account_url)s\">створити новий обліковий запис</a> або <a "
-"href=\"mailto:%(support_email)s\">повідомити нам про проблеми електронною "
-"поштою</a>."
+"Якщо нічого не допомагає, ви завжди можете <a href=\"%(new_account_url)s"
+"\">створити новий обліковий запис</a> або <a href=\"mailto:%(support_email)s"
+"\">повідомити нам про проблеми електронною поштою</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
@@ -890,9 +863,16 @@ msgid "Uploaded photo is broken or invalid."
 msgstr "Вивантажену фотографію пошкоджено або її дані є некоректними."
 
 #: templates/account/photo_invalidfile.html:7
+#: templates/account/photo_invalidformat.html:7
 #, python-format
 msgid "Please <a href=\"%(upload_url)s\">upload</a> a different one."
 msgstr "Будь ласка, <a href=\"%(upload_url)s\">вивантажте</a> іншу."
+
+#: templates/account/photo_invalidformat.html:5
+#, fuzzy
+#| msgid "Uploaded photo is broken or invalid."
+msgid "Uploaded photo uses an unsupported file format."
+msgstr "Вивантажену фотографію пошкоджено або її дані є некоректними."
 
 #: templates/account/photo_toobig.html:5
 #, python-format
@@ -922,15 +902,11 @@ msgstr "Фотографії успішно імпортовано."
 msgid "Photo import failed."
 msgstr "Не вдалося імпортувати фотографію."
 
-#: templates/account/profile.html:4
-#, python-format
-msgid "%(username)s's Libravatar Profile"
-msgstr "Профіль %(username)s на Libravatar"
-
-#: templates/account/profile.html:8
-#, python-format
-msgid "%(username)s's Profile"
-msgstr "Профіль %(username)s"
+#: templates/account/profile.html:4 templates/account/profile.html.py:8
+#, fuzzy
+#| msgid "Profile"
+msgid "Your Profile"
+msgstr "Профіль"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
@@ -939,6 +915,7 @@ msgstr ""
 "пошти та OpenID:"
 
 #: templates/account/profile.html:18 templates/account/profile.html.py:27
+#: templates/account/profile_embedded.html:13
 msgid "Change photo"
 msgstr "Змінити фотографію"
 
@@ -983,16 +960,33 @@ msgstr "Встановити пароль"
 msgid "Permanently delete your account"
 msgstr "Вилучити цей обліковий запис назавжди"
 
+#: templates/account/profile_embedded.html:4
+#, fuzzy
+#| msgid "%(username)s's Libravatar Profile"
+msgid "Your Libravatar Profile"
+msgstr "Профіль %(username)s на Libravatar"
+
+#: templates/account/profile_embedded.html:8
+#, python-format
+msgid ""
+"Here is the photo currently associated with your email address "
+"(%(browserid_user)s):"
+msgstr ""
+
+#: templates/account/profile_embedded.html:16
+msgid "Close"
+msgstr ""
+
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
 msgstr "Некоректний ключ перевірки або некоректна адреса електронної пошти."
 
-#: templates/account/upload_photo.html:17
+#: templates/account/upload_photo.html:20
 #, python-format
 msgid "Maximum file size of %(max_size)s."
 msgstr "Максимальний розмір файла — %(max_size)s."
 
-#: templates/account/upload_photo.html:24
+#: templates/account/upload_photo.html:27
 msgid "Upload"
 msgstr "Вивантажити"
 
@@ -1005,6 +999,61 @@ msgstr ""
 "Початкову вивантажену вами фотографію втрачено, отже її неможливо обрізати. "
 "Ймовірно, ви вже обрізали її або вивантажили фотографію так давно, що термін "
 "її зберігання сплив."
+
+#: templates/base.html:19 templates/base_embedded.html:7
+msgid "Freeing the Web, one face at a time!"
+msgstr "Робимо інтернет вільним, одне обличчя за одним!"
+
+#: templates/base.html:27
+msgid "Homepage"
+msgstr "Домашня сторінка"
+
+#: templates/base.html:31
+msgid "freeing the web one face at a time"
+msgstr "робимо інтернет вільним, одне обличчя за одним"
+
+#: templates/base.html:37
+msgid "Profile"
+msgstr "Профіль"
+
+#: templates/base.html:38 templates/base.html.py:42
+msgid "Contact Us"
+msgstr "Зв’язок з авторами"
+
+#: templates/base.html:39 templates/base.html.py:43
+msgid "Security"
+msgstr ""
+
+#: templates/base.html:40
+msgid "Logout"
+msgstr "Вийти"
+
+#: templates/base.html:56
+msgid "GNU Affero General Public License"
+msgstr "Загальна громадська ліцензія GNU Affero"
+
+#: templates/base.html:56
+#, python-format
+msgid ""
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
+"launchpad.net/libravatar\">Libravatar</a>\n"
+"  software, version %(libravatar_version)s"
+msgstr ""
+"<b>%(site_name)s</b> — служба надання аватарів, яка працює на основі <a href="
+"\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"версії %(libravatar_version)s"
+
+#: templates/base.html:58
+msgid "Flattr this!"
+msgstr "Повідомити на Flattr!"
+
+#: templates/error.html:4 templates/error.html.py:7
+msgid "Error!"
+msgstr "Помилка!"
+
+#: templates/error.html:9
+msgid "Libravatar has encountered an error."
+msgstr "У Libravatar сталася якась помилка."
 
 #: templates/openid/failure.html:5
 msgid "OpenID error:"
@@ -1046,31 +1095,37 @@ msgstr ""
 
 #: templates/public/home.html:13
 msgid ""
-"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
-"code</a>"
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
+"a>"
 msgstr ""
-"Отримайте <a href=\"https://code.launchpad.net/libravatar\">код "
-"бібліотеки</a>"
+"Отримайте <a href=\"https://code.launchpad.net/libravatar\">код бібліотеки</"
+"a>"
 
 #: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
 msgstr ""
-"Надішліть <a href=\"https://bugs.launchpad.net/libravatar\">звіт про "
-"ваду</a> або задайте <a "
-"href=\"https://answers.launchpad.net/libravatar\">питання</a>"
+"Надішліть <a href=\"https://bugs.launchpad.net/libravatar\">звіт про ваду</"
+"a> або задайте <a href=\"https://answers.launchpad.net/libravatar\">питання</"
+"a>"
 
 #: templates/public/home.html:15
+#, fuzzy
+#| msgid ""
+#| "Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a href="
+#| "\"http://blog.libravatar.org\">blog</a>"
 msgid ""
-"Read our <a href=\"http://wiki.libravatar.org\">wiki</a> or <a "
-"href=\"http://blog.libravatar.org\">blog</a>"
+"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
+"\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
 "Ознайомтеся з нашою <a href=\"http://wiki.libravatar.org\">вікі</a> або <a "
 "href=\"http://blog.libravatar.org\">дописами у блозі</a>"
 
 #: templates/public/home.html:16
-msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
+#, fuzzy
+#| msgid "Follow us on <a href=\"http://identi.ca/libravatar\">Identica</a>"
+msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
 msgstr ""
 "Слідкуйте за подіями у <a href=\"http://identi.ca/libravatar\">Identica</a>"
 
@@ -1093,7 +1148,9 @@ msgstr ""
 "електронної пошти."
 
 #: templates/public/home.html:21
-msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
+#, fuzzy
+#| msgid "<a href=\"http://wiki.libravatar.org/description/\">Read more...</a>"
+msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
 msgstr ""
 "<a href=\"http://wiki.libravatar.org/description/\">Дізнатися більше…</a>"
 
@@ -1102,42 +1159,49 @@ msgid "Federated Open Source Service"
 msgstr "Інтегрована служба з відкритим кодом"
 
 #: templates/public/home.html:25
+#, fuzzy
+#| msgid ""
+#| "This service is powered by <a href=\"http://www.gnu.org/licenses/agpl.html"
+#| "\">Free and Open Source software</a> and allows owners of a domain name "
+#| "to <a href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
+#| "instance</a> of Libravatar and serve avatars themselves."
 msgid ""
-"This service is powered by <a "
-"href=\"http://www.gnu.org/licenses/agpl.html\">Free and Open Source "
-"software</a> and allows owners of a domain name to <a "
-"href=\"http://wiki.libravatar.org/running_your_own/\">run their own "
+"This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
+"\">Free and Open Source software</a> and allows owners of a domain name to "
+"<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"Ця служба працює на основі <a "
-"href=\"http://www.gnu.org/licenses/agpl.html\">вільного програмного "
-"забезпечення з відкритим кодом</a> і надає власникам доменних назв змогу <a "
-"href=\"http://wiki.libravatar.org/running_your_own/\">використовувати "
-"власний екземпляр</a> Libravatar для обслуговування власних систем роботи з "
-"аватарами."
+"Ця служба працює на основі <a href=\"http://www.gnu.org/licenses/agpl.html"
+"\">вільного програмного забезпечення з відкритим кодом</a> і надає власникам "
+"доменних назв змогу <a href=\"http://wiki.libravatar.org/running_your_own/"
+"\">використовувати власний екземпляр</a> Libravatar для обслуговування "
+"власних систем роботи з аватарами."
 
 #: templates/public/home.html:27
 msgid "Simple API for Developers"
 msgstr "Простий програмний інтерфейс для розробників"
 
 #: templates/public/home.html:29
+#, fuzzy
+#| msgid ""
+#| "Application developers can easily add support for this service using our "
+#| "<a href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the "
+#| "<a href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</"
+#| "a> available for a number of platforms and languages."
 msgid ""
 "Application developers can easily add support for this service using our <a "
-"href=\"http://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
-"href=\"http://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
+"href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
+"href=\"https://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
 "available for a number of platforms and languages."
 msgstr ""
 "Розробники програмного забезпечення можуть без проблем додати підтримку "
-"нашої служби за допомогою нашого <a "
-"href=\"http://wiki.libravatar.org/api/\">простого програмного інтерфейсу</a> "
-"або однієї з <a "
-"href=\"http://wiki.libravatar.org/libraries/\">бібліотек</a>, які можна "
-"використовувати на багатьох програмних платформах та з багатьма мовами "
-"програмування."
+"нашої служби за допомогою нашого <a href=\"http://wiki.libravatar.org/api/"
+"\">простого програмного інтерфейсу</a> або однієї з <a href=\"http://wiki."
+"libravatar.org/libraries/\">бібліотек</a>, які можна використовувати на "
+"багатьох програмних платформах та з багатьма мовами програмування."
 
 #: templates/public/home.html:31
-msgid ""
-"Big thanks to our sponsors without whom none of this would be possible!"
+msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Дуже дякуємо тим, хто підтримував нас фінансово. Без вас нічого б не вийшло!"
 
@@ -1147,8 +1211,8 @@ msgid ""
 "An email hash is required. You can use the <a href=\"%(check_url)s\">check "
 "tool</a> to generate one."
 msgstr ""
-"Потрібен хеш електронної пошти. Ви можете скористатися <a "
-"href=\"%(check_url)s\">засобом перевірки</a> для створення такого хешу."
+"Потрібен хеш електронної пошти. Ви можете скористатися <a href="
+"\"%(check_url)s\">засобом перевірки</a> для створення такого хешу."
 
 #: templates/public/nopost.html:5
 msgid "This only works via HTTP GET."
@@ -1162,31 +1226,31 @@ msgstr ""
 "Значенням параметра розміру має бути ціле число від %(min_size)s до "
 "%(max_size)s."
 
-#: templates/tools/check.html:4 templates/tools/check.html.py:8
+#: templates/tools/check.html:4 templates/tools/check.html.py:12
 msgid "Photo lookup"
 msgstr "Пошук фотографій"
 
-#: templates/tools/check.html:22
+#: templates/tools/check.html:26
 msgid "Optional parameters"
 msgstr "Необов’язкові параметри"
 
-#: templates/tools/check.html:33 templates/tools/check_domain.html:19
+#: templates/tools/check.html:37 templates/tools/check_domain.html:19
 msgid "Check"
 msgstr "Перевірити"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "MD5 hash:"
 msgstr "Хеш MD5:"
 
-#: templates/tools/check.html:41
+#: templates/tools/check.html:45
 msgid "compatible with Gravatar"
 msgstr "сумісний з Gravatar"
 
-#: templates/tools/check.html:43
+#: templates/tools/check.html:47
 msgid "SHA256 hash:"
 msgstr "Хеш SHA256:"
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:49
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
@@ -1194,27 +1258,27 @@ msgstr ""
 "Ось як виглядатимуть аватари залежно від хешу та використаного вами "
 "протоколу:"
 
-#: templates/tools/check.html:48
+#: templates/tools/check.html:52
 msgid "using MD5 over HTTP"
 msgstr "за допомогою MD5 через HTTP"
 
-#: templates/tools/check.html:48 templates/tools/check.html.py:53
+#: templates/tools/check.html:52 templates/tools/check.html.py:57
 msgid "MD5"
 msgstr "MD5"
 
-#: templates/tools/check.html:50
+#: templates/tools/check.html:54
 msgid "using SHA256 over HTTP"
 msgstr "за допомогою SHA256 через HTTP"
 
-#: templates/tools/check.html:50 templates/tools/check.html.py:55
+#: templates/tools/check.html:54 templates/tools/check.html.py:59
 msgid "SHA256"
 msgstr "SHA256"
 
-#: templates/tools/check.html:53
+#: templates/tools/check.html:57
 msgid "using MD5 over HTTPS"
 msgstr "за допомогою MD5 через HTTPS"
 
-#: templates/tools/check.html:55
+#: templates/tools/check.html:59
 msgid "using SHA256 over HTTPS"
 msgstr "за допомогою SHA256 через HTTPS"
 
@@ -1263,3 +1327,6 @@ msgstr ""
 #: tools/forms.py:40
 msgid "Domain"
 msgstr "Домен"
+
+#~ msgid "%(username)s's Profile"
+#~ msgstr "Профіль %(username)s"
