@@ -1,3 +1,14 @@
+libravatar (20150907.1) unstable; urgency=medium
+
+  * Update donation buttons and fix borders around them
+  * Add a /security/ redirect and link in header (LP: 1355344)
+
+  * HSTS: include subdomains of www and seccdn (LP: 1355381)
+  * Upgrade many HTTP URLs to HTTPS
+  * Fix or remove fuzzy translations in all PO files
+
+ -- Francois Marier <francois@debian.org>  Mon, 07 Sep 2015 21:32:11 -0700
+
 libravatar (20141106.1) unstable; urgency=medium
 
   * Fix UTF-8 encoding errors with OpenID URLs (LP: 1363804)
