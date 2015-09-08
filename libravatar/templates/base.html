@@ -36,9 +36,11 @@
     {% if user.is_authenticated %}
     <a href="{% url libravatar.account.views.profile %}">{% trans 'Profile' %}</a>&nbsp;|&nbsp;
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
+    <a href="{{ security_url }}">{% trans 'Security' %}</a>&nbsp;|&nbsp;
     <a href="{% url django.contrib.auth.views.logout %}" id="logout-link">{% trans 'Logout' %}</a>
     {% else %}
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
+    <a href="{{ security_url }}">{% trans 'Security' %}</a>&nbsp;|&nbsp;
     <a href="{% url django.contrib.auth.views.login %}">{% trans 'Login' %}</a>
     {% endif %}
   </div>

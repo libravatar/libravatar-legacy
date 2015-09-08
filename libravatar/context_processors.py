@@ -33,6 +33,7 @@ def basepage(request):
     context['embedded'] = request.GET.get('embedded')
     context['libravatar_version'] = settings.LIBRAVATAR_VERSION
     context['secure_avatar_url'] = settings.SECURE_AVATAR_URL
+    context['security_url'] = settings.SECURITY_URL
     context['site_name'] = settings.SITE_NAME
     context['site_url'] = settings.SITE_URL
     context['support_email'] = settings.SUPPORT_EMAIL
