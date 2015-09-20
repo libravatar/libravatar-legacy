@@ -66,6 +66,7 @@ LANGUAGES = (
     ('it', ugettext('Italian')),
     ('ja', ugettext('Japanese')),
     ('pt_BR', ugettext('Brazilian Portuguese')),
+    ('ru', ugettext('Russian')),
     ('sq', ugettext('Albanian')),
     ('tr', ugettext('Turkish')),
     ('uk', ugettext('Ukrainian')),
