@@ -57,7 +57,7 @@ case "$1" in
 
         # We a2ensite the site the first time the config is installed, but not after
         ENABLE_SITE=""
-        if [ ! -e /etc/apache2/sites-available/libravatar-seccdn ]; then
+        if [ ! -e /etc/apache2/sites-available/libravatar-seccdn.conf ]; then
             ENABLE_SITE="true"
         fi
 
@@ -68,7 +68,7 @@ case "$1" in
         a2enmod rewrite > /dev/null 2>&1
         a2enmod ssl > /dev/null 2>&1
 
-        mv ${APACHE_CONFIG}.working /etc/apache2/sites-available/libravatar-seccdn
+        mv ${APACHE_CONFIG}.working /etc/apache2/sites-available/libravatar-seccdn.conf
 
         if [ "$ENABLE_SITE" != "" ]; then
             a2ensite libravatar-seccdn

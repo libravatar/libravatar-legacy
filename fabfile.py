@@ -37,7 +37,7 @@ def sign_repo():
         all_packages = COMMON_PACKAGES + CDNCOMMON_PACKAGES + SECCDN_PACKAGES + MASTER_PACKAGES
         for package_name in all_packages:
             deb = '../%s_%s_all.deb' % (package_name, PACKAGE_VERSION)
-            local("/usr/bin/reprepro --ask-passphrase -Vb . includedeb wheezy %s" % deb)
+            local("/usr/bin/reprepro --ask-passphrase -Vb . includedeb jessie %s" % deb)
 
 
 @roles('repo')
