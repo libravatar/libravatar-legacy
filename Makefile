@@ -41,7 +41,7 @@ pyflakes:
 
 pep8:
 	@echo Running pep8...
-	@pep8 --ignore=E501,E128,E124 libravatar/
+	@pep8 --ignore=E501,E128,E124,E265 libravatar/
 
 unittests:
 	@echo Running unit tests...
