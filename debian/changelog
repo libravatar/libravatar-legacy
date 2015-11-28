@@ -1,3 +1,9 @@
+libravatar (20151128.1) unstable; urgency=medium
+
+  * Rebuild packages for jessie
+
+ -- Francois Marier <francois@debian.org>  Sat, 28 Nov 2015 12:41:04 -0800
+
 libravatar (20150919.1) unstable; urgency=medium
 
   * Update all translations
