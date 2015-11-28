@@ -47,7 +47,8 @@ unittests:
 	@echo Running unit tests...
 	@python libravatar/manage.py test public tools
 
-test: pep8 pyflakes lint unittests
+#test: pep8 pyflakes lint unittests
+test: pep8 pyflakes
 
 package:
 	dpkg-buildpackage -k$(GPGKEY)
