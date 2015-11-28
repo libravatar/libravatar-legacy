@@ -30,7 +30,7 @@ from libravatar.tools.forms import CheckForm, CheckDomainForm
 
 def check(request):
     data = None
-    if (request.POST):
+    if request.POST:
         form = CheckForm(request.POST)
         if form.is_valid():
             data = {}
@@ -111,7 +111,7 @@ def lookup_ip_address(hostname, ipv6):
 
 def check_domain(request):
     data = None
-    if (request.POST):
+    if request.POST:
         form = CheckDomainForm(request.POST)
         if form.is_valid():
             data = {}

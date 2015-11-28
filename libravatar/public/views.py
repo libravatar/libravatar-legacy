@@ -214,7 +214,7 @@ def avatar_exists(email_hash, size=None):
         # If the resized avatar is too recent, pretend it's not
         # there so that it gets served dynamically
         file_age = time.time() - os.path.getctime(filename)
-        return (file_age > settings.CDN_SYNC_DELAY)
+        return file_age > settings.CDN_SYNC_DELAY
 
     filename = settings.AVATAR_ROOT + '/%s' % email_hash
     return os.path.isfile(filename)
