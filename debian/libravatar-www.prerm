@@ -21,6 +21,7 @@ case "$1" in
     remove|deconfigure)
         a2dissite libravatar-www > /dev/null 2>&1 || true
         rm -f /etc/apache2/sites-available/libravatar-www
+        rm -f /etc/apache2/sites-available/libravatar-www.conf
         rm -f /etc/awstats/awstats.www.conf
         rm -f /usr/share/libravatar/libravatar/settings.py
         rm -f /usr/share/libravatar/libravatar/rules.abe

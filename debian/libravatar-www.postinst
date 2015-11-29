@@ -167,11 +167,11 @@ case "$1" in
 
         # We a2ensite the site the first time the config is installed, but not after
         ENABLE_SITE=""
-        if [ ! -e /etc/apache2/sites-available/libravatar-www ]; then
+        if [ ! -e /etc/apache2/sites-available/libravatar-www.conf ]; then
             ENABLE_SITE="true"
         fi
 
-        mv ${APACHE_CONFIG}.working /etc/apache2/sites-available/libravatar-www
+        mv ${APACHE_CONFIG}.working /etc/apache2/sites-available/libravatar-www.conf
 
         if [ "$ENABLE_SITE" != "" ]; then
             a2ensite libravatar-www
