@@ -43,7 +43,7 @@ Create a database:
 Create the required tables:
 
     cd /usr/share/libravatar/libravatar
-    python manage.py syncdb
+    python manage.py migrate
 
 # Apache Configuration
 
