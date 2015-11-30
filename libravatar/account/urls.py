@@ -26,11 +26,11 @@ urlpatterns = patterns('',
     ('logout_embedded/$', 'django.contrib.auth.views.logout', {'next_page': '/account/login_embedded'}),
     ('profile_embedded/$', 'libravatar.account.views.profile_embedded'),
 
-    ('login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}),
+    ('login/$', 'django.contrib.auth.views.login', {'template_name': 'account/login.html'}, name='login'),
     ('login_browserid/$', 'libravatar.account.views.login_browserid'),
-    ('logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),  # must be the last pattern using this view!
-    ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}),
-    ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}),
+    ('logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),  # must be the last pattern using this view!
+    ('password_change/$', 'django.contrib.auth.views.password_change', {'template_name': 'account/password_change.html'}, name='password_change'),
+    ('password_change_done/$', 'django.contrib.auth.views.password_change_done', {'template_name': 'account/password_change_done.html'}, name='password_change_done'),
     ('password_set/$', 'libravatar.account.views.password_set'),
 
     ('add_browserid/$', 'libravatar.account.views.add_browserid'),
@@ -47,8 +47,8 @@ urlpatterns = patterns('',
     ('delete/$', 'libravatar.account.views.delete'),
     ('export/$', 'libravatar.account.views.export'),
     ('new/$', 'libravatar.account.views.new'),
-    ('password_reset/$', 'libravatar.account.views.password_reset'),
-    ('password_reset_confirm/$', 'libravatar.account.views.password_reset_confirm'),
+    ('password_reset/$', 'libravatar.account.views.password_reset', name='password_reset'),
+    ('password_reset_confirm/$', 'libravatar.account.views.password_reset_confirm', name='password_reset_confirm'),
     ('profile/$', 'libravatar.account.views.profile'),
     ('profile_success/$', 'libravatar.account.views.successfully_authenticated'),
 
