@@ -76,7 +76,7 @@ class AddEmailForm(forms.Form):
 
 
 class AddOpenIdForm(forms.Form):
-    openid = forms.URLField(label=_('OpenID'), verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
+    openid = forms.URLField(label=_('OpenID'), min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
 
     def clean_openid(self):
         """
