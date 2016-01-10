@@ -51,4 +51,4 @@ unittests:
 test: pep8 pyflakes
 
 package:
-	dpkg-buildpackage -k$(GPGKEY)
+	dpkg-buildpackage -us -uc
