@@ -42,7 +42,7 @@ Create a database:
 
 Create the required tables:
 
-    cd /usr/share/libravatar/libravatar
+    cd /usr/share/libravatar
     python manage.py migrate
 
 # Apache Configuration
