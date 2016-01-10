@@ -3,6 +3,6 @@
 
 {% block errormessage %}
 {% blocktrans %}This image is too big, the maximum size is {{ max_size }} bytes.{% endblocktrans %}</p>
-{% url libravatar.account.views.upload_photo as upload_url %}
+{% url 'libravatar.account.views.upload_photo' as upload_url %}
 <p>{% blocktrans %}Please <a href="{{ upload_url }}">upload</a> a smaller one.{% endblocktrans %}
 {% endblock errormessage %}

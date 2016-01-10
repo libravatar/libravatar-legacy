@@ -11,10 +11,10 @@
 
 <p><img src="{{ photo }}" alt=""></p>
 
-<form action="{% url libravatar.account.views.delete_photo photo.id %}" method="post">{% csrf_token %}
+<form action="{% url 'libravatar.account.views.delete_photo' photo.id %}" method="post">{% csrf_token %}
 
 <p><input type="submit" value="{% trans 'Delete' %}">
-&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

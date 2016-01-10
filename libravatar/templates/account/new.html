@@ -7,7 +7,7 @@
 
 <h1>{% trans 'Create a new account' %}</h1>
 
-<form action="{% url libravatar.account.views.new %}" method="post" name="newaccount">{% csrf_token %}
+<form action="{% url 'libravatar.account.views.new' %}" method="post" name="newaccount">{% csrf_token %}
 
 <table summary="">
 {% if form.username.errors %}
@@ -40,7 +40,7 @@
 </table>
 
 <p><input type="submit" value="{% trans 'Create account' %}">
-&nbsp;<a href="{% url libravatar.public.views.home %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.public.views.home' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

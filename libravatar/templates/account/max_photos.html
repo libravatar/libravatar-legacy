@@ -2,6 +2,6 @@
 {% load i18n %}
 
 {% block errormessage %}
-{% url libravatar.account.views.profile as profile_url %}
+{% url 'libravatar.account.views.profile' as profile_url %}
 {% blocktrans %}You've got too many photos in <a href="{{ profile_url }}">your account</a>.<br>You need to <b>delete</b> some before you can upload a new one.{% endblocktrans %}
 {% endblock errormessage %}

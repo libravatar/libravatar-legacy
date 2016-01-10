@@ -20,14 +20,14 @@
 
 <form name="login" action="{{ action }}" method="post">{% csrf_token %}
 
-{% url django.contrib.auth.views.login as login_url %}
+{% url 'django.contrib.auth.views.login' as login_url %}
 <p>{% trans "You'd rather use a regular account?" %} {% blocktrans %}That's fine, just use <a href="{{ login_url }}">this login form</a> instead.{% endblocktrans %}</p>
 
 <p><label for="id_openid_identifier">{% trans 'OpenID' %}:</label>&nbsp;{{ form.openid_identifier }}</p>
 
 <p><input type="submit" value="{% trans 'Login' %}" />
 <input type="hidden" name="next" value="{{ next }}" />
-&nbsp;<a href="{% url libravatar.public.views.home %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.public.views.home' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

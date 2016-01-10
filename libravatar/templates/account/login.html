@@ -11,11 +11,11 @@
 <h1>{% trans 'Login' %}</h1>
 
 {% if not disable_signup %}
-{% url libravatar.account.views.new as signup_url %}
+{% url 'libravatar.account.views.new' as signup_url %}
 <p>{% blocktrans %}Don't have an account yet? <a href="{{ signup_url }}">Sign up now!</a>{% endblocktrans %}</p>
 {% endif %}
 
-{% url django_openid_auth.views.login_begin as openid_url %}
+{% url 'django_openid_auth.views.login_begin' as openid_url %}
 <p>{% blocktrans %}Do you hate having lots of passwords? You can login with <a href="{{openid_url}}">OpenID</a>
 <span id="browserid-option"> or <a id="browserid-link" href="#">Persona</a></span> instead!{% endblocktrans %}</p>
 
@@ -23,7 +23,7 @@
 <p class="error">{% trans "Your username and password didn't match. Please try again." %}</p>
 {% endif %}
 
-<form method="post" name="login" action="{% url django.contrib.auth.views.login %}">{% csrf_token %}
+<form method="post" name="login" action="{% url 'django.contrib.auth.views.login' %}">{% csrf_token %}
 
 <table summary="">
 <tr>
@@ -38,12 +38,12 @@
 
 <p><input type="submit" value="{% trans 'Login' %}" />
 <input type="hidden" name="next" value="{{ next }}" />
-&nbsp;<a href="{% url libravatar.public.views.home %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.public.views.home' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 
 {% if not disable_signup %}
-{% url libravatar.account.views.password_reset as password_reset_url %}
+{% url 'libravatar.account.views.password_reset' as password_reset_url %}
 <p>{% blocktrans %}Forgot your password? <a href="{{ password_reset_url }}">Reset it by email</a>.{% endblocktrans %}</p>
 {% endif %}
 

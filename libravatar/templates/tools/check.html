@@ -11,7 +11,7 @@
 
 <h1>{% trans 'Photo lookup' %}</h1>
 
-<form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
+<form action="{% url 'libravatar.tools.views.check' %}" method="post" name="lookup">
 
 {{form.non_field_errors}}
 <table summary="">

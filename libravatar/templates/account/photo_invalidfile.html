@@ -3,6 +3,6 @@
 
 {% block errormessage %}
 {% trans 'Uploaded photo is broken or invalid.' %}</p>
-{% url libravatar.account.views.upload_photo as upload_url %}
+{% url 'libravatar.account.views.upload_photo' as upload_url %}
 <p>{% blocktrans %}Please <a href="{{ upload_url }}">upload</a> a different one.{% endblocktrans %}
 {% endblock errormessage %}

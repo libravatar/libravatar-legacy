@@ -11,20 +11,20 @@
 <p>{% trans 'You have the following confirmed email addresses and OpenIDs:' %}</p>
 <ul class="horizontal-list avatar-list">
     {% for email in confirmed_emails %}
-        <li><form action="{% url libravatar.account.views.remove_confirmed_email email.id %}" method="post">{% csrf_token %}
-        <a href="{% url libravatar.account.views.assign_photo_email email.id %}">
+        <li><form action="{% url 'libravatar.account.views.remove_confirmed_email' email.id %}" method="post">{% csrf_token %}
+        <a href="{% url 'libravatar.account.views.assign_photo_email' email.id %}">
         <img class="thumbnail editable avatar-chooser" src="{{ email.photo_url }}" alt=""></a>
         {{ email.email }}
-        <br><a href="{% url libravatar.account.views.assign_photo_email email.id %}">{% trans 'Change photo' %}</a>
+        <br><a href="{% url 'libravatar.account.views.assign_photo_email' email.id %}">{% trans 'Change photo' %}</a>
         <br><br><input {%if email.email == browserid_user %}id="remove-browserid-user"{% endif %}
                        type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form></li>
     {% endfor %}
     {% for openid in confirmed_openids %}
-        <li><form action="{% url libravatar.account.views.remove_confirmed_openid openid.id %}" method="post">{% csrf_token %}
-        <a href="{% url libravatar.account.views.assign_photo_openid openid.id %}">
+        <li><form action="{% url 'libravatar.account.views.remove_confirmed_openid' openid.id %}" method="post">{% csrf_token %}
+        <a href="{% url 'libravatar.account.views.assign_photo_openid' openid.id %}">
         <img class="thumbnail editable avatar-chooser" src="{{openid.photo_url}}" alt=""></a>
         {{openid.openid}}
-        <br><a href="{% url libravatar.account.views.assign_photo_openid openid.id %}">{% trans 'Change photo' %}</a>
+        <br><a href="{% url 'libravatar.account.views.assign_photo_openid' openid.id %}">{% trans 'Change photo' %}</a>
         <br><br><input type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form></li>
     {% endfor %}
 </ul>
@@ -35,11 +35,11 @@
 <p>{% trans 'You have the following unconfirmed email addresses and OpenIDs:' %}</p>
 <ul class="vertical-list">
     {% for email in unconfirmed_emails %}
-        <li><form action="{% url libravatar.account.views.remove_unconfirmed_email email.id %}" method="post">{% csrf_token %}{{ email.email }}
+        <li><form action="{% url 'libravatar.account.views.remove_unconfirmed_email' email.id %}" method="post">{% csrf_token %}{{ email.email }}
         <input type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form>{# TODO: (expires in xx hours) #}</li>
     {% endfor %}
     {% for openid in unconfirmed_openids %}
-        <li><form action="{% url libravatar.account.views.remove_unconfirmed_openid openid.id %}" method="post">{% csrf_token %}{{ openid.openid }}
+        <li><form action="{% url 'libravatar.account.views.remove_unconfirmed_openid' openid.id %}" method="post">{% csrf_token %}{{ openid.openid }}
         <input type="image" src="/img/delete_button.png" value="{% trans 'Remove' %}"></form>{# TODO: (expires in xx hours) #}</li>
     {% endfor %}
 </ul>
@@ -47,10 +47,10 @@
 
 <p>
 {% if not max_emails %}
-<a href="{% url libravatar.account.views.add_email %}">{% trans 'Add a new email address' %}</a>
+<a href="{% url 'libravatar.account.views.add_email' %}">{% trans 'Add a new email address' %}</a>
 |
 {% endif %}
-<a href="{% url libravatar.account.views.add_openid %}">{% trans 'Add a new OpenID' %}</a></p>
+<a href="{% url 'libravatar.account.views.add_openid' %}">{% trans 'Add a new OpenID' %}</a></p>
 </p>
 
 {% if photos %}
@@ -58,25 +58,25 @@
 <ul class="horizontal-list avatar-list centered">
 {% for photo in photos %}
     <li><img class="thumbnail" src="{{photo}}" title="{% blocktrans with photo.upload_datetime as datetime %}Uploaded on {{ datetime }}{% endblocktrans %}" alt="{% blocktrans with photo.upload_datetime as datetime %}Uploaded on {{ datetime }}{% endblocktrans %}"><br>
-    <a href="{% url libravatar.account.views.delete_photo photo.id %}">{% trans 'Delete' %}</a></li>
+    <a href="{% url 'libravatar.account.views.delete_photo' photo.id %}">{% trans 'Delete' %}</a></li>
 {% endfor %}
 </ul>
 {% endif %}
 
 {% if not max_photos %}
-<p><a href="{% url libravatar.account.views.upload_photo %}">{% trans 'Upload a new photo' %}</a></p>
+<p><a href="{% url 'libravatar.account.views.upload_photo' %}">{% trans 'Upload a new photo' %}</a></p>
 {% endif %}
 
 <h2>{% trans 'Account settings' %}</h2>
 
 {% if has_password %}
-<p><a href="{% url django.contrib.auth.views.password_change %}">{% trans 'Change your password' %}</a></p>
+<p><a href="{% url 'django.contrib.auth.views.password_change' %}">{% trans 'Change your password' %}</a></p>
 {% else %}
-<p><a href="{% url libravatar.account.views.password_set %}">{% trans 'Set a password' %}</a></p>
+<p><a href="{% url 'libravatar.account.views.password_set' %}">{% trans 'Set a password' %}</a></p>
 {% endif %}
 
-<p><a href="{% url libravatar.account.views.export %}">{% trans 'Export your data' %}</a></p>
+<p><a href="{% url 'libravatar.account.views.export' %}">{% trans 'Export your data' %}</a></p>
 
-<p><a href="{% url libravatar.account.views.delete %}">{% trans 'Permanently delete your account' %}</a></p>
+<p><a href="{% url 'libravatar.account.views.delete' %}">{% trans 'Permanently delete your account' %}</a></p>
 
 {% endblock content %}
