@@ -19,8 +19,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 # pylint: disable=W0401,W0614
-from django.conf.urls import url
-from django.conf.urls.defaults import patterns
+from django.conf.urls import url, patterns
 
 urlpatterns = patterns('',
     url('login_embedded/$', 'libravatar.account.views.login_embedded'),
