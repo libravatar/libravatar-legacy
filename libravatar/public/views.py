@@ -270,9 +270,9 @@ def resize(request):
     if not avatar_exists(email_hash):
         # That image doesn't exist at all
         if https:
-            return HttpResponseRedirect(settings.SECURE_MEDIA_URL + '/nobody/%s.png' % size)
+            return HttpResponseRedirect(settings.SECURE_MEDIA_URL + 'nobody/%s.png' % size)
         else:
-            return HttpResponseRedirect(settings.MEDIA_URL + '/nobody/%s.png' % size)
+            return HttpResponseRedirect(settings.MEDIA_URL + 'nobody/%s.png' % size)
 
     (resized_filename, file_format) = resized_avatar(email_hash, size)
 

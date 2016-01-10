@@ -82,9 +82,9 @@ USE_L10N = True
 MEDIA_ROOT = '%s/static/' % PROJECT_ROOT
 
 # URL that handles the static files served from MEDIA_ROOT
-MEDIA_URL = 'http://cdn.libravatar.org'
+MEDIA_URL = 'http://cdn.libravatar.org/'
 # Enable this if you can serve your avatars over https
-SECURE_MEDIA_URL = 'https://seccdn.libravatar.org'
+SECURE_MEDIA_URL = 'https://seccdn.libravatar.org/'
 #SECURE_MEDIA_URL = None
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
