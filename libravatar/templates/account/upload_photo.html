@@ -16,7 +16,7 @@
 {% if openid %}<input type="hidden" name="openid" value="{{openid}}">{% endif %}
 
 {{ form.photo.errors }}
-<p class="aligned wide">{{ form.photo.label_tag }}: <input id="id_photo" type="file" name="photo" accept="image/*">
+<p class="aligned wide">{{ form.photo.label_tag }} <input id="id_photo" type="file" name="photo" accept="image/*">
 <br>{% blocktrans with max_file_size|filesizeformat as max_size %}Maximum file size of {{ max_size }}.{% endblocktrans %}</p>
 
 <ul class="conditions">

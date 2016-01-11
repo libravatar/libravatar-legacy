@@ -14,7 +14,7 @@
 <form action="{% url 'libravatar.account.views.add_email' %}" name="addemail" method="post" id="form-addemail">{% csrf_token %}
 
 {{ form.email.errors }}
-<p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
+<p class="aligned wide">{{ form.email.label_tag }} {{ form.email }}</p>
 
 <p><input type="submit" value="{% trans 'Add' %}" />
 &nbsp;<a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>

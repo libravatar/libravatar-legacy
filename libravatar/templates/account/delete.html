@@ -15,7 +15,7 @@
 <p>{% trans 'Please confirm your identity by entering your current password.' %}</p>
 
 {{ form.password.errors }}
-<p class="aligned wide">{{ form.password.label_tag }}: {{ form.password }}</p>
+<p class="aligned wide">{{ form.password.label_tag }} {{ form.password }}</p>
 {% endif %}
 
 <p>{% trans 'Are you sure you want to <strong>permanently delete</strong> your Libravatar account?' %}</p>
