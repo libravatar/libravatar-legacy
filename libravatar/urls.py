@@ -20,6 +20,7 @@ from django.conf.urls import url, patterns, include, handler404, handler500
 handler404  # make pyflakes happy, pylint: disable=W0104
 handler500  # make pyflakes happy, pylint: disable=W0104
 
+# pylint: disable=invalid-name
 urlpatterns = patterns('',
                        url(r'^account/', include('libravatar.account.urls')),
 

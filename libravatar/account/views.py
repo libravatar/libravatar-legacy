@@ -135,10 +135,10 @@ def import_photo(request, user_id):
 
         if 'photo_Gravatar' in request.POST:
             photos_to_import = True
-            p = Photo()
-            p.user = user
-            p.ip_address = request.META['REMOTE_ADDR']
-            if p.import_image('Gravatar', email.email):
+            photo = Photo()
+            photo.user = user
+            photo.ip_address = request.META['REMOTE_ADDR']
+            if photo.import_image('Gravatar', email.email):
                 photos_imported = True
 
         if photos_imported:
@@ -172,12 +172,12 @@ def successfully_authenticated(request):
 
             # add photo to database, bung LDAP photo into the expected file
             photo_contents = request.user.ldap_user.attrs[settings.AUTH_LDAP_USER_PHOTO][0]
-            fp = StringIO(photo_contents)  # file pointer to in-memory string buffer
-            image = File(fp)
-            p = Photo()
-            p.user = request.user
-            p.save(image)
-            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[p.id]))
+            file_ptr = StringIO(photo_contents)  # file pointer to in-memory string buffer
+            image = File(file_ptr)
+            photo = Photo()
+            photo.user = request.user
+            photo.save(image)
+            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[photo.id]))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -205,14 +205,14 @@ def _confirm_claimed_openid(user, remote_address):
 @csrf_protect
 @login_required
 def profile(request):
-    u = request.user
-    _confirm_claimed_openid(u, request.META['REMOTE_ADDR'])
+    usr = request.user
+    _confirm_claimed_openid(usr, request.META['REMOTE_ADDR'])
 
-    confirmed_emails = u.confirmed_emails.order_by('email')
-    unconfirmed_emails = u.unconfirmed_emails.order_by('email')
-    confirmed_openids = u.confirmed_openids.order_by('openid')
-    unconfirmed_openids = u.unconfirmed_openids.order_by('openid')
-    photos = u.photos.order_by('add_date')
+    confirmed_emails = usr.confirmed_emails.order_by('email')
+    unconfirmed_emails = usr.unconfirmed_emails.order_by('email')
+    confirmed_openids = usr.confirmed_openids.order_by('openid')
+    unconfirmed_openids = usr.unconfirmed_openids.order_by('openid')
+    photos = usr.photos.order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
     max_emails = len(unconfirmed_emails) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
 

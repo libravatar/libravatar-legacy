@@ -60,44 +60,44 @@ def srv_hostname(records):
         return (None, None)
 
     if 1 == len(records):
-        rr = records[0]
-        return (rr['target'], rr['port'])
+        ret = records[0]
+        return (ret['target'], ret['port'])
 
     # Keep only the servers in the top priority
     priority_records = []
     total_weight = 0
     top_priority = records[0]['priority']  # highest priority = lowest number
 
-    for rr in records:
-        if rr['priority'] > top_priority:
-            # ignore the record (rr has lower priority)
+    for ret in records:
+        if ret['priority'] > top_priority:
+            # ignore the record (ret has lower priority)
             continue
-        elif rr['priority'] < top_priority:
-            # reset the array (rr has higher priority)
-            top_priority = rr['priority']
+        elif ret['priority'] < top_priority:
+            # reset the aretay (ret has higher priority)
+            top_priority = ret['priority']
             total_weight = 0
             priority_records = []
 
-        total_weight += rr['weight']
+        total_weight += ret['weight']
 
-        if rr['weight'] > 0:
-            priority_records.append((total_weight, rr))
+        if ret['weight'] > 0:
+            priority_records.append((total_weight, ret))
         else:
             # zero-weigth elements must come first
-            priority_records.insert(0, (0, rr))
+            priority_records.insert(0, (0, ret))
 
     if 1 == len(priority_records):
-        unused, rr = priority_records[0]
-        return (rr['target'], rr['port'])
+        unused, ret = priority_records[0]
+        return (ret['target'], ret['port'])
 
     # Select first record according to RFC2782 weight ordering algorithm (page 3)
     random_number = random.randint(0, total_weight)
 
     for record in priority_records:
-        weighted_index, rr = record
+        weighted_index, ret = record
 
         if weighted_index >= random_number:
-            return (rr['target'], rr['port'])
+            return (ret['target'], ret['port'])
 
     print 'There is something wrong with our SRV weight ordering algorithm'
     return (None, None)
@@ -142,10 +142,10 @@ def lookup_avatar_server(domain, https):
         if ('data' not in answer) or (not answer['data']) or (not answer['typename']) or (answer['typename'] != 'SRV'):
             continue
 
-        rr = {'priority': int(answer['data'][0]), 'weight': int(answer['data'][1]),
-              'port': int(answer['data'][2]), 'target': answer['data'][3]}
+        record = {'priority': int(answer['data'][0]), 'weight': int(answer['data'][1]),
+                  'port': int(answer['data'][2]), 'target': answer['data'][3]}
 
-        records.append(rr)
+        records.append(record)
 
     target, port = srv_hostname(records)
 

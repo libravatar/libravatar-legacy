@@ -17,6 +17,7 @@
 
 from django.conf.urls import url, patterns
 
+# pylint: disable=invalid-name
 urlpatterns = patterns('',
                        url('check/$', 'libravatar.tools.views.check'),
                        url('check_domain/$',

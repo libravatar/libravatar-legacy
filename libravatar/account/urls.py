@@ -20,6 +20,7 @@
 
 from django.conf.urls import url, patterns
 
+# pylint: disable=invalid-name
 urlpatterns = patterns('',
                        url('login_embedded/$',
                            'libravatar.account.views.login_embedded'),

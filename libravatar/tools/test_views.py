@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-# pylint: disable=bad-continuation
+# pylint: disable=bad-continuation,invalid-name
 import re
 
 from django.test import TestCase

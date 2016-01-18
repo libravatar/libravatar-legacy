@@ -47,6 +47,7 @@ TIME_ZONE = 'UTC'
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+# pylint: disable=invalid-name
 ugettext = lambda s: s
 LANGUAGES = (
     ('ca', ugettext('Catalan')),

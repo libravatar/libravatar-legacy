@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -20,12 +20,12 @@ import json
 import os
 import sys
 
-# pylint: disable=W0403
+# pylint: disable=relative-import
 import settings
 from utils import create_logger, delete_if_exists, is_hex
 
 os.umask(022)
-logger = create_logger('deletephoto')
+LOGGER = create_logger('deletephoto')
 
 
 def main(argv=None):
@@ -40,10 +40,10 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
-        logger.error('file_hash is not a hexadecimal value')
+        LOGGER.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
-        logger.error('file_format is not recognized')
+        LOGGER.error('file_format is not recognized')
         return 1
 
     filename = "%s.%s" % (file_hash, file_format)

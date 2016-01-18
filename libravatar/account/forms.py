@@ -117,15 +117,15 @@ class UploadPhotoForm(forms.Form):
     can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True,
                                         error_messages={'required': _('This field must be checked since we need to be able to distribute photos to third parties.')})
 
-    # pylint: disable=R0201
+    # pylint: disable=no-self-use
     def save(self, user, ip_address, image):
         # Link this file to the user's profile
-        p = Photo()
-        p.user = user
-        p.ip_address = ip_address
-        if not p.save(image):
+        photo = Photo()
+        photo.user = user
+        photo.ip_address = ip_address
+        if not photo.save(image):
             return None
-        return p
+        return photo
 
 
 class PasswordResetForm(forms.Form):

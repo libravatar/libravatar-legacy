@@ -129,6 +129,7 @@ class Photo(models.Model):
     def exists(self):
         return path.isfile(settings.USER_FILES_ROOT + self.full_filename())
 
+    # pylint: disable=arguments-differ
     def save(self, image, force_insert=False, force_update=False):
         hash_object = hashlib.new('sha256')
         hash_object.update(urandom(1024) + str(self.user.username))
@@ -283,6 +284,7 @@ class ConfirmedEmail(models.Model):
     def __unicode__(self):
         return self.email
 
+    # pylint: disable=arguments-differ
     def delete(self):
         self.set_photo(None)
         super(ConfirmedEmail, self).delete()
@@ -328,6 +330,7 @@ class UnconfirmedEmail(models.Model):
     def __unicode__(self):
         return self.email + ' ' + _('(unconfirmed)')
 
+    # pylint: disable=arguments-differ
     def save(self, force_insert=False, force_update=False):
         hash_object = hashlib.new('sha256')
         hash_object.update(urandom(1024) + str(self.user.username))
@@ -364,6 +367,7 @@ class ConfirmedOpenId(models.Model):
     def __unicode__(self):
         return self.openid
 
+    # pylint: disable=arguments-differ
     def delete(self):
         self.set_photo(None)
         super(ConfirmedOpenId, self).delete()
@@ -480,12 +484,13 @@ class DjangoOpenIDStore(OpenIDStore):
         return False
 
     def cleanupNonces(self):
-        ts = int(time.time()) - oidnonce.SKEW
-        OpenIDNonce.objects.filter(timestamp__lt=ts).delete()
+        timestamp = int(time.time()) - oidnonce.SKEW
+        OpenIDNonce.objects.filter(timestamp__lt=timestamp).delete()
 
     def cleanupAssociations(self):
         OpenIDAssociation.objects.extra(where=['issued + lifetimeint < (%s)' % time.time()]).delete()
 
+    # pylint: disable=invalid-name
     def getAuthKey(self):
         # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY
         hash_object = hashlib.new('md5')

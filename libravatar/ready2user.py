@@ -22,12 +22,12 @@ import os
 import shutil
 import sys
 
-# pylint: disable=W0403
+# pylint: disable=bare-except,relative-import
 import settings
 from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
 os.umask(022)
-logger = create_logger('ready2user')
+LOGGER = create_logger('ready2user')
 
 
 def main(argv=None):
@@ -43,17 +43,17 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
-        logger.error('file_hash is not a hexadecimal value')
+        LOGGER.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
-        logger.error('file_format is not recognized')
+        LOGGER.error('file_format is not recognized')
         return 1
     if not isinstance(links, list):
-        logger.error('links is not a list')
+        LOGGER.error('links is not a list')
         return 1
     for l in links:
         if not is_hash_pair(l):
-            logger.error('links is not a list of hash pairs')
+            LOGGER.error('links is not a list of hash pairs')
             return 1
 
     filename = "%s.%s" % (file_hash, file_format)
@@ -62,18 +62,18 @@ def main(argv=None):
 
     # Sanity checks
     if os.path.isfile(dest):
-        logger.warning('Destination already exists')
+        LOGGER.warning('Destination already exists')
         return 0
 
     if not os.path.isfile(source):
-        logger.error('Source file not found')
+        LOGGER.error('Source file not found')
         return 1
 
     # Remove from /ready and move to /user
     try:
         shutil.move(source, dest)
     except:
-        logger.error('Cannot move file')
+        LOGGER.error('Cannot move file')
         return 2
 
     # All done, we can delete the original file as uploaded by the user

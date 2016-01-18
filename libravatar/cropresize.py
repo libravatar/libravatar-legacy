@@ -23,12 +23,12 @@ import os
 import subprocess
 import sys
 
-# pylint: disable=W0403
+# pylint: disable=bare-except,relative-import
 import settings
 from utils import create_logger, delete_if_exists, is_hex, is_hash_pair
 
 os.umask(022)
-logger = create_logger('cropresize')
+LOGGER = create_logger('cropresize')
 
 MAX_PIXELS = 7000
 
@@ -54,11 +54,11 @@ def crop(filename, x=0, y=0, w=0, h=0):
     dest = settings.READY_FILES_ROOT + filename
 
     if os.path.isfile(dest):
-        logger.info('Already done')
+        LOGGER.info('Already done')
         return 0  # already done, skip
 
     if not os.path.isfile(source):
-        logger.error('Source image missing')
+        LOGGER.error('Source image missing')
         return 1  # source image doesn't exist, can't crop it
 
     broken_file = settings.MEDIA_ROOT + 'img/broken'
@@ -68,25 +68,25 @@ def crop(filename, x=0, y=0, w=0, h=0):
         img = Image.open(source)
     except:
         create_broken_image(broken_file + '.png', dest)
-        logger.error('Cannot open image')
+        LOGGER.error('Cannot open image')
         return 2
     ext = pil_format_to_ext(img.format)
     if not ext:
         create_broken_image(broken_file + ext, dest)
-        logger.error('Invalid extension')
+        LOGGER.error('Invalid extension')
         return 3
     try:
         img.verify()
     except:
         create_broken_image(broken_file + ext, dest)
-        logger.error('Image failed verification')
+        LOGGER.error('Image failed verification')
         return 2
 
     # Need to reopen the image after verify()
     img = Image.open(source)
-    a, b = img.size
+    a, b = img.size  # pylint: disable=invalid-name
     if a > MAX_PIXELS or b > MAX_PIXELS:
-        logger.error('Image dimensions are too big (max: %s x %s)', MAX_PIXELS, MAX_PIXELS)
+        LOGGER.error('Image dimensions are too big (max: %s x %s)', MAX_PIXELS, MAX_PIXELS)
         return 6
 
     if w == 0 and h == 0:
@@ -94,7 +94,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
         i = min(w, h)
         w, h = i, i
     elif w < 0 or (x + w) > a or h < 0 or (y + h) > b:
-        logger.error('Crop dimensions outside of original image bounding box')
+        LOGGER.error('Crop dimensions outside of original image bounding box')
         return 6
 
     cropped = img.crop((x, y, x + w, y + h))
@@ -116,36 +116,36 @@ def optimize_image(dest, img_format, ext, broken_file):
         process = subprocess.Popen(['/usr/bin/jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('JPEG optimisation failed: %s', process.communicate()[0])
+            LOGGER.error('JPEG optimisation failed: %s', process.communicate()[0])
             return 4
     elif 'PNG' == img_format:
         process = subprocess.Popen(['/usr/bin/pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (pngcrush) failed: %s', process.communicate()[0])
+            LOGGER.error('PNG optimisation (pngcrush) failed: %s', process.communicate()[0])
             return 4
         delete_if_exists(dest)
         process = subprocess.Popen(['/usr/bin/optipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (optipng) failed: %s', process.communicate()[0])
+            LOGGER.error('PNG optimisation (optipng) failed: %s', process.communicate()[0])
             return 4
         delete_if_exists(dest + '.tmp')
         process = subprocess.Popen(['/usr/bin/advpng', '--recompress', '--shrink-insane', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (advpng) failed: %s', process.communicate()[0])
+            LOGGER.error('PNG optimisation (advpng) failed: %s', process.communicate()[0])
             return 4
     elif 'GIF' == img_format:
         process = subprocess.Popen(['/usr/bin/gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('GIF optimisation failed: %s', process.communicate()[0])
+            LOGGER.error('GIF optimisation failed: %s', process.communicate()[0])
             return 4
     else:
-        logger.error('Unexpected error while cropping')
+        LOGGER.error('Unexpected error while cropping')
         return 5
 
     return 0
@@ -168,17 +168,17 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(file_hash):
-        logger.error('file_hash is not a hexadecimal value')
+        LOGGER.error('file_hash is not a hexadecimal value')
         return 1
     if file_format != 'jpg' and file_format != 'png' and file_format != 'gif':
-        logger.error('file_format is not recognized')
+        LOGGER.error('file_format is not recognized')
         return 1
     if not isinstance(links, list):
-        logger.error('links is not a list')
+        LOGGER.error('links is not a list')
         return 1
     for l in links:
         if not is_hash_pair(l):
-            logger.error('links is not a list of hash pairs')
+            LOGGER.error('links is not a list of hash pairs')
             return 1
 
     filename = "%s.%s" % (file_hash, file_format)
