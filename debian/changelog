@@ -1,3 +1,9 @@
+libravatar (20160117.1) unstable; urgency=medium
+
+  * Migrate main application to jessie
+
+ -- Francois Marier <francois@debian.org>  Sun, 17 Jan 2016 21:03:05 -0800
+
 libravatar (20151129.1) unstable; urgency=medium
 
   * Fix Apache 2.4 ACL config
