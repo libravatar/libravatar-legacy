@@ -86,7 +86,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
     img = Image.open(source)
     a, b = img.size
     if a > MAX_PIXELS or b > MAX_PIXELS:
-        logger.error('Image dimensions are too big (max: %s x %s)' % (MAX_PIXELS, MAX_PIXELS))
+        logger.error('Image dimensions are too big (max: %s x %s)', MAX_PIXELS, MAX_PIXELS)
         return 6
 
     if w == 0 and h == 0:
@@ -116,33 +116,33 @@ def optimize_image(dest, img_format, ext, broken_file):
         process = subprocess.Popen(['/usr/bin/jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('JPEG optimisation failed: %s' % process.communicate()[0])
+            logger.error('JPEG optimisation failed: %s', process.communicate()[0])
             return 4
     elif 'PNG' == img_format:
         process = subprocess.Popen(['/usr/bin/pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (pngcrush) failed: %s' % process.communicate()[0])
+            logger.error('PNG optimisation (pngcrush) failed: %s', process.communicate()[0])
             return 4
         delete_if_exists(dest)
         process = subprocess.Popen(['/usr/bin/optipng', '-o9', '-preserve', '--force', '-out', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (optipng) failed: %s' % process.communicate()[0])
+            logger.error('PNG optimisation (optipng) failed: %s', process.communicate()[0])
             return 4
         delete_if_exists(dest + '.tmp')
         process = subprocess.Popen(['/usr/bin/advpng', '--recompress', '--shrink-insane', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('PNG optimisation (advpng) failed: %s' % process.communicate()[0])
+            logger.error('PNG optimisation (advpng) failed: %s', process.communicate()[0])
             return 4
     elif 'GIF' == img_format:
         process = subprocess.Popen(['/usr/bin/gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
-            logger.error('GIF optimisation failed: %s' % process.communicate()[0])
+            logger.error('GIF optimisation failed: %s', process.communicate()[0])
             return 4
     else:
         logger.error('Unexpected error while cropping')

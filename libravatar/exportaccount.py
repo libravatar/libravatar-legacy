@@ -76,7 +76,7 @@ def xml_photos(photos):
 def encode_photo(photo_filename, photo_format):
     filename = settings.USER_FILES_ROOT + photo_filename + '.' + photo_format
     if not os.path.isfile(filename):
-        logger.warning('Photo not found: %s' % filename)
+        logger.warning('Photo not found: %s', filename)
         return None
 
     photo_content = None
@@ -84,7 +84,7 @@ def encode_photo(photo_filename, photo_format):
         photo_content = photo.read()
 
     if not photo_content:
-        logger.warning('Could not read photo: %s' % filename)
+        logger.warning('Could not read photo: %s', filename)
         return None
 
     return base64.b64encode(photo_content)
@@ -111,10 +111,10 @@ def main(argv=None):
     for photo in photos:
         (photo_filename, photo_format) = photo
         if not is_hex(photo_filename):
-            logger.error("photo_filename '%s' is not a hexadecimal value" % photo_filename)
+            logger.error("photo_filename '%s' is not a hexadecimal value", photo_filename)
             return 1
         if photo_format != 'jpg' and photo_format != 'png' and photo_format != 'gif':
-            logger.error("photo_format '%s' is not recognized" % photo_format)
+            logger.error("photo_format '%s' is not recognized", photo_format)
             return 1
 
     dest_filename = settings.EXPORT_FILES_ROOT + file_hash + '.xml.gz'

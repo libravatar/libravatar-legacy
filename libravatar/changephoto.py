@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -38,12 +38,12 @@ def link_image(source_filename, destination_hash, size=None):
     try:
         link(source_filename, destination_filename)
     except OSError:
-        logger.error("Unable to link '%s' to %s" % (source_filename, destination_filename))
+        logger.error("Unable to link '%s' to %s", source_filename, destination_filename)
 
 
 def create_links(source_filename, md5_hash, sha256_hash):
     if not path.isfile(source_filename):
-        logger.warning("the cropped photo '%s' does not exist" % source_filename)
+        logger.warning("the cropped photo '%s' does not exist", source_filename)
         return 0
 
     if md5_hash:
