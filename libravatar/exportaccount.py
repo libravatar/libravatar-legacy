@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -17,7 +17,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import base64
-from gearman import libgearman
+import gearman
 import gzip
 import json
 import os
@@ -128,14 +128,12 @@ def main(argv=None):
     destination.close()
 
     if do_delete:  # Delete files on disk
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
+        gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         for photo in photos:
             (photo_filename, photo_format) = photo
             workload = {'file_hash': photo_filename, 'format': photo_format}
-            gm_client.do_background('deletephoto', json.dumps(workload))
+            gm_client.submit_job('deletephoto', json.dumps(workload),
+                                 background=True, wait_until_complete=False)
 
     return 0
 

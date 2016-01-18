@@ -14,7 +14,7 @@
 * [Python Imaging Library](http://www.pythonware.com/library/)
 * [YUI Compressor](http://developer.yahoo.com/yui/compressor/), for minifying CSS/JS files
 * [Gearman](http://www.gearman.org)
-* [Python bindings for libgearman](http://www.launchpad.net/gearman-interface)
+* [Python Gearman](https://pypi.python.org/pypi/gearman)
 * [Python OpenID](https://github.com/openid/python-openid)
 * [OpenID Integration for django.contrib.auth](https://launchpad.net/django-openid-auth)
 * [Requests](http://python-requests.org/)
@@ -23,9 +23,9 @@
 * AdvanceCOMP
 * GIFsicle
 
-On Debian unstable or wheezy:
+On Debian unstable or jessie:
 
-    apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
+    apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
   
     apt-get install python-ldap
 

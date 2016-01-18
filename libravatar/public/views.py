@@ -1,4 +1,4 @@
-# Copyright (C) 2011, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
@@ -19,7 +19,7 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import DNS
-from gearman import libgearman
+import gearman
 import Image
 import json
 import random
@@ -225,12 +225,10 @@ def resized_avatar(email_hash, size):
 
     # If the resized avatar already exists, don't re-generate it
     if not os.path.isfile(resized_filename):
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
+        gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         workload = {'email_hash': email_hash, 'size': size}
-        gm_client.do('resizeavatar', json.dumps(workload))
+        gm_client.submit_job('resizeavatar', json.dumps(workload),
+                             background=True, wait_until_complete=False)
 
     resized_img = Image.open(resized_filename)
     return (resized_filename, resized_img.format)

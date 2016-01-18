@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-from gearman import libgearman
+import gearman
 import hashlib
 import json
 from openid import oidutil
@@ -773,13 +773,11 @@ def _perform_export(user, do_delete):
         photo_details = (photo.filename, photo.format)
         photos.append(photo_details)
 
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
+    gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
     workload = {'do_delete': do_delete, 'file_hash': file_hash, 'username': user.username,
                 'emails': emails, 'openids': openids, 'photos': photos}
-    gm_client.do_background('exportaccount', json.dumps(workload))
+    gm_client.submit_job('exportaccount', json.dumps(workload),
+                         background=True, wait_until_complete=False)
 
     download_url = settings.EXPORT_FILES_URL + file_hash + '.xml.gz'
     return download_url

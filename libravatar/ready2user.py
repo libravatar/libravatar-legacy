@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-from gearman import libgearman
+import gearman
 import json
 import os
 import shutil
@@ -81,14 +81,12 @@ def main(argv=None):
     delete_if_exists(uploaded_file)
 
     # Finally, create any links to email hashes that were requested
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
+    gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
     for hashes in links:
         params = {'photo_hash': file_hash, 'photo_format': file_format,
                   'md5_hash': hashes[0], 'sha256_hash': hashes[1]}
-        gm_client.do_background('changephoto', json.dumps(params))
+        gm_client.submit_job('changephoto', json.dumps(params),
+                             background=True, wait_until_complete=False)
 
     return 0
 

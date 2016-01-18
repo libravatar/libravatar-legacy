@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -46,7 +46,7 @@
 
 import base64
 import datetime
-from gearman import libgearman
+import gearman
 import hashlib
 import Image
 import json
@@ -98,13 +98,11 @@ def change_photo(photo, md5_hash, sha256_hash):
         photo_hash = photo.filename
         photo_format = photo.format
 
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
+    gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
     workload = {'photo_hash': photo_hash, 'photo_format': photo_format,
                 'md5_hash': md5_hash, 'sha256_hash': sha256_hash}
-    gm_client.do_background('changephoto', json.dumps(workload))
+    gm_client.submit_job('changephoto', json.dumps(workload),
+                         background=True, wait_until_complete=False)
 
 
 class PhotoManager(models.Manager):
@@ -165,12 +163,10 @@ class Photo(models.Model):
 
         if delete_file_on_disk:
             # Queue a job for the photo deletion gearman worker
-            gm_client = libgearman.Client()
-            for server in settings.GEARMAN_SERVERS:
-                gm_client.add_server(server)
-
+            gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
             workload = {'file_hash': self.filename, 'format': self.format}
-            gm_client.do_background('deletephoto', json.dumps(workload))
+            gm_client.submit_job('deletephoto', json.dumps(workload),
+                                 background=True, wait_until_complete=False)
 
         super(Photo, self).delete()
 
@@ -247,13 +243,11 @@ class Photo(models.Model):
             h = dimensions['h']
 
         # Queue a job for the cropping/resizing gearman worker
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
+        gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         workload = {'file_hash': self.filename, 'format': self.format,
                     'x': x, 'y': y, 'w': w, 'h': h, 'links': links_to_create}
-        gm_client.do_background('cropresize', json.dumps(workload))
+        gm_client.submit_job('cropresize', json.dumps(workload),
+                             background=True, wait_until_complete=False)
 
 
 class ConfirmedEmailManager(models.Manager):
