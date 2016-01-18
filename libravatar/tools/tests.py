@@ -63,7 +63,7 @@ class ToolsTestCase(unittest.TestCase):
         self.assertTrue('You cannot provide both an email and an OpenID' in response.content)
 
         response = c.post('/tools/check/', {'email': 'personexample.com', 'size': '80'})
-        self.assertTrue('Enter a valid e-mail' in response.content)
+        self.assertTrue('Enter a valid email address' in response.content)
 
         response = c.post('/tools/check/', {'openid': 'example', 'size': '80'})
         self.assertTrue('Enter a valid URL' in response.content)

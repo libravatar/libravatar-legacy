@@ -49,10 +49,10 @@ codespell:
 
 unittests:
 	@echo Running unit tests...
-	@python libravatar/manage.py test public tools
+	@python manage.py test libravatar/public libravatar/tools
 
-#test: pep8 pyflakes lint unittests
-test: pep8 pyflakes codespell
+#test: pep8 pyflakes codespell unittests lint
+test: pep8 pyflakes codespell unittests
 
 package:
 	dpkg-buildpackage -us -uc
