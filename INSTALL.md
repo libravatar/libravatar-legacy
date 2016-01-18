@@ -60,6 +60,14 @@ Enable mod_alias, mod\_expires, mod\_headers, mod\_rewrite and mod\_wsgi:
     a2enmod rewrite
     a2enmod wsgi
 
+and put the following in `/etc/apache2/conf-available/ssl.conf`:
+
+    SSLStaplingCache shmcb:/var/run/ocsp(128000)
+
+before enabling it:
+
+    a2enconf ssl
+
 Create an uploaded/ directory that is writable by the www-data user:
 
     mkdir /var/lib/libravatar/uploaded
