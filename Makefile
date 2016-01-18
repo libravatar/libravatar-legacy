@@ -15,9 +15,9 @@ all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) mofiles
 	yui-compressor -o $@ $<
 
 %.gz: %.css
-	gzip -n --best < $< > $@
+	zopfli -c --i1000 $< > $@
 %.gz: %.js
-	gzip -n --best < $< > $@
+	zopfli -c --i1000 $< > $@
 
 pofiles:
 	cd libravatar && for l in ca cs en en_GB es eu de fr it ja pt_BR ru sq tr uk ; do django-admin makemessages -l $$l -e html,txt,json ; done
