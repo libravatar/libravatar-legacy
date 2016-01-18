@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -16,8 +16,8 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import re
-import unittest
 
+from django.test import TestCase
 from django.test.client import Client
 
 from views import lookup_ip_address  # pylint: disable=W0403
@@ -27,7 +27,7 @@ def match_regexp(result, regexp):
     return re.match(regexp, result)
 
 
-class ToolsTestCase(unittest.TestCase):
+class ToolsTestCase(TestCase):
     def setUp(self):
         pass  # Nothing to do
 

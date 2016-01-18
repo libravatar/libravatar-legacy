@@ -1,4 +1,4 @@
-# Copyright (C) 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -16,14 +16,14 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import random
-import unittest
 
+from django.test import TestCase
 from django.test.client import Client
 
 from views import lookup_avatar_server, mimetype_format, srv_hostname  # pylint: disable=W0403
 
 
-class PublicTestCase(unittest.TestCase):
+class PublicTestCase(TestCase):
     def setUp(self):
         pass  # Nothing to do
 
