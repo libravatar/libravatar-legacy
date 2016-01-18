@@ -2,9 +2,8 @@ Source: libravatar
 Section: web
 Priority: extra
 Maintainer: Francois Marier <francois@debian.org>
-Build-Depends: debhelper (>=8), python (>= 2.6), yui-compressor, python-django, pep8, pyflakes, pylint, python-gearman.libgearman, python-dns, python-imaging, python-requests, python-django-auth-openid, python-openid
-Standards-Version: 3.9.1
-XS-Python-Version: 2.6
+Build-Depends: debhelper (>=9), python (>= 2.7), yui-compressor, python-django, pep8, pyflakes, pylint, python-gearman.libgearman, python-dns, python-imaging, python-requests, python-django-auth-openid, python-openid
+Standards-Version: 3.9.6
 Homepage: https://www.libravatar.org
 Vcs-git: https://git.nzoss.org.nz/libravatar/libravatar.git
 Vcs-browser: https://git.nzoss.org.nz/libravatar/libravatar
