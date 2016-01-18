@@ -155,6 +155,7 @@ def lookup_avatar_server(domain, https):
     return target
 
 
+# pylint: disable=too-many-branches
 def resolve(request):
     if request.method == 'POST':
         return render_to_response('public/nopost.html',

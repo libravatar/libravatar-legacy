@@ -51,8 +51,7 @@ unittests:
 	@echo Running unit tests...
 	@python manage.py test libravatar/public libravatar/tools
 
-#test: pep8 pyflakes codespell unittests lint
-test: pep8 pyflakes codespell unittests
+test: pep8 pyflakes codespell unittests lint
 
 package:
 	dpkg-buildpackage -us -uc

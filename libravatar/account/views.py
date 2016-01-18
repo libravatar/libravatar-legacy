@@ -732,9 +732,11 @@ def password_reset_confirm(request):
     else:
         form = SetPasswordForm(user)
 
-    return render_to_response('account/password_change.html', {'form': form,
-                              'verification_key': verification_key, 'email_address': email_address},
-                              context_instance=RequestContext(request))
+    return render_to_response('account/password_change.html',
+                              {'form': form,
+                               'verification_key': verification_key,
+                               'email_address': email_address
+                              }, context_instance=RequestContext(request))
 
 
 @transaction.atomic

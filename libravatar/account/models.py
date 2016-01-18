@@ -136,7 +136,7 @@ class Photo(models.Model):
 
         # Write file to disk
         tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
-        destination = open(tmp_filename, 'wb+')
+        destination = open(tmp_filename, 'w+b')
         destination.write(image.read())
         destination.close()
 
@@ -205,7 +205,7 @@ class Photo(models.Model):
             return False
 
         # Write file to disk
-        destination = open(tmp_filename, 'wb+')
+        destination = open(tmp_filename, 'w+b')
         destination.write(image.read())
         destination.close()
 
@@ -425,6 +425,7 @@ class DjangoOpenIDStore(OpenIDStore):
     """
 
     def storeAssociation(self, server_url, association):
+        # pylint: disable=unexpected-keyword-arg
         assoc = OpenIDAssociation(server_url=server_url,
                                   handle=association.handle,
                                   secret=base64.encodestring(association.secret),

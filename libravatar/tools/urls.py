@@ -15,10 +15,10 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-# pylint: disable=W0401,W0614
 from django.conf.urls import url, patterns
 
 urlpatterns = patterns('',
-    url('check/$', 'libravatar.tools.views.check'),
-    url('check_domain/$', 'libravatar.tools.views.check_domain'),
-)
+                       url('check/$', 'libravatar.tools.views.check'),
+                       url('check_domain/$',
+                           'libravatar.tools.views.check_domain'),
+                      )

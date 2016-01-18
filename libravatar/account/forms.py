@@ -166,7 +166,7 @@ class PasswordResetForm(forms.Form):
 
 
 class DeleteAccountForm(forms.Form):
-    password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput())
 
     def __init__(self, user, *args, **kwargs):
         self.user = user
