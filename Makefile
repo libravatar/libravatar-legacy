@@ -43,12 +43,16 @@ pep8:
 	@echo Running pep8...
 	@pep8 --ignore=E501,E128,E124,E265,E731 libravatar/
 
+codespell:
+	@echo Running codespell...
+	@codespell libravatar/*.py libravatar/*/*.py
+
 unittests:
 	@echo Running unit tests...
 	@python libravatar/manage.py test public tools
 
 #test: pep8 pyflakes lint unittests
-test: pep8 pyflakes
+test: pep8 pyflakes codespell
 
 package:
 	dpkg-buildpackage -us -uc
