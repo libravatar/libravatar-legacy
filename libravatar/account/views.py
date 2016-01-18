@@ -45,7 +45,7 @@ from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Confirme
 from libravatar import settings
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def new(request):
     if settings.DISABLE_SIGNUP:
@@ -111,7 +111,7 @@ def confirm_email(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def import_photo(request, user_id):
     if request.method == 'POST':
@@ -151,7 +151,7 @@ def import_photo(request, user_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @login_required
 def successfully_authenticated(request):
     if request.user.ldap_user:
@@ -238,7 +238,7 @@ def openid_logging(message, level=0):
         print message
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def add_openid(request):
@@ -354,7 +354,7 @@ def confirm_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_confirmed_openid(request, openid_id):
@@ -377,7 +377,7 @@ def remove_confirmed_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_unconfirmed_openid(request, openid_id):
@@ -393,7 +393,7 @@ def remove_unconfirmed_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def add_email(request):
@@ -412,7 +412,7 @@ def add_email(request):
                               RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_confirmed_email(request, email_id):
@@ -432,7 +432,7 @@ def remove_confirmed_email(request, email_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_unconfirmed_email(request, email_id):
@@ -447,7 +447,7 @@ def remove_unconfirmed_email(request, email_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def upload_photo(request):
@@ -580,7 +580,7 @@ def auto_crop(request, photo_id):
     return _perform_crop(request, photo)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def delete_photo(request, photo_id):
@@ -634,7 +634,7 @@ def _assign_photo(request, identifier_type, identifier):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def assign_photo_email(request, email_id):
@@ -647,7 +647,7 @@ def assign_photo_email(request, email_id):
     return _assign_photo(request, 'email', email)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def assign_photo_openid(request, openid_id):
@@ -660,7 +660,7 @@ def assign_photo_openid(request, openid_id):
     return _assign_photo(request, 'openid', openid)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def password_reset(request):
     if settings.DISABLE_SIGNUP:
@@ -679,7 +679,7 @@ def password_reset(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def password_reset_confirm(request):
     if settings.DISABLE_SIGNUP:
@@ -737,7 +737,7 @@ def password_reset_confirm(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def delete(request):
@@ -794,7 +794,7 @@ def export(request):
     return render_to_response('account/export.html', context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def password_set(request):
@@ -815,7 +815,7 @@ def password_set(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_exempt
 @login_required
 def add_browserid(request):
@@ -850,7 +850,7 @@ def add_browserid(request):
     return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_exempt
 def login_browserid(request):
     if not request.method == 'POST' or 'assertion' not in request.POST:
@@ -869,7 +869,7 @@ def login_browserid(request):
     return HttpResponse(json.dumps({"success": True, "user": browserid_user}), mimetype="application/json")
 
 
-@transaction.commit_on_success
+@transaction.atomic
 def login_embedded(request):
     if request.user.is_authenticated():
         if 'browserid_user' in request.session:
