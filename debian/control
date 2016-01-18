@@ -2,7 +2,7 @@ Source: libravatar
 Section: web
 Priority: extra
 Maintainer: Francois Marier <francois@debian.org>
-Build-Depends: debhelper (>=9), python (>= 2.7), yui-compressor, python-django, pep8, pyflakes, pylint, python-gearman, python-dns, python-imaging, python-requests, python-django-auth-openid, python-openid
+Build-Depends: debhelper (>=9), python (>= 2.7), yui-compressor, python-django, pep8, pyflakes, pylint, python-gearman, python-dns, python-imaging, python-requests, python-django-auth-openid, python-openid, python-bcrypt
 Standards-Version: 3.9.6
 Homepage: https://www.libravatar.org
 Vcs-git: https://git.nzoss.org.nz/libravatar/libravatar.git
@@ -21,7 +21,7 @@ Description: avatar image hosting - full install
 
 Package: libravatar-www
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery (>= 1.5), python-psycopg2, python (>= 2.6), debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman, jpegoptim, optipng, pngcrush, advancecomp, python-openid, python-django-auth-openid, python-requests, ca-certificates, gifsicle
+Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery (>= 1.5), python-psycopg2, python (>= 2.6), debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman, jpegoptim, optipng, pngcrush, advancecomp, python-openid, python-django-auth-openid, python-requests, ca-certificates, gifsicle, python-bcrypt
 Recommends: awstats
 Description: avatar image hosting - main web application
  Libravatar is a free service for hosting profile images tied to your
