@@ -473,8 +473,6 @@ def upload_photo(request):
 
             # carry optional parameters to the crop page
             params = {}
-            if 'embedded' in request.POST:
-                params['embedded'] = request.POST['embedded']
             if 'email' in request.POST:
                 params['email'] = request.POST['email']
             elif 'openid' in request.POST:
@@ -520,10 +518,7 @@ def _perform_crop(request, photo, dimensions=None, email=None, openid=None):
 
     photo.crop(dimensions, links_to_create)
 
-    if '1' == request.POST.get('embedded'):
-        return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
-    else:
-        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+    return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
 @csrf_protect
@@ -608,15 +603,10 @@ def _assign_photo(request, identifier_type, identifier):
                                           context_instance=RequestContext(request))
 
         identifier.set_photo(photo)
-        if '1' == request.GET.get('embedded'):
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
-        else:
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
+        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
     # carry optional parameters to the upload page
     params = {}
-    if 'embedded' in request.GET:
-        params['embedded'] = request.GET['embedded']
     if 'email' == identifier_type:
         params['email'] = identifier
     elif 'openid' == identifier_type:
@@ -869,39 +859,3 @@ def login_browserid(request):
     browserid_user = request.session['browserid_user']  # do not move below login()!
     login(request, user)
     return HttpResponse(json.dumps({"success": True, "user": browserid_user}), mimetype="application/json")
-
-
-@transaction.atomic
-def login_embedded(request):
-    if request.user.is_authenticated():
-        if 'browserid_user' in request.session:
-            return HttpResponseRedirect(reverse('libravatar.account.views.profile_embedded'))
-        else:
-            logout(request)  # if logged in without browserid, must logout
-    return render_to_response('account/login_embedded.html', context_instance=RequestContext(request))
-
-
-@login_required
-def profile_embedded(request):
-    if 'browserid_user' not in request.session:
-        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
-
-    # until a photo has been uploaded, redirect to the upload form
-    if request.user.photos.count() < 1:
-        return HttpResponseRedirect(reverse('libravatar.account.views.upload_photo') + '?embedded=1')
-
-    email_id = None
-    photo_url = None
-    confirmed_emails = request.user.confirmed_emails.order_by('email')
-    for email in confirmed_emails:
-        if email.email == request.session['browserid_user']:
-            email_id = email.id
-            photo_url = email.photo_url()
-            break
-
-    if not email_id or not photo_url:
-        print "Couldn't find a confirmed email for browserid_user=%s" % request.session['browserid_user']
-        return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
-
-    return render_to_response('account/profile_embedded.html', {'email_id': email_id, 'photo_url': photo_url},
-                              context_instance=RequestContext(request))

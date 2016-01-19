@@ -3,7 +3,7 @@
  * @source: https://code.launchpad.net/libravatar
  *
  * @licstart
- * Copyright (C) 2011, 2012, 2013 Francois Marier <francois@libravatar.org>
+ * Copyright (C) 2011, 2012, 2013, 2016 Francois Marier <francois@libravatar.org>
  *
  * The JavaScript code in this page is free software: you can
  * redistribute it and/or modify it under the terms of the GNU Affero
@@ -64,13 +64,6 @@ if (browserid_user === '') {
     browserid_user = null;
 }
 
-if (!LOGGED_IN_PAGE) {
-    var LOGGED_IN_PAGE = '/account/profile/';
-}
-if (!LOGGED_OUT_PAGE) {
-    var LOGGED_OUT_PAGE = '/account/logout/';
-}
-
 if (navigator.id) {
     // Show BrowserID option and make links clickable
     $('#browserid-option').show();
@@ -105,7 +98,7 @@ if (navigator.id) {
                 $.post(post_url, {assertion: assertion}, function (data) {
                     if (data.success === true) {
                         if (data.user !== browserid_user) {
-                            window.location = LOGGED_IN_PAGE;
+                            window.location = '/account/profile/';
                         }
                     } else {
                         alert(data.error);
@@ -116,7 +109,7 @@ if (navigator.id) {
         },
         onlogout: function () {
             if (browserid_user) {
-                window.location = LOGGED_OUT_PAGE;
+                window.location = '/account/logout/';
             }
         }
     });

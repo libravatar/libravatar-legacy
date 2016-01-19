@@ -22,14 +22,6 @@ from django.conf.urls import url, patterns
 
 # pylint: disable=invalid-name
 urlpatterns = patterns('',
-                       url('login_embedded/$',
-                           'libravatar.account.views.login_embedded'),
-                       url('logout_embedded/$',
-                           'django.contrib.auth.views.logout',
-                           {'next_page': '/account/login_embedded'}),
-                       url('profile_embedded/$',
-                           'libravatar.account.views.profile_embedded'),
-
                        url('login/$', 'django.contrib.auth.views.login',
                            {'template_name': 'account/login.html'},
                            name='login'),
