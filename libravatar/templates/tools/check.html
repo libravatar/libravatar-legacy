@@ -12,6 +12,7 @@
 <h1>{% trans 'Photo lookup' %}</h1>
 
 <form action="{% url 'libravatar.tools.views.check' %}" method="post" name="lookup">
+{% csrf_token %}
 
 {{form.non_field_errors}}
 <table summary="">

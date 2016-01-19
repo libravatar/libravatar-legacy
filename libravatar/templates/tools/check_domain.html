@@ -8,6 +8,7 @@
 <h1>{% trans 'Domain lookup' %}</h1>
 
 <form action="{% url 'libravatar.tools.views.check_domain' %}" method="post" name="lookup">
+{% csrf_token %}
 
 <table summary="">
 <tr>
