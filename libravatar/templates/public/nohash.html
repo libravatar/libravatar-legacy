@@ -2,6 +2,6 @@
 {% load i18n %}
 
 {% block errormessage %}
-{% url libravatar.tools.views.check as check_url %}
+{% url 'libravatar.tools.views.check' as check_url %}
 {% blocktrans %}An email hash is required. You can use the <a href="{{ check_url }}">check tool</a> to generate one.{% endblocktrans %}
 {% endblock errormessage %}

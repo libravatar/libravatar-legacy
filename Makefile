@@ -15,9 +15,9 @@ all: $(MIN_CSS) $(MIN_JS) $(COMPRESSED_JS) $(COMPRESSED_CSS) mofiles
 	yui-compressor -o $@ $<
 
 %.gz: %.css
-	gzip --best < $< > $@
+	zopfli -c --i1000 $< > $@
 %.gz: %.js
-	gzip --best < $< > $@
+	zopfli -c --i1000 $< > $@
 
 pofiles:
 	cd libravatar && for l in ca cs en en_GB es eu de fr it ja pt_BR ru sq tr uk ; do django-admin makemessages -l $$l -e html,txt,json ; done
@@ -41,14 +41,17 @@ pyflakes:
 
 pep8:
 	@echo Running pep8...
-	@pep8 --ignore=E501,E128,E124,E265 libravatar/
+	@pep8 --ignore=E501,E128,E124,E265,E731 libravatar/
+
+codespell:
+	@echo Running codespell...
+	@codespell libravatar/*.py libravatar/*/*.py
 
 unittests:
 	@echo Running unit tests...
-	@python libravatar/manage.py test public tools
+	@python manage.py test libravatar/public libravatar/tools
 
-#test: pep8 pyflakes lint unittests
-test: pep8 pyflakes
+test: pep8 pyflakes codespell unittests lint
 
 package:
-	dpkg-buildpackage -k$(GPGKEY)
+	dpkg-buildpackage -us -uc

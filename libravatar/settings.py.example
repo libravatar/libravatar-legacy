@@ -1,8 +1,8 @@
 # Django settings for libravatar project.
+import os
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-SEND_BROKEN_LINK_EMAILS = False
 
 # LDAP debugging
 #import logging
@@ -10,11 +10,11 @@ SEND_BROKEN_LINK_EMAILS = False
 #logger.addHandler(logging.StreamHandler())
 #logger.setLevel(logging.DEBUG)
 
-import os
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SITE_NAME = 'libravatar.org'
 SITE_URL = 'https://www.libravatar.org'
+ALLOWED_HOSTS = SITE_URL.replace('https://', '').replace('http://', '')
 CONTACT_US = 'https://wiki.libravatar.org/talk_to_us/'
 SECURITY_URL = 'https://wiki.libravatar.org/security/'
 SERVER_EMAIL = 'accounts@libravatar.org'
@@ -23,12 +23,6 @@ DEV_EMAIL = 'dev@libravatar.org'
 ADMIN_EMAIL = 'admin@libravatar.org'
 
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
-
-ADMINS = (
-    ('Site Administrator', ADMIN_EMAIL),
-)
-
-MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
@@ -47,12 +41,13 @@ DATABASES = {
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'Etc/UTC'
+TIME_ZONE = 'UTC'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
 
+# pylint: disable=invalid-name
 ugettext = lambda s: s
 LANGUAGES = (
     ('ca', ugettext('Catalan')),
@@ -72,19 +67,18 @@ LANGUAGES = (
     ('uk', ugettext('Ukrainian')),
 )
 
-SITE_ID = 1
-
 USE_I18N = True
 USE_L10N = True
+USE_TZ = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/libravatar/static/"
-MEDIA_ROOT = '%s/static/' % PROJECT_ROOT
+MEDIA_ROOT = '%s/static/' % BASE_DIR
 
 # URL that handles the static files served from MEDIA_ROOT
-MEDIA_URL = 'http://cdn.libravatar.org'
+MEDIA_URL = 'http://cdn.libravatar.org/'
 # Enable this if you can serve your avatars over https
-SECURE_MEDIA_URL = 'https://seccdn.libravatar.org'
+SECURE_MEDIA_URL = 'https://seccdn.libravatar.org/'
 #SECURE_MEDIA_URL = None
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -95,10 +89,14 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '+%&mv-4l5lrv^6nn9a-h4l1o2jqw_x^cf276mjz)$52aruy(g7'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
+PASSWORD_HASHERS = (
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+    'django.contrib.auth.hashers.BCryptPasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.SHA1PasswordHasher',
+    'django.contrib.auth.hashers.MD5PasswordHasher',
+    'django.contrib.auth.hashers.CryptPasswordHasher',
 )
 
 AUTHENTICATION_BACKENDS = (
@@ -110,10 +108,14 @@ AUTHENTICATION_BACKENDS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
 ROOT_URLCONF = 'libravatar.urls'
@@ -122,7 +124,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '%s/libravatar/templates' % PROJECT_ROOT,
+    '%s/libravatar/templates' % BASE_DIR,
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -137,9 +139,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
+    'django.contrib.messages',
     'django.contrib.sessions',
     'django_openid_auth',
-    'django.contrib.sites',
     'libravatar.account',
     'libravatar.public',
     'libravatar.tools',
@@ -149,22 +151,22 @@ LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/account/profile/'  # Set to /account/profile_success/ for authenticating ldap users
 
 # Path and URL for images uploaded by users
-UPLOADED_FILES_ROOT = '%s/uploaded/' % PROJECT_ROOT
+UPLOADED_FILES_ROOT = '%s/uploaded/' % BASE_DIR
 UPLOADED_FILES_URL = '%s/uploaded/' % SITE_URL
 
 # Path for images that were cropped and resized
-READY_FILES_ROOT = '%s/ready/' % PROJECT_ROOT
+READY_FILES_ROOT = '%s/ready/' % BASE_DIR
 
 # Path and URL for images uploaded by users and ready to be served
-USER_FILES_ROOT = '%s/user/' % PROJECT_ROOT
+USER_FILES_ROOT = '%s/user/' % BASE_DIR
 USER_FILES_URL = '%s/user/' % SITE_URL
 
 # Path and URL for user exports ready to be served
-EXPORT_FILES_ROOT = '%s/export/' % PROJECT_ROOT
+EXPORT_FILES_ROOT = '%s/export/' % BASE_DIR
 EXPORT_FILES_URL = '%s/export/' % SITE_URL
 
 # Path where avatars are stored
-AVATAR_ROOT = '%s/avatar/' % PROJECT_ROOT
+AVATAR_ROOT = '%s/avatar/' % BASE_DIR
 
 # URL where avatars are served
 AVATAR_URL = '%s/avatar/' % MEDIA_URL
@@ -231,5 +233,8 @@ DISABLE_SIGNUP = False
 REQUIRED_DOMAIN = ''
 
 OPENID_CREATE_USERS = True
+# Modify temporarily the session serializer because the json serializer in
+# Django 1.6 can't serialize openid.yadis.manager.YadisServiceManager objects
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 CACERTS = '/etc/ssl/certs/ca-certificates.crt'

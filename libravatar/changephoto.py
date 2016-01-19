@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -20,13 +20,13 @@ import json
 from os import link, path, umask
 import sys
 
-# pylint: disable=W0403
+# pylint: disable=relative-import
 import settings
 from resizeavatar import resize_image
 from utils import create_logger, delete_if_exists, is_hex
 
 umask(022)
-logger = create_logger('changephoto')
+LOGGER = create_logger('changephoto')
 
 
 def link_image(source_filename, destination_hash, size=None):
@@ -38,12 +38,12 @@ def link_image(source_filename, destination_hash, size=None):
     try:
         link(source_filename, destination_filename)
     except OSError:
-        logger.error("Unable to link '%s' to %s" % (source_filename, destination_filename))
+        LOGGER.error("Unable to link '%s' to %s", source_filename, destination_filename)
 
 
 def create_links(source_filename, md5_hash, sha256_hash):
     if not path.isfile(source_filename):
-        logger.warning("the cropped photo '%s' does not exist" % source_filename)
+        LOGGER.warning("the cropped photo '%s' does not exist", source_filename)
         return 0
 
     if md5_hash:
@@ -73,16 +73,16 @@ def main(argv=None):
 
     # Validate inputs
     if photo_hash and not is_hex(photo_hash):
-        logger.error('photo_hash is not a hexadecimal value')
+        LOGGER.error('photo_hash is not a hexadecimal value')
         return 1
     if photo_format and photo_format != 'jpg' and photo_format != 'png' and photo_format != 'gif':
-        logger.error('photo_format is not recognized')
+        LOGGER.error('photo_format is not recognized')
         return 1
     if md5_hash and not is_hex(md5_hash):
-        logger.error('md5_hash is not a hexadecimal value')
+        LOGGER.error('md5_hash is not a hexadecimal value')
         return 1
     if not is_hex(sha256_hash):  # mandatory
-        logger.error('sha256_hash is not a hexadecimal value')
+        LOGGER.error('sha256_hash is not a hexadecimal value')
         return 1
 
     # Remove old image

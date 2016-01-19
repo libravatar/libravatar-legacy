@@ -10,7 +10,7 @@
 <p>{% trans 'Photo(s) successfully imported.' %}</p>
 
 {% if not user.is_anonymous %}
-<p><a href="{% url libravatar.account.views.profile %}">{% trans 'Back to your profile' %}</a></p>
+<p><a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Back to your profile' %}</a></p>
 {% endif %}
 
 {% endblock content %}

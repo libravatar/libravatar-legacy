@@ -9,15 +9,15 @@
 
 <p>{% trans 'Once you have confirmed this OpenID URL, you will be able to log into your account using that OpenID URL.' %}</p>
 
-<form action="{% url libravatar.account.views.add_openid %}" name="addopenid" method="post">{% csrf_token %}
+<form action="{% url 'libravatar.account.views.add_openid' %}" name="addopenid" method="post">{% csrf_token %}
 
 {{form.openid.errors}}
-<p class="aligned wide">{{form.openid.label_tag}}: {{form.openid}}</p>
+<p class="aligned wide">{{form.openid.label_tag}} {{form.openid}}</p>
 
 <p class="hint">{% trans 'You will be redirected to the authorisation page for the provider. If the process fails, you can remove the ID from this list and try adding it again.' %}</p>
 
 <p><input type="submit" value="{% trans 'Add' %}" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

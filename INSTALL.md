@@ -14,7 +14,8 @@
 * [Python Imaging Library](http://www.pythonware.com/library/)
 * [YUI Compressor](http://developer.yahoo.com/yui/compressor/), for minifying CSS/JS files
 * [Gearman](http://www.gearman.org)
-* [Python bindings for libgearman](http://www.launchpad.net/gearman-interface)
+* [Python bcrypt](https://pypi.python.org/pypi/bcrypt)
+* [Python Gearman](https://pypi.python.org/pypi/gearman)
 * [Python OpenID](https://github.com/openid/python-openid)
 * [OpenID Integration for django.contrib.auth](https://launchpad.net/django-openid-auth)
 * [Requests](http://python-requests.org/)
@@ -23,9 +24,9 @@
 * AdvanceCOMP
 * GIFsicle
 
-On Debian unstable or wheezy:
+On Debian unstable or jessie:
 
-    apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman.libgearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle
+    apt-get install python-django python-dns libjs-jquery python-imaging libapache2-mod-wsgi python-psycopg2 yui-compressor gearman-job-server gearman-tools python-gearman jpegoptim optipng python-openid python-django-auth-openid python-requests ca-certificates pngcrush advancecomp gifsicle python-bcrypt
   
     apt-get install python-ldap
 
@@ -42,8 +43,8 @@ Create a database:
 
 Create the required tables:
 
-    cd /usr/share/libravatar/libravatar
-    python manage.py syncdb
+    cd /usr/share/libravatar
+    python manage.py migrate
 
 # Apache Configuration
 
@@ -58,6 +59,14 @@ Enable mod_alias, mod\_expires, mod\_headers, mod\_rewrite and mod\_wsgi:
     a2enmod headers
     a2enmod rewrite
     a2enmod wsgi
+
+and put the following in `/etc/apache2/conf-available/ssl.conf`:
+
+    SSLStaplingCache shmcb:/var/run/ocsp(128000)
+
+before enabling it:
+
+    a2enconf ssl
 
 Create an uploaded/ directory that is writable by the www-data user:
 

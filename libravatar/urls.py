@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -15,20 +15,20 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-# pylint: disable=W0401,W0614
-from django.conf.urls.defaults import patterns, include, handler404, handler500
+from django.conf.urls import url, patterns, include, handler404, handler500
 
 handler404  # make pyflakes happy, pylint: disable=W0104
 handler500  # make pyflakes happy, pylint: disable=W0104
 
+# pylint: disable=invalid-name
 urlpatterns = patterns('',
-    (r'^account/', include('libravatar.account.urls')),
+                       url(r'^account/', include('libravatar.account.urls')),
 
-    (r'^openid/', include('django_openid_auth.urls')),
+                       url(r'^openid/', include('django_openid_auth.urls')),
 
-    (r'^tools/', include('libravatar.tools.urls')),
+                       url(r'^tools/', include('libravatar.tools.urls')),
 
-    (r'^$', 'libravatar.public.views.home'),
-    (r'^resize/', 'libravatar.public.views.resize'),
-    (r'^resolve/', 'libravatar.public.views.resolve'),
-)
+                       url(r'^$', 'libravatar.public.views.home'),
+                       url(r'^resize/', 'libravatar.public.views.resize'),
+                       url(r'^resolve/', 'libravatar.public.views.resolve'),
+                      )

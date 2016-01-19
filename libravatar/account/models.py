@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -46,7 +46,7 @@
 
 import base64
 import datetime
-from gearman import libgearman
+import gearman
 import hashlib
 import Image
 import json
@@ -98,13 +98,11 @@ def change_photo(photo, md5_hash, sha256_hash):
         photo_hash = photo.filename
         photo_format = photo.format
 
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
+    gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
     workload = {'photo_hash': photo_hash, 'photo_format': photo_format,
                 'md5_hash': md5_hash, 'sha256_hash': sha256_hash}
-    gm_client.do_background('changephoto', json.dumps(workload))
+    gm_client.submit_job('changephoto', json.dumps(workload),
+                         background=True, wait_until_complete=False)
 
 
 class PhotoManager(models.Manager):
@@ -131,6 +129,7 @@ class Photo(models.Model):
     def exists(self):
         return path.isfile(settings.USER_FILES_ROOT + self.full_filename())
 
+    # pylint: disable=arguments-differ
     def save(self, image, force_insert=False, force_update=False):
         hash_object = hashlib.new('sha256')
         hash_object.update(urandom(1024) + str(self.user.username))
@@ -138,7 +137,7 @@ class Photo(models.Model):
 
         # Write file to disk
         tmp_filename = settings.UPLOADED_FILES_ROOT + self.filename + '.tmp'
-        destination = open(tmp_filename, 'wb+')
+        destination = open(tmp_filename, 'w+b')
         destination.write(image.read())
         destination.close()
 
@@ -165,12 +164,10 @@ class Photo(models.Model):
 
         if delete_file_on_disk:
             # Queue a job for the photo deletion gearman worker
-            gm_client = libgearman.Client()
-            for server in settings.GEARMAN_SERVERS:
-                gm_client.add_server(server)
-
+            gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
             workload = {'file_hash': self.filename, 'format': self.format}
-            gm_client.do_background('deletephoto', json.dumps(workload))
+            gm_client.submit_job('deletephoto', json.dumps(workload),
+                                 background=True, wait_until_complete=False)
 
         super(Photo, self).delete()
 
@@ -209,7 +206,7 @@ class Photo(models.Model):
             return False
 
         # Write file to disk
-        destination = open(tmp_filename, 'wb+')
+        destination = open(tmp_filename, 'w+b')
         destination.write(image.read())
         destination.close()
 
@@ -247,13 +244,11 @@ class Photo(models.Model):
             h = dimensions['h']
 
         # Queue a job for the cropping/resizing gearman worker
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
+        gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         workload = {'file_hash': self.filename, 'format': self.format,
                     'x': x, 'y': y, 'w': w, 'h': h, 'links': links_to_create}
-        gm_client.do_background('cropresize', json.dumps(workload))
+        gm_client.submit_job('cropresize', json.dumps(workload),
+                             background=True, wait_until_complete=False)
 
 
 class ConfirmedEmailManager(models.Manager):
@@ -289,6 +284,7 @@ class ConfirmedEmail(models.Model):
     def __unicode__(self):
         return self.email
 
+    # pylint: disable=arguments-differ
     def delete(self):
         self.set_photo(None)
         super(ConfirmedEmail, self).delete()
@@ -334,6 +330,7 @@ class UnconfirmedEmail(models.Model):
     def __unicode__(self):
         return self.email + ' ' + _('(unconfirmed)')
 
+    # pylint: disable=arguments-differ
     def save(self, force_insert=False, force_update=False):
         hash_object = hashlib.new('sha256')
         hash_object.update(urandom(1024) + str(self.user.username))
@@ -345,7 +342,7 @@ class UnconfirmedEmail(models.Model):
 
 class UnconfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='unconfirmed_openids')
-    openid = models.URLField(unique=False, verify_exists=False, max_length=MAX_LENGTH_URL)
+    openid = models.URLField(unique=False, max_length=MAX_LENGTH_URL)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
     class Meta:
@@ -359,7 +356,7 @@ class UnconfirmedOpenId(models.Model):
 class ConfirmedOpenId(models.Model):
     user = models.ForeignKey(User, related_name='confirmed_openids')
     ip_address = models.CharField(max_length=MAX_LENGTH_IPV6)
-    openid = models.URLField(unique=True, verify_exists=False, max_length=MAX_LENGTH_URL)
+    openid = models.URLField(unique=True, max_length=MAX_LENGTH_URL)
     photo = models.ForeignKey(Photo, related_name='openids', blank=True, null=True)
     add_date = models.DateTimeField(default=datetime.datetime.utcnow)
 
@@ -370,6 +367,7 @@ class ConfirmedOpenId(models.Model):
     def __unicode__(self):
         return self.openid
 
+    # pylint: disable=arguments-differ
     def delete(self):
         self.set_photo(None)
         super(ConfirmedOpenId, self).delete()
@@ -431,6 +429,7 @@ class DjangoOpenIDStore(OpenIDStore):
     """
 
     def storeAssociation(self, server_url, association):
+        # pylint: disable=unexpected-keyword-arg
         assoc = OpenIDAssociation(server_url=server_url,
                                   handle=association.handle,
                                   secret=base64.encodestring(association.secret),
@@ -485,12 +484,13 @@ class DjangoOpenIDStore(OpenIDStore):
         return False
 
     def cleanupNonces(self):
-        ts = int(time.time()) - oidnonce.SKEW
-        OpenIDNonce.objects.filter(timestamp__lt=ts).delete()
+        timestamp = int(time.time()) - oidnonce.SKEW
+        OpenIDNonce.objects.filter(timestamp__lt=timestamp).delete()
 
     def cleanupAssociations(self):
         OpenIDAssociation.objects.extra(where=['issued + lifetimeint < (%s)' % time.time()]).delete()
 
+    # pylint: disable=invalid-name
     def getAuthKey(self):
         # Use first AUTH_KEY_LEN characters of md5 hash of SECRET_KEY
         hash_object = hashlib.new('md5')

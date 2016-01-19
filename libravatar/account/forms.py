@@ -76,7 +76,7 @@ class AddEmailForm(forms.Form):
 
 
 class AddOpenIdForm(forms.Form):
-    openid = forms.URLField(label=_('OpenID'), verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
+    openid = forms.URLField(label=_('OpenID'), min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL, initial='http://')
 
     def clean_openid(self):
         """
@@ -117,15 +117,15 @@ class UploadPhotoForm(forms.Form):
     can_distribute = forms.BooleanField(label=_('can be freely copied'), required=True,
                                         error_messages={'required': _('This field must be checked since we need to be able to distribute photos to third parties.')})
 
-    # pylint: disable=R0201
+    # pylint: disable=no-self-use
     def save(self, user, ip_address, image):
         # Link this file to the user's profile
-        p = Photo()
-        p.user = user
-        p.ip_address = ip_address
-        if not p.save(image):
+        photo = Photo()
+        photo.user = user
+        photo.ip_address = ip_address
+        if not photo.save(image):
             return None
-        return p
+        return photo
 
 
 class PasswordResetForm(forms.Form):
@@ -166,7 +166,7 @@ class PasswordResetForm(forms.Form):
 
 
 class DeleteAccountForm(forms.Form):
-    password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput(render_value=False))
+    password = forms.CharField(label=_('Password'), required=False, widget=forms.PasswordInput())
 
     def __init__(self, user, *args, **kwargs):
         self.user = user

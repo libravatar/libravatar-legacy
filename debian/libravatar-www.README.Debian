@@ -12,7 +12,7 @@ For example, on Postgres, you'd do something like:
 Then you will need to initialise the database:
 
   cd /usr/share/libravatar/libravatar
-  python manage.py syncdb
+  python manage.py migrate
 
 and finally, restart Apache:
 

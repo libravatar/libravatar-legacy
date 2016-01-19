@@ -5,13 +5,13 @@
 {% block header %}<link rel="stylesheet" href="/css/jcrop.css" type="text/css">{% endblock header %}
 {% block content %}
 <noscript>
-<meta http-equiv="refresh" content="0;url={% url libravatar.account.views.auto_crop photo.id %}"/>
+<meta http-equiv="refresh" content="0;url={% url 'libravatar.account.views.auto_crop' photo.id %}"/>
 </noscript>
 <h1>{% trans 'Crop photo' %}</h1>
 
 <p>{% trans 'Draw a square around the portion of the image you want to use:' %}</p>
 
-<form action="{% url libravatar.account.views.crop_photo photo.id %}" method="post">{% csrf_token %}
+<form action="{% url 'libravatar.account.views.crop_photo' photo.id %}" method="post">{% csrf_token %}
 {% if embedded %}<input type="hidden" name="embedded" value="1">{% endif %}
 {% if email %}<input type="hidden" name="email" value="{{email}}">{% endif %}
 {% if openid %}<input type="hidden" name="openid" value="{{openid}}">{% endif %}
@@ -22,7 +22,7 @@
 <input type='hidden' id='w' name='w' value='0'/>
 <input type='hidden' id='h' name='h' value='0'/>
 <p><input type="submit" value="{% trans 'Crop' %}" />
-&nbsp;<a id="cancel-link" href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a id="cancel-link" href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

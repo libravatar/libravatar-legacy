@@ -23,7 +23,7 @@ from libravatar.account.forms import MIN_LENGTH_URL, MAX_LENGTH_URL
 
 class CheckForm(forms.Form):
     email = forms.EmailField(label=_('Email'), required=False)
-    openid = forms.URLField(label=_('OpenID'), required=False, verify_exists=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL)
+    openid = forms.URLField(label=_('OpenID'), required=False, min_length=MIN_LENGTH_URL, max_length=MAX_LENGTH_URL)
     size = forms.DecimalField(label=_('Size'), required=False, min_value=1, max_value=512, decimal_places=0, initial=80)
     not_found = forms.CharField(label=_('Default URL'), required=False)
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -17,7 +17,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-from gearman import libgearman
+import gearman
 import hashlib
 import json
 from openid import oidutil
@@ -45,7 +45,7 @@ from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, Confirme
 from libravatar import settings
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def new(request):
     if settings.DISABLE_SIGNUP:
@@ -111,7 +111,7 @@ def confirm_email(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def import_photo(request, user_id):
     if request.method == 'POST':
@@ -135,10 +135,10 @@ def import_photo(request, user_id):
 
         if 'photo_Gravatar' in request.POST:
             photos_to_import = True
-            p = Photo()
-            p.user = user
-            p.ip_address = request.META['REMOTE_ADDR']
-            if p.import_image('Gravatar', email.email):
+            photo = Photo()
+            photo.user = user
+            photo.ip_address = request.META['REMOTE_ADDR']
+            if photo.import_image('Gravatar', email.email):
                 photos_imported = True
 
         if photos_imported:
@@ -151,7 +151,7 @@ def import_photo(request, user_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @login_required
 def successfully_authenticated(request):
     if request.user.ldap_user:
@@ -172,12 +172,12 @@ def successfully_authenticated(request):
 
             # add photo to database, bung LDAP photo into the expected file
             photo_contents = request.user.ldap_user.attrs[settings.AUTH_LDAP_USER_PHOTO][0]
-            fp = StringIO(photo_contents)  # file pointer to in-memory string buffer
-            image = File(fp)
-            p = Photo()
-            p.user = request.user
-            p.save(image)
-            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[p.id]))
+            file_ptr = StringIO(photo_contents)  # file pointer to in-memory string buffer
+            image = File(file_ptr)
+            photo = Photo()
+            photo.user = request.user
+            photo.save(image)
+            return HttpResponseRedirect(reverse('libravatar.account.views.crop_photo', args=[photo.id]))
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -205,14 +205,14 @@ def _confirm_claimed_openid(user, remote_address):
 @csrf_protect
 @login_required
 def profile(request):
-    u = request.user
-    _confirm_claimed_openid(u, request.META['REMOTE_ADDR'])
+    usr = request.user
+    _confirm_claimed_openid(usr, request.META['REMOTE_ADDR'])
 
-    confirmed_emails = u.confirmed_emails.order_by('email')
-    unconfirmed_emails = u.unconfirmed_emails.order_by('email')
-    confirmed_openids = u.confirmed_openids.order_by('openid')
-    unconfirmed_openids = u.unconfirmed_openids.order_by('openid')
-    photos = u.photos.order_by('add_date')
+    confirmed_emails = usr.confirmed_emails.order_by('email')
+    unconfirmed_emails = usr.unconfirmed_emails.order_by('email')
+    confirmed_openids = usr.confirmed_openids.order_by('openid')
+    unconfirmed_openids = usr.unconfirmed_openids.order_by('openid')
+    photos = usr.photos.order_by('add_date')
     max_photos = len(photos) >= settings.MAX_NUM_PHOTOS
     max_emails = len(unconfirmed_emails) >= settings.MAX_NUM_UNCONFIRMED_EMAILS
 
@@ -238,7 +238,7 @@ def openid_logging(message, level=0):
         print message
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def add_openid(request):
@@ -354,7 +354,7 @@ def confirm_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_confirmed_openid(request, openid_id):
@@ -377,7 +377,7 @@ def remove_confirmed_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_unconfirmed_openid(request, openid_id):
@@ -393,7 +393,7 @@ def remove_unconfirmed_openid(request, openid_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def add_email(request):
@@ -412,7 +412,7 @@ def add_email(request):
                               RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_confirmed_email(request, email_id):
@@ -432,7 +432,7 @@ def remove_confirmed_email(request, email_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def remove_unconfirmed_email(request, email_id):
@@ -447,7 +447,7 @@ def remove_unconfirmed_email(request, email_id):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def upload_photo(request):
@@ -580,7 +580,7 @@ def auto_crop(request, photo_id):
     return _perform_crop(request, photo)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def delete_photo(request, photo_id):
@@ -634,7 +634,7 @@ def _assign_photo(request, identifier_type, identifier):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def assign_photo_email(request, email_id):
@@ -647,7 +647,7 @@ def assign_photo_email(request, email_id):
     return _assign_photo(request, 'email', email)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def assign_photo_openid(request, openid_id):
@@ -660,7 +660,7 @@ def assign_photo_openid(request, openid_id):
     return _assign_photo(request, 'openid', openid)
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def password_reset(request):
     if settings.DISABLE_SIGNUP:
@@ -679,7 +679,7 @@ def password_reset(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 def password_reset_confirm(request):
     if settings.DISABLE_SIGNUP:
@@ -732,12 +732,14 @@ def password_reset_confirm(request):
     else:
         form = SetPasswordForm(user)
 
-    return render_to_response('account/password_change.html', {'form': form,
-                              'verification_key': verification_key, 'email_address': email_address},
-                              context_instance=RequestContext(request))
+    return render_to_response('account/password_change.html',
+                              {'form': form,
+                               'verification_key': verification_key,
+                               'email_address': email_address
+                              }, context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def delete(request):
@@ -773,13 +775,11 @@ def _perform_export(user, do_delete):
         photo_details = (photo.filename, photo.format)
         photos.append(photo_details)
 
-    gm_client = libgearman.Client()
-    for server in settings.GEARMAN_SERVERS:
-        gm_client.add_server(server)
-
+    gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
     workload = {'do_delete': do_delete, 'file_hash': file_hash, 'username': user.username,
                 'emails': emails, 'openids': openids, 'photos': photos}
-    gm_client.do_background('exportaccount', json.dumps(workload))
+    gm_client.submit_job('exportaccount', json.dumps(workload),
+                         background=True, wait_until_complete=False)
 
     download_url = settings.EXPORT_FILES_URL + file_hash + '.xml.gz'
     return download_url
@@ -796,7 +796,7 @@ def export(request):
     return render_to_response('account/export.html', context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_protect
 @login_required
 def password_set(request):
@@ -817,7 +817,7 @@ def password_set(request):
                               context_instance=RequestContext(request))
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_exempt
 @login_required
 def add_browserid(request):
@@ -852,7 +852,7 @@ def add_browserid(request):
     return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
 
 
-@transaction.commit_on_success
+@transaction.atomic
 @csrf_exempt
 def login_browserid(request):
     if not request.method == 'POST' or 'assertion' not in request.POST:
@@ -871,7 +871,7 @@ def login_browserid(request):
     return HttpResponse(json.dumps({"success": True, "user": browserid_user}), mimetype="application/json")
 
 
-@transaction.commit_on_success
+@transaction.atomic
 def login_embedded(request):
     if request.user.is_authenticated():
         if 'browserid_user' in request.session:

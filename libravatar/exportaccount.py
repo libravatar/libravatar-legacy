@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -17,19 +17,19 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import base64
-from gearman import libgearman
+import gearman
 import gzip
 import json
 import os
 import sys
 from xml.sax import saxutils
 
-# pylint: disable=W0403
+# pylint: disable=relative-import
 import settings
 from utils import create_logger, is_hex
 
 os.umask(022)
-logger = create_logger('exportaccount')
+LOGGER = create_logger('exportaccount')
 
 SCHEMA_ROOT = 'https://www.libravatar.org/schemas/export/0.2'
 SCHEMA_XSD = '%s/export.xsd' % SCHEMA_ROOT
@@ -76,7 +76,7 @@ def xml_photos(photos):
 def encode_photo(photo_filename, photo_format):
     filename = settings.USER_FILES_ROOT + photo_filename + '.' + photo_format
     if not os.path.isfile(filename):
-        logger.warning('Photo not found: %s' % filename)
+        LOGGER.warning('Photo not found: %s', filename)
         return None
 
     photo_content = None
@@ -84,7 +84,7 @@ def encode_photo(photo_filename, photo_format):
         photo_content = photo.read()
 
     if not photo_content:
-        logger.warning('Could not read photo: %s' % filename)
+        LOGGER.warning('Could not read photo: %s', filename)
         return None
 
     return base64.b64encode(photo_content)
@@ -106,15 +106,15 @@ def main(argv=None):
 
     # Validate inputs
     if file_hash and not is_hex(file_hash):
-        logger.error('file_hash is not a hexadecimal value')
+        LOGGER.error('file_hash is not a hexadecimal value')
         return 1
     for photo in photos:
         (photo_filename, photo_format) = photo
         if not is_hex(photo_filename):
-            logger.error("photo_filename '%s' is not a hexadecimal value" % photo_filename)
+            LOGGER.error("photo_filename '%s' is not a hexadecimal value", photo_filename)
             return 1
         if photo_format != 'jpg' and photo_format != 'png' and photo_format != 'gif':
-            logger.error("photo_format '%s' is not recognized" % photo_format)
+            LOGGER.error("photo_format '%s' is not recognized", photo_format)
             return 1
 
     dest_filename = settings.EXPORT_FILES_ROOT + file_hash + '.xml.gz'
@@ -128,14 +128,12 @@ def main(argv=None):
     destination.close()
 
     if do_delete:  # Delete files on disk
-        gm_client = libgearman.Client()
-        for server in settings.GEARMAN_SERVERS:
-            gm_client.add_server(server)
-
+        gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         for photo in photos:
             (photo_filename, photo_format) = photo
             workload = {'file_hash': photo_filename, 'format': photo_format}
-            gm_client.do_background('deletephoto', json.dumps(workload))
+            gm_client.submit_job('deletephoto', json.dumps(workload),
+                                 background=True, wait_until_complete=False)
 
     return 0
 

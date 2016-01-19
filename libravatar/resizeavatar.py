@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -21,12 +21,12 @@ import json
 import os
 import sys
 
-# pylint: disable=W0403
+# pylint: disable=relative-import
 import settings
 from utils import create_logger, is_hex
 
 os.umask(022)
-logger = create_logger('resizeavatar')
+LOGGER = create_logger('resizeavatar')
 
 
 def resize_image(email_hash, size):
@@ -57,7 +57,7 @@ def main(argv=None):
 
     # Validate inputs
     if not is_hex(email_hash):
-        logger.error('email_hash is not a hexadecimal value')
+        LOGGER.error('email_hash is not a hexadecimal value')
         return 1
 
     resize_image(email_hash, size)

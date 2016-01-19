@@ -10,13 +10,13 @@
 
 <h1>{% trans 'Upload a new photo' %}</h1>
 
-<form enctype="multipart/form-data" action="{% url libravatar.account.views.upload_photo %}" method="post">{% csrf_token %}
+<form enctype="multipart/form-data" action="{% url 'libravatar.account.views.upload_photo' %}" method="post">{% csrf_token %}
 {% if embedded %}<input type="hidden" name="embedded" value="1">{% endif %}
 {% if email %}<input type="hidden" name="email" value="{{email}}">{% endif %}
 {% if openid %}<input type="hidden" name="openid" value="{{openid}}">{% endif %}
 
 {{ form.photo.errors }}
-<p class="aligned wide">{{ form.photo.label_tag }}: <input id="id_photo" type="file" name="photo" accept="image/*">
+<p class="aligned wide">{{ form.photo.label_tag }} <input id="id_photo" type="file" name="photo" accept="image/*">
 <br>{% blocktrans with max_file_size|filesizeformat as max_size %}Maximum file size of {{ max_size }}.{% endblocktrans %}</p>
 
 <ul class="conditions">
@@ -25,7 +25,7 @@
 </ul>
 
 <p><input type="submit" value="{% trans 'Upload' %}" />
-&nbsp;<a id="cancel-link" href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a id="cancel-link" href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

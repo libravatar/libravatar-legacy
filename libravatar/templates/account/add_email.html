@@ -11,13 +11,13 @@
 
 <p>{% blocktrans %}Otherwise, type your email address in the box below and we will send you an email with a link to click on in order to verify that you own that email address.{% endblocktrans %}</p>
 
-<form action="{% url libravatar.account.views.add_email %}" name="addemail" method="post" id="form-addemail">{% csrf_token %}
+<form action="{% url 'libravatar.account.views.add_email' %}" name="addemail" method="post" id="form-addemail">{% csrf_token %}
 
 {{ form.email.errors }}
-<p class="aligned wide">{{ form.email.label_tag }}: {{ form.email }}</p>
+<p class="aligned wide">{{ form.email.label_tag }} {{ form.email }}</p>
 
 <p><input type="submit" value="{% trans 'Add' %}" />
-&nbsp;<a href="{% url libravatar.account.views.profile %}">{% trans 'Cancel' %}</a></p>
+&nbsp;<a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Cancel' %}</a></p>
 
 </form>
 

@@ -11,25 +11,25 @@
 
 <h1>{% trans 'Photo lookup' %}</h1>
 
-<form action="{% url libravatar.tools.views.check %}" method="post" name="lookup">
+<form action="{% url 'libravatar.tools.views.check' %}" method="post" name="lookup">
 
 {{form.non_field_errors}}
 <table summary="">
 <tr>
-  <td>{{ form.email.errors }}{{ form.email.label_tag }}:</td>
+  <td>{{ form.email.errors }}{{ form.email.label_tag }}</td>
   <td>{{ form.email }}</td>
 </tr>
 <tr>
-  <td>{{form.openid.errors}}{{form.openid.label_tag}}:</td>
+  <td>{{form.openid.errors}}{{form.openid.label_tag}}</td>
   <td>{{form.openid}}</td>
 </tr>
 <tr><td colspan="1"><i>{% trans 'Optional parameters' %}</i></td></tr>
 <tr>
-  <td>{{ form.size.errors }}{{ form.size.label_tag }}:</td>
+  <td>{{ form.size.errors }}{{ form.size.label_tag }}</td>
   <td>{{ form.size }}</td>
 </tr>
 <tr>
-  <td>{{ form.not_found.errors }}{{ form.not_found.label_tag }}:</td>
+  <td>{{ form.not_found.errors }}{{ form.not_found.label_tag }}</td>
   <td>{{ form.not_found }}</td>
 </tr>
 </table>

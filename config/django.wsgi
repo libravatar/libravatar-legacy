@@ -18,5 +18,5 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'libravatar.settings'
 if INSTALL_PATH not in sys.path:
     sys.path.append(INSTALL_PATH)
 
-import django.core.handlers.wsgi
-application = django.core.handlers.wsgi.WSGIHandler()
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()

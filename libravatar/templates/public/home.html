@@ -7,7 +7,7 @@
 
 <div id="action-panel">
   {% if not user.is_authenticated and not disable_signup %}
-    {% url libravatar.account.views.new as new_account_url %}
+    {% url 'libravatar.account.views.new' as new_account_url %}
     <p>{% blocktrans %}Create a <a href="{{ new_account_url }}">free account</a>{% endblocktrans %}</p>
   {% endif %}
   <p>{% trans 'Download the <a href="https://code.launchpad.net/libravatar">source code</a>' %}</p>
@@ -17,7 +17,7 @@
   <p id="contribute-button"><a href="https://wiki.libravatar.org/contribute/">{% trans 'Contribute!' %}</a></p>
 </div>
 
-{% url libravatar.account.views.new as new_account_url %}
+{% url 'libravatar.account.views.new' as new_account_url %}
 <p>{% blocktrans %}Libravatar is a service which delivers your avatar (profile picture) to other websites. If you <a href="{{ new_account_url }}">create an account</a> with us, your photo could start popping up next to forum posts or blog comments on any site where you left your email address.{% endblocktrans %} {% trans '<a href="https://wiki.libravatar.org/description/">Read more...</a>' %}</p>
 
 <h2>{% trans 'Federated Open Source Service' %}</h2>
