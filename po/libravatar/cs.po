@@ -7,30 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-07 17:11-0700\n"
+"POT-Creation-Date: 2016-01-18 22:49-0800\n"
 "PO-Revision-Date: 2015-09-08 12:36+0000\n"
 "Last-Translator: Milan Horák <stranger@tiscali.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2015-09-20 00:12+0000\n"
 "X-Generator: Launchpad (build 17746)\n"
-"Language: cs\n"
-
-#: account/browserid_auth.py:79
-#, python-format
-msgid "unexpected \"%s\" status code"
-msgstr "neočekávaný stavový kód \"%s\""
-
-#: account/browserid_auth.py:82
-msgid "missing email address"
-msgstr "chybí emailová adresa"
-
-#: account/browserid_auth.py:88
-#, python-format
-msgid "\"%s\" is not a valid email address"
-msgstr "\"%s\" není platná emailová adresa"
 
 #: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
@@ -89,140 +75,133 @@ msgstr ""
 msgid "Password reset for %(site_name)s"
 msgstr "Obnovit heslo pro %(site_name)s"
 
-#: account/forms.py:169
+#: account/forms.py:168
 msgid "Password"
 msgstr "Heslo"
 
-#: account/forms.py:180
+#: account/forms.py:179
 msgid "Invalid password"
 msgstr "Neplatné heslo"
 
-#: account/models.py:125
+#: account/models.py:123
 msgid "photo"
 msgstr "fotografie"
 
-#: account/models.py:126
+#: account/models.py:124
 msgid "photos"
 msgstr "fotografie"
 
-#: account/models.py:286
+#: account/models.py:281
 msgid "confirmed email"
 msgstr "ověřený email"
 
-#: account/models.py:287
+#: account/models.py:282
 msgid "confirmed emails"
 msgstr "ověřené emaily"
 
-#: account/models.py:331
+#: account/models.py:327
 msgid "unconfirmed email"
 msgstr "neověřený email"
 
-#: account/models.py:332
+#: account/models.py:328
 msgid "unconfirmed emails"
 msgstr "neověřené emaily"
 
-#: account/models.py:335 account/models.py:356
+#: account/models.py:331 account/models.py:353
 msgid "(unconfirmed)"
 msgstr "(neověřeno)"
 
-#: account/models.py:352
+#: account/models.py:349
 msgid "unconfirmed OpenID"
 msgstr "neověřené OpenID"
 
-#: account/models.py:353
+#: account/models.py:350
 msgid "unconfirmed OpenIDs"
 msgstr "neověřená OpenID"
 
-#: account/models.py:367
+#: account/models.py:364
 msgid "confirmed OpenID"
 msgstr "ověřené OpenID"
 
-#: account/models.py:368
+#: account/models.py:365
 msgid "confirmed OpenIDs"
 msgstr "ověřená OpenID"
 
-#: settings.py:57
+#: settings.py:53
 msgid "Catalan"
 msgstr ""
 
-#: settings.py:58
+#: settings.py:54
 msgid "Czech"
 msgstr ""
 
-#: settings.py:59
+#: settings.py:55
 msgid "German"
 msgstr "Němčina"
 
-#: settings.py:60
+#: settings.py:56
 msgid "English"
 msgstr "Angličtina"
 
-#: settings.py:61
+#: settings.py:57
 msgid "British English"
 msgstr ""
 
-#: settings.py:62
+#: settings.py:58
 msgid "Spanish"
 msgstr ""
 
-#: settings.py:63
+#: settings.py:59
 msgid "Basque"
 msgstr ""
 
-#: settings.py:64
+#: settings.py:60
 msgid "French"
 msgstr "Francouzština"
 
-#: settings.py:65
+#: settings.py:61
 msgid "Italian"
 msgstr ""
 
-#: settings.py:66
+#: settings.py:62
 msgid "Japanese"
 msgstr "Japonština"
 
-#: settings.py:67
+#: settings.py:63
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: settings.py:68
+#: settings.py:64
+msgid "Russian"
+msgstr ""
+
+#: settings.py:65
 msgid "Albanian"
 msgstr ""
 
-#: settings.py:69
+#: settings.py:66
 msgid "Turkish"
 msgstr ""
 
-#: settings.py:70
+#: settings.py:67
 msgid "Ukrainian"
 msgstr ""
 
 #: templates/404.html:5
 #, python-format
 msgid ""
-"Page not found. If you think you got here by mistake, please <a "
-"href=\"mailto:%(support_email)s\">let us know</a>!"
+"Page not found. If you think you got here by mistake, please <a href="
+"\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
-"Stránka nenalezena. Pokud myslíte, že by tu nějaká měla být, prosíme <a "
-"href=\"mailto:%(support_email)s\">dejte nám vědět</a>!"
+"Stránka nenalezena. Pokud myslíte, že by tu nějaká měla být, prosíme <a href="
+"\"mailto:%(support_email)s\">dejte nám vědět</a>!"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
-#: templates/account/profile.html:50
+#: templates/account/profile.html:49
 msgid "Add a new email address"
 msgstr "Přidat nový email"
 
 #: templates/account/add_email.html:10
-#, python-format
-msgid ""
-"If you have a <b>Persona</b> account, you can <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">use it to add a new email address</a> to your "
-"profile."
-msgstr ""
-"Pokud máte účet <b>Persona</b>, můžete jej <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">použít k přidání nového emailu</a> do vašeho "
-"profilu."
-
-#: templates/account/add_email.html:12
 msgid ""
 "Otherwise, type your email address in the box below and we will send you an "
 "email with a link to click on in order to verify that you own that email "
@@ -231,22 +210,22 @@ msgstr ""
 "V opačném případě vyplňte email níže a my vám pošleme email s odkazem k "
 "ověření, že jste vlastníkem uvedené adresy."
 
-#: templates/account/add_email.html:19 templates/account/add_openid.html:19
+#: templates/account/add_email.html:17 templates/account/add_openid.html:19
 msgid "Add"
 msgstr "Přidat"
 
-#: templates/account/add_email.html:20 templates/account/add_openid.html:20
-#: templates/account/crop_photo.html:25 templates/account/delete.html:24
+#: templates/account/add_email.html:18 templates/account/add_openid.html:20
+#: templates/account/crop_photo.html:24 templates/account/delete.html:24
 #: templates/account/delete_photo.html:17 templates/account/export.html:15
-#: templates/account/login.html:41 templates/account/new.html:43
+#: templates/account/login.html:40 templates/account/new.html:43
 #: templates/account/password_change.html:47
-#: templates/account/password_reset.html:26
-#: templates/account/upload_photo.html:28 templates/openid/login.html:30
+#: templates/account/password_reset.html:18
+#: templates/account/upload_photo.html:27 templates/openid/login.html:30
 msgid "Cancel"
 msgstr "Zrušit"
 
 #: templates/account/add_openid.html:4 templates/account/add_openid.html:8
-#: templates/account/profile.html:53
+#: templates/account/profile.html:52
 msgid "Add a new OpenID"
 msgstr "Přidat nové OpenID"
 
@@ -304,8 +283,7 @@ msgstr "Vyberte fotografii pro %(email_address)s"
 #: templates/account/assign_photo_openid.html:13
 #, python-format
 msgid "You need to <a href=\"%(upload_url)s\">upload some photos</a> first!"
-msgstr ""
-"Musíte napřed <a href=\"%(upload_url)s\">nahrát nějaké fotografie</a>!"
+msgstr "Musíte napřed <a href=\"%(upload_url)s\">nahrát nějaké fotografie</a>!"
 
 #: templates/account/assign_photo_email.html:15
 #: templates/account/assign_photo_openid.html:15
@@ -356,31 +334,6 @@ msgstr ""
 "Zde jsou vámi nahrané fotografie. Klikněte na fotografii, kterou chcete "
 "přiřadit k tomuto OpenID."
 
-#: templates/account/browserid_emailalreadyconfirmed.json:1
-#: templates/account/email_alreadyconfirmed.html:5
-msgid "This email address already exists in a user account."
-msgstr "Tento email již ve vašem účtu existuje."
-
-#: templates/account/browserid_invalidassertion.json:1
-msgid "Invalid BrowserID assertion."
-msgstr "Chybné potvrzení BrowserID."
-
-#: templates/account/browserid_invalidassertion.json:1
-msgid "Error: "
-msgstr "Chyba: "
-
-#: templates/account/browserid_noassertion.json:1
-msgid ""
-"Missing BrowserID assertion. An assertion must be sent to the server via a "
-"POST request."
-msgstr ""
-"Chybějící potvrzení BrowserID. Potvrzení musí být odesláno na server "
-"prostřednictvím POST požadavku."
-
-#: templates/account/browserid_userauthfailed.json:1
-msgid "Persona authentication failed. Please try again later."
-msgstr ""
-
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
 msgstr "Oříznout fotografii"
@@ -389,7 +342,7 @@ msgstr "Oříznout fotografii"
 msgid "Draw a square around the portion of the image you want to use:"
 msgstr ""
 
-#: templates/account/crop_photo.html:24
+#: templates/account/crop_photo.html:23
 msgid "Crop"
 msgstr "Oříznout"
 
@@ -468,9 +421,13 @@ msgstr "Smazat fotografii"
 msgid "Are you sure you want to delete this photo?"
 msgstr "Jste si jistí, že chcete odstranit tuto fotografii?"
 
-#: templates/account/delete_photo.html:16 templates/account/profile.html:61
+#: templates/account/delete_photo.html:16 templates/account/profile.html:60
 msgid "Delete"
 msgstr "Smazat"
+
+#: templates/account/email_alreadyconfirmed.html:5
+msgid "This email address already exists in a user account."
+msgstr "Tento email již ve vašem účtu existuje."
 
 #: templates/account/email_confirmation.txt:1
 #, python-format
@@ -534,8 +491,7 @@ msgstr ""
 
 #: templates/account/email_notadded.html:8
 #, python-format
-msgid ""
-"you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
+msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr "máte příliš mnoho neověřených emailů (maximum: %(max_emails)s)"
 
 #: templates/account/email_notadded.html:9
@@ -553,7 +509,7 @@ msgstr ""
 msgid "Export your Libravatar data"
 msgstr "Exportovat vaše Libravatar data"
 
-#: templates/account/export.html:8 templates/account/profile.html:78
+#: templates/account/export.html:8 templates/account/profile.html:77
 msgid "Export your data"
 msgstr "Exportovat vaše data"
 
@@ -579,71 +535,55 @@ msgstr "Probíhá export"
 
 #: templates/account/export_done.html:10
 msgid ""
-"Libravatar is currently exporting your data. It <b>may take a few "
-"moments</b> for the file to be available:"
+"Libravatar is currently exporting your data. It <b>may take a few moments</"
+"b> for the file to be available:"
 msgstr ""
 "Libravatar teď exportuje vaše data. Než bude soubor k dipozici, <b>může to "
 "chvíli trvat</b>:"
 
-#: templates/account/login.html:4 templates/account/login_embedded.html:4
+#: templates/account/login.html:4
 msgid "Libravatar Login"
 msgstr "řihlášení do služby Libravatar"
 
-#: templates/account/login.html:11 templates/account/login.html.py:39
-#: templates/account/login_embedded.html:10 templates/base.html:44
-#: templates/openid/login.html:28
+#: templates/account/login.html:11 templates/account/login.html.py:38
+#: templates/base.html:43 templates/openid/login.html:28
 msgid "Login"
 msgstr "Přihlásit"
 
 #: templates/account/login.html:15
 #, python-format
-msgid ""
-"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 msgstr "Ještě nemáte účet? <a href=\"%(signup_url)s\">Založte si jej!</a>"
 
 #: templates/account/login.html:19
-#, python-format
 msgid ""
-"Do you hate having lots of passwords? You can login with <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> or <a id=\"browserid-link\" "
-"href=\"#\">Persona</a></span> instead!"
+"Do you hate having lots of passwords? You can login with <a href="
+"\"%(openid_url)s\">OpenID</a>."
 msgstr ""
-"Nemáte rádi spoustu hesel? Můžete se přihlásit pomocí <a "
-"href=\"%(openid_url)s\">OpenID</a>\n"
-"<span id=\"browserid-option\"> nebo <a id=\"browserid-link\" "
-"href=\"#\">Persona</a></span>!"
+"Nemáte rádi spoustu hesel? Můžete se přihlásit pomocí <a href="
+"\"%(openid_url)s\">OpenID</a>."
 
-#: templates/account/login.html:23
+#: templates/account/login.html:22
 msgid "Your username and password didn't match. Please try again."
-msgstr ""
-"Vaše uživatelské jméno a heslo neodpovídají. Prosíme zkuste to znovu."
+msgstr "Vaše uživatelské jméno a heslo neodpovídají. Prosíme zkuste to znovu."
 
-#: templates/account/login.html:47
+#: templates/account/login.html:46
 #, python-format
 msgid ""
-"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
-"email</a>."
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
+"a>."
 msgstr ""
 "Zapomněli jste své heslo? <a href=\"%(password_reset_url)s\">Obnovte jej "
 "prostřednictvím emailu</a>."
 
-#: templates/account/login_embedded.html:8
-msgid ""
-"To upload your photo to the Libravatar network and make it available to any "
-"site that knows your email address, please login with your email address."
-msgstr ""
-
 #: templates/account/max_photos.html:6
 #, python-format
 msgid ""
-"You've got too many photos in <a href=\"%(profile_url)s\">your "
-"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
-"one."
+"You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
+"<br>You need to <b>delete</b> some before you can upload a new one."
 msgstr ""
-"Máte ve <a href=\"%(profile_url)s\">svém účtu</a> příliš mnoho "
-"fotografií.<br>Musíte některé z nich <b>smazat</b> než budete moci nahrát "
-"další."
+"Máte ve <a href=\"%(profile_url)s\">svém účtu</a> příliš mnoho fotografií."
+"<br>Musíte některé z nich <b>smazat</b> než budete moci nahrát další."
 
 #: templates/account/new.html:4
 msgid "Create a new Libravatar account"
@@ -734,13 +674,12 @@ msgstr ""
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
-"Instead, you must use one of the following OpenIDs or Persona email "
-"addresses to login:"
+"Instead, you must use one of the following OpenIDs to login:"
 msgstr ""
 "K tomuto účtu není přiřazeno žádné heslo.\n"
-"Pro přihlášení musíte použít jeden z následujících OpenID nebo Persona:"
+"Pro přihlášení musíte použít jeden z následujících OpenID:"
 
-#: templates/account/password_reminder.txt:11
+#: templates/account/password_reminder.txt:9
 #: templates/account/password_reset.txt:12
 #, python-format
 msgid "- The %(site_name)s accounts team"
@@ -755,23 +694,12 @@ msgid "Reset password"
 msgstr "Obnovit heslo"
 
 #: templates/account/password_reset.html:10
-#, python-format
-msgid ""
-"Did you know that you can also <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">sign in with Persona</a> and never have to "
-"remember a password again?"
-msgstr ""
-"Víte, že se můžete přihlásit pomocí <a id=\"browserid-link\" "
-"href=\"%(browserid_target)s\">Persona</a> a už nikdy si nemusíte pamatovat "
-"heslo?"
-
-#: templates/account/password_reset.html:18
 msgid ""
 "To continue with the password reset, enter one of the email addresses "
 "associated with your account."
 msgstr "Pro obnovení hesla vložte jeden z emailů přidružených k vašemu účtu."
 
-#: templates/account/password_reset.html:25
+#: templates/account/password_reset.html:17
 msgid "Reset my password"
 msgstr "Obnovit mé heslo"
 
@@ -821,13 +749,13 @@ msgstr "Byl tento email ověřen v systému?"
 #: templates/account/password_reset_submitted.html:21
 #, python-format
 msgid ""
-"If everything else fails, you can always <a "
-"href=\"%(new_account_url)s\">create a new account</a> or <a "
-"href=\"mailto:%(support_email)s\">email us</a>."
+"If everything else fails, you can always <a href=\"%(new_account_url)s"
+"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
+"us</a>."
 msgstr ""
-"Pokud vše ostatní selže, ještě stále si můžete <a "
-"href=\"%(new_account_url)s\">založit nový účet</a> nebo <a "
-"href=\"mailto:%(support_email)s\">nám napsat</a>."
+"Pokud vše ostatní selže, ještě stále si můžete <a href=\"%(new_account_url)s"
+"\">založit nový účet</a> nebo <a href=\"mailto:%(support_email)s\">nám "
+"napsat</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
@@ -882,75 +810,59 @@ msgstr ""
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "Máte tyto ověřené emaily a OpenID:"
 
-#: templates/account/profile.html:18 templates/account/profile.html.py:27
-#: templates/account/profile_embedded.html:13
+#: templates/account/profile.html:18 templates/account/profile.html.py:26
 msgid "Change photo"
 msgstr "Změnit fotografii"
 
-#: templates/account/profile.html:20 templates/account/profile.html.py:28
-#: templates/account/profile.html:39 templates/account/profile.html.py:43
+#: templates/account/profile.html:19 templates/account/profile.html.py:27
+#: templates/account/profile.html:38 templates/account/profile.html.py:42
 msgid "Remove"
 msgstr "Odstranit"
 
-#: templates/account/profile.html:35
+#: templates/account/profile.html:34
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
 msgstr "Máte tyto neověřené emaily a OpenID:"
 
-#: templates/account/profile.html:57
+#: templates/account/profile.html:56
 msgid "Here are the photos you have uploaded/imported:"
 msgstr "Zde jsou fotografie, které jste nahráli/naimportovali:"
 
-#: templates/account/profile.html:60
+#: templates/account/profile.html:59
 #, python-format
 msgid "Uploaded on %(datetime)s"
 msgstr "Nahráno %(datetime)s"
 
-#: templates/account/profile.html:67 templates/account/upload_photo.html:4
+#: templates/account/profile.html:66 templates/account/upload_photo.html:4
 #: templates/account/upload_photo.html:11
 msgid "Upload a new photo"
 msgstr "Nahrát novou fotografii"
 
-#: templates/account/profile.html:70
+#: templates/account/profile.html:69
 msgid "Account settings"
 msgstr "Nastavení účtu"
 
-#: templates/account/profile.html:73
+#: templates/account/profile.html:72
 msgid "Change your password"
 msgstr "Změnit heslo"
 
-#: templates/account/profile.html:75
+#: templates/account/profile.html:74
 msgid "Set a password"
 msgstr "Nastavit heslo"
 
-#: templates/account/profile.html:80
+#: templates/account/profile.html:79
 msgid "Permanently delete your account"
 msgstr "Trvale smazat váš účet"
-
-#: templates/account/profile_embedded.html:4
-msgid "Your Libravatar Profile"
-msgstr ""
-
-#: templates/account/profile_embedded.html:8
-#, python-format
-msgid ""
-"Here is the photo currently associated with your email address "
-"(%(browserid_user)s):"
-msgstr ""
-
-#: templates/account/profile_embedded.html:16
-msgid "Close"
-msgstr ""
 
 #: templates/account/reset_invalidparams.html:5
 msgid "Invalid verification key or email address."
 msgstr "Chybný ověřovací klíč nebo email."
 
-#: templates/account/upload_photo.html:20
+#: templates/account/upload_photo.html:19
 #, python-format
 msgid "Maximum file size of %(max_size)s."
 msgstr "Maximální velikost souboru %(max_size)s."
 
-#: templates/account/upload_photo.html:27
+#: templates/account/upload_photo.html:26
 msgid "Upload"
 msgstr "Nahrát"
 
@@ -964,7 +876,7 @@ msgstr ""
 "jste ji již ořízli nebo byla nahrána před delší dobou, takže její platnost "
 "již vypršela."
 
-#: templates/base.html:19 templates/base_embedded.html:7
+#: templates/base.html:19
 msgid "Freeing the Web, one face at a time!"
 msgstr "Osvobozujeme Web, jednu tvář po druhé!"
 
@@ -976,38 +888,38 @@ msgstr "Domovská stránka"
 msgid "freeing the web one face at a time"
 msgstr "osvobozujeme web, jednu tvář po druhé"
 
-#: templates/base.html:37
+#: templates/base.html:36
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:38 templates/base.html.py:42
+#: templates/base.html:37 templates/base.html.py:41
 msgid "Contact Us"
 msgstr "Kontaktujte nás"
 
-#: templates/base.html:39 templates/base.html.py:43
+#: templates/base.html:38 templates/base.html.py:42
 msgid "Security"
 msgstr ""
 
-#: templates/base.html:40
+#: templates/base.html:39
 msgid "Logout"
 msgstr "Odhlásit se"
 
-#: templates/base.html:56
+#: templates/base.html:55
 msgid "GNU Affero General Public License"
 msgstr "GNU Affero General Public License"
 
-#: templates/base.html:56
+#: templates/base.html:55
 #, python-format
 msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
+"launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
-"<b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
+"launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 
-#: templates/base.html:58
+#: templates/base.html:57
 msgid "Flattr this!"
 msgstr "Oceňte nás!"
 
@@ -1058,8 +970,8 @@ msgstr "Vytvořit <a href=\"%(new_account_url)s\">účet zdarma</a>"
 
 #: templates/public/home.html:13
 msgid ""
-"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
-"code</a>"
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
+"a>"
 msgstr ""
 "Stáhnout <a href=\"https://code.launchpad.net/libravatar\">zdrojový kód</a>"
 
@@ -1073,16 +985,15 @@ msgstr ""
 
 #: templates/public/home.html:15
 msgid ""
-"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a "
-"href=\"http://blog.libravatar.org\">blog</a>"
+"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
+"\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
 "Přečtěte si naší <a href=\"https://wiki.libravatar.org\">wiki</a> nebo <a "
 "href=\"http://blog.libravatar.org\">blog</a>"
 
 #: templates/public/home.html:16
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
-msgstr ""
-"Sledujte nás na <a href=\"https://identi.ca/libravatar\">Identica</a>"
+msgstr "Sledujte nás na <a href=\"https://identi.ca/libravatar\">Identica</a>"
 
 #: templates/public/home.html:17
 msgid "Contribute!"
@@ -1104,8 +1015,7 @@ msgstr ""
 
 #: templates/public/home.html:21
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr ""
-"<a href=\"https://wiki.libravatar.org/description/\">Číst dále...</a>"
+msgstr "<a href=\"https://wiki.libravatar.org/description/\">Číst dále...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
@@ -1113,16 +1023,15 @@ msgstr "Open source služba"
 
 #: templates/public/home.html:25
 msgid ""
-"This service is powered by <a "
-"href=\"https://www.gnu.org/licenses/agpl.html\">Free and Open Source "
-"software</a> and allows owners of a domain name to <a "
-"href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
+"This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
+"\">Free and Open Source software</a> and allows owners of a domain name to "
+"<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
 "Tato služba běží na <a href=\"https://www.gnu.org/licenses/agpl.html\">Free "
-"and Open Source software</a> a dovoluje vlastníkům doménového jména <a "
-"href=\"https://wiki.libravatar.org/running_your_own/\">provozovat vlastní "
-"službu</a> Libravatar a poskytovat avatary svým uživatelům."
+"and Open Source software</a> a dovoluje vlastníkům doménového jména <a href="
+"\"https://wiki.libravatar.org/running_your_own/\">provozovat vlastní službu</"
+"a> Libravatar a poskytovat avatary svým uživatelům."
 
 #: templates/public/home.html:27
 msgid "Simple API for Developers"
@@ -1141,8 +1050,7 @@ msgstr ""
 "modulů</a> dostupných pro různé platformy a programovací jazyky."
 
 #: templates/public/home.html:31
-msgid ""
-"Big thanks to our sponsors without whom none of this would be possible!"
+msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr "Děkujeme našim sponzorům, bez kterých bychom to nedokázali!"
 
 #: templates/public/nohash.html:6
@@ -1151,8 +1059,8 @@ msgid ""
 "An email hash is required. You can use the <a href=\"%(check_url)s\">check "
 "tool</a> to generate one."
 msgstr ""
-"Je potřeba kontrolní součet emailu. Pro jeho vytvoření můžete použít <a "
-"href=\"%(check_url)s\">tento nástroj</a>."
+"Je potřeba kontrolní součet emailu. Pro jeho vytvoření můžete použít <a href="
+"\"%(check_url)s\">tento nástroj</a>."
 
 #: templates/public/nopost.html:5
 msgid "This only works via HTTP GET."
@@ -1162,8 +1070,7 @@ msgstr "Toto funguje pouze prostřednictvím HTTP GET."
 #, python-format
 msgid ""
 "The size parameter must be an integer between %(min_size)s and %(max_size)s."
-msgstr ""
-"Velikost musí být celé kladné číslo mezi %(min_size)s a %(max_size)s."
+msgstr "Velikost musí být celé kladné číslo mezi %(min_size)s a %(max_size)s."
 
 #: templates/tools/check.html:4 templates/tools/check.html.py:12
 msgid "Photo lookup"
@@ -1264,3 +1171,15 @@ msgstr "Nemůžete použít najednou email a OpenID. Zvolte jen jednu možnost!"
 #: tools/forms.py:40
 msgid "Domain"
 msgstr "Doména"
+
+#~ msgid "unexpected \"%s\" status code"
+#~ msgstr "neočekávaný stavový kód \"%s\""
+
+#~ msgid "missing email address"
+#~ msgstr "chybí emailová adresa"
+
+#~ msgid "\"%s\" is not a valid email address"
+#~ msgstr "\"%s\" není platná emailová adresa"
+
+#~ msgid "Error: "
+#~ msgstr "Chyba: "
