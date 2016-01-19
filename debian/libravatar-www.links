@@ -1,2 +1,2 @@
-etc/libravatar/settings.py usr/share/libravatar/libravatar/settings.py
 /usr/share/javascript/jquery/jquery.min.js usr/share/libravatar/static/js/jquery.min.js
+etc/libravatar/settings.py usr/share/libravatar/libravatar/settings.py

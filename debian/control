@@ -2,7 +2,21 @@ Source: libravatar
 Section: web
 Priority: extra
 Maintainer: Francois Marier <francois@debian.org>
-Build-Depends: debhelper (>=9), python (>= 2.7), yui-compressor, python-django, pep8, pyflakes, pylint, python-gearman, python-dns, python-imaging, python-requests, python-django-auth-openid, python-openid, python-bcrypt, codespell
+Build-Depends: codespell,
+               debhelper (>=9),
+               pep8,
+               pyflakes,
+               pylint,
+               python (>= 2.7),
+               python-bcrypt,
+               python-django,
+               python-django-auth-openid,
+               python-dns,
+               python-gearman,
+               python-imaging,
+               python-openid,
+               python-requests,
+               yui-compressor
 Standards-Version: 3.9.6
 Homepage: https://www.libravatar.org
 Vcs-git: https://git.nzoss.org.nz/libravatar/libravatar.git
@@ -10,18 +24,42 @@ Vcs-browser: https://git.nzoss.org.nz/libravatar/libravatar
 
 Package: libravatar
 Architecture: all
-Depends: ${misc:Depends}, libravatar-www, libravatar-cdn
+Depends: libravatar-cdn, libravatar-www, ${misc:Depends}
 Recommends: libravatar-seccdn
 Description: avatar image hosting - full install
  Libravatar is a free service for hosting profile images tied to your
  email address or OpenID.
  .
- This is a virtual package to install all of the components necessary to 
+ This is a virtual package to install all of the components necessary to
  run a full Libravatar server on a single host.
 
 Package: libravatar-www
 Architecture: all
-Depends: ${misc:Depends}, ${python:Depends}, libravatar-common (=${source:Version}), apache2, libapache2-mod-wsgi, python-django, libjs-jquery (>= 1.5), python-psycopg2, python (>= 2.6), debconf, python-imaging, python-dns, gearman-tools, gearman-job-server, python-gearman, jpegoptim, optipng, pngcrush, advancecomp, python-openid, python-django-auth-openid, python-requests, ca-certificates, gifsicle, python-bcrypt
+Depends: advancecomp,
+         apache2,
+         ca-certificates,
+         debconf,
+         gearman-job-server,
+         gearman-tools,
+         gifsicle,
+         jpegoptim,
+         libapache2-mod-wsgi,
+         libjs-jquery (>= 1.5),
+         libravatar-common (=${source:Version}),
+         optipng,
+         pngcrush,
+         python (>= 2.6),
+         python-bcrypt,
+         python-django,
+         python-django-auth-openid,
+         python-dns,
+         python-gearman,
+         python-imaging,
+         python-openid,
+         python-psycopg2,
+         python-requests,
+         ${misc:Depends},
+         ${python:Depends}
 Recommends: awstats
 Description: avatar image hosting - main web application
  Libravatar is a free service for hosting profile images tied to your
@@ -32,7 +70,10 @@ Description: avatar image hosting - main web application
 
 Package: libravatar-cdn-common
 Architecture: all
-Depends: ${misc:Depends}, debconf, libravatar-common (=${source:Version}), apache2
+Depends: apache2,
+         debconf,
+         libravatar-common (=${source:Version}),
+         ${misc:Depends}
 Description: avatar image hosting - common cdn files
  Libravatar is a free service for hosting profile images tied to your
  email address or OpenID.
@@ -41,9 +82,9 @@ Description: avatar image hosting - common cdn files
 
 Package: libravatar-cdn
 Architecture: all
-Depends: ${misc:Depends}, libravatar-cdn-common (=${source:Version})
+Depends: libravatar-cdn-common (=${source:Version}), ${misc:Depends}
 Recommends: awstats
-Description: avatar image hosting - mirror node 
+Description: avatar image hosting - mirror node
  Libravatar is a free service for hosting profile images tied to your
  email address or OpenID.
  .
@@ -52,9 +93,9 @@ Description: avatar image hosting - mirror node
 
 Package: libravatar-seccdn
 Architecture: all
-Depends: ${misc:Depends}, libravatar-cdn-common (=${source:Version})
+Depends: libravatar-cdn-common (=${source:Version}), ${misc:Depends}
 Recommends: awstats
-Description: avatar image hosting - https mirror node 
+Description: avatar image hosting - https mirror node
  Libravatar is a free service for hosting profile images tied to your
  email address or OpenID.
  .
@@ -63,7 +104,7 @@ Description: avatar image hosting - https mirror node
 
 Package: libravatar-common
 Architecture: all
-Depends: ${misc:Depends}, debconf
+Depends: debconf, ${misc:Depends}
 Description: avatar image hosting - common files
  Libravatar is a free service for hosting profile images tied to your
  email address or OpenID.
@@ -73,7 +114,7 @@ Description: avatar image hosting - common files
 
 Package: libravatar-master
 Architecture: all
-Depends: ${misc:Depends}, libravatar-www, rsync, rssh
+Depends: libravatar-www, rssh, rsync, ${misc:Depends}
 Suggests: libravatar-deployment
 Description: avatar image hosting - mirror master
  Libravatar is a free service for hosting profile images tied to your
@@ -84,7 +125,7 @@ Description: avatar image hosting - mirror master
 Package: libravatar-slave
 Architecture: all
 Recommends: libravatar-seccdn
-Depends: ${misc:Depends}, libravatar-cdn, rsync
+Depends: libravatar-cdn, rsync, ${misc:Depends}
 Suggests: libravatar-deployment
 Conflicts: libravatar-www
 Description: avatar image hosting - mirror slave

@@ -1,9 +1,9 @@
 config/cdn-common.apache2.conf etc/libravatar
-static/cdn/.well-known usr/share/libravatar/static/cdn
-static/cdn/rules.abe.template usr/share/libravatar/static/cdn
-static/cdn/*.txt usr/share/libravatar/static/cdn
 static/cdn/*.html usr/share/libravatar/static/cdn
-static/cdn/*.png usr/share/libravatar/static/cdn
 static/cdn/*.ico usr/share/libravatar/static/cdn
+static/cdn/*.png usr/share/libravatar/static/cdn
+static/cdn/*.txt usr/share/libravatar/static/cdn
+static/cdn/.well-known usr/share/libravatar/static/cdn
 static/cdn/mm usr/share/libravatar/static/cdn
 static/cdn/nobody usr/share/libravatar/static/cdn
+static/cdn/rules.abe.template usr/share/libravatar/static/cdn
