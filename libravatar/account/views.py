@@ -34,12 +34,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
 from django.db import transaction
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.views.decorators.csrf import csrf_protect
 
-from libravatar.account.browserid_auth import verify_assertion
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
 from libravatar import settings
@@ -424,10 +423,6 @@ def remove_confirmed_email(request, email_id):
                                       context_instance=RequestContext(request))
 
         email.delete()
-        if 'browserid_user' in request.session and request.session['browserid_user'] == email.email:
-            # Since we are removing the email to which the BrowserID session is tied,
-            # we need to convert the session to a non-BrowserID session
-            del request.session['browserid_user']
 
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
@@ -805,57 +800,3 @@ def password_set(request):
 
     return render_to_response('account/password_change.html', {'form': form},
                               context_instance=RequestContext(request))
-
-
-@transaction.atomic
-@csrf_exempt
-@login_required
-def add_browserid(request):
-    if not request.method == 'POST' or 'assertion' not in request.POST:
-        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
-                                  context_instance=RequestContext(request))
-
-    (email_address, assertion_error) = verify_assertion(request.POST['assertion'], settings.SITE_URL,
-                                                        request.is_secure())
-
-    if not email_address:
-        sanitised_error = assertion_error
-        if sanitised_error:
-            sanitised_error = sanitised_error.replace('"', '')
-        return render_to_response('account/browserid_invalidassertion.json', {'error': sanitised_error},
-                                  mimetype='application/json', context_instance=RequestContext(request))
-
-    # Check whether or not the email is already confirmed by someone
-    if ConfirmedEmail.objects.filter(email=email_address).exists():
-        if 'browserid_user' in request.session:
-            del request.session['browserid_user']
-        return render_to_response('account/browserid_emailalreadyconfirmed.json', mimetype='application/json',
-                                  context_instance=RequestContext(request))
-
-    (unused, unused) = ConfirmedEmail.objects.create_confirmed_email(
-        request.user, request.META['REMOTE_ADDR'], email_address, True)
-    request.session['browserid_user'] = email_address
-
-    # remove any unconfirmed emails this user might have for this BrowserID
-    UnconfirmedEmail.objects.filter(email=email_address, user=request.user).delete()
-
-    return HttpResponse(json.dumps({"success": True, "user": email_address}), mimetype="application/json")
-
-
-@transaction.atomic
-@csrf_exempt
-def login_browserid(request):
-    if not request.method == 'POST' or 'assertion' not in request.POST:
-        return render_to_response('account/browserid_noassertion.json', mimetype='application/json',
-                                  context_instance=RequestContext(request))
-
-    user = authenticate(assertion=request.POST['assertion'], host=settings.SITE_URL,
-                        https=request.is_secure(), ip_address=request.META['REMOTE_ADDR'],
-                        session=request.session)
-    if not user:
-        return render_to_response('account/browserid_userauthfailed.json', mimetype='application/json',
-                                  context_instance=RequestContext(request))
-
-    browserid_user = request.session['browserid_user']  # do not move below login()!
-    login(request, user)
-    return HttpResponse(json.dumps({"success": True, "user": browserid_user}), mimetype="application/json")

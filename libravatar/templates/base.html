@@ -32,7 +32,6 @@
   </div>
   </div>
   <div id="account">
-    <span id="browserid-user" class="hidden">{{browserid_user}}</span>
     {% if user.is_authenticated %}
     <a href="{% url 'libravatar.account.views.profile' %}">{% trans 'Profile' %}</a>&nbsp;|&nbsp;
     <a href="{{ contact_us }}">{% trans 'Contact Us' %}</a>&nbsp;|&nbsp;
@@ -58,9 +57,7 @@
   <a href="https://flattr.com/thing/311293/Libravatar" id="flattr-button" title="{% trans 'Flattr this!' %}"></a>
   <a href="https://salt.bountysource.com/checkout/amount?team=libravatar" id="bountysource-button" title="Bountysource"></a>
   <a id="gratipay-button" href="https://gratipay.com/libravatar/" title="Gratipay"></a>
-  <script src="/js/jquery.min.js" defer></script>
   {% block footer %}{% endblock footer %}
-  <script src="https://login.persona.org/include.js" defer></script>
   <script src="/js/libravatar.js" defer></script>
 </div>
 

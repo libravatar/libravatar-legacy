@@ -1,1 +1,0 @@
-{% load i18n %}{"success": false, "error": "{% trans 'This email address already exists in a user account.' %}"}

@@ -156,10 +156,8 @@ class PasswordResetForm(forms.Form):
                                            'username': email.user.username})
         else:
             openids = UserOpenID.objects.filter(user=email.user)
-            emails = ConfirmedEmail.objects.filter(user=email.user)
             email_body = render_to_string('account/password_reminder.txt',
-                                          {'openids': openids, 'browserids': emails,
-                                           'site_name': settings.SITE_NAME})
+                                          {'openids': openids, 'site_name': settings.SITE_NAME})
 
         send_mail(email_subject, email_body, settings.SERVER_EMAIL, [email_address])
         return True

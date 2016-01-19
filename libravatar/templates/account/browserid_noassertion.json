@@ -1,1 +1,0 @@
-{% load i18n %}{"success": false, "error": "{% trans 'Missing BrowserID assertion. An assertion must be sent to the server via a POST request.' %}"}

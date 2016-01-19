@@ -1,1 +1,0 @@
-{% load i18n %}{"success": false, "error": "{% trans 'Persona authentication failed. Please try again later.' %}"}
