@@ -4,6 +4,7 @@ Priority: extra
 Maintainer: Francois Marier <francois@debian.org>
 Build-Depends: codespell,
                debhelper (>=9),
+               dh-python,
                pep8,
                pyflakes,
                pylint,
