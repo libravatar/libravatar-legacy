@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 22:49-0800\n"
+"POT-Creation-Date: 2016-02-10 11:08-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,11 +70,11 @@ msgstr ""
 msgid "Password reset for %(site_name)s"
 msgstr ""
 
-#: account/forms.py:168
+#: account/forms.py:167
 msgid "Password"
 msgstr ""
 
-#: account/forms.py:179
+#: account/forms.py:178
 msgid "Invalid password"
 msgstr ""
 
@@ -120,66 +120,6 @@ msgstr ""
 
 #: account/models.py:365
 msgid "confirmed OpenIDs"
-msgstr ""
-
-#: settings.py:53
-msgid "Catalan"
-msgstr ""
-
-#: settings.py:54
-msgid "Czech"
-msgstr ""
-
-#: settings.py:55
-msgid "German"
-msgstr ""
-
-#: settings.py:56
-msgid "English"
-msgstr ""
-
-#: settings.py:57
-msgid "British English"
-msgstr ""
-
-#: settings.py:58
-msgid "Spanish"
-msgstr ""
-
-#: settings.py:59
-msgid "Basque"
-msgstr ""
-
-#: settings.py:60
-msgid "French"
-msgstr ""
-
-#: settings.py:61
-msgid "Italian"
-msgstr ""
-
-#: settings.py:62
-msgid "Japanese"
-msgstr ""
-
-#: settings.py:63
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: settings.py:64
-msgid "Russian"
-msgstr ""
-
-#: settings.py:65
-msgid "Albanian"
-msgstr ""
-
-#: settings.py:66
-msgid "Turkish"
-msgstr ""
-
-#: settings.py:67
-msgid "Ukrainian"
 msgstr ""
 
 #: templates/404.html:5
@@ -961,6 +901,14 @@ msgstr ""
 msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 
+#: templates/public/home.html:34
+msgid "Rackspace Logo"
+msgstr ""
+
+#: templates/public/home.html:35
+msgid "Webconverger Logo"
+msgstr ""
+
 #: templates/public/nohash.html:6
 #, python-format
 msgid ""
@@ -982,53 +930,53 @@ msgstr ""
 msgid "Photo lookup"
 msgstr ""
 
-#: templates/tools/check.html:26
+#: templates/tools/check.html:27
 msgid "Optional parameters"
 msgstr ""
 
-#: templates/tools/check.html:37 templates/tools/check_domain.html:19
+#: templates/tools/check.html:38 templates/tools/check_domain.html:20
 msgid "Check"
 msgstr ""
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:46
 msgid "MD5 hash:"
 msgstr ""
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:46
 msgid "compatible with Gravatar"
 msgstr ""
 
-#: templates/tools/check.html:47
+#: templates/tools/check.html:48
 msgid "SHA256 hash:"
 msgstr ""
 
-#: templates/tools/check.html:49
+#: templates/tools/check.html:50
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
 msgstr ""
 
-#: templates/tools/check.html:52
+#: templates/tools/check.html:53
 msgid "using MD5 over HTTP"
 msgstr ""
 
-#: templates/tools/check.html:52 templates/tools/check.html.py:57
+#: templates/tools/check.html:53 templates/tools/check.html.py:58
 msgid "MD5"
 msgstr ""
 
-#: templates/tools/check.html:54
+#: templates/tools/check.html:55
 msgid "using SHA256 over HTTP"
 msgstr ""
 
-#: templates/tools/check.html:54 templates/tools/check.html.py:59
+#: templates/tools/check.html:55 templates/tools/check.html.py:60
 msgid "SHA256"
 msgstr ""
 
-#: templates/tools/check.html:57
+#: templates/tools/check.html:58
 msgid "using MD5 over HTTPS"
 msgstr ""
 
-#: templates/tools/check.html:59
+#: templates/tools/check.html:60
 msgid "using SHA256 over HTTPS"
 msgstr ""
 
@@ -1036,23 +984,23 @@ msgstr ""
 msgid "Domain lookup"
 msgstr ""
 
-#: templates/tools/check_domain.html:27
+#: templates/tools/check_domain.html:28
 msgid "HTTP avatar server:"
 msgstr ""
 
-#: templates/tools/check_domain.html:34 templates/tools/check_domain.html:52
+#: templates/tools/check_domain.html:35 templates/tools/check_domain.html:53
 msgid "Warning: no A record for this hostname"
 msgstr ""
 
-#: templates/tools/check_domain.html:40
+#: templates/tools/check_domain.html:41
 msgid "use <tt>http://cdn.libravatar.org</tt>"
 msgstr ""
 
-#: templates/tools/check_domain.html:45
+#: templates/tools/check_domain.html:46
 msgid "HTTPS avatar server:"
 msgstr ""
 
-#: templates/tools/check_domain.html:58
+#: templates/tools/check_domain.html:59
 msgid "use <tt>https://seccdn.libravatar.org</tt>"
 msgstr ""
 

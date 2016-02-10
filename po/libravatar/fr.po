@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 22:50-0800\n"
+"POT-Creation-Date: 2016-02-10 11:08-0800\n"
 "PO-Revision-Date: 2015-09-11 17:15+0000\n"
 "Last-Translator: François Marier <francois@debian.org>\n"
 "Language-Team: Français <none>\n"
@@ -73,11 +73,11 @@ msgstr ""
 msgid "Password reset for %(site_name)s"
 msgstr "Réinitialisation du mot de passe pour %(site_name)s"
 
-#: account/forms.py:168
+#: account/forms.py:167
 msgid "Password"
 msgstr "Mot de passe"
 
-#: account/forms.py:179
+#: account/forms.py:178
 msgid "Invalid password"
 msgstr "Mot de passe invalide"
 
@@ -124,66 +124,6 @@ msgstr "OpenID confirmé"
 #: account/models.py:365
 msgid "confirmed OpenIDs"
 msgstr "OpenID confirmés"
-
-#: settings.py:53
-msgid "Catalan"
-msgstr "Catalan"
-
-#: settings.py:54
-msgid "Czech"
-msgstr "Tchèque"
-
-#: settings.py:55
-msgid "German"
-msgstr "Allemand"
-
-#: settings.py:56
-msgid "English"
-msgstr "Anglais"
-
-#: settings.py:57
-msgid "British English"
-msgstr "Anglais britannique"
-
-#: settings.py:58
-msgid "Spanish"
-msgstr "Espagnol"
-
-#: settings.py:59
-msgid "Basque"
-msgstr "Basque"
-
-#: settings.py:60
-msgid "French"
-msgstr "Français"
-
-#: settings.py:61
-msgid "Italian"
-msgstr "Italien"
-
-#: settings.py:62
-msgid "Japanese"
-msgstr "Japonais"
-
-#: settings.py:63
-msgid "Brazilian Portuguese"
-msgstr "Portugais du Brésil"
-
-#: settings.py:64
-msgid "Russian"
-msgstr ""
-
-#: settings.py:65
-msgid "Albanian"
-msgstr "Albanais"
-
-#: settings.py:66
-msgid "Turkish"
-msgstr "Turc"
-
-#: settings.py:67
-msgid "Ukrainian"
-msgstr "Ukrainien"
 
 #: templates/404.html:5
 #, python-format
@@ -565,6 +505,7 @@ msgstr ""
 "maintenant</a>"
 
 #: templates/account/login.html:19
+#, python-format
 msgid ""
 "Do you hate having lots of passwords? You can login with <a href="
 "\"%(openid_url)s\">OpenID</a>."
@@ -1074,6 +1015,14 @@ msgid "Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Un gros merci à nos commanditaires sans qui rien de ceci ne serait possible !"
 
+#: templates/public/home.html:34
+msgid "Rackspace Logo"
+msgstr "Logo de Rackspace"
+
+#: templates/public/home.html:35
+msgid "Webconverger Logo"
+msgstr "Logo de Webconverger"
+
 #: templates/public/nohash.html:6
 #, python-format
 msgid ""
@@ -1099,27 +1048,27 @@ msgstr ""
 msgid "Photo lookup"
 msgstr "Recherche de photo"
 
-#: templates/tools/check.html:26
+#: templates/tools/check.html:27
 msgid "Optional parameters"
 msgstr "Paramètres optionnels"
 
-#: templates/tools/check.html:37 templates/tools/check_domain.html:19
+#: templates/tools/check.html:38 templates/tools/check_domain.html:20
 msgid "Check"
 msgstr "Vérifier"
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:46
 msgid "MD5 hash:"
 msgstr "Empreinte MD5 :"
 
-#: templates/tools/check.html:45
+#: templates/tools/check.html:46
 msgid "compatible with Gravatar"
 msgstr "compatible avec Gravatar"
 
-#: templates/tools/check.html:47
+#: templates/tools/check.html:48
 msgid "SHA256 hash:"
 msgstr "Empreinte SHA256 :"
 
-#: templates/tools/check.html:49
+#: templates/tools/check.html:50
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
@@ -1127,27 +1076,27 @@ msgstr ""
 "Voici ce à quoi les avatars vont ressembler selon le type d'empreinte et de "
 "protocole utilisé :"
 
-#: templates/tools/check.html:52
+#: templates/tools/check.html:53
 msgid "using MD5 over HTTP"
 msgstr "utilisation de MD5 sous HTTP"
 
-#: templates/tools/check.html:52 templates/tools/check.html.py:57
+#: templates/tools/check.html:53 templates/tools/check.html.py:58
 msgid "MD5"
 msgstr "MD5"
 
-#: templates/tools/check.html:54
+#: templates/tools/check.html:55
 msgid "using SHA256 over HTTP"
 msgstr "utilisation de SHA256 sous HTTP"
 
-#: templates/tools/check.html:54 templates/tools/check.html.py:59
+#: templates/tools/check.html:55 templates/tools/check.html.py:60
 msgid "SHA256"
 msgstr "SHA256"
 
-#: templates/tools/check.html:57
+#: templates/tools/check.html:58
 msgid "using MD5 over HTTPS"
 msgstr "utilisation de MD5 sous HTTPS"
 
-#: templates/tools/check.html:59
+#: templates/tools/check.html:60
 msgid "using SHA256 over HTTPS"
 msgstr "utilisation de SHA256 sous HTTPS"
 
@@ -1155,23 +1104,23 @@ msgstr "utilisation de SHA256 sous HTTPS"
 msgid "Domain lookup"
 msgstr "Recherche de domaine"
 
-#: templates/tools/check_domain.html:27
+#: templates/tools/check_domain.html:28
 msgid "HTTP avatar server:"
 msgstr "Serveur d'avatars (HTTP) :"
 
-#: templates/tools/check_domain.html:34 templates/tools/check_domain.html:52
+#: templates/tools/check_domain.html:35 templates/tools/check_domain.html:53
 msgid "Warning: no A record for this hostname"
 msgstr "Attention : aucun enregistrement DNS de type A pour cette adresse"
 
-#: templates/tools/check_domain.html:40
+#: templates/tools/check_domain.html:41
 msgid "use <tt>http://cdn.libravatar.org</tt>"
 msgstr "utilisez <tt>http://cdn.libravatar.org</tt>"
 
-#: templates/tools/check_domain.html:45
+#: templates/tools/check_domain.html:46
 msgid "HTTPS avatar server:"
 msgstr "Serveur d'avatars (HTTPS) :"
 
-#: templates/tools/check_domain.html:58
+#: templates/tools/check_domain.html:59
 msgid "use <tt>https://seccdn.libravatar.org</tt>"
 msgstr "utilisez <tt>https://seccdn.libravatar.org</tt>"
 
