@@ -10,7 +10,7 @@ are a few useful pointers:
 
 * [Project page](https://www.launchpad.net/libravatar)
 * [Bug tracker](https://bugs.launchpad.net/libravatar)
-* [Source code](https://git.nzoss.org.nz/libravatar/libravatar)
+* [Source code](https://code.launchpad.net/~libravatar/libravatar/+git/libravatar)
 * [Wiki](http://wiki.libravatar.org)
 * [Mailing list](https://launchpad.net/~libravatar-fans)
 * [Identica group](http://identi.ca/group/libravatar)
