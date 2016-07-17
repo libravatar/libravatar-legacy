@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-10 11:08-0800\n"
-"PO-Revision-Date: 2015-09-11 17:21+0000\n"
+"PO-Revision-Date: 2016-05-24 14:17+0000\n"
 "Last-Translator: François Marier <francois@debian.org>\n"
 "Language-Team: English (United Kingdom) <en_GB@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-09-20 00:12+0000\n"
-"X-Generator: Launchpad (build 17746)\n"
+"X-Launchpad-Export-Date: 2016-07-17 03:36+0000\n"
+"X-Generator: Launchpad (build 18140)\n"
+"Language: \n"
 
 #: account/forms.py:36 account/forms.py:132 tools/forms.py:25
 msgid "Email"
@@ -128,11 +128,11 @@ msgstr "confirmed OpenIDs"
 #: templates/404.html:5
 #, python-format
 msgid ""
-"Page not found. If you think you got here by mistake, please <a href="
-"\"mailto:%(support_email)s\">let us know</a>!"
+"Page not found. If you think you got here by mistake, please <a "
+"href=\"mailto:%(support_email)s\">let us know</a>!"
 msgstr ""
-"Page not found. If you think you got here by mistake, please <a href="
-"\"mailto:%(support_email)s\">let us know</a>!"
+"Page not found. If you think you got here by mistake, please <a "
+"href=\"mailto:%(support_email)s\">let us know</a>!"
 
 #: templates/account/add_email.html:4 templates/account/add_email.html.py:8
 #: templates/account/profile.html:49
@@ -430,7 +430,8 @@ msgstr ""
 
 #: templates/account/email_notadded.html:8
 #, python-format
-msgid "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
+msgid ""
+"you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
 msgstr ""
 "you have too many unconfirmed e-mail addresses (maximum: %(max_emails)s)"
 
@@ -476,11 +477,11 @@ msgstr "Export in progress"
 
 #: templates/account/export_done.html:10
 msgid ""
-"Libravatar is currently exporting your data. It <b>may take a few moments</"
-"b> for the file to be available:"
+"Libravatar is currently exporting your data. It <b>may take a few "
+"moments</b> for the file to be available:"
 msgstr ""
-"Libravatar is currently exporting your data. It <b>may take a few moments</"
-"b> for the file to be available:"
+"Libravatar is currently exporting your data. It <b>may take a few "
+"moments</b> for the file to be available:"
 
 #: templates/account/login.html:4
 msgid "Libravatar Login"
@@ -493,17 +494,19 @@ msgstr "Log-in"
 
 #: templates/account/login.html:15
 #, python-format
-msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
-msgstr "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgid ""
+"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgstr ""
+"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
 
 #: templates/account/login.html:19
 #, python-format
 msgid ""
-"Do you hate having lots of passwords? You can login with <a href="
-"\"%(openid_url)s\">OpenID</a>."
+"Do you hate having lots of passwords? You can login with <a "
+"href=\"%(openid_url)s\">OpenID</a>."
 msgstr ""
-"Do you hate having lots of passwords? You can login with <a href="
-"\"%(openid_url)s\">OpenID</a> instead."
+"Do you hate having lots of passwords? You can login with <a "
+"href=\"%(openid_url)s\">OpenID</a> instead."
 
 #: templates/account/login.html:22
 msgid "Your username and password didn't match. Please try again."
@@ -512,20 +515,22 @@ msgstr "Your username and password didn't match. Please try again."
 #: templates/account/login.html:46
 #, python-format
 msgid ""
-"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by email</"
-"a>."
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
+"email</a>."
 msgstr ""
-"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by e-mail</"
-"a>."
+"Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by e-"
+"mail</a>."
 
 #: templates/account/max_photos.html:6
 #, python-format
 msgid ""
-"You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
-"<br>You need to <b>delete</b> some before you can upload a new one."
+"You've got too many photos in <a href=\"%(profile_url)s\">your "
+"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
+"one."
 msgstr ""
-"You've got too many photos in <a href=\"%(profile_url)s\">your account</a>."
-"<br>You need to <b>delete</b> some before you can upload a new one."
+"You've got too many photos in <a href=\"%(profile_url)s\">your "
+"account</a>.<br>You need to <b>delete</b> some before you can upload a new "
+"one."
 
 #: templates/account/new.html:4
 msgid "Create a new Libravatar account"
@@ -692,13 +697,13 @@ msgstr "Has this e-mail address ever been confirmed within the system?"
 #: templates/account/password_reset_submitted.html:21
 #, python-format
 msgid ""
-"If everything else fails, you can always <a href=\"%(new_account_url)s"
-"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">email "
-"us</a>."
+"If everything else fails, you can always <a "
+"href=\"%(new_account_url)s\">create a new account</a> or <a "
+"href=\"mailto:%(support_email)s\">email us</a>."
 msgstr ""
-"If everything else fails, you can always <a href=\"%(new_account_url)s"
-"\">create a new account</a> or <a href=\"mailto:%(support_email)s\">e-mail "
-"us</a>."
+"If everything else fails, you can always <a "
+"href=\"%(new_account_url)s\">create a new account</a> or <a "
+"href=\"mailto:%(support_email)s\">e-mail us</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
@@ -853,12 +858,12 @@ msgstr "GNU Affero General Public Licence"
 #: templates/base.html:55
 #, python-format
 msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
-"launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 msgstr ""
-"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://"
-"launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a "
+"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
 
 #: templates/base.html:57
@@ -911,11 +916,11 @@ msgstr "Create a <a href=\"%(new_account_url)s\">free account</a>"
 
 #: templates/public/home.html:13
 msgid ""
-"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
-"a>"
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
+"code</a>"
 msgstr ""
-"Download the <a href=\"https://code.launchpad.net/libravatar\">source code</"
-"a>"
+"Download the <a href=\"https://code.launchpad.net/libravatar\">source "
+"code</a>"
 
 #: templates/public/home.html:14
 msgid ""
@@ -927,11 +932,11 @@ msgstr ""
 
 #: templates/public/home.html:15
 msgid ""
-"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
-"\"http://blog.libravatar.org\">blog</a>"
+"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a "
+"href=\"http://blog.libravatar.org\">blog</a>"
 msgstr ""
-"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a href="
-"\"http://blog.libravatar.org\">blog</a>"
+"Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a "
+"href=\"http://blog.libravatar.org\">blog</a>"
 
 #: templates/public/home.html:16
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
@@ -956,7 +961,8 @@ msgstr ""
 
 #: templates/public/home.html:21
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
+msgstr ""
+"<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
@@ -964,14 +970,16 @@ msgstr "Federated Open Source Service"
 
 #: templates/public/home.html:25
 msgid ""
-"This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
-"\">Free and Open Source software</a> and allows owners of a domain name to "
-"<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
+"This service is powered by <a "
+"href=\"https://www.gnu.org/licenses/agpl.html\">Free and Open Source "
+"software</a> and allows owners of a domain name to <a "
+"href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 msgstr ""
-"This service is powered by <a href=\"https://www.gnu.org/licenses/agpl.html"
-"\">Free and Open Source software</a> and allows owners of a domain name to "
-"<a href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
+"This service is powered by <a "
+"href=\"https://www.gnu.org/licenses/agpl.html\">Free and Open Source "
+"software</a> and allows owners of a domain name to <a "
+"href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
 
 #: templates/public/home.html:27
@@ -991,7 +999,8 @@ msgstr ""
 "available for a number of platforms and languages."
 
 #: templates/public/home.html:31
-msgid "Big thanks to our sponsors without whom none of this would be possible!"
+msgid ""
+"Big thanks to our sponsors without whom none of this would be possible!"
 msgstr ""
 "Big thanks to our sponsors without whom none of this would be possible!"
 
