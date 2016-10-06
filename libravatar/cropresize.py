@@ -94,7 +94,7 @@ def crop(filename, x=0, y=0, w=0, h=0):
         i = min(w, h)
         w, h = i, i
     elif w < 0 or (x + w) > a or h < 0 or (y + h) > b:
-        LOGGER.error('Crop dimensions outside of original image bounding box')
+        #LOGGER.error('Crop dimensions outside of original image bounding box')
         return 6
 
     cropped = img.crop((x, y, x + w, y + h))
