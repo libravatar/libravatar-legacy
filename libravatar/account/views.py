@@ -277,7 +277,6 @@ def redirect_openid(request, openid_id):
     try:
         auth_request = openid_consumer.begin(user_url)
     except consumer.DiscoveryFailure as exception:
-        print "OpenID discovery failed (userid=%s) for %s" % (request.user.id, user_url.encode('utf-8'))
         return render_to_response('account/openid_discoveryfailure.html', {'message': exception},
                                   context_instance=RequestContext(request))
     except UnicodeDecodeError as exception:
