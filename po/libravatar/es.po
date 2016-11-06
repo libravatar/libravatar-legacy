@@ -1,143 +1,32 @@
-# Spanish translation for libravatar
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the libravatar package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# Alberto Díaz Tormo <albertodiaztormo@gmail.com>, 2016
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 msgid ""
 msgstr ""
-"Project-Id-Version: libravatar\n"
+"Project-Id-Version: Libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:08-0800\n"
-"PO-Revision-Date: 2016-05-24 14:16+0000\n"
-"Last-Translator: Laura Arjona Reina <larjona99@gmail.com>\n"
-"Language-Team: Spanish <es@li.org>\n"
+"POT-Creation-Date: 2016-07-16 20:27-0700\n"
+"PO-Revision-Date: 2016-10-27 21:04+0000\n"
+"Last-Translator: Alberto Díaz Tormo <albertodiaztormo@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/fmarier/libravatar/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-07-17 03:36+0000\n"
-"X-Generator: Launchpad (build 18140)\n"
 "Language: es\n"
-
-#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
-msgid "Email"
-msgstr "Correo electrónico"
-
-#: account/forms.py:46
-#, python-format
-msgid "Valid email addresses end with @%(domain)s"
-msgstr ""
-"Las direcciones de correo electrónico válidas terminan con @%(domain)s"
-
-#: account/forms.py:71
-#, python-format
-msgid "Confirm your email address on %(site_name)s"
-msgstr "Confirme su dirección de correo electrónico en %(site_name)s"
-
-#: account/forms.py:79 templates/openid/login.html:26 tools/forms.py:26
-msgid "OpenID"
-msgstr "OpenID"
-
-#: account/forms.py:93
-msgid "Valid OpenID URLs are on this domain: "
-msgstr "Las URL válidas para OpenID están en este dominio: "
-
-#: account/forms.py:114
-msgid "Photo"
-msgstr "Foto"
-
-#: account/forms.py:114
-msgid "You must choose an image to upload."
-msgstr "Debes elegir una imagen para subir."
-
-#: account/forms.py:115
-msgid "suitable for all ages (i.e. no offensive content)"
-msgstr "apto para todas las edades (esto es, no es contenido ofensivo)"
-
-#: account/forms.py:116
-msgid "We only host \"G-rated\" images and so this field must be checked."
-msgstr ""
-"Sólo almacenamos imágenes clasificadas como \"G\", por lo que esta casilla "
-"debe estar activada."
-
-#: account/forms.py:117
-msgid "can be freely copied"
-msgstr "se puede copiar libremente"
-
-#: account/forms.py:118
-msgid ""
-"This field must be checked since we need to be able to distribute photos to "
-"third parties."
-msgstr ""
-"Esta casilla debe estar activada, ya que tenemos que poder distribuir fotos "
-"a terceros."
-
-#: account/forms.py:144
-#, python-format
-msgid "Password reset for %(site_name)s"
-msgstr "Contraseña blanqueada para %(site_name)s"
-
-#: account/forms.py:167
-msgid "Password"
-msgstr "Contraseña"
-
-#: account/forms.py:178
-msgid "Invalid password"
-msgstr "Contraseña no válida"
-
-#: account/models.py:123
-msgid "photo"
-msgstr "foto"
-
-#: account/models.py:124
-msgid "photos"
-msgstr "fotos"
-
-#: account/models.py:281
-msgid "confirmed email"
-msgstr "email confirmado"
-
-#: account/models.py:282
-msgid "confirmed emails"
-msgstr "emails confirmados"
-
-#: account/models.py:327
-msgid "unconfirmed email"
-msgstr "email sin confirmar"
-
-#: account/models.py:328
-msgid "unconfirmed emails"
-msgstr "emails sin confirmar"
-
-#: account/models.py:331 account/models.py:353
-msgid "(unconfirmed)"
-msgstr "(sin confirmar)"
-
-#: account/models.py:349
-msgid "unconfirmed OpenID"
-msgstr "OpenID sin confirmar"
-
-#: account/models.py:350
-msgid "unconfirmed OpenIDs"
-msgstr "OpenIDs sin confirmar"
-
-#: account/models.py:364
-msgid "confirmed OpenID"
-msgstr "OpenID confirmado"
-
-#: account/models.py:365
-msgid "confirmed OpenIDs"
-msgstr "OpenIDs confirmados"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: templates/404.html:5
 #, python-format
 msgid ""
 "Page not found. If you think you got here by mistake, please <a "
 "href=\"mailto:%(support_email)s\">let us know</a>!"
-msgstr ""
-"Página no encontrada. Si piensa que ha llegado aquí por error, por favor ¡<a "
-"href=\"mailto:%(support_email)s\">háganoslo saber</a>!"
+msgstr "Página no encontrada. Si piensa que ha llegado aquí por error, por favor ¡<a href=\"mailto:%(support_email)s\">háganoslo saber</a>!"
 
-#: templates/account/add_email.html:4 templates/account/add_email.html.py:8
+#: templates/account/add_email.html:4 templates/account/add_email.html:8
 #: templates/account/profile.html:49
 msgid "Add a new email address"
 msgstr "Añadir una nueva dirección de correo"
@@ -147,10 +36,7 @@ msgid ""
 "Otherwise, type your email address in the box below and we will send you an "
 "email with a link to click on in order to verify that you own that email "
 "address."
-msgstr ""
-"También puede escribir su dirección de correo electrónico abajo. Nosotros le "
-"enviaremos un email con un enlace con el fin de verificar que es usted el "
-"dueño de esta dirección de correo electrónico."
+msgstr "También puede escribir su dirección de correo electrónico abajo. Nosotros le enviaremos un email con un enlace con el fin de verificar que es usted el dueño de esta dirección de correo electrónico."
 
 #: templates/account/add_email.html:17 templates/account/add_openid.html:19
 msgid "Add"
@@ -175,17 +61,13 @@ msgstr "Añadir un nuevo OpenID"
 msgid ""
 "Once you have confirmed this OpenID URL, you will be able to log into your "
 "account using that OpenID URL."
-msgstr ""
-"Una vez haya confirmado esta URL de OpenID, usted podrá iniciar sesión en su "
-"cuenta usando esa URL de OpenID."
+msgstr "Una vez haya confirmado esta URL de OpenID, usted podrá iniciar sesión en su cuenta usando esa URL de OpenID."
 
 #: templates/account/add_openid.html:17
 msgid ""
 "You will be redirected to the authorisation page for the provider. If the "
 "process fails, you can remove the ID from this list and try adding it again."
-msgstr ""
-"Será redirigido a la página de autorización del proveedor. Si el proceso "
-"falla, puede remover el ID de la lista y probar agregándolo nuevamente."
+msgstr "Será redirigido a la página de autorización del proveedor. Si el proceso falla, puede remover el ID de la lista y probar agregándolo nuevamente."
 
 #: templates/account/add_openid_redirection.html:4
 #: templates/account/add_openid_redirection.html:10
@@ -196,21 +78,15 @@ msgstr "Redirigiendo al proveedor de OpenID..."
 msgid ""
 "Libravatar will attempt to verify your OpenID credentials. You may be asked "
 "by your OpenID provider to login and authorise this check."
-msgstr ""
-"Libravatar intentará verificar sus credenciales de OpenID. Puede que su "
-"proveedor de OpenID le solicite que inicie la sesión y autorice esta "
-"comprobación."
+msgstr "Libravatar intentará verificar sus credenciales de OpenID. Puede que su proveedor de OpenID le solicite que inicie la sesión y autorice esta comprobación."
 
 #: templates/account/add_openid_redirection.html:15
 #, python-format
 msgid ""
-"Depending on the provider, this operation <b>may take up to a minute</b>. If "
-"it takes longer than that, go <a href=\"%(profile_url)s\">back to your "
+"Depending on the provider, this operation <b>may take up to a minute</b>. If"
+" it takes longer than that, go <a href=\"%(profile_url)s\">back to your "
 "profile</a>, remove the OpenID URL and try adding it again."
-msgstr ""
-"Dependiendo del proveedor, esta operación <b>puede demorar hasta un "
-"minuto</b>. Si demora más tiempo que eso, <a href=\"%(profile_url)s\">vuelva "
-"a su perfil</a>, elimine la URL de OpenID e intente añadirla nuevamente."
+msgstr "Dependiendo del proveedor, esta operación <b>puede demorar hasta un minuto</b>. Si demora más tiempo que eso, <a href=\"%(profile_url)s\">vuelva a su perfil</a>, elimine la URL de OpenID e intente añadirla nuevamente."
 
 #: templates/account/add_openid_redirection.html:17
 msgid "Verify credentials"
@@ -241,9 +117,7 @@ msgstr "Volver a su perfil"
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this email address:"
-msgstr ""
-"Estas son las fotos que ha subido, haga clic en la que desea asociar con "
-"esta dirección de correo:"
+msgstr "Estas son las fotos que ha subido, haga clic en la que desea asociar con esta dirección de correo:"
 
 #: templates/account/assign_photo_email.html:28
 #: templates/account/assign_photo_email.html:37
@@ -261,7 +135,7 @@ msgstr "Ninguno"
 #: templates/account/assign_photo_openid.html:42
 #, python-format
 msgid "or <a href=\"%(custom_upload_url)s\">upload a new one</a>."
-msgstr ""
+msgstr "o <a href=\"%(custom_upload_url)s\">cargar uno nuevo</a>."
 
 #: templates/account/assign_photo_openid.html:4
 #: templates/account/assign_photo_openid.html:8
@@ -273,9 +147,7 @@ msgstr "Elija una foto para %(openid_url)s"
 msgid ""
 "Here are the pictures you have uploaded, click on the one you wish to "
 "associate with this OpenID:"
-msgstr ""
-"Estas son las fotos que ha subido, haga clic en la que desea asociar con "
-"este OpenID:"
+msgstr "Estas son las fotos que ha subido, haga clic en la que desea asociar con este OpenID:"
 
 #: templates/account/crop_photo.html:4 templates/account/crop_photo.html:10
 msgid "Crop photo"
@@ -283,7 +155,7 @@ msgstr "Recortar la foto"
 
 #: templates/account/crop_photo.html:12
 msgid "Draw a square around the portion of the image you want to use:"
-msgstr ""
+msgstr "Dibuje un cuadrado alrededor de la porción de la imagen que quiera utilizar:"
 
 #: templates/account/crop_photo.html:23
 msgid "Crop"
@@ -307,11 +179,9 @@ msgstr "Por favor, confirme su identidad introduciendo su contraseña actual"
 
 #: templates/account/delete.html:21
 msgid ""
-"Are you sure you want to <strong>permanently delete</strong> your Libravatar "
-"account?"
-msgstr ""
-"¿Está seguro de que desea <strong>borrar definitivamente</strong> su cuenta "
-"Libravatar?"
+"Are you sure you want to <strong>permanently delete</strong> your Libravatar"
+" account?"
+msgstr "¿Está seguro de que desea <strong>borrar definitivamente</strong> su cuenta Libravatar?"
 
 #: templates/account/delete.html:23
 msgid "Yes, delete all of my stuff"
@@ -330,18 +200,13 @@ msgid ""
 "Your account has been permanently and completely deleted. It may <b>take a "
 "few days</b> for your photos to disappear from all mirrors and a few weeks "
 "for your photos to disappear from web caches."
-msgstr ""
-"Su cuenta ha sido borrada completamente de forma definitiva. Puede que <b>le "
-"cueste algunos días</b> que sus fotos desaparezcan de todas las réplicas y "
-"unas pocas semanas para que desaparezcan de las cachés web."
+msgstr "Su cuenta ha sido borrada completamente de forma definitiva. Puede que <b>le cueste algunos días</b> que sus fotos desaparezcan de todas las réplicas y unas pocas semanas para que desaparezcan de las cachés web."
 
 #: templates/account/delete_done.html:12
 msgid ""
 "In case you want to take your data with you, it's currently being exported "
 "and will be <b>ready in a few moments</b>:"
-msgstr ""
-"En el caso de que quiera llevarse los datos con usted, se están exportando "
-"ahora mismo y estarán <b>listos en un momento</b>:"
+msgstr "En el caso de que quiera llevarse los datos con usted, se están exportando ahora mismo y estarán <b>listos en un momento</b>:"
 
 #: templates/account/delete_done.html:18 templates/account/export_done.html:16
 msgid "This export will be deleted in a few hours."
@@ -386,18 +251,7 @@ msgid ""
 "Otherwise, please accept our apologies and ignore this message.\n"
 "\n"
 "- The %(site_name)s accounts team\n"
-msgstr ""
-"Alguien, probablemente usted, solicitó que esta dirección de correo sea "
-"agregada a su cuenta %(site_name)s.\n"
-"\n"
-"Si eso lo que usted desea, por favor confirme que es el dueño de esta "
-"dirección de correo haciendo click en el siguiente enlace:\n"
-"\n"
-"  %(verification_link)s\n"
-"\n"
-"De lo contrario, por favor acepte nuestra disculpas e ignore este mensaje.\n"
-"\n"
-"- El equipo de la cuenta %(site_name)s\n"
+msgstr "Alguien, probablemente usted, solicitó que esta dirección de correo sea agregada a su cuenta %(site_name)s.\n\nSi eso lo que usted desea, por favor confirme que es el dueño de esta dirección de correo haciendo click en el siguiente enlace:\n\n  %(verification_link)s\n\nDe lo contrario, por favor acepte nuestra disculpas e ignore este mensaje.\n\n- El equipo de la cuenta %(site_name)s\n"
 
 #: templates/account/email_confirmed.html:4
 #: templates/account/email_confirmed.html:8
@@ -428,16 +282,13 @@ msgstr "No se pudo añadir esta dirección de correo-e. Causas posibles:"
 msgid ""
 "it is already in your list of unconfirmed email addresses (try removing it "
 "first)"
-msgstr ""
-"ya está en su lista de direcciones de email sin confirmar (pruebe "
-"eliminándolo primero)"
+msgstr "ya está en su lista de direcciones de email sin confirmar (pruebe eliminándolo primero)"
 
 #: templates/account/email_notadded.html:8
 #, python-format
 msgid ""
 "you have too many unconfirmed email addresses (maximum: %(max_emails)s)"
-msgstr ""
-"tiene demasiadas cuentas de email sin confirmar (máximo: %(max_emails)s)"
+msgstr "tiene demasiadas cuentas de email sin confirmar (máximo: %(max_emails)s)"
 
 #: templates/account/email_notadded.html:9
 msgid "another account has confirmed this email address"
@@ -447,9 +298,7 @@ msgstr "otra cuenta ha confirmado esta dirección de correo-e"
 msgid ""
 "Invalid or missing confirmation key.<br>Did you copy the whole link "
 "carefully?"
-msgstr ""
-"Clave de confirmación inválida o inexistente.<br>¿Copió cuidadosamente el "
-"enlace entero?"
+msgstr "Clave de confirmación inválida o inexistente.<br>¿Copió cuidadosamente el enlace entero?"
 
 #: templates/account/export.html:4
 msgid "Export your Libravatar data"
@@ -463,9 +312,7 @@ msgstr "Exportar sus datos"
 msgid ""
 "Libravatar will now export all of your personal data to a compressed XML "
 "file."
-msgstr ""
-"Ahora Libravatar exportará todos sus datos personales a un archivo XML "
-"comprimido."
+msgstr "Ahora Libravatar exportará todos sus datos personales a un archivo XML comprimido."
 
 #: templates/account/export.html:14
 msgid "Export"
@@ -483,35 +330,28 @@ msgstr "Exportación en progreso"
 msgid ""
 "Libravatar is currently exporting your data. It <b>may take a few "
 "moments</b> for the file to be available:"
-msgstr ""
-"En este momento Libravata está esportando sus datos. El archivo <b>puede "
-"demorar unos momentos</b> en estar disponible:"
+msgstr "En este momento Libravata está esportando sus datos. El archivo <b>puede demorar unos momentos</b> en estar disponible:"
 
 #: templates/account/login.html:4
 msgid "Libravatar Login"
 msgstr "Autenticación en Libravatar"
 
-#: templates/account/login.html:11 templates/account/login.html.py:38
+#: templates/account/login.html:11 templates/account/login.html:38
 #: templates/base.html:43 templates/openid/login.html:28
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: templates/account/login.html:15
 #, python-format
-msgid ""
-"Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
-msgstr ""
-"¿Todavía no tiene una cuenta?  <a href=\"%(signup_url)s\">¡Regístrese "
-"ahora!</a>"
+msgid "Don't have an account yet? <a href=\"%(signup_url)s\">Sign up now!</a>"
+msgstr "¿Todavía no tiene una cuenta?  <a href=\"%(signup_url)s\">¡Regístrese ahora!</a>"
 
 #: templates/account/login.html:19
 #, python-format
 msgid ""
 "Do you hate having lots of passwords? You can login with <a "
 "href=\"%(openid_url)s\">OpenID</a>."
-msgstr ""
-"¿Odias Tener Muhas Contraseñas? Puedes entrar con <a "
-"href=\"%(openid_url)s\">OpenID</a> en Vez."
+msgstr "¿Odia tener muchas contraseñas? Puede acceder a <a href=\"%(openid_url)s\">OpenID</a>."
 
 #: templates/account/login.html:22
 msgid "Your username and password didn't match. Please try again."
@@ -522,9 +362,7 @@ msgstr "Su nombre de usuario y contraseña no concuerdan. Inténtelo de nuevo."
 msgid ""
 "Forgot your password? <a href=\"%(password_reset_url)s\">Reset it by "
 "email</a>."
-msgstr ""
-"¿Olvidó su contraseña? <a href=\"%(password_reset_url)s\">Blanquéela por e-"
-"mail</a>"
+msgstr "¿Olvidó su contraseña? <a href=\"%(password_reset_url)s\">Blanquéela por e-mail</a>"
 
 #: templates/account/max_photos.html:6
 #, python-format
@@ -532,9 +370,7 @@ msgid ""
 "You've got too many photos in <a href=\"%(profile_url)s\">your "
 "account</a>.<br>You need to <b>delete</b> some before you can upload a new "
 "one."
-msgstr ""
-"Tiene demasiadas fotos en <a href=\"%(profile_url)s\">su cuenta</a>.<br>Debe "
-"<b>borrar</b> algunas antes de poder subir una nueva."
+msgstr "Tiene demasiadas fotos en <a href=\"%(profile_url)s\">su cuenta</a>.<br>Debe <b>borrar</b> algunas antes de poder subir una nueva."
 
 #: templates/account/new.html:4
 msgid "Create a new Libravatar account"
@@ -555,11 +391,7 @@ msgid ""
 "account. Either <a href=\"%(add_openid_url)s\">add another OpenID</a> or <a "
 "href=\"%(delete_url)s\">permanently delete your account</a> if you really "
 "want to do this."
-msgstr ""
-"Usted no puede borrar su único OpenID ya que es la única manera de acceder a "
-"esta cuenta. O bien <a href=\"%(add_openid_url)s\">agregue otro OpenID</a> o "
-"<a href=\"%(delete_url)s\">elimine permanentemente su cuenta </a> si es lo "
-"que realmente desea realizar."
+msgstr "Usted no puede borrar su único OpenID ya que es la única manera de acceder a esta cuenta. O bien <a href=\"%(add_openid_url)s\">agregue otro OpenID</a> o <a href=\"%(delete_url)s\">elimine permanentemente su cuenta </a> si es lo que realmente desea realizar."
 
 #: templates/account/openid_confirmationfailed.html:5
 msgid "Could not verify your OpenID successfully:"
@@ -580,9 +412,7 @@ msgstr "No se pudo añadir este OpenID. Causas posibles:"
 #: templates/account/openid_notadded.html:7
 msgid ""
 "it is already in your list of unconfirmed OpenIDs (try removing it first)"
-msgstr ""
-"ya se encuentra en su lista de OpenID sin confirmar (primero intente "
-"quitarla)"
+msgstr "ya se encuentra en su lista de OpenID sin confirmar (primero intente quitarla)"
 
 #: templates/account/openid_notadded.html:8
 msgid "another account has linked this OpenID"
@@ -619,19 +449,13 @@ msgstr "Regresar a la página de inicio de sesión"
 msgid ""
 "Someone, probably you, requested a password reset for your\n"
 "%(site_name)s account."
-msgstr ""
-"Alguien, probablemente usted, solicitó que se blanquee la contraseña para su "
-"cuenta \n"
-"%(site_name)s."
+msgstr "Alguien, probablemente usted, solicitó que se blanquee la contraseña para su cuenta \n%(site_name)s."
 
 #: templates/account/password_reminder.txt:4
 msgid ""
 "There is however, no password associated with this account.\n"
 "Instead, you must use one of the following OpenIDs to login:"
-msgstr ""
-"Sin Embargo, No hay Ninguna Contraseña Asociada con esta Cuenta.\n"
-"Por el Contrario, debe utilizar uno de los siguientes OpenIDs para "
-"Conectarse:"
+msgstr "No hay sin embargo contraseña asociada con esta cuenta.\nEn su lugar, usted debe utilizar uno de los siguientes OpenIDs para acceder:"
 
 #: templates/account/password_reminder.txt:9
 #: templates/account/password_reset.txt:12
@@ -651,9 +475,7 @@ msgstr "Restablecer contraseña"
 msgid ""
 "To continue with the password reset, enter one of the email addresses "
 "associated with your account."
-msgstr ""
-"Para continuar con el blanqueo de su contraseña, ingrese una de las "
-"direcciones de correo asociadas a su cuenta."
+msgstr "Para continuar con el blanqueo de su contraseña, ingrese una de las direcciones de correo asociadas a su cuenta."
 
 #: templates/account/password_reset.html:17
 msgid "Reset my password"
@@ -665,8 +487,7 @@ msgstr "Si eso es lo que desea, por favor vaya a la siguiente página:"
 
 #: templates/account/password_reset.txt:8
 msgid "Otherwise, please accept our apologies and ignore this message."
-msgstr ""
-"De lo contrario, por favor acepte nuestras disculpas e ignore el mensaje."
+msgstr "De lo contrario, por favor acepte nuestras disculpas e ignore el mensaje."
 
 #: templates/account/password_reset.txt:10
 #, python-format
@@ -696,13 +517,11 @@ msgstr "¿Controló su carpeta de correo no deseado?"
 #: templates/account/password_reset_submitted.html:16
 #, python-format
 msgid "Did you use an email address which is in the %(site_name)s system?"
-msgstr ""
-"¿Utilizó una dirección de correo que esté en el sistema de %(site_name)s?"
+msgstr "¿Utilizó una dirección de correo que esté en el sistema de %(site_name)s?"
 
 #: templates/account/password_reset_submitted.html:17
 msgid "Has this email address ever been confirmed within the system?"
-msgstr ""
-"¿A sido esta dirección de correo alguna vez confirmada dentro del sistema?"
+msgstr "¿A sido esta dirección de correo alguna vez confirmada dentro del sistema?"
 
 #: templates/account/password_reset_submitted.html:21
 #, python-format
@@ -710,10 +529,7 @@ msgid ""
 "If everything else fails, you can always <a "
 "href=\"%(new_account_url)s\">create a new account</a> or <a "
 "href=\"mailto:%(support_email)s\">email us</a>."
-msgstr ""
-"Si todo lo demás falla, siempre puede  <a href=\"%(new_account_url)s\">crear "
-"una nueva cuenta</a> o <a href=\"mailto:%(support_email)s\">enviarnos un "
-"correo</a>."
+msgstr "Si todo lo demás falla, siempre puede  <a href=\"%(new_account_url)s\">crear una nueva cuenta</a> o <a href=\"mailto:%(support_email)s\">enviarnos un correo</a>."
 
 #: templates/account/photo_invalid.html:5
 msgid "Invalid photo ID."
@@ -731,13 +547,12 @@ msgstr "Por Favor <a href=\"%(upload_url)s\">Subir</a> una Diferente."
 
 #: templates/account/photo_invalidformat.html:5
 msgid "Uploaded photo uses an unsupported file format."
-msgstr ""
+msgstr "El formato de la foto cargada no se soporta.."
 
 #: templates/account/photo_toobig.html:5
 #, python-format
 msgid "This image is too big, the maximum size is %(max_size)s bytes."
-msgstr ""
-"Esta imagen es demasiado grande, el tamaño máximo es de %(max_size)s bytes."
+msgstr "Esta imagen es demasiado grande, el tamaño máximo es de %(max_size)s bytes."
 
 #: templates/account/photo_toobig.html:7
 #, python-format
@@ -760,28 +575,26 @@ msgstr "Foto(s) satisfactoriamente importada(s)."
 msgid "Photo import failed."
 msgstr "Falló la importación de la foto."
 
-#: templates/account/profile.html:4 templates/account/profile.html.py:8
+#: templates/account/profile.html:4 templates/account/profile.html:8
 msgid "Your Profile"
-msgstr ""
+msgstr "Su perfil"
 
 #: templates/account/profile.html:11
 msgid "You have the following confirmed email addresses and OpenIDs:"
-msgstr ""
-"Las siguientes direcciones de correo electrónico y OpenIDs están confirmadas:"
+msgstr "Las siguientes direcciones de correo electrónico y OpenIDs están confirmadas:"
 
-#: templates/account/profile.html:18 templates/account/profile.html.py:26
+#: templates/account/profile.html:18 templates/account/profile.html:26
 msgid "Change photo"
 msgstr "Cambiar foto"
 
-#: templates/account/profile.html:19 templates/account/profile.html.py:27
-#: templates/account/profile.html:38 templates/account/profile.html.py:42
+#: templates/account/profile.html:19 templates/account/profile.html:27
+#: templates/account/profile.html:38 templates/account/profile.html:42
 msgid "Remove"
 msgstr "Quitar"
 
 #: templates/account/profile.html:34
 msgid "You have the following unconfirmed email addresses and OpenIDs:"
-msgstr ""
-"Usted tiene las siguientes direcciones de correo y OpenIDs sin confirmar:"
+msgstr "Usted tiene las siguientes direcciones de correo y OpenIDs sin confirmar:"
 
 #: templates/account/profile.html:56
 msgid "Here are the photos you have uploaded/imported:"
@@ -831,10 +644,7 @@ msgid ""
 "The original photo you uploaded is missing and so it cannot be cropped. "
 "Perhaps you have already cropped it or it was uploaded too long ago and has "
 "expired."
-msgstr ""
-"El original de la foto que usted ha subido está ausente, por tal motivo no "
-"puede ser recortada. Quizá ya la haya recortado, o fue subido hace demasiado "
-"tiempo y ha expirado."
+msgstr "El original de la foto que usted ha subido está ausente, por tal motivo no puede ser recortada. Quizá ya la haya recortado, o fue subido hace demasiado tiempo y ha expirado."
 
 #: templates/base.html:19
 msgid "Freeing the Web, one face at a time!"
@@ -852,13 +662,13 @@ msgstr "liberando la web una cara cada vez"
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/base.html:37 templates/base.html.py:41
+#: templates/base.html:37 templates/base.html:41
 msgid "Contact Us"
 msgstr "Contáctenos"
 
-#: templates/base.html:38 templates/base.html.py:42
+#: templates/base.html:38 templates/base.html:42
 msgid "Security"
-msgstr ""
+msgstr "Seguridad"
 
 #: templates/base.html:39
 msgid "Logout"
@@ -871,19 +681,15 @@ msgstr "GNU Affero General Public License"
 #: templates/base.html:55
 #, python-format
 msgid ""
-"<b>%(site_name)s</b> is an avatar service running the <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
+"<b>%(site_name)s</b> is an avatar service running the <a href=\"https://launchpad.net/libravatar\">Libravatar</a>\n"
 "  software, version %(libravatar_version)s"
-msgstr ""
-"<b>%(site_name)s</b> es un servicio de avatares que usa el software <a "
-"href=\"https://launchpad.net/libravatar\">Libravatar</a>,\n"
-"  versión %(libravatar_version)s"
+msgstr "<b>%(site_name)s</b> es un servicio de avatares que usa el software <a href=\"https://launchpad.net/libravatar\">Libravatar</a>,\n  versión %(libravatar_version)s"
 
 #: templates/base.html:57
 msgid "Flattr this!"
 msgstr "¡Apoya con Flattr!"
 
-#: templates/error.html:4 templates/error.html.py:7
+#: templates/error.html:4 templates/error.html:7
 msgid "Error!"
 msgstr "¡Error!"
 
@@ -915,9 +721,11 @@ msgstr "¿Desea utilizar una cuenta regular?"
 #, python-format
 msgid ""
 "That's fine, just use <a href=\"%(login_url)s\">this login form</a> instead."
-msgstr ""
-"Está bien, usa <a href=\"%(login_url)s\">este formulario de inicio de "
-"sesión</a>."
+msgstr "Está bien, usa <a href=\"%(login_url)s\">este formulario de inicio de sesión</a>."
+
+#: templates/openid/login.html:26
+msgid "OpenID"
+msgstr "OpenID"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -932,25 +740,19 @@ msgstr "Crear una <a href=\"%(new_account_url)s\">cuenta gratuita</a>"
 msgid ""
 "Download the <a href=\"https://code.launchpad.net/libravatar\">source "
 "code</a>"
-msgstr ""
-"Descarga el <a href=\"https://code.launchpad.net/libravatar\">código "
-"fuente</a>"
+msgstr "Descarga el <a href=\"https://code.launchpad.net/libravatar\">código fuente</a>"
 
 #: templates/public/home.html:14
 msgid ""
 "File <a href=\"https://bugs.launchpad.net/libravatar\">bugs</a> or ask <a "
 "href=\"https://answers.launchpad.net/libravatar\">questions</a>"
-msgstr ""
-"<a href=\"https://bugs.launchpad.net/libravatar\">Informa de errores</a> o "
-"<a href=\"https://answers.launchpad.net/libravatar\">realiza una pregunta</a>"
+msgstr "<a href=\"https://bugs.launchpad.net/libravatar\">Informa de errores</a> o <a href=\"https://answers.launchpad.net/libravatar\">realiza una pregunta</a>"
 
 #: templates/public/home.html:15
 msgid ""
 "Read our <a href=\"https://wiki.libravatar.org\">wiki</a> or <a "
 "href=\"http://blog.libravatar.org\">blog</a>"
-msgstr ""
-"Visita el <a href=\"https://wiki.libravatar.org\">wiki</a> y el <a "
-"href=\"http://blog.libravatar.org\">blog</a>"
+msgstr "Visita el <a href=\"https://wiki.libravatar.org\">wiki</a> y el <a href=\"http://blog.libravatar.org\">blog</a>"
 
 #: templates/public/home.html:16
 msgid "Follow us on <a href=\"https://identi.ca/libravatar\">Identica</a>"
@@ -964,20 +766,14 @@ msgstr "¡Contribuye!"
 #, python-format
 msgid ""
 "Libravatar is a service which delivers your avatar (profile picture) to "
-"other websites. If you <a href=\"%(new_account_url)s\">create an account</a> "
-"with us, your photo could start popping up next to forum posts or blog "
+"other websites. If you <a href=\"%(new_account_url)s\">create an account</a>"
+" with us, your photo could start popping up next to forum posts or blog "
 "comments on any site where you left your email address."
-msgstr ""
-"Libravatar es un servicio que ofrece tu avatar (imagen de perfil) a otras "
-"páginas web. Si usted <a href=\"%(new_account_url)s\">crea una cuenta</a> "
-"con nosotros, la foto podría comenzar a aparecer junto a los mensajes en los "
-"foros o los comentarios de blogs de cualquier sitio donde haya dejado su "
-"dirección de correo electrónico."
+msgstr "Libravatar es un servicio que ofrece tu avatar (imagen de perfil) a otras páginas web. Si usted <a href=\"%(new_account_url)s\">crea una cuenta</a> con nosotros, la foto podría comenzar a aparecer junto a los mensajes en los foros o los comentarios de blogs de cualquier sitio donde haya dejado su dirección de correo electrónico."
 
 #: templates/public/home.html:21
 msgid "<a href=\"https://wiki.libravatar.org/description/\">Read more...</a>"
-msgstr ""
-"<a href=\"https://wiki.libravatar.org/description/\">Conoce más...</a>"
+msgstr "<a href=\"https://wiki.libravatar.org/description/\">Conoce más...</a>"
 
 #: templates/public/home.html:23
 msgid "Federated Open Source Service"
@@ -990,12 +786,7 @@ msgid ""
 "software</a> and allows owners of a domain name to <a "
 "href=\"https://wiki.libravatar.org/running_your_own/\">run their own "
 "instance</a> of Libravatar and serve avatars themselves."
-msgstr ""
-"Este servicio está patrocinado por la <a "
-"href=\"https://www.gnu.org/licenses/agpl.html\">Free and Open Source "
-"software</a> y permite a los dueños de nombres de dominio <a "
-"href=\"https://wiki.libravatar.org/running_your_own/\">ejecutar su propia "
-"instancia</a> de Libravatar y servir avatares por ellos mismos."
+msgstr "Este servicio está patrocinado por la <a href=\"https://www.gnu.org/licenses/agpl.html\">Free and Open Source software</a> y permite a los dueños de nombres de dominio <a href=\"https://wiki.libravatar.org/running_your_own/\">ejecutar su propia instancia</a> de Libravatar y servir avatares por ellos mismos."
 
 #: templates/public/home.html:27
 msgid "Simple API for Developers"
@@ -1007,35 +798,27 @@ msgid ""
 "href=\"https://wiki.libravatar.org/api/\">simple API</a> or one of the <a "
 "href=\"https://wiki.libravatar.org/libraries/\">libraries and plugins</a> "
 "available for a number of platforms and languages."
-msgstr ""
-"Los programadores pueden fácilmente añadir soporte para este servicio usando "
-"nuestra <a href=\"https://wiki.libravatar.org/api/\"> API sencilla</a> o una "
-"de las <a href=\"https://wiki.libravatar.org/libraries/\">librerías y "
-"plugins</a> disponibles para un número de plataformas y lenguajes."
+msgstr "Los programadores pueden fácilmente añadir soporte para este servicio usando nuestra <a href=\"https://wiki.libravatar.org/api/\"> API sencilla</a> o una de las <a href=\"https://wiki.libravatar.org/libraries/\">librerías y plugins</a> disponibles para un número de plataformas y lenguajes."
 
 #: templates/public/home.html:31
 msgid ""
 "Big thanks to our sponsors without whom none of this would be possible!"
-msgstr ""
-"Muchas gracias a nuestros patrocinadores, ¡sin ellos nada de esto sería "
-"posible!"
+msgstr "Muchas gracias a nuestros patrocinadores, ¡sin ellos nada de esto sería posible!"
 
 #: templates/public/home.html:34
 msgid "Rackspace Logo"
-msgstr ""
+msgstr "Logo de Rackspace"
 
 #: templates/public/home.html:35
 msgid "Webconverger Logo"
-msgstr ""
+msgstr "Logo Webconverger"
 
 #: templates/public/nohash.html:6
 #, python-format
 msgid ""
 "An email hash is required. You can use the <a href=\"%(check_url)s\">check "
 "tool</a> to generate one."
-msgstr ""
-"Se necesita un hash de correo-e. Puede usar la <a "
-"href=\"%(check_url)s\">herramienta de comprobación</a> para generar uno."
+msgstr "Se necesita un hash de correo-e. Puede usar la <a href=\"%(check_url)s\">herramienta de comprobación</a> para generar uno."
 
 #: templates/public/nopost.html:5
 msgid "This only works via HTTP GET."
@@ -1045,10 +828,9 @@ msgstr "Esto solo funciona a través de HTTP GET."
 #, python-format
 msgid ""
 "The size parameter must be an integer between %(min_size)s and %(max_size)s."
-msgstr ""
-"El parámetro tamaño debe ser un entero entre %(min_size)s y %(max_size)s."
+msgstr "El parámetro tamaño debe ser un entero entre %(min_size)s y %(max_size)s."
 
-#: templates/tools/check.html:4 templates/tools/check.html.py:12
+#: templates/tools/check.html:4 templates/tools/check.html:12
 msgid "Photo lookup"
 msgstr "Búsqueda de foto"
 
@@ -1076,14 +858,13 @@ msgstr "SHA256 hash:"
 msgid ""
 "This is what the avatars will look like depending on the hash and protocol "
 "you use:"
-msgstr ""
-"Así es como los avatares se verán dependiendo del hasheo y protocolo que use:"
+msgstr "Así es como los avatares se verán dependiendo del hasheo y protocolo que use:"
 
 #: templates/tools/check.html:53
 msgid "using MD5 over HTTP"
 msgstr "usando MD5 sobre HTTP"
 
-#: templates/tools/check.html:53 templates/tools/check.html.py:58
+#: templates/tools/check.html:53 templates/tools/check.html:58
 msgid "MD5"
 msgstr "MD5"
 
@@ -1091,7 +872,7 @@ msgstr "MD5"
 msgid "using SHA256 over HTTP"
 msgstr "usando SHA256 sobre HTTP"
 
-#: templates/tools/check.html:55 templates/tools/check.html.py:60
+#: templates/tools/check.html:55 templates/tools/check.html:60
 msgid "SHA256"
 msgstr "SHA256"
 
@@ -1126,23 +907,3 @@ msgstr "Servidor HTTPS del avatar:"
 #: templates/tools/check_domain.html:59
 msgid "use <tt>https://seccdn.libravatar.org</tt>"
 msgstr "usa <tt>https://seccdn.libravatar.org</tt>"
-
-#: tools/forms.py:27
-msgid "Size"
-msgstr "Tamaño"
-
-#: tools/forms.py:28
-msgid "Default URL"
-msgstr "URL predeterminada"
-
-#: tools/forms.py:33
-msgid "You must provide a valid email or OpenID"
-msgstr "Debes proporcionar un correo-e u OpenID válidos"
-
-#: tools/forms.py:35
-msgid "You cannot provide both an email and an OpenID. Choose one!"
-msgstr "No puedes proveer ambos, email y OpenID. Elige uno!"
-
-#: tools/forms.py:40
-msgid "Domain"
-msgstr "Dominio"
