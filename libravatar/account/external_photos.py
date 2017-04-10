@@ -33,7 +33,7 @@ def gravatar_photo(email):
     try:
         urlopen(image_url, timeout=URL_TIMEOUT)
     except HTTPError as e:
-        if e.code != 404:
+        if e.code != 404 and e.code != 503:
             print 'Gravatar fetch failed with an unexpected %s HTTP error' % e.code
         return False
     except URLError as e:
