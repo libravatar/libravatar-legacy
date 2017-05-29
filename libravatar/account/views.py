@@ -676,7 +676,7 @@ def password_reset_confirm(request):
         verification_key = request.GET['verification_key'].replace(' ', '')
 
     if 'email_address' in request.GET and request.GET['email_address']:
-        email_address = request.GET['email_address']
+        email_address = request.GET['email_address'].replace(' ', '')
 
     # Note: all validation errors return the same error message to
     # avoid leaking information as to the existence or not of
