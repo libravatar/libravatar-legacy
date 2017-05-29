@@ -94,8 +94,7 @@ def confirm_email(request):
                                   context_instance=RequestContext(request))
 
     (confirmed_id, external_photos) = ConfirmedEmail.objects.create_confirmed_email(
-        unconfirmed.user, request.META['REMOTE_ADDR'], unconfirmed.email,
-        not request.user.is_anonymous())
+        unconfirmed.user, unconfirmed.email, not request.user.is_anonymous())
 
     unconfirmed.delete()
 
@@ -136,7 +135,7 @@ def import_photo(request, user_id):
             photos_to_import = True
             photo = Photo()
             photo.user = user
-            photo.ip_address = request.META['REMOTE_ADDR']
+            photo.ip_address = '0.0.0.0'
             if photo.import_image('Gravatar', email.email):
                 photos_imported = True
 
@@ -181,7 +180,7 @@ def successfully_authenticated(request):
     return HttpResponseRedirect(reverse('libravatar.account.views.profile'))
 
 
-def _confirm_claimed_openid(user, remote_address):
+def _confirm_claimed_openid(user):
     if user.password != u'!':
         return  # not using OpenID auth
 
@@ -196,7 +195,7 @@ def _confirm_claimed_openid(user, remote_address):
     # confirm the claimed ID for the logged in user
     confirmed = ConfirmedOpenId()
     confirmed.user = user
-    confirmed.ip_address = remote_address
+    confirmed.ip_address = '0.0.0.0'
     confirmed.openid = claimed_id
     confirmed.save()
 
@@ -205,7 +204,7 @@ def _confirm_claimed_openid(user, remote_address):
 @login_required
 def profile(request):
     usr = request.user
-    _confirm_claimed_openid(usr, request.META['REMOTE_ADDR'])
+    _confirm_claimed_openid(usr)
 
     confirmed_emails = usr.confirmed_emails.order_by('email')
     unconfirmed_emails = usr.unconfirmed_emails.order_by('email')
@@ -330,7 +329,7 @@ def confirm_openid(request, openid_id):
     # TODO: check for a reasonable expiration time
     confirmed = ConfirmedOpenId()
     confirmed.user = unconfirmed.user
-    confirmed.ip_address = request.META['REMOTE_ADDR']
+    confirmed.ip_address = '0.0.0.0'
     confirmed.openid = unconfirmed.openid
     confirmed.save()
 
@@ -458,7 +457,7 @@ def upload_photo(request):
                                           context_instance=RequestContext(request))
 
             try:
-                photo = form.save(request.user, request.META['REMOTE_ADDR'], photo_data)
+                photo = form.save(request.user, photo_data)
             except IOError:
                 return render_to_response('account/photo_invalidfile.html', context_instance=RequestContext(request))
 

@@ -118,11 +118,11 @@ class UploadPhotoForm(forms.Form):
                                         error_messages={'required': _('This field must be checked since we need to be able to distribute photos to third parties.')})
 
     # pylint: disable=no-self-use
-    def save(self, user, ip_address, image):
+    def save(self, user, image):
         # Link this file to the user's profile
         photo = Photo()
         photo.user = user
-        photo.ip_address = ip_address
+        photo.ip_address = '0.0.0.0'
         if not photo.save(image):
             return None
         return photo

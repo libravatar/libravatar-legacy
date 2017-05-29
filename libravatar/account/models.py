@@ -253,10 +253,10 @@ class Photo(models.Model):
 
 class ConfirmedEmailManager(models.Manager):
     # pylint: disable=R0201
-    def create_confirmed_email(self, user, ip_address, email_address, is_logged_in):
+    def create_confirmed_email(self, user, email_address, is_logged_in):
         confirmed = ConfirmedEmail()
         confirmed.user = user
-        confirmed.ip_address = ip_address
+        confirmed.ip_address = '0.0.0.0'
         confirmed.email = email_address
         confirmed.save()
 
