@@ -1,6 +1,24 @@
-libravatar (20160117.1) unstable; urgency=medium
+libravatar (20170529.1) unstable; urgency=medium
 
   * Migrate main application to jessie
+  * Switch from python-gearman.libgearman to python-gearman (LP: 1532640)
+  * Remove support for Persona / BrowserID (LP: 1533018)
+
+  * Use zopfli to gzip resources (LP: 1158349)
+  * Switch password hash algorithm to bcrypt (LP: 697536)
+  * Add Liberapay button to the footer (LP: 1557185)
+  * Add Flattr ID to the page head
+
+  * Stop collecting IP addresses (LP: 1394845)
+  * Add aloodo.org tracking warning (LP: 1556283)
+
+  * Update TLS config to V4 of the Mozilla cipher list
+  * Turn ON OCSP stapling (LP: 1246521)
+  * Require TLS 1.2 on www
+
+  * Add Dutch translation
+  * Update ca, cs, de, en_GB, es, fr, it, ja, pt_BR, sq, tr and uk translations
+  * Add codespell to the tests (LP: 1266653)
 
  -- Francois Marier <francois@debian.org>  Sun, 17 Jan 2016 21:03:05 -0800
 
