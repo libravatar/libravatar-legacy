@@ -52,21 +52,30 @@ Start by adding this to your /etc/hosts:
 
     127.0.0.1 www.libravatar.org cdn.libravatar.org seccdn.libravatar.org
 
-Enable mod_alias, mod\_expires, mod\_headers, mod\_rewrite and mod\_wsgi:
+Enable mod\_alias, mod\_expires, mod\_headers, mod\_rewrite, mod\_ssl and mod\_wsgi:
 
     a2enmod alias
     a2enmod expires
     a2enmod headers
     a2enmod rewrite
+    a2enmod ssl
     a2enmod wsgi
 
-and put the following in `/etc/apache2/conf-available/ssl.conf`:
+and put the following in `/etc/apache2/conf-available/tls.conf`:
 
+    SSLProtocol             all -SSLv3 -TLSv1 -TLSv1.1
+    SSLCipherSuite          ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256
+    SSLHonorCipherOrder     on
+    SSLCompression          off
+    
+    SSLUseStapling          on
+    SSLStaplingResponderTimeout 5
+    SSLStaplingReturnResponderErrors off
     SSLStaplingCache shmcb:/var/run/ocsp(128000)
 
 before enabling it:
 
-    a2enconf ssl
+    a2enconf tls
 
 Create an uploaded/ directory that is writable by the www-data user:
 
