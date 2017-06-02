@@ -1,3 +1,9 @@
+libravatar (20170601.2) unstable; urgency=medium
+
+  * Refresh the known_hosts file for mirrors
+
+ -- Francois Marier <francois@debian.org>  Thu, 01 Jun 2017 22:22:31 -0700
+
 libravatar (20170601.1) unstable; urgency=medium
 
   * Add brackets around ALLOWED_HOSTS
