@@ -73,6 +73,7 @@ Package: libravatar-cdn-common
 Architecture: all
 Depends: apache2,
          debconf,
+         libapache2-mod-removeip,
          libravatar-common (=${source:Version}),
          ${misc:Depends}
 Description: avatar image hosting - common cdn files
