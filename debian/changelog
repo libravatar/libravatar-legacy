@@ -1,3 +1,9 @@
+libravatar (20170604.1) unstable; urgency=medium
+
+  * Install libapache2-mod-removeip on the mirrors
+
+ -- Francois Marier <francois@debian.org>  Sun, 04 Jun 2017 14:00:06 -0700
+
 libravatar (20170601.2) unstable; urgency=medium
 
   * Refresh the known_hosts file for mirrors
