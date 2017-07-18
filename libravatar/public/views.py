@@ -229,7 +229,7 @@ def resized_avatar(email_hash, size):
         gm_client = gearman.GearmanClient(settings.GEARMAN_SERVERS)
         workload = {'email_hash': email_hash, 'size': size}
         gm_client.submit_job('resizeavatar', json.dumps(workload),
-                             background=True, wait_until_complete=False)
+                             background=False, wait_until_complete=True)
 
     resized_img = Image.open(resized_filename)
     return (resized_filename, resized_img.format)
