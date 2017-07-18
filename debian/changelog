@@ -1,3 +1,11 @@
+libravatar (20170718.1) unstable; urgency=medium
+
+  * Set admin email to catch application errors
+  * Fix /resize/ syntax error and race condition
+  * Update Turkish translation
+
+ -- Francois Marier <francois@debian.org>  Tue, 18 Jul 2017 10:27:08 -0700
+
 libravatar (20170604.1) unstable; urgency=medium
 
   * Install libapache2-mod-removeip on the mirrors
