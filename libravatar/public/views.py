@@ -276,7 +276,7 @@ def resize(request):
     (resized_filename, file_format) = resized_avatar(email_hash, size)
 
     # Serve resized image
-    response = HttpResponse(mimetype=mimetype_format(file_format))
+    response = HttpResponse(content_type=mimetype_format(file_format))
     with open(resized_filename, 'rb') as resized_img:
         response.write(resized_img.read())
         resized_img.close()
