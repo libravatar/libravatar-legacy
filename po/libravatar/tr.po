@@ -2,131 +2,22 @@
 # Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
 # This file is distributed under the same license as the libravatar package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# Mehmet Kececi <mkececi@mehmetkececi.com>, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: libravatar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-10 11:08-0800\n"
-"PO-Revision-Date: 2016-05-24 14:17+0000\n"
-"Last-Translator: François Marier <francois@debian.org>\n"
-"Language-Team: Turkish <tr@li.org>\n"
+"POT-Creation-Date: 2016-07-16 20:27-0700\n"
+"PO-Revision-Date: 2017-06-03 18:09+0000\n"
+"Last-Translator: Mehmet Keçeci <mkececi@mehmetkececi.com>\n"
+"Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2016-07-17 03:36+0000\n"
-"X-Generator: Launchpad (build 18140)\n"
+"X-Launchpad-Export-Date: 2017-07-18 17:24+0000\n"
+"X-Generator: Launchpad (build 18419)\n"
 "Language: tr\n"
 "X-Poedit-Language: Turkish\n"
-
-#: account/forms.py:36 account/forms.py:132 tools/forms.py:25
-msgid "Email"
-msgstr "E-posta"
-
-#: account/forms.py:46
-#, python-format
-msgid "Valid email addresses end with @%(domain)s"
-msgstr "Geçerli e-posta adresleri @%(domain)s ile biter"
-
-#: account/forms.py:71
-#, python-format
-msgid "Confirm your email address on %(site_name)s"
-msgstr "%(site_name)s üzerinde e-posta adresinizi doğrulayınız"
-
-#: account/forms.py:79 templates/openid/login.html:26 tools/forms.py:26
-msgid "OpenID"
-msgstr "OpenID"
-
-#: account/forms.py:93
-msgid "Valid OpenID URLs are on this domain: "
-msgstr "Geçerli OpenID adresleri şu alandadır: "
-
-#: account/forms.py:114
-msgid "Photo"
-msgstr "Fotoğraf"
-
-#: account/forms.py:114
-msgid "You must choose an image to upload."
-msgstr "Yüklenecek bir görsel seçmelisiniz."
-
-#: account/forms.py:115
-msgid "suitable for all ages (i.e. no offensive content)"
-msgstr "her yaşa uygun (yani uygunsuz içerik olmamalı)"
-
-#: account/forms.py:116
-msgid "We only host \"G-rated\" images and so this field must be checked."
-msgstr ""
-"Sadece \"G-rated \" görüntüleri barındırırız, dolayısıyla bu alan "
-"seçilmelidir."
-
-#: account/forms.py:117
-msgid "can be freely copied"
-msgstr "özgürce kopyalanabilir"
-
-#: account/forms.py:118
-msgid ""
-"This field must be checked since we need to be able to distribute photos to "
-"third parties."
-msgstr ""
-"Bu alanın seçilmesi gerekir çünkü üçüncü taraflara fotoğrafları "
-"dağıtabilmemiz gerekir."
-
-#: account/forms.py:144
-#, python-format
-msgid "Password reset for %(site_name)s"
-msgstr "%(site_name)s için parola sıfırlandı"
-
-#: account/forms.py:167
-msgid "Password"
-msgstr "Parola"
-
-#: account/forms.py:178
-msgid "Invalid password"
-msgstr "Geçersiz parola"
-
-#: account/models.py:123
-msgid "photo"
-msgstr "fotoğraf"
-
-#: account/models.py:124
-msgid "photos"
-msgstr "fotoğraf"
-
-#: account/models.py:281
-msgid "confirmed email"
-msgstr "teyit edilmiş e-posta"
-
-#: account/models.py:282
-msgid "confirmed emails"
-msgstr "teyit edilmiş e-posta"
-
-#: account/models.py:327
-msgid "unconfirmed email"
-msgstr "teyit edilmemiş e-posta"
-
-#: account/models.py:328
-msgid "unconfirmed emails"
-msgstr "teyit edilmemiş e-posta"
-
-#: account/models.py:331 account/models.py:353
-msgid "(unconfirmed)"
-msgstr "(teyit edilmemiş)"
-
-#: account/models.py:349
-msgid "unconfirmed OpenID"
-msgstr "teyit edilmemiş OpenID"
-
-#: account/models.py:350
-msgid "unconfirmed OpenIDs"
-msgstr "teyit edilmemiş OpenID"
-
-#: account/models.py:364
-msgid "confirmed OpenID"
-msgstr "teyit edilmiş OpenID"
-
-#: account/models.py:365
-msgid "confirmed OpenIDs"
-msgstr "teyit edilmiş OpenID"
 
 #: templates/404.html:5
 #, python-format
@@ -137,7 +28,7 @@ msgstr ""
 "Sayfa bulunamadı. Buraya bir hata nedeniyle geldiğiniz kanısındaysanız "
 "lütfen <a href=\"mailto:%(support_email)s\">bize bunu bildirin</a>"
 
-#: templates/account/add_email.html:4 templates/account/add_email.html.py:8
+#: templates/account/add_email.html:4 templates/account/add_email.html:8
 #: templates/account/profile.html:49
 msgid "Add a new email address"
 msgstr "Yeni bir e-posta adresi ekle"
@@ -494,7 +385,7 @@ msgstr ""
 msgid "Libravatar Login"
 msgstr "Libravatar girişi"
 
-#: templates/account/login.html:11 templates/account/login.html.py:38
+#: templates/account/login.html:11 templates/account/login.html:38
 #: templates/base.html:43 templates/openid/login.html:28
 msgid "Login"
 msgstr "Giriş"
@@ -630,6 +521,8 @@ msgid ""
 "There is however, no password associated with this account.\n"
 "Instead, you must use one of the following OpenIDs to login:"
 msgstr ""
+"Ancak, bu hesabın parolası yoktur.\n"
+"Bunun yerine, oturum açma için aşağıdaki OpenIDs birini kullanmanız gerekir:"
 
 #: templates/account/password_reminder.txt:9
 #: templates/account/password_reset.txt:12
@@ -756,7 +649,7 @@ msgstr "Fotoğraf(lar) başarıyla içe aktarıldı."
 msgid "Photo import failed."
 msgstr "Fotoğraf içe aktarımı başarısız oldu."
 
-#: templates/account/profile.html:4 templates/account/profile.html.py:8
+#: templates/account/profile.html:4 templates/account/profile.html:8
 msgid "Your Profile"
 msgstr "Profiliniz"
 
@@ -764,12 +657,12 @@ msgstr "Profiliniz"
 msgid "You have the following confirmed email addresses and OpenIDs:"
 msgstr "Bu teyit edilmiş e-posta adresleri ve OpenID'leriniz var:"
 
-#: templates/account/profile.html:18 templates/account/profile.html.py:26
+#: templates/account/profile.html:18 templates/account/profile.html:26
 msgid "Change photo"
 msgstr "Fotoğraf değiştir"
 
-#: templates/account/profile.html:19 templates/account/profile.html.py:27
-#: templates/account/profile.html:38 templates/account/profile.html.py:42
+#: templates/account/profile.html:19 templates/account/profile.html:27
+#: templates/account/profile.html:38 templates/account/profile.html:42
 msgid "Remove"
 msgstr "Kaldır"
 
@@ -845,13 +738,13 @@ msgstr "ağı özgürleştiriyoruz, tek tek her yüzle"
 msgid "Profile"
 msgstr "Profil"
 
-#: templates/base.html:37 templates/base.html.py:41
+#: templates/base.html:37 templates/base.html:41
 msgid "Contact Us"
 msgstr "İrtibat"
 
-#: templates/base.html:38 templates/base.html.py:42
+#: templates/base.html:38 templates/base.html:42
 msgid "Security"
-msgstr ""
+msgstr "Güvenlik"
 
 #: templates/base.html:39
 msgid "Logout"
@@ -876,7 +769,7 @@ msgstr ""
 msgid "Flattr this!"
 msgstr "Bunu Flattr'la"
 
-#: templates/error.html:4 templates/error.html.py:7
+#: templates/error.html:4 templates/error.html:7
 msgid "Error!"
 msgstr "Hata!"
 
@@ -911,6 +804,10 @@ msgid ""
 msgstr ""
 "Bu sorun değil, <a href=\"%(login_url)s\">bu giriş formunu</a> kullanmanız "
 "yeterlidir."
+
+#: templates/openid/login.html:26
+msgid "OpenID"
+msgstr "OpenID"
 
 #: templates/public/home.html:4
 msgid "federated avatar hosting service"
@@ -1012,11 +909,11 @@ msgstr ""
 
 #: templates/public/home.html:34
 msgid "Rackspace Logo"
-msgstr ""
+msgstr "Rackspace Logosu"
 
 #: templates/public/home.html:35
 msgid "Webconverger Logo"
-msgstr ""
+msgstr "Webconverger Logosu"
 
 #: templates/public/nohash.html:6
 #, python-format
@@ -1038,7 +935,7 @@ msgid ""
 msgstr ""
 "Boyut parametresi %(min_size)s ilâ %(max_size)s arası bir tam sayı olmalıdır."
 
-#: templates/tools/check.html:4 templates/tools/check.html.py:12
+#: templates/tools/check.html:4 templates/tools/check.html:12
 msgid "Photo lookup"
 msgstr "fotoğraf arama"
 
@@ -1074,7 +971,7 @@ msgstr ""
 msgid "using MD5 over HTTP"
 msgstr "HTTP üzerinden MD5 kullanılıyor"
 
-#: templates/tools/check.html:53 templates/tools/check.html.py:58
+#: templates/tools/check.html:53 templates/tools/check.html:58
 msgid "MD5"
 msgstr "MD5"
 
@@ -1082,7 +979,7 @@ msgstr "MD5"
 msgid "using SHA256 over HTTP"
 msgstr "HTTP üzerinden SHA256 kullanılıyor"
 
-#: templates/tools/check.html:55 templates/tools/check.html.py:60
+#: templates/tools/check.html:55 templates/tools/check.html:60
 msgid "SHA256"
 msgstr "SHA256"
 
@@ -1117,23 +1014,3 @@ msgstr "HTTP havari sunucusu:"
 #: templates/tools/check_domain.html:59
 msgid "use <tt>https://seccdn.libravatar.org</tt>"
 msgstr "<tt>https://seccdn.libravatar.org</tt>'u kullanın"
-
-#: tools/forms.py:27
-msgid "Size"
-msgstr "Boyut"
-
-#: tools/forms.py:28
-msgid "Default URL"
-msgstr "Varsayılan adres"
-
-#: tools/forms.py:33
-msgid "You must provide a valid email or OpenID"
-msgstr "Geçerli bir e-posta ya da OpenID girmeniz gerekir"
-
-#: tools/forms.py:35
-msgid "You cannot provide both an email and an OpenID. Choose one!"
-msgstr "Hem bir e-posta hem de bir OpenID giremezsiniz! Birini seçin!"
-
-#: tools/forms.py:40
-msgid "Domain"
-msgstr "Alan"
