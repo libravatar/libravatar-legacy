@@ -1,3 +1,14 @@
+libravatar (20170727.1) unstable; urgency=medium
+
+  * Pre-fill OpenID identifier on login page if available (bug #1706984)
+  * CORS headers on Gravatar redirects and default images (bug #1538405)
+  * Make use of stale-while-revalidate for user images (bug #1406843)
+
+  * Create dummy TLS certs on mirrors (bug #1471070)
+  * Require ntp on mirrors (bug #1471070)
+
+ -- Francois Marier <francois@debian.org>  Thu, 27 Jul 2017 08:47:52 -0700
+
 libravatar (20170718.1) unstable; urgency=medium
 
   * Set admin email to catch application errors
