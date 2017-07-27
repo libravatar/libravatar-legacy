@@ -28,6 +28,8 @@ def basepage(request):
     context['dev_email'] = settings.DEV_EMAIL
     context['disable_signup'] = settings.DISABLE_SIGNUP
     context['libravatar_version'] = settings.LIBRAVATAR_VERSION
+    if 'openid_identifier' in request.GET:
+        context['openid_identifier'] = request.GET['openid_identifier']
     context['secure_avatar_url'] = settings.SECURE_AVATAR_URL
     context['security_url'] = settings.SECURITY_URL
     context['site_name'] = settings.SITE_NAME
