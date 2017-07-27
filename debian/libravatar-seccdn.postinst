@@ -70,6 +70,11 @@ case "$1" in
 
         mv ${APACHE_CONFIG}.working /etc/apache2/sites-available/libravatar-seccdn.conf
 
+        # Create dummy TLS certificates if necessary
+        touch /etc/libravatar/seccdn-chain.pem
+        touch /etc/libravatar/seccdn.pem
+        touch /etc/libravatar/seccdn.crt
+
         if [ "$ENABLE_SITE" != "" ]; then
             a2ensite libravatar-seccdn
         fi
