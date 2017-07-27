@@ -2,8 +2,8 @@ from fabric.api import abort, env, local, parallel, put, roles, run, sudo
 from fabric.context_managers import lcd
 import re
 
-env.roledefs = {'cdn_only': ['2.cdn.libravatar.org'],
-                'seccdn': ['1.cdn.libravatar.org', '5.cdn.libravatar.org'],
+env.roledefs = {'cdn_only': [],
+                'seccdn': ['3.cdn.libravatar.org'],
                 'master': ['0.cdn.libravatar.org'],
                 'repo': ['apt.libravatar.org']}
 
