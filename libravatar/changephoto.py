@@ -104,5 +104,6 @@ def main(argv=None):
     source_filename = settings.USER_FILES_ROOT + photo_hash + '.' + photo_format
     return create_links(source_filename, md5_hash, sha256_hash)
 
+
 if __name__ == "__main__":
     sys.exit(main())

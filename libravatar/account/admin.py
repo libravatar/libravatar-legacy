@@ -26,5 +26,6 @@ class ConfirmedEmailAdmin(admin.ModelAdmin):
 class UnconfirmedEmailAdmin(admin.ModelAdmin):
     list_display = ['user', 'email', 'verification_key', 'add_date']
 
+
 admin.site.register(ConfirmedEmail, ConfirmedEmailAdmin)
 admin.site.register(UnconfirmedEmail, UnconfirmedEmailAdmin)
