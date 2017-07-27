@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016, 2017  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -17,11 +17,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import gearman
 import hashlib
 import json
-from openid import oidutil
-from openid.consumer import consumer
 import os
 from StringIO import StringIO
 import urllib
@@ -38,6 +35,9 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.decorators.csrf import csrf_protect
+import gearman
+from openid import oidutil
+from openid.consumer import consumer
 
 from libravatar.account.forms import AddEmailForm, AddOpenIdForm, DeleteAccountForm, PasswordResetForm, UploadPhotoForm
 from libravatar.account.models import ConfirmedEmail, UnconfirmedEmail, ConfirmedOpenId, UnconfirmedOpenId, DjangoOpenIDStore, Photo, password_reset_key
@@ -499,7 +499,7 @@ def _perform_crop(request, photo, dimensions=None, email=None, openid=None):
             sha256_hash = openid.set_photo(photo, create_links=False)
         links_to_create.append([md5_hash, sha256_hash])
 
-    elif 1 == request.user.photos.count():
+    elif request.user.photos.count() == 1:
         # it's the first photo, use it for all confirmed emails and OpenIDs
         for email in request.user.confirmed_emails.all():
             (md5_hash, sha256_hash) = email.set_photo(photo, create_links=False)
@@ -600,9 +600,9 @@ def _assign_photo(request, identifier_type, identifier):
 
     # carry optional parameters to the upload page
     params = {}
-    if 'email' == identifier_type:
+    if identifier_type == 'email':
         params['email'] = identifier
-    elif 'openid' == identifier_type:
+    elif identifier_type == 'openid':
         params['openid'] = identifier
     query_string = urllib.urlencode(params)
 
@@ -696,7 +696,7 @@ def password_reset_confirm(request):
                                   context_instance=RequestContext(request))
 
     user = email.user
-    if u'!' == user.password:
+    if user.password == u'!':
         # no password is set, cannot reset it
         return render_to_response('account/reset_invalidparams.html',
                                   context_instance=RequestContext(request))

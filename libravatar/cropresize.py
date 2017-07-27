@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016, 2017  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -16,12 +16,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import gearman
-import Image
 import json
 import os
 import subprocess
 import sys
+
+import gearman
+import Image
 
 # pylint: disable=bare-except,relative-import
 import settings
@@ -40,11 +41,11 @@ def create_broken_image(broken, dest):
 
 
 def pil_format_to_ext(pil_format):
-    if 'PNG' == pil_format:
+    if pil_format == 'PNG':
         return '.png'
-    elif 'JPEG' == pil_format:
+    elif pil_format == 'JPEG':
         return '.jpg'
-    elif 'GIF' == pil_format:
+    elif pil_format == 'GIF':
         return '.gif'
     return None
 
@@ -112,13 +113,13 @@ def crop(filename, x=0, y=0, w=0, h=0):
 
 
 def optimize_image(dest, img_format, ext, broken_file):
-    if 'JPEG' == img_format:
+    if img_format == 'JPEG':
         process = subprocess.Popen(['/usr/bin/jpegoptim', '-p', '--strip-all', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)
             LOGGER.error('JPEG optimisation failed: %s', process.communicate()[0])
             return 4
-    elif 'PNG' == img_format:
+    elif img_format == 'PNG':
         process = subprocess.Popen(['/usr/bin/pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
@@ -138,7 +139,7 @@ def optimize_image(dest, img_format, ext, broken_file):
             create_broken_image(broken_file + ext, dest)
             LOGGER.error('PNG optimisation (advpng) failed: %s', process.communicate()[0])
             return 4
-    elif 'GIF' == img_format:
+    elif img_format == 'GIF':
         process = subprocess.Popen(['/usr/bin/gifsicle', '-O2', '-b', dest], stdout=subprocess.PIPE)
         if process.wait() != 0:
             create_broken_image(broken_file + ext, dest)

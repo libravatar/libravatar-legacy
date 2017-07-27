@@ -1,4 +1,4 @@
-# Copyright (C) 2011, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2014, 2016, 2017  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Francois Marier <francois@libravatar.org>
 #                     Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
@@ -18,9 +18,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import DNS
-import gearman
-import Image
 import json
 import random
 import os
@@ -30,16 +27,19 @@ import urllib
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import DNS
+import gearman
+import Image
 
 from libravatar import settings
 
 
 def mimetype_format(pil_format):
-    if 'JPEG' == pil_format:
+    if pil_format == 'JPEG':
         return 'image/jpeg'
-    elif 'PNG' == pil_format:
+    elif pil_format == 'PNG':
         return 'image/png'
-    elif 'GIF' == pil_format:
+    elif pil_format == 'GIF':
         return 'image/gif'
 
     print "ERROR: got invalid file format from PIL: %s" % pil_format
@@ -59,7 +59,7 @@ def srv_hostname(records):
     if len(records) < 1:
         return (None, None)
 
-    if 1 == len(records):
+    if len(records) == 1:
         ret = records[0]
         return (ret['target'], ret['port'])
 
@@ -86,7 +86,7 @@ def srv_hostname(records):
             # zero-weigth elements must come first
             priority_records.insert(0, (0, ret))
 
-    if 1 == len(priority_records):
+    if len(priority_records) == 1:
         unused, ret = priority_records[0]
         return (ret['target'], ret['port'])
 
@@ -129,7 +129,7 @@ def lookup_avatar_server(domain, https):
         print "DNS Error: %s (%s)" % (message, domain)
         return None
 
-    if 'NXDOMAIN' == dns_request.header['status']:
+    if dns_request.header['status'] == 'NXDOMAIN':
         # Not an error, but no point in going any further
         return None
 
@@ -165,7 +165,7 @@ def resolve(request):
         return render_to_response('public/nohash.html',
                                   context_instance=RequestContext(request))
 
-    https = ('https' in request.GET and '1' == request.GET['https'])
+    https = ('https' in request.GET and request.GET['https'] == '1')
 
     # Maintain the default redirection that was specified
     query_string = ''
@@ -245,7 +245,7 @@ def resize(request):
                                   context_instance=RequestContext(request))
     email_hash = request.GET['email_hash']
 
-    https = ('https' in request.GET and '1' == request.GET['https'])
+    https = ('https' in request.GET and request.GET['https'] == '1')
 
     size = settings.AVATAR_DEFAULT_SIZE
     if 'size' in request.GET:

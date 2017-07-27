@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016, 2017  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -17,12 +17,13 @@
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
 import base64
-import gearman
 import gzip
 import json
 import os
 import sys
 from xml.sax import saxutils
+
+import gearman
 
 # pylint: disable=relative-import
 import settings

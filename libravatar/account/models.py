@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2012, 2013, 2014, 2016, 2017  Francois Marier <francois@libravatar.org>
 # Copyright (C) 2010  Jonathan Harker <jon@jon.geek.nz>
 #                     Brett Wilkins <bushido.katana@gmail.com>
 #
@@ -46,13 +46,8 @@
 
 import base64
 import datetime
-import gearman
 import hashlib
-import Image
 import json
-from openid.store import nonce as oidnonce
-from openid.store.interface import OpenIDStore
-from openid.association import Association as OIDAssociation
 from os import urandom, path, rename
 import time
 from urllib2 import urlopen, HTTPError, URLError
@@ -61,6 +56,11 @@ from urlparse import urlsplit, urlunsplit
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+import gearman
+import Image
+from openid.store import nonce as oidnonce
+from openid.store.interface import OpenIDStore
+from openid.association import Association as OIDAssociation
 
 from libravatar import settings
 from libravatar.account.external_photos import gravatar_photo
@@ -77,11 +77,11 @@ def password_reset_key(user):
 
 
 def file_format(image_type):
-    if 'JPEG' == image_type:
+    if image_type == 'JPEG':
         return 'jpg'
-    elif 'PNG' == image_type:
+    elif image_type == 'PNG':
         return 'png'
-    elif 'GIF' == image_type:
+    elif image_type == 'GIF':
         return 'gif'
 
     print 'Unsupported file format: %s' % image_type
@@ -183,7 +183,7 @@ class Photo(models.Model):
     def import_image(self, service_name, email_address):
         image_url = False
 
-        if 'Gravatar' == service_name:
+        if service_name == 'Gravatar':
             gravatar = gravatar_photo(email_address)
             if gravatar:
                 image_url = gravatar['image_url']
@@ -295,7 +295,7 @@ class ConfirmedEmail(models.Model):
         return settings.DEFAULT_PHOTO
 
     def public_hash(self, algorithm):
-        if 'md5' == algorithm:
+        if algorithm == 'md5':
             hash_object = hashlib.new('md5')
         else:
             hash_object = hashlib.new('sha256')

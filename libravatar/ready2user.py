@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (C) 2011, 2013, 2016  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2011, 2013, 2016, 2017  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -16,11 +16,12 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import gearman
 import json
 import os
 import shutil
 import sys
+
+import gearman
 
 # pylint: disable=bare-except,relative-import
 import settings

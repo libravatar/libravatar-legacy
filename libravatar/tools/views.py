@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011, 2013, 2014  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2013, 2014, 2017  Francois Marier <francois@libravatar.org>
 #               2010  Jonathan Harker <jon@jon.geek.nz>
 #
 # This file is part of Libravatar
@@ -16,13 +16,13 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
-import DNS
 import hashlib
 from socket import inet_ntop, AF_INET6
 from urlparse import urlsplit, urlunsplit
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import DNS
 
 from libravatar.public.views import lookup_avatar_server
 from libravatar.tools.forms import CheckForm, CheckDomainForm
