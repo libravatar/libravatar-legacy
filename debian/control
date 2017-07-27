@@ -75,6 +75,7 @@ Depends: apache2,
          debconf,
          libapache2-mod-removeip,
          libravatar-common (=${source:Version}),
+         ntp,
          ${misc:Depends}
 Description: avatar image hosting - common cdn files
  Libravatar is a free service for hosting profile images tied to your
