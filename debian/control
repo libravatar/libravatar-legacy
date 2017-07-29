@@ -72,6 +72,7 @@ Description: avatar image hosting - main web application
 Package: libravatar-cdn-common
 Architecture: all
 Depends: apache2,
+         apt-transport-https,
          debconf,
          libapache2-mod-removeip,
          libravatar-common (=${source:Version}),
