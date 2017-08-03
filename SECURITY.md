@@ -16,14 +16,14 @@ For bugs in the Libravatar federated protocol itself, please email `security@lib
 
 ## Bugs in third-party libraries
 
-If you find a bug in a [third-party library](http://wiki.libravatar.org/libraries/),
+If you find a bug in a [third-party library](https://wiki.libravatar.org/libraries/),
 please email its author directly, but feel free to CC `security@libravatar.org`.
 
 # Acknowledgment
 
 If you email `security@libravatar.org`, we will do our best to acknowledge your
 email within 48 hours. If you haven't heard from us, please try again or ping
-us through [another channel](http://wiki.libravatar.org/talk_to_us/).
+us through [another channel](https://wiki.libravatar.org/talk_to_us/).
 
 # Disclosure policy
 

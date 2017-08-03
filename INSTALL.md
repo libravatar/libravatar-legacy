@@ -138,4 +138,4 @@ Download and install the [Django LDAP authentication backend](http://packages.py
 Then uncomment the LDAP backend line in AUTHENTICATION\_BACKENDS in your
 settings.py and set your AUTH\_LDAP\_SERVER\_URI and AUTH\_LDAP\_USER\_DN\_TEMPLATE
 settings to something appropriate. More complex setups are also well documented
-in the [package documentation](http://packages.python.org/django-auth-ldap/).
+in the [package documentation](https://pythonhosted.org/django-auth-ldap/).

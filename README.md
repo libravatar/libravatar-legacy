@@ -11,9 +11,8 @@ are a few useful pointers:
 * [Project page](https://www.launchpad.net/libravatar)
 * [Bug tracker](https://bugs.launchpad.net/libravatar)
 * [Source code](https://code.launchpad.net/~libravatar/libravatar/+git/libravatar)
-* [Wiki](http://wiki.libravatar.org)
+* [Wiki](https://wiki.libravatar.org)
 * [Mailing list](https://launchpad.net/~libravatar-fans)
-* [Identica group](http://identi.ca/group/libravatar)
 * IRC channel: #libravatar on chat.freenode.net
 
 Coding guidelines and other useful instructions can be found in HACKING.
@@ -26,13 +25,13 @@ Basic instructions on getting this to run are in INSTALL.
 If you'd like to keep up with new developments, have a look at these:
 
 * [Homepage](https://www.libravatar.org)
-* [Blog](http://blog.libravatar.org)
-* [Identica](http://identi.ca/libravatar)
-* [Twitter](http://twitter.com/libravatar)
+* [Blog](https://blog.libravatar.org)
+* [Identica](https://identi.ca/libravatar)
+* [Twitter](https://twitter.com/libravatar)
 
 # License
 
-    Copyright (C) 2010-2015  Francois Marier <francois@libravatar.org>
+    Copyright (C) 2010-2017  Francois Marier <francois@libravatar.org>
                   2010  Jonathan Harker <jon@jon.geek.nz>
                         Brett Wilkins <bushido.katana@gmail.com>
 
