@@ -1,4 +1,4 @@
-# Copyright (C) 2010, 2011  Francois Marier <francois@libravatar.org>
+# Copyright (C) 2010, 2011, 2017  Francois Marier <francois@libravatar.org>
 #
 # This file is part of Libravatar
 #
@@ -15,6 +15,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with Libravatar.  If not, see <http://www.gnu.org/licenses/>.
 
+from ssl import SSLError
 from urllib2 import urlopen, HTTPError, URLError
 import hashlib
 
@@ -37,7 +38,10 @@ def gravatar_photo(email):
             print 'Gravatar fetch failed with an unexpected %s HTTP error' % e.code
         return False
     except URLError as e:
-        print 'Gravatar fetch failed: %s' % e.reason
+        print 'Gravatar fetch failed with URL error: %s' % e.reason
+        return False
+    except SSLError as e:
+        print 'Gravatar fetch failed with SSL error: %s' % e.reason
         return False
 
     return {'thumbnail_url': thumbnail_url, 'image_url': image_url, 'width': 80,
