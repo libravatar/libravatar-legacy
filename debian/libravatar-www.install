@@ -10,6 +10,7 @@ static/img/*.gif usr/share/libravatar/static/img
 static/img/*.html usr/share/libravatar/static/img
 static/img/*.jpg usr/share/libravatar/static/img
 static/img/*.png usr/share/libravatar/static/img
+static/img/safari*.svg usr/share/libravatar/static/img
 static/js/*.html usr/share/libravatar/static/js
 static/js/*.js.gz usr/share/libravatar/static/js
 static/js/*.js.js usr/share/libravatar/static/js
