@@ -1,6 +1,8 @@
 Libravatar - free online avatar service
 =======================================
 
+[![tip for next commit](https://tip4commit.com/projects/43166.svg)](https://tip4commit.com/github/libravatar/libravatar)
+[![tip for next commit](https://peer4commit.com/projects/198.svg)](https://peer4commit.com/projects/198)
 [![tip for next commit](http://prime4commit.com/projects/160.svg)](http://prime4commit.com/projects/160)
 
 # Getting involved
