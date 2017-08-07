@@ -1,3 +1,11 @@
+libravatar (20170806.1) unstable; urgency=medium
+
+  * Add missing favicons and metadata (bug #1708864)
+  * Require apt-transport-https on all mirrors 
+  * Catch another Gravatar import failure
+
+ -- Francois Marier <francois@debian.org>  Sun, 06 Aug 2017 21:40:56 -0700
+
 libravatar (20170727.1) unstable; urgency=medium
 
   * Pre-fill OpenID identifier on login page if available (bug #1706984)
