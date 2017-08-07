@@ -66,14 +66,14 @@ def restart_apache():
     sudo('/usr/sbin/apache2ctl graceful', shell=False)
 
 
-@parallel
+#@parallel
 @roles('cdn_only')
 def deploy_cdn():
     sudo('/usr/bin/apt-get update', shell=False)
     install_packages(COMMON_PACKAGES + CDNCOMMON_PACKAGES)
     restart_apache()
 
-@parallel
+#@parallel
 @roles('seccdn')
 def deploy_seccdn():
     sudo('/usr/bin/apt-get update', shell=False)
