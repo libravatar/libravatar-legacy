@@ -1,3 +1,11 @@
+libravatar (20170910.1) unstable; urgency=medium
+
+  * Tighten up file ownership of processed avatars
+  * Add a conflict between needrestart and libravatar-deployment
+  * Add missing manifest.json and browserconfig.xml aliases (bug #1708864)
+
+ -- Francois Marier <francois@debian.org>  Sun, 10 Sep 2017 14:28:24 -0700
+
 libravatar (20170806.1) unstable; urgency=medium
 
   * Add missing favicons and metadata (bug #1708864)
