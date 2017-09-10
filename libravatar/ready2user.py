@@ -70,6 +70,13 @@ def main(argv=None):
         LOGGER.error('Source file not found')
         return 1
 
+    # Change file ownership so that it can no longer be modified
+    try:
+        os.chown(source, 0, 0)  # root:root
+    except:
+        LOGGER.error('Cannot change file ownership')
+        return 3
+
     # Remove from /ready and move to /user
     try:
         shutil.move(source, dest)
