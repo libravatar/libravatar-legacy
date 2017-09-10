@@ -17,3 +17,7 @@ and deploy to the mirrors and master:
 
     fab deploy_seccdn
     fab deploy_master
+
+Once that's done, it's time to push the branch:
+
+    git push
