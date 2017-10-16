@@ -65,6 +65,8 @@ case "$1" in
         a2enmod alias > /dev/null 2>&1
         a2enmod expires > /dev/null 2>&1
         a2enmod headers > /dev/null 2>&1
+        a2enmod proxy > /dev/null 2>&1
+        a2enmod proxy_http > /dev/null 2>&1
         a2enmod rewrite > /dev/null 2>&1
         a2enmod ssl > /dev/null 2>&1
 
