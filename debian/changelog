@@ -1,3 +1,9 @@
+libravatar (20171015.1) unstable; urgency=medium
+
+  * Proxy ACME requests from mirrors to master
+
+ -- Francois Marier <francois@debian.org>  Sun, 15 Oct 2017 21:45:46 -0700
+
 libravatar (20170910.1) unstable; urgency=medium
 
   * Tighten up file ownership of processed avatars
