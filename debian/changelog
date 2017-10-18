@@ -1,3 +1,9 @@
+libravatar (20171017.1) unstable; urgency=medium
+
+  * Fix the ACME proxy rules and limit them to seccdn
+
+ -- Francois Marier <francois@debian.org>  Tue, 17 Oct 2017 22:38:45 -0700
+
 libravatar (20171015.1) unstable; urgency=medium
 
   * Proxy ACME requests from mirrors to master
