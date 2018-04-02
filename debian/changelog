@@ -1,3 +1,13 @@
+libravatar (20180402.1) unstable; urgency=medium
+
+  * Enable www to use the webroot certbot plugin
+  * Add shutdown notice to page header
+  * Remove WebConverger from sponsors
+  * Remove all donation buttons
+  * Remove commit-based crypto-currencies from README
+
+ -- Francois Marier <francois@debian.org>  Mon, 02 Apr 2018 14:10:59 -0700
+
 libravatar (20171017.1) unstable; urgency=medium
 
   * Fix the ACME proxy rules and limit them to seccdn
