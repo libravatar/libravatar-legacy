@@ -29,7 +29,7 @@ If you'd like to keep up with new developments, have a look at these:
 
 # License
 
-    Copyright (C) 2010-2017  Francois Marier <francois@libravatar.org>
+    Copyright (C) 2010-2018  Francois Marier <francois@libravatar.org>
                   2010  Jonathan Harker <jon@jon.geek.nz>
                         Brett Wilkins <bushido.katana@gmail.com>
 
