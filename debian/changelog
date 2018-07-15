@@ -1,3 +1,10 @@
+libravatar (20180715.1) unstable; urgency=medium
+
+  * Add seccdn placeholder for CSP (bug #1781174)
+  * Update README link (bug #1781225)
+
+ -- Francois Marier <francois@debian.org>  Sun, 15 Jul 2018 11:55:56 -0700
+
 libravatar (20180402.1) unstable; urgency=medium
 
   * Enable www to use the webroot certbot plugin
