@@ -1,3 +1,9 @@
+libravatar (20180729.1) unstable; urgency=medium
+
+  * Remove the shutdown notice
+
+ -- Francois Marier <francois@debian.org>  Sun, 29 Jul 2018 16:30:18 -0700
+
 libravatar (20180715.2) unstable; urgency=medium
 
   * Revert the seccdn placeholder in www config.
