@@ -7,7 +7,7 @@ body {
 
 #site-name {
   color: #FCDDA5;
-  font-size: 1.5em;
+  font-size: 2em;
   font-style: normal;
   letter-spacing: 0.35em;
 }
@@ -34,19 +34,6 @@ h1 {
 h2 {
   color: #F9711F;
   font-weight: normal;
-}
-
-#shutdown-notice {
-  background-color: #FF0000;
-  color: #FFFFFF;
-  font-size: 2em;
-  font-weight: bold;
-  text-align: center;
-  width: 100%;
-}
-
-#shutdown-notice a {
-  color: #FFFFFF;
 }
 
 .error, .errorlist li {
