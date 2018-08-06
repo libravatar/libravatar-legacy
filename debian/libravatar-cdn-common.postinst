@@ -47,6 +47,9 @@ case "$1" in
         done
 
         mv ${RULES_ABE}.working ${RULES_ABE}
+
+        # Enable apache modules we want unconditionally
+        a2enmod removeip > /dev/null 2>&1
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
