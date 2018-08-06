@@ -86,6 +86,9 @@ case "$1" in
         echo "configuration changes to take effect"
         echo ""
 
+        touch /var/log/libravatar/access-seccdn.log
+        chown www-data:www-data /var/log/libravatar/access-seccdn.log
+
         mkdir -p /etc/awstats
         mv ${AWSTATS_CONFIG}.working /etc/awstats/awstats.seccdn.conf
 

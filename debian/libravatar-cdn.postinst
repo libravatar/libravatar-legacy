@@ -78,6 +78,9 @@ case "$1" in
         echo "configuration changes to take effect"
         echo ""
 
+        touch /var/log/libravatar/access-cdn.log
+        chown www-data:www-data /var/log/libravatar/access-cdn.log
+
         mkdir -p /etc/awstats
         mv ${AWSTATS_CONFIG}.working /etc/awstats/awstats.cdn.conf
 

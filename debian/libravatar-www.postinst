@@ -112,6 +112,8 @@ case "$1" in
 
         mkdir -p ${AVATAR_ROOT}
 
+        touch /var/log/libravatar/access-www.log
+        chown www-data:www-data /var/log/libravatar/access-www.log
         touch /var/log/libravatar/workers.log
         chown libravatar-img /var/log/libravatar/workers.log
 
