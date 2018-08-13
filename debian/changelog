@@ -1,3 +1,9 @@
+libravatar (20180812.1) unstable; urgency=medium
+
+  * Update known_hosts file for grindavik
+
+ -- Francois Marier <francois@debian.org>  Sun, 12 Aug 2018 17:33:06 -0700
+
 libravatar (20180806.1) unstable; urgency=medium
 
   * Enable mod_removeip on all machines.
