@@ -42,9 +42,9 @@ def sign_repo():
 
 @roles('repo')
 def upload_packages():
-    run('rm -rf /var/www/apt-libravatar/db /var/www/apt-libravatar/dists /var/www/apt-libravatar/pool');
+    run('rm -rf /var/www/apt/db /var/www/apt/dists /var/www/apt/pool');
     for directory in ['conf', 'db', 'dists', 'pool']:
-        put('../libravatar-repo/%s' % directory, '/var/www/apt-libravatar/')
+        put('../libravatar-repo/%s' % directory, '/var/www/apt/')
 
 
 def update_repo():
