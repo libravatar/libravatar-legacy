@@ -3,7 +3,7 @@
 # External dependencies
 
 * Python 2.7
-* Django 1.4
+* Django 1.8
 * Apache 2 with:
  * mod\_alias
  * mod\_expires
