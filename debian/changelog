@@ -1,3 +1,11 @@
+libravatar (20181007.1) unstable; urgency=medium
+
+  * Automaticaly rotate PNG files (bug #1792039)
+  * Update Aloodo anti-tracking script (bug #1796413)
+  * Add a security.txt file (bug #1793407)
+
+ -- Francois Marier <francois@debian.org>  Sun, 07 Oct 2018 21:15:13 -0700
+
 libravatar (20180818.1) unstable; urgency=medium
 
   * Remove references to Rackspace sponsorship
