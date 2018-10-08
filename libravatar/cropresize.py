@@ -120,6 +120,11 @@ def optimize_image(dest, img_format, ext, broken_file):
             LOGGER.error('JPEG optimisation failed: %s', process.communicate()[0])
             return 4
     elif img_format == 'PNG':
+        process = subprocess.Popen(['/usr/bin/exiftran', '-ai', dest], stdout=subprocess.PIPE)
+        if process.wait() != 0:
+            create_broken_image(broken_file + ext, dest)
+            LOGGER.error('PNG optimisation (exiftran) failed: %s', process.communicate()[0])
+            return 4
         process = subprocess.Popen(['/usr/bin/pngcrush', '-rem', 'gAMA', '-rem', 'alla', '-rem', 'text', dest, dest + '.tmp'], stdout=subprocess.PIPE)
         if process.wait() != 0:
             delete_if_exists(dest + '.tmp')
