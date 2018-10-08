@@ -1,0 +1,3 @@
+Contact: security@libravatar.org
+Acknowledgements: https://wiki.libravatar.org/security/
+Policy: https://wiki.libravatar.org/security/
